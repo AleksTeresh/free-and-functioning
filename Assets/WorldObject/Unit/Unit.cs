@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using Newtonsoft.Json;
 
 public class Unit : WorldObject {
 
@@ -13,13 +14,19 @@ public class Unit : WorldObject {
     private Quaternion targetRotation;
     private GameObject destinationTarget;
 
+    private int loadedDestinationTargetId = -1;
+
+    // audio 
+    public AudioClip driveSound, moveSound;
+    public float driveVolume = 0.5f, moveVolume = 1.0f;
+
     public override void SetHoverState(GameObject hoverObject)
     {
         base.SetHoverState(hoverObject);
         //only handle input if owned by a human player and currently selected
         if (player && player.human && currentlySelected)
         {
-            if (hoverObject.name == "Ground") player.hud.SetCursorState(CursorState.Move);
+            if (WorkManager.ObjectIsGround(hoverObject)) player.hud.SetCursorState(CursorState.Move);
         }
     }
 
@@ -34,7 +41,7 @@ public class Unit : WorldObject {
         //only handle input if owned by a human player and currently selected
         if (player && player.human && currentlySelected)
         {
-            if (hitObject.name == "Ground" && hitPoint != ResourceManager.InvalidPosition)
+            if (WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
             {
                 float x = hitPoint.x;
                 //makes sure that the unit stays on top of the surface it is on
@@ -48,6 +55,8 @@ public class Unit : WorldObject {
 
     public void StartMove(Vector3 destination)
     {
+        if (audioElement != null) audioElement.Play(moveSound);
+
         this.destinationTarget = null;
         this.destination = destination;
         targetRotation = Quaternion.LookRotation(destination - transform.position);
@@ -61,6 +70,34 @@ public class Unit : WorldObject {
         this.destinationTarget = destinationTarget;
     }
 
+    public override void SaveDetails(JsonWriter writer)
+    {
+        base.SaveDetails(writer);
+        SaveManager.WriteBoolean(writer, "Moving", moving);
+        SaveManager.WriteBoolean(writer, "Rotating", rotating);
+        SaveManager.WriteVector(writer, "Destination", destination);
+        SaveManager.WriteQuaternion(writer, "TargetRotation", targetRotation);
+        if (destinationTarget)
+        {
+            WorldObject destinationObject = destinationTarget.GetComponent<WorldObject>();
+            if (destinationObject) SaveManager.WriteInt(writer, "DestinationTargetId", destinationObject.ObjectId);
+        }
+    }
+
+    protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
+    {
+        base.HandleLoadedProperty(reader, propertyName, readValue);
+        switch (propertyName)
+        {
+            case "Moving": moving = (bool)readValue; break;
+            case "Rotating": rotating = (bool)readValue; break;
+            case "Destination": destination = LoadManager.LoadVector(reader); break;
+            case "TargetRotation": targetRotation = LoadManager.LoadQuaternion(reader); break;
+            case "DestinationTargetId": loadedDestinationTargetId = (int)(System.Int64)readValue; break;
+            default: break;
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -69,6 +106,11 @@ public class Unit : WorldObject {
     protected override void Start()
     {
         base.Start();
+
+        if (player && loadedSavedValues && loadedDestinationTargetId >= 0)
+        {
+            destinationTarget = player.GetObjectForId(loadedDestinationTargetId).gameObject;
+        }
     }
 
     protected override void Update()
@@ -83,6 +125,22 @@ public class Unit : WorldObject {
         base.OnGUI();
 
         if (currentlySelected) DrawSelection();
+    }
+
+    protected override void InitialiseAudio()
+    {
+        base.InitialiseAudio();
+        List<AudioClip> sounds = new List<AudioClip>();
+        List<float> volumes = new List<float>();
+        if (driveVolume < 0.0f) driveVolume = 0.0f;
+        if (driveVolume > 1.0f) driveVolume = 1.0f;
+        volumes.Add(driveVolume);
+        sounds.Add(driveSound);
+        if (moveVolume < 0.0f) moveVolume = 0.0f;
+        if (moveVolume > 1.0f) moveVolume = 1.0f;
+        sounds.Add(moveSound);
+        volumes.Add(moveVolume);
+        audioElement.Add(sounds, volumes);
     }
 
     private void DrawSelection()
@@ -102,6 +160,8 @@ public class Unit : WorldObject {
         Quaternion inverseTargetRotation = new Quaternion(-targetRotation.x, -targetRotation.y, -targetRotation.z, -targetRotation.w);
         if (transform.rotation == targetRotation || transform.rotation == inverseTargetRotation)
         {
+            if (audioElement != null) audioElement.Play(driveSound);
+
             rotating = false;
             moving = true;
             if (destinationTarget) CalculateTargetDestination();
@@ -115,6 +175,8 @@ public class Unit : WorldObject {
         transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * moveSpeed);
         if (transform.position == destination)
         {
+            if (audioElement != null) audioElement.Stop(driveSound);
+
             moving = false;
             movingIntoPosition = false;
         }

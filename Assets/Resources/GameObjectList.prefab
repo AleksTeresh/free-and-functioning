@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1293049868604524}
+  m_IsPrefabParent: 1
+--- !u!1 &1293049868604524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4585386913671438}
+  - component: {fileID: 114342456901951920}
+  m_Layer: 0
+  m_Name: GameObjectList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4585386913671438
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293049868604524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114342456901951920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293049868604524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e43448e965745b479e193c769267be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildings:
+  - {fileID: 1485457674949076, guid: 0b67ff8d751a8c3428c67a42b1a61f79, type: 2}
+  units:
+  - {fileID: 1298768487697374, guid: 58930a2f7802e0544bf1bf38a0690e4b, type: 2}
+  worldObjects:
+  - {fileID: 1468712751213592, guid: b9fbd35f2bb53c84ab68b46b5d78815e, type: 2}
+  - {fileID: 1867937343684546, guid: 47811af423559934191ec0a5a241e8df, type: 2}
+  - {fileID: 1324460347583946, guid: 1d03e5db9e306d4448835bb1537090e9, type: 2}
+  player: {fileID: 1880155284192986, guid: 18c2a160ec048d14ca46079316893b47, type: 2}
+  avatars:
+  - {fileID: 2800000, guid: 665a236535b979947996f55953dd1b6c, type: 3}
+  - {fileID: 2800000, guid: 999920811ea3dd448a560f5c502ae786, type: 3}
+  - {fileID: 2800000, guid: abf2c10421e5b174288832b7f83894dd, type: 3}
+  - {fileID: 2800000, guid: 785d3baeb4436f64bb7fdb81176ebddf, type: 3}
+  - {fileID: 2800000, guid: 12f45256990790144a56d7c23ba80d36, type: 3}
+  - {fileID: 2800000, guid: 8c9637d8df6607c459410f4f38446074, type: 3}

@@ -11,11 +11,15 @@ public class GameObjectList : MonoBehaviour {
     public GameObject[] units;
     public GameObject[] worldObjects;
     public GameObject player;
+    public Texture2D[] avatars;
 
     void Awake()
     {
         if (!created)
         {
+            PlayerManager.Load();
+            PlayerManager.SetAvatarTextures(avatars);
+
             DontDestroyOnLoad(transform.gameObject);
             ResourceManager.SetGameObjectList(this);
             created = true;
@@ -24,6 +28,11 @@ public class GameObjectList : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public Texture2D[] GetAvatars()
+    {
+        return avatars;
     }
 
     public GameObject GetBuilding(string name)

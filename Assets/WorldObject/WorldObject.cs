@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using Newtonsoft.Json;
 
 public class WorldObject : MonoBehaviour {
 
+    public int ObjectId { get; set; }
     public string objectName;
     public Texture2D buildImage;
     public int cost, sellValue, hitPoints, maxHitPoints;
@@ -25,10 +27,26 @@ public class WorldObject : MonoBehaviour {
     public float weaponRechargeTime = 1.0f;
     private float currentWeaponChargeTime;
 
+    // loading related
+    protected bool loadedSavedValues = false;
+    private int loadedTargetId = -1;
+
+    // audio related
+    public AudioClip attackSound, selectSound, useWeaponSound;
+    public float attackVolume = 1.0f, selectVolume = 1.0f, useWeaponVolume = 1.0f;
+
+    protected AudioElement audioElement;
+
     public virtual void SetSelection(bool selected, Rect playingArea)
     {
         currentlySelected = selected;
-        if (selected) this.playingArea = playingArea;
+        if (selected)
+        {
+            if (audioElement != null) audioElement.Play(selectSound);
+
+            this.playingArea = playingArea;
+        }
+        
     }
 
     public string[] GetActions()
@@ -45,10 +63,63 @@ public class WorldObject : MonoBehaviour {
         }
     }
 
+    public void SetPlayer()
+    {
+        player = transform.root.GetComponentInChildren<Player>();
+    }
+
+    public virtual void SaveDetails(JsonWriter writer)
+    {
+        SaveManager.WriteString(writer, "Type", name);
+        SaveManager.WriteString(writer, "Name", objectName);
+        SaveManager.WriteInt(writer, "Id", ObjectId);
+        SaveManager.WriteVector(writer, "Position", transform.position);
+        SaveManager.WriteQuaternion(writer, "Rotation", transform.rotation);
+        SaveManager.WriteVector(writer, "Scale", transform.localScale);
+        SaveManager.WriteInt(writer, "HitPoints", hitPoints);
+        SaveManager.WriteBoolean(writer, "Attacking", attacking);
+        SaveManager.WriteBoolean(writer, "MovingIntoPosition", movingIntoPosition);
+        SaveManager.WriteBoolean(writer, "Aiming", aiming);
+        if (attacking)
+        {
+            //only save if attacking so that we do not end up storing massive numbers for no reason
+            SaveManager.WriteFloat(writer, "CurrentWeaponChargeTime", currentWeaponChargeTime);
+        }
+        if (target != null) SaveManager.WriteInt(writer, "TargetId", target.ObjectId);
+    }
+
+    public void LoadDetails(JsonTextReader reader)
+    {
+        while (reader.Read())
+        {
+            if (reader.Value != null)
+            {
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    string propertyName = (string)reader.Value;
+                    reader.Read();
+                    HandleLoadedProperty(reader, propertyName, reader.Value);
+                }
+            }
+            else if (reader.TokenType == JsonToken.EndObject)
+            {
+                //loaded position invalidates the selection bounds so they must be recalculated
+                selectionBounds = ResourceManager.InvalidBounds;
+                CalculateBounds();
+                loadedSavedValues = true;
+                return;
+            }
+        }
+        //loaded position invalidates the selection bounds so they must be recalculated
+        selectionBounds = ResourceManager.InvalidBounds;
+        CalculateBounds();
+        loadedSavedValues = true;
+    }
+
     public virtual void MouseClick(GameObject hitObject, Vector3 hitPoint, Player controller)
     {
         //only handle input if currently selected
-        if (currentlySelected && hitObject && hitObject.name != "Ground")
+        if (currentlySelected && !WorkManager.ObjectIsGround(hitObject))
         {
             WorldObject worldObject = hitObject.transform.parent.GetComponent<WorldObject>();
             //clicked on another selectable object
@@ -81,7 +152,7 @@ public class WorldObject : MonoBehaviour {
         if (player && player.human && currentlySelected)
         {
             //something other than the ground is being hovered over
-            if (hoverObject.name != "Ground")
+            if (!WorkManager.ObjectIsGround(hoverObject))
             {
                 Player owner = hoverObject.transform.root.GetComponent<Player>();
                 Unit unit = hoverObject.transform.parent.GetComponent<Unit>();
@@ -106,9 +177,20 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void Start()
     {
-        player = transform.root.GetComponentInChildren<Player>();
+        SetPlayer();
+        if (player)
+        {
+            if (loadedSavedValues)
+            {
+                if (loadedTargetId >= 0) target = player.GetObjectForId(loadedTargetId);
+            }
+            else
+            {
+                SetTeamColor();
+            }
+        }
 
-        if (player) SetTeamColor();
+        InitialiseAudio();
     }
 
     protected virtual void Update()
@@ -122,8 +204,29 @@ public class WorldObject : MonoBehaviour {
         if (currentlySelected) DrawSelection();
     }
 
+    protected virtual void InitialiseAudio()
+    {
+        List<AudioClip> sounds = new List<AudioClip>();
+        List<float> volumes = new List<float>();
+        if (attackVolume < 0.0f) attackVolume = 0.0f;
+        if (attackVolume > 1.0f) attackVolume = 1.0f;
+        sounds.Add(attackSound);
+        volumes.Add(attackVolume);
+        if (selectVolume < 0.0f) selectVolume = 0.0f;
+        if (selectVolume > 1.0f) selectVolume = 1.0f;
+        sounds.Add(selectSound);
+        volumes.Add(selectVolume);
+        if (useWeaponVolume < 0.0f) useWeaponVolume = 0.0f;
+        if (useWeaponVolume > 1.0f) useWeaponVolume = 1.0f;
+        sounds.Add(useWeaponSound);
+        volumes.Add(useWeaponVolume);
+        audioElement = new AudioElement(sounds, volumes, objectName + ObjectId, this.transform);
+    }
+
     protected virtual void BeginAttack(WorldObject target)
     {
+        if (audioElement != null) audioElement.Play(attackSound);
+
         this.target = target;
         if (TargetInRange())
         {
@@ -137,6 +240,25 @@ public class WorldObject : MonoBehaviour {
     {
         //default behaviour needs to be overidden by children
         return false;
+    }
+
+    protected virtual void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
+    {
+        switch (propertyName)
+        {
+            case "Name": objectName = (string)readValue; break;
+            case "Id": ObjectId = (int)(System.Int64)readValue; break;
+            case "Position": transform.localPosition = LoadManager.LoadVector(reader); break;
+            case "Rotation": transform.localRotation = LoadManager.LoadQuaternion(reader); break;
+            case "Scale": transform.localScale = LoadManager.LoadVector(reader); break;
+            case "HitPoints": hitPoints = (int)(System.Int64)readValue; break;
+            case "Attacking": attacking = (bool)readValue; break;
+            case "MovingIntoPosition": movingIntoPosition = (bool)readValue; break;
+            case "Aiming": aiming = (bool)readValue; break;
+            case "CurrentWeaponChargeTime": currentWeaponChargeTime = (float)(double)readValue; break;
+            case "TargetId": loadedTargetId = (int)(System.Int64)readValue; break;
+            default: break;
+        }
     }
 
     protected virtual void DrawSelectionBox(Rect selectBox)
@@ -196,7 +318,7 @@ public class WorldObject : MonoBehaviour {
         else healthStyle.normal.background = ResourceManager.CriticalTexture;
     }
 
-    protected void SetTeamColor()
+    public void SetTeamColor()
     {
         TeamColor[] teamColors = GetComponentsInChildren<TeamColor>();
         foreach (TeamColor teamColor in teamColors) teamColor.GetComponent<Renderer>().material.color = player.teamColor;
@@ -257,6 +379,8 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void UseWeapon()
     {
+        if (audioElement != null) audioElement.Play(useWeaponSound);
+
         currentWeaponChargeTime = 0.0f;
         //this behaviour needs to be specified by a specific object
     }

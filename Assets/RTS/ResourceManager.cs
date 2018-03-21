@@ -50,6 +50,9 @@ namespace RTS
         public static float TextHeight { get { return textHeight; } }
         public static float Padding { get { return padding; } }
 
+        // save menu related
+        public static string LevelName { get; set; }
+
         public static void StoreSelectBoxItems(GUISkin skin, Texture2D healthy, Texture2D damaged, Texture2D critical)
         {
             SelectBoxSkin = skin;
@@ -86,6 +89,18 @@ namespace RTS
         public static Texture2D GetBuildImage(string name)
         {
             return gameObjectList.GetBuildImage(name);
+        }
+
+        public static int GetNewObjectId()
+        {
+            LevelLoader loader = (LevelLoader)GameObject.FindObjectOfType(typeof(LevelLoader));
+            if (loader) return loader.GetNewObjectId();
+            return -1;
+        }
+
+        public static Texture2D[] GetAvatars()
+        {
+            return gameObjectList.GetAvatars();
         }
     }
 }

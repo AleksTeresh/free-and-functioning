@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using Newtonsoft.Json;
 
 public class Building : WorldObject {
 
@@ -14,6 +15,35 @@ public class Building : WorldObject {
 
     private float currentBuildProgress = 0.0f;
     private Vector3 spawnPoint;
+
+    // audio
+    public AudioClip finishedJobSound;
+    public float finishedJobVolume = 1.0f;
+
+    public override void SaveDetails(JsonWriter writer)
+    {
+        base.SaveDetails(writer);
+        // SaveManager.WriteBoolean(writer, "NeedsBuilding", needsBuilding);
+        SaveManager.WriteVector(writer, "SpawnPoint", spawnPoint);
+        SaveManager.WriteVector(writer, "RallyPoint", rallyPoint);
+        SaveManager.WriteFloat(writer, "BuildProgress", currentBuildProgress);
+        SaveManager.WriteStringArray(writer, "BuildQueue", buildQueue.ToArray());
+    }
+
+    protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
+    {
+        base.HandleLoadedProperty(reader, propertyName, readValue);
+        switch (propertyName)
+        {
+            // case "NeedsBuilding": needsBuilding = (bool)readValue; break;
+            case "SpawnPoint": spawnPoint = LoadManager.LoadVector(reader); break;
+            case "RallyPoint": rallyPoint = LoadManager.LoadVector(reader); break;
+            case "BuildProgress": currentBuildProgress = (float)(double)readValue; break;
+            case "BuildQueue": buildQueue = new Queue<string>(LoadManager.LoadStringArray(reader)); break;
+            case "PlayingArea": playingArea = LoadManager.LoadRect(reader); break;
+            default: break;
+        }
+    }
 
     protected override void Awake()
     {
@@ -44,6 +74,18 @@ public class Building : WorldObject {
         base.OnGUI();
     }
 
+    protected override void InitialiseAudio()
+    {
+        base.InitialiseAudio();
+        if (finishedJobVolume < 0.0f) finishedJobVolume = 0.0f;
+        if (finishedJobVolume > 1.0f) finishedJobVolume = 1.0f;
+        List<AudioClip> sounds = new List<AudioClip>();
+        List<float> volumes = new List<float>();
+        sounds.Add(finishedJobSound);
+        volumes.Add(finishedJobVolume);
+        audioElement.Add(sounds, volumes);
+    }
+
     protected void CreateUnit(string unitName)
     {
         buildQueue.Enqueue(unitName);
@@ -56,7 +98,13 @@ public class Building : WorldObject {
             currentBuildProgress += Time.deltaTime * ResourceManager.BuildSpeed;
             if (currentBuildProgress > maxBuildProgress)
             {
-                if (player) player.AddUnit(buildQueue.Dequeue(), spawnPoint, rallyPoint, transform.rotation, this);
+                if (player)
+                {
+                    if (audioElement != null) audioElement.Play(finishedJobSound);
+
+                    player.AddUnit(buildQueue.Dequeue(), spawnPoint, rallyPoint, transform.rotation, this);
+                }
+
                 currentBuildProgress = 0.0f;
             }
         }
@@ -108,7 +156,7 @@ public class Building : WorldObject {
         //only handle input if owned by a human player and currently selected
         if (player && player.human && currentlySelected)
         {
-            if (hoverObject.name == "Ground")
+            if (WorkManager.ObjectIsGround(hoverObject))
             {
                 if (player.hud.GetPreviousCursorState() == CursorState.RallyPoint) player.hud.SetCursorState(CursorState.RallyPoint);
             }
@@ -121,7 +169,7 @@ public class Building : WorldObject {
         //only handle iput if owned by a human player and currently selected
         if (player && player.human && currentlySelected)
         {
-            if (hitObject.name == "Ground")
+            if (WorkManager.ObjectIsGround(hitObject))
             {
                 if ((player.hud.GetCursorState() == CursorState.RallyPoint || player.hud.GetPreviousCursorState() == CursorState.RallyPoint) && hitPoint != ResourceManager.InvalidPosition)
                 {

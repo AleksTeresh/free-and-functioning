@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using Newtonsoft.Json;
 
 public class Tank : Unit
 {
     public float weaponAimSpeed;
 
     private Quaternion aimRotation;
+
+    public override void SaveDetails(JsonWriter writer)
+    {
+        base.SaveDetails(writer);
+        SaveManager.WriteQuaternion(writer, "AimRotation", aimRotation);
+    }
 
     protected override void Start()
     {
@@ -52,5 +59,15 @@ public class Tank : Unit
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
         projectile.SetRange(0.9f * weaponRange);
         projectile.SetTarget(target);
+    }
+
+    protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
+    {
+        base.HandleLoadedProperty(reader, propertyName, readValue);
+        switch (propertyName)
+        {
+            case "AimRotation": aimRotation = LoadManager.LoadQuaternion(reader); break;
+            default: break;
+        }
     }
 }

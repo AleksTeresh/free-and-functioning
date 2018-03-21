@@ -11,10 +11,24 @@ public class Menu : MonoBehaviour
 
     protected string[] buttons;
 
+    //sound related
+    public AudioClip clickSound;
+    public float clickVolume = 1.0f;
+
+    private AudioElement audioElement;
+
     protected virtual void Start()
     {
         SetButtons();
         Cursor.visible = true;
+
+        if (clickVolume < 0.0f) clickVolume = 0.0f;
+        if (clickVolume > 1.0f) clickVolume = 1.0f;
+        List<AudioClip> sounds = new List<AudioClip>();
+        List<float> volumes = new List<float>();
+        sounds.Add(clickSound);
+        volumes.Add(clickVolume);
+        audioElement = new AudioElement(sounds, volumes, "Menu", null);
     }
 
     protected virtual void OnGUI()
@@ -68,7 +82,10 @@ public class Menu : MonoBehaviour
     protected virtual void HandleButton(string text)
     {
         //a child class needs to set this to handle button clicks
+
+        if (audioElement != null) audioElement.Play(clickSound);
     }
+
 
     protected virtual float GetMenuHeight()
     {
@@ -84,5 +101,21 @@ public class Menu : MonoBehaviour
     protected void ExitGame()
     {
         Application.Quit();
+    }
+
+    protected void LoadGame()
+    {
+        HideCurrentMenu();
+        LoadMenu loadMenu = GetComponent<LoadMenu>();
+        if (loadMenu)
+        {
+            loadMenu.enabled = true;
+            loadMenu.Activate();
+        }
+    }
+
+    protected virtual void HideCurrentMenu()
+    {
+        //a child class needs to set this to hide itself when appropriate
     }
 }

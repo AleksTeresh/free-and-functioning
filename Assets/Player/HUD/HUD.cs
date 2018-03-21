@@ -37,6 +37,12 @@ public class HUD : MonoBehaviour {
 
     private Player player;
 
+    // audio
+    public AudioClip clickSound;
+    public float clickVolume = 1.0f;
+
+    private AudioElement audioElement;
+
     // Use this for initialization
     void Start () {
         player = transform.root.GetComponent<Player>();
@@ -46,6 +52,12 @@ public class HUD : MonoBehaviour {
         SetCursorState(CursorState.Select);
 
         buildAreaHeight = Screen.height - RESOURCE_BAR_HEIGHT - SELECTION_NAME_HEIGHT - 2 * BUTTON_SPACING;
+
+        List<AudioClip> sounds = new List<AudioClip>();
+        List<float> volumes = new List<float>();
+        sounds.Add(clickSound);
+        volumes.Add(clickVolume);
+        audioElement = new AudioElement(sounds, volumes, "HUD", null);
     }
 	
 	// Update is called once per frame
@@ -174,6 +186,8 @@ public class HUD : MonoBehaviour {
 
         if (GUI.Button(menuButtonPosition, "Menu"))
         {
+            PlayClick();
+
             Time.timeScale = 0.0f;
             PauseMenu pauseMenu = GetComponent<PauseMenu>();
             if (pauseMenu) pauseMenu.enabled = true;
@@ -266,7 +280,11 @@ public class HUD : MonoBehaviour {
                 //create the button and handle the click of that button
                 if (GUI.Button(pos, action))
                 {
-                    if (player.SelectedObject) player.SelectedObject.PerformAction(actions[i]);
+                    if (player.SelectedObject)
+                    {
+                        PlayClick();
+                        player.SelectedObject.PerformAction(actions[i]);
+                    }
                 }
             }
         }
@@ -331,6 +349,7 @@ public class HUD : MonoBehaviour {
         {
             if (GUI.Button(new Rect(leftPos, topPos, width, height), building.rallyPointImage))
             {
+                PlayClick();
                 if (activeCursorState != CursorState.RallyPoint && previousCursorState != CursorState.RallyPoint) {
                     SetCursorState(CursorState.RallyPoint);
                 }
@@ -342,5 +361,10 @@ public class HUD : MonoBehaviour {
                 }
             }
         }
+    }
+
+    private void PlayClick()
+    {
+        if (audioElement != null) audioElement.Play(clickSound);
     }
 }

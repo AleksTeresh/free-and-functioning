@@ -44,5 +44,10 @@ namespace RTS
 
             return new Rect(selectBoxLeft, selectBoxTop, selectBoxWidth, selectBoxHeight);
         }
+
+        public static bool ObjectIsGround(GameObject obj)
+        {
+            return obj.name == "Ground" || obj.name == "Ground(Clone)";
+        }
     }
 }
