@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 114865849019233830}
   - component: {fileID: 114295897905742250}
   - component: {fileID: 114981394002350122}
+  - component: {fileID: 114250091152360104}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -388,6 +389,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb307cee9df7bf4f9cbf85134522b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114250091152360104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945323500262016}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552943f3fd9c06e44bdc8edbeedcf3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
+  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
+  clickVolume: 1
 --- !u!114 &114256502981981008
 MonoBehaviour:
   m_ObjectHideFlags: 1

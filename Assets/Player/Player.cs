@@ -23,6 +23,15 @@ public class Player : MonoBehaviour {
 		
 	}
 
+    public bool IsDead()
+    {
+        Building[] buildings = GetComponentsInChildren<Building>();
+        Unit[] units = GetComponentsInChildren<Unit>();
+        if (buildings != null && buildings.Length > 0) return false;
+        if (units != null && units.Length > 0) return false;
+        return true;
+    }
+
     public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation, Building creator)
     {
         Units units = GetComponentInChildren<Units>();

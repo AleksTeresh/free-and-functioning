@@ -127,6 +127,12 @@ public class Unit : WorldObject {
         if (currentlySelected) DrawSelection();
     }
 
+    protected override bool ShouldMakeDecision()
+    {
+        if (moving || rotating) return false;
+        return base.ShouldMakeDecision();
+    }
+
     protected override void InitialiseAudio()
     {
         base.InitialiseAudio();

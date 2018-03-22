@@ -43,6 +43,8 @@ public class LevelLoader : MonoBehaviour
                         PlayerManager.SelectPlayer(player.username, 0);
                     }
                 }
+
+                SetObjectIds();
             }
         }
     }
@@ -57,13 +59,10 @@ public class LevelLoader : MonoBehaviour
             }
             else
             {
-                WorldObject[] worldObjects = GameObject.FindObjectsOfType(typeof(WorldObject)) as WorldObject[];
-                foreach (WorldObject worldObject in worldObjects)
-                {
-                    worldObject.ObjectId = nextObjectId++;
-                    if (nextObjectId >= int.MaxValue) nextObjectId = 0;
-                }
+                SetObjectIds();
             }
+            Time.timeScale = 1.0f;
+            ResourceManager.MenuOpen = false;
         }
     }
 
@@ -72,5 +71,15 @@ public class LevelLoader : MonoBehaviour
         nextObjectId++;
         if (nextObjectId >= int.MaxValue) nextObjectId = 0;
         return nextObjectId;
+    }
+
+    private void SetObjectIds()
+    {
+        WorldObject[] worldObjects = GameObject.FindObjectsOfType(typeof(WorldObject)) as WorldObject[];
+        foreach (WorldObject worldObject in worldObjects)
+        {
+            worldObject.ObjectId = nextObjectId++;
+            if (nextObjectId >= int.MaxValue) nextObjectId = 0;
+        }
     }
 }
