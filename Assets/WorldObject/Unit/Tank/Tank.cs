@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 public class Tank : Unit
 {
-    public float weaponAimSpeed;
+    // public float weaponAimSpeed;
 
     private Quaternion aimRotation;
 
@@ -57,6 +57,7 @@ public class Tank : Unit
         spawnPoint.z += (2.1f * transform.forward.z);
         GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject("TankProjectile"), spawnPoint, transform.rotation);
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
+        projectile.Player = this.player;
         projectile.SetRange(0.9f * weaponRange);
         projectile.SetTarget(target);
     }

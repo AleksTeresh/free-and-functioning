@@ -45,6 +45,7 @@ public class Turret : Building
         spawnPoint.z += (2.6f * transform.forward.z);
         GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject("TurretProjectile"), spawnPoint, transform.rotation);
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
+        projectile.Player = this.player;
         projectile.SetRange(0.9f * weaponRange);
         projectile.SetTarget(target);
     }

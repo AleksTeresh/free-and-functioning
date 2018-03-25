@@ -35,8 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4493387183177460}
-  - component: {fileID: 114379764425888970}
-  - component: {fileID: 114648898384690812}
+  - component: {fileID: 114271605463748836}
   m_Layer: 0
   m_Name: Buildings
   m_TagString: Untagged
@@ -88,8 +87,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4253646336054426}
-  - component: {fileID: 114256502981981008}
-  - component: {fileID: 114697183156515994}
+  - component: {fileID: 114861784900950036}
   m_Layer: 0
   m_Name: Units
   m_TagString: Untagged
@@ -403,15 +401,15 @@ MonoBehaviour:
   skin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
   clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
   clickVolume: 1
---- !u!114 &114256502981981008
+--- !u!114 &114271605463748836
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1802997415380576}
+  m_GameObject: {fileID: 1112249083707176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430ec4f467f158944a2ec52ebae374de, type: 3}
+  m_Script: {fileID: 11500000, guid: 48fa2ed7733c6c64bb1a476296ae435c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114295897905742250
@@ -429,17 +427,6 @@ MonoBehaviour:
   selectionSkin: {fileID: 11400000, guid: 1fee1f6e6bce02647a6e6c24c6d5e868, type: 2}
   clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
   clickVolume: 1
---- !u!114 &114379764425888970
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1112249083707176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c45d37fd24579264b9f850cc38ccdf95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114603266902795758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,28 +442,6 @@ MonoBehaviour:
   teamColor: {r: 0, g: 0, b: 0, a: 0}
   username: Alekster
   human: 1
---- !u!114 &114648898384690812
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1112249083707176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c45d37fd24579264b9f850cc38ccdf95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114697183156515994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1802997415380576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430ec4f467f158944a2ec52ebae374de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114753983894289502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -486,6 +451,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 133aac7ad5dda4941845fe740a2f5c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114861784900950036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802997415380576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fee2a80b1ab5141be629c1d23334c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114865849019233830

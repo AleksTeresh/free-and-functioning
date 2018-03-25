@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
+using UnityEngine.AI;
 
 public class Unit : WorldObject {
 
-    public float moveSpeed, rotateSpeed;
+    // public float moveSpeed, rotateSpeed;
+    public NavMeshAgent agent;
 
-    protected bool moving, rotating;
+    // protected bool moving, rotating;
 
-    private Vector3 destination;
+    // private Vector3 destination;
     private Quaternion targetRotation;
     private GameObject destinationTarget;
 
@@ -55,13 +57,13 @@ public class Unit : WorldObject {
 
     public void StartMove(Vector3 destination)
     {
-        if (audioElement != null) audioElement.Play(moveSound);
+        if (audioElement != null) audioElement.Play(driveSound);
 
         this.destinationTarget = null;
-        this.destination = destination;
+        agent.SetDestination(destination);
         targetRotation = Quaternion.LookRotation(destination - transform.position);
-        rotating = true;
-        moving = false;
+        // rotating = true;
+        // moving = false;
     }
 
     public void StartMove(Vector3 destination, GameObject destinationTarget)
@@ -73,9 +75,8 @@ public class Unit : WorldObject {
     public override void SaveDetails(JsonWriter writer)
     {
         base.SaveDetails(writer);
-        SaveManager.WriteBoolean(writer, "Moving", moving);
-        SaveManager.WriteBoolean(writer, "Rotating", rotating);
-        SaveManager.WriteVector(writer, "Destination", destination);
+        SaveManager.WriteVector(writer, "Velocity", agent.velocity);
+        SaveManager.WriteVector(writer, "Destination", agent.destination);
         SaveManager.WriteQuaternion(writer, "TargetRotation", targetRotation);
         if (destinationTarget)
         {
@@ -89,9 +90,8 @@ public class Unit : WorldObject {
         base.HandleLoadedProperty(reader, propertyName, readValue);
         switch (propertyName)
         {
-            case "Moving": moving = (bool)readValue; break;
-            case "Rotating": rotating = (bool)readValue; break;
-            case "Destination": destination = LoadManager.LoadVector(reader); break;
+            case "Velocity": agent.velocity = LoadManager.LoadVector(reader); break;
+            case "Destination": agent.destination = LoadManager.LoadVector(reader); break;
             case "TargetRotation": targetRotation = LoadManager.LoadQuaternion(reader); break;
             case "DestinationTargetId": loadedDestinationTargetId = (int)(System.Int64)readValue; break;
             default: break;
@@ -116,8 +116,10 @@ public class Unit : WorldObject {
     protected override void Update()
     {
         base.Update();
-        if (rotating) TurnToTarget();
-        else if (moving) MakeMove();
+
+        HandleMove();
+        // if (rotating) TurnToTarget();
+        // else if (moving) MakeMove();
     }
 
     protected override void OnGUI()
@@ -129,7 +131,7 @@ public class Unit : WorldObject {
 
     protected override bool ShouldMakeDecision()
     {
-        if (moving || rotating) return false;
+        if (agent.velocity.magnitude > 0) return false;
         return base.ShouldMakeDecision();
     }
 
@@ -159,37 +161,23 @@ public class Unit : WorldObject {
         GUI.EndGroup();
     }
 
-    private void TurnToTarget()
+    private void HandleMove()
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed);
-        //sometimes it gets stuck exactly 180 degrees out in the calculation and does nothing, this check fixes that
-        Quaternion inverseTargetRotation = new Quaternion(-targetRotation.x, -targetRotation.y, -targetRotation.z, -targetRotation.w);
-        if (transform.rotation == targetRotation || transform.rotation == inverseTargetRotation)
-        {
-            if (audioElement != null) audioElement.Play(driveSound);
-
-            rotating = false;
-            moving = true;
-            if (destinationTarget) CalculateTargetDestination();
-        }
-
-        CalculateBounds();
-    }
-
-    private void MakeMove()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * moveSpeed);
-        if (transform.position == destination)
+        if (agent.velocity.magnitude == 0 && agent.remainingDistance <= agent.stoppingDistance)
         {
             if (audioElement != null) audioElement.Stop(driveSound);
 
-            moving = false;
+            // moving = false;
+            agent.isStopped = true;
             movingIntoPosition = false;
         }
-
-        CalculateBounds();
+        else
+        {
+            agent.isStopped = false;
+            CalculateBounds();
+        }
     }
-
+    /*
     private void CalculateTargetDestination()
     {
         //calculate number of unit vectors from unit centre to unit edge of bounds
@@ -221,5 +209,5 @@ public class Unit : WorldObject {
         //giving the illusion of moving to the edge of the target and then stopping
         for (int i = 0; i < shiftAmount; i++) destination -= direction;
         destination.y = destinationTarget.transform.position.y;
-    }
+    }  */
 }

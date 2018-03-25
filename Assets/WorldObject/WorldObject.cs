@@ -417,7 +417,7 @@ public class WorldObject : MonoBehaviour {
     {
         Vector3 targetLocation = target.transform.position;
         Vector3 direction = targetLocation - transform.position;
-        if (direction.normalized == transform.forward.normalized) return true;
+        if (WorkManager.V3Equal(direction.normalized, transform.forward.normalized)) return true;
         else return false;
     }
 
@@ -453,5 +453,4 @@ public class WorldObject : MonoBehaviour {
         else if (!TargetInFrontOfWeapon()) AimAtTarget();
         else if (ReadyToFire()) UseWeapon();
     }
-
 }

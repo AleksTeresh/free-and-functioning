@@ -7,16 +7,18 @@ public class Projectile : MonoBehaviour
     public float velocity = 1;
     public int damage = 1;
 
+    public Player Player { get; set; }
+
     private float range = 1;
     private WorldObject target;
 
     void Update()
     {
+        /*
         if (HitSomething())
         {
-            InflictDamage();
-            Destroy(gameObject);
-        }
+            
+        } */
         if (range > 0)
         {
             float positionChange = Time.deltaTime * velocity;
@@ -25,8 +27,24 @@ public class Projectile : MonoBehaviour
         }
         else
         {
+            // destroy the projectile
             Destroy(gameObject);
         }
+    }
+
+    public void HandleCollision (WorldObject collidedObject)
+    {
+        InflictDamage(collidedObject);
+
+        // destroy the projectile
+        Destroy(gameObject);
+    }
+
+    public void HandleCollision(Projectile collidedProjectile)
+    {
+        // destroy both projectiles
+        Destroy(collidedProjectile);
+        Destroy(gameObject);
     }
 
     public void SetRange(float range)
@@ -39,14 +57,15 @@ public class Projectile : MonoBehaviour
         this.target = target;
     }
 
+    private void InflictDamage(WorldObject collidedObject)
+    {
+        if (collidedObject) collidedObject.TakeDamage(damage);
+    }
+    
+    /*
     private bool HitSomething()
     {
         if (target && target.GetSelectionBounds().Contains(transform.position)) return true;
         return false;
-    }
-
-    private void InflictDamage()
-    {
-        if (target) target.TakeDamage(damage);
-    }
+    }   */
 }

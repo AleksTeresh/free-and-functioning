@@ -111,11 +111,12 @@ GameObject:
   - component: {fileID: 65373093774523472}
   - component: {fileID: 23941465558482242}
   - component: {fileID: 114565337362020062}
+  - component: {fileID: 208310302958298618}
   m_Layer: 0
   m_Name: GroundFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4507542882404164
@@ -177,7 +178,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485457674949076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.3, y: -2, z: 56.9}
+  m_LocalPosition: {x: -55.7, y: -2, z: -47.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4599844068318120}
@@ -437,7 +438,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1875798611747414}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -495,6 +496,7 @@ MonoBehaviour:
   hitPoints: 100
   maxHitPoints: 100
   weaponRange: 10
+  weaponAimSpeed: 1
   weaponRechargeTime: 1
   attackSound: {fileID: 8300000, guid: 33678abad51fdac45873effd3f676779, type: 3}
   selectSound: {fileID: 8300000, guid: 34bf03edab4eca74f93c5e301f60f475, type: 3}
@@ -502,7 +504,23 @@ MonoBehaviour:
   attackVolume: 1
   selectVolume: 1
   useWeaponVolume: 1
+  detectionRange: 20
   rallyPointImage: {fileID: 2800000, guid: 698290cc92ea9444994b84f91556e5c7, type: 3}
   maxBuildProgress: 5
   finishedJobSound: {fileID: 0}
   finishedJobVolume: 1
+--- !u!208 &208310302958298618
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875798611747414}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 10
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
