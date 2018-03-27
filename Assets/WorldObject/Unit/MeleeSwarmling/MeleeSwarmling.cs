@@ -10,9 +10,9 @@ public class MeleeSwarmling : MeleeUnit {
 		return true;
 	}
 
-	protected override void UseWeapon()
+	protected override void UseWeapon(WorldObject target)
 	{
-		base.UseWeapon ();
+		base.UseWeapon (target);
 		target.TakeDamage (damage);
 	}
 }

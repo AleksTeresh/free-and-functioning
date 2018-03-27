@@ -22,9 +22,14 @@ public class Tank : Unit
         return true;
     }
 
-    protected override void UseWeapon()
+    public override bool CanAttackMulti()
     {
-        base.UseWeapon();
+        return true;
+    }
+
+    protected override void UseWeapon(WorldObject target)
+    {
+        base.UseWeapon(target);
         Vector3 spawnPoint = transform.position;
         spawnPoint.x += (2.1f * transform.forward.x);
         spawnPoint.y += 1.4f;

@@ -146,9 +146,9 @@ public class Unit : WorldObject {
         audioElement.Add(sounds, volumes);
     }
 
-	protected override void AimAtTarget()
+	protected override void AimAtTarget(WorldObject target)
 	{
-		base.AimAtTarget();
+		base.AimAtTarget(target);
 		aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
 	}
 

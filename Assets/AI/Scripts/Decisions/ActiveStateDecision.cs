@@ -10,9 +10,17 @@ public class ActiveStateDecision : Decision {
         Unit self = controller.unit;
         WorldObject target = controller.chaseTarget;
 
+        if (!target)
+        {
+            return false;
+        }
+
+        Vector3 targetLocation = target.transform.position;
+        Vector3 direction = targetLocation - self.transform.position;
+
         bool chaseTargetIsActive = target != null && // target exists
             target.gameObject.activeSelf && // target is alive
-            Vector3.Distance(target.transform.position, self.transform.position) <= self.detectionRange; // target is visible
+            direction.sqrMagnitude < self.detectionRange * self.detectionRange; // target is visible
 
         return chaseTargetIsActive;
     }

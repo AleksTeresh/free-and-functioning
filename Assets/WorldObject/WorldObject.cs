@@ -9,6 +9,7 @@ public class WorldObject : MonoBehaviour {
     public int ObjectId { get; set; }
     public string objectName;
     public Texture2D buildImage;
+    public bool canAttackMulti;
     public int cost, sellValue, hitPoints, maxHitPoints;
 
     protected Player player;
@@ -19,8 +20,8 @@ public class WorldObject : MonoBehaviour {
     protected GUIStyle healthStyle = new GUIStyle();
     protected float healthPercentage = 1.0f;
 
-    protected WorldObject target = null;
-    protected bool attacking = false;
+    // protected WorldObject target = null;
+    // protected bool attacking = false;
     public float weaponRange = 10.0f;
     protected bool movingIntoPosition = false;
     protected bool aiming = false;
@@ -38,7 +39,6 @@ public class WorldObject : MonoBehaviour {
 
     // AI related
     public float detectionRange = 20.0f;
-    protected List<WorldObject> nearbyObjects;
     protected StateController stateController;
 
     //we want to restrict how many decisions are made to help with game performance
@@ -90,15 +90,11 @@ public class WorldObject : MonoBehaviour {
         SaveManager.WriteQuaternion(writer, "Rotation", transform.rotation);
         SaveManager.WriteVector(writer, "Scale", transform.localScale);
         SaveManager.WriteInt(writer, "HitPoints", hitPoints);
-        SaveManager.WriteBoolean(writer, "Attacking", attacking);
+        // SaveManager.WriteBoolean(writer, "Attacking", attacking);
         SaveManager.WriteBoolean(writer, "MovingIntoPosition", movingIntoPosition);
         SaveManager.WriteBoolean(writer, "Aiming", aiming);
-        if (attacking)
-        {
-            //only save if attacking so that we do not end up storing massive numbers for no reason
-            SaveManager.WriteFloat(writer, "CurrentWeaponChargeTime", currentWeaponChargeTime);
-        }
-        if (target != null) SaveManager.WriteInt(writer, "TargetId", target.ObjectId);
+ 
+        // if (target != null) SaveManager.WriteInt(writer, "TargetId", target.ObjectId);
     }
 
     public void LoadDetails(JsonTextReader reader)
@@ -202,7 +198,7 @@ public class WorldObject : MonoBehaviour {
         {
             if (loadedSavedValues)
             {
-                if (loadedTargetId >= 0) target = player.GetObjectForId(loadedTargetId);
+                // if (loadedTargetId >= 0) target = player.GetObjectForId(loadedTargetId);
             }
             else
             {
@@ -223,7 +219,7 @@ public class WorldObject : MonoBehaviour {
         // if (ShouldMakeDecision()) DecideWhatToDo();
 
         currentWeaponChargeTime += Time.deltaTime;
-        if (attacking && !movingIntoPosition && !aiming) PerformAttack();
+        // if (attacking && !movingIntoPosition && !aiming) PerformAttack();
     }
 
     protected virtual void OnGUI()
@@ -250,32 +246,47 @@ public class WorldObject : MonoBehaviour {
         audioElement = new AudioElement(sounds, volumes, objectName + ObjectId, this.transform);
     }
 
-    public virtual void BeginAttack(WorldObject target)
+    public virtual void PerformAttack(WorldObject target)
     {
-        if (audioElement != null) audioElement.Play(attackSound);
-
-        this.target = target;
-        if (TargetInRange())
+        if (!target)
         {
-            attacking = true;
-            PerformAttack();
+            // attacking = false;
+            return;
+        }
+        if (!TargetInFrontOfWeapon(target)) AimAtTarget(target);
+        else if (ReadyToFire()) UseWeapon(target);
+    }
+
+    public virtual void BeginAttackToMulti(List<WorldObject> targets)
+    {
+        if (CanAttackMulti())
+        {
+            if (audioElement != null) audioElement.Play(attackSound);
+            // this.target = null;
         }
         else
         {
-            attacking = false;
+            // BeginAttack(target);
         }
     }
+
 
     public virtual void StopAttack()
     {
         if (audioElement != null) audioElement.Stop(attackSound);
 
-        this.target = null;
-        attacking = false;
+       //  this.target = null;
+        // attacking = false;
         movingIntoPosition = false;
     }
 
     public virtual bool CanAttack()
+    {
+        //default behaviour needs to be overidden by children
+        return false;
+    }
+
+    public virtual bool CanAttackMulti()
     {
         //default behaviour needs to be overidden by children
         return false;
@@ -291,7 +302,7 @@ public class WorldObject : MonoBehaviour {
             case "Rotation": transform.localRotation = LoadManager.LoadQuaternion(reader); break;
             case "Scale": transform.localScale = LoadManager.LoadVector(reader); break;
             case "HitPoints": hitPoints = (int)(System.Int64)readValue; break;
-            case "Attacking": attacking = (bool)readValue; break;
+            // case "Attacking": attacking = (bool)readValue; break;
             case "MovingIntoPosition": movingIntoPosition = (bool)readValue; break;
             case "Aiming": aiming = (bool)readValue; break;
             case "CurrentWeaponChargeTime": currentWeaponChargeTime = (float)(double)readValue; break;
@@ -354,18 +365,7 @@ public class WorldObject : MonoBehaviour {
         foreach (TeamColor teamColor in teamColors) teamColor.GetComponent<Renderer>().material.color = player.teamColor;
     }
 
-    private bool TargetInRange()
-    {
-        Vector3 targetLocation = target.transform.position;
-        Vector3 direction = targetLocation - transform.position;
-        if (direction.sqrMagnitude < weaponRange * weaponRange)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private bool TargetInFrontOfWeapon()
+    private bool TargetInFrontOfWeapon(WorldObject target)
     {
         Vector3 targetLocation = target.transform.position;
         Vector3 direction = targetLocation - transform.position;
@@ -373,7 +373,7 @@ public class WorldObject : MonoBehaviour {
         else return false;
     }
 
-    protected virtual void AimAtTarget()
+    protected virtual void AimAtTarget(WorldObject target)
     {
         aiming = true;
         //this behaviour needs to be specified by a specific object
@@ -385,7 +385,7 @@ public class WorldObject : MonoBehaviour {
         return false;
     }
 
-    protected virtual void UseWeapon()
+    protected virtual void UseWeapon(WorldObject target)
     {
         if (audioElement != null && Time.timeScale > 0) audioElement.Play(useWeaponSound);
 
@@ -393,15 +393,15 @@ public class WorldObject : MonoBehaviour {
         //this behaviour needs to be specified by a specific object
     }
 
-
-    private void PerformAttack()
-    {
-        if (!target)
-        {
-            attacking = false;
-            return;
-        }
-        if (!TargetInFrontOfWeapon()) AimAtTarget();
-        else if (ReadyToFire()) UseWeapon();
-    }
+    /*
+  private bool TargetInRange()
+  {
+     Vector3 targetLocation = target.transform.position;
+     Vector3 direction = targetLocation - transform.position;
+     if (direction.sqrMagnitude < weaponRange * weaponRange)
+     {
+         return true;
+     }
+     return false;
+   } */
 }
