@@ -25,6 +25,8 @@ public class UserInput : MonoBehaviour {
             RotateCamera();
 
             MouseActivity();
+
+			RTS.HotkeyUnitSelector.HandleInput ();
         }
     }
 
@@ -186,7 +188,7 @@ public class UserInput : MonoBehaviour {
             UnitMouseClick(unit, hitObject, hitPoint, controller);
         }
     }
-
+		
     private void WorldObjectMouseClick(WorldObject objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
     {
         //only handle input if currently selected
