@@ -53,12 +53,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildings:
   - {fileID: 1485457674949076, guid: 0b67ff8d751a8c3428c67a42b1a61f79, type: 2}
+  - {fileID: 1455508549254286, guid: f8bf72214fe59914a96c0dca2e99bf7f, type: 2}
   units:
   - {fileID: 1298768487697374, guid: 58930a2f7802e0544bf1bf38a0690e4b, type: 2}
+  - {fileID: 1102676093594808, guid: 283adad31e9150f47aa02d8f55a4f22a, type: 2}
   worldObjects:
-  - {fileID: 1468712751213592, guid: b9fbd35f2bb53c84ab68b46b5d78815e, type: 2}
+  - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}
   - {fileID: 1867937343684546, guid: 47811af423559934191ec0a5a241e8df, type: 2}
   - {fileID: 1324460347583946, guid: 1d03e5db9e306d4448835bb1537090e9, type: 2}
+  - {fileID: 1483362882271830, guid: c02f6203083960a4aa491fb172e274fa, type: 2}
+  - {fileID: 1319779137425518, guid: c288baaa1ce50a247afdbed87995ad94, type: 2}
+  - {fileID: 1338513666550506, guid: db5ac621c11f1da428aef3044df27e97, type: 2}
   player: {fileID: 1880155284192986, guid: 18c2a160ec048d14ca46079316893b47, type: 2}
   avatars:
   - {fileID: 2800000, guid: 665a236535b979947996f55953dd1b6c, type: 3}

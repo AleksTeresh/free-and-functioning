@@ -20,17 +20,18 @@ public class RangeSwarmling : Unit {
     {
         base.Start();
 
-        var stateController = GetComponent<StateController>();
-
         if (stateController)
         {
             List<Transform> wayPoints = new List<Transform>();
-            var patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
-            foreach (GameObject pp in patrolPoints)
-            {
-                wayPoints.Add(pp.transform);
-            }
 
+
+            var pp1 = Instantiate(ResourceManager.GetWorldObject("PatrolPoint"));
+            pp1.transform.position = Vector3.MoveTowards(transform.position, new Vector3(-100, 0, -100), 20);
+            var pp2 = Instantiate(ResourceManager.GetWorldObject("PatrolPoint"));
+            pp2.transform.position = Vector3.MoveTowards(transform.position, new Vector3(100, 0, 100), 20);
+
+            wayPoints.Add(pp1.transform);
+            wayPoints.Add(pp2.transform);
 
             stateController.SetupAI(true, wayPoints);
         }

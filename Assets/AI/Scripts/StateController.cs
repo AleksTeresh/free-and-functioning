@@ -24,6 +24,11 @@ public class StateController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    public void SetupAI(bool aiActivation)
+    {
+        SetupAI(aiActivation, new List<Transform>());
+    }
+
     public void SetupAI(bool aiActivation, List<Transform> wayPoints)
     {
         wayPointList = wayPoints;

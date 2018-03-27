@@ -64,9 +64,9 @@ public class Unit : WorldObject {
 
         this.destinationTarget = null;
         agent.SetDestination(destination);
-//        targetRotation = Quaternion.LookRotation(destination - transform.position);
-        // rotating = true;
-        // moving = false;
+
+        // targetRotation = Quaternion.LookRotation(destination - transform.position);
+        StopAttack();
     }
 
     public void StartMove(Vector3 destination, GameObject destinationTarget)

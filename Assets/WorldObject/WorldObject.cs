@@ -39,6 +39,7 @@ public class WorldObject : MonoBehaviour {
     // AI related
     public float detectionRange = 20.0f;
     protected List<WorldObject> nearbyObjects;
+    protected StateController stateController;
 
     //we want to restrict how many decisions are made to help with game performance
     //the default time at the moment is a tenth of a second
@@ -140,8 +141,17 @@ public class WorldObject : MonoBehaviour {
                     if (player && player.human)
                     { //this object is controlled by a human player
                       //start attack if object is not owned by the same player and this object can attack, else select
-                        if (player.username != owner.username && CanAttack()) BeginAttack(worldObject);
-                        else ChangeSelection(worldObject, controller);
+                        if (stateController && player.username != owner.username && CanAttack())
+                        {
+                            // set clicked object as a target
+                            stateController.chaseTarget = worldObject;
+                            // transition to Chase Manual State
+                            stateController.TransitionToState(stateController.currentState.transitions[0].trueState);
+                        }
+                        else
+                        {
+                            ChangeSelection(worldObject, controller);
+                        }
                     }
                     else ChangeSelection(worldObject, controller);
                 }
@@ -187,6 +197,8 @@ public class WorldObject : MonoBehaviour {
     {
         selectionBounds = ResourceManager.InvalidBounds;
         CalculateBounds();
+
+        stateController = GetComponent<StateController>();
     }
 
     protected virtual void Start()
@@ -205,6 +217,12 @@ public class WorldObject : MonoBehaviour {
         }
 
         InitialiseAudio();
+
+        // enable AI by default, if possible
+        if (stateController)
+        {
+            stateController.SetupAI(true);
+        }
     }
 
     protected virtual void Update()
@@ -253,6 +271,15 @@ public class WorldObject : MonoBehaviour {
         {
             attacking = false;
         }
+    }
+
+    public virtual void StopAttack()
+    {
+        if (audioElement != null) audioElement.Stop(attackSound);
+
+        this.target = null;
+        attacking = false;
+        movingIntoPosition = false;
     }
 
     public virtual bool CanAttack()

@@ -280,18 +280,18 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 100
   maxHitPoints: 100
-  weaponRange: 30
+  weaponRange: 20
   weaponAimSpeed: 10
   weaponRechargeTime: 1.02
-  attackSound: {fileID: 0}
-  selectSound: {fileID: 0}
-  useWeaponSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 33678abad51fdac45873effd3f676779, type: 3}
+  selectSound: {fileID: 8300000, guid: 34bf03edab4eca74f93c5e301f60f475, type: 3}
+  useWeaponSound: {fileID: 8300000, guid: a69c41ebdef7e0a49902503d4b6b2f33, type: 3}
   attackVolume: 1
   selectVolume: 1
   useWeaponVolume: 1
-  detectionRange: 20
-  driveSound: {fileID: 0}
-  moveSound: {fileID: 0}
+  detectionRange: 30
+  driveSound: {fileID: 8300000, guid: 98c83b94b835ba54191f3292e8d44a5b, type: 3}
+  moveSound: {fileID: 8300000, guid: 568155acc84ab834eabc52a5a512dad3, type: 3}
   driveVolume: 0.5
   moveVolume: 1
 --- !u!114 &114911433039620936
