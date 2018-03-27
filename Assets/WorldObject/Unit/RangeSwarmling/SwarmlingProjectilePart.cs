@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectilePart : MonoBehaviour {
+public class SwarmlingProjectilePart : MonoBehaviour {
 
     private Projectile parent;
 

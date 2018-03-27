@@ -15,9 +15,4 @@ public class WarFactory : Building
         base.PerformAction(actionToPerform);
         CreateUnit(actionToPerform);
     }
-
-    protected override bool ShouldMakeDecision()
-    {
-        return false;
-    }
 }

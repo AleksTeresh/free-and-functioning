@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 195407169525080644}
   - component: {fileID: 114307042088597446}
   m_Layer: 0
-  m_Name: Tank
+  m_Name: TankScanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb15b68a485e6d459737e37f3f069d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 0b4d89b925d2b30428d04ad6cb571666, type: 2}
+  currentState: {fileID: 11400000, guid: 8d2ca8aadb3178741a30539639902180, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
   navMeshAgent: {fileID: 0}
   unit: {fileID: 0}

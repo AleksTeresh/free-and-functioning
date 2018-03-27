@@ -209,7 +209,7 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void Update()
     {
-        if (ShouldMakeDecision()) DecideWhatToDo();
+        // if (ShouldMakeDecision()) DecideWhatToDo();
 
         currentWeaponChargeTime += Time.deltaTime;
         if (attacking && !movingIntoPosition && !aiming) PerformAttack();
@@ -218,46 +218,6 @@ public class WorldObject : MonoBehaviour {
     protected virtual void OnGUI()
     {
         if (currentlySelected && !ResourceManager.MenuOpen) DrawSelection();
-    }
-
-    /**
-     * A child class should only determine other conditions under which a decision should
-     * not be made. This could be 'harvesting' for a harvester, for example. Alternatively,
-     * an object that never has to make decisions could just return false.
-     */
-    protected virtual bool ShouldMakeDecision()
-    {
-        if (!attacking && !movingIntoPosition && !aiming)
-        {
-            //we are not doing anything at the moment
-            if (timeSinceLastDecision > timeBetweenDecisions)
-            {
-                timeSinceLastDecision = 0.0f;
-                return true;
-            }
-            timeSinceLastDecision += Time.deltaTime;
-        }
-        return false;
-    }
-
-    protected virtual void DecideWhatToDo()
-    {
-        //determine what should be done by the world object at the current point in time
-        Vector3 currentPosition = transform.position;
-        nearbyObjects = WorkManager.FindNearbyObjects(currentPosition, detectionRange);
-
-        if (CanAttack())
-        {
-            List<WorldObject> enemyObjects = new List<WorldObject>();
-            foreach (WorldObject nearbyObject in nearbyObjects)
-            {
-                // Resource resource = nearbyObject.GetComponent<Resource>();
-                // if (resource) continue;
-                if (nearbyObject.GetPlayer() != player) enemyObjects.Add(nearbyObject);
-            }
-            WorldObject closestObject = WorkManager.FindNearestWorldObjectInListToPosition(enemyObjects, currentPosition);
-            if (closestObject) BeginAttack(closestObject);
-        }
     }
 
     protected virtual void InitialiseAudio()
@@ -279,7 +239,7 @@ public class WorldObject : MonoBehaviour {
         audioElement = new AudioElement(sounds, volumes, objectName + ObjectId, this.transform);
     }
 
-    protected virtual void BeginAttack(WorldObject target)
+    public virtual void BeginAttack(WorldObject target)
     {
         if (audioElement != null) audioElement.Play(attackSound);
 
@@ -289,7 +249,10 @@ public class WorldObject : MonoBehaviour {
             attacking = true;
             PerformAttack();
         }
-        else AdjustPosition();
+        else
+        {
+            attacking = false;
+        }
     }
 
     public virtual bool CanAttack()
@@ -391,28 +354,6 @@ public class WorldObject : MonoBehaviour {
         return false;
     }
 
-    private void AdjustPosition()
-    {
-        Unit self = this as Unit;
-        if (self)
-        {
-            movingIntoPosition = true;
-            Vector3 attackPosition = FindNearestAttackPosition();
-            self.StartMove(attackPosition);
-            attacking = true;
-        }
-        else attacking = false;
-    }
-
-    private Vector3 FindNearestAttackPosition()
-    {
-        Vector3 targetLocation = target.transform.position;
-        Vector3 direction = targetLocation - transform.position;
-        float targetDistance = direction.magnitude;
-        float distanceToTravel = targetDistance - (0.9f * weaponRange);
-        return Vector3.Lerp(transform.position, targetLocation, distanceToTravel / targetDistance);
-    }
-
     private bool TargetInFrontOfWeapon()
     {
         Vector3 targetLocation = target.transform.position;
@@ -449,8 +390,7 @@ public class WorldObject : MonoBehaviour {
             attacking = false;
             return;
         }
-        if (!TargetInRange()) AdjustPosition();
-        else if (!TargetInFrontOfWeapon()) AimAtTarget();
+        if (!TargetInFrontOfWeapon()) AimAtTarget();
         else if (ReadyToFire()) UseWeapon();
     }
 }
