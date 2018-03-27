@@ -22,6 +22,9 @@ public class Unit : WorldObject {
     public AudioClip driveSound, moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
 
+	private ParticleSystem takeDamageEffect;
+
+
     public override void SetHoverState(GameObject hoverObject)
     {
         base.SetHoverState(hoverObject);
@@ -61,7 +64,7 @@ public class Unit : WorldObject {
 
         this.destinationTarget = null;
         agent.SetDestination(destination);
-        targetRotation = Quaternion.LookRotation(destination - transform.position);
+//        targetRotation = Quaternion.LookRotation(destination - transform.position);
         // rotating = true;
         // moving = false;
     }
@@ -85,6 +88,13 @@ public class Unit : WorldObject {
         }
     }
 
+	public override void TakeDamage (int damage)
+	{
+		base.TakeDamage (damage);
+
+		takeDamageEffect.Play();
+	}
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
@@ -103,6 +113,7 @@ public class Unit : WorldObject {
         base.Awake();
 
         agent = GetComponent<NavMeshAgent>();
+		takeDamageEffect = GetComponentInChildren<ParticleSystem> ();
     }
 
     protected override void Start()

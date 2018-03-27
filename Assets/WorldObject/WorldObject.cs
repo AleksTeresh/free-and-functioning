@@ -318,7 +318,7 @@ public class WorldObject : MonoBehaviour {
         }
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         hitPoints -= damage;
         if (hitPoints <= 0) Destroy(gameObject);
