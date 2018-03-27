@@ -163,22 +163,6 @@ public class Building : WorldObject {
         }
     }
 
-    public override void MouseClick(GameObject hitObject, Vector3 hitPoint, Player controller)
-    {
-        base.MouseClick(hitObject, hitPoint, controller);
-        //only handle iput if owned by a human player and currently selected
-        if (player && player.human && currentlySelected)
-        {
-            if (WorkManager.ObjectIsGround(hitObject))
-            {
-                if ((player.hud.GetCursorState() == CursorState.RallyPoint || player.hud.GetPreviousCursorState() == CursorState.RallyPoint) && hitPoint != ResourceManager.InvalidPosition)
-                {
-                    SetRallyPoint(hitPoint);
-                }
-            }
-        }
-    }
-
     public void SetRallyPoint(Vector3 position)
     {
         rallyPoint = position;

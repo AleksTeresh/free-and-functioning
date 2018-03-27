@@ -38,24 +38,6 @@ public class Unit : WorldObject {
         //specific initialization for a unit can be specified here
     }
 
-    public override void MouseClick(GameObject hitObject, Vector3 hitPoint, Player controller)
-    {
-        base.MouseClick(hitObject, hitPoint, controller);
-        //only handle input if owned by a human player and currently selected
-        if (player && player.human && currentlySelected)
-        {
-            if (WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
-            {
-                float x = hitPoint.x;
-                //makes sure that the unit stays on top of the surface it is on
-                float y = hitPoint.y + player.SelectedObject.transform.position.y;
-                float z = hitPoint.z;
-                Vector3 destination = new Vector3(x, y, z);
-                StartMove(destination);
-            }
-        }
-    }
-
     public void StartMove(Vector3 destination)
     {
         if (audioElement != null) audioElement.Play(driveSound);

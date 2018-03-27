@@ -12,6 +12,7 @@ public class GameObjectList : MonoBehaviour {
     public GameObject[] worldObjects;
     public GameObject player;
     public Texture2D[] avatars;
+    public State[] aiStates;
 
     void Awake()
     {
@@ -80,6 +81,15 @@ public class GameObjectList : MonoBehaviour {
         {
             Unit unit = units[i].GetComponent<Unit>();
             if (unit && unit.name == name) return unit.buildImage;
+        }
+        return null;
+    }
+
+    public State GetAiState(string name)
+    {
+        foreach (State state in aiStates)
+        {
+            if (state.name == name) return state;
         }
         return null;
     }

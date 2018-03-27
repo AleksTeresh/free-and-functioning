@@ -91,6 +91,11 @@ namespace RTS
             return gameObjectList.GetBuildImage(name);
         }
 
+        public static State GetAiState(string name)
+        {
+            return gameObjectList.GetAiState(name);
+        }
+
         public static int GetNewObjectId()
         {
             LevelLoader loader = (LevelLoader)GameObject.FindObjectOfType(typeof(LevelLoader));

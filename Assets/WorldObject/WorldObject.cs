@@ -126,39 +126,7 @@ public class WorldObject : MonoBehaviour {
         loadedSavedValues = true;
     }
 
-    public virtual void MouseClick(GameObject hitObject, Vector3 hitPoint, Player controller)
-    {
-        //only handle input if currently selected
-        if (currentlySelected && !WorkManager.ObjectIsGround(hitObject))
-        {
-            WorldObject worldObject = hitObject.transform.parent.GetComponent<WorldObject>();
-            //clicked on another selectable object
-            if (worldObject)
-            {
-                Player owner = hitObject.transform.root.GetComponent<Player>();
-                if (owner)
-                { //the object is controlled by a player
-                    if (player && player.human)
-                    { //this object is controlled by a human player
-                      //start attack if object is not owned by the same player and this object can attack, else select
-                        if (stateController && player.username != owner.username && CanAttack())
-                        {
-                            // set clicked object as a target
-                            stateController.chaseTarget = worldObject;
-                            // transition to Chase Manual State
-                            stateController.TransitionToState(stateController.currentState.transitions[0].trueState);
-                        }
-                        else
-                        {
-                            ChangeSelection(worldObject, controller);
-                        }
-                    }
-                    else ChangeSelection(worldObject, controller);
-                }
-                else ChangeSelection(worldObject, controller);
-            }
-        }
-    }
+
 
     public virtual void PerformAction(string actionToPerform)
     {
@@ -191,6 +159,16 @@ public class WorldObject : MonoBehaviour {
     public Player GetPlayer()
     {
         return player;
+    }
+
+    public StateController GetStateController()
+    {
+        return stateController;
+    }
+
+    public bool IsSelected ()
+    {
+        return currentlySelected;
     }
 
     protected virtual void Awake()
@@ -312,15 +290,6 @@ public class WorldObject : MonoBehaviour {
         GUI.Box(selectBox, "");
         CalculateCurrentHealth();
         GUI.Label(new Rect(selectBox.x, selectBox.y - 7, selectBox.width * healthPercentage, 5), "", healthStyle);
-    }
-
-    private void ChangeSelection(WorldObject worldObject, Player controller)
-    {
-        //this should be called by the following line, but there is an outside chance it will not
-        SetSelection(false, playingArea);
-        if (controller.SelectedObject) controller.SelectedObject.SetSelection(false, playingArea);
-        controller.SelectedObject = worldObject;
-        worldObject.SetSelection(true, controller.hud.GetPlayingArea());
     }
 
     private void DrawSelection()
