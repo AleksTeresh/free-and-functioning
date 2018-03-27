@@ -7,22 +7,20 @@ using UnityEngine.AI;
 
 public class Unit : WorldObject {
 
-    // public float moveSpeed, rotateSpeed;
-    private NavMeshAgent agent;
-
-    // protected bool moving, rotating;
-
-    // private Vector3 destination;
-    private Quaternion targetRotation;
-    private GameObject destinationTarget;
-
-    private int loadedDestinationTargetId = -1;
-
     // audio 
     public AudioClip driveSound, moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
 
+	protected Quaternion aimRotation;
 	private ParticleSystem takeDamageEffect;
+
+	// public float moveSpeed, rotateSpeed;
+	private NavMeshAgent agent;
+
+	// protected bool moving, rotating;
+
+	private GameObject destinationTarget;
+	private int loadedDestinationTargetId = -1;
 
 
     public override void SetHoverState(GameObject hoverObject)
@@ -65,7 +63,6 @@ public class Unit : WorldObject {
         this.destinationTarget = null;
         agent.SetDestination(destination);
 
-        // targetRotation = Quaternion.LookRotation(destination - transform.position);
         StopAttack();
     }
 
@@ -80,7 +77,6 @@ public class Unit : WorldObject {
         base.SaveDetails(writer);
         SaveManager.WriteVector(writer, "Velocity", agent.velocity);
         SaveManager.WriteVector(writer, "Destination", agent.destination);
-        SaveManager.WriteQuaternion(writer, "TargetRotation", targetRotation);
         if (destinationTarget)
         {
             WorldObject destinationObject = destinationTarget.GetComponent<WorldObject>();
@@ -102,7 +98,6 @@ public class Unit : WorldObject {
         {
             case "Velocity": agent.velocity = LoadManager.LoadVector(reader); break;
             case "Destination": agent.destination = LoadManager.LoadVector(reader); break;
-            case "TargetRotation": targetRotation = LoadManager.LoadQuaternion(reader); break;
             case "DestinationTargetId": loadedDestinationTargetId = (int)(System.Int64)readValue; break;
             default: break;
         }
@@ -131,7 +126,18 @@ public class Unit : WorldObject {
         base.Update();
 
         HandleMove();
-        // if (rotating) TurnToTarget();
+
+		if (aiming)
+		{
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, aimRotation, weaponAimSpeed);
+			CalculateBounds();
+			//sometimes it gets stuck exactly 180 degrees out in the calculation and does nothing, this check fixes that
+			Quaternion inverseAimRotation = new Quaternion(-aimRotation.x, -aimRotation.y, -aimRotation.z, -aimRotation.w);
+			if (transform.rotation == aimRotation || transform.rotation == inverseAimRotation)
+			{
+				aiming = false;
+			}
+		}
         // else if (moving) MakeMove();
     }
 
@@ -157,6 +163,12 @@ public class Unit : WorldObject {
         volumes.Add(moveVolume);
         audioElement.Add(sounds, volumes);
     }
+
+	protected override void AimAtTarget()
+	{
+		base.AimAtTarget();
+		aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+	}
 
     private void DrawSelection()
     {
