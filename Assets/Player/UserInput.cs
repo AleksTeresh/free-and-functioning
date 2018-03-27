@@ -205,10 +205,7 @@ public class UserInput : MonoBehaviour {
                         //start attack if object is not owned by the same player and this object can attack, else select
                         if (handlerStateController && player.username != owner.username && objectHandler.CanAttack())
                         {
-                            // set clicked object as a target
-                            handlerStateController.chaseTarget = worldObject;
-                            // transition to Chase Manual State
-                            handlerStateController.TransitionToState(ResourceManager.GetAiState("Chase Manual"));
+                            InputToCommandManager.ToChaseState(handlerStateController, worldObject);
                         }
                         else
                         {
@@ -227,7 +224,8 @@ public class UserInput : MonoBehaviour {
         //only handle input if owned by a human player and currently selected
         if (player && player.human && objectHandler.IsSelected())
         {
-            if (WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
+            StateController handlerStateController = objectHandler.GetStateController();
+            if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
             {
                 float x = hitPoint.x;
                 //makes sure that the unit stays on top of the surface it is on
@@ -235,14 +233,7 @@ public class UserInput : MonoBehaviour {
                 float z = hitPoint.z;
                 Vector3 destination = new Vector3(x, y, z);
 
-                StateController handlerStateController = objectHandler.GetStateController();
-
-                // remove current target if present
-                handlerStateController.chaseTarget = null;
-                // add new destination for nav mesh agent
-                handlerStateController.navMeshAgent.SetDestination(destination);
-                // transition to Chase Manual State
-                handlerStateController.TransitionToState(ResourceManager.GetAiState("Busy Manual"));
+                InputToCommandManager.ToBusyState(handlerStateController, destination);
             }
         }
     }
