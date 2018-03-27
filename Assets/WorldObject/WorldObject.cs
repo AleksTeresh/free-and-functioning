@@ -47,6 +47,9 @@ public class WorldObject : MonoBehaviour {
 
     protected AudioElement audioElement;
 
+    // child renderers without Partycle system
+    private List<Renderer> childRenderersWithoutParticles;
+
     public virtual void SetSelection(bool selected, Rect playingArea)
     {
         currentlySelected = selected;
@@ -67,7 +70,7 @@ public class WorldObject : MonoBehaviour {
     public void CalculateBounds()
     {
         selectionBounds = new Bounds(transform.position, Vector3.zero);
-        foreach (Renderer r in GetComponentsInChildren<Renderer>())
+        foreach (Renderer r in childRenderersWithoutParticles)
         {
             selectionBounds.Encapsulate(r.bounds);
         }
@@ -174,6 +177,19 @@ public class WorldObject : MonoBehaviour {
     protected virtual void Awake()
     {
         selectionBounds = ResourceManager.InvalidBounds;
+
+        // retrieve child renderers
+        var renderers = GetComponentsInChildren<Renderer>();
+        childRenderersWithoutParticles = new List<Renderer>();
+        // filter out particle system renderers
+        foreach (Renderer r in renderers)
+        {
+            if (r.GetComponentInParent<ParticleSystem>() == null)
+            {
+                childRenderersWithoutParticles.Add(r);
+            }
+        }
+
         CalculateBounds();
 
         stateController = GetComponent<StateController>();
@@ -195,7 +211,6 @@ public class WorldObject : MonoBehaviour {
         }
 
         InitialiseAudio();
-
         // enable AI by default, if possible
         if (stateController)
         {
