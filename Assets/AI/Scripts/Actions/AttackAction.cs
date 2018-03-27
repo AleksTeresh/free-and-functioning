@@ -24,13 +24,13 @@ public class AttackAction : Action {
 
         Vector3 currentPosition = unit.transform.position;
         Vector3 currentEnemyPosition = chaseTarget.transform.position;
+        Vector3 direction = currentEnemyPosition - currentPosition;
 
         if (
-            Vector3.Distance(currentEnemyPosition, currentPosition) <= unit.weaponRange &&
-            controller.CheckIfCountDownElapsed(controller.unit.weaponRechargeTime)
+            direction.sqrMagnitude < unit.weaponRange * unit.weaponRange
         )
         {
-            controller.unit.BeginAttack(chaseTarget);
+            controller.unit.PerformAttack(chaseTarget);
         }
     }
 }

@@ -39,11 +39,9 @@ public class RangeSwarmling : Unit {
         return true;
     }
 
-
-
-    protected override void UseWeapon()
+    protected override void UseWeapon(WorldObject target)
     {
-        base.UseWeapon();
+        base.UseWeapon(target);
         Vector3 spawnPoint = transform.position;
         spawnPoint.x += (2.1f * transform.forward.x);
         spawnPoint.y += 1.4f;

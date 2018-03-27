@@ -36,9 +36,9 @@ public class Turret : Building
         return true;
     }
 
-    protected override void UseWeapon()
+    protected override void UseWeapon(WorldObject target)
     {
-        base.UseWeapon();
+        base.UseWeapon(target);
         Vector3 spawnPoint = transform.position;
         spawnPoint.x += (2.6f * transform.forward.x);
         spawnPoint.y += 1.0f;
@@ -50,9 +50,9 @@ public class Turret : Building
         projectile.SetTarget(target);
     }
 
-    protected override void AimAtTarget()
+    protected override void AimAtTarget(WorldObject target)
     {
-        base.AimAtTarget();
+        base.AimAtTarget(target);
         aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
     }
 }

@@ -13,7 +13,8 @@ public class StateController : MonoBehaviour
     [HideInInspector] public List<Transform> wayPointList;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public WorldObject chaseTarget;
-    [HideInInspector] public float stateTimeElapsed;
+    [HideInInspector] public List<WorldObject> multiTargets;
+    // [HideInInspector] public float stateTimeElapsed;
 
     private bool aiActive;
 
@@ -22,6 +23,11 @@ public class StateController : MonoBehaviour
     {
         unit = GetComponent<Unit>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Start()
+    {
+        multiTargets = new List<WorldObject>();
     }
 
     public void SetupAI(bool aiActivation)
@@ -64,10 +70,10 @@ public class StateController : MonoBehaviour
         if (nextState != remainState)
         {
             currentState = nextState;
-            OnExitState();
+            // OnExitState();
         }
     }
-
+    /*
     public bool CheckIfCountDownElapsed(float duration)
     {
         stateTimeElapsed += Time.deltaTime;
@@ -78,4 +84,5 @@ public class StateController : MonoBehaviour
     {
         stateTimeElapsed = 0;
     }
+        */
 }
