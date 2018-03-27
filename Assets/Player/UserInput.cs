@@ -150,7 +150,7 @@ public class UserInput : MonoBehaviour {
             Vector3 hitPoint = FindHitPoint();
             if (hitObject && hitPoint != ResourceManager.InvalidPosition)
             {
-                if (player.SelectedObject) player.SelectedObject.MouseClick(hitObject, hitPoint, player);
+                if (player.SelectedObject) MouseClick(hitObject, hitPoint, player);
                 else if (!WorkManager.ObjectIsGround(hitObject))
                 {
                     WorldObject worldObject = hitObject.transform.parent.GetComponent<WorldObject>();
@@ -172,6 +172,103 @@ public class UserInput : MonoBehaviour {
             player.SelectedObject.SetSelection(false, player.hud.GetPlayingArea());
             player.SelectedObject = null;
         }
+    }
+
+    private void MouseClick(GameObject hitObject, Vector3 hitPoint, Player controller)
+    {
+        WorldObject objectHandler = controller.SelectedObject;
+
+        WorldObjectMouseClick(objectHandler, hitObject, hitPoint, controller);
+
+        Unit unit = objectHandler.GetComponent<Unit>();
+        if (unit != null)
+        {
+            UnitMouseClick(unit, hitObject, hitPoint, controller);
+        }
+    }
+
+    private void WorldObjectMouseClick(WorldObject objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
+    {
+        //only handle input if currently selected
+        if (objectHandler.IsSelected() && !WorkManager.ObjectIsGround(hitObject))
+        {
+            WorldObject worldObject = hitObject.transform.parent.GetComponent<WorldObject>();
+            //clicked on another selectable object
+            if (worldObject)
+            {
+                Player owner = hitObject.transform.root.GetComponent<Player>();
+                if (owner)
+                { //the object is controlled by a player
+                    if (player && player.human)
+                    { //this object is controlled by a human player
+                        StateController handlerStateController = objectHandler.GetStateController();
+                        //start attack if object is not owned by the same player and this object can attack, else select
+                        if (handlerStateController && player.username != owner.username && objectHandler.CanAttack())
+                        {
+                            // set clicked object as a target
+                            handlerStateController.chaseTarget = worldObject;
+                            // transition to Chase Manual State
+                            handlerStateController.TransitionToState(ResourceManager.GetAiState("Chase Manual"));
+                        }
+                        else
+                        {
+                            ChangeSelection(objectHandler, worldObject, controller);
+                        }
+                    }
+                    else ChangeSelection(objectHandler, worldObject, controller);
+                }
+                else ChangeSelection(objectHandler, worldObject, controller);
+            }
+        }
+    }
+
+    private void UnitMouseClick (Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
+    {
+        //only handle input if owned by a human player and currently selected
+        if (player && player.human && objectHandler.IsSelected())
+        {
+            if (WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
+            {
+                float x = hitPoint.x;
+                //makes sure that the unit stays on top of the surface it is on
+                float y = hitPoint.y + player.SelectedObject.transform.position.y;
+                float z = hitPoint.z;
+                Vector3 destination = new Vector3(x, y, z);
+
+                StateController handlerStateController = objectHandler.GetStateController();
+
+                // remove current target if present
+                handlerStateController.chaseTarget = null;
+                // add new destination for nav mesh agent
+                handlerStateController.navMeshAgent.SetDestination(destination);
+                // transition to Chase Manual State
+                handlerStateController.TransitionToState(ResourceManager.GetAiState("Busy Manual"));
+            }
+        }
+    }
+/*
+    private void BuildingMouseClick (Building objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
+    {
+        //only handle iput if owned by a human player and currently selected
+        if (player && player.human && currentlySelected)
+        {
+            if (WorkManager.ObjectIsGround(hitObject))
+            {
+                if ((player.hud.GetCursorState() == CursorState.RallyPoint || player.hud.GetPreviousCursorState() == CursorState.RallyPoint) && hitPoint != ResourceManager.InvalidPosition)
+                {
+                    SetRallyPoint(hitPoint);
+                }
+            }
+        }
+    }
+    */
+    private void ChangeSelection(WorldObject unselectedObject, WorldObject selectedObject, Player controller)
+    {
+        //this should be called by the following line, but there is an outside chance it will not
+        unselectedObject.SetSelection(false, player.hud.GetPlayingArea());
+        if (controller.SelectedObject) controller.SelectedObject.SetSelection(false, player.hud.GetPlayingArea());
+        controller.SelectedObject = selectedObject;
+        selectedObject.SetSelection(true, controller.hud.GetPlayingArea());
     }
 
     private GameObject FindHitObject()
