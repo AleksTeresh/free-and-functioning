@@ -2,23 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetManager : ScriptableObject {
+public class TargetManager : MonoBehaviour {
 
-    private WorldObject singleTarget;
-    private bool toAllMode;
+    public bool InMultiMode { get; set; }
 
-	public void SetTarget()
+    public TargetManager ()
     {
-
-    }
-
-    public void SwitchToAllMode()
-    {
-
-    }
-
-    public void SwitchToSingleMode()
-    {
-
+        InMultiMode = false;
     }
 }

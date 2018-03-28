@@ -29,7 +29,7 @@ public class Unit : WorldObject {
         //only handle input if owned by a human player and currently selected
         if (player && player.human && currentlySelected)
         {
-            if (WorkManager.ObjectIsGround(hoverObject)) player.hud.SetCursorState(CursorState.Move);
+            if (WorkManager.ObjectIsGround(hoverObject)) hud.SetCursorState(CursorState.Move);
         }
     }
 
@@ -45,7 +45,7 @@ public class Unit : WorldObject {
         this.destinationTarget = null;
         agent.SetDestination(destination);
 
-        StopAttack();
+        // StopAttack();
     }
 
     public void StartMove(Vector3 destination, GameObject destinationTarget)
