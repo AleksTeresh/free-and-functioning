@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RTS
 {
     public static class HotkeyUnitSelector
     {
-        private static Dictionary<string, int> HotkeyUnitIndeces = new Dictionary<string, int>()
-        {
-            { "Select1", 0 },
-            { "Select2", 1 },
-            { "Select3", 2 },
-            { "Select4", 3 },
-            { "Select5", 4 }
-        };
-
         private static string[] hotkeys = new string[]
         {
             "Select1",
