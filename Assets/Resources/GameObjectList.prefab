@@ -64,6 +64,7 @@ MonoBehaviour:
   - {fileID: 1483362882271830, guid: c02f6203083960a4aa491fb172e274fa, type: 2}
   - {fileID: 1319779137425518, guid: c288baaa1ce50a247afdbed87995ad94, type: 2}
   - {fileID: 1338513666550506, guid: db5ac621c11f1da428aef3044df27e97, type: 2}
+  - {fileID: 1787216316022852, guid: 8e49fcbca51cbb849be5dc0e55c5c265, type: 2}
   player: {fileID: 1880155284192986, guid: 18c2a160ec048d14ca46079316893b47, type: 2}
   avatars:
   - {fileID: 2800000, guid: 665a236535b979947996f55953dd1b6c, type: 3}
@@ -81,3 +82,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bff99035b6a2246ef93cfc4854844a44, type: 2}
   - {fileID: 11400000, guid: ff007ed86ada0c340ba1addd133235df, type: 2}
   - {fileID: 11400000, guid: 0b4d89b925d2b30428d04ad6cb571666, type: 2}
+  - {fileID: 11400000, guid: 6e2f6ba79cc305649969bda30c827bed, type: 2}
+  - {fileID: 11400000, guid: 04f313e9d3d5477408d5bc5464a77378, type: 2}
+  - {fileID: 11400000, guid: 27fc66feef796af47b56a32fe4c40926, type: 2}

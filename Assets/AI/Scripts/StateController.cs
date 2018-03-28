@@ -13,7 +13,7 @@ public class StateController : MonoBehaviour
     [HideInInspector] public List<Transform> wayPointList;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public WorldObject chaseTarget;
-    [HideInInspector] public List<WorldObject> multiTargets;
+    [HideInInspector] public List<WorldObject> nearbyEnemies;
     // [HideInInspector] public float stateTimeElapsed;
 
     private bool aiActive;
@@ -27,7 +27,7 @@ public class StateController : MonoBehaviour
 
     private void Start()
     {
-        multiTargets = new List<WorldObject>();
+        nearbyEnemies = new List<WorldObject>();
     }
 
     public void SetupAI(bool aiActivation)

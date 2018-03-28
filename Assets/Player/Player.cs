@@ -6,16 +6,21 @@ using Newtonsoft.Json;
 
 public class Player : MonoBehaviour {
 
-    public HUD hud;
     public WorldObject SelectedObject { get; set; }
     public Color teamColor;
 
     public string username;
     public bool human;
 
+    private Units units;
+    private Buildings buildings;
+    private HUD hud;
+
     // Use this for initialization
     void Start () {
         hud = GetComponentInChildren<HUD>();
+        units = GetComponentInChildren<Units>();
+        buildings = GetComponentInChildren<Buildings>();
     }
 	
 	// Update is called once per frame
@@ -34,7 +39,6 @@ public class Player : MonoBehaviour {
 
     public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation, Building creator)
     {
-        Units units = GetComponentInChildren<Units>();
         GameObject newUnit = (GameObject)Instantiate(ResourceManager.GetUnit(unitName), spawnPoint, rotation);
         newUnit.transform.parent = units.transform;
         Unit unitObject = newUnit.GetComponent<Unit>();
@@ -108,7 +112,6 @@ public class Player : MonoBehaviour {
     private void LoadBuildings(JsonTextReader reader)
     {
         if (reader == null) return;
-        Buildings buildings = GetComponentInChildren<Buildings>();
         string currValue = "", type = "";
         while (reader.Read())
         {
@@ -133,7 +136,6 @@ public class Player : MonoBehaviour {
     private void LoadUnits(JsonTextReader reader)
     {
         if (reader == null) return;
-        Units units = GetComponentInChildren<Units>();
         string currValue = "", type = "";
         while (reader.Read())
         {

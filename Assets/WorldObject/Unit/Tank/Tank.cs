@@ -30,15 +30,21 @@ public class Tank : Unit
     protected override void UseWeapon(WorldObject target)
     {
         base.UseWeapon(target);
-        Vector3 spawnPoint = transform.position;
-        spawnPoint.x += (2.1f * transform.forward.x);
-        spawnPoint.y += 1.4f;
-        spawnPoint.z += (2.1f * transform.forward.z);
-        GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject("TankProjectile"), spawnPoint, transform.rotation);
-        Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
-        projectile.Player = this.player;
-        projectile.SetRange(0.9f * weaponRange);
-        projectile.SetTarget(target);
+        Vector3 spawnPoint = GetSpawnPoint();
+
+        FireProjectile(target, "TankProjectile", spawnPoint);
+    }
+
+    protected override void UseWeaponMulti(List<WorldObject> targets)
+    {
+        base.UseWeaponMulti(targets);
+        Vector3 spawnPoint = GetSpawnPoint();
+
+        targets.ForEach(p =>
+        {
+            var rotation = Quaternion.LookRotation(p.transform.position - transform.position);
+            FireProjectile(p, "TankLightProjectile", spawnPoint, rotation);
+        });
     }
 
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
@@ -49,5 +55,15 @@ public class Tank : Unit
             case "AimRotation": aimRotation = LoadManager.LoadQuaternion(reader); break;
             default: break;
         }
+    }
+
+    private Vector3 GetSpawnPoint()
+    {
+        Vector3 spawnPoint = transform.position;
+        // spawnPoint.x += (2.1f * transform.forward.x);
+        spawnPoint.y += 1.4f;
+        // spawnPoint.z += (2.1f * transform.forward.z);
+
+        return spawnPoint;
     }
 }

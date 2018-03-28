@@ -5,7 +5,6 @@ using RTS;
 using Newtonsoft.Json;
 
 public class Building : WorldObject {
-
     public Texture2D rallyPointImage;
 
     public float maxBuildProgress;
@@ -158,7 +157,7 @@ public class Building : WorldObject {
         {
             if (WorkManager.ObjectIsGround(hoverObject))
             {
-                if (player.hud.GetPreviousCursorState() == CursorState.RallyPoint) player.hud.SetCursorState(CursorState.RallyPoint);
+                if (hud.GetPreviousCursorState() == CursorState.RallyPoint) hud.SetCursorState(CursorState.RallyPoint);
             }
         }
     }

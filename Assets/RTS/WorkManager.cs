@@ -88,6 +88,15 @@ namespace RTS
             return nearestObject;
         }
 
+        public static Vector3 FindNearestAttackPosition(WorldObject self, WorldObject target)
+        {
+            Vector3 targetLocation = target.transform.position;
+            Vector3 direction = targetLocation - self.transform.position;
+            float targetDistance = direction.magnitude;
+            float distanceToTravel = targetDistance - (0.8f * self.weaponRange);
+            return Vector3.Lerp(self.transform.position, targetLocation, distanceToTravel / targetDistance);
+        }
+
         public static bool V3Equal(Vector3 a, Vector3 b)
         {
             return Vector3.SqrMagnitude(a - b) < 0.01;

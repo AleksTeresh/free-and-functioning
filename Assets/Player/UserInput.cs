@@ -6,10 +6,14 @@ using RTS;
 public class UserInput : MonoBehaviour {
 
     private Player player;
+    private TargetManager targetManager;
+    private HUD hud;
 
     // Use this for initialization
     void Start () {
         player = transform.root.GetComponent<Player>();
+        targetManager = transform.root.GetComponentInChildren<TargetManager>();
+        hud = transform.root.GetComponentInChildren<HUD>();
     }
 	
 	// Update is called once per frame
@@ -25,6 +29,8 @@ public class UserInput : MonoBehaviour {
             RotateCamera();
 
             MouseActivity();
+
+            AttackModeSelection();
 
 			RTS.HotkeyUnitSelector.HandleInput ();
         }
@@ -51,13 +57,13 @@ public class UserInput : MonoBehaviour {
         if (xpos >= 0 && xpos < ResourceManager.ScrollWidth)
         {
             movement.x -= ResourceManager.ScrollSpeed;
-            player.hud.SetCursorState(CursorState.PanLeft);
+            hud.SetCursorState(CursorState.PanLeft);
             mouseScroll = true;
         }
         else if (xpos <= Screen.width && xpos > Screen.width - ResourceManager.ScrollWidth)
         {
             movement.x += ResourceManager.ScrollSpeed;
-            player.hud.SetCursorState(CursorState.PanRight);
+            hud.SetCursorState(CursorState.PanRight);
             mouseScroll = true;
         }
 
@@ -65,13 +71,13 @@ public class UserInput : MonoBehaviour {
         if (ypos >= 0 && ypos < ResourceManager.ScrollWidth)
         {
             movement.z -= ResourceManager.ScrollSpeed;
-            player.hud.SetCursorState(CursorState.PanDown);
+            hud.SetCursorState(CursorState.PanDown);
             mouseScroll = true;
         }
         else if (ypos <= Screen.height && ypos > Screen.height - ResourceManager.ScrollWidth)
         {
             movement.z += ResourceManager.ScrollSpeed;
-            player.hud.SetCursorState(CursorState.PanUp);
+            hud.SetCursorState(CursorState.PanUp);
             mouseScroll = true;
         }
 
@@ -108,7 +114,7 @@ public class UserInput : MonoBehaviour {
 
         if (!mouseScroll)
         {
-            player.hud.SetCursorState(CursorState.Select);
+            hud.SetCursorState(CursorState.Select);
         }
     }
 
@@ -131,6 +137,16 @@ public class UserInput : MonoBehaviour {
         }
     }
 
+    private void AttackModeSelection()
+    {
+        if (Input.GetButtonDown("Attack Mode"))
+        {
+            // get all the objects controlled through AI
+            var stateControlles = player.GetComponentsInChildren<StateController>();
+            InputToCommandManager.SwitchAttackMode(targetManager, new List<StateController>(stateControlles));
+        }
+    }
+
     private void MouseActivity()
     {
         if (Input.GetMouseButtonDown(0)) {
@@ -146,13 +162,13 @@ public class UserInput : MonoBehaviour {
 
     private void LeftMouseClick()
     {
-        if (player.hud.MouseInBounds())
+        if (hud.MouseInBounds())
         {
             GameObject hitObject = FindHitObject();
             Vector3 hitPoint = FindHitPoint();
             if (hitObject && hitPoint != ResourceManager.InvalidPosition)
             {
-                if (player.SelectedObject) MouseClick(hitObject, hitPoint, player);
+                if (player.SelectedObject) MouseClick(hitObject, hitPoint);
                 else if (!WorkManager.ObjectIsGround(hitObject))
                 {
                     WorldObject worldObject = hitObject.transform.parent.GetComponent<WorldObject>();
@@ -160,7 +176,7 @@ public class UserInput : MonoBehaviour {
                     {
                         //we already know the player has no selected object
                         player.SelectedObject = worldObject;
-                        worldObject.SetSelection(true, player.hud.GetPlayingArea());
+                        worldObject.SetSelection(true, hud.GetPlayingArea());
                     }
                 }
             }
@@ -169,27 +185,27 @@ public class UserInput : MonoBehaviour {
 
     private void RightMouseClick()
     {
-        if (player.hud.MouseInBounds() && !Input.GetKey(KeyCode.LeftAlt) && player.SelectedObject)
+        if (hud.MouseInBounds() && !Input.GetKey(KeyCode.LeftAlt) && player.SelectedObject)
         {
-            player.SelectedObject.SetSelection(false, player.hud.GetPlayingArea());
+            player.SelectedObject.SetSelection(false, hud.GetPlayingArea());
             player.SelectedObject = null;
         }
     }
 
-    private void MouseClick(GameObject hitObject, Vector3 hitPoint, Player controller)
+    private void MouseClick(GameObject hitObject, Vector3 hitPoint)
     {
-        WorldObject objectHandler = controller.SelectedObject;
+        WorldObject objectHandler = player.SelectedObject;
 
-        WorldObjectMouseClick(objectHandler, hitObject, hitPoint, controller);
+        WorldObjectMouseClick(objectHandler, hitObject, hitPoint);
 
         Unit unit = objectHandler.GetComponent<Unit>();
         if (unit != null)
         {
-            UnitMouseClick(unit, hitObject, hitPoint, controller);
+            UnitMouseClick(unit, hitObject, hitPoint);
         }
     }
 		
-    private void WorldObjectMouseClick(WorldObject objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
+    private void WorldObjectMouseClick(WorldObject objectHandler, GameObject hitObject, Vector3 hitPoint)
     {
         //only handle input if currently selected
         if (objectHandler.IsSelected() && !WorkManager.ObjectIsGround(hitObject))
@@ -201,30 +217,34 @@ public class UserInput : MonoBehaviour {
                 Player owner = hitObject.transform.root.GetComponent<Player>();
                 if (owner)
                 { //the object is controlled by a player
-                    if (player && player.human)
+
+                    // get owner of the object handler
+                    Player objectHandlerOwner = objectHandler.GetComponentInParent<Player>();
+                    if (objectHandlerOwner.username == player.username && player && player.human)
                     { //this object is controlled by a human player
                         StateController handlerStateController = objectHandler.GetStateController();
                         //start attack if object is not owned by the same player and this object can attack, else select
                         if (handlerStateController && player.username != owner.username && objectHandler.CanAttack())
                         {
-                            InputToCommandManager.ToChaseState(handlerStateController, worldObject);
+                            InputToCommandManager.ToChaseState(targetManager, handlerStateController, worldObject);
                         }
                         else
                         {
-                            ChangeSelection(objectHandler, worldObject, controller);
+                            ChangeSelection(objectHandler, worldObject);
                         }
                     }
-                    else ChangeSelection(objectHandler, worldObject, controller);
+                    else ChangeSelection(objectHandler, worldObject);
                 }
-                else ChangeSelection(objectHandler, worldObject, controller);
+                else ChangeSelection(objectHandler, worldObject);
             }
         }
     }
 
-    private void UnitMouseClick (Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
+    private void UnitMouseClick (Unit objectHandler, GameObject hitObject, Vector3 hitPoint)
     {
+        Player owner = objectHandler.GetComponentInParent<Player>();
         //only handle input if owned by a human player and currently selected
-        if (player && player.human && objectHandler.IsSelected())
+        if (owner.username == player.username && player && player.human && objectHandler.IsSelected())
         {
             StateController handlerStateController = objectHandler.GetStateController();
             if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
@@ -235,7 +255,7 @@ public class UserInput : MonoBehaviour {
                 float z = hitPoint.z;
                 Vector3 destination = new Vector3(x, y, z);
 
-                InputToCommandManager.ToBusyState(handlerStateController, destination);
+                InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
             }
         }
     }
@@ -255,13 +275,13 @@ public class UserInput : MonoBehaviour {
         }
     }
     */
-    private void ChangeSelection(WorldObject unselectedObject, WorldObject selectedObject, Player controller)
+    private void ChangeSelection(WorldObject unselectedObject, WorldObject selectedObject)
     {
         //this should be called by the following line, but there is an outside chance it will not
-        unselectedObject.SetSelection(false, player.hud.GetPlayingArea());
-        if (controller.SelectedObject) controller.SelectedObject.SetSelection(false, player.hud.GetPlayingArea());
-        controller.SelectedObject = selectedObject;
-        selectedObject.SetSelection(true, controller.hud.GetPlayingArea());
+        unselectedObject.SetSelection(false, hud.GetPlayingArea());
+        if (player.SelectedObject) player.SelectedObject.SetSelection(false, hud.GetPlayingArea());
+        player.SelectedObject = selectedObject;
+        selectedObject.SetSelection(true, hud.GetPlayingArea());
     }
 
     private GameObject FindHitObject()
@@ -282,7 +302,7 @@ public class UserInput : MonoBehaviour {
 
     private void MouseHover()
     {
-        if (player.hud.MouseInBounds())
+        if (hud.MouseInBounds())
         {
             GameObject hoverObject = FindHitObject();
             if (hoverObject)
@@ -295,7 +315,7 @@ public class UserInput : MonoBehaviour {
                     {
                         Unit unit = hoverObject.transform.parent.GetComponent<Unit>();
                         Building building = hoverObject.transform.parent.GetComponent<Building>();
-                        if (owner.username == player.username && (unit || building)) player.hud.SetCursorState(CursorState.Select);
+                        if (owner.username == player.username && (unit || building)) hud.SetCursorState(CursorState.Select);
                     }
                 }
             }

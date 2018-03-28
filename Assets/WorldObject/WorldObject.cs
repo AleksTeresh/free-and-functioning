@@ -9,10 +9,10 @@ public class WorldObject : MonoBehaviour {
     public int ObjectId { get; set; }
     public string objectName;
     public Texture2D buildImage;
-    public bool canAttackMulti;
     public int cost, sellValue, hitPoints, maxHitPoints;
 
     protected Player player;
+    protected HUD hud;
     protected string[] actions = { };
     protected bool currentlySelected = false;
     protected Bounds selectionBounds;
@@ -20,14 +20,15 @@ public class WorldObject : MonoBehaviour {
     protected GUIStyle healthStyle = new GUIStyle();
     protected float healthPercentage = 1.0f;
 
-    // protected WorldObject target = null;
-    // protected bool attacking = false;
     public float weaponRange = 10.0f;
     protected bool movingIntoPosition = false;
     protected bool aiming = false;
     public float weaponAimSpeed = 1.0f;
     public float weaponRechargeTime = 1.0f;
+    public float weaponMultiRechargeTime = 1.0f;
     private float currentWeaponChargeTime;
+    private float currentWeaponMultiChargeTime;
+
 
     // loading related
     protected bool loadedSavedValues = false;
@@ -145,12 +146,12 @@ public class WorldObject : MonoBehaviour {
                 Building building = hoverObject.transform.parent.GetComponent<Building>();
                 if (owner)
                 { //the object is owned by a player
-                    if (owner.username == player.username) player.hud.SetCursorState(CursorState.Select);
-                    else if (CanAttack()) player.hud.SetCursorState(CursorState.Attack);
-                    else player.hud.SetCursorState(CursorState.Select);
+                    if (owner.username == player.username) hud.SetCursorState(CursorState.Select);
+                    else if (CanAttack()) hud.SetCursorState(CursorState.Attack);
+                    else hud.SetCursorState(CursorState.Select);
                 }
-                else if (unit || building && CanAttack()) player.hud.SetCursorState(CursorState.Attack);
-                else player.hud.SetCursorState(CursorState.Select);
+                else if (unit || building && CanAttack()) hud.SetCursorState(CursorState.Attack);
+                else hud.SetCursorState(CursorState.Select);
             }
         }
     }
@@ -196,6 +197,8 @@ public class WorldObject : MonoBehaviour {
         SetPlayer();
         if (player)
         {
+            hud = player.GetComponentInChildren<HUD>();
+
             if (loadedSavedValues)
             {
                 // if (loadedTargetId >= 0) target = player.GetObjectForId(loadedTargetId);
@@ -216,10 +219,12 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void Update()
     {
-        // if (ShouldMakeDecision()) DecideWhatToDo();
-
         currentWeaponChargeTime += Time.deltaTime;
-        // if (attacking && !movingIntoPosition && !aiming) PerformAttack();
+
+        if (CanAttackMulti())
+        {
+            currentWeaponMultiChargeTime += Time.deltaTime;
+        }
     }
 
     protected virtual void OnGUI()
@@ -257,6 +262,16 @@ public class WorldObject : MonoBehaviour {
         else if (ReadyToFire()) UseWeapon(target);
     }
 
+    public virtual void PerformAttackToMulti(List<WorldObject> targets)
+    {
+        if (targets == null || targets.Count == 0)
+        {
+            return;
+        }
+
+        if (ReadyToFireMulti()) UseWeaponMulti(targets);
+    }
+
     public virtual void BeginAttackToMulti(List<WorldObject> targets)
     {
         if (CanAttackMulti())
@@ -268,16 +283,6 @@ public class WorldObject : MonoBehaviour {
         {
             // BeginAttack(target);
         }
-    }
-
-
-    public virtual void StopAttack()
-    {
-        if (audioElement != null) audioElement.Stop(attackSound);
-
-       //  this.target = null;
-        // attacking = false;
-        movingIntoPosition = false;
     }
 
     public virtual bool CanAttack()
@@ -379,9 +384,29 @@ public class WorldObject : MonoBehaviour {
         //this behaviour needs to be specified by a specific object
     }
 
+    protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint)
+    {
+        FireProjectile(target, projectileName, spawnPoint, transform.rotation);
+    }
+
+    protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint, Quaternion rotation)
+    {
+        GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject(projectileName), spawnPoint, rotation);
+        Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
+        projectile.Player = this.player;
+        projectile.SetRange(weaponRange);
+        projectile.SetTarget(target);
+    }
+
     private bool ReadyToFire()
     {
         if (currentWeaponChargeTime >= weaponRechargeTime) return true;
+        return false;
+    }
+
+    private bool ReadyToFireMulti()
+    {
+        if (currentWeaponMultiChargeTime >= weaponMultiRechargeTime) return true;
         return false;
     }
 
@@ -390,6 +415,14 @@ public class WorldObject : MonoBehaviour {
         if (audioElement != null && Time.timeScale > 0) audioElement.Play(useWeaponSound);
 
         currentWeaponChargeTime = 0.0f;
+        //this behaviour needs to be specified by a specific object
+    }
+
+    protected virtual void UseWeaponMulti(List<WorldObject> target)
+    {
+        if (audioElement != null && Time.timeScale > 0) audioElement.Play(useWeaponSound);
+
+        currentWeaponMultiChargeTime = 0.0f;
         //this behaviour needs to be specified by a specific object
     }
 
