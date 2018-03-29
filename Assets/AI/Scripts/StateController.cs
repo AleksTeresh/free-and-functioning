@@ -13,6 +13,7 @@ public class StateController : MonoBehaviour
     [HideInInspector] public List<Transform> wayPointList;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public WorldObject chaseTarget;
+    [HideInInspector] public TargetManager targetManager;
     [HideInInspector] public List<WorldObject> nearbyEnemies;
     // [HideInInspector] public float stateTimeElapsed;
 
@@ -23,6 +24,7 @@ public class StateController : MonoBehaviour
     {
         unit = GetComponent<Unit>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        targetManager = transform.root.GetComponentInChildren<TargetManager>();
     }
 
     private void Start()

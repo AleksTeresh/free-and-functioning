@@ -12,9 +12,10 @@ public class ChaseAction : Action {
 
     private void Chase(StateController controller)
     {
-        if (controller.chaseTarget)
+        WorldObject chaseTarget = controller.chaseTarget;
+        if (chaseTarget)
         {
-            Vector3 attackPosition = WorkManager.FindNearestAttackPosition(controller.unit, controller.chaseTarget);
+            Vector3 attackPosition = WorkManager.FindNearestAttackPosition(controller.unit, chaseTarget);
             controller.unit.StartMove(attackPosition);
         }
         
