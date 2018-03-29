@@ -41,6 +41,7 @@ public class WorldObject : MonoBehaviour {
     // AI related
     public float detectionRange = 20.0f;
     protected StateController stateController;
+    private int underAttackFrameCounter;
 
     //we want to restrict how many decisions are made to help with game performance
     //the default time at the moment is a tenth of a second
@@ -171,6 +172,11 @@ public class WorldObject : MonoBehaviour {
         return currentlySelected;
     }
 
+    public bool IsUnderAttack()
+    {
+        return underAttackFrameCounter > 0;
+    }
+
     protected virtual void Awake()
     {
         selectionBounds = ResourceManager.InvalidBounds;
@@ -194,6 +200,8 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void Start()
     {
+        underAttackFrameCounter = 0;
+
         SetPlayer();
         if (player)
         {
@@ -220,6 +228,7 @@ public class WorldObject : MonoBehaviour {
     protected virtual void Update()
     {
         currentWeaponChargeTime += Time.deltaTime;
+        underAttackFrameCounter = Mathf.Max(0, underAttackFrameCounter - 1);
 
         if (CanAttackMulti())
         {
@@ -347,6 +356,7 @@ public class WorldObject : MonoBehaviour {
 
     public virtual void TakeDamage(int damage)
     {
+        underAttackFrameCounter = 2;
         hitPoints -= damage;
         if (hitPoints <= 0) Destroy(gameObject);
     }

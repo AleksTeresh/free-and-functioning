@@ -38,7 +38,7 @@ public class LookDecision : Decision {
             if (closestObject)
             {
                 // if there is enemy nearby, and no common target, make the enemy the common target
-                if (controller.targetManager)
+                if (controller.targetManager && unit.GetPlayer().human)
                 {
                     controller.targetManager.SingleTarget = closestObject;
                 }
