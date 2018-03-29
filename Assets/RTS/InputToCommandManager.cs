@@ -9,7 +9,8 @@ namespace RTS
         public static void ToChaseState(TargetManager targetManager, StateController stateController, WorldObject chaseTarget)
         {
             // set clicked object as a target
-            stateController.chaseTarget = chaseTarget;
+            // stateController.chaseTarget = chaseTarget;
+            targetManager.SingleTarget = chaseTarget;
             // transition to Chase Manual State
             string stateName = targetManager.InMultiMode
                 ? "Chase Manual Multi"
@@ -20,7 +21,7 @@ namespace RTS
         public static void ToBusyState(TargetManager targetManager, StateController stateController, Vector3 destination)
         {
             // remove current target if present
-            stateController.chaseTarget = null;
+            // stateController.chaseTarget = null;
             // add new destination for nav mesh agent
             stateController.navMeshAgent.SetDestination(destination);
             // transition to Chase Manual State
