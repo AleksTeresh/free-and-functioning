@@ -82,6 +82,11 @@ public class Unit : WorldObject {
 		takeDamageEffect.Play();
 	}
 
+    public virtual void UseAbility(int abilityIndex)
+    {
+        Debug.Log(objectName + " should use ability" + abilityIndex);
+    }
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
