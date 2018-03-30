@@ -12,15 +12,15 @@ public class ChaseAction : Action {
 
     private void Chase(StateController controller)
     {
+        Unit unit = controller.unit;
         WorldObject chaseTarget = controller.chaseTarget;
-        if (chaseTarget)
+        if (chaseTarget && !WorkManager.ObjectCanReachTarget(unit, chaseTarget.GetFogOfWarAgent()))
         {
-            Vector3 attackPosition = WorkManager.FindNearestAttackPosition(controller.unit, chaseTarget);
-            controller.unit.StartMove(attackPosition);
+            controller.unit.StartMove(chaseTarget.transform.position);
         }
-        
-        controller.navMeshAgent.isStopped = false;
-    }
-
-    
+        else
+        {
+            controller.unit.StopMove();
+        }
+    } 
 }

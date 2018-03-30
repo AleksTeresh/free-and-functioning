@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace RTS
 {
@@ -61,7 +62,11 @@ namespace RTS
                 if (parent)
                 {
                     WorldObject parentObject = parent.GetComponent<WorldObject>();
-                    if (parentObject && !nearbyObjectIds.Contains(parentObject.ObjectId))
+
+                    if (
+                        parentObject && !nearbyObjectIds.Contains(parentObject.ObjectId) &&
+                        parentObject.GetFogOfWarAgent() && parentObject.GetFogOfWarAgent().IsObserved()
+                    )
                     {
                         nearbyObjectIds.Add(parentObject.ObjectId);
                         nearbyObjects.Add(parentObject);
@@ -88,14 +93,47 @@ namespace RTS
             return nearestObject;
         }
 
-        public static Vector3 FindNearestAttackPosition(WorldObject self, WorldObject target)
+        public static bool ObjectCanReachTarget(WorldObject self, FogOfWarAgent target)
         {
             Vector3 targetLocation = target.transform.position;
             Vector3 direction = targetLocation - self.transform.position;
             float targetDistance = direction.magnitude;
-            float distanceToTravel = targetDistance - (0.8f * self.weaponRange);
-            return Vector3.Lerp(self.transform.position, targetLocation, distanceToTravel / targetDistance);
+
+            return direction.magnitude <= (0.8f * self.weaponRange) && target.IsObserved();
         }
+/*
+        public static Vector3 FindNearestAttackPosition(NavMeshAgent selfAgent, WorldObject self, WorldObject target)
+        {
+            if (target && target.GetFogOfWarAgent() && target.GetFogOfWarAgent().IsObserved())
+            {
+                return FindNearestAttackPositionAlongStraightLine(
+                    self.weaponRange,
+                    self.transform.position,
+                    target.transform.position
+                );
+            }
+            else
+            {
+                var navMeshPath = new NavMeshPath();
+                bool result = selfAgent.CalculatePath(target.transform.position, navMeshPath);
+
+                if (result && navMeshPath.corners.Length > 1)
+                {
+                    return FindNearestAttackPositionAlongStraightLine(
+                        self.weaponRange,
+                        navMeshPath.corners[navMeshPath.corners.Length - 2],
+                        target.transform.position
+                    );
+                }
+
+                return FindNearestAttackPositionAlongStraightLine(
+                    self.weaponRange,
+                    self.transform.position,
+                    target.transform.position
+                );
+            }
+        }
+*/
 
         public static bool V3Equal(Vector3 a, Vector3 b)
         {

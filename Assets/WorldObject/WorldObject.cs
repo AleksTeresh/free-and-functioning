@@ -46,6 +46,9 @@ public class WorldObject : MonoBehaviour {
     // child renderers without Particle system
     private List<Renderer> childRenderersWithoutParticles;
 
+    // Fog Of War
+    private FogOfWarAgent fogOfWarAgent;
+
     public virtual void SetSelection(bool selected, Rect playingArea)
     {
         currentlySelected = selected;
@@ -156,6 +159,11 @@ public class WorldObject : MonoBehaviour {
         return player;
     }
 
+    public FogOfWarAgent GetFogOfWarAgent()
+    {
+        return fogOfWarAgent;
+    }
+
     public StateController GetStateController()
     {
         return stateController;
@@ -188,6 +196,8 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void Awake()
     {
+        fogOfWarAgent = GetComponent<FogOfWarAgent>();
+
         selectionBounds = ResourceManager.InvalidBounds;
 
         UpdateChildRenderers();
@@ -234,8 +244,6 @@ public class WorldObject : MonoBehaviour {
         {
             currentWeaponMultiChargeTime += Time.deltaTime;
         }
-
-        CheckMeshRender();
     }
 
     protected virtual void OnGUI()
@@ -386,7 +394,12 @@ public class WorldObject : MonoBehaviour {
     {
         Vector3 targetLocation = target.transform.position;
         Vector3 direction = targetLocation - transform.position;
-        if (WorkManager.V3Equal(direction.normalized, transform.forward.normalized)) return true;
+
+        // ignore height when considering 
+        var a = new Vector3(direction.normalized.x, 0, direction.normalized.z);
+        var b = new Vector3(transform.forward.normalized.x, 0, transform.forward.normalized.z);
+
+        if (WorkManager.V3Equal(a, b)) return true;
         else return false;
     }
 
@@ -436,10 +449,5 @@ public class WorldObject : MonoBehaviour {
 
         currentWeaponMultiChargeTime = 0.0f;
         //this behaviour needs to be specified by a specific object
-    }
-
-    private void CheckMeshRender()
-    {
-
     }
 }

@@ -35,6 +35,7 @@ public class AttackMultiAction : Action
             })
             .ToList();
 
+        controller.attacking = reachableEnemies.Count > 0;
         controller.unit.PerformAttackToMulti(reachableEnemies);
     }
 }

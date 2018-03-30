@@ -15,7 +15,7 @@ public class Unit : WorldObject {
 	private ParticleSystem takeDamageEffect;
 
 	// public float moveSpeed, rotateSpeed;
-	private NavMeshAgent agent;
+	protected NavMeshAgent agent;
 
 	// protected bool moving, rotating;
 
@@ -52,6 +52,15 @@ public class Unit : WorldObject {
     {
         StartMove(destination);
         this.destinationTarget = destinationTarget;
+    }
+
+    public void StopMove()
+    {
+        if (audioElement != null) audioElement.Stop(driveSound);
+
+        this.destinationTarget = null;
+        agent.isStopped = true;
+        agent.ResetPath();
     }
 
     public override void SaveDetails(JsonWriter writer)
@@ -109,7 +118,7 @@ public class Unit : WorldObject {
 
         HandleMove();
 
-		if (aiming)
+		if (aiming && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
 		{
 			transform.rotation = Quaternion.RotateTowards(transform.rotation, aimRotation, weaponAimSpeed);
 			CalculateBounds();

@@ -8,11 +8,15 @@ public class FogOfWarAgent : MonoBehaviour {
     private List<MeshRenderer> meshRenderers;
     private FogOfWar fogOfWar;
 
+    private bool isObserved;
+
 	// Use this for initialization
 	void Awake () {
         meshRenderers = new List<MeshRenderer>(GetComponentsInChildren<MeshRenderer>());
         fogOfWar = FindObjectOfType<FogOfWar>();
         relatedObject = GetComponent<WorldObject>();
+
+        isObserved = false;
     }
 	
 	// Update is called once per frame
@@ -34,6 +38,13 @@ public class FogOfWarAgent : MonoBehaviour {
                 relatedObject.UpdateChildRenderers();
                 relatedObject.CalculateBounds();
             }
+
+            isObserved = revealedPixels[index];
         }
 	}
+
+    public bool IsObserved()
+    {
+        return isObserved;
+    }
 }

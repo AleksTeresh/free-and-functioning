@@ -16,10 +16,10 @@ public class StateController : MonoBehaviour
     [HideInInspector] public TargetManager targetManager;
     [HideInInspector] public List<WorldObject> nearbyEnemies;
     // [HideInInspector] public float stateTimeElapsed;
+    [HideInInspector] public bool attacking;
 
     private bool aiActive;
-
-
+    
     void Awake()
     {
         unit = GetComponent<Unit>();
@@ -30,6 +30,7 @@ public class StateController : MonoBehaviour
     private void Start()
     {
         nearbyEnemies = new List<WorldObject>();
+        attacking = false;
     }
 
     public void SetupAI(bool aiActivation)

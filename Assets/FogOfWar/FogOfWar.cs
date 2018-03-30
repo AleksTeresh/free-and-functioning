@@ -62,6 +62,8 @@ public class FogOfWar : MonoBehaviour {
 
     private void Awake()
     {
+        revealers = new List<Revealer>();
+
         shadowMap = new Texture2D(textureWidth, textureHeight, TextureFormat.RGB24, false);
         lastShadowMap = new Texture2D(textureWidth, textureHeight, TextureFormat.RGB24, false);
 

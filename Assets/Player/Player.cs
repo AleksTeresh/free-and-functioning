@@ -24,8 +24,11 @@ public class Player : MonoBehaviour {
         buildings = GetComponentInChildren<Buildings>();
 
         // init for of war
-        fogOfWar = FindObjectOfType<FogOfWar>();
-        fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+        if (human)
+        {
+            fogOfWar = FindObjectOfType<FogOfWar>();
+            fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+        }
     }
 	
 	// Update is called once per frame

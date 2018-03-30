@@ -220,7 +220,7 @@ public class UserInput : MonoBehaviour {
 
                     // get owner of the object handler
                     Player objectHandlerOwner = objectHandler.GetComponentInParent<Player>();
-                    if (objectHandlerOwner.username == player.username && player && player.human)
+                    if (objectHandlerOwner && player && objectHandlerOwner.username == player.username && player.human)
                     { //this object is controlled by a human player
                         StateController handlerStateController = objectHandler.GetStateController();
                         //start attack if object is not owned by the same player and this object can attack, else select
@@ -234,6 +234,14 @@ public class UserInput : MonoBehaviour {
                         }
                     }
                     else ChangeSelection(objectHandler, worldObject);
+                }
+                else if (objectHandler.CanAttack())
+                {
+                    Unit unit = hitObject.transform.parent.GetComponent<Unit>();
+                    Building building = hitObject.transform.parent.GetComponent<Building>();
+                    StateController handlerStateController = objectHandler.GetStateController();
+
+                    if ((unit || building) && handlerStateController) InputToCommandManager.ToChaseState(targetManager, handlerStateController, worldObject);
                 }
                 else ChangeSelection(objectHandler, worldObject);
             }
