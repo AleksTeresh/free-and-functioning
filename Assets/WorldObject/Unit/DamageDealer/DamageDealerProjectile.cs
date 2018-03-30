@@ -2,4 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankProjectile : Projectile {}
+public class DamageDealerProjectile : Projectile {}
