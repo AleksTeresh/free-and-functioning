@@ -982,8 +982,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1258703247}
-  - component: {fileID: 1258703246}
   - component: {fileID: 1258703248}
+  - component: {fileID: 1258703246}
   m_Layer: 0
   m_Name: CubeWithNoName
   m_TagString: Untagged
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258703245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cae0808635812458f73a2bb8e0c87f, type: 3}
+  m_Script: {fileID: 11500000, guid: cf51a478a8bf0f24ab2995bb8fcaaaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: 
@@ -1019,6 +1019,10 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 20
+  rallyPointImage: {fileID: 0}
+  maxBuildProgress: 0
+  finishedJobSound: {fileID: 0}
+  finishedJobVolume: 1
 --- !u!4 &1258703247
 Transform:
   m_ObjectHideFlags: 0

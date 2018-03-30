@@ -37,6 +37,7 @@ public class FogOfWar : MonoBehaviour {
     private Texture2D lastShadowMap;
 
     private bool[] revealedPixels;
+    private bool[] discoveredPixels;
     #endregion
 
     public void SetRevealers(List<WorldObject> revealers)
@@ -54,6 +55,11 @@ public class FogOfWar : MonoBehaviour {
         return revealedPixels;
     }
 
+    public bool[] GetDiscoveredPixels()
+    {
+        return discoveredPixels;
+    }
+
     public Vector2 GetMapSize() { return mapSize; }
 
     public int GetTextureWidth() { return textureWidth; }
@@ -69,6 +75,7 @@ public class FogOfWar : MonoBehaviour {
 
         pixels = shadowMap.GetPixels32();
         revealedPixels = new bool[pixels.Length];
+        discoveredPixels = new bool[pixels.Length];
 
         for (var i = 0; i < pixels.Length; ++i)
         {
@@ -116,11 +123,11 @@ public class FogOfWar : MonoBehaviour {
 
             shadowMap.SetPixels32(pixels);
             shadowMap.Apply();
+
+            UpdateRevealedAndDiscoveredPixels();
         }
 
         fogMaterial.SetFloat("_interpolationValue", (Time.frameCount - interpolateStartFrame) / (float)interpolationFrames);
-
-        UpdateRevealedPixels();
     }
 
     private void OnDestroy()
@@ -221,13 +228,15 @@ public class FogOfWar : MonoBehaviour {
         return convertedHeight >= heightMapData[y * heightMapWidth + x] - convertedAgentHeight;
     }
 
-    private void UpdateRevealedPixels()
+    private void UpdateRevealedAndDiscoveredPixels()
     {
         revealedPixels = new bool[pixels.Length];
+        discoveredPixels = new bool[pixels.Length];
 
         for (int i = 0; i < pixels.Length; i++)
         {
             revealedPixels[i] = pixels[i].r == 255;
+            discoveredPixels[i] = pixels[i].g == 255;
         }
     }
 }

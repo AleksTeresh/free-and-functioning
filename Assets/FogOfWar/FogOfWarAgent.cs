@@ -24,6 +24,7 @@ public class FogOfWarAgent : MonoBehaviour {
 		if (fogOfWar.IsFogUpToDate())
         {
             bool[] revealedPixels = fogOfWar.GetRevealedPixels();
+            bool[] discoveredPixels = fogOfWar.GetDiscoveredPixels();
 
             var position = transform.position;
             int x = Mathf.RoundToInt(position.x * (fogOfWar.GetTextureWidth() / fogOfWar.GetMapSize().x));
@@ -31,12 +32,20 @@ public class FogOfWarAgent : MonoBehaviour {
 
             int index = x + y * fogOfWar.GetTextureWidth();
 
-            if (meshRenderers.Count > 0 && revealedPixels[index] != meshRenderers[0].enabled)
+            if (meshRenderers.Count > 0)
             {
-                meshRenderers.ForEach(p => p.enabled = revealedPixels[index]);
-
-                relatedObject.UpdateChildRenderers();
-                relatedObject.CalculateBounds();
+                if (relatedObject is Unit && revealedPixels[index] != meshRenderers[0].enabled)
+                {
+                    meshRenderers.ForEach(p => p.enabled = revealedPixels[index]);
+                    relatedObject.UpdateChildRenderers();
+                    relatedObject.CalculateBounds();
+                }
+                else if (!(relatedObject is Unit) && discoveredPixels[index] != meshRenderers[0].enabled)
+                {
+                    meshRenderers.ForEach(p => p.enabled = discoveredPixels[index]);
+                    relatedObject.UpdateChildRenderers();
+                    relatedObject.CalculateBounds();
+                }
             }
 
             isObserved = revealedPixels[index];
