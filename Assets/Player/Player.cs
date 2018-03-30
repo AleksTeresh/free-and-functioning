@@ -15,12 +15,17 @@ public class Player : MonoBehaviour {
     private Units units;
     private Buildings buildings;
     private HUD hud;
+    private FogOfWar fogOfWar;
 
     // Use this for initialization
     void Start () {
         hud = GetComponentInChildren<HUD>();
         units = GetComponentInChildren<Units>();
         buildings = GetComponentInChildren<Buildings>();
+
+        // init for of war
+        fogOfWar = FindObjectOfType<FogOfWar>();
+        fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
     }
 	
 	// Update is called once per frame
@@ -49,6 +54,9 @@ public class Player : MonoBehaviour {
             unitObject.ObjectId = ResourceManager.GetNewObjectId();
             if (spawnPoint != rallyPoint) unitObject.StartMove(rallyPoint);
         }
+
+        // update fog of war revealers
+        fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
     }
 
     public virtual void SaveDetails(JsonWriter writer)
