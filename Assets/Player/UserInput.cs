@@ -250,8 +250,7 @@ public class UserInput : MonoBehaviour {
             if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
             {
                 float x = hitPoint.x;
-                //makes sure that the unit stays on top of the surface it is on
-                float y = hitPoint.y + player.SelectedObject.transform.position.y;
+                float y = hitPoint.y;
                 float z = hitPoint.z;
                 Vector3 destination = new Vector3(x, y, z);
 
@@ -288,7 +287,18 @@ public class UserInput : MonoBehaviour {
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)) return hit.collider.gameObject;
+        if (Physics.Raycast(ray, out hit))
+        {
+            var relatedMesh = hit.collider.gameObject.GetComponent<MeshRenderer>();
+
+            if (WorkManager.ObjectIsGround(hit.collider.gameObject) || (relatedMesh && relatedMesh.enabled))
+            {
+                return hit.collider.gameObject;
+            }
+
+            return null;
+        }
+ 
         return null;
     }
 

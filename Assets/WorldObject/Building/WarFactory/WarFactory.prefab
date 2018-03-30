@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4778662062451748}
   - component: {fileID: 114903955550362642}
+  - component: {fileID: 114355130492329752}
   m_Layer: 0
   m_Name: WarFactory
   m_TagString: Untagged
@@ -467,6 +468,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114355130492329752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485457674949076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114565337362020062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -498,6 +510,7 @@ MonoBehaviour:
   weaponRange: 10
   weaponAimSpeed: 1
   weaponRechargeTime: 1
+  weaponMultiRechargeTime: 1
   attackSound: {fileID: 8300000, guid: 33678abad51fdac45873effd3f676779, type: 3}
   selectSound: {fileID: 8300000, guid: 34bf03edab4eca74f93c5e301f60f475, type: 3}
   useWeaponSound: {fileID: 8300000, guid: a69c41ebdef7e0a49902503d4b6b2f33, type: 3}

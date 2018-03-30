@@ -35,12 +35,30 @@ public class FogOfWar : MonoBehaviour {
     private int[] heightMapData;
     private int interpolateStartFrame;
     private Texture2D lastShadowMap;
+
+    private bool[] revealedPixels;
     #endregion
 
-    public void SetRevealers (List<WorldObject> revealers)
+    public void SetRevealers(List<WorldObject> revealers)
     {
         this.revealers = revealers.Select(p => new Revealer(p, p.GetComponent<NavMeshAgent>())).ToList();
     }
+
+    public bool IsFogUpToDate ()
+    {
+        return Time.frameCount % interpolationFrames == 0;
+    }
+
+    public bool[] GetRevealedPixels()
+    {
+        return revealedPixels;
+    }
+
+    public Vector2 GetMapSize() { return mapSize; }
+
+    public int GetTextureWidth() { return textureWidth; }
+
+    public int GetTextureHeight() { return textureHeight; }
 
     private void Awake()
     {
@@ -48,6 +66,7 @@ public class FogOfWar : MonoBehaviour {
         lastShadowMap = new Texture2D(textureWidth, textureHeight, TextureFormat.RGB24, false);
 
         pixels = shadowMap.GetPixels32();
+        revealedPixels = new bool[pixels.Length];
 
         for (var i = 0; i < pixels.Length; ++i)
         {
@@ -79,7 +98,7 @@ public class FogOfWar : MonoBehaviour {
 
     private void Update()
     {
-        if (Time.frameCount % interpolationFrames == 0)
+        if (IsFogUpToDate())
         {
             lastShadowMap.SetPixels32(pixels);
             lastShadowMap.Apply();
@@ -98,6 +117,8 @@ public class FogOfWar : MonoBehaviour {
         }
 
         fogMaterial.SetFloat("_interpolationValue", (Time.frameCount - interpolateStartFrame) / (float)interpolationFrames);
+
+        UpdateRevealedPixels();
     }
 
     private void OnDestroy()
@@ -111,16 +132,14 @@ public class FogOfWar : MonoBehaviour {
         foreach (var revealer in revealers)
         {
             // if the revealer is dead, ignore it
-            if (!revealer.WorldObject)
+            if (revealer.WorldObject)
             {
-                return;
+                DrawFilledMidpointCircleSinglePixelVisit(
+                    revealer.WorldObject.transform.position,
+                    (int)revealer.WorldObject.detectionRange,
+                    revealer.NavMeshAgent ? revealer.NavMeshAgent.height : 0 // change 0 for default heit of non-moving objects
+                );
             }
-
-            DrawFilledMidpointCircleSinglePixelVisit(
-                revealer.WorldObject.transform.position,
-                (int)revealer.WorldObject.detectionRange,
-                revealer.NavMeshAgent ? revealer.NavMeshAgent.height : 0 // change 0 for default heit of non-moving objects
-            );
         }
     }
 
@@ -130,8 +149,8 @@ public class FogOfWar : MonoBehaviour {
         int y = 0;
         int radiusError = 1 - x;
 
-        var centerX = Mathf.RoundToInt(position.x * (textureWidth / mapSize.x));
-        var centerY = Mathf.RoundToInt(position.z * (textureHeight / mapSize.y));
+        int centerX = Mathf.RoundToInt(position.x * (textureWidth / mapSize.x));
+        int centerY = Mathf.RoundToInt(position.z * (textureHeight / mapSize.y));
 
         while (x >= y)
         {
@@ -198,5 +217,15 @@ public class FogOfWar : MonoBehaviour {
         float convertedAgentHeight = (agentHeight / MAX_TERRAIN_HEIGHT) * ushort.MaxValue;
 
         return convertedHeight >= heightMapData[y * heightMapWidth + x] - convertedAgentHeight;
+    }
+
+    private void UpdateRevealedPixels()
+    {
+        revealedPixels = new bool[pixels.Length];
+
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            revealedPixels[i] = pixels[i].r == 255;
+        }
     }
 }
