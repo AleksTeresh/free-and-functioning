@@ -65,7 +65,7 @@ public class HUD : MonoBehaviour {
         if (player && player.human)
         {
             DrawPlayerDetails();
-            DrawOrdersBar();
+            // DrawOrdersBar();
             DrawResourceBar();
             DrawMouseCursor();
         }
