@@ -32,7 +32,7 @@ public class LookDecision : Decision {
             List<WorldObject> enemyObjects = new List<WorldObject>();
             foreach (WorldObject nearbyObject in nearbyObjects)
             {
-                if (nearbyObject.GetPlayer() != unit.GetPlayer()) enemyObjects.Add(nearbyObject);
+                if (nearbyObject.GetPlayer() && nearbyObject.GetPlayer() != unit.GetPlayer()) enemyObjects.Add(nearbyObject);
             }
             WorldObject closestObject = WorkManager.FindNearestWorldObjectInListToPosition(enemyObjects, currentPosition);
             if (closestObject)

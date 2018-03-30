@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114825295033475544}
   - component: {fileID: 195407169525080644}
   - component: {fileID: 114401522097491854}
+  - component: {fileID: 114930318411492266}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -562,6 +563,7 @@ MonoBehaviour:
   wayPointList: []
   nextWayPoint: 0
   chaseTarget: {fileID: 0}
+  targetManager: {fileID: 0}
   nearbyEnemies: []
 --- !u!114 &114640266339204548
 MonoBehaviour:
@@ -615,6 +617,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114930318411492266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1298768487697374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136511973156996574

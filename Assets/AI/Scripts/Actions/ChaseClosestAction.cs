@@ -20,12 +20,14 @@ public class ChaseClosestAction : Action
         Vector3 currentPosition = unit.transform.position;
         WorldObject closestEnemy = WorkManager.FindNearestWorldObjectInListToPosition(controller.nearbyEnemies, currentPosition);
 
-        if (closestEnemy)
+        if (closestEnemy && !WorkManager.ObjectCanReachTarget(unit, closestEnemy.GetFogOfWarAgent()))
         {
-            Vector3 attackPosition = WorkManager.FindNearestAttackPosition(controller.unit, closestEnemy);
-            controller.unit.StartMove(attackPosition);
+            // Vector3 attackPosition = WorkManager.FindNearestAttackPosition(controller.navMeshAgent, controller.unit, closestEnemy);
+            controller.unit.StartMove(closestEnemy.transform.position);
         }
-
-        controller.navMeshAgent.isStopped = false;
+        else
+        {
+            controller.unit.StopMove();
+        }
     }
 }

@@ -29,7 +29,6 @@ public class WorldObject : MonoBehaviour {
     private float currentWeaponChargeTime;
     private float currentWeaponMultiChargeTime;
 
-
     // loading related
     protected bool loadedSavedValues = false;
     private int loadedTargetId = -1;
@@ -37,20 +36,18 @@ public class WorldObject : MonoBehaviour {
     // audio related
     public AudioClip attackSound, selectSound, useWeaponSound;
     public float attackVolume = 1.0f, selectVolume = 1.0f, useWeaponVolume = 1.0f;
+    protected AudioElement audioElement;
 
     // AI related
     public float detectionRange = 20.0f;
     protected StateController stateController;
     private int underAttackFrameCounter;
 
-    //we want to restrict how many decisions are made to help with game performance
-    //the default time at the moment is a tenth of a second
-    private float timeSinceLastDecision = 0.0f, timeBetweenDecisions = 0.1f;
-
-    protected AudioElement audioElement;
-
-    // child renderers without Partycle system
+    // child renderers without Particle system
     private List<Renderer> childRenderersWithoutParticles;
+
+    // Fog Of War
+    private FogOfWarAgent fogOfWarAgent;
 
     public virtual void SetSelection(bool selected, Rect playingArea)
     {
@@ -162,6 +159,11 @@ public class WorldObject : MonoBehaviour {
         return player;
     }
 
+    public FogOfWarAgent GetFogOfWarAgent()
+    {
+        return fogOfWarAgent;
+    }
+
     public StateController GetStateController()
     {
         return stateController;
@@ -177,26 +179,34 @@ public class WorldObject : MonoBehaviour {
         return underAttackFrameCounter > 0;
     }
 
-    protected virtual void Awake()
+    public void UpdateChildRenderers()
     {
-        selectionBounds = ResourceManager.InvalidBounds;
-
         // retrieve child renderers
         var renderers = GetComponentsInChildren<Renderer>();
         childRenderersWithoutParticles = new List<Renderer>();
         // filter out particle system renderers
         foreach (Renderer r in renderers)
         {
-            if (r.GetComponentInParent<ParticleSystem>() == null)
+            if (r.enabled && r.GetComponentInParent<ParticleSystem>() == null)
             {
                 childRenderersWithoutParticles.Add(r);
             }
         }
+    }
+
+    protected virtual void Awake()
+    {
+        fogOfWarAgent = GetComponent<FogOfWarAgent>();
+
+        selectionBounds = ResourceManager.InvalidBounds;
+
+        UpdateChildRenderers();
 
         CalculateBounds();
 
         stateController = GetComponent<StateController>();
     }
+
 
     protected virtual void Start()
     {
@@ -384,7 +394,12 @@ public class WorldObject : MonoBehaviour {
     {
         Vector3 targetLocation = target.transform.position;
         Vector3 direction = targetLocation - transform.position;
-        if (WorkManager.V3Equal(direction.normalized, transform.forward.normalized)) return true;
+
+        // ignore height when considering 
+        var a = new Vector3(direction.normalized.x, 0, direction.normalized.z);
+        var b = new Vector3(transform.forward.normalized.x, 0, transform.forward.normalized.z);
+
+        if (WorkManager.V3Equal(a, b)) return true;
         else return false;
     }
 
@@ -435,16 +450,4 @@ public class WorldObject : MonoBehaviour {
         currentWeaponMultiChargeTime = 0.0f;
         //this behaviour needs to be specified by a specific object
     }
-
-    /*
-  private bool TargetInRange()
-  {
-     Vector3 targetLocation = target.transform.position;
-     Vector3 direction = targetLocation - transform.position;
-     if (direction.sqrMagnitude < weaponRange * weaponRange)
-     {
-         return true;
-     }
-     return false;
-   } */
 }

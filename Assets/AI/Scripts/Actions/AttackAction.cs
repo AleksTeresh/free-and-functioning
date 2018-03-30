@@ -30,7 +30,11 @@ public class AttackAction : Action {
             direction.sqrMagnitude < unit.weaponRange * unit.weaponRange
         )
         {
+            controller.attacking = true;
             controller.unit.PerformAttack(chaseTarget);
+        } else
+        {
+            controller.attacking = false;
         }
     }
 }
