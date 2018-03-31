@@ -13,7 +13,7 @@ namespace RTS
             "Ability5"
         };
 
-        public static void HandleInput(Player player)
+        public static void HandleInput(Player player, TargetManager targetManager)
         {
             if (player.SelectedObject != null && player.SelectedObject is Unit)
             {
@@ -23,7 +23,9 @@ namespace RTS
                 {
                     if (Input.GetButtonDown(hotkeys[i]))
                     {
-                        selectedUnit.UseAbility(i);
+//                        selectedUnit.UseAbility(i);
+
+						InputToCommandManager.AbilityHotkeyToChaseState(targetManager, selectedUnit.GetStateController(), i);
 
                         return;
                     }

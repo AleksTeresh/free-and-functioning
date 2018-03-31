@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4244830446879854}
   - component: {fileID: 114924195460667214}
   m_Layer: 0
-  m_Name: TankProjectile
+  m_Name: DamageDealerProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
+using Abilities;
 
 public class WorldObject : MonoBehaviour {
 
@@ -281,6 +282,24 @@ public class WorldObject : MonoBehaviour {
         else if (ReadyToFire()) UseWeapon(target);
     }
 
+	public virtual void UseAbility(WorldObject target, Ability ability) {
+		if (!target)
+		{
+			// attacking = false;
+			return;
+		}
+
+		Debug.Log(objectName + " should use ability" + ability.abilityName);
+
+
+		if (!TargetInFrontOfWeapon (target)) {
+			AimAtTarget (target);
+		}
+		else if (ability.isReady) {
+			ability.UseOnTarget(target);
+		}
+	}
+ 
     public virtual void PerformAttackToMulti(List<WorldObject> targets)
     {
         if (targets == null || targets.Count == 0)
@@ -309,6 +328,13 @@ public class WorldObject : MonoBehaviour {
         //default behaviour needs to be overidden by children
         return false;
     }
+
+	public virtual bool IsHealer() 
+	{
+		// Necessary for HotkeyUnitSelector, to check if the unit is healer
+		return false;
+	}
+		
 
     public virtual bool CanAttackMulti()
     {

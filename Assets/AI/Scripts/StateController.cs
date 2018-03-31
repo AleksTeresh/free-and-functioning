@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Abilities;
 
 public class StateController : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class StateController : MonoBehaviour
     [HideInInspector] public TargetManager targetManager;
     [HideInInspector] public List<WorldObject> nearbyEnemies;
     // [HideInInspector] public float stateTimeElapsed;
-    [HideInInspector] public bool attacking;
+	[HideInInspector] public bool attacking;
+	[HideInInspector] public Ability abilityToUse;
 
     private bool aiActive;
     

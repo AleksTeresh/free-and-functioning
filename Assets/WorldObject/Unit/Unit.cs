@@ -4,12 +4,16 @@ using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
 using UnityEngine.AI;
+using Statuses;
+using Abilities;
 
 public class Unit : WorldObject {
 
     // audio 
     public AudioClip driveSound, moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
+	public Status[] activeStatuses;
+	public Ability[] abilities;
 
 	protected Quaternion aimRotation;
 	private ParticleSystem takeDamageEffect;
@@ -82,10 +86,13 @@ public class Unit : WorldObject {
 		takeDamageEffect.Play();
 	}
 
-    public virtual void UseAbility(int abilityIndex)
-    {
-        Debug.Log(objectName + " should use ability" + abilityIndex);
-    }
+	public Ability FindAbilityByIndex(int abilityIndex) {
+		if (abilityIndex < abilities.Length) {
+			return abilities [abilityIndex];
+		}
+
+		return null;
+	}
 
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
@@ -105,6 +112,7 @@ public class Unit : WorldObject {
 
         agent = GetComponent<NavMeshAgent>();
 		takeDamageEffect = GetComponentInChildren<ParticleSystem> ();
+		abilities = GetComponentsInChildren<Ability> ();
     }
 
     protected override void Start()
