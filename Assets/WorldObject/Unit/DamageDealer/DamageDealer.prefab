@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1298768487697374}
   m_IsPrefabParent: 1
+--- !u!1 &1172390270348124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4595884104143204}
+  - component: {fileID: 114693983462831328}
+  m_Layer: 0
+  m_Name: Abilities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1268174596184792
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +159,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1714027403067262
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4741891621387980}
+  - component: {fileID: 114110763019108852}
+  m_Layer: 0
+  m_Name: Ability (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1749102925159970
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +189,22 @@ GameObject:
   - component: {fileID: 23671431905074710}
   m_Layer: 0
   m_Name: RightTread
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1777061889580648
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4550295279867592}
+  - component: {fileID: 114953450252964264}
+  m_Layer: 0
+  m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298768487697374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 298, y: 0, z: 163}
+  m_LocalPosition: {x: -41.4, y: -2, z: -28.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4339132084271508}
@@ -205,6 +253,7 @@ Transform:
   - {fileID: 4326870498767106}
   - {fileID: 4684484616888454}
   - {fileID: 4117405285063454}
+  - {fileID: 4595884104143204}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,6 +283,34 @@ Transform:
   m_Father: {fileID: 4121027316948694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+--- !u!4 &4550295279867592
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1777061889580648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 177.45378, y: 19.927269, z: 193.56865}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4595884104143204}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4595884104143204
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172390270348124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4550295279867592}
+  - {fileID: 4741891621387980}
+  m_Father: {fileID: 4121027316948694}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4684484616888454
 Transform:
   m_ObjectHideFlags: 1
@@ -246,6 +323,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4121027316948694}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4741891621387980
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714027403067262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 177.45378, y: 19.927269, z: 193.56865}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4595884104143204}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4847409062806356
 Transform:
@@ -618,6 +708,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114110763019108852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714027403067262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bece158f94d32549b6bb57a2a9bbd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Ability Base
+  damage: 1000
+  cooldown: 10
+  isHealingAbility: 0
+  statuses: []
+  range: 1000
+  user: {fileID: 0}
+  target: {fileID: 0}
+  isReady: 1
+  cooldownTimer: 0
 --- !u!114 &114401522097491854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -639,6 +750,7 @@ MonoBehaviour:
   targetManager: {fileID: 0}
   nearbyEnemies: []
   attacking: 0
+  abilityToUse: {fileID: 0}
 --- !u!114 &114640266339204548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -648,6 +760,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114693983462831328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172390270348124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ff1247dfe214d75b28da0c5b6d1754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114825295033475544
@@ -682,6 +805,10 @@ MonoBehaviour:
   moveSound: {fileID: 8300000, guid: 568155acc84ab834eabc52a5a512dad3, type: 3}
   driveVolume: 0.5
   moveVolume: 1
+  activeStatuses: []
+  abilities:
+  - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
+  - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
 --- !u!114 &114831566070440100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -715,6 +842,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114953450252964264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1777061889580648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bece158f94d32549b6bb57a2a9bbd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Ability Base
+  damage: 1000
+  cooldown: 10
+  isHealingAbility: 0
+  statuses: []
+  range: 1000
+  user: {fileID: 0}
+  target: {fileID: 0}
+  isReady: 1
+  cooldownTimer: 0
 --- !u!136 &136511973156996574
 CapsuleCollider:
   m_ObjectHideFlags: 1

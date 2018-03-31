@@ -112,7 +112,7 @@ public class Unit : WorldObject {
 
         agent = GetComponent<NavMeshAgent>();
 		takeDamageEffect = GetComponentInChildren<ParticleSystem> ();
-//		abilities = GetComponents<Ability> ();
+		abilities = GetComponentsInChildren<Ability> ();
     }
 
     protected override void Start()
