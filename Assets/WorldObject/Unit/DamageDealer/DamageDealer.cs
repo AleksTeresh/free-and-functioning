@@ -4,7 +4,7 @@ using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
 
-public class Tank : Unit
+public class DamageDealer : Unit
 {
     protected override void Start()
     {
@@ -32,7 +32,7 @@ public class Tank : Unit
         base.UseWeapon(target);
         Vector3 spawnPoint = GetSpawnPoint();
 
-        FireProjectile(target, "TankProjectile", spawnPoint);
+        FireProjectile(target, "DamageDealerProjectile", spawnPoint);
     }
 
     protected override void UseWeaponMulti(List<WorldObject> targets)
@@ -43,7 +43,7 @@ public class Tank : Unit
         targets.ForEach(p =>
         {
             var rotation = Quaternion.LookRotation(p.transform.position - transform.position);
-            FireProjectile(p, "TankLightProjectile", spawnPoint, rotation);
+            FireProjectile(p, "DamageDealerLightProjectile", spawnPoint, rotation);
         });
     }
 
