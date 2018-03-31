@@ -143,10 +143,6 @@ public class Unit : WorldObject {
 			}
 		}
         // else if (moving) MakeMove();
-
-		for (int i = 0; i < abilities.Length; i++) {
-			abilities [i].Update ();
-		}
     }
 
     protected override void OnGUI()
