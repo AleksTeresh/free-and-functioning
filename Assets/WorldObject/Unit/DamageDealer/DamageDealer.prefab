@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114401522097491854}
   - component: {fileID: 114930318411492266}
   m_Layer: 0
-  m_Name: Tank
+  m_Name: DamageDealer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

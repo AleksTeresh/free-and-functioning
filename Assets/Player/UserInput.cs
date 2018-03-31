@@ -33,7 +33,7 @@ public class UserInput : MonoBehaviour {
             AttackModeSelection();
 
 			RTS.HotkeyUnitSelector.HandleInput (player, hud);
-            RTS.HotkeyAbilitySelector.HandleInput(player);
+			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager );
         }
     }
 

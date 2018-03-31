@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Abilities;
 
 namespace RTS
 {
@@ -17,6 +18,19 @@ namespace RTS
                 : "Chase Manual";
             stateController.TransitionToState(ResourceManager.GetAiState(stateName));
         }
+
+		public static void AbilityHotkeyToChaseState(TargetManager targetManager, StateController stateController, int abilityIndex) {
+
+			Ability ability = stateController.unit.FindAbilityByIndex (abilityIndex);
+
+			if (ability != null) {
+				string stateName = targetManager.InMultiMode
+					? "Ability Chase Manual Multi"
+					: "Ability Manual";
+				stateController.abilityToUse = ability;
+				stateController.TransitionToState (ResourceManager.GetAiState (stateName));
+			}
+		}
 
         public static void ToBusyState(TargetManager targetManager, StateController stateController, Vector3 destination)
         {
