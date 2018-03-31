@@ -27,6 +27,11 @@ public class DamageDealer : Unit
         return true;
     }
 
+    public override bool IsMajor()
+    {
+        return true;
+    }
+
     protected override void UseWeapon(WorldObject target)
     {
         base.UseWeapon(target);

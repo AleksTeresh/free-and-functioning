@@ -12,16 +12,21 @@ public class Player : MonoBehaviour {
     public string username;
     public bool human;
 
-    private Units units;
-    private Buildings buildings;
+    private List<Unit> units;
+    private List<Building> buildings;
+
+    private Units unitsWrapper;
+    private Buildings buildingsWrapper;
     private HUD hud;
     private FogOfWar fogOfWar;
 
     // Use this for initialization
     void Start () {
         hud = GetComponentInChildren<HUD>();
-        units = GetComponentInChildren<Units>();
-        buildings = GetComponentInChildren<Buildings>();
+        unitsWrapper = GetComponentInChildren<Units>();
+        buildingsWrapper = GetComponentInChildren<Buildings>();
+        units = new List<Unit>(GetComponentsInChildren<Unit>());
+        buildings = new List<Building>(GetComponentsInChildren<Building>());
 
         // init for of war
         if (human)
@@ -33,22 +38,31 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        units = new List<Unit>(GetComponentsInChildren<Unit>());
+        buildings = new List<Building>(GetComponentsInChildren<Building>());
+    }
 
     public bool IsDead()
     {
-        Building[] buildings = GetComponentsInChildren<Building>();
-        Unit[] units = GetComponentsInChildren<Unit>();
-        if (buildings != null && buildings.Length > 0) return false;
-        if (units != null && units.Length > 0) return false;
+        if (buildings != null && buildings.Count > 0) return false;
+        if (units != null && units.Count > 0) return false;
         return true;
+    }
+
+    public List<Unit> GetUnits()
+    {
+        return units;
+    }
+
+    public List<Building> GetBuildings()
+    {
+        return buildings;
     }
 
     public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation, Building creator)
     {
         GameObject newUnit = (GameObject)Instantiate(ResourceManager.GetUnit(unitName), spawnPoint, rotation);
-        newUnit.transform.parent = units.transform;
+        newUnit.transform.parent = unitsWrapper.transform;
         Unit unitObject = newUnit.GetComponent<Unit>();
 
         if (unitObject)
@@ -135,7 +149,7 @@ public class Player : MonoBehaviour {
                     GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetBuilding(type));
                     Building building = newObject.GetComponent<Building>();
                     building.LoadDetails(reader);
-                    building.transform.parent = buildings.transform;
+                    building.transform.parent = buildingsWrapper.transform;
                     building.SetPlayer();
                     building.SetTeamColor();
                 }
@@ -159,7 +173,7 @@ public class Player : MonoBehaviour {
                     GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetUnit(type));
                     Unit unit = newObject.GetComponent<Unit>();
                     unit.LoadDetails(reader);
-                    unit.transform.parent = units.transform;
+                    unit.transform.parent = unitsWrapper.transform;
                     unit.SetPlayer();
                     unit.SetTeamColor();
                 }

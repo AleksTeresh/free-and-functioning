@@ -10,8 +10,13 @@ public class Tanker : MeleeUnit {
 	{
 		return true;
 	}
-		
-	protected override void UseWeapon(WorldObject target)
+
+    public override bool IsMajor()
+    {
+        return true;
+    }
+
+    protected override void UseWeapon(WorldObject target)
 	{
 		base.UseWeapon (target);
 		target.TakeDamage (damage);

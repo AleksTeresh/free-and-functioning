@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace RTS
 {
@@ -28,14 +29,13 @@ namespace RTS
 
         private static void SelectPlayerUnitByHotkeyIndex(Player player, HUD hud, int unitIndex)
         {
-            Units units = player.GetComponentInChildren<Units>();
-            Unit[] playerUnits = units.GetComponentsInChildren<Unit>();
+            var units = player.GetUnits();
 
-            if (unitIndex < playerUnits.Length)
+            if (unitIndex < units.Count)
             {
-                ResetPlayerUnitsSelection(playerUnits, hud);
+                ResetPlayerUnitsSelection(units, hud);
 
-                Unit unitToSelect = playerUnits[unitIndex];
+                Unit unitToSelect = units[unitIndex];
 
                 player.SelectedObject = unitToSelect;
                 unitToSelect.SetSelection(true, hud.GetPlayingArea());
@@ -43,12 +43,9 @@ namespace RTS
 
         }
 
-        private static void ResetPlayerUnitsSelection(Unit[] units, HUD hud)
+        private static void ResetPlayerUnitsSelection(List<Unit> units, HUD hud)
         {
-            for (int i = 0; i < units.Length; i++)
-            {
-                units[i].SetSelection(false, hud.GetPlayingArea());
-            }
+            units.ForEach(p => p.SetSelection(false, hud.GetPlayingArea()));
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using RTS;
 
@@ -43,9 +45,14 @@ public class HUD : MonoBehaviour {
 
     private AudioElement audioElement;
 
+    private PlayerUnitBar playerUnitBar;
+    private EnemyUnitBar enemyUnitBar;
+
     // Use this for initialization
     void Start () {
         player = transform.root.GetComponent<Player>();
+        playerUnitBar = GetComponentInChildren<PlayerUnitBar>();
+        enemyUnitBar = GetComponentInChildren<EnemyUnitBar>();
 
         ResourceManager.StoreSelectBoxItems(selectBoxSkin, healthy, damaged, critical);
 
@@ -66,7 +73,11 @@ public class HUD : MonoBehaviour {
         {
             DrawPlayerDetails();
             // DrawOrdersBar();
-            DrawResourceBar();
+            DrawUnitsBar(playerUnitBar, player.GetUnits(), "PlayerIndicator");
+
+            var observedEmenies = GetNearbyEnemies();
+            DrawUnitsBar(enemyUnitBar, observedEmenies, "EnemyIndicator");
+            DrawResourceBar(observedEmenies.Count);
             DrawMouseCursor();
         }
     }
@@ -136,6 +147,56 @@ public class HUD : MonoBehaviour {
         }
     }
 
+    private void DrawUnitsBar(UnitBar unitBar, List<Unit> units, string indicatorName)
+    {
+        var indicators = unitBar.GetIndicators();
+        var indicatedUnits = indicators.Select(p => p.GetUnit()).ToList();
+
+        int newIndicatorsCounter = 0;
+
+        for (int i = 0; i < indicatedUnits.Count; i++)
+        {
+            if (!units.Contains(indicatedUnits[i]))
+            {
+                indicatedUnits = new List<Unit>();
+                var indicatorsWrapper = unitBar.GetIndicatorsWrapper();
+                new List<Indicator>(
+                    indicatorsWrapper.transform
+                        .GetComponentsInChildren<Indicator>()
+                )
+                .ForEach(s => Destroy(s.gameObject));
+                break;
+            }
+        }
+
+        units.Where(p => p.IsMajor()).ToList().ForEach(p =>
+        {
+            if (!indicatedUnits.Contains(p))
+            {
+                var indicatorsWrapper = unitBar.GetIndicatorsWrapper();
+                var newIndicatorObject = GameObject.Instantiate(ResourceManager.GetUIElement(indicatorName));
+                var newIndicator = newIndicatorObject.GetComponent<Indicator>();
+
+                if (newIndicator)
+                {
+                    newIndicator.Init(p);
+                    newIndicator.transform.parent = indicatorsWrapper.transform;
+
+                    var rectTransform = newIndicatorObject.GetComponent<RectTransform>();
+                    rectTransform.anchoredPosition = new Vector2(0, -100 - 100 * (indicatedUnits.Count() + newIndicatorsCounter));
+                    rectTransform.sizeDelta = new Vector2(0, 100);
+
+                    newIndicatorsCounter++;
+                }
+            }
+        });
+
+        if (newIndicatorsCounter > 0)
+        {
+            unitBar.Update();
+        }
+    }
+
     private void DrawOrdersBar()
     {
         GUI.skin = orderSkin;
@@ -172,7 +233,7 @@ public class HUD : MonoBehaviour {
         GUI.EndGroup();
     }
 
-    private void DrawResourceBar()
+    private void DrawResourceBar(int enemyCount)
     {
         GUI.skin = resourceSkin;
         GUI.BeginGroup(new Rect(0, 0, Screen.width, RESOURCE_BAR_HEIGHT));
@@ -194,6 +255,9 @@ public class HUD : MonoBehaviour {
             UserInput userInput = player.GetComponent<UserInput>();
             if (userInput) userInput.enabled = false;
         }
+
+        Rect enemyCounterPos = new Rect(20, 10, buttonWidth, buttonHeight);
+        GUI.TextArea(enemyCounterPos, "Enemy count: " + enemyCount.ToString());
 
         GUI.EndGroup();
     }
@@ -366,5 +430,14 @@ public class HUD : MonoBehaviour {
     private void PlayClick()
     {
         if (audioElement != null) audioElement.Play(clickSound);
+    }
+
+    private List<Unit> GetNearbyEnemies()
+    {
+        return player.GetUnits()
+            .SelectMany(p => p.GetStateController().nearbyEnemies.Where(s => s is Unit))
+            .Select(p => (Unit)p)
+            .Distinct()
+            .ToList();
     }
 }
