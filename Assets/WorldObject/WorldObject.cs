@@ -16,6 +16,7 @@ public class WorldObject : MonoBehaviour {
     protected HUD hud;
     protected string[] actions = { };
     protected bool currentlySelected = false;
+    private Light selectionLight;
     protected Bounds selectionBounds;
     protected Rect playingArea = new Rect(0.0f, 0.0f, 0.0f, 0.0f);
     protected GUIStyle healthStyle = new GUIStyle();
@@ -57,9 +58,15 @@ public class WorldObject : MonoBehaviour {
         {
             if (audioElement != null) audioElement.Play(selectSound);
 
+            if (selectionLight) selectionLight.enabled = true;
+
             this.playingArea = playingArea;
+
         }
-        
+        else if (selectionLight)
+        {
+            selectionLight.enabled = false;
+        }
     }
 
     public string[] GetActions()
@@ -203,9 +210,11 @@ public class WorldObject : MonoBehaviour {
 
         UpdateChildRenderers();
 
-        CalculateBounds();
+        // CalculateBounds();
 
         stateController = GetComponent<StateController>();
+
+        selectionLight = GetComponentInChildren<Light>();
     }
 
 
@@ -217,6 +226,7 @@ public class WorldObject : MonoBehaviour {
         if (player)
         {
             hud = player.GetComponentInChildren<HUD>();
+            playingArea = hud.GetPlayingArea();
 
             if (loadedSavedValues)
             {
@@ -249,7 +259,19 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void OnGUI()
     {
-        if (currentlySelected && !ResourceManager.MenuOpen) DrawSelection();
+        if (!ResourceManager.MenuOpen)
+        {
+            if (currentlySelected)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            DrawLocalHealthBar();
+        }
     }
 
     protected virtual void InitialiseAudio()
@@ -360,23 +382,31 @@ public class WorldObject : MonoBehaviour {
             default: break;
         }
     }
-
+    /*
     protected virtual void DrawSelectionBox(Rect selectBox)
     {
         GUI.Box(selectBox, "");
-        CalculateCurrentHealth();
-        GUI.Label(new Rect(selectBox.x, selectBox.y - 7, selectBox.width * healthPercentage, 5), "", healthStyle);
     }
+    */
+    protected virtual void DrawLocalHealthBar()
+    {
+        GUI.skin = ResourceManager.SelectBoxSkin;
+        Rect selectBox = WorkManager.CalculateSelectionBox(selectionBounds, playingArea);
 
+        CalculateCurrentHealth();
+        GUI.Label(new Rect(selectBox.x, selectBox.y + 30, 80 * healthPercentage, 5), "", healthStyle);
+    }
+    /*
     private void DrawSelection()
     {
         GUI.skin = ResourceManager.SelectBoxSkin;
         Rect selectBox = WorkManager.CalculateSelectionBox(selectionBounds, playingArea);
+        DrawLocalHealthBar(selectBox);
         //Draw the selection box around the currently selected object, within the bounds of the playing area
         GUI.BeginGroup(playingArea);
         DrawSelectionBox(selectBox);
         GUI.EndGroup();
-    }
+    }  */
 
     public bool IsOwnedBy(Player owner)
     {

@@ -144,14 +144,14 @@ public class Unit : WorldObject {
 		}
         // else if (moving) MakeMove();
     }
-
+    /*
     protected override void OnGUI()
     {
         base.OnGUI();
 
         if (currentlySelected) DrawSelection();
     }
-
+    */
     protected override void InitialiseAudio()
     {
         base.InitialiseAudio();
@@ -173,7 +173,7 @@ public class Unit : WorldObject {
 		base.AimAtTarget(target);
 		aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
 	}
-
+    /*
     private void DrawSelection()
     {
         GUI.skin = ResourceManager.SelectBoxSkin;
@@ -183,7 +183,7 @@ public class Unit : WorldObject {
         DrawSelectionBox(selectBox);
         GUI.EndGroup();
     }
-
+    */
     private void HandleMove()
     {
         if (agent.velocity.magnitude == 0 && agent.remainingDistance <= agent.stoppingDistance)

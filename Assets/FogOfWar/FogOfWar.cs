@@ -68,6 +68,9 @@ public class FogOfWar : MonoBehaviour {
 
     private void Awake()
     {
+        var ground = GetComponentInParent<Ground>();
+        fogMaterial = ground.GetMaterial();
+
         revealers = new List<Revealer>();
 
         shadowMap = new Texture2D(textureWidth, textureHeight, TextureFormat.RGB24, false);
