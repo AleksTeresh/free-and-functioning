@@ -13,6 +13,7 @@ public class GameObjectList : MonoBehaviour {
     public GameObject player;
     public Texture2D[] avatars;
     public State[] aiStates;
+    public GameObject[] uiElements;
 
     void Awake()
     {
@@ -90,6 +91,15 @@ public class GameObjectList : MonoBehaviour {
         foreach (State state in aiStates)
         {
             if (state.name == name) return state;
+        }
+        return null;
+    }
+
+    public GameObject GetUIElement(string name)
+    {
+        foreach (GameObject element in uiElements)
+        {
+            if (element.name == name) return element;
         }
         return null;
     }

@@ -8,6 +8,7 @@ TagManager:
   - Units
   - Buildings
   - PatrolPoint
+  - PlayerUnitBar
   layers:
   - Default
   - TransparentFX

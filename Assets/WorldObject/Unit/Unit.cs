@@ -106,6 +106,11 @@ public class Unit : WorldObject {
         }
     }
 
+    public virtual bool IsMajor()
+    {
+        return false;
+    }
+
     protected override void Awake()
     {
         base.Awake();

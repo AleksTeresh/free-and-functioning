@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class EscortConvoy : VictoryCondition
 {
 
@@ -22,7 +22,7 @@ public class EscortConvoy : VictoryCondition
     {
         return "Escort Convoy Truck";
     }
-
+    /*
     public override bool PlayerMeetsConditions(Player player)
     {
         ConvoyTruck truck = player.GetComponentInChildren<ConvoyTruck>();
@@ -37,5 +37,6 @@ public class EscortConvoy : VictoryCondition
         bool xInPos = truckPos.x > destination.x - closeEnough && truckPos.x < destination.x + closeEnough;
         bool zInPos = truckPos.z > destination.z - closeEnough && truckPos.z < destination.z + closeEnough;
         return xInPos && zInPos;
-    }
+    } 
 }
+ */
