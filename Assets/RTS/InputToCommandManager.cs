@@ -26,7 +26,7 @@ namespace RTS
 			if (ability != null) {
 				string stateName = targetManager.InMultiMode
 					? "Ability Chase Manual Multi"
-					: "Ability Manual";
+					: "Ability Chase Manual";
 				stateController.abilityToUse = ability;
 				stateController.TransitionToState (ResourceManager.GetAiState (stateName));
 			}

@@ -13,5 +13,16 @@ namespace Abilities
 
             user.FireProjectile(target, "AbilityProjectile", spawnPoint, rotation, range, damage, statuses);
         }
+
+        public override void FireAbilityMulti()
+        {
+            Vector3 spawnPoint = user.GetProjectileSpawnPoint();
+
+            targets.ForEach(target =>
+            {
+                var rotation = Quaternion.LookRotation(target.transform.position - transform.position);
+                user.FireProjectile(target, "AbilityProjectile", spawnPoint, rotation, range, lightDamage, lightStatuses);
+            });
+        }
     }
 }

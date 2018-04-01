@@ -9,12 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d7e55755687f68499fc6423018d2f1a, type: 3}
-  m_Name: Ability Manual
+  m_Name: Ability Chase Manual Multi
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 7a6f41adb4cf14c5ba4f1937c7501a31, type: 2}
   - {fileID: 11400000, guid: 81e94ae8acf3ab2468cd5fa8b6b52d6a, type: 2}
+  - {fileID: 11400000, guid: d09276ca206e04e47b34c41d4b45e856, type: 2}
+  - {fileID: 11400000, guid: 3b6355311a172cc44ae3cc635bd8031b, type: 2}
+  - {fileID: 11400000, guid: ae758c8b0a9d8454289c36874156a50b, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: d22d45d84ba7c4360ac8f34c07fd0b7b, type: 2}
-    trueState: {fileID: 11400000, guid: e91a3bcc49b861244a4dca95e63e45a2, type: 2}
+    trueState: {fileID: 11400000, guid: 27fc66feef796af47b56a32fe4c40926, type: 2}
     falseState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
