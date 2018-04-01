@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 1319779137425518, guid: c288baaa1ce50a247afdbed87995ad94, type: 2}
   - {fileID: 1338513666550506, guid: db5ac621c11f1da428aef3044df27e97, type: 2}
   - {fileID: 1787216316022852, guid: 8e49fcbca51cbb849be5dc0e55c5c265, type: 2}
+  - {fileID: 1508811342181514, guid: 0ea2f2d8a6b0e754196352f32f2b18f1, type: 2}
   player: {fileID: 1880155284192986, guid: 18c2a160ec048d14ca46079316893b47, type: 2}
   avatars:
   - {fileID: 2800000, guid: 665a236535b979947996f55953dd1b6c, type: 3}
