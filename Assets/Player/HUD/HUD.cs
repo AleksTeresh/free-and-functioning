@@ -47,12 +47,16 @@ public class HUD : MonoBehaviour {
 
     private PlayerUnitBar playerUnitBar;
     private EnemyUnitBar enemyUnitBar;
+    private SelectionIndicator selectionIndicator;
+    private AbilityBar abilityBar;
 
     // Use this for initialization
     void Start () {
         player = transform.root.GetComponent<Player>();
         playerUnitBar = GetComponentInChildren<PlayerUnitBar>();
         enemyUnitBar = GetComponentInChildren<EnemyUnitBar>();
+        selectionIndicator = GetComponentInChildren<SelectionIndicator>();
+        abilityBar = GetComponentInChildren<AbilityBar>();
 
         ResourceManager.StoreSelectBoxItems(selectBoxSkin, healthy, damaged, critical);
 
@@ -77,6 +81,8 @@ public class HUD : MonoBehaviour {
 
             var observedEmenies = GetNearbyEnemies();
             DrawUnitsBar(enemyUnitBar, observedEmenies, "EnemyIndicator");
+            DrawSelectionIndicator();
+            DrawAbilityBar();
             DrawResourceBar(observedEmenies.Count);
             DrawMouseCursor();
         }
@@ -145,6 +151,35 @@ public class HUD : MonoBehaviour {
                 break;
             default: break;
         }
+    }
+
+    private void DrawAbilityBar()
+    {
+
+    }
+
+    private void DrawSelectionIndicator()
+    {
+        var selection = player.SelectedObject;
+
+        if (selection)
+        {
+            selectionIndicator.NameField.text = selection.objectName;
+
+            selectionIndicator.HealthSlider.maxValue = selection.maxHitPoints;
+            selectionIndicator.HealthSlider.value = selection.hitPoints;
+
+            // TODO: add avatar manipulation here
+        } else
+        {
+            selectionIndicator.NameField.text = "Select Somebody";
+
+            selectionIndicator.HealthSlider.maxValue = 100;
+            selectionIndicator.HealthSlider.value = 0;
+
+            // TODO: add avatar manipulation here
+        }
+
     }
 
     private void DrawUnitsBar(UnitBar unitBar, List<Unit> units, string indicatorName)
