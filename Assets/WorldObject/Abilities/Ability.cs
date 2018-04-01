@@ -25,6 +25,7 @@ namespace Abilities
         public void Awake()
         {
             user = GetComponentInParent<WorldObject>();
+            cooldownTimer = cooldown;
         }
 
         public void Update ()
