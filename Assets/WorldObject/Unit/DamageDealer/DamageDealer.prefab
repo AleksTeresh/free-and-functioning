@@ -259,7 +259,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298768487697374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.2, y: -2, z: -60.100006}
+  m_LocalPosition: {x: 19.2, y: -2, z: 1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4339132084271508}
@@ -808,13 +808,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Project Ability Base
-  damage: 100
+  range: 1000
   cooldown: 5
   isHealingAbility: 0
+  isMultiTarget: 1
+  damage: 100
+  lightDamage: 50
   statuses: []
-  range: 1000
+  lightStatuses: []
   user: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   isReady: 1
   cooldownTimer: 0
 --- !u!114 &114640266339204548
@@ -850,7 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5219927c103cf479e793a987ef1c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Rudolf
   buildImage: {fileID: 2800000, guid: 4b94e65a983d3b644a0c36bdb04f482d, type: 3}
   cost: 0
   sellValue: 0
@@ -921,13 +925,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Ability Base
-  damage: 1000
+  range: 1000
   cooldown: 10
   isHealingAbility: 0
+  isMultiTarget: 1
+  damage: 1000
+  lightDamage: 150
   statuses: []
-  range: 1000
+  lightStatuses: []
   user: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   isReady: 1
   cooldownTimer: 0
 --- !u!136 &136511973156996574

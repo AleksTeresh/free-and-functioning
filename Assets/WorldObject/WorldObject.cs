@@ -322,7 +322,20 @@ public class WorldObject : MonoBehaviour {
 			ability.UseOnTarget(target);
 		}
 	}
- 
+
+    public virtual void UseAbilityMulti(List<WorldObject> targets, Ability ability)
+    {
+        if (targets == null || targets.Count == 0)
+        {
+            return;
+        }
+
+        if (ability.isReady)
+        {
+            ability.UseOnTargets(targets);
+        }
+    }
+
     public virtual void PerformAttackToMulti(List<WorldObject> targets)
     {
         if (targets == null || targets.Count == 0)

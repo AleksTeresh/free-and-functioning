@@ -52,12 +52,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Ability Base
-  damage: 1000
+  range: 1000
   cooldown: 10
   isHealingAbility: 0
+  isMultiTarget: 1
+  damage: 1000
+  lightDamage: 150
   statuses: []
-  range: 1000
+  lightStatuses: []
   user: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   isReady: 1
   cooldownTimer: 0
