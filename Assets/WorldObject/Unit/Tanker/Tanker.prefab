@@ -102,6 +102,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1616870707732110
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4578277514328716}
+  - component: {fileID: 114738858731767690}
+  m_Layer: 0
+  m_Name: AgroAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1724151271781106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4199019429665292}
+  - component: {fileID: 114122303970909220}
+  m_Layer: 0
+  m_Name: Abilities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1762689363061580
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +147,22 @@ GameObject:
   - component: {fileID: 114272084725405678}
   m_Layer: 8
   m_Name: MiniMapIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1806159587982654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4558611587363630}
+  - component: {fileID: 114693408855096182}
+  m_Layer: 0
+  m_Name: Statuses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,6 +197,20 @@ Transform:
   m_Father: {fileID: 4343247387454198}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4199019429665292
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724151271781106}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 209.35493, y: -1.6406937, z: 208.74419}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4578277514328716}
+  m_Father: {fileID: 4700276431411240}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4205957707229728
 Transform:
   m_ObjectHideFlags: 1
@@ -160,7 +222,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1, z: 1.1}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4343247387454198
 Transform:
@@ -174,8 +236,34 @@ Transform:
   m_Children:
   - {fileID: 4170400629879350}
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!4 &4558611587363630
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806159587982654}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 209.35495, y: -1.6406951, z: 208.7442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4700276431411240}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4578277514328716
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616870707732110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 230.49612, y: 35.505955, z: 173.90591}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4199019429665292}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4700276431411240
 Transform:
   m_ObjectHideFlags: 1
@@ -186,11 +274,13 @@ Transform:
   m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4199019429665292}
   - {fileID: 4878531177108906}
   - {fileID: 4857883135647684}
   - {fileID: 4205957707229728}
   - {fileID: 4343247387454198}
   - {fileID: 4990767135873294}
+  - {fileID: 4558611587363630}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -205,7 +295,7 @@ Transform:
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4878531177108906
 Transform:
@@ -218,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4990767135873294
 Transform:
@@ -231,7 +321,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23181852191488318
 MeshRenderer:
@@ -445,6 +535,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114122303970909220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724151271781106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ff1247dfe214d75b28da0c5b6d1754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114248130232710378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -485,6 +586,7 @@ MonoBehaviour:
   hitPoints: 500
   maxHitPoints: 500
   weaponRange: 2
+  aiming: 0
   weaponAimSpeed: 5
   weaponRechargeTime: 1
   weaponMultiRechargeTime: 1
@@ -499,7 +601,6 @@ MonoBehaviour:
   moveSound: {fileID: 0}
   driveVolume: 0.5
   moveVolume: 1
-  activeStatuses: []
   abilities: []
   damage: 10
 --- !u!114 &114657820948381368
@@ -524,6 +625,44 @@ MonoBehaviour:
   nearbyEnemies: []
   attacking: 0
   abilityToUse: {fileID: 0}
+--- !u!114 &114693408855096182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806159587982654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55aba35ed5f872745bff3c4ba81d8c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114738858731767690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616870707732110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60d6186b6f331b43a5fe3561703bb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 
+  range: 0
+  cooldown: 0
+  isHealingAbility: 0
+  isMultiTarget: 0
+  isAoe: 0
+  damage: 0
+  lightDamage: 0
+  statuses: []
+  lightStatuses: []
+  user: {fileID: 0}
+  target: {fileID: 0}
+  targets: []
+  effectPosition: {x: 0, y: 0, z: 0}
+  isReady: 1
+  cooldownTimer: 0
 --- !u!114 &114989183351252416
 MonoBehaviour:
   m_ObjectHideFlags: 1

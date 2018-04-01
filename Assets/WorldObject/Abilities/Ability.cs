@@ -15,7 +15,8 @@ namespace Abilities
         public float cooldown;
         public bool isHealingAbility;
 
-        public bool isMultiTarget = true;
+        public bool isMultiTarget = false;
+        public bool isAoe = false;
 
         public int damage;
         public int lightDamage;
@@ -23,9 +24,10 @@ namespace Abilities
 		public Status[] statuses;
         public Status[] lightStatuses;
 
-		public WorldObject user;
-		public WorldObject target;
+		[HideInInspector] public WorldObject user;
+        [HideInInspector] public WorldObject target;
         public List<WorldObject> targets;
+        public Vector3 effectPosition;
 
 		public bool isReady = true;
 
@@ -50,52 +52,74 @@ namespace Abilities
 
 		public void UseOnTarget (WorldObject target)
 		{
-			this.target = target;
-
 			if (isReady) {
-				cooldownTimer = 0.0f;
-				isReady = false;
-			}
+                this.target = target;
 
-			FireAbility ();
+                HandleAbilityUse();
+
+                FireAbility();
+            }
+            
 		}
 
         public void UseOnTargets(List<WorldObject> targets)
         {
-            this.targets = targets;
-
             if (isReady)
             {
-                cooldownTimer = 0.0f;
-                isReady = false;
-            }
+                this.targets = targets;
 
-            FireAbilityMulti();
+                HandleAbilityUse();
+
+                FireAbilityMulti();
+            }
         }
 
-		public virtual void FireAbility() {
+        public void UseOnArea(Vector3 position)
+        {
+            if (isReady)
+            {
+                this.effectPosition = position;
+
+                HandleAbilityUse();
+
+                FireAbilityOnArea();
+            } 
+        }
+
+        private void HandleAbilityUse()
+        {
+            cooldownTimer = 0.0f;
+            isReady = false;
+        }
+
+        protected virtual void FireAbility() {
 			// Default behaviour needs to be overidden by children
 			OnHit();
 		}
 
-        public virtual void FireAbilityMulti()
+        protected virtual void FireAbilityMulti()
         {
             // Default behaviour needs to be overidden by children
             OnHitMulti();
         }
 
-		private void InflictStatuses (WorldObject target)
+        protected virtual void FireAbilityOnArea()
+        {
+            // Default behaviour needs to be overidden by children
+        }
+
+        private void InflictStatuses (WorldObject target)
 		{
 			for (int i = 0; i < statuses.Length; i++) {
-				statuses [i].InflictStatus (target);
-			}
+                StatusManager.InflictStatus(user, statuses[i], target);
+            }
 		}
 
         private void InflictLightStatuses(WorldObject target)
         {
             for (int i = 0; i < lightStatuses.Length; i++)
             {
-                statuses[i].InflictStatus(target);
+                StatusManager.InflictStatus(user, lightStatuses[i], target);
             }
         }
 

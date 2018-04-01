@@ -8,11 +8,13 @@ namespace Statuses
 {
 	public class Status : MonoBehaviour
     {
-        public string name;
+        public string statusName;
         public float maxDuration;
         public bool isActive;
 		public WorldObject target;
         //public vfx
+
+        protected WorldObject inflicter;
 
 		public float duration;
 
@@ -20,24 +22,30 @@ namespace Statuses
         {
 			if (isActive) {
 
-				// Do stuff to unit
+                AffectTarget();
 
-				duration += Time.deltaTime;
+                duration += Time.deltaTime;
 
 				if (duration > maxDuration) {
 					isActive = false;
+                    Destroy(this.gameObject);
 				}
 			}
         }
 
-		public void InflictStatus(WorldObject target) {
+		public void InflictStatus(WorldObject target, WorldObject inflicter) {
 			this.target = target;
+            this.inflicter = inflicter;
 
 			this.duration = 0;
 			this.isActive = true;
 
-			// Add status to unit status list
-			// Do stuff to unit
+            target.AddStatus(this);
 		}
+
+        protected virtual void AffectTarget()
+        {
+            // this method should be overriden
+        }
     }
 }

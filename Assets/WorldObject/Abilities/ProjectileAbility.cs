@@ -6,7 +6,7 @@ namespace Abilities
 {
     public class ProjectileAbility : Ability
     {
-        public override void FireAbility()
+        protected override void FireAbility()
         {
             Vector3 spawnPoint = user.GetProjectileSpawnPoint();
             Quaternion rotation = user.transform.rotation;
@@ -14,7 +14,7 @@ namespace Abilities
             user.FireProjectile(target, "AbilityProjectile", spawnPoint, rotation, range, damage, statuses);
         }
 
-        public override void FireAbilityMulti()
+        protected override void FireAbilityMulti()
         {
             Vector3 spawnPoint = user.GetProjectileSpawnPoint();
 
