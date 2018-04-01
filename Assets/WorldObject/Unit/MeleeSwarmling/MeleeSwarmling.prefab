@@ -354,6 +354,8 @@ MonoBehaviour:
   moveSound: {fileID: 0}
   driveVolume: 0.5
   moveVolume: 1
+  activeStatuses: []
+  abilities: []
   damage: 10
 --- !u!114 &114356418851432348
 MonoBehaviour:
@@ -409,6 +411,7 @@ MonoBehaviour:
   targetManager: {fileID: 0}
   nearbyEnemies: []
   attacking: 0
+  abilityToUse: {fileID: 0}
 --- !u!136 &136758888288891870
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -431,7 +434,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 30
+  m_Speed: 2
   m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 300

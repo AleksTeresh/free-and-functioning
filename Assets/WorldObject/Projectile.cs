@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Statuses;
 
 public class Projectile : MonoBehaviour
 {
 
     public float velocity = 1;
     public int damage = 1;
+    public Status[] statuses;
 
     public Player Player { get; set; }
 
@@ -35,6 +37,7 @@ public class Projectile : MonoBehaviour
     public void HandleCollision (WorldObject collidedObject)
     {
         InflictDamage(collidedObject);
+        InflictStatuses(collidedObject);
 
         // destroy the projectile
         Destroy(gameObject);
@@ -61,7 +64,18 @@ public class Projectile : MonoBehaviour
     {
         if (collidedObject) collidedObject.TakeDamage(damage);
     }
-    
+
+    private void InflictStatuses(WorldObject target)
+    {
+        if (target != null)
+        {
+            for (int i = 0; i < statuses.Length; i++)
+            {
+                statuses[i].InflictStatus(target);
+            }
+        }
+    }
+
     /*
     private bool HitSomething()
     {

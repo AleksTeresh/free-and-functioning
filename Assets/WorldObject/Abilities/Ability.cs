@@ -22,7 +22,12 @@ namespace Abilities
 
 		public float cooldownTimer = 0.0f;
 
-		public void Update ()
+        public void Awake()
+        {
+            user = GetComponentInParent<WorldObject>();
+        }
+
+        public void Update ()
 		{ 
 			if (!isReady) {
 				cooldownTimer += Time.deltaTime;

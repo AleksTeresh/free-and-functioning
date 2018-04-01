@@ -7,6 +7,8 @@ public class AbilityWasUsedDecision : Decision {
 
 	public override bool Decide (StateController controller)
 	{
-		return controller.abilityToUse == null ? true : false;
+        bool isAiming = controller.unit.aiming;
+
+		return controller.abilityToUse == null && !isAiming ? true : false;
 	}
 }
