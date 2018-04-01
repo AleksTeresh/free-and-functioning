@@ -19,16 +19,26 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState(stateName));
         }
 
-		public static void AbilityHotkeyToChaseState(TargetManager targetManager, StateController stateController, int abilityIndex) {
+		public static void AbilityHotkeyToState(TargetManager targetManager, StateController stateController, int abilityIndex) {
 
 			Ability ability = stateController.unit.FindAbilityByIndex (abilityIndex);
 
+            // Needs to be refactored
+
 			if (ability != null) {
-				string stateName = targetManager.InMultiMode
-					? "Ability Chase Manual Multi"
-					: "Ability Chase Manual";
-				stateController.abilityToUse = ability;
-				stateController.TransitionToState (ResourceManager.GetAiState (stateName));
+                if (!ability.IsHealingAbility())
+                {
+                    Player player = ability.user.GetPlayer();
+                    player.selectedAllyTargetAbility = ability;
+                }
+                else
+                {
+                    string stateName = targetManager.InMultiMode
+                        ? "Ability Chase Manual Multi"
+                        : "Ability Chase Manual";
+                    stateController.abilityToUse = ability;
+                    stateController.TransitionToState(ResourceManager.GetAiState(stateName));
+                }
 			}
 		}
 

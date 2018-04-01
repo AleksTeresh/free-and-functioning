@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
+using Abilities;
 
 public class Player : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour {
 
     public string username;
     public bool human;
+
+    public Ability selectedAllyTargetAbility;
 
     private List<Unit> units;
     private List<Building> buildings;

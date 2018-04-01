@@ -24,8 +24,7 @@ namespace RTS
                     if (Input.GetButtonDown(hotkeys[i]))
                     {
 //                        selectedUnit.UseAbility(i);
-
-						InputToCommandManager.AbilityHotkeyToChaseState(targetManager, selectedUnit.GetStateController(), i);
+						InputToCommandManager.AbilityHotkeyToState(targetManager, selectedUnit.GetStateController(), i);
 
                         return;
                     }
