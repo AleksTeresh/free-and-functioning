@@ -4,6 +4,7 @@ using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
 using Abilities;
+using Statuses;
 
 public class WorldObject : MonoBehaviour {
 
@@ -24,7 +25,7 @@ public class WorldObject : MonoBehaviour {
 
     public float weaponRange = 10.0f;
     protected bool movingIntoPosition = false;
-    protected bool aiming = false;
+    public bool aiming = false;
     public float weaponAimSpeed = 1.0f;
     public float weaponRechargeTime = 1.0f;
     public float weaponMultiRechargeTime = 1.0f;
@@ -364,6 +365,13 @@ public class WorldObject : MonoBehaviour {
         return false;
     }
 
+    public virtual Vector3 GetProjectileSpawnPoint()
+    {
+        Vector3 spawnPoint = transform.position;
+
+        return spawnPoint;
+    }
+
     protected virtual void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         switch (propertyName)
@@ -476,6 +484,20 @@ public class WorldObject : MonoBehaviour {
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
         projectile.Player = this.player;
         projectile.SetRange(weaponRange);
+        projectile.SetTarget(target);
+    }
+
+    public virtual void FireProjectile(
+        WorldObject target, string projectileName, 
+        Vector3 spawnPoint, Quaternion rotation, float range,
+        int damage, Status[] statuses)
+    {
+        GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject(projectileName), spawnPoint, rotation);
+        Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
+        projectile.statuses = statuses;
+        projectile.damage = damage;
+        projectile.Player = this.player;
+        projectile.SetRange(range);
         projectile.SetTarget(target);
     }
 

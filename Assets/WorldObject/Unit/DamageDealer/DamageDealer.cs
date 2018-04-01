@@ -35,7 +35,7 @@ public class DamageDealer : Unit
     protected override void UseWeapon(WorldObject target)
     {
         base.UseWeapon(target);
-        Vector3 spawnPoint = GetSpawnPoint();
+        Vector3 spawnPoint = GetProjectileSpawnPoint();
 
         FireProjectile(target, "DamageDealerProjectile", spawnPoint);
     }
@@ -43,7 +43,7 @@ public class DamageDealer : Unit
     protected override void UseWeaponMulti(List<WorldObject> targets)
     {
         base.UseWeaponMulti(targets);
-        Vector3 spawnPoint = GetSpawnPoint();
+        Vector3 spawnPoint = GetProjectileSpawnPoint();
 
         targets.ForEach(p =>
         {
@@ -62,7 +62,7 @@ public class DamageDealer : Unit
         }
     }
 
-    private Vector3 GetSpawnPoint()
+    public override Vector3 GetProjectileSpawnPoint()
     {
         Vector3 spawnPoint = transform.position;
         // spawnPoint.x += (2.1f * transform.forward.x);

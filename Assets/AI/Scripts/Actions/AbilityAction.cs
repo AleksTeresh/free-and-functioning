@@ -31,7 +31,11 @@ public class AbilityAction : Action {
 		if (direction.sqrMagnitude < ability.range * ability.range)
 		{
 			controller.unit.UseAbility(chaseTarget, ability);
-			controller.abilityToUse = null;
-		}
+
+            if (!unit.aiming)
+            {
+                controller.abilityToUse = null;
+            }
+        }
 	}
 }
