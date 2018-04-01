@@ -155,7 +155,17 @@ public class HUD : MonoBehaviour {
 
     private void DrawAbilityBar()
     {
+        var abilitySlots = abilityBar.AbilitySlots;
+        var selection = player.SelectedObject;
 
+        abilityBar.ClearSlots();
+
+        if (selection && selection is Unit) {
+            var selectedUnit = (Unit)selection;
+            var abilities = selectedUnit.abilities;
+
+            abilityBar.DrawAbilities(abilities);
+        }
     }
 
     private void DrawSelectionIndicator()

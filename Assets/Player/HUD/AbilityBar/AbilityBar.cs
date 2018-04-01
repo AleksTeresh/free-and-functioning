@@ -1,16 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Abilities;
 
 public class AbilityBar : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private readonly static Color BACKGROUND_COLOR = new Color(62 / (float)255, 21 / (float)255, 61 / (float)255, 255 / (float)255);
+    private readonly static float SLOT_WIDTH = 70;
+
+    public List<AbilitySlot> AbilitySlots { get; private set; }
+
+    public void ClearSlots()
+    {
+        AbilitySlots.ForEach(p =>
+        {
+            // p.Image.sprite = null;
+            p.Image.color = BACKGROUND_COLOR;
+            p.Shade.sizeDelta = new Vector2(-SLOT_WIDTH, p.Shade.sizeDelta.y);
+            p.Shade.anchoredPosition = new Vector2(-SLOT_WIDTH / 2, p.Shade.anchoredPosition.y);
+            p.Name.text = "";
+        });
+    }
+
+    public void DrawAbilities(Ability[] abilities)
+    {
+        for (int i = 0; i < abilities.Length; i++)
+        {
+            if (AbilitySlots.Count > i)
+            {
+                // abilitySlots[i].Image.sprite = abilities[i].sprite;
+                // TODO uncomment the line below once abilities have their icons
+
+                AbilitySlots[i].Image.color = Color.cyan;
+                AbilitySlots[i].Name.text = abilities[i].abilityName;
+                AbilitySlots[i].Shade.sizeDelta = new Vector2(
+                    -(abilities[i].cooldownTimer / abilities[i].cooldown) * SLOT_WIDTH,
+                    AbilitySlots[i].Shade.sizeDelta.y
+                );
+                AbilitySlots[i].Shade.anchoredPosition = new Vector2(
+                    -SLOT_WIDTH / 2 + (1 - (abilities[i].cooldownTimer / abilities[i].cooldown)) * SLOT_WIDTH / 2,
+                    AbilitySlots[i].Shade.anchoredPosition.y
+                );
+            }
+        }
+    }
+
+    void Awake()
+    {
+        AbilitySlots = new List<AbilitySlot>(GetComponentsInChildren<AbilitySlot>());
+    }
 }
