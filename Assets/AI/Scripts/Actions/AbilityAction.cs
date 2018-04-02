@@ -9,10 +9,10 @@ public class AbilityAction : Action {
 
 	public override void Act (StateController controller)
 	{
-		Attack(controller);
+		AbilityChase(controller);
 	}
 
-	private void Attack(StateController controller)
+	private void AbilityChase(StateController controller)
 	{
 		Unit unit = controller.unit;
 		WorldObject chaseTarget = controller.chaseTarget;

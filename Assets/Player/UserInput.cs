@@ -33,7 +33,8 @@ public class UserInput : MonoBehaviour {
             AttackModeSelection();
 
 			RTS.HotkeyUnitSelector.HandleInput (player, hud);
-			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager );
+			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
+			RTS.HotkeyAllyAbilityTargetSelector.HandleInput (player, hud);
         }
     }
 
@@ -140,7 +141,7 @@ public class UserInput : MonoBehaviour {
 
     private void AttackModeSelection()
     {
-        if (Input.GetButtonDown("Attack Mode"))
+		if (Input.GetButtonDown("Attack Mode") && player.selectedAllyTargettingAbility == null)
         {
             // get all the objects controlled through AI
             var stateControlles = player.GetComponentsInChildren<StateController>();

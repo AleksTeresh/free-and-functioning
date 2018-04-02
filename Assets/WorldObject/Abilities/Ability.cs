@@ -13,7 +13,6 @@ namespace Abilities
 
         public float range;
         public float cooldown;
-        public bool isHealingAbility;
 
         public bool isMultiTarget = true;
 
@@ -47,6 +46,12 @@ namespace Abilities
 				}
 			}
 		}
+
+        public virtual bool IsAllyTargettingAbility()
+        {
+            // override by children
+            return false;
+        }
 
 		public void UseOnTarget (WorldObject target)
 		{

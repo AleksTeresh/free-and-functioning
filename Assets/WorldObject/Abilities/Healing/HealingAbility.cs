@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UnityEngine;
+using RTS;
+
+namespace Abilities
+{
+    class HealingAbility : Ability
+    {
+        public override bool IsAllyTargettingAbility()
+        {
+            return true;
+        }
+
+		protected override void FireAbility()
+        {
+//			InflictStatuses(target);
+			target.TakeHeal (damage);
+
+			ParticleSystem vfxPrefab = ResourceManager.GetAbilityVfx ("HealingAbilityEffect");
+			ParticleSystem vfxInstance =  Instantiate (vfxPrefab, target.transform.position, Quaternion.identity );
+			Destroy (vfxInstance.gameObject, vfxInstance.main.startLifetime.constantMax + vfxInstance.main.duration);
+        }
+
+		protected override void FireAbilityMulti()
+        {
+            // choose all allies in range
+        }
+    }
+}

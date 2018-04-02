@@ -107,6 +107,11 @@ namespace RTS
             return gameObjectList.GetStatus(name);
         }
 
+		public static ParticleSystem GetAbilityVfx(string name) 
+		{
+			return gameObjectList.GetAbilityVfx (name);
+		}
+
         public static int GetNewObjectId()
         {
             LevelLoader loader = (LevelLoader)GameObject.FindObjectOfType(typeof(LevelLoader));
