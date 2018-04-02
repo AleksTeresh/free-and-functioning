@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d7e55755687f68499fc6423018d2f1a, type: 3}
-  m_Name: Idle  Idler
+  m_Name: Idle Idler
   m_EditorClassIdentifier: 
   actions: []
   transitions:
