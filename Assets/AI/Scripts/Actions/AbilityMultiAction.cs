@@ -20,10 +20,11 @@ public class AbilityMultiAction : Action
         Unit unit = controller.unit;
         Ability abilityToUse = controller.abilityToUse;
 
-        if (abilityToUse.isAoe)
+        if (abilityToUse is AoeAbility)
         {
+            AoeAbility aoeAbility = (AoeAbility)abilityToUse;
             // for now, all AoE are self-AoE
-            controller.unit.UseAbilityOnArea(unit.transform.position, abilityToUse);
+            controller.unit.UseAbilityOnArea(unit.transform.position, aoeAbility);
             controller.abilityToUse = null;
 
             return;

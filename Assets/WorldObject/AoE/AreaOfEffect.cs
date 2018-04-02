@@ -10,7 +10,7 @@ namespace Abilities
     {
         public SpriteRenderer Sprite { get; private set; }
 
-        public int damage;
+        [HideInInspector] public int damage;
         [HideInInspector] public Status[] statuses;
         public float delay;
         public bool affectsFriends;

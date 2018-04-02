@@ -6,13 +6,32 @@ using RTS;
 
 namespace Abilities
 {
-    public class AgroAoeAbility : Ability
+    public class AoeAbility : Ability
     {
-        protected override void FireAbilityOnArea()
+        public Vector3 effectPosition;
+        public AreaOfEffect aoe;
+        public float radius;
+
+        public int aoeDamage;
+        public Status[] aoeStatuses;
+
+        public void UseOnArea(Vector3 position)
+        {
+            if (isReady)
+            {
+                this.effectPosition = position;
+
+                HandleAbilityUse();
+
+                FireAbilityOnArea();
+            }
+        }
+
+        protected void FireAbilityOnArea()
         {
             Vector3 spawnPoint = new Vector3(effectPosition.x, effectPosition.y + 2, effectPosition.z);
 
-            CreateAreaOfEffect(spawnPoint, "AgroAreaOfEffect", 20, 0, statuses);
+            CreateAreaOfEffect(spawnPoint, aoe.name, radius, aoeDamage, aoeStatuses);
         }
 
         private void CreateAreaOfEffect(Vector3 position, string aoeName, float radius, int damage, Status[] statuses)

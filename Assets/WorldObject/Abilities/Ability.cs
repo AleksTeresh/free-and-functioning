@@ -15,8 +15,7 @@ namespace Abilities
         public float cooldown;
         public bool isHealingAbility;
 
-        public bool isMultiTarget = false;
-        public bool isAoe = false;
+        public bool isMultiTarget = true;
 
         public int damage;
         public int lightDamage;
@@ -27,7 +26,6 @@ namespace Abilities
 		[HideInInspector] public WorldObject user;
         [HideInInspector] public WorldObject target;
         public List<WorldObject> targets;
-        public Vector3 effectPosition;
 
 		public bool isReady = true;
 
@@ -74,19 +72,7 @@ namespace Abilities
             }
         }
 
-        public void UseOnArea(Vector3 position)
-        {
-            if (isReady)
-            {
-                this.effectPosition = position;
-
-                HandleAbilityUse();
-
-                FireAbilityOnArea();
-            } 
-        }
-
-        private void HandleAbilityUse()
+        protected void HandleAbilityUse()
         {
             cooldownTimer = 0.0f;
             isReady = false;
@@ -101,11 +87,6 @@ namespace Abilities
         {
             // Default behaviour needs to be overidden by children
             OnHitMulti();
-        }
-
-        protected virtual void FireAbilityOnArea()
-        {
-            // Default behaviour needs to be overidden by children
         }
 
         private void InflictStatuses (WorldObject target)

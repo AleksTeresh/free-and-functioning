@@ -361,7 +361,7 @@ public class WorldObject : MonoBehaviour {
         }
     }
 
-    public virtual void UseAbilityOnArea(Vector3 position, Ability ability)
+    public virtual void UseAbilityOnArea(Vector3 position, AoeAbility ability)
     {
         if (ability.isReady)
         {
