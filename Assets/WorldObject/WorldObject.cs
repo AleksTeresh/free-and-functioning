@@ -14,6 +14,7 @@ public class WorldObject : MonoBehaviour {
     public Texture2D buildImage;
     public int cost, sellValue, hitPoints, maxHitPoints;
 
+    // statuses
     private Statuses.Statuses statusesWrapper;
     [HideInInspector] public List<Status> ActiveStatuses { get; private set; }
 
@@ -27,6 +28,7 @@ public class WorldObject : MonoBehaviour {
     protected GUIStyle healthStyle = new GUIStyle();
     protected float healthPercentage = 1.0f;
 
+    // weapon and attack
     public float weaponRange = 10.0f;
     protected bool movingIntoPosition = false;
     public bool aiming = false;
@@ -35,6 +37,11 @@ public class WorldObject : MonoBehaviour {
     public float weaponMultiRechargeTime = 1.0f;
     private float currentWeaponChargeTime;
     private float currentWeaponMultiChargeTime;
+
+    // defence
+    private float meleeDefence = 0;
+    private float rangeDefence = 0;
+    private float abilityDefence = 0;
 
     // loading related
     protected bool loadedSavedValues = false;
@@ -550,6 +557,7 @@ public class WorldObject : MonoBehaviour {
         projectile.Player = this.player;
         projectile.SetRange(weaponRange);
         projectile.SetTarget(target);
+        projectile.transform.rotation = rotation;
     }
 
     public virtual void FireProjectile(
