@@ -22,7 +22,16 @@ namespace RTS
 		public static void AbilityHotkeyToState (TargetManager targetManager, StateController stateController, int abilityIndex)
 		{
 
-			Ability ability = stateController.unit.FindAbilityByIndex (abilityIndex);
+            Ability ability = null;
+
+            if (targetManager.InMultiMode)
+            {
+                ability = stateController.unit.FindAbilityMultiByIndex(abilityIndex);
+            }
+            else
+            {
+                ability = stateController.unit.FindAbilityByIndex(abilityIndex);
+            } 
 
 			if (ability != null) {
 				if (ability.IsAllyTargettingAbility ()) {
@@ -30,12 +39,12 @@ namespace RTS
 					Player player = ability.user.GetPlayer ();
 					player.selectedAllyTargettingAbility = ability;
 				} else {
-					string stateName = targetManager.InMultiMode
-                        ? "Ability Chase Manual Multi"
-                        : "Ability Chase Manual";
-					stateController.abilityToUse = ability;
-					stateController.TransitionToState (ResourceManager.GetAiState (stateName));
-				}
+                    string stateName = targetManager.InMultiMode
+                    ? "Ability Chase Manual Multi"
+                    : "Ability Chase Manual";
+                    stateController.abilityToUse = ability;
+                    stateController.TransitionToState(ResourceManager.GetAiState(stateName));
+                }
 			}
 		}
 
