@@ -167,8 +167,21 @@ public class WorldObject : MonoBehaviour {
         }
     }
 
+    public virtual bool CanAddStatus()
+    {
+        // override this method
+        return false;
+    }
+
     public void AddStatus(Status status)
     {
+        // if the object does not have status wrapper
+        if (!statusesWrapper)
+        {
+            return;
+        }
+
+        ActiveStatuses = ActiveStatuses.Where(p => p != null).ToList();
         // if there is the same status already, reset its timer
         if (ActiveStatuses.Select(p => p.statusName).ToList().Contains(status.statusName))
         {
@@ -176,7 +189,7 @@ public class WorldObject : MonoBehaviour {
             existingStatus.isActive = true;
             existingStatus.duration = 0;
         }
-        else // if there is not status of this type, add it
+        else // if there is no status of this type, add it
         {
             ActiveStatuses.Add(status);
             status.transform.parent = statusesWrapper.transform;

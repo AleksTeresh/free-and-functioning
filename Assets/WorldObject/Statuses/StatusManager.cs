@@ -21,6 +21,12 @@ namespace Statuses
 
         public static void InflictStatus(WorldObject inflicter, Status status, WorldObject target, Vector3 spawnPoint, Quaternion rotation)
         {
+            // if it is not possible to add the status on the target, skip the rest
+            if (!target.CanAddStatus())
+            {
+                return;
+            }
+
             var newStatusObject = (GameObject)GameObject.Instantiate(ResourceManager.GetStatus(status.name), spawnPoint, rotation);
             var newStatusInstance = newStatusObject.GetComponent<Status>();
 

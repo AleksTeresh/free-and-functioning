@@ -93,6 +93,11 @@ public class Unit : WorldObject {
 		return null;
 	}
 
+    public override bool CanAddStatus()
+    {
+        return true;
+    }
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);

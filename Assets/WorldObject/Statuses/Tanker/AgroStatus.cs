@@ -7,8 +7,6 @@ namespace Statuses
 {
     public class AgroStatus : Status
     {
-        private WorldObject agroObject;
-
         protected override void AffectTarget()
         {
             var targetStateController = target.GetStateController();
