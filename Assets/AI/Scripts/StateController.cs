@@ -13,7 +13,8 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Unit unit;
     [HideInInspector] public List<Transform> wayPointList;
     [HideInInspector] public int nextWayPoint;
-    [HideInInspector] public WorldObject chaseTarget;
+	[HideInInspector] public WorldObject chaseTarget;
+    [HideInInspector] public WorldObject allyAbilityTarget;
     [HideInInspector] public TargetManager targetManager;
     [HideInInspector] public List<WorldObject> nearbyEnemies;
     // [HideInInspector] public float stateTimeElapsed;

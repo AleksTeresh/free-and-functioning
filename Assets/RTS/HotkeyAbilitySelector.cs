@@ -23,7 +23,6 @@ namespace RTS
                 {
                     if (Input.GetButtonDown(hotkeys[i]))
                     {
-//                        selectedUnit.UseAbility(i);
 						InputToCommandManager.AbilityHotkeyToState(targetManager, selectedUnit.GetStateController(), i);
 
                         return;

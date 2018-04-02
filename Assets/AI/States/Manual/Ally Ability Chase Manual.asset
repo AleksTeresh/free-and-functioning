@@ -9,11 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d7e55755687f68499fc6423018d2f1a, type: 3}
-  m_Name: Ability Chase Manual
+  m_Name: Ally Ability Chase Manual
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 7a6f41adb4cf14c5ba4f1937c7501a31, type: 2}
-  - {fileID: 11400000, guid: 81e94ae8acf3ab2468cd5fa8b6b52d6a, type: 2}
+  - {fileID: 11400000, guid: e4384814a21fe4b2ca77dcfb252c5b31, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: d22d45d84ba7c4360ac8f34c07fd0b7b, type: 2}
     trueState: {fileID: 11400000, guid: b05ba408802b94b5c9e818e0ecf17c67, type: 2}

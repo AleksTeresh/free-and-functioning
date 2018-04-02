@@ -350,9 +350,6 @@ public class WorldObject : MonoBehaviour {
 			return;
 		}
 
-		Debug.Log(objectName + " should use ability" + ability.abilityName);
-
-
 		if (!TargetInFrontOfWeapon (target)) {
 			AimAtTarget (target);
 		}
@@ -493,6 +490,15 @@ public class WorldObject : MonoBehaviour {
         hitPoints -= damage;
         if (hitPoints <= 0) Destroy(gameObject);
     }
+
+	public virtual void TakeHeal(int power)
+	{
+		hitPoints += power;
+		if (hitPoints >= maxHitPoints) 
+		{
+			hitPoints = maxHitPoints;
+		}
+	}
 
     public Bounds GetSelectionBounds()
     {

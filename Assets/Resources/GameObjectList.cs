@@ -16,6 +16,7 @@ public class GameObjectList : MonoBehaviour {
     public State[] aiStates;
     public GameObject[] uiElements;
     public GameObject[] statuses;
+	public ParticleSystem[] abilityVFX;
 
     void Awake()
     {
@@ -114,4 +115,12 @@ public class GameObjectList : MonoBehaviour {
         }
         return null;
     }
+
+	public ParticleSystem GetAbilityVfx(string name)
+	{
+		foreach (ParticleSystem vfx in abilityVFX) {
+			if (vfx.name == name) return vfx;
+		}
+		return null;
+	}
 }

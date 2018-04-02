@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
     public string username;
     public bool human;
 
-    public Ability selectedAllyTargetAbility;
+    public Ability selectedAllyTargettingAbility;
 
     private List<Unit> units;
     private List<Building> buildings;
@@ -56,6 +56,15 @@ public class Player : MonoBehaviour {
     {
         return units;
     }
+
+	public Unit FindUnitByIdx(int idx)
+	{
+		if (idx < units.Count) {
+			return units [idx];
+		}
+			
+		return null;
+	}
 
     public List<Building> GetBuildings()
     {

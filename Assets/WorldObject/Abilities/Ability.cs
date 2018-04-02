@@ -47,7 +47,7 @@ namespace Abilities
 			}
 		}
 
-        public virtual bool IsHealingAbility()
+        public virtual bool IsAllyTargettingAbility()
         {
             // override by children
             return false;
