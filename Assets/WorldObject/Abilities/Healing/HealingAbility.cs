@@ -16,17 +16,16 @@ namespace Abilities
 
 		protected override void FireAbility()
         {
-//			InflictStatuses(target);
-			target.TakeHeal (damage);
+            //			InflictStatuses(target);
 
-			ParticleSystem vfxPrefab = ResourceManager.GetAbilityVfx ("HealingAbilityEffect");
-			ParticleSystem vfxInstance =  Instantiate (vfxPrefab, target.transform.position, Quaternion.identity );
-			Destroy (vfxInstance.gameObject, vfxInstance.main.startLifetime.constantMax + vfxInstance.main.duration);
-        }
+            targets.ForEach(target =>
+            {
+                target.TakeHeal(damage);
 
-		protected override void FireAbilityMulti()
-        {
-            // choose all allies in range
+                ParticleSystem vfxPrefab = ResourceManager.GetAbilityVfx("HealingAbilityEffect");
+                ParticleSystem vfxInstance = Instantiate(vfxPrefab, target.transform.position, Quaternion.identity);
+                Destroy(vfxInstance.gameObject, vfxInstance.main.startLifetime.constantMax + vfxInstance.main.duration);
+            });
         }
     }
 }
