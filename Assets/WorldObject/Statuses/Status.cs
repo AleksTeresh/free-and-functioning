@@ -28,6 +28,8 @@ namespace Statuses
 
 				if (duration > maxDuration) {
 					isActive = false;
+
+                    OnStatusEnd();
                     Destroy(this.gameObject);
 				}
 			}
@@ -44,6 +46,11 @@ namespace Statuses
 		}
 
         protected virtual void AffectTarget()
+        {
+            // this method should be overriden
+        }
+
+        protected virtual void OnStatusEnd()
         {
             // this method should be overriden
         }

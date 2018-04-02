@@ -22,7 +22,7 @@ public class ChaseClosestAction : Action
 
         if (closestEnemy && !WorkManager.ObjectCanReachTarget(unit, closestEnemy.GetFogOfWarAgent()))
         {
-            // Vector3 attackPosition = WorkManager.FindNearestAttackPosition(controller.navMeshAgent, controller.unit, closestEnemy);
+            controller.chaseTarget = closestEnemy;
             controller.unit.StartMove(closestEnemy.transform.position);
         }
         else

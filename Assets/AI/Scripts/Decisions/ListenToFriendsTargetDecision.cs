@@ -32,7 +32,8 @@ public class ListenToFriendsTargetDecision : Decision
             foreach (WorldObject nearbyObject in nearbyObjects)
             {
                 if (
-                    nearbyObject.GetPlayer() == unit.GetPlayer() &&
+                    unit.ObjectId != nearbyObject.ObjectId &&
+                    nearbyObject.GetPlayer().username == unit.GetPlayer().username &&
                     nearbyObject.GetStateController() &&
                     nearbyObject.GetStateController().chaseTarget
                 )
