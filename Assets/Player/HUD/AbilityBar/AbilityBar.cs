@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Abilities;
+using RTS;
 
 public class AbilityBar : MonoBehaviour {
 
@@ -22,23 +23,27 @@ public class AbilityBar : MonoBehaviour {
         });
     }
 
-    public void DrawAbilities(Ability[] abilities)
+    public void DrawAbilities(Ability[] abilities, Ability[] multiAbilities, bool isInMultiMode)
     {
-        for (int i = 0; i < abilities.Length; i++)
+        Ability[] abilitiesToDraw = isInMultiMode ? multiAbilities : abilities;
+
+        for (int i = 0; i < abilitiesToDraw.Length; i++)
         {
             if (AbilitySlots.Count > i)
             {
                 // abilitySlots[i].Image.sprite = abilities[i].sprite;
                 // TODO uncomment the line below once abilities have their icons
 
+                float cooldownRation = AbilityUtils.GetAbilitySlotCooldownRation(abilities, multiAbilities, i);
+
                 AbilitySlots[i].Image.color = Color.cyan;
-                AbilitySlots[i].Name.text = abilities[i].abilityName;
+                AbilitySlots[i].Name.text = abilitiesToDraw[i].abilityName;
                 AbilitySlots[i].Shade.sizeDelta = new Vector2(
-                    -(abilities[i].cooldownTimer / abilities[i].cooldown) * SLOT_WIDTH,
+                    -(cooldownRation) * SLOT_WIDTH,
                     AbilitySlots[i].Shade.sizeDelta.y
                 );
                 AbilitySlots[i].Shade.anchoredPosition = new Vector2(
-                    -SLOT_WIDTH / 2 + (1 - (abilities[i].cooldownTimer / abilities[i].cooldown)) * SLOT_WIDTH / 2,
+                    -SLOT_WIDTH / 2 + (1 - cooldownRation) * SLOT_WIDTH / 2,
                     AbilitySlots[i].Shade.anchoredPosition.y
                 );
             }

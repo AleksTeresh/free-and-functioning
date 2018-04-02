@@ -21,38 +21,42 @@ namespace RTS
 
         public static void AbilityHotkeyToState(TargetManager targetManager, StateController stateController, int abilityIndex)
         {
+            Unit unit = stateController.unit;
 
-            Ability ability = null;
+            if (unit.CanUseAbilitySlot(abilityIndex))
+            {
+                Ability ability = null;
 
-            if (targetManager.InMultiMode)
-            {
-                ability = stateController.unit.FindAbilityMultiByIndex(abilityIndex);
-            }
-            else
-            {
-                ability = stateController.unit.FindAbilityByIndex(abilityIndex);
-            }
-
-            if (ability != null)
-            {
-                if (ability.IsAllyTargettingAbility())
+                if (targetManager.InMultiMode)
                 {
-                    // Makes HotkeyUnitSelector to treat key press events as ability target selection
-                    Player player = ability.user.GetPlayer();
-
-                    // Healing ability targetting doesn't depend on global targetting mode, single / multi target selection
-                    // happens later, when player hits space
-                    player.selectedAllyTargettingAbility = stateController.unit.FindAbilityByIndex(abilityIndex);
-                    player.selectedAlliesTargettingAbility = stateController.unit.FindAbilityMultiByIndex(abilityIndex);
-
+                    ability = stateController.unit.FindAbilityMultiByIndex(abilityIndex);
                 }
                 else
                 {
-                    string stateName = targetManager.InMultiMode
-                    ? "Ability Chase Manual Multi"
-                    : "Ability Chase Manual";
-                    stateController.abilityToUse = ability;
-                    stateController.TransitionToState(ResourceManager.GetAiState(stateName));
+                    ability = stateController.unit.FindAbilityByIndex(abilityIndex);
+                }
+
+                if (ability != null)
+                {
+                    if (ability.IsAllyTargettingAbility())
+                    {
+                        // Makes HotkeyUnitSelector to treat key press events as ability target selection
+                        Player player = ability.user.GetPlayer();
+
+                        // Healing ability targetting doesn't depend on global targetting mode, single / multi target selection
+                        // happens later, when player hits space
+                        player.selectedAllyTargettingAbility = stateController.unit.FindAbilityByIndex(abilityIndex);
+                        player.selectedAlliesTargettingAbility = stateController.unit.FindAbilityMultiByIndex(abilityIndex);
+
+                    }
+                    else
+                    {
+                        string stateName = targetManager.InMultiMode
+                        ? "Ability Chase Manual Multi"
+                        : "Ability Chase Manual";
+                        stateController.abilityToUse = ability;
+                        stateController.TransitionToState(ResourceManager.GetAiState(stateName));
+                    }
                 }
             }
         }

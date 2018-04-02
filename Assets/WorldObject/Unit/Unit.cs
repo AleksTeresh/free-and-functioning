@@ -111,6 +111,11 @@ public class Unit : WorldObject {
         return true;
     }
 
+    public bool CanUseAbilitySlot(int slotIdx)
+    {
+        return AbilityUtils.CanUseAbilitySlot(abilities, abilitiesMulti, slotIdx);
+    }
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);

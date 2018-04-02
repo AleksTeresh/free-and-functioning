@@ -435,6 +435,7 @@ public class WorldObject : MonoBehaviour {
         return spawnPoint;
     }
 
+
     protected virtual void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         switch (propertyName)
