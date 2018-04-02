@@ -6,4 +6,5 @@ namespace RTS
 {
     public enum CursorState { Select, Move, Attack, PanLeft, PanRight, PanUp, PanDown, Harvest, RallyPoint }
     public enum ItemType { Unknown }
+    public enum AttackType { Melee, Range, Ability, Ultimate }
 }

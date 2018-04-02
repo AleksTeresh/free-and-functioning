@@ -29,7 +29,7 @@ public class AbilityAction : Action {
         }
 
         // if no target or canтot attack, return
-        if (chaseTarget == null || !unit.CanAttack())
+        if (!ability || chaseTarget == null || !unit.CanAttack())
 		{
 			return;
 		}
