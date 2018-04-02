@@ -14,21 +14,16 @@ namespace Abilities
         public float range;
         public float cooldown;
 
-        public bool isMultiTarget = true;
-
         public int damage;
-        public int lightDamage;
 
 		public Status[] statuses;
-        public Status[] lightStatuses;
 
 		[HideInInspector] public WorldObject user;
-        [HideInInspector] public WorldObject target;
-        public List<WorldObject> targets;
+        [HideInInspector]  public List<WorldObject> targets;
 
-		public bool isReady = true;
+        [HideInInspector]  public bool isReady = true;
 
-		public float cooldownTimer = 0.0f;
+        [HideInInspector]  public float cooldownTimer = 0.0f;
 
         public void Awake()
         {
@@ -53,10 +48,10 @@ namespace Abilities
             return false;
         }
 
-		public void UseOnTarget (WorldObject target)
+		public void Use(WorldObject target)
 		{
 			if (isReady) {
-                this.target = target;
+                this.targets = new List<WorldObject>() { target };
 
                 HandleAbilityUse();
 
@@ -65,7 +60,7 @@ namespace Abilities
             
 		}
 
-        public void UseOnTargets(List<WorldObject> targets)
+        public void Use(List<WorldObject> targets)
         {
             if (isReady)
             {
@@ -73,7 +68,7 @@ namespace Abilities
 
                 HandleAbilityUse();
 
-                FireAbilityMulti();
+                FireAbility();
             }
         }
 
@@ -88,12 +83,6 @@ namespace Abilities
 			OnHit();
 		}
 
-        protected virtual void FireAbilityMulti()
-        {
-            // Default behaviour needs to be overidden by children
-            OnHitMulti();
-        }
-
         private void InflictStatuses (WorldObject target)
 		{
 			for (int i = 0; i < statuses.Length; i++) {
@@ -101,28 +90,14 @@ namespace Abilities
             }
 		}
 
-        private void InflictLightStatuses(WorldObject target)
-        {
-            for (int i = 0; i < lightStatuses.Length; i++)
-            {
-                StatusManager.InflictStatus(user, lightStatuses[i], target);
-            }
-        }
-
         protected virtual void OnHit() {
-			InflictStatuses(target);
-			target.TakeDamage (damage);
+            targets.ForEach(target =>
+            {
+                InflictStatuses(target);
+                target.TakeDamage(damage);
+            });
 
 			// Default behaviour needs to be overidden by children
 		}
-
-        protected virtual void OnHitMulti()
-        {
-            targets.ForEach(target =>
-            {
-                InflictLightStatuses(target);
-                target.TakeDamage(lightDamage);
-            });
-        }
 	}
 }

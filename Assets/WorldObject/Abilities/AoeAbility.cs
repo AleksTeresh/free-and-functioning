@@ -8,30 +8,26 @@ namespace Abilities
 {
     public class AoeAbility : Ability
     {
-        public Vector3 effectPosition;
         public AreaOfEffect aoe;
         public float radius;
 
-        public int aoeDamage;
-        public Status[] aoeStatuses;
-
-        public void UseOnArea(Vector3 position)
+        public void Use(Vector3 position)
         {
             if (isReady)
             {
-                this.effectPosition = position;
+                // this.effectPosition = position;
 
                 HandleAbilityUse();
 
-                FireAbilityOnArea();
+                FireAbility(position);
             }
         }
 
-        protected void FireAbilityOnArea()
+        protected void FireAbility(Vector3 effectPosition)
         {
             Vector3 spawnPoint = new Vector3(effectPosition.x, effectPosition.y + 2, effectPosition.z);
 
-            CreateAreaOfEffect(spawnPoint, aoe.name, radius, aoeDamage, aoeStatuses);
+            CreateAreaOfEffect(spawnPoint, aoe.name, radius, damage, statuses);
         }
 
         private void CreateAreaOfEffect(Vector3 position, string aoeName, float radius, int damage, Status[] statuses)

@@ -18,11 +18,11 @@ public class AbilityAction : Action {
 		WorldObject chaseTarget = controller.chaseTarget;
 		Ability ability = controller.abilityToUse;
 
-        if (ability is AoeAbility && !ability.isMultiTarget)
+        if (ability is AoeAbility)
         {
             AoeAbility aoeAbility = (AoeAbility)ability;
             // for now, all AoE are self-AoE
-            controller.unit.UseAbilityOnArea(unit.transform.position, aoeAbility);
+            controller.unit.UseAbility(unit.transform.position, aoeAbility);
             controller.abilityToUse = null;
 
             return;

@@ -12,10 +12,10 @@ public class AbilityMultiAction : Action
 
     public override void Act(StateController controller)
     {
-        AttackMulti(controller);
+        UseAbility(controller);
     }
 
-    private void AttackMulti(StateController controller)
+    private void UseAbility(StateController controller)
     {
         Unit unit = controller.unit;
         Ability abilityToUse = controller.abilityToUse;
@@ -24,15 +24,9 @@ public class AbilityMultiAction : Action
         {
             AoeAbility aoeAbility = (AoeAbility)abilityToUse;
             // for now, all AoE are self-AoE
-            controller.unit.UseAbilityOnArea(unit.transform.position, aoeAbility);
+            controller.unit.UseAbility(unit.transform.position, aoeAbility);
             controller.abilityToUse = null;
 
-            return;
-        }
-
-        // if cannot be used on multiple targets, return
-        if (!abilityToUse.isMultiTarget)
-        {
             return;
         }
 
@@ -49,7 +43,7 @@ public class AbilityMultiAction : Action
 
         if (reachableEnemies.Count > 0)
         {
-            controller.unit.UseAbilityMulti(reachableEnemies, abilityToUse);
+            controller.unit.UseAbility(reachableEnemies, abilityToUse);
             controller.abilityToUse = null;
         }
     }

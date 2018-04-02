@@ -38,6 +38,7 @@ public class HUD : MonoBehaviour {
     private float sliderValue;
 
     private Player player;
+    private TargetManager targetManager;
 
     // audio
     public AudioClip clickSound;
@@ -53,6 +54,7 @@ public class HUD : MonoBehaviour {
     // Use this for initialization
     void Start () {
         player = transform.root.GetComponent<Player>();
+        targetManager = player.GetComponentInChildren<TargetManager>();
         playerUnitBar = GetComponentInChildren<PlayerUnitBar>();
         enemyUnitBar = GetComponentInChildren<EnemyUnitBar>();
         selectionIndicator = GetComponentInChildren<SelectionIndicator>();
@@ -162,7 +164,9 @@ public class HUD : MonoBehaviour {
 
         if (selection && selection is Unit) {
             var selectedUnit = (Unit)selection;
-            var abilities = selectedUnit.abilities;
+            var abilities = targetManager.InMultiMode
+                ? selectedUnit.abilitiesMulti
+                : selectedUnit.abilities;
 
             abilityBar.DrawAbilities(abilities);
         }

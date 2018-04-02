@@ -12,9 +12,12 @@ public class Unit : WorldObject {
     // audio 
     public AudioClip driveSound, moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
-	[HideInInspector] public Ability[] abilities;
 
-	protected Quaternion aimRotation;
+    // abilities
+	[HideInInspector] public Ability[] abilities;
+    [HideInInspector] public Ability[] abilitiesMulti;
+
+    protected Quaternion aimRotation;
 	private ParticleSystem takeDamageEffect;
 
 	// public float moveSpeed, rotateSpeed;
@@ -93,6 +96,16 @@ public class Unit : WorldObject {
 		return null;
 	}
 
+    public Ability FindAbilityMultiByIndex(int abilityIndex)
+    {
+        if (abilityIndex < abilitiesMulti.Length)
+        {
+            return abilitiesMulti[abilityIndex];
+        }
+
+        return null;
+    }
+
     public override bool CanAddStatus()
     {
         return true;
@@ -120,8 +133,20 @@ public class Unit : WorldObject {
         base.Awake();
 
         agent = GetComponent<NavMeshAgent>();
-		takeDamageEffect = GetComponentInChildren<ParticleSystem> ();
-		abilities = GetComponentsInChildren<Ability> ();
+		takeDamageEffect = GetComponentInChildren<ParticleSystem>();
+
+        var abilitiesWrapper = GetComponentInChildren<Abilities.Abilities>();
+        var abilitiesMultiWrapper = GetComponentInChildren<AbilitiesMulti>();
+
+        if (abilitiesWrapper)
+        {
+            abilities = abilitiesWrapper.GetComponentsInChildren<Ability>();
+        }
+        
+        if (abilitiesMultiWrapper)
+        {
+            abilitiesMulti = abilitiesMultiWrapper.GetComponentsInChildren<Ability>();
+        }
     }
 
     protected override void Start()

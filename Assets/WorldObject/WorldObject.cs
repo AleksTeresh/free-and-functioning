@@ -354,11 +354,11 @@ public class WorldObject : MonoBehaviour {
 			AimAtTarget (target);
 		}
 		else if (ability.isReady) {
-			ability.UseOnTarget(target);
+			ability.Use(target);
 		}
 	}
 
-    public virtual void UseAbilityMulti(List<WorldObject> targets, Ability ability)
+    public virtual void UseAbility(List<WorldObject> targets, Ability ability)
     {
         if (targets == null || targets.Count == 0)
         {
@@ -367,15 +367,15 @@ public class WorldObject : MonoBehaviour {
 
         if (ability.isReady)
         {
-            ability.UseOnTargets(targets);
+            ability.Use(targets);
         }
     }
 
-    public virtual void UseAbilityOnArea(Vector3 position, AoeAbility ability)
+    public virtual void UseAbility(Vector3 position, AoeAbility ability)
     {
         if (ability.isReady)
         {
-            ability.UseOnArea(position);
+            ability.Use(position);
         }
     }
 

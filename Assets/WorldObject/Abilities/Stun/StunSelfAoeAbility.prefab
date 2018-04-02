@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4133092887608874}
   - component: {fileID: 114327644450482608}
   m_Layer: 0
-  m_Name: StunAbility
+  m_Name: StunSelfAoeAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,20 +55,12 @@ MonoBehaviour:
   range: 20
   cooldown: 15
   isHealingAbility: 0
-  isMultiTarget: 1
   damage: 0
-  lightDamage: 0
   statuses:
   - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
-  lightStatuses: []
   user: {fileID: 0}
-  target: {fileID: 0}
   targets: []
   isReady: 1
   cooldownTimer: 0
-  effectPosition: {x: 0, y: 0, z: 0}
   aoe: {fileID: 114395267541199148, guid: 365dee2a5700d094c819768d8791ade5, type: 2}
   radius: 15
-  aoeDamage: 0
-  aoeStatuses:
-  - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
