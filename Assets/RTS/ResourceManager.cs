@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Statuses;
 
 namespace RTS
 {
@@ -99,6 +100,11 @@ namespace RTS
         public static GameObject GetUIElement(string name)
         {
             return gameObjectList.GetUIElement(name);
+        }
+
+        public static GameObject GetStatus(string name)
+        {
+            return gameObjectList.GetStatus(name);
         }
 
         public static int GetNewObjectId()

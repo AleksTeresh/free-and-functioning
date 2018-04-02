@@ -18,8 +18,18 @@ public class AbilityAction : Action {
 		WorldObject chaseTarget = controller.chaseTarget;
 		Ability ability = controller.abilityToUse;
 
-		// if no target or canot attack, return
-		if (chaseTarget == null || !unit.CanAttack())
+        if (ability is AoeAbility && !ability.isMultiTarget)
+        {
+            AoeAbility aoeAbility = (AoeAbility)ability;
+            // for now, all AoE are self-AoE
+            controller.unit.UseAbilityOnArea(unit.transform.position, aoeAbility);
+            controller.abilityToUse = null;
+
+            return;
+        }
+
+        // if no target or canтot attack, return
+        if (chaseTarget == null || !unit.CanAttack())
 		{
 			return;
 		}

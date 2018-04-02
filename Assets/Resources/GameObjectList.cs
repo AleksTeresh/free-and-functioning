@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using Statuses;
 
 public class GameObjectList : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class GameObjectList : MonoBehaviour {
     public Texture2D[] avatars;
     public State[] aiStates;
     public GameObject[] uiElements;
+    public GameObject[] statuses;
 
     void Awake()
     {
@@ -82,6 +84,15 @@ public class GameObjectList : MonoBehaviour {
         {
             Unit unit = units[i].GetComponent<Unit>();
             if (unit && unit.name == name) return unit.buildImage;
+        }
+        return null;
+    }
+
+    public GameObject GetStatus(string name)
+    {
+        foreach (GameObject status in statuses)
+        {
+            if (status.name == name) return status;
         }
         return null;
     }

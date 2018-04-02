@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
@@ -12,6 +13,9 @@ public class WorldObject : MonoBehaviour {
     public string objectName;
     public Texture2D buildImage;
     public int cost, sellValue, hitPoints, maxHitPoints;
+
+    private Statuses.Statuses statusesWrapper;
+    [HideInInspector] public List<Status> ActiveStatuses { get; private set; }
 
     protected Player player;
     protected HUD hud;
@@ -163,6 +167,22 @@ public class WorldObject : MonoBehaviour {
         }
     }
 
+    public void AddStatus(Status status)
+    {
+        // if there is the same status already, reset its timer
+        if (ActiveStatuses.Select(p => p.statusName).ToList().Contains(status.statusName))
+        {
+            var existingStatus = ActiveStatuses.Find(p => p.statusName == status.statusName);
+            existingStatus.isActive = true;
+            existingStatus.duration = 0;
+        }
+        else // if there is not status of this type, add it
+        {
+            ActiveStatuses.Add(status);
+            status.transform.parent = statusesWrapper.transform;
+        }
+    }
+
     public Player GetPlayer()
     {
         return player;
@@ -216,6 +236,9 @@ public class WorldObject : MonoBehaviour {
         stateController = GetComponent<StateController>();
 
         selectionLight = GetComponentInChildren<Light>();
+
+        ActiveStatuses = new List<Status>(GetComponentsInChildren<Status>());
+        statusesWrapper = GetComponentInChildren<Statuses.Statuses>();
     }
 
 
@@ -256,6 +279,8 @@ public class WorldObject : MonoBehaviour {
         {
             currentWeaponMultiChargeTime += Time.deltaTime;
         }
+
+        RemoveInactiveStatuses();
     }
 
     protected virtual void OnGUI()
@@ -333,6 +358,14 @@ public class WorldObject : MonoBehaviour {
         if (ability.isReady)
         {
             ability.UseOnTargets(targets);
+        }
+    }
+
+    public virtual void UseAbilityOnArea(Vector3 position, AoeAbility ability)
+    {
+        if (ability.isReady)
+        {
+            ability.UseOnArea(position);
         }
     }
 
@@ -540,5 +573,24 @@ public class WorldObject : MonoBehaviour {
 
         currentWeaponMultiChargeTime = 0.0f;
         //this behaviour needs to be specified by a specific object
+    }
+
+    private void RemoveInactiveStatuses()
+    {
+        var stillActiveStatuses = new List<Status>();
+
+        ActiveStatuses.ForEach(p =>
+        {
+            if (p.isActive)
+            {
+                stillActiveStatuses.Add(p);
+            }
+            else
+            {
+                Destroy(p);
+            }
+        });
+
+        ActiveStatuses = stillActiveStatuses;
     }
 }

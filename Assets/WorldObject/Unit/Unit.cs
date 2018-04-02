@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
@@ -8,12 +9,10 @@ using Statuses;
 using Abilities;
 
 public class Unit : WorldObject {
-
     // audio 
     public AudioClip driveSound, moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
-	public Status[] activeStatuses;
-	public Ability[] abilities;
+	[HideInInspector] public Ability[] abilities;
 
 	protected Quaternion aimRotation;
 	private ParticleSystem takeDamageEffect;
@@ -149,14 +148,7 @@ public class Unit : WorldObject {
 		}
         // else if (moving) MakeMove();
     }
-    /*
-    protected override void OnGUI()
-    {
-        base.OnGUI();
-
-        if (currentlySelected) DrawSelection();
-    }
-    */
+  
     protected override void InitialiseAudio()
     {
         base.InitialiseAudio();
@@ -178,17 +170,7 @@ public class Unit : WorldObject {
 		base.AimAtTarget(target);
 		aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
 	}
-    /*
-    private void DrawSelection()
-    {
-        GUI.skin = ResourceManager.SelectBoxSkin;
-        Rect selectBox = WorkManager.CalculateSelectionBox(selectionBounds, playingArea);
-        //Draw the selection box around the currently selected object, within the bounds of the playing area
-        GUI.BeginGroup(playingArea);
-        DrawSelectionBox(selectBox);
-        GUI.EndGroup();
-    }
-    */
+
     private void HandleMove()
     {
         if (agent.velocity.magnitude == 0 && agent.remainingDistance <= agent.stoppingDistance)

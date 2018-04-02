@@ -69,13 +69,13 @@ public class Projectile : MonoBehaviour
     {
         if (target != null)
         {
-            for (int i = 0; i < statuses.Length; i++)
+            for (int i = 0; i<statuses.Length; i++)
             {
-                statuses[i].InflictStatus(target);
+                StatusManager.InflictStatus(null, statuses[i], target);
             }
         }
     }
-
+    
     /*
     private bool HitSomething()
     {
