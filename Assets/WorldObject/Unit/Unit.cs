@@ -198,8 +198,8 @@ public class Unit : WorldObject {
 	protected override void AimAtTarget(WorldObject target)
 	{
 		base.AimAtTarget(target);
-		aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
-	}
+        aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+    }
 
     private void HandleMove()
     {
