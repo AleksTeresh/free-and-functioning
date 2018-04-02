@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657958, g: 0.49641377, b: 0.5748177, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465797, g: 0.4964139, b: 0.5748177, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1264,6 +1264,7 @@ MonoBehaviour:
   username: WorstEnemy
   human: 0
   selectedAllyTargettingAbility: {fileID: 0}
+  selectedAlliesTargettingAbility: {fileID: 0}
 --- !u!4 &308150221
 Transform:
   m_ObjectHideFlags: 0
@@ -5031,6 +5032,7 @@ MonoBehaviour:
   username: Alekster
   human: 1
   selectedAllyTargettingAbility: {fileID: 0}
+  selectedAlliesTargettingAbility: {fileID: 0}
 --- !u!4 &1540614767
 Transform:
   m_ObjectHideFlags: 0

@@ -95,6 +95,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 27fc66feef796af47b56a32fe4c40926, type: 2}
   - {fileID: 11400000, guid: b05ba408802b94b5c9e818e0ecf17c67, type: 2}
   - {fileID: 11400000, guid: ef58018e4104c9a458091a448a1ac546, type: 2}
+  - {fileID: 11400000, guid: 715c1d86463eec546972edf5219a1f27, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}

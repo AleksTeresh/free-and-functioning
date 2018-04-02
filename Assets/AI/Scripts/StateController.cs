@@ -17,8 +17,9 @@ public class StateController : MonoBehaviour
     [HideInInspector] public WorldObject allyAbilityTarget;
     [HideInInspector] public TargetManager targetManager;
     [HideInInspector] public List<WorldObject> nearbyEnemies;
+    [HideInInspector] public List<WorldObject> nearbyAllies; // including self
     // [HideInInspector] public float stateTimeElapsed;
-	[HideInInspector] public bool attacking;
+    [HideInInspector] public bool attacking;
 	[HideInInspector] public Ability abilityToUse;
 
     private bool aiActive;
@@ -33,6 +34,7 @@ public class StateController : MonoBehaviour
     private void Start()
     {
         nearbyEnemies = new List<WorldObject>();
+        nearbyAllies = new List<WorldObject>();
         attacking = false;
     }
 
