@@ -4,9 +4,11 @@ using UnityEngine;
 
 [CreateAssetMenu (menuName = "AI/Decisions/ChooseIdleStateType")]
 public class ChooseIdleStateTypeDecision : Decision {
-
 	public override bool Decide (StateController controller)
 	{
-		return controller.targetManager.InMultiMode;
+        bool canAttackMulti = controller.unit.CanAttackMulti();
+        bool isInMultiMode = controller.targetManager.InMultiMode;
+
+		return canAttackMulti ? isInMultiMode : false;
 	}
 }

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
     public bool human;
 
     public Ability selectedAllyTargettingAbility;
+    public Ability selectedAlliesTargettingAbility;
 
     private List<Unit> units;
     private List<Building> buildings;

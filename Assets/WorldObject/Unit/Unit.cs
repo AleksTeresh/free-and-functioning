@@ -111,6 +111,11 @@ public class Unit : WorldObject {
         return true;
     }
 
+    public bool CanUseAbilitySlot(int slotIdx)
+    {
+        return AbilityUtils.CanUseAbilitySlot(abilities, abilitiesMulti, slotIdx);
+    }
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
@@ -198,8 +203,8 @@ public class Unit : WorldObject {
 	protected override void AimAtTarget(WorldObject target)
 	{
 		base.AimAtTarget(target);
-		aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
-	}
+        aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+    }
 
     private void HandleMove()
     {

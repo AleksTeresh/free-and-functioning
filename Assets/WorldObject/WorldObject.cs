@@ -357,7 +357,7 @@ public class WorldObject : MonoBehaviour {
 			return;
 		}
 
-		if (!TargetInFrontOfWeapon (target)) {
+		if (!TargetInFrontOfWeapon (target) && !IsTargetSelf(target)) {
 			AimAtTarget (target);
 		}
 		else if (ability.isReady) {
@@ -434,6 +434,7 @@ public class WorldObject : MonoBehaviour {
 
         return spawnPoint;
     }
+
 
     protected virtual void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
@@ -537,6 +538,11 @@ public class WorldObject : MonoBehaviour {
 
         if (WorkManager.V3Equal(a, b)) return true;
         else return false;
+    }
+
+    private bool IsTargetSelf(WorldObject target)
+    {
+        return this == target;
     }
 
     protected virtual void AimAtTarget(WorldObject target)
