@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using UnityEngine.SceneManagement;
 
 /**
  * Singleton that handles the management of game state. This includes
@@ -15,6 +16,16 @@ public class GameManager : MonoBehaviour
     private bool initialised = false;
     private VictoryCondition[] victoryConditions;
     private HUD hud;
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
 
     void Awake()
     {
@@ -34,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnLevelWasLoaded()
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         if (initialised)
         {

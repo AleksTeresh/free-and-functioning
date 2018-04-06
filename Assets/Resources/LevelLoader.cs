@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using RTS;
 
 /**
@@ -14,6 +15,16 @@ public class LevelLoader : MonoBehaviour
     private static int nextObjectId = 0;
     private static bool created = false;
     private bool initialised = false;
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
 
     void Awake()
     {
@@ -49,7 +60,7 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    void OnLevelWasLoaded()
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         if (initialised)
         {

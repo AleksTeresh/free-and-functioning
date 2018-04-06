@@ -7,7 +7,17 @@ using UnityEngine.SceneManagement;
 public class MainMenu : Menu
 {
 
-    void OnLevelWasLoaded()
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         Cursor.visible = true;
         if (PlayerManager.GetPlayerName() == "")

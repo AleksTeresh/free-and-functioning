@@ -84,8 +84,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224724981046957886}
+  - component: {fileID: 114048183586109084}
   m_Layer: 5
-  m_Name: Effects
+  m_Name: Statuses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,6 +159,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114048183586109084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524086046307280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea4a846b217fad41950b215cdfc9a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114206163580162130
 MonoBehaviour:
   m_ObjectHideFlags: 1
