@@ -9,6 +9,7 @@ using System;
 public class Player : MonoBehaviour {
 
     public WorldObject SelectedObject { get; set; }
+	public List<WorldObject> selectedObjects;
     public Color teamColor;
 
     public string username;

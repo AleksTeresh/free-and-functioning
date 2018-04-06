@@ -112,7 +112,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 014228b6e0d02374a80fee0c0e39bccb, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2e3fd4c85027d4aba945358e7a2348ff, type: 2}
 --- !u!1001 &14657825
 Prefab:
   m_ObjectHideFlags: 0
@@ -574,6 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867a604ade3b2db468b6f251353c5c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedObjects: []
   teamColor: {r: 0.9044118, g: 0.28595373, b: 0.28595373, a: 0}
   username: WorstEnemy
   human: 0
@@ -2568,6 +2569,11 @@ Prefab:
     - target: {fileID: 224373469095457216, guid: 18c2a160ec048d14ca46079316893b47,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224197585824376162, guid: 18c2a160ec048d14ca46079316893b47,
+        type: 2}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

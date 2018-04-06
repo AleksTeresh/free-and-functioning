@@ -257,20 +257,46 @@ public class UserInput : MonoBehaviour {
     {
         Player owner = objectHandler.GetComponentInParent<Player>();
         //only handle input if owned by a human player and currently selected
+
+		//issue move order to one or more units
+
         if (owner.username == player.username && player && player.human && objectHandler.IsSelected())
         {
-            StateController handlerStateController = objectHandler.GetStateController();
-            if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
-            {
-                float x = hitPoint.x;
-                float y = hitPoint.y;
-                float z = hitPoint.z;
-                Vector3 destination = new Vector3(x, y, z);
+			IssueMoveOrderToUnit (objectHandler, hitObject, hitPoint);
 
-                InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
-            }
+			if (player.selectedObjects.Count > 0)
+			{
+				IssueMoveOrderToSelectedUnits (hitObject, hitPoint);
+			}
         }
     }
+
+	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, float formationOffset = 0) 
+	{
+		StateController handlerStateController = objectHandler.GetStateController();
+		if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
+		{
+			float x = hitPoint.x + formationOffset;
+			float y = hitPoint.y;
+			float z = hitPoint.z;
+			Vector3 destination = new Vector3(x, y, z);
+
+			InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
+		}
+	}
+
+	private void IssueMoveOrderToSelectedUnits(GameObject hitObject, Vector3 hitPoint)
+	{
+		float formationOffset = 5.0f;
+
+		for (int i = 0; i < player.selectedObjects.Count; i++) 
+		{
+			Unit unit = (Unit) player.selectedObjects [i];
+
+			IssueMoveOrderToUnit (unit, hitObject, hitPoint, (i + 1) * formationOffset);
+		}
+	}
+
 /*
     private void BuildingMouseClick (Building objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
     {
