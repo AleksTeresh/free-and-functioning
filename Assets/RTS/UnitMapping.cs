@@ -13,7 +13,7 @@ namespace RTS
 			this.hotkeyToUnitname = hotkeyToUnitname;
 		}
 
-		public WorldObject FindUnitByHotkey (List<Unit> units, int hotkey)
+		public Unit FindUnitByHotkey (List<Unit> units, int hotkey)
 		{
 			string unitName = hotkey < hotkeyToUnitname.Length ? hotkeyToUnitname[hotkey] : null;
 

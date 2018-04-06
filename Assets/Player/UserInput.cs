@@ -8,12 +8,15 @@ public class UserInput : MonoBehaviour {
     private Player player;
     private TargetManager targetManager;
     private HUD hud;
+    private Camera mainCamera;
 
     // Use this for initialization
     void Start () {
         player = transform.root.GetComponent<Player>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
         hud = transform.root.GetComponentInChildren<HUD>();
+
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 	
 	// Update is called once per frame
@@ -32,7 +35,7 @@ public class UserInput : MonoBehaviour {
 
             AttackModeSelection();
 
-			RTS.HotkeyUnitSelector.HandleInput (player, hud);
+			RTS.HotkeyUnitSelector.HandleInput (player, hud, mainCamera);
 			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
 			RTS.HotkeyAllyAbilityTargetSelector.HandleInput (player, hud);
         }

@@ -3127,6 +3127,11 @@ MonoBehaviour:
   human: 1
   selectedAllyTargettingAbility: {fileID: 0}
   selectedAlliesTargettingAbility: {fileID: 0}
+  hotkeyToUnitNameMapping:
+  - Rudolf
+  - Adolf
+  - 
+  - Gendolfine
 --- !u!4 &1308753006
 Transform:
   m_ObjectHideFlags: 0
@@ -3305,6 +3310,11 @@ MonoBehaviour:
   human: 0
   selectedAllyTargettingAbility: {fileID: 0}
   selectedAlliesTargettingAbility: {fileID: 0}
+  hotkeyToUnitNameMapping:
+  - Rudolf
+  - Adolf
+  - 
+  - Gendolfine
 --- !u!4 &1326795706
 Transform:
   m_ObjectHideFlags: 0
@@ -4132,6 +4142,11 @@ Prefab:
     - target: {fileID: 4700276431411240, guid: 3cfce0544807a4e1488bfae067062445, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114500054278045554, guid: 3cfce0544807a4e1488bfae067062445,
+        type: 2}
+      propertyPath: objectName
+      value: Rudolf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cfce0544807a4e1488bfae067062445, type: 2}
