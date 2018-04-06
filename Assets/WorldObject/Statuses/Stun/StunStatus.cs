@@ -9,20 +9,23 @@ namespace Statuses
     {
         private string previousState;
 
+        protected override void OnStatusStart()
+        {
+            // if the target just received the status, save its current state
+            if (previousState == null)
+            {
+                var targetStateController = target.GetStateController();
+
+                previousState = targetStateController.currentState.name;
+            }
+        }
+
         protected override void AffectTarget()
         {
             if (target && target.GetStateController())
             {
                 var targetStateController = target.GetStateController();
 
-                // if the target just received the status, save its current state
-                if (previousState == null)
-                {
-                    previousState = targetStateController.currentState.name;
-                }
-                
-
-                // targetStateController.chaseTarget = null;
                 targetStateController.TransitionToState(ResourceManager.GetAiState("Stunned"));
             }
         }

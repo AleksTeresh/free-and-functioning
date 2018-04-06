@@ -54,13 +54,11 @@ MonoBehaviour:
   abilityName: Healing Ability Base
   range: 200
   cooldown: 3
-  isMultiTarget: 1
   damage: 200
-  lightDamage: 100
+  isAllyTargetingAbility: 1
+  isSelfOnly: 0
   statuses: []
-  lightStatuses: []
   user: {fileID: 0}
-  target: {fileID: 0}
   targets: []
   isReady: 1
   cooldownTimer: 0

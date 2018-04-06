@@ -16,12 +16,6 @@ public class Tanker : MeleeUnit {
         return true;
     }
 
-    protected override void UseWeapon(WorldObject target)
-	{
-		base.UseWeapon (target);
-		target.TakeDamage (damage);
-	}
-
 	protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
 	{
 		base.HandleLoadedProperty(reader, propertyName, readValue);

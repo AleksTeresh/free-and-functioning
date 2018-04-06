@@ -5,14 +5,8 @@ using RTS;
 using Newtonsoft.Json;
 
 public class MeleeSwarmling : MeleeUnit {
-	public override bool CanAttack()
-	{
-		return true;
-	}
-
-	protected override void UseWeapon(WorldObject target)
-	{
-		base.UseWeapon (target);
-		target.TakeDamage (damage);
-	}
+    public override bool CanAttack()
+    {
+        return true;
+    }
 }

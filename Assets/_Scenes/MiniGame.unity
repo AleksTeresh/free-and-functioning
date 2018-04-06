@@ -2011,7 +2011,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4865473580804512, guid: 283adad31e9150f47aa02d8f55a4f22a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4865473580804512, guid: 283adad31e9150f47aa02d8f55a4f22a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3035,11 +3035,15 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 1000
   maxHitPoints: 1000
+  damage: 10
   weaponRange: 10
   aiming: 0
   weaponAimSpeed: 1
   weaponRechargeTime: 1
   weaponMultiRechargeTime: 1
+  meleeDefence: 0
+  rangeDefence: 0
+  abilityDefence: 0
   attackSound: {fileID: 0}
   selectSound: {fileID: 0}
   useWeaponSound: {fileID: 0}
@@ -3121,6 +3125,8 @@ MonoBehaviour:
   teamColor: {r: 0.25886676, g: 0.83823526, b: 0.3587579, a: 0}
   username: Alekster
   human: 1
+  selectedAllyTargettingAbility: {fileID: 0}
+  selectedAlliesTargettingAbility: {fileID: 0}
 --- !u!4 &1308753006
 Transform:
   m_ObjectHideFlags: 0
@@ -3297,6 +3303,8 @@ MonoBehaviour:
   teamColor: {r: 0.9044118, g: 0.28595373, b: 0.28595373, a: 0}
   username: WorstEnemy
   human: 0
+  selectedAllyTargettingAbility: {fileID: 0}
+  selectedAlliesTargettingAbility: {fileID: 0}
 --- !u!4 &1326795706
 Transform:
   m_ObjectHideFlags: 0
@@ -4099,7 +4107,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4700276431411240, guid: 3cfce0544807a4e1488bfae067062445, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4700276431411240, guid: 3cfce0544807a4e1488bfae067062445, type: 2}
       propertyPath: m_LocalPosition.z

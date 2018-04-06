@@ -81,9 +81,9 @@ public class Unit : WorldObject {
         }
     }
 
-	public override void TakeDamage (int damage)
+	public override void TakeDamage (int damage, AttackType attackType)
 	{
-		base.TakeDamage (damage);
+		base.TakeDamage (damage, attackType);
 
 		takeDamageEffect.Play();
 	}

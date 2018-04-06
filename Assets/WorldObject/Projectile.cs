@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Statuses;
+using RTS;
 
 public class Projectile : MonoBehaviour
 {
 
     public float velocity = 1;
-    public int damage = 1;
     public Status[] statuses;
 
     public Player Player { get; set; }
 
+    private int damage = 1;
     private float range = 1;
     private WorldObject target;
 
@@ -60,9 +61,14 @@ public class Projectile : MonoBehaviour
         this.target = target;
     }
 
+    public void SetDamage (int damage)
+    {
+        this.damage = damage;
+    }
+
     private void InflictDamage(WorldObject collidedObject)
     {
-        if (collidedObject) collidedObject.TakeDamage(damage);
+        if (collidedObject) collidedObject.TakeDamage(damage, AttackType.Range);
     }
 
     private void InflictStatuses(WorldObject target)

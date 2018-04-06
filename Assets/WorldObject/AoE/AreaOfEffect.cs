@@ -15,6 +15,7 @@ namespace Abilities
         public float delay;
         public bool affectsFriends;
         public bool affectsSelf;
+        public AttackType attackType = AttackType.Ability;
         [HideInInspector] public WorldObject creator;
 
         private float timeSinceCreated;
@@ -57,7 +58,7 @@ namespace Abilities
             {
                 if (target != null)
                 {
-                    target.TakeDamage(damage);
+                    target.TakeDamage(damage, attackType);
                 }
             });
         }

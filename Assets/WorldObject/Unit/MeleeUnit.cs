@@ -1,7 +1,11 @@
 ﻿using System;
-
+using RTS;
 
 public class MeleeUnit : Unit
 {
-	public int damage = 10;
+    protected override void UseWeapon(WorldObject target)
+    {
+        base.UseWeapon(target);
+        target.TakeDamage(damage, AttackType.Melee);
+    }
 }

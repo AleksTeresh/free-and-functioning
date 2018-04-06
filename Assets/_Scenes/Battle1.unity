@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465797, g: 0.4964139, b: 0.5748177, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657928, g: 0.4964131, b: 0.5748174, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4245,6 +4245,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114342456901951920, guid: 483bef74fc1e42240a843dd8991caafa,
+        type: 2}
+      propertyPath: statuses.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4585386913671438, guid: 483bef74fc1e42240a843dd8991caafa, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4277,6 +4282,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114342456901951920, guid: 483bef74fc1e42240a843dd8991caafa,
+        type: 2}
+      propertyPath: statuses.Array.data[2]
+      value: 
+      objectReference: {fileID: 1995978576699402, guid: 4d1ef3f59afec7c438916e3f4b58fd3f,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 483bef74fc1e42240a843dd8991caafa, type: 2}
   m_IsPrefabParent: 0
@@ -4812,6 +4823,9 @@ MonoBehaviour:
   weaponAimSpeed: 1
   weaponRechargeTime: 1
   weaponMultiRechargeTime: 1
+  meleeDefence: 0
+  rangeDefence: 0
+  abilityDefence: 0
   attackSound: {fileID: 0}
   selectSound: {fileID: 0}
   useWeaponSound: {fileID: 0}
@@ -5496,7 +5510,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4437033651813588, guid: 43bde4d735558d14d8bdc297b799dcdf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.72
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4437033651813588, guid: 43bde4d735558d14d8bdc297b799dcdf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5521,6 +5535,16 @@ Prefab:
     - target: {fileID: 4437033651813588, guid: 43bde4d735558d14d8bdc297b799dcdf, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858646080851920, guid: 43bde4d735558d14d8bdc297b799dcdf,
+        type: 2}
+      propertyPath: isAllyTargetingAbility
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914125150353672, guid: 43bde4d735558d14d8bdc297b799dcdf,
+        type: 2}
+      propertyPath: isAllyTargetingAbility
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43bde4d735558d14d8bdc297b799dcdf, type: 2}
