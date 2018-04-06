@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1388609028653832}
   m_IsPrefabParent: 1
+--- !u!1 &1065461281246908
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4818182986307828}
+  - component: {fileID: 114667407556854628}
+  m_Layer: 0
+  m_Name: HealingAbilityMulti
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1091487125040324
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,22 +59,6 @@ GameObject:
   - component: {fileID: 114829762557076610}
   m_Layer: 8
   m_Name: MiniMapIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1321980603694144
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4844459925479126}
-  - component: {fileID: 114914125150353672}
-  m_Layer: 0
-  m_Name: HealingAbilityMulti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +101,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1485573964875140
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4447360769471074}
+  - component: {fileID: 114932031518416682}
+  m_Layer: 0
+  m_Name: HealingAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1517686323933990
 GameObject:
   m_ObjectHideFlags: 1
@@ -115,22 +131,6 @@ GameObject:
   - component: {fileID: 114756352720675016}
   m_Layer: 0
   m_Name: RightEye
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1543194715255742
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4361473496396096}
-  - component: {fileID: 114858646080851920}
-  m_Layer: 0
-  m_Name: HealingAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,22 +277,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4844459925479126}
+  - {fileID: 4818182986307828}
   m_Father: {fileID: 4437033651813588}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4361473496396096
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543194715255742}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4830456133096512}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4371518892432576
 Transform:
@@ -340,7 +327,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388609028653832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.720001, y: -1.72, z: -2.0100098}
+  m_LocalPosition: {x: -45.6, y: -1.72, z: -57.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4404278541976642}
@@ -352,6 +339,19 @@ Transform:
   - {fileID: 4830456133096512}
   - {fileID: 4324992471232142}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4447360769471074
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485573964875140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4830456133096512}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4485841447129192
@@ -380,6 +380,19 @@ Transform:
   m_Father: {fileID: 4293915219525918}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4818182986307828
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065461281246908}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4324992471232142}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4830456133096512
 Transform:
   m_ObjectHideFlags: 1
@@ -390,22 +403,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4361473496396096}
+  - {fileID: 4447360769471074}
   m_Father: {fileID: 4437033651813588}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4844459925479126
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1321980603694144}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4324992471232142}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4948552216246022
 Transform:
@@ -805,6 +805,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114667407556854628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065461281246908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c90a7ce523e0d14e82309c2046edf79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Healing Ability Base
+  range: 300
+  cooldown: 3
+  damage: 50
+  isAllyTargetingAbility: 1
+  isSelfOnly: 0
+  statuses: []
+  user: {fileID: 0}
+  targets: []
+  isReady: 1
+  cooldownTimer: 0
 --- !u!114 &114708371468125072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -838,26 +860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114858646080851920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543194715255742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c90a7ce523e0d14e82309c2046edf79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Healing Ability Base
-  range: 200
-  cooldown: 3
-  damage: 200
-  statuses: []
-  user: {fileID: 0}
-  targets: []
-  isReady: 1
-  cooldownTimer: 0
 --- !u!114 &114906819570839496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -869,17 +871,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15344a0b6d86688468324ef4e437b4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Menani
+  objectName: Gendolfine
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
   hitPoints: 50
   maxHitPoints: 300
+  damage: 10
   weaponRange: 30
   aiming: 0
   weaponAimSpeed: 6
   weaponRechargeTime: 1
   weaponMultiRechargeTime: 1
+  meleeDefence: 0
+  rangeDefence: 0
+  abilityDefence: 0
   attackSound: {fileID: 0}
   selectSound: {fileID: 0}
   useWeaponSound: {fileID: 0}
@@ -893,21 +899,23 @@ MonoBehaviour:
   moveVolume: 1
   abilities: []
   abilitiesMulti: []
---- !u!114 &114914125150353672
+--- !u!114 &114932031518416682
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1321980603694144}
+  m_GameObject: {fileID: 1485573964875140}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c90a7ce523e0d14e82309c2046edf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Healing Ability Base
-  range: 300
+  range: 200
   cooldown: 3
-  damage: 50
+  damage: 200
+  isAllyTargetingAbility: 1
+  isSelfOnly: 0
   statuses: []
   user: {fileID: 0}
   targets: []

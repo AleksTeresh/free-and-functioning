@@ -40,9 +40,11 @@ namespace RTS
             }
         }
 
-        private static void UseAbilityOnAlly(Player player, int unitIndex)
+        private static void UseAbilityOnAlly(Player player, int hotkey)
         {
-            Unit allyTarget = player.FindUnitByIdx(unitIndex);
+//            Unit allyTarget = player.FindUnitByIdx(unitIndex);
+			WorldObject allyTarget = player.unitMapping.FindUnitByHotkey (player.GetUnits(), hotkey);
+
 
             if (allyTarget != null)
             {
