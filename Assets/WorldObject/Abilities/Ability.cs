@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Statuses;
 using UnityEngine;
+using RTS;
 
 namespace Abilities
 {
@@ -15,6 +16,9 @@ namespace Abilities
         public float cooldown;
 
         public int damage;
+
+        public bool isAllyTargetingAbility = false;
+        public bool isSelfOnly = false;
 
 		public Status[] statuses;
 
@@ -41,12 +45,6 @@ namespace Abilities
 				}
 			}
 		}
-
-        public virtual bool IsAllyTargettingAbility()
-        {
-            // override by children
-            return false;
-        }
 
 		public void Use(WorldObject target)
 		{
@@ -94,7 +92,7 @@ namespace Abilities
             targets.ForEach(target =>
             {
                 InflictStatuses(target);
-                target.TakeDamage(damage);
+                target.TakeDamage(damage, AttackType.Ability);
             });
 
 			// Default behaviour needs to be overidden by children

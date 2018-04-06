@@ -29,6 +29,7 @@ public class WorldObject : MonoBehaviour {
     protected float healthPercentage = 1.0f;
 
     // weapon and attack
+    public int damage = 10;
     public float weaponRange = 10.0f;
     protected bool movingIntoPosition = false;
     public bool aiming = false;
@@ -39,9 +40,9 @@ public class WorldObject : MonoBehaviour {
     private float currentWeaponMultiChargeTime;
 
     // defence
-    private float meleeDefence = 0;
-    private float rangeDefence = 0;
-    private float abilityDefence = 0;
+    public float meleeDefence = 0;
+    public float rangeDefence = 0;
+    public float abilityDefence = 0;
 
     // loading related
     protected bool loadedSavedValues = false;
@@ -241,6 +242,16 @@ public class WorldObject : MonoBehaviour {
                 childRenderersWithoutParticles.Add(r);
             }
         }
+    }
+
+    public void ResetCurrentWeaponChargeTime()
+    {
+        this.currentWeaponChargeTime = 0;
+    }
+
+    public void ResetCurrentWeaponMultiChargeTime()
+    {
+        this.currentWeaponMultiChargeTime = 0;
     }
 
     protected virtual void Awake()
@@ -492,10 +503,41 @@ public class WorldObject : MonoBehaviour {
         }
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int attackPoints, AttackType attackType)
     {
+        float damage = 0;
+
+        if (attackPoints == 0)
+        {
+            damage = 0;
+        }
+        else
+        {
+            switch (attackType)
+            {
+                case AttackType.Melee:
+                    damage = attackPoints * attackPoints / (attackPoints + meleeDefence);
+                    break;
+
+                case AttackType.Range:
+                    damage = attackPoints * attackPoints / (attackPoints + rangeDefence);
+                    break;
+
+                case AttackType.Ability:
+                    damage = attackPoints * attackPoints / (attackPoints + abilityDefence);
+                    break;
+
+                case AttackType.Ultimate:
+                    damage = attackPoints;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         underAttackFrameCounter = 2;
-        hitPoints -= damage;
+        hitPoints -= (int) damage;
         if (hitPoints <= 0) Destroy(gameObject);
     }
 
@@ -561,8 +603,9 @@ public class WorldObject : MonoBehaviour {
         GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject(projectileName), spawnPoint, rotation);
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
         projectile.Player = this.player;
-        projectile.SetRange(weaponRange);
+        projectile.SetRange(this.weaponRange);
         projectile.SetTarget(target);
+        projectile.SetDamage(this.damage);
         projectile.transform.rotation = rotation;
     }
 
@@ -574,10 +617,10 @@ public class WorldObject : MonoBehaviour {
         GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject(projectileName), spawnPoint, rotation);
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
         projectile.statuses = statuses;
-        projectile.damage = damage;
         projectile.Player = this.player;
         projectile.SetRange(range);
         projectile.SetTarget(target);
+        projectile.SetDamage(damage);
     }
 
     private bool ReadyToFire()

@@ -38,7 +38,14 @@ namespace RTS
 
                 if (ability != null)
                 {
-                    if (ability.IsAllyTargettingAbility())
+                    if (ability.isSelfOnly)
+                    {
+                        stateController.abilityToUse = ability;
+                        stateController.allyAbilityTarget = unit;
+
+                        stateController.TransitionToState(ResourceManager.GetAiState("Ally Ability Chase Manual"));
+                    }
+                    else if (ability.isAllyTargetingAbility)
                     {
                         // Makes HotkeyUnitSelector to treat key press events as ability target selection
                         Player player = ability.user.GetPlayer();

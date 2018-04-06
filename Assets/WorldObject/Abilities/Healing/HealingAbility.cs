@@ -9,14 +9,9 @@ namespace Abilities
 {
     class HealingAbility : Ability
     {
-        public override bool IsAllyTargettingAbility()
+        protected override void FireAbility()
         {
-            return true;
-        }
-
-		protected override void FireAbility()
-        {
-            //			InflictStatuses(target);
+            //InflictStatuses(target);
 
             targets.ForEach(target =>
             {

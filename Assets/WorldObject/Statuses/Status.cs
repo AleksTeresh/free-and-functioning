@@ -39,6 +39,11 @@ namespace Statuses
 			this.target = target;
             this.inflicter = inflicter;
 
+            if (!isActive)
+            {
+                OnStatusStart();
+            }
+
 			this.duration = 0;
 			this.isActive = true;
 
@@ -46,6 +51,11 @@ namespace Statuses
 		}
 
         protected virtual void AffectTarget()
+        {
+            // this method should be overriden
+        }
+
+        protected virtual void OnStatusStart()
         {
             // this method should be overriden
         }
