@@ -4,6 +4,7 @@ using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
 using Abilities;
+using System;
 
 public class Player : MonoBehaviour {
 
@@ -16,6 +17,9 @@ public class Player : MonoBehaviour {
     public Ability selectedAllyTargettingAbility;
     public Ability selectedAlliesTargettingAbility;
 
+	public string[] hotkeyToUnitNameMapping;
+	public UnitMapping unitMapping;
+
     private List<Unit> units;
     private List<Building> buildings;
 
@@ -24,6 +28,11 @@ public class Player : MonoBehaviour {
     private HUD hud;
     private FogOfWar fogOfWar;
 
+	void Awake()
+	{
+		unitMapping = new UnitMapping (hotkeyToUnitNameMapping);
+	}
+		
     // Use this for initialization
     void Start () {
         hud = GetComponentInChildren<HUD>();

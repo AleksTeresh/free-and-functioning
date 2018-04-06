@@ -26,14 +26,13 @@ namespace RTS
 			}
 		}
 
-		private static void SelectPlayerUnitByHotkeyIndex (Player player, HUD hud, int unitIndex)
+		private static void SelectPlayerUnitByHotkeyIndex (Player player, HUD hud, int hotkey)
 		{
 			var units = player.GetUnits ();
+			WorldObject unitToSelect = player.unitMapping.FindUnitByHotkey (units, hotkey);
 
-			if (unitIndex < units.Count) {
+			if (unitToSelect) {
 				ResetPlayerUnitsSelection (units, hud);
-
-				Unit unitToSelect = units [unitIndex];
 
 				player.SelectedObject = unitToSelect;
 				unitToSelect.SetSelection (true, hud.GetPlayingArea ());
