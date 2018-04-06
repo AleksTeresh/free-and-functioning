@@ -13,12 +13,12 @@ namespace RTS
 			"Select5"
 		};
 
-		public static void HandleInput (Player player, HUD hud)
+		public static void HandleInput (Player player, HUD hud, Camera camera)
 		{
 			if (player.selectedAllyTargettingAbility == null) {
 				for (int i = 0; i < hotkeys.Length; i++) {
 					if (Input.GetButtonDown (hotkeys [i])) {
-						SelectPlayerUnitByHotkeyIndex (player, hud, i);
+						SelectPlayerUnitByHotkeyIndex (camera, player, hud, i);
 
 						return;
 					}
@@ -26,21 +26,35 @@ namespace RTS
 			}
 		}
 
-		private static void SelectPlayerUnitByHotkeyIndex (Player player, HUD hud, int hotkey)
-		{
-			var units = player.GetUnits ();
-			WorldObject unitToSelect = player.unitMapping.FindUnitByHotkey (units, hotkey);
+		private static void SelectPlayerUnitByHotkeyIndex (Camera camera, Player player, HUD hud, int hotkey)
+        {
+            var units = player.GetUnits ();
+			Unit unitToSelect = player.unitMapping.FindUnitByHotkey (units, hotkey);
 
 			if (unitToSelect) {
-				ResetPlayerUnitsSelection (units, hud);
+                if (player.SelectedObject && player.SelectedObject.ObjectId == unitToSelect.ObjectId)
+                {
+                    MoveCameraToUnit(unitToSelect, camera);
+                }
+                else
+                {
+                    ResetPlayerUnitsSelection(units, hud);
 
-				player.SelectedObject = unitToSelect;
-				unitToSelect.SetSelection (true, hud.GetPlayingArea ());
+                    player.SelectedObject = unitToSelect;
+                    unitToSelect.SetSelection(true, hud.GetPlayingArea());
+                }
 			}
-
 		}
 
-		private static void ResetPlayerUnitsSelection (List<Unit> units, HUD hud)
+        private static void MoveCameraToUnit (Unit unit, Camera camera)
+        {
+            camera.transform.position = unit.transform.position + // get camera to unit's position
+                Vector3.up * camera.transform.position.y + // lift camera up
+                camera.transform.TransformDirection(Vector3.back * 20) +  // pull camera "away" from the unit, in the direction...
+                camera.transform.TransformDirection(Vector3.down * 20);   // ...opposite to the one camera is facing atm
+        }
+
+        private static void ResetPlayerUnitsSelection (List<Unit> units, HUD hud)
 		{
 			units.ForEach (p => p.SetSelection (false, hud.GetPlayingArea ()));
 		}

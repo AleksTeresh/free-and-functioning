@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8201f38692b34c0ca5b1c97e5b707ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Rudolf
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
