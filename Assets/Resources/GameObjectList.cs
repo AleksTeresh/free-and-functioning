@@ -47,7 +47,8 @@ public class GameObjectList : MonoBehaviour {
             Building building = buildings[i].GetComponent<Building>();
             if (building && building.name == name) return buildings[i];
         }
-        return null;
+
+		throw new UnregisteredAssetException (GetErrorMessage("Building", name));
     }
 
     public GameObject GetUnit(string name)
@@ -57,7 +58,8 @@ public class GameObjectList : MonoBehaviour {
             Unit unit = units[i].GetComponent<Unit>();
             if (unit && unit.name == name) return units[i];
         }
-        return null;
+        
+		throw new UnregisteredAssetException (GetErrorMessage("Unit", name));
     }
 
     public GameObject GetWorldObject(string name)
@@ -66,7 +68,8 @@ public class GameObjectList : MonoBehaviour {
         {
             if (worldObject.name == name) return worldObject;
         }
-        return null;
+        
+		throw new UnregisteredAssetException (GetErrorMessage("World Object", name));
     }
 
     public GameObject GetPlayerObject()
@@ -86,7 +89,8 @@ public class GameObjectList : MonoBehaviour {
             Unit unit = units[i].GetComponent<Unit>();
             if (unit && unit.name == name) return unit.buildImage;
         }
-        return null;
+        
+		throw new UnregisteredAssetException (GetErrorMessage("Build Image", name));
     }
 
     public GameObject GetStatus(string name)
@@ -95,7 +99,8 @@ public class GameObjectList : MonoBehaviour {
         {
             if (status.name == name) return status;
         }
-        return null;
+
+		throw new UnregisteredAssetException (GetErrorMessage("Status", name));
     }
 
     public State GetAiState(string name)
@@ -104,7 +109,8 @@ public class GameObjectList : MonoBehaviour {
         {
             if (state.name == name) return state;
         }
-        return null;
+
+		throw new UnregisteredAssetException (GetErrorMessage("AI State", name));
     }
 
     public GameObject GetUIElement(string name)
@@ -113,7 +119,9 @@ public class GameObjectList : MonoBehaviour {
         {
             if (element.name == name) return element;
         }
-        return null;
+        
+		throw new UnregisteredAssetException (GetErrorMessage("UI Element", name));
+
     }
 
 	public ParticleSystem GetAbilityVfx(string name)
@@ -121,6 +129,24 @@ public class GameObjectList : MonoBehaviour {
 		foreach (ParticleSystem vfx in abilityVFX) {
 			if (vfx.name == name) return vfx;
 		}
-		return null;
+
+		throw new UnregisteredAssetException (GetErrorMessage("Ability VFX", name));
 	}
+
+	private string GetErrorMessage(string prefabType, string assetName) 
+	{
+		return string.Format ("{0} prefab {1} is not registered", prefabType, assetName);
+	}
+}
+
+internal class UnregisteredAssetException : System.Exception 
+{
+	public UnregisteredAssetException() : base() { }
+	public UnregisteredAssetException(string message) : base(message) { }
+	public UnregisteredAssetException(string message, System.Exception inner) : base(message, inner) { }
+
+	// A constructor is needed for serialization when an
+	// exception propagates from a remoting server to the client. 
+	protected UnregisteredAssetException(System.Runtime.Serialization.SerializationInfo info,
+		System.Runtime.Serialization.StreamingContext context) { }
 }
