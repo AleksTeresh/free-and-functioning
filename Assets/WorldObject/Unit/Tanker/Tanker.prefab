@@ -467,7 +467,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536295480490062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.2, y: -2, z: -37.5}
+  m_LocalPosition: {x: -34.2, y: -0.05, z: -37.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4199019429665292}
@@ -1074,7 +1074,8 @@ MonoBehaviour:
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
-  statuses: []
+  statuses:
+  - {fileID: 114934206967156496, guid: e9a133093de4a0e48b251c74b732e42b, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1

@@ -20,6 +20,11 @@ public class AbilityMultiAction : Action
         Unit unit = controller.unit;
         Ability abilityToUse = controller.abilityToUse;
 
+        if (!abilityToUse)
+        {
+            return;
+        }
+
         if (abilityToUse is AoeAbility)
         {
             AoeAbility aoeAbility = (AoeAbility)abilityToUse;

@@ -13,9 +13,13 @@ namespace Statuses
             {
                 var targetStateController = target.GetStateController();
 
+                if (targetStateController)
+                {
+                    targetStateController.unit.StopMove();
 
-                targetStateController.chaseTarget = inflicter;
-                targetStateController.TransitionToState(ResourceManager.GetAiState("Chase Idler"));
+                    targetStateController.chaseTarget = inflicter;
+                    targetStateController.TransitionToState(ResourceManager.GetAiState("Chase Idler"));
+                }
             }
         }
     }

@@ -18,6 +18,11 @@ public class AbilityAction : Action {
 		WorldObject chaseTarget = controller.chaseTarget;
 		Ability ability = controller.abilityToUse;
 
+        if (!ability)
+        {
+            return;
+        }
+
         if (ability is AoeAbility)
         {
             AoeAbility aoeAbility = (AoeAbility)ability;
