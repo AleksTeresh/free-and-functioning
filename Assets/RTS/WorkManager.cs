@@ -109,6 +109,18 @@ namespace RTS
             return mostVulnerable;
         }
 
+        public static Vector3 GetRandomDestinationPoint(NavMeshAgent subject, float walkRadius)
+        {
+            Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
+
+            randomDirection += subject.transform.position;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, walkRadius, NavMesh.GetAreaFromName("Walkable"));
+            Vector3 finalPosition = hit.position;
+
+            return finalPosition;
+        }
+
         public static bool ObjectCanReachTarget(WorldObject self, FogOfWarAgent target)
         {
             Vector3 targetLocation = target.transform.position;

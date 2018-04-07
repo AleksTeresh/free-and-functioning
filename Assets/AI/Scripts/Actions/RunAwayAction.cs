@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
+using RTS;
 
 [CreateAssetMenu(menuName = "AI/Actions/RunAway")]
 public class RunAwayAction : Action
 {
+    private static readonly float WALK_RADIUS = 10;
 
     public override void Act(StateController controller)
     {
@@ -22,7 +20,9 @@ public class RunAwayAction : Action
         {
             var offset = self.transform.position - target.transform.position;
             // run away from the target (oppiosite direction of where the target is relative to the self)
-            controller.unit.StartMove(self.destination + offset.normalized * 10);
+            controller.unit.StartMove(self.destination + offset.normalized * WALK_RADIUS);
+
+            WorkManager.GetRandomDestinationPoint(self, WALK_RADIUS);
         }
     }
 }

@@ -64,7 +64,7 @@ public class Indicator : MonoBehaviour {
 
         for (int i = 0; i < indicatedStatuses.Count; i++)
         {
-            if (!unit.ActiveStatuses.Contains(indicatedStatuses[i]))
+            if (!indicatedStatuses[i] || !unit.ActiveStatuses.Contains(indicatedStatuses[i]))
             {
                 indicatedStatuses = new List<Status>();
                 new List<StatusIndicator>(
