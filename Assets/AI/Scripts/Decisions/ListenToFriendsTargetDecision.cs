@@ -33,6 +33,7 @@ public class ListenToFriendsTargetDecision : Decision
             {
                 if (
                     unit.ObjectId != nearbyObject.ObjectId &&
+                    nearbyObject && nearbyObject.GetPlayer() &&
                     nearbyObject.GetPlayer().username == unit.GetPlayer().username &&
                     nearbyObject.GetStateController() &&
                     nearbyObject.GetStateController().chaseTarget

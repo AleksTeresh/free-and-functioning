@@ -93,6 +93,22 @@ namespace RTS
             return nearestObject;
         }
 
+        public static WorldObject FindMostVulnerableObjectInList(List<WorldObject> objects)
+        {
+            if (objects == null || objects.Count == 0) return null;
+            WorldObject mostVulnerable = objects[0];
+
+            objects.ForEach(p =>
+            {
+                if (p.maxHitPoints < mostVulnerable.maxHitPoints)
+                {
+                    mostVulnerable = p;
+                }
+            });
+
+            return mostVulnerable;
+        }
+
         public static bool ObjectCanReachTarget(WorldObject self, FogOfWarAgent target)
         {
             Vector3 targetLocation = target.transform.position;
@@ -101,39 +117,6 @@ namespace RTS
 
             return direction.magnitude <= (0.8f * self.weaponRange) && target.IsObserved();
         }
-/*
-        public static Vector3 FindNearestAttackPosition(NavMeshAgent selfAgent, WorldObject self, WorldObject target)
-        {
-            if (target && target.GetFogOfWarAgent() && target.GetFogOfWarAgent().IsObserved())
-            {
-                return FindNearestAttackPositionAlongStraightLine(
-                    self.weaponRange,
-                    self.transform.position,
-                    target.transform.position
-                );
-            }
-            else
-            {
-                var navMeshPath = new NavMeshPath();
-                bool result = selfAgent.CalculatePath(target.transform.position, navMeshPath);
-
-                if (result && navMeshPath.corners.Length > 1)
-                {
-                    return FindNearestAttackPositionAlongStraightLine(
-                        self.weaponRange,
-                        navMeshPath.corners[navMeshPath.corners.Length - 2],
-                        target.transform.position
-                    );
-                }
-
-                return FindNearestAttackPositionAlongStraightLine(
-                    self.weaponRange,
-                    self.transform.position,
-                    target.transform.position
-                );
-            }
-        }
-*/
 
         public static bool V3Equal(Vector3 a, Vector3 b)
         {

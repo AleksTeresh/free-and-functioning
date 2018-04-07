@@ -96,6 +96,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b05ba408802b94b5c9e818e0ecf17c67, type: 2}
   - {fileID: 11400000, guid: ef58018e4104c9a458091a448a1ac546, type: 2}
   - {fileID: 11400000, guid: 715c1d86463eec546972edf5219a1f27, type: 2}
+  - {fileID: 11400000, guid: 535af60092e44064a8b8146ead76cf6a, type: 2}
+  - {fileID: 11400000, guid: f5ef363dfe4ac0645ae316edb441b99f, type: 2}
+  - {fileID: 11400000, guid: b25fd2ce1eb4a7a4cb5a5b9e10c6f78d, type: 2}
+  - {fileID: 11400000, guid: 5db95e9acf44c714da7facbd713bed26, type: 2}
+  - {fileID: 11400000, guid: 6b77d5d4aca159b49be0b8e769cc1c08, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}
