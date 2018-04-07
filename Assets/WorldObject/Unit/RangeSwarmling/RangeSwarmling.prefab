@@ -417,11 +417,15 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 100
   maxHitPoints: 100
+  damage: 10
   weaponRange: 20
   aiming: 0
   weaponAimSpeed: 10
   weaponRechargeTime: 1.02
   weaponMultiRechargeTime: 1
+  meleeDefence: 0
+  rangeDefence: 0
+  abilityDefence: 0
   attackSound: {fileID: 8300000, guid: 33678abad51fdac45873effd3f676779, type: 3}
   selectSound: {fileID: 8300000, guid: 34bf03edab4eca74f93c5e301f60f475, type: 3}
   useWeaponSound: {fileID: 8300000, guid: a69c41ebdef7e0a49902503d4b6b2f33, type: 3}
@@ -434,6 +438,7 @@ MonoBehaviour:
   driveVolume: 0.5
   moveVolume: 1
   abilities: []
+  abilitiesMulti: []
 --- !u!114 &114911433039620936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,15 +450,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb15b68a485e6d459737e37f3f069d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: bff99035b6a2246ef93cfc4854844a44, type: 2}
+  currentState: {fileID: 11400000, guid: 535af60092e44064a8b8146ead76cf6a, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
   navMeshAgent: {fileID: 0}
   unit: {fileID: 0}
   wayPointList: []
   nextWayPoint: 0
   chaseTarget: {fileID: 0}
+  allyAbilityTarget: {fileID: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
+  nearbyAllies: []
   attacking: 0
   abilityToUse: {fileID: 0}
 --- !u!136 &136464245140962046
