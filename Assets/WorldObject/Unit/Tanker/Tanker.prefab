@@ -97,6 +97,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1327684714362770
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4202616935986920}
+  - component: {fileID: 114973193034484018}
+  m_Layer: 0
+  m_Name: AgroSelfAoeAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1398540181990778
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4831815099636110}
+  - component: {fileID: 114756044726948868}
+  m_Layer: 0
+  m_Name: LongAndStrongAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1427647777447588
 GameObject:
   m_ObjectHideFlags: 1
@@ -139,7 +171,23 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4666500853573458}
-  - component: {fileID: 114709718196225884}
+  - component: {fileID: 114797306812687424}
+  m_Layer: 0
+  m_Name: ShieldSelfAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1516256878945900
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4420586416620492}
+  - component: {fileID: 114880404393517630}
   m_Layer: 0
   m_Name: ShieldSelfAbility
   m_TagString: Untagged
@@ -177,38 +225,6 @@ GameObject:
   - component: {fileID: 114471616425509270}
   m_Layer: 0
   m_Name: StunSingleAbility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1662668088484850
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4862955894466534}
-  - component: {fileID: 114385534335017246}
-  m_Layer: 0
-  m_Name: ShieldSelfAbility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1672255471992878
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4954416566700744}
-  - component: {fileID: 114072857235510170}
-  m_Layer: 0
-  m_Name: LongAndStrongAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,22 +275,6 @@ GameObject:
   - component: {fileID: 114272084725405678}
   m_Layer: 8
   m_Name: MiniMapIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1799799971880012
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4599405595310186}
-  - component: {fileID: 114987477125317288}
-  m_Layer: 0
-  m_Name: AgroSelfAoeAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,11 +348,24 @@ Transform:
   m_LocalPosition: {x: 209.35493, y: -1.6406937, z: 208.74419}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4282974061740816}
+  - {fileID: 4202616935986920}
   - {fileID: 4266652513964608}
-  - {fileID: 4666500853573458}
-  - {fileID: 4611969686397908}
+  - {fileID: 4420586416620492}
+  - {fileID: 4831815099636110}
   m_Father: {fileID: 4700276431411240}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4202616935986920
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327684714362770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 230.49612, y: 35.505955, z: 173.90591}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4199019429665292}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4205957707229728
@@ -366,7 +379,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1, z: 1.1}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4266652513964608
 Transform:
@@ -391,7 +404,7 @@ Transform:
   m_LocalPosition: {x: 230.49612, y: 35.505955, z: 173.90591}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4199019429665292}
+  m_Father: {fileID: 4753668164324638}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4343247387454198
@@ -406,8 +419,21 @@ Transform:
   m_Children:
   - {fileID: 4170400629879350}
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!4 &4420586416620492
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516256878945900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 184.88751, y: 43.381847, z: 128.64021}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4199019429665292}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4558611587363630
 Transform:
   m_ObjectHideFlags: 1
@@ -419,20 +445,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4599405595310186
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1799799971880012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 230.49612, y: 35.505955, z: 173.90591}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4753668164324638}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4611969686397908
 Transform:
@@ -444,7 +457,7 @@ Transform:
   m_LocalPosition: {x: 201.14021, y: 13.750198, z: 175.19955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4199019429665292}
+  m_Father: {fileID: 4753668164324638}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4666500853573458
@@ -457,7 +470,7 @@ Transform:
   m_LocalPosition: {x: 184.88751, y: 43.381847, z: 128.64021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4199019429665292}
+  m_Father: {fileID: 4753668164324638}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4700276431411240
@@ -467,17 +480,17 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536295480490062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.2, y: -0.05, z: -37.5}
+  m_LocalPosition: {x: -43.7, y: -2, z: -52.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4199019429665292}
   - {fileID: 4878531177108906}
   - {fileID: 4857883135647684}
   - {fileID: 4205957707229728}
   - {fileID: 4343247387454198}
   - {fileID: 4990767135873294}
-  - {fileID: 4558611587363630}
+  - {fileID: 4199019429665292}
   - {fileID: 4753668164324638}
+  - {fileID: 4558611587363630}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -491,12 +504,25 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4599405595310186}
+  - {fileID: 4282974061740816}
   - {fileID: 4087838228822542}
-  - {fileID: 4862955894466534}
-  - {fileID: 4954416566700744}
+  - {fileID: 4666500853573458}
+  - {fileID: 4611969686397908}
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 7
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4831815099636110
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1398540181990778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 201.14021, y: 13.750198, z: 175.19955}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4199019429665292}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4857883135647684
 Transform:
@@ -509,21 +535,8 @@ Transform:
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!4 &4862955894466534
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1662668088484850}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 184.88751, y: 43.381847, z: 128.64021}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4753668164324638}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4878531177108906
 Transform:
   m_ObjectHideFlags: 1
@@ -535,21 +548,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!4 &4954416566700744
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1672255471992878}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 201.14021, y: 13.750198, z: 175.19955}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4753668164324638}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4990767135873294
 Transform:
   m_ObjectHideFlags: 1
@@ -561,7 +561,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4700276431411240}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23181852191488318
 MeshRenderer:
@@ -775,29 +775,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114072857235510170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1672255471992878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bece158f94d32549b6bb57a2a9bbd7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Long And Strong
-  range: 100
-  cooldown: 18
-  damage: 0
-  isAllyTargetingAbility: 1
-  isSelfOnly: 1
-  statuses:
-  - {fileID: 114551866408263702, guid: 433b2e0348d715d4e80c912ce70690f0, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isReady: 1
-  cooldownTimer: 0
 --- !u!114 &114122303970909220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -893,35 +870,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Long And Strong
   range: 100
-  cooldown: 8
+  cooldown: 18
   damage: 0
-  isAllyTargetingAbility: 1
-  isSelfOnly: 1
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
   statuses:
   - {fileID: 114551866408263702, guid: 433b2e0348d715d4e80c912ce70690f0, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isReady: 1
-  cooldownTimer: 0
---- !u!114 &114385534335017246
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1662668088484850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bece158f94d32549b6bb57a2a9bbd7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Shield Self
-  range: 100
-  cooldown: 20
-  damage: 0
-  isAllyTargetingAbility: 1
-  isSelfOnly: 1
-  statuses:
-  - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1
@@ -1034,7 +988,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55aba35ed5f872745bff3c4ba81d8c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114709718196225884
+--- !u!114 &114756044726948868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1398540181990778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bece158f94d32549b6bb57a2a9bbd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Long And Strong
+  range: 100
+  cooldown: 8
+  damage: 0
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114551866408263702, guid: 433b2e0348d715d4e80c912ce70690f0, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isReady: 1
+  cooldownTimer: 0
+--- !u!114 &114797306812687424
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1042,12 +1019,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451913651948670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bece158f94d32549b6bb57a2a9bbd7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Shield Self
   range: 100
-  cooldown: 20
+  cooldown: 5
   damage: 0
   isAllyTargetingAbility: 1
   isSelfOnly: 1
@@ -1057,12 +1034,37 @@ MonoBehaviour:
   targets: []
   isReady: 1
   cooldownTimer: 0
---- !u!114 &114987477125317288
+  vfxName: ShieldAbilityEffect
+--- !u!114 &114880404393517630
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1799799971880012}
+  m_GameObject: {fileID: 1516256878945900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Shield Self
+  range: 100
+  cooldown: 5
+  damage: 0
+  isAllyTargetingAbility: 1
+  isSelfOnly: 1
+  statuses:
+  - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isReady: 1
+  cooldownTimer: 0
+  vfxName: ShieldAbilityEffect
+--- !u!114 &114973193034484018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327684714362770}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a60d6186b6f331b43a5fe3561703bb76, type: 3}
@@ -1074,8 +1076,7 @@ MonoBehaviour:
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
-  statuses:
-  - {fileID: 114934206967156496, guid: e9a133093de4a0e48b251c74b732e42b, type: 2}
+  statuses: []
   user: {fileID: 0}
   targets: []
   isReady: 1
