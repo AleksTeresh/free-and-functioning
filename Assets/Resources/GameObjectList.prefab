@@ -111,6 +111,8 @@ MonoBehaviour:
   - {fileID: 1995978576699402, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
   - {fileID: 1862860984843280, guid: 6029dafd8376c054c9d16c6ddbe00a79, type: 2}
   - {fileID: 1818220836653362, guid: 433b2e0348d715d4e80c912ce70690f0, type: 2}
+  - {fileID: 1343535770341516, guid: 8a795494eb9240345bfc9bf291a909c4, type: 2}
+  - {fileID: 1019984024320370, guid: 69790dbba81d4104c94af05c5ff379e8, type: 2}
   abilityVFX:
   - {fileID: 198552222378971970, guid: 7bf86c6ed83ef4c0aa17d2e5cc039fa5, type: 2}
   - {fileID: 198081506511723902, guid: 4a1ef6267220b2f4eae8c3d54df068a3, type: 2}

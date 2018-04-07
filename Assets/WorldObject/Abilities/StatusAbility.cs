@@ -1,6 +1,6 @@
 ﻿namespace Abilities
 {
-    public class ShieldAbility : AbilityWithVFX
+    public class StatusAbility : AbilityWithVFX
     {
         protected override void FireAbility()
         {

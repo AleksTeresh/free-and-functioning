@@ -11303,6 +11303,62 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1625928302}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1649319695
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 411447309}
+    m_Modifications:
+    - target: {fileID: 4937348920054354, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 227.48706
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937348920054354, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937348920054354, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 186.37831
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937348920054354, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937348920054354, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937348920054354, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937348920054354, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937348920054354, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522369381139954, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+      propertyPath: m_Name
+      value: AttackUpAbility
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390454617267038, guid: 571c312613b158f449e0d3de117a7315,
+        type: 2}
+      propertyPath: vfxName
+      value: AttackUpAbilityEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390454617267038, guid: 571c312613b158f449e0d3de117a7315,
+        type: 2}
+      propertyPath: abilityName
+      value: AttackUpAbility
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 571c312613b158f449e0d3de117a7315, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1692747542 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4437033651813588, guid: 43bde4d735558d14d8bdc297b799dcdf,
