@@ -58,7 +58,8 @@ MonoBehaviour:
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
-  statuses: []
+  statuses:
+  - {fileID: 114771467544062228, guid: 6c364af0b55cfff4b885446229d7b48b, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1

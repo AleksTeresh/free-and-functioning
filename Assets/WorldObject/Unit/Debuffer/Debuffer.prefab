@@ -66,6 +66,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1107840354888890
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4513107907276960}
+  - component: {fileID: 114610578569978376}
+  m_Layer: 0
+  m_Name: DotAbilityMulti
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1168105954154608
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,22 +175,6 @@ GameObject:
   - component: {fileID: 114281033729863632}
   m_Layer: 0
   m_Name: DefDownAbility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1367609510697760
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4150741040235430}
-  - component: {fileID: 114098979847435454}
-  m_Layer: 0
-  m_Name: DotAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,17 +331,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1993207746250258
+--- !u!1 &1929719455605290
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4573993588691414}
-  - component: {fileID: 114303889798799974}
+  - component: {fileID: 4005815310284112}
+  - component: {fileID: 114198619975103866}
   m_Layer: 0
-  m_Name: DotAbilityMulti
+  m_Name: DotAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,6 +364,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4005815310284112
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1929719455605290}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 205.91399, y: 5.969446, z: 162.60408}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4088400105064832}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4030576964955238
 Transform:
   m_ObjectHideFlags: 1
@@ -402,23 +415,10 @@ Transform:
   m_Children:
   - {fileID: 4305953327719698}
   - {fileID: 4977009247700028}
-  - {fileID: 4150741040235430}
+  - {fileID: 4005815310284112}
   - {fileID: 4479733416486202}
   m_Father: {fileID: 4971183760761288}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4150741040235430
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1367609510697760}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4088400105064832}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4154894047345886
 Transform:
@@ -458,7 +458,7 @@ Transform:
   m_Children:
   - {fileID: 4381120288274476}
   - {fileID: 4154894047345886}
-  - {fileID: 4573993588691414}
+  - {fileID: 4513107907276960}
   - {fileID: 4523038626164444}
   m_Father: {fileID: 4971183760761288}
   m_RootOrder: 4
@@ -554,6 +554,19 @@ Transform:
   m_Father: {fileID: 4088400105064832}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4513107907276960
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107840354888890}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4177584798010388}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4523038626164444
 Transform:
   m_ObjectHideFlags: 1
@@ -580,19 +593,6 @@ Transform:
   m_Father: {fileID: 4971183760761288}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!4 &4573993588691414
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1993207746250258}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4177584798010388}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4717786925708758
 Transform:
   m_ObjectHideFlags: 1
@@ -626,7 +626,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058559940681134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.2, y: 0, z: -54.3}
+  m_LocalPosition: {x: -48.5, y: -0.8, z: -47.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4717786925708758}
@@ -1037,12 +1037,12 @@ MonoBehaviour:
   cooldownTimer: 0
   delayTimer: 0
   vfxName: AttackDownAbilityEffect
---- !u!114 &114098979847435454
+--- !u!114 &114198619975103866
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1367609510697760}
+  m_GameObject: {fileID: 1929719455605290}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
@@ -1055,7 +1055,8 @@ MonoBehaviour:
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
-  statuses: []
+  statuses:
+  - {fileID: 114916234241743166, guid: 9259626cf6be09448b11a93dabf74c22, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1
@@ -1139,32 +1140,6 @@ MonoBehaviour:
   cooldownTimer: 0
   delayTimer: 0
   vfxName: DefDownAbilityEffect
---- !u!114 &114303889798799974
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1993207746250258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Damage over Time
-  range: 100
-  cooldown: 25
-  delayTime: 0
-  damage: 0
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses: []
-  user: {fileID: 0}
-  targets: []
-  isReady: 1
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: DotAbilityEffect
 --- !u!114 &114339401079090624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1270,6 +1245,33 @@ MonoBehaviour:
   cooldownTimer: 0
   delayTimer: 0
   vfxName: MiniDebuffAbilityEffect
+--- !u!114 &114610578569978376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107840354888890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Damage over Time
+  range: 100
+  cooldown: 25
+  delayTime: 0
+  damage: 0
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114771467544062228, guid: 6c364af0b55cfff4b885446229d7b48b, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isReady: 1
+  isPending: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: DotAbilityEffect
 --- !u!114 &114732648417650646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1334,6 +1336,7 @@ MonoBehaviour:
   hitPoints: 300
   maxHitPoints: 300
   damage: 10
+  damageMulti: 3
   weaponRange: 20
   aiming: 0
   weaponAimSpeed: 5
@@ -1393,7 +1396,7 @@ NavMeshAgent:
   m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 300
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

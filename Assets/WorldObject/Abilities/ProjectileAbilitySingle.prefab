@@ -54,10 +54,15 @@ MonoBehaviour:
   abilityName: Project Ability Base
   range: 1000
   cooldown: 5
-  isHealingAbility: 0
+  delayTime: 0
   damage: 100
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
   statuses: []
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
+  projectileName: AbilityProjectile
