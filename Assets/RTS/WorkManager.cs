@@ -128,7 +128,7 @@ namespace RTS
         {
             NavMeshHit hit;
             
-            bool result = NavMesh.SamplePosition(initialPoint, out hit, 50, GetNavMeshAreaFromName(areaName));
+            bool result = NavMesh.SamplePosition(initialPoint, out hit, 10, GetNavMeshAreaFromName(areaName));
             Vector3 finalPosition = hit.position;
 
             return finalPosition;

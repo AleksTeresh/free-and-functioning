@@ -3906,6 +3906,7 @@ MonoBehaviour:
   abilityName: Stun Aoe
   range: 20
   cooldown: 15
+  delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -3914,7 +3915,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
   aoe: {fileID: 114395267541199148, guid: 365dee2a5700d094c819768d8791ade5, type: 2}
   radius: 15
 --- !u!114 &114071150903974540
@@ -4037,6 +4040,7 @@ MonoBehaviour:
   abilityName: Long And Strong
   range: 100
   cooldown: 18
+  delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -4045,7 +4049,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114111578613702338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4095,6 +4101,7 @@ MonoBehaviour:
   abilityName: Healing Ability Base
   range: 200
   cooldown: 3
+  delayTime: 0
   damage: 200
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -4102,7 +4109,10 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
+  vfxName: 
 --- !u!114 &114126627340550148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4309,6 +4319,7 @@ MonoBehaviour:
   abilityName: Ability Base Multi
   range: 500
   cooldown: 5
+  delayTime: 0
   damage: 40
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -4316,7 +4327,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114168979172699252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4392,6 +4405,7 @@ MonoBehaviour:
   meleeDefence: 0
   rangeDefence: 0
   abilityDefence: 0
+  isInvincible: 0
   attackSound: {fileID: 0}
   selectSound: {fileID: 0}
   useWeaponSound: {fileID: 0}
@@ -4479,6 +4493,7 @@ MonoBehaviour:
   abilityName: Shield Self
   range: 100
   cooldown: 20
+  delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -4487,7 +4502,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114218324205469670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4713,6 +4730,7 @@ MonoBehaviour:
   abilityName: Project Ability Base
   range: 1000
   cooldown: 1
+  delayTime: 0
   damage: 100
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -4720,7 +4738,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114295897905742250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4915,6 +4935,7 @@ MonoBehaviour:
   meleeDefence: 0
   rangeDefence: 0
   abilityDefence: 0
+  isInvincible: 0
   attackSound: {fileID: 0}
   selectSound: {fileID: 0}
   useWeaponSound: {fileID: 0}
@@ -4980,6 +5001,7 @@ MonoBehaviour:
   abilityName: Projectlie Ability Multi
   range: 500
   cooldown: 15
+  delayTime: 0
   damage: 5
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -4987,7 +5009,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114435833883580472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5420,6 +5444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867a604ade3b2db468b6f251353c5c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedObjects: []
   teamColor: {r: 0.25886676, g: 0.83823526, b: 0.3587579, a: 0}
   username: Alekster
   human: 1
@@ -5428,7 +5453,7 @@ MonoBehaviour:
   hotkeyToUnitNameMapping:
   - Rudolf
   - Adolf
-  - 
+  - Josefine
   - Gendolfine
 --- !u!114 &114616364694767872
 MonoBehaviour:
@@ -5444,6 +5469,7 @@ MonoBehaviour:
   abilityName: Healing Ability Base
   range: 300
   cooldown: 3
+  delayTime: 0
   damage: 50
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -5451,7 +5477,10 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
+  vfxName: 
 --- !u!114 &114652451027113554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5521,6 +5550,7 @@ MonoBehaviour:
   abilityName: Shield Self
   range: 100
   cooldown: 20
+  delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5529,7 +5559,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114697858890388756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5568,6 +5600,7 @@ MonoBehaviour:
   abilityName: Ability Base
   range: 1000
   cooldown: 10
+  delayTime: 0
   damage: 1000
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5575,7 +5608,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114706926949278878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5655,6 +5690,7 @@ MonoBehaviour:
   abilityName: Agro
   range: 20
   cooldown: 10
+  delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5662,7 +5698,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
   aoe: {fileID: 114465938561393866, guid: 8df8cdd7b5e64bc4e953155f542b48d5, type: 2}
   radius: 30
 --- !u!114 &114726096316210998
@@ -6018,6 +6056,7 @@ MonoBehaviour:
   meleeDefence: 0
   rangeDefence: 0
   abilityDefence: 0
+  isInvincible: 0
   attackSound: {fileID: 8300000, guid: 33678abad51fdac45873effd3f676779, type: 3}
   selectSound: {fileID: 8300000, guid: 34bf03edab4eca74f93c5e301f60f475, type: 3}
   useWeaponSound: {fileID: 8300000, guid: a69c41ebdef7e0a49902503d4b6b2f33, type: 3}
@@ -6047,6 +6086,7 @@ MonoBehaviour:
   abilityName: Agro
   range: 20
   cooldown: 10
+  delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6054,7 +6094,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
   aoe: {fileID: 114465938561393866, guid: 8df8cdd7b5e64bc4e953155f542b48d5, type: 2}
   radius: 30
 --- !u!114 &114922387589835958
@@ -6156,6 +6198,7 @@ MonoBehaviour:
   abilityName: Long And Strong
   range: 100
   cooldown: 8
+  delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6164,7 +6207,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114963276922445244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6254,6 +6299,7 @@ MonoBehaviour:
   abilityName: Stun Single
   range: 30
   cooldown: 12
+  delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6262,7 +6308,9 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
 --- !u!114 &114988514028320458
 MonoBehaviour:
   m_ObjectHideFlags: 1

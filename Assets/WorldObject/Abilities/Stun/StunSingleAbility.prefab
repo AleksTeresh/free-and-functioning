@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4911556692114838}
-  - component: {fileID: 114878479361282298}
+  - component: {fileID: 114903801031954086}
   m_Layer: 0
   m_Name: StunSingleAbility
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114878479361282298
+--- !u!114 &114903801031954086
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,17 +48,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167092202148114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bece158f94d32549b6bb57a2a9bbd7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Stun Single
   range: 30
   cooldown: 12
-  isHealingAbility: 0
+  delayTime: 0
   damage: 0
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
   statuses:
   - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
+  vfxName: StunAbilityEffect

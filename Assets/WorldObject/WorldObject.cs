@@ -30,6 +30,7 @@ public class WorldObject : MonoBehaviour {
 
     // weapon and attack
     public int damage = 10;
+    public int damageMulti = 3;
     public float weaponRange = 10.0f;
     protected bool movingIntoPosition = false;
     public bool aiming = false;
@@ -597,12 +598,12 @@ public class WorldObject : MonoBehaviour {
         //this behaviour needs to be specified by a specific object
     }
 
-    protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint)
+    protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint, int damage)
     {
-        FireProjectile(target, projectileName, spawnPoint, transform.rotation);
+        FireProjectile(target, projectileName, spawnPoint, transform.rotation, damage);
     }
 
-    protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint, Quaternion rotation)
+    protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint, Quaternion rotation, int damage)
     {
         GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject(projectileName), spawnPoint, rotation);
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();

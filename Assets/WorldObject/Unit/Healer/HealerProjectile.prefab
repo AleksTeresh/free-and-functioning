@@ -173,7 +173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 25
-  damage: 15
   statuses: []
 --- !u!114 &114894490838645506
 MonoBehaviour:
