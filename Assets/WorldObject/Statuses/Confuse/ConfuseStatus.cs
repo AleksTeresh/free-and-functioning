@@ -5,7 +5,7 @@ using RTS;
 
 namespace Statuses
 {
-    public class StunStatus : AiStateStatus
+    public class ConfuseStatus : AiStateStatus
     {
         protected override void AffectTarget()
         {
@@ -13,8 +13,9 @@ namespace Statuses
             {
                 var targetStateController = target.GetStateController();
 
-                targetStateController.TransitionToState(ResourceManager.GetAiState("Stunned"));
+                targetStateController.TransitionToState(ResourceManager.GetAiState("Confused"));
             }
         }
     }
 }
+

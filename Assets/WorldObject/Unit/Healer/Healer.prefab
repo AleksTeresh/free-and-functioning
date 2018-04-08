@@ -176,7 +176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4948552216246022}
   - component: {fileID: 33484372633504330}
-  - component: {fileID: 135459666446866102}
   - component: {fileID: 23145672352931972}
   - component: {fileID: 114756352720675016}
   m_Layer: 0
@@ -211,7 +210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4695110063511942}
   - component: {fileID: 33401135786710684}
-  - component: {fileID: 135653359017805252}
   - component: {fileID: 23491994760118886}
   - component: {fileID: 114296113508184428}
   m_Layer: 0
@@ -1313,6 +1311,7 @@ MonoBehaviour:
   hitPoints: 50
   maxHitPoints: 300
   damage: 10
+  damageMulti: 3
   weaponRange: 30
   aiming: 0
   weaponAimSpeed: 6
@@ -1369,30 +1368,6 @@ SphereCollider:
   m_GameObject: {fileID: 1406648617594478}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135459666446866102
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517686323933990}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135653359017805252
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1664493486493308}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

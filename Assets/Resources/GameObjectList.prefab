@@ -61,6 +61,7 @@ MonoBehaviour:
   - {fileID: 1058559940681134, guid: 74ead5b8f216926428c8fcc39167a9d5, type: 2}
   - {fileID: 1024985869498796, guid: 2df54ec8fe33244f29eeb82a6db119b1, type: 2}
   - {fileID: 1536295480490062, guid: 3cfce0544807a4e1488bfae067062445, type: 2}
+  - {fileID: 1821665547553640, guid: 834986e58e6b6964c929990654dcf55c, type: 2}
   worldObjects:
   - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}
   - {fileID: 1867937343684546, guid: 47811af423559934191ec0a5a241e8df, type: 2}
@@ -76,6 +77,7 @@ MonoBehaviour:
   - {fileID: 1272277063606970, guid: 365dee2a5700d094c819768d8791ade5, type: 2}
   - {fileID: 1849262978466074, guid: 52c0275047563344d834d08167a8a50f, type: 2}
   - {fileID: 1833783488009048, guid: 5cfbbe9bf3716804fb023cbf7794ca23, type: 2}
+  - {fileID: 1560441377564334, guid: 3a923750353ba33428376d015d96e1be, type: 2}
   player: {fileID: 1880155284192986, guid: 18c2a160ec048d14ca46079316893b47, type: 2}
   avatars:
   - {fileID: 2800000, guid: 665a236535b979947996f55953dd1b6c, type: 3}
@@ -107,6 +109,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b25fd2ce1eb4a7a4cb5a5b9e10c6f78d, type: 2}
   - {fileID: 11400000, guid: 5db95e9acf44c714da7facbd713bed26, type: 2}
   - {fileID: 11400000, guid: 6b77d5d4aca159b49be0b8e769cc1c08, type: 2}
+  - {fileID: 11400000, guid: 6b2da409b64bd6340ac869dd8a686631, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}
@@ -160,3 +163,4 @@ MonoBehaviour:
   - {fileID: 1007550784963760, guid: cc72841148379ad4a913954b5ba65c0f, type: 2}
   - {fileID: 1658026645045016, guid: 809ceeab6fd3b7c4fb927bcfada367ae, type: 2}
   - {fileID: 1833783488009048, guid: 5cfbbe9bf3716804fb023cbf7794ca23, type: 2}
+  - {fileID: 1560441377564334, guid: 3a923750353ba33428376d015d96e1be, type: 2}

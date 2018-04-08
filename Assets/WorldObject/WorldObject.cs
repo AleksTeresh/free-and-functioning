@@ -194,9 +194,7 @@ public class WorldObject : MonoBehaviour {
             return;
         }
 
-        ActiveStatuses = ActiveStatuses.Where(p => p != null).ToList();
-        // if there is the same status already, reset its timer
-        if (ActiveStatuses.Select(p => p.statusName).ToList().Contains(status.statusName))
+        if (IsStatusActive(status))
         {
             var existingStatus = ActiveStatuses.Find(p => p.statusName == status.statusName);
             existingStatus.isActive = true;
@@ -206,7 +204,16 @@ public class WorldObject : MonoBehaviour {
         {
             ActiveStatuses.Add(status);
             status.transform.parent = statusesWrapper.transform;
-        }
+        }        
+    }
+
+    public bool IsStatusActive(Status status)
+    {
+        ActiveStatuses = ActiveStatuses.Where(p => p != null).ToList();
+
+        bool isActive = ActiveStatuses.Select(p => p.statusName).ToList().Contains(status.statusName);
+
+        return isActive;
     }
 
     public Player GetPlayer()
@@ -610,7 +617,7 @@ public class WorldObject : MonoBehaviour {
         projectile.Player = this.player;
         projectile.SetRange(this.weaponRange);
         projectile.SetTarget(target);
-        projectile.SetDamage(this.damage);
+        projectile.SetDamage(damage);
         projectile.transform.rotation = rotation;
     }
 
