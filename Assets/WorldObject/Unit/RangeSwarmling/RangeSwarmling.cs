@@ -28,7 +28,7 @@ public class RangeSwarmling : Unit {
         base.UseWeapon(target);
         Vector3 spawnPoint = GetSpawnPoint();
 
-        FireProjectile(target, "SwarmlingProjectile", spawnPoint.normalized, damage);
+        FireProjectile(target, "SwarmlingProjectile", spawnPoint, damage);
     }
 
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
@@ -44,9 +44,9 @@ public class RangeSwarmling : Unit {
     private Vector3 GetSpawnPoint()
     {
         Vector3 spawnPoint = transform.position;
-        spawnPoint.x += (2.1f * transform.forward.x);
+        // spawnPoint.x += (2.1f * transform.forward.x);
         spawnPoint.y += 1.4f;
-        spawnPoint.z += (2.1f * transform.forward.z);
+        // spawnPoint.z += (2.1f * transform.forward.z);
 
         return spawnPoint;
     }

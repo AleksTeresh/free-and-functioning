@@ -48,9 +48,12 @@ namespace Statuses
 
         public void InflictStatus(WorldObject target)
         {
+            if (!target) return;
+
             this.target = target;
 
-            if (!isActive)
+            // if the status is not already active on the target, call OnStatusStart
+            if (!target.IsStatusActive(this))
             {
                 OnStatusStart();
             }
