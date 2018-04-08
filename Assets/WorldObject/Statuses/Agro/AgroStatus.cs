@@ -5,8 +5,18 @@ using RTS;
 
 namespace Statuses
 {
-    public class AgroStatus : Status
+    public class AgroStatus : AiStateStatus
     {
+        protected override void OnStatusStart()
+        {
+            base.OnStatusStart();
+
+            if (target && target.GetStateController())
+            {
+                target.GetStateController().unit.StopMove();
+            }
+        }
+
         protected override void AffectTarget()
         {
             if (target && target.GetStateController())
@@ -15,10 +25,10 @@ namespace Statuses
 
                 if (targetStateController)
                 {
-                    targetStateController.unit.StopMove();
+                    // targetStateController.unit.StopMove();
 
                     targetStateController.chaseTarget = inflicter;
-                    targetStateController.TransitionToState(ResourceManager.GetAiState("Chase Idler"));
+                    targetStateController.TransitionToState(ResourceManager.GetAiState("Under Agro"));
                 }
             }
         }
