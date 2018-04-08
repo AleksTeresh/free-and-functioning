@@ -10,13 +10,13 @@ namespace Statuses
     {
         public string statusName;
         public float maxDuration;
-        public bool isActive;
-		public WorldObject target;
+
+        [HideInInspector] public bool isActive;
+        [HideInInspector] public WorldObject target;
+        [HideInInspector] public float duration;
         //public vfx
 
         protected WorldObject inflicter;
-
-		public float duration;
 
         public void Update()
         {

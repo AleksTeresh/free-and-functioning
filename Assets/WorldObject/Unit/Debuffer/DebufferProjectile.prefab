@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4232980692938094}
   - component: {fileID: 114732957659946068}
   m_Layer: 0
-  m_Name: HealerProjectile
+  m_Name: DebufferProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1aea7ec7724c24588eb9ba9abd24fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 25
+  velocity: 30
   statuses: []
 --- !u!114 &114894490838645506
 MonoBehaviour:
@@ -348,7 +348,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7014199, g: 1, b: 0.66176474, a: 1}
+      maxColor: {r: 1, g: 0.125, b: 0.97586226, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
