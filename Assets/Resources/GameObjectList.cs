@@ -17,6 +17,7 @@ public class GameObjectList : MonoBehaviour {
     public GameObject[] uiElements;
     public GameObject[] statuses;
 	public ParticleSystem[] abilityVFX;
+	public GameObject[] projectiles;
 
     void Awake()
     {
@@ -133,7 +134,17 @@ public class GameObjectList : MonoBehaviour {
 		throw new UnregisteredAssetException (GetErrorMessage("Ability VFX", name));
 	}
 
-	private string GetErrorMessage(string prefabType, string assetName) 
+    public GameObject GetProjectile(string name)
+    {
+        foreach (GameObject projectile in projectiles)
+        {
+            if (projectile.name == name) return projectile;
+        }
+
+        throw new UnregisteredAssetException(GetErrorMessage("Projectile", name));
+    }
+
+    private string GetErrorMessage(string prefabType, string assetName) 
 	{
 		return string.Format ("{0} prefab {1} is not registered", prefabType, assetName);
 	}

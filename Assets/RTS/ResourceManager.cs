@@ -112,6 +112,11 @@ namespace RTS
 			return gameObjectList.GetAbilityVfx (name);
 		}
 
+        public static GameObject GetProjectile(string name)
+        {
+            return gameObjectList.GetProjectile(name);
+        }
+
         public static int GetNewObjectId()
         {
             LevelLoader loader = (LevelLoader)GameObject.FindObjectOfType(typeof(LevelLoader));

@@ -605,7 +605,7 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint, Quaternion rotation, int damage)
     {
-        GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject(projectileName), spawnPoint, rotation);
+        GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetProjectile(projectileName), spawnPoint, rotation);
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
         projectile.Player = this.player;
         projectile.SetRange(this.weaponRange);
@@ -619,7 +619,7 @@ public class WorldObject : MonoBehaviour {
         Vector3 spawnPoint, Quaternion rotation, float range,
         int damage, Status[] statuses)
     {
-        GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetWorldObject(projectileName), spawnPoint, rotation);
+        GameObject gameObject = (GameObject)Instantiate(ResourceManager.GetProjectile(projectileName), spawnPoint, rotation);
         Projectile projectile = gameObject.GetComponentInChildren<Projectile>();
         projectile.statuses = statuses;
         projectile.Player = this.player;
