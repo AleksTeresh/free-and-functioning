@@ -4,13 +4,13 @@ namespace Statuses
 {
     public class DotStatus : Status
     {
-         public int totalDamage = 100;
+        public int totalDamage = 100;
 
         // Public only for debug purposes 
-        public float tickCooldownCounter = 0.0f;
-        public readonly float tickCooldownDuration = 1.0f;
-        public int tickDamage;
-        public bool isTickReady = true;
+        private float tickCooldownCounter = 0.0f;
+        private readonly float tickCooldownDuration = 1.0f;
+        private int tickDamage;
+        private bool isTickReady = true;
 
         protected override void OnStatusStart()
         {

@@ -59,7 +59,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
-  - {fileID: 114771467544062228, guid: 6c364af0b55cfff4b885446229d7b48b, type: 2}
+  - {fileID: 114771467544062228, guid: f793a5da2c6fb0c4d90b5def68be46a2, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1
