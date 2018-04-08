@@ -8,7 +8,7 @@ namespace Statuses
 
         // Public only for debug purposes 
         public float tickCooldownCounter = 0.0f;
-        public float tickCooldownDuration;
+        public readonly float tickCooldownDuration = 1.0f;
         public int tickDamage;
         public bool isTickReady = true;
 

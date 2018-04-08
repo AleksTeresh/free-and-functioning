@@ -134,6 +134,8 @@ MonoBehaviour:
   - {fileID: 1142463496405450, guid: 9259626cf6be09448b11a93dabf74c22, type: 2}
   - {fileID: 1907702874647872, guid: 6c364af0b55cfff4b885446229d7b48b, type: 2}
   - {fileID: 1286241837501516, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
+  - {fileID: 1377769097118794, guid: e26f01d61156ca14d876bb6cb0d7e9f8, type: 2}
+  - {fileID: 1578338847021494, guid: 9db60096cddd7c441ad5f712353a0a3f, type: 2}
   abilityVFX:
   - {fileID: 198552222378971970, guid: 7bf86c6ed83ef4c0aa17d2e5cc039fa5, type: 2}
   - {fileID: 198081506511723902, guid: 4a1ef6267220b2f4eae8c3d54df068a3, type: 2}
@@ -154,3 +156,4 @@ MonoBehaviour:
   - {fileID: 1508811342181514, guid: 0ea2f2d8a6b0e754196352f32f2b18f1, type: 2}
   - {fileID: 1833783488009048, guid: ca9f38f0dd542b24e8fa053fc0fde4b1, type: 2}
   - {fileID: 1007550784963760, guid: cc72841148379ad4a913954b5ba65c0f, type: 2}
+  - {fileID: 1658026645045016, guid: 809ceeab6fd3b7c4fb927bcfada367ae, type: 2}

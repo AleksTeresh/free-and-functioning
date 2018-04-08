@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Statuses
 {
-	public class Status : MonoBehaviour
+    public class Status : MonoBehaviour
     {
         public string statusName;
         public float maxDuration;
@@ -17,38 +13,53 @@ namespace Statuses
         //public vfx
 
         protected WorldObject inflicter;
+        protected Projectile projectileInflicter;
 
         public void Update()
         {
-			if (isActive) {
+            if (isActive)
+            {
 
                 AffectTarget();
 
                 duration += Time.deltaTime;
 
-				if (duration > maxDuration) {
-					isActive = false;
+                if (duration > maxDuration)
+                {
+                    isActive = false;
 
                     OnStatusEnd();
                     Destroy(this.gameObject);
-				}
-			}
+                }
+            }
         }
 
-		public void InflictStatus(WorldObject target, WorldObject inflicter) {
-			this.target = target;
+        public void InflictStatus(WorldObject target, WorldObject inflicter)
+        {
             this.inflicter = inflicter;
+            InflictStatus(target);
+        }
+
+        public void InflictStatus(WorldObject target, Projectile projectileInflicter)
+        {
+            this.projectileInflicter = projectileInflicter;
+            InflictStatus(target);
+        }
+
+        public void InflictStatus(WorldObject target)
+        {
+            this.target = target;
 
             if (!isActive)
             {
                 OnStatusStart();
             }
 
-			this.duration = 0;
-			this.isActive = true;
+            this.duration = 0;
+            this.isActive = true;
 
             target.AddStatus(this);
-		}
+        }
 
         protected virtual void AffectTarget()
         {

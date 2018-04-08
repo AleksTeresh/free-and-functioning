@@ -77,7 +77,7 @@ public class Projectile : MonoBehaviour
         {
             for (int i = 0; i < statuses.Length; i++)
             {
-                StatusManager.InflictStatus(null, statuses[i], target);
+                StatusManager.InflictStatus(this, statuses[i], target);
             }
         }
     }
