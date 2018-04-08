@@ -6,6 +6,8 @@
         {
             targets.ForEach(target =>
             {
+                if (!target) return;
+
                 InflictStatuses(target);
                 PlayAbilityVFX(target);
             });

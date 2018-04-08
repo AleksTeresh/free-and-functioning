@@ -14,6 +14,7 @@ namespace Abilities
 
         public float range;
         public float cooldown;
+        public float delayTime;
 
         public int damage;
 
@@ -26,8 +27,10 @@ namespace Abilities
         [HideInInspector]  public List<WorldObject> targets;
 
         [HideInInspector]  public bool isReady = true;
+        [HideInInspector] public bool isPending = false;
 
         [HideInInspector]  public float cooldownTimer = 0.0f;
+        [HideInInspector] public float delayTimer = 0.0f;
 
         public void Awake()
         {
@@ -44,6 +47,18 @@ namespace Abilities
 					isReady = true;
 				}
 			}
+
+            if (isPending)
+            {
+                delayTimer += Time.deltaTime;
+
+                if (delayTimer >= delayTime)
+                {
+                    HandleAbilityUseEnd();
+
+                    FireAbility();
+                }
+            }
 		}
 
 		public void Use(WorldObject target)
@@ -51,11 +66,8 @@ namespace Abilities
 			if (isReady) {
                 this.targets = new List<WorldObject>() { target };
 
-                HandleAbilityUse();
-
-                FireAbility();
+                HandleAbilityUseStart();
             }
-            
 		}
 
         public void Use(List<WorldObject> targets)
@@ -64,16 +76,24 @@ namespace Abilities
             {
                 this.targets = targets;
 
-                HandleAbilityUse();
-
-                FireAbility();
+                HandleAbilityUseStart();
             }
         }
 
-        protected void HandleAbilityUse()
+        protected void HandleAbilityUseStart()
         {
-            cooldownTimer = 0.0f;
+            // TODO: add animation handling
+
+            isPending = true;
             isReady = false;
+            cooldownTimer = 0.0f;
+        }
+
+        protected void HandleAbilityUseEnd()
+        {
+            delayTimer = 0.0f;
+            isReady = false;
+            isPending = false;
         }
 
         protected virtual void FireAbility() {
@@ -91,6 +111,8 @@ namespace Abilities
         protected virtual void OnHit() {
             targets.ForEach(target =>
             {
+                if (!target) return;
+
                 InflictStatuses(target);
                 target.TakeDamage(damage, AttackType.Ability);
             });

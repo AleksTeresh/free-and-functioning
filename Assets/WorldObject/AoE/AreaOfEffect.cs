@@ -56,7 +56,7 @@ namespace Abilities
         {
             affectedObjects.ForEach(target =>
             {
-                if (target != null)
+                if (target != null && ShouldAffectTarget(target))
                 {
                     target.TakeDamage(damage, attackType);
                 }
@@ -67,27 +67,33 @@ namespace Abilities
         {
             affectedObjects.ForEach(target =>
             {
-                if (target != null)
+                if (target != null && ShouldAffectTarget(target))
                 {
-                    // if the AoE does not affect friendly units and target is friendly, skip the target
-                    if (creator && !affectsFriends && target.GetPlayer().username == creator.GetPlayer().username)
-                    {
-                        return;
-                    }
 
-                    // if the AoE does not affect its creator and target is the creator, skip the target
-                    if (creator && !affectsSelf && target.ObjectId == creator.ObjectId)
-                    {
-                        return;
-                    }
-
-                    // otherwise inflict statuses upon the target
                     for (int i = 0; i < statuses.Length; i++)
                     {
                         StatusManager.InflictStatus(creator, statuses[i], target);
                     }
                 }
             });
+        }
+
+        private bool ShouldAffectTarget(WorldObject target)
+        {
+            // if the AoE does not affect friendly units and target is friendly, skip the target
+            if (creator && !affectsFriends && target.GetPlayer() && target.GetPlayer().username == creator.GetPlayer().username)
+            {
+                return false;
+            }
+
+            // if the AoE does not affect its creator and target is the creator, skip the target
+            if (creator && !affectsSelf && target.ObjectId == creator.ObjectId)
+            {
+                return false;
+            }
+
+            // otherwise affect the target
+            return true;
         }
     }
 }
