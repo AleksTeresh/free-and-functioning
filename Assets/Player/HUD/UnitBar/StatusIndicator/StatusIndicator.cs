@@ -29,13 +29,4 @@ public class StatusIndicator : MonoBehaviour {
         nameLabel = GetComponentInChildren<Text>();
         icon = GetComponentInChildren<Image>();
     }
-
-    // Update is called once per frame
-    void GUI()
-    {
-        if (!status)
-        {
-            Destroy(this.gameObject);
-        }
-    }
 }

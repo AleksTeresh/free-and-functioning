@@ -312,7 +312,7 @@ public class WorldObject : MonoBehaviour {
             currentWeaponMultiChargeTime += Time.deltaTime;
         }
 
-        // RemoveInactiveStatuses();
+        RemoveInactiveStatuses();
     }
 
     protected virtual void OnGUI()
@@ -651,14 +651,14 @@ public class WorldObject : MonoBehaviour {
         currentWeaponMultiChargeTime = 0.0f;
         //this behaviour needs to be specified by a specific object
     }
-    /*
+   
     private void RemoveInactiveStatuses()
     {
         var stillActiveStatuses = new List<Status>();
 
         ActiveStatuses.ForEach(p =>
         {
-            if (p.isActive)
+            if (p && p.isActive)
             {
                 stillActiveStatuses.Add(p);
             }
@@ -669,5 +669,5 @@ public class WorldObject : MonoBehaviour {
         });
 
         ActiveStatuses = stillActiveStatuses;
-    } */
+    }
 }

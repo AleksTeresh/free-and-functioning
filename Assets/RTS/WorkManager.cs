@@ -109,6 +109,38 @@ namespace RTS
             return mostVulnerable;
         }
 
+        public static Vector3 GetPerpendicularDestinationPoint (NavMeshAgent agent, Vector3 currentDestination, float walkRadius)
+        {
+            var perpendicularDirection = Vector3.Cross(currentDestination - agent.transform.position, Vector3.up);
+
+            return agent.transform.position + perpendicularDirection.normalized * walkRadius;
+        }
+
+        public static Vector3 GetRandomDestinationPoint(NavMeshAgent subject, float walkRadius)
+        {
+            Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
+            randomDirection += subject.transform.position;
+
+            return GetClosestPointOnNavMesh(randomDirection, "Walkable");
+        }
+
+        public static Vector3 GetClosestPointOnNavMesh(Vector3 initialPoint, string areaName)
+        {
+            NavMeshHit hit;
+            
+            bool result = NavMesh.SamplePosition(initialPoint, out hit, 50, GetNavMeshAreaFromName(areaName));
+            Vector3 finalPosition = hit.position;
+
+            return finalPosition;
+        }
+
+        public static int GetNavMeshAreaFromName (string areaName)
+        {
+            var areaMaskFromName = 1 << NavMesh.GetAreaFromName(areaName);
+
+            return areaMaskFromName;
+        }
+
         public static bool ObjectCanReachTarget(WorldObject self, FogOfWarAgent target)
         {
             Vector3 targetLocation = target.transform.position;
