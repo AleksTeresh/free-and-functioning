@@ -12,6 +12,8 @@ namespace Abilities
 
             targets.ForEach(target =>
             {
+                if (!target) return;
+
                 var rotation = Quaternion.LookRotation(target.transform.position - user.transform.position);
                 user.FireProjectile(target, "AbilityProjectile", spawnPoint, rotation, range, damage, statuses);
             });

@@ -11,21 +11,21 @@ namespace Abilities
         public AreaOfEffect aoe;
         public float radius;
 
+        private Vector3 targetPosition;
+
         public void Use(Vector3 position)
         {
             if (isReady)
             {
-                // this.effectPosition = position;
+                targetPosition = position;
 
-                HandleAbilityUse();
-
-                FireAbility(position);
+                HandleAbilityUseStart();
             }
         }
 
-        protected void FireAbility(Vector3 effectPosition)
+        protected override void FireAbility()
         {
-            Vector3 spawnPoint = new Vector3(effectPosition.x, effectPosition.y + 2, effectPosition.z);
+            Vector3 spawnPoint = new Vector3(targetPosition.x, targetPosition.y + 2, targetPosition.z);
 
             CreateAreaOfEffect(spawnPoint, aoe.name, radius, damage, statuses);
         }

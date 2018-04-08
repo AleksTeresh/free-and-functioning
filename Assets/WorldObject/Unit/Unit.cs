@@ -28,7 +28,6 @@ public class Unit : WorldObject {
 	private GameObject destinationTarget;
 	private int loadedDestinationTargetId = -1;
 
-
     public override void SetHoverState(GameObject hoverObject)
     {
         base.SetHoverState(hoverObject);
@@ -46,12 +45,13 @@ public class Unit : WorldObject {
 
     public void StartMove(Vector3 destination)
     {
-        if (audioElement != null) audioElement.Play(driveSound);
+        if (!isBusy)
+        {
+            if (audioElement != null) audioElement.Play(driveSound);
 
-        this.destinationTarget = null;
-        agent.SetDestination(destination);
-
-        // StopAttack();
+            this.destinationTarget = null;
+            agent.SetDestination(destination);
+        }
     }
 
     public void StartMove(Vector3 destination, GameObject destinationTarget)
@@ -168,20 +168,10 @@ public class Unit : WorldObject {
     {
         base.Update();
 
-        HandleMove();
+        this.isBusy = IsAnyAbilityPending();
 
-		if (aiming && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
-		{
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, aimRotation, weaponAimSpeed);
-			CalculateBounds();
-			//sometimes it gets stuck exactly 180 degrees out in the calculation and does nothing, this check fixes that
-			Quaternion inverseAimRotation = new Quaternion(-aimRotation.x, -aimRotation.y, -aimRotation.z, -aimRotation.w);
-			if (transform.rotation == aimRotation || transform.rotation == inverseAimRotation)
-			{
-				aiming = false;
-			}
-		}
-        // else if (moving) MakeMove();
+        HandleMove();
+        HandleRotation();
     }
   
     protected override void InitialiseAudio()
@@ -208,7 +198,7 @@ public class Unit : WorldObject {
 
     private void HandleMove()
     {
-        if (agent.velocity.magnitude == 0 && agent.remainingDistance <= agent.stoppingDistance)
+        if ((agent.velocity.magnitude == 0 && agent.remainingDistance <= agent.stoppingDistance) || isBusy)
         {
             if (audioElement != null) audioElement.Stop(driveSound);
 
@@ -221,5 +211,41 @@ public class Unit : WorldObject {
             agent.isStopped = false;
             CalculateBounds();
         }
+    }
+
+    private void HandleRotation()
+    {
+        if (!isBusy && aiming && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, aimRotation, weaponAimSpeed);
+            CalculateBounds();
+            //sometimes it gets stuck exactly 180 degrees out in the calculation and does nothing, this check fixes that
+            Quaternion inverseAimRotation = new Quaternion(-aimRotation.x, -aimRotation.y, -aimRotation.z, -aimRotation.w);
+            if (transform.rotation == aimRotation || transform.rotation == inverseAimRotation)
+            {
+                aiming = false;
+            }
+        }
+    }
+
+    private bool IsAnyAbilityPending ()
+    {
+        foreach(var ability in abilities)
+        {
+            if (ability.isPending)
+            {
+                return true;
+            }
+        }
+
+        foreach (var ability in abilitiesMulti)
+        {
+            if (ability.isPending)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -65,6 +65,9 @@ public class WorldObject : MonoBehaviour {
     // Fog Of War
     private FogOfWarAgent fogOfWarAgent;
 
+    // an object is busy and does not react to any commands
+    protected bool isBusy;
+
     public virtual void SetSelection(bool selected, Rect playingArea)
     {
         currentlySelected = selected;
@@ -353,7 +356,7 @@ public class WorldObject : MonoBehaviour {
 
     public virtual void PerformAttack(WorldObject target)
     {
-        if (!target)
+        if (!target || isBusy)
         {
             // attacking = false;
             return;
@@ -363,7 +366,7 @@ public class WorldObject : MonoBehaviour {
     }
 
 	public virtual void UseAbility(WorldObject target, Ability ability) {
-		if (!target)
+		if (!target || isBusy)
 		{
 			// attacking = false;
 			return;
@@ -379,7 +382,7 @@ public class WorldObject : MonoBehaviour {
 
     public virtual void UseAbility(List<WorldObject> targets, Ability ability)
     {
-        if (targets == null || targets.Count == 0)
+        if (targets == null || targets.Count == 0 || isBusy)
         {
             return;
         }
@@ -392,7 +395,7 @@ public class WorldObject : MonoBehaviour {
 
     public virtual void UseAbility(Vector3 position, AoeAbility ability)
     {
-        if (ability.isReady)
+        if (!isBusy && ability.isReady)
         {
             ability.Use(position);
         }
@@ -400,14 +403,14 @@ public class WorldObject : MonoBehaviour {
 
     public virtual void PerformAttackToMulti(List<WorldObject> targets)
     {
-        if (targets == null || targets.Count == 0)
+        if (targets == null || targets.Count == 0 || isBusy)
         {
             return;
         }
 
         if (ReadyToFireMulti()) UseWeaponMulti(targets);
     }
-
+    /*
     public virtual void BeginAttackToMulti(List<WorldObject> targets)
     {
         if (CanAttackMulti())
@@ -420,7 +423,7 @@ public class WorldObject : MonoBehaviour {
             // BeginAttack(target);
         }
     }
-
+    */
     public virtual bool CanAttack()
     {
         //default behaviour needs to be overidden by children
