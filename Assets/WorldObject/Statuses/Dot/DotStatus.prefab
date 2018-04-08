@@ -58,6 +58,6 @@ MonoBehaviour:
   duration: 0
   totalDamage: 100
   tickCooldownCounter: 0
-  tickCooldownDuration: 0
+  tickCooldownDuration: 1
   tickDamage: 0
   isTickReady: 1
