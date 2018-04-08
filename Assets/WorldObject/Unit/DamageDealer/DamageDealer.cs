@@ -37,7 +37,7 @@ public class DamageDealer : Unit
         base.UseWeapon(target);
         Vector3 spawnPoint = GetProjectileSpawnPoint();
 
-        FireProjectile(target, "DamageDealerProjectile", spawnPoint);
+        FireProjectile(target, "DamageDealerProjectile", spawnPoint, damage);
     }
 
     protected override void UseWeaponMulti(List<WorldObject> targets)
@@ -48,7 +48,7 @@ public class DamageDealer : Unit
         targets.ForEach(p =>
         {
             var rotation = Quaternion.LookRotation(p.transform.position - transform.position);
-            FireProjectile(p, "DamageDealerLightProjectile", spawnPoint, rotation);
+            FireProjectile(p, "DamageDealerLightProjectile", spawnPoint, rotation, damageMulti);
         });
     }
 

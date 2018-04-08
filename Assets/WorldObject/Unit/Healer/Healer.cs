@@ -39,7 +39,7 @@ public class Healer : Unit
         base.UseWeapon(target);
         Vector3 spawnPoint = GetProjectileSpawnPoint();
 
-        FireProjectile(target, "HealerProjectile", spawnPoint);
+        FireProjectile(target, "HealerProjectile", spawnPoint, damage);
     }
 
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)

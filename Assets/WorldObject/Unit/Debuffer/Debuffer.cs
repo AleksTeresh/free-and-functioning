@@ -23,7 +23,7 @@ public class Debuffer : Unit {
         base.UseWeapon(target);
         Vector3 spawnPoint = GetProjectileSpawnPoint();
 
-        FireProjectile(target, "DebufferProjectile", spawnPoint);
+        FireProjectile(target, "DebufferProjectile", spawnPoint, damage);
     }
 
     public override Vector3 GetProjectileSpawnPoint()
