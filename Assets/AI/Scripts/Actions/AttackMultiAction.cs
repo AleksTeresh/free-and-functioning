@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using RTS;
+using AI;
 
 [CreateAssetMenu(menuName = "AI/Actions/AttackMulti")]
 public class AttackMultiAction : Action
 {
-
     public override void Act(StateController controller)
     {
         AttackMulti(controller);
@@ -18,9 +17,10 @@ public class AttackMultiAction : Action
     {
         Unit unit = controller.unit;
 
-        // if cannot attack, return
+        // if cannot attack multi, fallback to single attack
         if (!unit.CanAttackMulti())
         {
+            AttackUtil.HandleSingleModeAttack(controller);
             return;
         }
 
