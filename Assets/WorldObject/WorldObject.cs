@@ -43,6 +43,7 @@ public class WorldObject : MonoBehaviour {
     public float meleeDefence = 0;
     public float rangeDefence = 0;
     public float abilityDefence = 0;
+    public bool isInvincible = false;
 
     // loading related
     protected bool loadedSavedValues = false;
@@ -507,7 +508,7 @@ public class WorldObject : MonoBehaviour {
     {
         float damage = 0;
 
-        if (attackPoints == 0)
+        if (attackPoints == 0 || isInvincible)
         {
             damage = 0;
         }

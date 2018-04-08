@@ -81,7 +81,7 @@ namespace Abilities
 			OnHit();
 		}
 
-        private void InflictStatuses (WorldObject target)
+        protected void InflictStatuses (WorldObject target)
 		{
 			for (int i = 0; i < statuses.Length; i++) {
                 StatusManager.InflictStatus(user, statuses[i], target);

@@ -62,3 +62,4 @@ MonoBehaviour:
   targets: []
   isReady: 1
   cooldownTimer: 0
+  vfxName: HealingAbilityEffect

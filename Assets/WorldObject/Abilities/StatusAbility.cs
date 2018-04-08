@@ -1,12 +1,11 @@
 ﻿namespace Abilities
 {
-    class HealingAbility : AbilityWithVFX
+    public class StatusAbility : AbilityWithVFX
     {
         protected override void FireAbility()
         {
             targets.ForEach(target =>
             {
-                target.TakeHeal(damage);
                 InflictStatuses(target);
                 PlayAbilityVFX(target);
             });
