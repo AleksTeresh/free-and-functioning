@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1150289138598210}
+  m_RootGameObject: {fileID: 1535434123702256}
   m_IsPrefabParent: 1
---- !u!1 &1150289138598210
+--- !u!1 &1535434123702256
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4626960190829478}
-  - component: {fileID: 114316828962048170}
+  - component: {fileID: 4677861686798274}
+  - component: {fileID: 114920646685278908}
   m_Layer: 0
-  m_Name: ConfuseAbilityMulti
+  m_Name: DisarmamentAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4626960190829478
+--- !u!4 &4677861686798274
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1150289138598210}
+  m_GameObject: {fileID: 1535434123702256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,30 +40,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114316828962048170
+--- !u!114 &114920646685278908
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1150289138598210}
+  m_GameObject: {fileID: 1535434123702256}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Confuse Multi
+  abilityName: Disarmament
   range: 100
-  cooldown: 35
+  cooldown: 20
   delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
-  - {fileID: 114047696966252068, guid: 70ca113068d270448abf5bc258f1eaf7, type: 2}
+  - {fileID: 114630899022190572, guid: 6bef75ec6bc0e3e46b57b78e6af799e4, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
-  vfxName: ConfuseAbilityEffect
+  vfxName: DisarmamentAbilityEffect

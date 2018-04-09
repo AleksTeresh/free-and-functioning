@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4626960190829478}
   - component: {fileID: 114316828962048170}
   m_Layer: 0
-  m_Name: ConfuseAbilityMulti
+  m_Name: BindAbilityMulti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,19 +51,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Confuse Multi
+  abilityName: Bind Multi
   range: 100
-  cooldown: 35
+  cooldown: 40
   delayTime: 0
   damage: 0
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
-  - {fileID: 114047696966252068, guid: 70ca113068d270448abf5bc258f1eaf7, type: 2}
+  - {fileID: 114992022797530444, guid: 961582889c559a045bbb745f843b2a19, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
-  vfxName: ConfuseAbilityEffect
+  vfxName: BindAbilityEffect
