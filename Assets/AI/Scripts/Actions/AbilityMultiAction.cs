@@ -42,7 +42,7 @@ public class AbilityMultiAction : Action
                 Vector3 currentEnemyPosition = p.transform.position;
                 Vector3 direction = currentEnemyPosition - currentPosition;
 
-                return direction.sqrMagnitude < unit.weaponRange * unit.weaponRange;
+                return direction.sqrMagnitude < abilityToUse.range * abilityToUse.range;
             })
             .ToList();
 

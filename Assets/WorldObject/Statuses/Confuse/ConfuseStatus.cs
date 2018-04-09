@@ -7,13 +7,71 @@ namespace Statuses
 {
     public class ConfuseStatus : AiStateStatus
     {
-        protected override void AffectTarget()
+        private Player confusedPlayer;
+        private Units confusedUnitsWrapper;
+
+        private Transform initialParent;
+
+        protected override void OnStatusStart()
         {
-            if (target && target.GetStateController())
+            base.OnStatusStart();
+
+            CreateNewPlayer(target);
+
+            if (target && confusedPlayer && confusedUnitsWrapper)
             {
+                initialParent = target.transform.parent;
+                target.transform.parent = confusedUnitsWrapper.transform;
+
                 var targetStateController = target.GetStateController();
 
-                targetStateController.TransitionToState(ResourceManager.GetAiState("Confused"));
+                if (targetStateController)
+                {
+                    targetStateController.chaseTarget = null;
+                    targetStateController.TransitionToState(ResourceManager.GetAiState("Idle Idler"));
+                }
+
+                target.SetPlayer();
+                target.SetTeamColor();
+            }
+        }
+
+        protected override void OnStatusEnd()
+        {
+            base.OnStatusStart();
+
+            if (target && initialParent)
+            {
+                target.transform.parent = initialParent;
+
+                target.SetPlayer();
+                target.SetTeamColor();
+
+                RemovePlayer();
+            }
+        }
+
+        private void RemovePlayer()
+        {
+            if (confusedPlayer)
+            {
+                Destroy(confusedPlayer.gameObject);
+            }
+        }
+
+        private void CreateNewPlayer(WorldObject target)
+        {
+            if (!target) return;
+
+            var confusedPlayerObject = (GameObject)Instantiate(ResourceManager.GetPlayerObject(), target.GetPlayer().transform.position, target.GetPlayer().transform.rotation);
+            confusedPlayer = confusedPlayerObject.GetComponent<Player>();
+            confusedPlayer.teamColor = Color.black;
+            confusedPlayer.human = false;
+            confusedPlayer.username = "Confused Player " + target.ObjectId;
+
+            if (confusedPlayer)
+            {
+                confusedUnitsWrapper = confusedPlayer.GetComponentInChildren<Units>();
             }
         }
     }

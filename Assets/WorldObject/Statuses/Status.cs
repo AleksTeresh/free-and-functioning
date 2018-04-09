@@ -26,10 +26,7 @@ namespace Statuses
 
                 if (duration > maxDuration)
                 {
-                    isActive = false;
-
-                    OnStatusEnd();
-                    Destroy(this.gameObject);
+                    FinishStatus();
                 }
             }
         }
@@ -77,6 +74,14 @@ namespace Statuses
         protected virtual void OnStatusEnd()
         {
             // this method should be overriden
+        }
+
+        protected void FinishStatus()
+        {
+            isActive = false;
+
+            OnStatusEnd();
+            Destroy(this.gameObject);
         }
     }
 }

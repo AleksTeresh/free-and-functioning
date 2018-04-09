@@ -110,6 +110,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5db95e9acf44c714da7facbd713bed26, type: 2}
   - {fileID: 11400000, guid: 6b77d5d4aca159b49be0b8e769cc1c08, type: 2}
   - {fileID: 11400000, guid: 6b2da409b64bd6340ac869dd8a686631, type: 2}
+  - {fileID: 11400000, guid: 5ee7ed179df0bff4d82c20e2f9fa20e6, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}
@@ -141,6 +142,14 @@ MonoBehaviour:
   - {fileID: 1578338847021494, guid: 9db60096cddd7c441ad5f712353a0a3f, type: 2}
   - {fileID: 1142463496405450, guid: c549c46c75cf94c4d97510e1706e0cf5, type: 2}
   - {fileID: 1907702874647872, guid: f793a5da2c6fb0c4d90b5def68be46a2, type: 2}
+  - {fileID: 1154205301746984, guid: a465ec2b81536d24b9fc895770b1a8ac, type: 2}
+  - {fileID: 1154205301746984, guid: 70ca113068d270448abf5bc258f1eaf7, type: 2}
+  - {fileID: 1957283058962316, guid: 6145f740b8fb08641a4acc83bbfca541, type: 2}
+  - {fileID: 1731488781251258, guid: 961582889c559a045bbb745f843b2a19, type: 2}
+  - {fileID: 1738778711784074, guid: 879d9aa5296e3fe4a93521ffe4fba1a1, type: 2}
+  - {fileID: 1139369466137466, guid: b7ca08c70cafca14baa3dc563206cebb, type: 2}
+  - {fileID: 1806068394534320, guid: 6bef75ec6bc0e3e46b57b78e6af799e4, type: 2}
+  - {fileID: 1617857704203554, guid: 8bbc0de20fe979748823fc1bf90a1a94, type: 2}
   abilityVFX:
   - {fileID: 198552222378971970, guid: 7bf86c6ed83ef4c0aa17d2e5cc039fa5, type: 2}
   - {fileID: 198081506511723902, guid: 4a1ef6267220b2f4eae8c3d54df068a3, type: 2}
@@ -153,6 +162,10 @@ MonoBehaviour:
   - {fileID: 198369711512793414, guid: a515ad8056036a24488a3409ec951bb1, type: 2}
   - {fileID: 198988530767745866, guid: 3999c2931286d0a478e170fd2e8b6800, type: 2}
   - {fileID: 198805152095846496, guid: 4b79162be7ece574392761d68941fc27, type: 2}
+  - {fileID: 198805152095846496, guid: f2e72d647adb1a54986fdfcbd0085c6d, type: 2}
+  - {fileID: 198805152095846496, guid: eeef22abe6e42a24f8067673fa83c1d5, type: 2}
+  - {fileID: 198081506511723902, guid: 156dbcfb85939ed4dad4e936cfc80c57, type: 2}
+  - {fileID: 198805152095846496, guid: f407b9975770093439156349292ed6ac, type: 2}
   projectiles:
   - {fileID: 1787216316022852, guid: 8e49fcbca51cbb849be5dc0e55c5c265, type: 2}
   - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}
