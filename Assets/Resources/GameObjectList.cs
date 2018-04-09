@@ -12,6 +12,7 @@ public class GameObjectList : MonoBehaviour {
     public GameObject[] units;
     public GameObject[] worldObjects;
     public GameObject player;
+    public GameObject enemy;
     public Texture2D[] avatars;
     public State[] aiStates;
     public GameObject[] uiElements;
@@ -76,6 +77,11 @@ public class GameObjectList : MonoBehaviour {
     public GameObject GetPlayerObject()
     {
         return player;
+    }
+
+    public GameObject GetEnemyObject()
+    {
+        return enemy;
     }
 
     public Texture2D GetBuildImage(string name)

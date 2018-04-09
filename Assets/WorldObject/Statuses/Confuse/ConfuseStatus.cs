@@ -63,7 +63,7 @@ namespace Statuses
         {
             if (!target) return;
 
-            var confusedPlayerObject = (GameObject)Instantiate(ResourceManager.GetPlayerObject(), target.GetPlayer().transform.position, target.GetPlayer().transform.rotation);
+            var confusedPlayerObject = (GameObject)Instantiate(ResourceManager.GetEnemyObject(), target.GetPlayer().transform.position, target.GetPlayer().transform.rotation);
             confusedPlayer = confusedPlayerObject.GetComponent<Player>();
             confusedPlayer.teamColor = Color.black;
             confusedPlayer.human = false;

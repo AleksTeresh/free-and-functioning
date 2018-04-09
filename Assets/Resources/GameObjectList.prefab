@@ -79,6 +79,7 @@ MonoBehaviour:
   - {fileID: 1833783488009048, guid: 5cfbbe9bf3716804fb023cbf7794ca23, type: 2}
   - {fileID: 1560441377564334, guid: 3a923750353ba33428376d015d96e1be, type: 2}
   player: {fileID: 1880155284192986, guid: 18c2a160ec048d14ca46079316893b47, type: 2}
+  enemy: {fileID: 1417980665555486, guid: 1e0d27c58be4c0e4bab7236b1956aa3a, type: 2}
   avatars:
   - {fileID: 2800000, guid: 665a236535b979947996f55953dd1b6c, type: 3}
   - {fileID: 2800000, guid: 999920811ea3dd448a560f5c502ae786, type: 3}
@@ -166,6 +167,7 @@ MonoBehaviour:
   - {fileID: 198805152095846496, guid: eeef22abe6e42a24f8067673fa83c1d5, type: 2}
   - {fileID: 198081506511723902, guid: 156dbcfb85939ed4dad4e936cfc80c57, type: 2}
   - {fileID: 198805152095846496, guid: f407b9975770093439156349292ed6ac, type: 2}
+  - {fileID: 198805152095846496, guid: acb2b2c469d954544b18d4f4db35bf0a, type: 2}
   projectiles:
   - {fileID: 1787216316022852, guid: 8e49fcbca51cbb849be5dc0e55c5c265, type: 2}
   - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}

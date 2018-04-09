@@ -2597,7 +2597,7 @@ MonoBehaviour:
   selectedObjects: []
   teamColor: {r: 0.25886676, g: 0.83823526, b: 0.3587579, a: 0}
   username: Alekster
-  human: 0
+  human: 1
   selectedAllyTargettingAbility: {fileID: 0}
   selectedAlliesTargettingAbility: {fileID: 0}
   hotkeyToUnitNameMapping:
