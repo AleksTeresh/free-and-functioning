@@ -20,7 +20,7 @@ namespace Statuses
 
         protected override void OnStatusEnd()
         {
-            if (target)
+            if (navMeshAgent)
             {
                 navMeshAgent.speed = originalSpeed;
             }

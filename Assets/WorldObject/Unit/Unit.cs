@@ -116,6 +116,19 @@ public class Unit : WorldObject {
         return AbilityUtils.CanUseAbilitySlot(abilities, abilitiesMulti, slotIdx);
     }
 
+    public Ability GetFirstReadyAbility()
+    {
+        for (int i = 0; i < abilities.Length; i++)
+        {
+            if (CanUseAbilitySlot(i))
+            {
+                return abilities[i];
+            }
+        }
+
+        return null;
+    }
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
