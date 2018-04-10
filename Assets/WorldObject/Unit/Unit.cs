@@ -129,6 +129,11 @@ public class Unit : WorldObject {
         return null;
     }
 
+    public NavMeshAgent GetNavMeshAgent ()
+    {
+        return agent;
+    }
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);

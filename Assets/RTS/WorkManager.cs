@@ -142,19 +142,37 @@ namespace RTS
             return reachable;
         }
 
-        public static WorldObject FindMeleeObjectsInList (List<WorldObject> objects)
+        public static List<WorldObject> FindMeleeObjectsInList (List<WorldObject> objects)
+        {
+            var meleeUnits = objects.Where(p => p is MeleeUnit).ToList();
+
+            return meleeUnits;
+        }
+
+        public static MeleeUnit FindNearestMeleeObject (List<WorldObject> objects, Vector3 position)
         {
             if (objects == null || objects.Count == 0) return null;
-            
-            foreach (var obj in objects) {
+
+            WorldObject nearestObject = null;
+            float distanceToNearestObject = -1;
+
+            foreach (var obj in objects)
+            {
                 if (obj is MeleeUnit)
                 {
-                    return obj;
+                    float distanceToObject = Vector3.Distance(position, obj.transform.position);
+                    if (distanceToObject < distanceToNearestObject || distanceToNearestObject < 0)
+                    {
+                        distanceToNearestObject = distanceToObject;
+                        nearestObject = obj;
+                    }
                 }
             }
 
-            return null;
-        }
+            return nearestObject == null
+                ? null
+                : (MeleeUnit) nearestObject;
+        } 
 
         public static Vector3 GetPerpendicularDestinationPoint (NavMeshAgent agent, Vector3 currentDestination, float walkRadius)
         {

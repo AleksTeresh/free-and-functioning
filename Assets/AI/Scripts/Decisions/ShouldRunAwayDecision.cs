@@ -5,15 +5,16 @@ using System.Text;
 using UnityEngine;
 using RTS;
 
-[CreateAssetMenu(menuName = "AI/Decisions/EnemyIsFarEnough")]
-public class EnemyIsFarEnoughDecision : Decision
+[CreateAssetMenu(menuName = "AI/Decisions/ShouldRunAway")]
+public class ShouldRunAwayDecision : Decision
 {
-    private static readonly float STOP_RUNNING_COEF = 0.8f;
+    private static readonly float RUNAWAY_COEF = 0.2f;
+    private static readonly float RUNAWAY_SPEED_THREASHOLD = 2f;
 
     public override bool Decide(StateController controller)
     {
         Unit self = controller.unit;
-        WorldObject closestChaser = WorkManager.FindNearestMeleeObject(
+        MeleeUnit closestChaser = WorkManager.FindNearestMeleeObject(
             controller.nearbyEnemies
                 .Where(p => p && p.GetStateController() && p.GetStateController().chaseTarget &&
                         p.GetStateController().chaseTarget.ObjectId == self.ObjectId)
@@ -21,20 +22,19 @@ public class EnemyIsFarEnoughDecision : Decision
             self.transform.position
         );
 
-        // stop running away, if there is no chaser anymore
         if (!closestChaser)
         {
-            return true;
+            return false;
         }
 
         Vector3 targetLocation = closestChaser.transform.position;
         Vector3 direction = targetLocation - self.transform.position;
 
-        bool targetIsFarEnough = closestChaser != null && // target exists
+        bool shouldRunAway = closestChaser != null && // target exists
             closestChaser.gameObject.activeSelf && // target is alive
-            closestChaser is MeleeUnit && // target is a MeleeUnit,so it makes sense to kite it
-            direction.sqrMagnitude > self.weaponRange * self.weaponRange * STOP_RUNNING_COEF * STOP_RUNNING_COEF; // target is far enough to stop running away
+            direction.sqrMagnitude < self.weaponRange * self.weaponRange * RUNAWAY_COEF * RUNAWAY_COEF && // target is close enough to start running away
+            closestChaser.GetNavMeshAgent().speed <= controller.navMeshAgent.speed - RUNAWAY_SPEED_THREASHOLD;
 
-        return targetIsFarEnough;
+        return shouldRunAway;
     }
 }
