@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657958, g: 0.49641377, b: 0.5748177, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657928, g: 0.4964131, b: 0.5748174, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -389,7 +389,6 @@ MonoBehaviour:
   - {fileID: 114101316880018166, guid: d6071164388261b498fc5d12991241c8, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1371,7 +1370,6 @@ MonoBehaviour:
   - {fileID: 114106531623158688, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1843,7 +1841,6 @@ MonoBehaviour:
   - {fileID: 114607499724579530, guid: 9db60096cddd7c441ad5f712353a0a3f, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -2731,7 +2728,6 @@ MonoBehaviour:
   - {fileID: 114106531623158688, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -10961,7 +10957,6 @@ MonoBehaviour:
   - {fileID: 114510994800895556, guid: e26f01d61156ca14d876bb6cb0d7e9f8, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -11237,7 +11232,6 @@ MonoBehaviour:
   - {fileID: 114992022797530444, guid: 41d768e19b900b74984b4e23f285160d, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0

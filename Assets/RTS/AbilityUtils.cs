@@ -16,7 +16,7 @@ namespace RTS
         public static bool IsAbilitySlotEmpty(Ability[] abilities, Ability[] multiAbilities, int slotIdx)
         {
             Ability ability = FindAbilityByIndex(abilities, slotIdx);
-            Ability multiAbility = FindAbilityByIndex(abilities, slotIdx);
+            Ability multiAbility = FindAbilityByIndex(multiAbilities, slotIdx);
 
             return !ability && !multiAbility;
         }

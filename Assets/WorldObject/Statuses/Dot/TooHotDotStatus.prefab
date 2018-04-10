@@ -56,4 +56,4 @@ MonoBehaviour:
   isActive: 0
   target: {fileID: 0}
   duration: 0
-  totalDamage: 30
+  totalDamage: 20
