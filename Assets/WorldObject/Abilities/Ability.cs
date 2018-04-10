@@ -17,6 +17,7 @@ namespace Abilities
         public float delayTime;
 
         public int damage;
+		public AttackType attackType = AttackType.Ability;
 
         public bool isAllyTargetingAbility = false;
         public bool isSelfOnly = false;

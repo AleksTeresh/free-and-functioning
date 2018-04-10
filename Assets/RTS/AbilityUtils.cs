@@ -1,4 +1,7 @@
-﻿using Abilities;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Abilities;
+using UnityEngine;
 
 namespace RTS
 {
@@ -6,8 +9,8 @@ namespace RTS
     {
         public static bool CanUseAbilitySlot(Ability[] abilities, Ability[] multiAbilities, int slotIdx)
         {
-            return !IsAbilitySlotEmpty(abilities, multiAbilities, slotIdx) && 
-                !IsAbilitySlotInCooldown(abilities, multiAbilities, slotIdx);
+            return !IsAbilitySlotEmpty(abilities, multiAbilities, slotIdx) &&
+                   !IsAbilitySlotInCooldown(abilities, multiAbilities, slotIdx);
         }
 
         public static bool IsAbilitySlotEmpty(Ability[] abilities, Ability[] multiAbilities, int slotIdx)
@@ -75,6 +78,37 @@ namespace RTS
             }
 
             return null;
+        }
+
+        public static Ability ChooseRandomReadyAbility(Ability[] abilities)
+        {
+            List<Ability> readyAbilities = new List<Ability>();
+
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                if (abilities[i].isReady)
+                {
+                    readyAbilities.Add(abilities[i]);
+                }
+            }
+
+            if (readyAbilities.Count > 0)
+            {
+                return readyAbilities[Random.Range(0, readyAbilities.Count)];
+            }
+
+            return null;
+        }
+
+        public static void PlayAbilityVfx(string vfxName, Vector3 target, Vector3 scale, Quaternion rotation)
+        {
+//            if (target != null) return;
+
+            ParticleSystem vfxPrefab = ResourceManager.GetAbilityVfx(vfxName);
+            ParticleSystem vfxInstance = MonoBehaviour.Instantiate(vfxPrefab, target, rotation);
+            vfxInstance.transform.localScale = scale;
+            MonoBehaviour.Destroy(vfxInstance.gameObject,
+                vfxInstance.main.startLifetime.constantMax + vfxInstance.main.duration);
         }
     }
 }

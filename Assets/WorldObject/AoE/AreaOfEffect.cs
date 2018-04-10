@@ -12,11 +12,12 @@ namespace Abilities
 
         [HideInInspector] public int damage;
         [HideInInspector] public Status[] statuses;
-        public float delay;
-        public bool affectsFriends;
-        public bool affectsSelf;
-        public AttackType attackType = AttackType.Ability;
+        [HideInInspector] public float delay;
+        [HideInInspector] public bool affectsFriends;
+        [HideInInspector] public bool affectsSelf;
+        [HideInInspector] public AttackType attackType = AttackType.Ability;
         [HideInInspector] public WorldObject creator;
+        [HideInInspector] public string vfxName;
 
         private float timeSinceCreated;
 
@@ -35,6 +36,8 @@ namespace Abilities
             {
                 var nearbyObjects = WorkManager.FindNearbyObjects(transform.position, transform.localScale.x / 2);
                 HandleEffect(nearbyObjects);
+                
+                AbilityUtils.PlayAbilityVfx(vfxName, transform.position, transform.localScale, transform.rotation);
 
                 // destroy the area of effect
                 Destroy(gameObject);

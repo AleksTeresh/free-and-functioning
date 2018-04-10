@@ -10,7 +10,7 @@ namespace RTS
     {
         private struct PlayerDetails
         {
-            public PlayerDetails(string name, int avatar)
+            public PlayerDetails(string name, int avatar) : this()
             {
                 Name = name;
                 Avatar = avatar;

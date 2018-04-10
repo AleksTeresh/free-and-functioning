@@ -128,6 +128,19 @@ public class Unit : WorldObject {
 
         return null;
     }
+    
+    public Ability GetFirstReadyMultiAbility()
+    {
+        for (int i = 0; i < abilitiesMulti.Length; i++)
+        {
+            if (CanUseAbilitySlot(i))
+            {
+                return abilitiesMulti[i];
+            }
+        }
+
+        return null;
+    }
 
     public NavMeshAgent GetNavMeshAgent ()
     {
