@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d7e55755687f68499fc6423018d2f1a, type: 3}
-  m_Name: Ability Multi Chase CCEnemy 1
+  m_Name: Ability Aoe Chase CCEnemy
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 3b6355311a172cc44ae3cc635bd8031b, type: 2}
+  - {fileID: 11400000, guid: 62e2162a7734b0f4e88641c98d8c55e4, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: d22d45d84ba7c4360ac8f34c07fd0b7b, type: 2}
     trueState: {fileID: 11400000, guid: 43fb389dbb6ae174eb1cd7adc9f3675a, type: 2}
