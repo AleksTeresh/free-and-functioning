@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Debuffer : Unit {
+public class CrowdControlEnemy : Unit
+{
+
     public override bool CanAttack()
     {
         return true;
@@ -23,13 +25,13 @@ public class Debuffer : Unit {
         base.UseWeapon(target);
         Vector3 spawnPoint = GetProjectileSpawnPoint();
 
-        FireProjectile(target, "DebufferProjectile", spawnPoint, damage);
+        FireProjectile(target, "CrowdControlProjectile", spawnPoint, damage);
     }
 
     public override Vector3 GetProjectileSpawnPoint()
     {
         Vector3 spawnPoint = transform.position;
-        spawnPoint.y += 1.3f;
+        spawnPoint.y += 1.5f;
 
         return spawnPoint;
     }

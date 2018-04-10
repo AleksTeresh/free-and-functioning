@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -108,6 +109,35 @@ namespace RTS
             });
 
             return mostVulnerable;
+        }
+
+        public static List<WorldObject> FindReachableObjects(List<WorldObject> objects, Vector3 currentPosition, float range)
+        {
+            List<WorldObject> reachable = objects
+                .Where(p =>
+                {
+                    Vector3 currentObjPosition = p.transform.position;
+                    Vector3 direction = currentObjPosition - currentPosition;
+
+                    return direction.sqrMagnitude < range * range;
+                })
+                .ToList();
+
+            return reachable;
+        }
+
+        public static WorldObject FindMeleeObjectInList (List<WorldObject> objects)
+        {
+            if (objects == null || objects.Count == 0) return null;
+            
+            foreach (var obj in objects) {
+                if (obj is MeleeUnit)
+                {
+                    return obj;
+                }
+            }
+
+            return null;
         }
 
         public static Vector3 GetPerpendicularDestinationPoint (NavMeshAgent agent, Vector3 currentDestination, float walkRadius)

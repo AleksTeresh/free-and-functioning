@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Abilities;
 
-[CreateAssetMenu(menuName = "AI/Actions/ChooseAbilityToUse")]
+[CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseAbilityToUse")]
 public class ChooseAbilityToUseAction : Action
 {
     public override void Act(StateController controller)

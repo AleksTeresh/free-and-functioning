@@ -63,5 +63,18 @@ namespace RTS
 
             return null;
         }
+
+        public static Ability FindAbilityByName(string name, Ability[] abilities)
+        {
+            foreach (var ability in abilities)
+            {
+                if (ability.name == name)
+                {
+                    return ability;
+                }
+            }
+
+            return null;
+        }
     }
 }

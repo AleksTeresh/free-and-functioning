@@ -15,6 +15,8 @@ public class StateController : MonoBehaviour
     [HideInInspector] public int nextWayPoint;
 	[HideInInspector] public WorldObject chaseTarget;
     [HideInInspector] public WorldObject allyAbilityTarget;
+    [HideInInspector] public WorldObject enemyAbilityTarget;
+    [HideInInspector] public Vector3 aoeAbilityTarget;
     [HideInInspector] public TargetManager targetManager;
     [HideInInspector] public List<WorldObject> nearbyEnemies;
     [HideInInspector] public List<WorldObject> nearbyAllies; // including self
@@ -29,6 +31,8 @@ public class StateController : MonoBehaviour
         unit = GetComponent<Unit>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
+
+        aoeAbilityTarget = new Vector3();
     }
 
     private void Start()

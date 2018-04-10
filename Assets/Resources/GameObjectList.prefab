@@ -62,6 +62,8 @@ MonoBehaviour:
   - {fileID: 1024985869498796, guid: 2df54ec8fe33244f29eeb82a6db119b1, type: 2}
   - {fileID: 1536295480490062, guid: 3cfce0544807a4e1488bfae067062445, type: 2}
   - {fileID: 1821665547553640, guid: 834986e58e6b6964c929990654dcf55c, type: 2}
+  - {fileID: 1435528466281784, guid: 84abc10782ef03340adee95928163e63, type: 2}
+  - {fileID: 1989607964018376, guid: f6d47e53007daa54ba70abedb1a9d74c, type: 2}
   worldObjects:
   - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}
   - {fileID: 1867937343684546, guid: 47811af423559934191ec0a5a241e8df, type: 2}
@@ -78,6 +80,8 @@ MonoBehaviour:
   - {fileID: 1849262978466074, guid: 52c0275047563344d834d08167a8a50f, type: 2}
   - {fileID: 1833783488009048, guid: 5cfbbe9bf3716804fb023cbf7794ca23, type: 2}
   - {fileID: 1560441377564334, guid: 3a923750353ba33428376d015d96e1be, type: 2}
+  - {fileID: 1421962537057036, guid: e78eb36f05c72044ea536dcecc9f03e3, type: 2}
+  - {fileID: 1421962537057036, guid: 17f8a85eeaa751549ab3ffdaeb332cab, type: 2}
   player: {fileID: 1880155284192986, guid: 18c2a160ec048d14ca46079316893b47, type: 2}
   enemy: {fileID: 1417980665555486, guid: 1e0d27c58be4c0e4bab7236b1956aa3a, type: 2}
   avatars:
@@ -117,6 +121,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c4c0ab17955f7d4cb3cd31f6d33d783, type: 2}
   - {fileID: 11400000, guid: aac97e580e50866458c7c55ddc0d4f76, type: 2}
   - {fileID: 11400000, guid: b488e3ceefbc9df498719a2990ecfa22, type: 2}
+  - {fileID: 11400000, guid: 7aea0f2fff1382544a55faa64945ca43, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}
@@ -157,6 +162,10 @@ MonoBehaviour:
   - {fileID: 1806068394534320, guid: 6bef75ec6bc0e3e46b57b78e6af799e4, type: 2}
   - {fileID: 1617857704203554, guid: 8bbc0de20fe979748823fc1bf90a1a94, type: 2}
   - {fileID: 1898642500250308, guid: c473191357d8b4546b618d2edbd52e93, type: 2}
+  - {fileID: 1957283058962316, guid: 7a717e9ecec89c94f917b835c8a1d24a, type: 2}
+  - {fileID: 1806068394534320, guid: b2eb224f079adc54082d01bb95f1b88c, type: 2}
+  - {fileID: 1139369466137466, guid: 34bd2590ed2fe1e48ace61005b48fe62, type: 2}
+  - {fileID: 1866400914605636, guid: b8e996c5a262e2042a5ab78a8a12a315, type: 2}
   abilityVFX:
   - {fileID: 198552222378971970, guid: 7bf86c6ed83ef4c0aa17d2e5cc039fa5, type: 2}
   - {fileID: 198081506511723902, guid: 4a1ef6267220b2f4eae8c3d54df068a3, type: 2}
@@ -175,6 +184,7 @@ MonoBehaviour:
   - {fileID: 198805152095846496, guid: f407b9975770093439156349292ed6ac, type: 2}
   - {fileID: 198805152095846496, guid: acb2b2c469d954544b18d4f4db35bf0a, type: 2}
   - {fileID: 198701814930766736, guid: b232dc035a14465448ffb86de323769f, type: 2}
+  - {fileID: 198081506511723902, guid: c89a9390dcb8d7c4d9baa53d6b10a629, type: 2}
   projectiles:
   - {fileID: 1787216316022852, guid: 8e49fcbca51cbb849be5dc0e55c5c265, type: 2}
   - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}
