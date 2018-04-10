@@ -1118,18 +1118,22 @@ MonoBehaviour:
   cooldown: 10
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: 7a717e9ecec89c94f917b835c8a1d24a, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
+  vfxName: BindAbilityEffect
   aoe: {fileID: 114465938561393866, guid: e78eb36f05c72044ea536dcecc9f03e3, type: 2}
   radius: 20
+  aoeDelay: 3
+  affectsFriends: 0
+  affectsSelf: 0
 --- !u!114 &114490797625940340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1146,13 +1150,13 @@ MonoBehaviour:
   cooldown: 50
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114539983583083740, guid: b8e996c5a262e2042a5ab78a8a12a315, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1173,18 +1177,22 @@ MonoBehaviour:
   cooldown: 10
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
-  - {fileID: 114630899022190572, guid: b2eb224f079adc54082d01bb95f1b88c, type: 2}
+  - {fileID: 114788419046144458, guid: b2eb224f079adc54082d01bb95f1b88c, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
+  vfxName: DisarmamentAbilityEffect
   aoe: {fileID: 114465938561393866, guid: 17f8a85eeaa751549ab3ffdaeb332cab, type: 2}
   radius: 20
+  aoeDelay: 0
+  affectsFriends: 0
+  affectsSelf: 0
 --- !u!114 &114499166949247986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1282,13 +1290,13 @@ MonoBehaviour:
   cooldown: 50
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114939054064557548, guid: 34bd2590ed2fe1e48ace61005b48fe62, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0

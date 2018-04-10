@@ -2393,6 +2393,7 @@ MonoBehaviour:
   cooldown: 15
   delayTime: 0
   damage: 20
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses: []
@@ -6765,12 +6766,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114494537188784858, guid: f6d47e53007daa54ba70abedb1a9d74c,
-        type: 2}
-      propertyPath: statuses.Array.data[0]
-      value: 
-      objectReference: {fileID: 114788419046144458, guid: b2eb224f079adc54082d01bb95f1b88c,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6d47e53007daa54ba70abedb1a9d74c, type: 2}
   m_IsPrefabParent: 0

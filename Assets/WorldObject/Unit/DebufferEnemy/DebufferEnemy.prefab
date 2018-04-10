@@ -506,7 +506,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058559940681134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.5, y: -0.8, z: -47.7}
+  m_LocalPosition: {x: 21.9, y: -0.44, z: -35.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4717786925708758}
@@ -939,6 +939,7 @@ MonoBehaviour:
   cooldown: 10
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
@@ -965,6 +966,7 @@ MonoBehaviour:
   cooldown: 10
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
@@ -1043,6 +1045,7 @@ MonoBehaviour:
   cooldown: 25
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
@@ -1117,6 +1120,7 @@ MonoBehaviour:
   cooldown: 15
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
@@ -1127,8 +1131,12 @@ MonoBehaviour:
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
+  vfxName: MiniDebuffAbilityEffect
   aoe: {fileID: 114395267541199148, guid: 84eeaf64d226c484eade3dace93413c6, type: 2}
   radius: 11
+  aoeDelay: 3
+  affectsFriends: 0
+  affectsSelf: 0
 --- !u!135 &135419088126367610
 SphereCollider:
   m_ObjectHideFlags: 1
