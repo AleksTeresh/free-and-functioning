@@ -26,7 +26,6 @@ namespace Abilities
 		[HideInInspector] public WorldObject user;
         [HideInInspector]  public List<WorldObject> targets;
 
-        [HideInInspector]  public bool isReady = true;
         [HideInInspector] public bool isPending = false;
 
         [HideInInspector]  public float cooldownTimer = 0.0f;
@@ -40,12 +39,8 @@ namespace Abilities
 
         public void Update ()
 		{ 
-			if (!isReady) {
+			if (!IsReady()) {
 				cooldownTimer += Time.deltaTime;
-
-				if (cooldownTimer >= cooldown) {
-					isReady = true;
-				}
 			}
 
             if (isPending)
@@ -63,7 +58,7 @@ namespace Abilities
 
 		public void Use(WorldObject target)
 		{
-			if (isReady) {
+			if (IsReady()) {
                 this.targets = new List<WorldObject>() { target };
 
                 HandleAbilityUseStart();
@@ -72,7 +67,7 @@ namespace Abilities
 
         public void Use(List<WorldObject> targets)
         {
-            if (isReady)
+            if (IsReady())
             {
                 this.targets = targets;
 
@@ -80,19 +75,24 @@ namespace Abilities
             }
         }
 
+        public bool IsReady()
+        {
+            return cooldownTimer >= cooldown;
+        }
+
         protected void HandleAbilityUseStart()
         {
             // TODO: add animation handling
 
             isPending = true;
-            isReady = false;
+            // isReady = false;
             cooldownTimer = 0.0f;
         }
 
         protected void HandleAbilityUseEnd()
         {
             delayTimer = 0.0f;
-            isReady = false;
+            // isReady = false;
             isPending = false;
         }
 

@@ -29,8 +29,6 @@ public class AbilityAoeAction : Action
 
         if (controller.aoeAbilityTarget == new Vector3())
         {
-            
-            // for now, all AoE are self-AoE
             controller.unit.UseAbility(unit.transform.position, aoeAbility);
             controller.abilityToUse = null;
         }

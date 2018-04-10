@@ -42,11 +42,11 @@ namespace RTS
             Ability ability = FindAbilityByIndex(abilities, slotIdx);
             Ability multiAbility = FindAbilityByIndex(multiAbilities, slotIdx);
 
-            if (ability && !ability.isReady)
+            if (ability && !ability.IsReady())
             {
                 return ability;
             }
-            else if (multiAbility && !multiAbility.isReady)
+            else if (multiAbility && !multiAbility.IsReady())
             {
                 return multiAbility;
             }

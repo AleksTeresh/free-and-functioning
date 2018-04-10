@@ -15,7 +15,9 @@ public class AbilityAction : Action {
 	private void AbilityChase(StateController controller)
 	{
 		Unit unit = controller.unit;
-		WorldObject chaseTarget = controller.chaseTarget;
+		WorldObject chaseTarget = controller.enemyAbilityTarget
+            ? controller.enemyAbilityTarget
+            : controller.chaseTarget;
 		Ability ability = controller.abilityToUse;
 
         if (!ability)

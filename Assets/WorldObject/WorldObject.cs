@@ -383,7 +383,7 @@ public class WorldObject : MonoBehaviour {
 		if (!TargetInFrontOfWeapon (target) && !IsTargetSelf(target)) {
 			AimAtTarget (target);
 		}
-		else if (ability.isReady) {
+		else if (ability.IsReady()) {
 			ability.Use(target);
 		}
 	}
@@ -395,7 +395,7 @@ public class WorldObject : MonoBehaviour {
             return;
         }
 
-        if (ability.isReady)
+        if (ability.IsReady())
         {
             ability.Use(targets);
         }
@@ -403,7 +403,7 @@ public class WorldObject : MonoBehaviour {
 
     public virtual void UseAbility(Vector3 position, AoeAbility ability)
     {
-        if (!isBusy && ability.isReady)
+        if (!isBusy && ability.IsReady())
         {
             ability.Use(position);
         }

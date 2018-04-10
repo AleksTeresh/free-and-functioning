@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7e55755687f68499fc6423018d2f1a, type: 3}
+  m_Name: Kite CCEnemy
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: a76db963d7c88ee43a221daf5d2b8a81, type: 2}
+  - {fileID: 11400000, guid: 81e94ae8acf3ab2468cd5fa8b6b52d6a, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 1244b109bf5c26b44a0268d40a47bd5d, type: 2}
+    trueState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
+    falseState: {fileID: 11400000, guid: 43fb389dbb6ae174eb1cd7adc9f3675a, type: 2}
+  - decision: {fileID: 11400000, guid: 7016dfb608ef3654cb9df82998aac9c6, type: 2}
+    trueState: {fileID: 11400000, guid: fc0ecd3f4f60bff429685f4ed26af225, type: 2}
+    falseState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}

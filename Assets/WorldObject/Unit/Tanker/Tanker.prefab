@@ -840,7 +840,6 @@ MonoBehaviour:
   - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -867,7 +866,6 @@ MonoBehaviour:
   statuses: []
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -893,7 +891,6 @@ MonoBehaviour:
   - {fileID: 114934206967156496, guid: e9a133093de4a0e48b251c74b732e42b, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -942,7 +939,6 @@ MonoBehaviour:
   statuses: []
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -970,7 +966,6 @@ MonoBehaviour:
   - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -996,7 +991,6 @@ MonoBehaviour:
   - {fileID: 114934206967156496, guid: e9a133093de4a0e48b251c74b732e42b, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1073,6 +1067,8 @@ MonoBehaviour:
   nextWayPoint: 0
   chaseTarget: {fileID: 0}
   allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
@@ -1111,7 +1107,6 @@ MonoBehaviour:
   - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1138,7 +1133,6 @@ MonoBehaviour:
   - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1189,7 +1183,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

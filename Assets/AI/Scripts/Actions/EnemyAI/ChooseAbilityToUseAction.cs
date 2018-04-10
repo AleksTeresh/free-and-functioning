@@ -2,14 +2,9 @@
 using Abilities;
 
 [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseAbilityToUse")]
-public class ChooseAbilityToUseAction : Action
-{
-    public override void Act(StateController controller)
-    {
-        ChooseAbilityToUse(controller);
-    }
-
-    private void ChooseAbilityToUse(StateController controller)
+public class ChooseAbilityToUseAction : ChooseAbilityAction
+{ 
+    protected override void ChooseAbilityToUse(StateController controller)
     {
         Unit unit = controller.unit;
 

@@ -7,15 +7,9 @@ using Abilities;
 using RTS;
 
 [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/BasicAbilityToMulti")]
-public class BasicAbilityToMultiAction : Action
+public class BasicAbilityToMultiAction : ChooseAbilityAction
 {
-
-    public override void Act(StateController controller)
-    {
-        UseAbility(controller);
-    }
-
-    private void UseAbility(StateController controller)
+    protected override void ChooseAbilityToUse(StateController controller)
     {
         Unit unit = controller.unit;
 
@@ -27,7 +21,7 @@ public class BasicAbilityToMultiAction : Action
 
             abilities.ForEach(ability =>
             {
-                if (!ability.isReady) return;
+                if (!ability.IsReady()) return;
 
                 var reachableEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, currentPosition, ability.range);
 

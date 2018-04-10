@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7e55755687f68499fc6423018d2f1a, type: 3}
+  m_Name: Chase DBEnemy
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 77dca1707cea4244997d151811e67959, type: 2}
+  - {fileID: 11400000, guid: bf4ee67281beddc44adc7b658c96cee2, type: 2}
+  - {fileID: 11400000, guid: 81e94ae8acf3ab2468cd5fa8b6b52d6a, type: 2}
+  - {fileID: 11400000, guid: c32d9b77df0ea6c489bd254e09fe9c6d, type: 2}
+  - {fileID: 11400000, guid: 70ae0350eddc6874ab21bb1a7448364e, type: 2}
+  - {fileID: 11400000, guid: 1a3a86b5914853a45920480e9154868b, type: 2}
+  - {fileID: 11400000, guid: d0a9d98423316884ebf4ee4718fe0518, type: 2}
+  - {fileID: 11400000, guid: 10729793f3c749348ae60a3f68ca3cc7, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 1244b109bf5c26b44a0268d40a47bd5d, type: 2}
+    trueState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
+    falseState: {fileID: 11400000, guid: c66e252e4d7046c4f9ad8e93052b05be, type: 2}
+  - decision: {fileID: 11400000, guid: bc7b398a9419afa46b0992939947bd55, type: 2}
+    trueState: {fileID: 11400000, guid: f8a54851d48c660458e5f71511043779, type: 2}
+    falseState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
+  - decision: {fileID: 11400000, guid: 6286d69bed619fc448801594780c7b18, type: 2}
+    trueState: {fileID: 11400000, guid: ea272c5214977424fa3cf4093a774ae2, type: 2}
+    falseState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
+  - decision: {fileID: 11400000, guid: 9f5616f27bfa03b40af9af353cd94e3e, type: 2}
+    trueState: {fileID: 11400000, guid: 1dc9072e05a734747b6831ddb9d72a67, type: 2}
+    falseState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
