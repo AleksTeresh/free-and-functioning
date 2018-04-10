@@ -56,6 +56,7 @@ MonoBehaviour:
   cooldown: 10
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
@@ -66,5 +67,9 @@ MonoBehaviour:
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
+  vfxName: BrainFreezeAoeAbilityEffect
   aoe: {fileID: 114465938561393866, guid: e78eb36f05c72044ea536dcecc9f03e3, type: 2}
   radius: 20
+  aoeDelay: 0
+  affectsFriends: 0
+  affectsSelf: 0
