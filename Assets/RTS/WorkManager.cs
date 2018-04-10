@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Abilities;
 
 namespace RTS
 {
@@ -149,6 +150,20 @@ namespace RTS
 
             return direction.magnitude <= (0.8f * self.weaponRange) && target.IsObserved();
         }
+
+		public static bool ObjectCanReachTargetWithAbility(WorldObject self, Ability ability, FogOfWarAgent target)
+		{
+			if (!ability) 
+			{
+				return false;
+			}
+
+			Vector3 targetLocation = target.transform.position;
+			Vector3 direction = targetLocation - self.transform.position;
+			float targetDistance = direction.magnitude;
+
+			return direction.magnitude <= (0.8f * ability.range) && target.IsObserved();
+		}
 
         public static bool V3Equal(Vector3 a, Vector3 b)
         {
