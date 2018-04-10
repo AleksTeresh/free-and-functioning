@@ -9,6 +9,9 @@ public class AbilityWasUsedDecision : Decision {
 	{
         bool isAiming = controller.unit.aiming;
 
-		return controller.abilityToUse == null && !isAiming ? true : false;
+		return controller.abilityToUse == null
+        /* && !isAiming */
+            ? true
+            : false;
 	}
 }

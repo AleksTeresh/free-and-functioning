@@ -9,61 +9,62 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1522369381139954}
+  m_RootGameObject: {fileID: 1542325540089054}
   m_IsPrefabParent: 1
---- !u!1 &1522369381139954
+--- !u!1 &1542325540089054
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4937348920054354}
-  - component: {fileID: 114390454617267038}
+  - component: {fileID: 4640535858281550}
+  - component: {fileID: 114516454563502210}
   m_Layer: 0
-  m_Name: ShieldAbility
+  m_Name: CCEnemyDisarmamentAoeAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4937348920054354
+--- !u!4 &4640535858281550
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522369381139954}
+  m_GameObject: {fileID: 1542325540089054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 227.48706, y: 0.0000009536743, z: 186.37831}
+  m_LocalPosition: {x: 159.25835, y: -1.7401934, z: 185.65878}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114390454617267038
+--- !u!114 &114516454563502210
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522369381139954}
+  m_GameObject: {fileID: 1542325540089054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Script: {fileID: 11500000, guid: a60d6186b6f331b43a5fe3561703bb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: ShieldAbility
-  range: 100
-  cooldown: 20
+  abilityName: Bind Aoe
+  range: 50
+  cooldown: 10
   delayTime: 0
   damage: 0
-  isAllyTargetingAbility: 1
+  isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
-  - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
+  - {fileID: 114630899022190572, guid: b2eb224f079adc54082d01bb95f1b88c, type: 2}
   user: {fileID: 0}
   targets: []
   isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
-  vfxName: ShieldAbilityEffect
+  aoe: {fileID: 114465938561393866, guid: 17f8a85eeaa751549ab3ffdaeb332cab, type: 2}
+  radius: 20
