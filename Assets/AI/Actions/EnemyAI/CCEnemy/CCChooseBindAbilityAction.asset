@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70e2f68e92dd0a649ab9a652d994c787, type: 3}
-  m_Name: ChooseSilenceAbilityAction
+  m_Script: {fileID: 11500000, guid: 7f77592f11ecb424b9c2e9cc8c9b9d99, type: 3}
+  m_Name: CCChooseBindAbilityAction
   m_EditorClassIdentifier: 

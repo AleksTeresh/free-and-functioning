@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f77592f11ecb424b9c2e9cc8c9b9d99, type: 3}
-  m_Name: ChooseBindAbilityAction
+  m_Script: {fileID: 11500000, guid: aade98206dac37e49b74cb8db61b1a98, type: 3}
+  m_Name: DBChooseMiniAbilityAction
   m_EditorClassIdentifier: 

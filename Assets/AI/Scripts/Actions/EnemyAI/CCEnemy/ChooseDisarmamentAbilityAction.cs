@@ -4,20 +4,23 @@ using UnityEngine;
 using Abilities;
 using RTS;
 
-[CreateAssetMenu(menuName = "AI/Actions/EnemyAI/CCEnemy/ChooseDisarmamentAbility")]
-public class ChooseDisarmamentAbilityAction : ChooseAbilityAction
+namespace AI.CCEnemy
 {
-    protected override void ChooseAbilityToUse(StateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/CCEnemy/ChooseDisarmamentAbility")]
+    public class ChooseDisarmamentAbilityAction : ChooseAbilityAction
     {
-        Unit unit = controller.unit;
-
-        Ability ability = AbilityUtils.FindAbilityByName("CCEnemyDisarmamentAoeAbility", unit.abilitiesMulti);
-        var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, unit.transform.position, ability.range);
-
-        if (ability != null && ability.IsReady() && reachabeEnemies.Count > 0)
+        protected override void ChooseAbilityToUse(StateController controller)
         {
-            controller.aoeAbilityTarget = WorkManager.FindMostDamagingObjectInList(reachabeEnemies).transform.position;
-            controller.abilityToUse = ability;
+            Unit unit = controller.unit;
+
+            Ability ability = AbilityUtils.FindAbilityByName("CCEnemyDisarmamentAoeAbility", unit.abilitiesMulti);
+            var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, unit.transform.position, ability.range);
+
+            if (ability != null && ability.IsReady() && reachabeEnemies.Count > 0)
+            {
+                controller.aoeAbilityTarget = WorkManager.FindMostDamagingObjectInList(reachabeEnemies).transform.position;
+                controller.abilityToUse = ability;
+            }
         }
     }
 }

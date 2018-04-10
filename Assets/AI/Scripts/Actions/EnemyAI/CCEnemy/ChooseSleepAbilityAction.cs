@@ -4,15 +4,18 @@ using UnityEngine;
 using Abilities;
 using RTS;
 
-[CreateAssetMenu(menuName = "AI/Actions/EnemyAI/CCEnemy/ChooseSleepAbility")]
-public class ChooseSleepAbilityAction : ChooseAbilityAction
+namespace AI.CCEnemy
 {
-    protected override void ChooseAbilityToUse(StateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/CCEnemy/ChooseSleepAbility")]
+    public class ChooseSleepAbilityAction : ChooseAbilityAction
     {
-        Unit unit = controller.unit;
+        protected override void ChooseAbilityToUse(StateController controller)
+        {
+            Unit unit = controller.unit;
 
-        Ability ability = AbilityUtils.FindAbilityByName("CCEnemySleepMultiAbility", unit.abilitiesMulti);
-        
-        // TODO: add logic on when to use Sleep Multi.
+            Ability ability = AbilityUtils.FindAbilityByName("CCEnemySleepMultiAbility", unit.abilitiesMulti);
+
+            // TODO: add logic on when to use Sleep Multi.
+        }
     }
 }
