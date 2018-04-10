@@ -134,6 +134,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8a54851d48c660458e5f71511043779, type: 2}
   - {fileID: 11400000, guid: 30b3b1c5a51294f43a1671d066bc268f, type: 2}
   - {fileID: 11400000, guid: c66e252e4d7046c4f9ad8e93052b05be, type: 2}
+  - {fileID: 11400000, guid: e1f4a8acaf1294d8482804d44cfe40b4, type: 2}
+  - {fileID: 11400000, guid: 9210441a6489c480c907772dfc3547fe, type: 2}
+  - {fileID: 11400000, guid: c3d2169e67d554f728e62e241cc8cca1, type: 2}
+  - {fileID: 11400000, guid: f862a0e4570a14901961c074e3688337, type: 2}
+  - {fileID: 11400000, guid: 18415dc4b024e4ae2a3bd3f0ba0c1cbf, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}
