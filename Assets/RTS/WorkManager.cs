@@ -111,6 +111,22 @@ namespace RTS
             return mostVulnerable;
         }
 
+        public static WorldObject FindMostDamagingObjectInList(List<WorldObject> objects)
+        {
+            if (objects == null || objects.Count == 0) return null;
+            WorldObject mostDamaging = objects[0];
+
+            objects.ForEach(p =>
+            {
+                if (p.maxHitPoints < mostDamaging.damage)
+                {
+                    mostDamaging = p;
+                }
+            });
+
+            return mostDamaging;
+        }
+
         public static List<WorldObject> FindReachableObjects(List<WorldObject> objects, Vector3 currentPosition, float range)
         {
             List<WorldObject> reachable = objects
@@ -126,7 +142,7 @@ namespace RTS
             return reachable;
         }
 
-        public static WorldObject FindMeleeObjectInList (List<WorldObject> objects)
+        public static WorldObject FindMeleeObjectsInList (List<WorldObject> objects)
         {
             if (objects == null || objects.Count == 0) return null;
             

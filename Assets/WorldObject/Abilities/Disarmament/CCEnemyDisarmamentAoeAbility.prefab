@@ -59,10 +59,9 @@ MonoBehaviour:
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
-  - {fileID: 114630899022190572, guid: b2eb224f079adc54082d01bb95f1b88c, type: 2}
+  - {fileID: 114788419046144458, guid: b2eb224f079adc54082d01bb95f1b88c, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0

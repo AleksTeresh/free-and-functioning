@@ -15,7 +15,7 @@ namespace Abilities
 
         public void Use(Vector3 position)
         {
-            if (isReady)
+            if (IsReady())
             {
                 targetPosition = position;
 

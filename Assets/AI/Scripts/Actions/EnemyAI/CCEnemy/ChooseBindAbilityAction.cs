@@ -1,29 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using Abilities;
 using RTS;
 
 [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/CCEnemy/ChooseBindAbility")]
-public class ChooseBindAbilityAction : Action
+public class ChooseBindAbilityAction : ChooseAbilityAction
 {
-    public override void Act(StateController controller)
-    {
-        ChooseBindAbility(controller);
-    }
-
-    private void ChooseBindAbility(StateController controller)
+    protected override void ChooseAbilityToUse(StateController controller)
     {
         Unit unit = controller.unit;
-
-        Debug.Log("Choosing ability");
 
         Ability ability = AbilityUtils.FindAbilityByName("CCEnemyBindAoeAbility", unit.abilitiesMulti);
         var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, unit.transform.position, ability.range);
 
-        if (ability != null && ability.isReady && WorkManager.FindMeleeObjectInList(reachabeEnemies) != null)
+        if (ability != null && ability.IsReady() && reachabeEnemies.Find(p => p is MeleeUnit) != null)
         {
-            var abilityTarget = WorkManager.FindMeleeObjectInList(reachabeEnemies);
+            var abilityTargets = reachabeEnemies.Where(p => p is MeleeUnit);
 
-            controller.enemyAbilityTarget = abilityTarget;
+            controller.aoeAbilityTarget = abilityTargets.First().transform.position;
             controller.abilityToUse = ability;
         }
     }
