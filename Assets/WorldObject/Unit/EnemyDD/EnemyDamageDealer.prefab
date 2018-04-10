@@ -928,7 +928,6 @@ MonoBehaviour:
   - {fileID: 114101316880018166, guid: d6071164388261b498fc5d12991241c8, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -956,7 +955,6 @@ MonoBehaviour:
   - {fileID: 114510994800895556, guid: e26f01d61156ca14d876bb6cb0d7e9f8, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -976,8 +974,8 @@ MonoBehaviour:
   buildImage: {fileID: 2800000, guid: 4b94e65a983d3b644a0c36bdb04f482d, type: 3}
   cost: 0
   sellValue: 0
-  hitPoints: 2000
-  maxHitPoints: 2000
+  hitPoints: 400
+  maxHitPoints: 400
   damage: 10
   damageMulti: 3
   weaponRange: 30
@@ -1054,7 +1052,6 @@ MonoBehaviour:
   - {fileID: 114106531623158688, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1082,7 +1079,6 @@ MonoBehaviour:
   - {fileID: 114916234241743166, guid: 9259626cf6be09448b11a93dabf74c22, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1121,7 +1117,6 @@ MonoBehaviour:
   - {fileID: 114992022797530444, guid: 41d768e19b900b74984b4e23f285160d, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
