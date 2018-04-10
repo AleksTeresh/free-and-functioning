@@ -8,14 +8,14 @@ public class ChooseAbilityToUseAction : ChooseAbilityAction
     {
         Unit unit = controller.unit;
 
-        Debug.Log("Choosing ability");
-
-        Ability ability = unit.GetFirstReadyAbility();
-
-
-        if (ability != null)
+        if (!controller.abilityToUse)
         {
-            controller.abilityToUse = ability;
+            Ability ability = unit.GetFirstReadyAbility();
+
+            if (ability != null)
+            {
+                controller.abilityToUse = ability;
+            }
         }
     }
 }

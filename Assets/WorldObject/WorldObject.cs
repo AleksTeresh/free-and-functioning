@@ -16,7 +16,7 @@ public class WorldObject : MonoBehaviour {
 
     // statuses
     private Statuses.Statuses statusesWrapper;
-    [HideInInspector] public List<Status> ActiveStatuses { get; private set; }
+    public List<Status> ActiveStatuses { get; private set; }
 
     protected Player player;
     protected HUD hud;

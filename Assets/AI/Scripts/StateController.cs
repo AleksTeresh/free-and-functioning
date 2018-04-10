@@ -61,7 +61,7 @@ public class StateController : MonoBehaviour
         }
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (!aiActive)
             return;

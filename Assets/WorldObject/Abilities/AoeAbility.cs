@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Statuses;
@@ -6,10 +7,13 @@ using RTS;
 
 namespace Abilities
 {
-    public class AoeAbility : Ability
+    public class AoeAbility : AbilityWithVFX
     {
         public AreaOfEffect aoe;
         public float radius;
+        public float aoeDelay;
+        public bool affectsFriends;
+        public bool affectsSelf;
 
         private Vector3 targetPosition;
 
@@ -40,8 +44,12 @@ namespace Abilities
             aoe.affectsFriends = false;
             aoe.affectsSelf = false;
             aoe.creator = user;
+            aoe.attackType = attackType;
+            aoe.delay = aoeDelay;
+            aoe.affectsFriends = affectsFriends;
+            aoe.affectsSelf = affectsSelf;
+            aoe.vfxName = vfxName;
             aoe.SetRadius(radius);
         }
     }
 }
-
