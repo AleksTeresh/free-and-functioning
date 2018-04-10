@@ -86,7 +86,7 @@ namespace RTS
 
             for (int i = 0; i < abilities.Length; i++)
             {
-                if (abilities[i].isReady)
+                if (abilities[i].IsReady())
                 {
                     readyAbilities.Add(abilities[i]);
                 }
