@@ -53,13 +53,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Healing Ability Base
   range: 300
-  cooldown: 3
+  cooldown: 60
+  delayTime: 0
   damage: 50
+  attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
   user: {fileID: 0}
   targets: []
-  isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
   vfxName: HealingAbilityEffect

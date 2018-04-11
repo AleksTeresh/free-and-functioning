@@ -53,16 +53,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Brain Freeze
   range: 1000
-  cooldown: 5
+  cooldown: 55
   delayTime: 0
   damage: 100
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: d6071164388261b498fc5d12991241c8, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0

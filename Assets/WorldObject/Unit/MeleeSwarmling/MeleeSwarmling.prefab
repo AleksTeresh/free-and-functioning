@@ -370,7 +370,7 @@ MonoBehaviour:
   hitPoints: 300
   maxHitPoints: 300
   damage: 10
-  damageMulti: 3
+  damageMulti: 0
   weaponRange: 2
   aiming: 0
   weaponAimSpeed: 1

@@ -53,16 +53,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Disarmament
   range: 100
-  cooldown: 20
+  cooldown: 30
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114630899022190572, guid: 6bef75ec6bc0e3e46b57b78e6af799e4, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0

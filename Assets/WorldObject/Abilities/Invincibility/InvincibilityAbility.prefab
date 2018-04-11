@@ -53,14 +53,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: InvincibilityAbility
   range: 100
-  cooldown: 30
+  cooldown: 60
+  delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses:
   - {fileID: 114777014935931824, guid: f1fb4591802d198458d948b680a58080, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
   vfxName: InvincibilityAbilityEffect

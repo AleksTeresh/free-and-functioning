@@ -28,7 +28,7 @@ public class ListenToFriendsTargetDecision : Decision
         if (unit.CanAttack())
         {
             // if there is no common target, look for nearby enemies
-            List<WorldObject> friendlyObjects = new List<WorldObject>();
+            // List<WorldObject> friendlyObjects = new List<WorldObject>();
             foreach (WorldObject nearbyObject in nearbyObjects)
             {
                 if (

@@ -53,9 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Too Hot
   range: 300
-  cooldown: 5
+  cooldown: 55
   delayTime: 0
-  damage: 20
+  damage: 30
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0

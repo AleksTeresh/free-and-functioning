@@ -53,14 +53,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: AttackUpAbility
   range: 100
-  cooldown: 15
+  cooldown: 35
+  delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses:
   - {fileID: 114901872984256716, guid: 69790dbba81d4104c94af05c5ff379e8, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
+  isPending: 0
   cooldownTimer: 0
+  delayTimer: 0
   vfxName: AttackUpAbilityEffect
