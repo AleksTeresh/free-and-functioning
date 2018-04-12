@@ -20,8 +20,8 @@ public class StateController : MonoBehaviour
     [HideInInspector] public WorldObject enemyAbilityTarget;
     [HideInInspector] public Vector3 aoeAbilityTarget;
     [HideInInspector] public TargetManager targetManager;
-    [HideInInspector] public List<WorldObject> nearbyEnemies;
-    [HideInInspector] public List<WorldObject> nearbyAllies; // including self
+    public List<WorldObject> nearbyEnemies;
+    public List<WorldObject> nearbyAllies; // including self
     // [HideInInspector] public float stateTimeElapsed;
     [HideInInspector] public bool attacking;
 	[HideInInspector] public Ability abilityToUse;
@@ -43,8 +43,8 @@ public class StateController : MonoBehaviour
 
     private void Start()
     {
-        nearbyEnemies = new List<WorldObject>();
-        nearbyAllies = new List<WorldObject>();
+        // nearbyEnemies = new List<WorldObject>();
+        // nearbyAllies = new List<WorldObject>();
         attacking = false;
     }
 
@@ -78,16 +78,7 @@ public class StateController : MonoBehaviour
             return;
         currentState.UpdateState(this);
     }
-    /*
-    void OnDrawGizmos()
-    {
-        if (currentState != null && eyes != null)
-        {
-            Gizmos.color = currentState.sceneGizmoColor;
-            Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
-        }
-    }
-    */
+
     public void TransitionToState(State nextState)
     {
         if (nextState != remainState)

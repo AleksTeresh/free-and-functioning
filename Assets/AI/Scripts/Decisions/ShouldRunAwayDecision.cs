@@ -14,6 +14,7 @@ public class ShouldRunAwayDecision : Decision
     public override bool Decide(StateController controller)
     {
         Unit self = controller.unit;
+
         MeleeUnit closestChaser = WorkManager.FindNearestMeleeObject(
             controller.nearbyEnemies
                 .Where(p => p && p.GetStateController() && p.GetStateController().chaseTarget &&

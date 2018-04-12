@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using RTS;
 using UnityEngine;
 
 [CreateAssetMenu (menuName ="AI/State")]
@@ -7,9 +8,10 @@ public class State : ScriptableObject {
 
     public Action[] actions;
     public Transition[] transitions;
-    
+
     public void UpdateState (StateController controller)
     {
+        FindNearbyObjects(controller);
         DoActions(controller);
         CheckTransitions(controller);
     }
@@ -37,5 +39,15 @@ public class State : ScriptableObject {
                 controller.TransitionToState(transitions[i].falseState);
             }
         }
+    }
+
+    private void FindNearbyObjects(StateController controller)
+    {
+        Unit unit = controller.unit;
+        Vector3 currentPosition = unit.transform.position;
+        List<WorldObject> nearbyObjects = WorkManager.FindNearbyObjects(currentPosition, unit.detectionRange);
+
+        controller.nearbyAllies = WorkManager.GetAllyObjects(nearbyObjects, unit.GetPlayer());
+        controller.nearbyEnemies = WorkManager.GetEnemyObjects(nearbyObjects, unit.GetPlayer());
     }
 }

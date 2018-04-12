@@ -18,16 +18,6 @@ public class AllyAbilityChaseAction : Action {
 		WorldObject allyChaseTarget = controller.allyAbilityTarget;
 		Ability ability = controller.abilityToUse;
 
-//		if (ability is AoeAbility && !ability.isMultiTarget)
-//		{
-//			AoeAbility aoeAbility = (AoeAbility)ability;
-//			// for now, all AoE are self-AoE
-//			controller.unit.UseAbilityOnArea(unit.transform.position, aoeAbility);
-//			controller.abilityToUse = null;
-//
-//			return;
-//		}
-
 		if (allyChaseTarget != null)
 		{
 			Vector3 currentPosition = unit.transform.position;

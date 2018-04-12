@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: Allies Ability Use Manual
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 4cb8648a1737da24690888e201534d08, type: 2}
   - {fileID: 11400000, guid: 57dabc816a7cd6a4c9a565b5c5f7ca5e, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: d22d45d84ba7c4360ac8f34c07fd0b7b, type: 2}

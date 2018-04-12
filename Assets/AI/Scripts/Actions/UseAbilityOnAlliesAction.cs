@@ -19,16 +19,6 @@ public class UseAbilityOnAlliesAction : Action
         Unit unit = controller.unit;
         Ability abilityToUse = controller.abilityToUse;
 
-        //if (abilityToUse is AoeAbility)
-        //{
-        //    AoeAbility aoeAbility = (AoeAbility)abilityToUse;
-        //    // for now, all AoE are self-AoE
-        //    controller.unit.UseAbility(unit.transform.position, aoeAbility);
-        //    controller.abilityToUse = null;
-
-        //    return;
-        //}
-
         Vector3 currentPosition = unit.transform.position;
         List<WorldObject> reachableAllies = controller.nearbyAllies
             .Where(p =>
