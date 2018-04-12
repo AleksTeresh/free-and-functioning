@@ -55,13 +55,13 @@ MonoBehaviour:
   range: 2
   cooldown: 20
   delayTime: 7
-  damage: 80
+  damage: 120
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses: []
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0

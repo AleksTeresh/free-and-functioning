@@ -11,20 +11,23 @@ namespace Statuses
 
         protected override void OnStatusStart()
         {
+            // the method is to be overriden
+            /*
             // if the target just received the status, save its current state
             if (previousState == null)
             {
                 var targetStateController = target.GetStateController();
 
                 previousState = targetStateController.currentState.name;
-            }
+            }  */
         }
 
         protected override void OnStatusEnd()
         {
-            if (target && target.GetStateController() && previousState != null && previousState != "")
+            if (target && target.GetStateController())
             {
-                target.GetStateController().TransitionToState(ResourceManager.GetAiState(previousState));
+                var controller = target.GetStateController();
+                controller.TransitionToState(ResourceManager.GetAiState(controller.GetDefaultState().name));
             }
         }
     }

@@ -798,7 +798,7 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 10
+  hitPoints: 100
   maxHitPoints: 100
   damage: 4
   damageMulti: 3

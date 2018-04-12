@@ -53,16 +53,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Feel The Punch
   range: 1000
-  cooldown: 5
+  cooldown: 55
   delayTime: 0
   damage: 100
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114510994800895556, guid: e26f01d61156ca14d876bb6cb0d7e9f8, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0

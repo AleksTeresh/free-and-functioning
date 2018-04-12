@@ -56,13 +56,13 @@ MonoBehaviour:
   cooldown: 20
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114047696966252068, guid: a465ec2b81536d24b9fc895770b1a8ac, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusName: Invincible
-  maxDuration: 7
+  maxDuration: 9
   isActive: 0
   target: {fileID: 0}
   duration: 0

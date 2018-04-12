@@ -119,17 +119,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1378861355139144
+--- !u!1 &1367417640248874
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4305815716341250}
-  - component: {fileID: 114818607291962774}
+  - component: {fileID: 4024803679016452}
+  - component: {fileID: 114373259300714888}
   m_Layer: 0
-  m_Name: SleepSingleAbility
+  m_Name: DisarmamentAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,31 +173,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1517589957711814
+--- !u!1 &1542847918996144
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4932224532888808}
-  - component: {fileID: 114177764706040806}
-  m_Layer: 0
-  m_Name: DisarmamentAbilityMulti
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1574806239736340
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4724209388155374}
-  - component: {fileID: 114387197589848652}
+  - component: {fileID: 4170327620291280}
+  - component: {fileID: 114802466254564174}
   m_Layer: 0
   m_Name: SleepMultiAbility
   m_TagString: Untagged
@@ -275,31 +259,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1764853005345456
+--- !u!1 &1746746798689202
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4140231087666154}
-  - component: {fileID: 114953868010696234}
+  - component: {fileID: 4032754404545512}
+  - component: {fileID: 114176272621568508}
   m_Layer: 0
-  m_Name: ConfuseAbilityMulti
+  m_Name: DisarmamentAbilityMulti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1772099158703126
+--- !u!1 &1769066660544090
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4097902810236610}
-  - component: {fileID: 114452671832831842}
+  - component: {fileID: 4778225321794700}
+  - component: {fileID: 114501206774231058}
   m_Layer: 0
   m_Name: ConfuseAbility
   m_TagString: Untagged
@@ -342,6 +326,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1872565698122060
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4771563715388354}
+  - component: {fileID: 114700950594360792}
+  m_Layer: 0
+  m_Name: ConfuseAbilityMulti
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1900205345035280
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,17 +374,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1949846529192694
+--- !u!1 &1941240977923714
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4862434302845676}
-  - component: {fileID: 114101778195818380}
+  - component: {fileID: 4699311838234274}
+  - component: {fileID: 114374985892345440}
   m_Layer: 0
-  m_Name: DisarmamentAbility
+  m_Name: SleepSingleAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,12 +400,38 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4305815716341250}
+  - {fileID: 4699311838234274}
   - {fileID: 4532862926998064}
-  - {fileID: 4862434302845676}
-  - {fileID: 4097902810236610}
+  - {fileID: 4024803679016452}
+  - {fileID: 4778225321794700}
   m_Father: {fileID: 4285915066159290}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4024803679016452
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367417640248874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4019068511439398}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4032754404545512
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746746798689202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4459452608907100}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4069398700626158
 Transform:
@@ -420,31 +446,18 @@ Transform:
   m_Father: {fileID: 4285915066159290}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4097902810236610
+--- !u!4 &4170327620291280
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772099158703126}
+  m_GameObject: {fileID: 1542847918996144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4019068511439398}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4140231087666154
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764853005345456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
+  m_LocalPosition: {x: 210.3639, y: 6.479397, z: 195.10669}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4459452608907100}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4184728076003658
 Transform:
@@ -522,19 +535,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4305815716341250
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378861355139144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 210.3639, y: 6.479397, z: 195.10669}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4019068511439398}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4369826496478316
 Transform:
   m_ObjectHideFlags: 1
@@ -573,10 +573,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4724209388155374}
+  - {fileID: 4170327620291280}
   - {fileID: 4201425456992292}
-  - {fileID: 4932224532888808}
-  - {fileID: 4140231087666154}
+  - {fileID: 4032754404545512}
+  - {fileID: 4771563715388354}
   m_Father: {fileID: 4285915066159290}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -619,31 +619,44 @@ Transform:
   m_Father: {fileID: 4285915066159290}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4724209388155374
+--- !u!4 &4699311838234274
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1574806239736340}
+  m_GameObject: {fileID: 1941240977923714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 210.3639, y: 6.479397, z: 195.10669}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4459452608907100}
+  m_Father: {fileID: 4019068511439398}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4862434302845676
+--- !u!4 &4771563715388354
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1949846529192694}
+  m_GameObject: {fileID: 1872565698122060}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4459452608907100}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4778225321794700
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1769066660544090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4019068511439398}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4881729493342530
 Transform:
@@ -670,19 +683,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4407096657010716}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4932224532888808
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517589957711814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4459452608907100}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4966603379774222
 Transform:
@@ -1148,39 +1148,12 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114101778195818380
+--- !u!114 &114176272621568508
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1949846529192694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Disarmament
-  range: 100
-  cooldown: 20
-  delayTime: 0
-  damage: 0
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114630899022190572, guid: 6bef75ec6bc0e3e46b57b78e6af799e4, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isReady: 1
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: DisarmamentAbilityEffect
---- !u!114 &114177764706040806
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517589957711814}
+  m_GameObject: {fileID: 1746746798689202}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
@@ -1191,13 +1164,13 @@ MonoBehaviour:
   cooldown: 40
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114637300746163854, guid: 8bbc0de20fe979748823fc1bf90a1a94, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1240,13 +1213,13 @@ MonoBehaviour:
   cooldown: 20
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: 6145f740b8fb08641a4acc83bbfca541, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1262,60 +1235,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114387197589848652
+--- !u!114 &114373259300714888
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1574806239736340}
+  m_GameObject: {fileID: 1367417640248874}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Sleep Multi
-  range: 30
-  cooldown: 50
+  abilityName: Disarmament
+  range: 100
+  cooldown: 30
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
-  - {fileID: 114939054064557548, guid: b7ca08c70cafca14baa3dc563206cebb, type: 2}
+  - {fileID: 114630899022190572, guid: 6bef75ec6bc0e3e46b57b78e6af799e4, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
+  isPending: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: DisarmamentAbilityEffect
+--- !u!114 &114374985892345440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1941240977923714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Sleep
+  range: 30
+  cooldown: 20
+  delayTime: 0
+  damage: 0
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114404459750338384, guid: 879d9aa5296e3fe4a93521ffe4fba1a1, type: 2}
+  user: {fileID: 0}
+  targets: []
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: SleepAbilityEffect
---- !u!114 &114452671832831842
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772099158703126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Confuse
-  range: 100
-  cooldown: 20
-  delayTime: 0
-  damage: 0
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114047696966252068, guid: a465ec2b81536d24b9fc895770b1a8ac, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isReady: 1
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: ConfuseAbilityEffect
 --- !u!114 &114462812864576662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1327,6 +1300,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ff1247dfe214d75b28da0c5b6d1754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114501206774231058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1769066660544090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Confuse
+  range: 100
+  cooldown: 20
+  delayTime: 0
+  damage: 0
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114047696966252068, guid: a465ec2b81536d24b9fc895770b1a8ac, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: ConfuseAbilityEffect
 --- !u!114 &114502627386816202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1343,13 +1343,13 @@ MonoBehaviour:
   cooldown: 40
   delayTime: 0
   damage: 0
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114992022797530444, guid: 961582889c559a045bbb745f843b2a19, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
@@ -1387,6 +1387,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72eab4895466fda438de93d248cba36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114700950594360792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872565698122060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Confuse Multi
+  range: 100
+  cooldown: 55
+  delayTime: 0
+  damage: 0
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114047696966252068, guid: 70ca113068d270448abf5bc258f1eaf7, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: ConfuseAbilityEffect
 --- !u!114 &114797963846865696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1406,11 +1433,40 @@ MonoBehaviour:
   nextWayPoint: 0
   chaseTarget: {fileID: 0}
   allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
   attacking: 0
   abilityToUse: {fileID: 0}
+--- !u!114 &114802466254564174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542847918996144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Sleep Multi
+  range: 30
+  cooldown: 50
+  delayTime: 0
+  damage: 0
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114939054064557548, guid: b7ca08c70cafca14baa3dc563206cebb, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: SleepAbilityEffect
 --- !u!114 &114802931727714418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1422,33 +1478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55aba35ed5f872745bff3c4ba81d8c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114818607291962774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378861355139144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Sleep
-  range: 30
-  cooldown: 12
-  delayTime: 0
-  damage: 0
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114404459750338384, guid: 879d9aa5296e3fe4a93521ffe4fba1a1, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isReady: 1
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: SleepAbilityEffect
 --- !u!114 &114840599257288304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1464,9 +1493,9 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 300
-  maxHitPoints: 300
-  damage: 10
+  hitPoints: 150
+  maxHitPoints: 150
+  damage: 6
   damageMulti: 3
   weaponRange: 10
   aiming: 0
@@ -1501,33 +1530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114953868010696234
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764853005345456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Confuse Multi
-  range: 100
-  cooldown: 35
-  delayTime: 0
-  damage: 0
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114047696966252068, guid: 70ca113068d270448abf5bc258f1eaf7, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isReady: 1
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: ConfuseAbilityEffect
 --- !u!135 &135663599659990384
 SphereCollider:
   m_ObjectHideFlags: 1

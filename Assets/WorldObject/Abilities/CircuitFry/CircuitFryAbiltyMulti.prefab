@@ -53,16 +53,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Circuit Fry Multi
   range: 300
-  cooldown: 5
+  cooldown: 55
   delayTime: 0
   damage: 50
+  attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
   - {fileID: 114106531623158688, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
   user: {fileID: 0}
   targets: []
-  isReady: 1
   isPending: 0
   cooldownTimer: 0
   delayTimer: 0
