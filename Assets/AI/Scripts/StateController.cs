@@ -9,6 +9,8 @@ public class StateController : MonoBehaviour
     public State currentState;
     public State remainState;
 
+    [HideInInspector] private State defaultState;
+
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public Unit unit;
     [HideInInspector] public List<Transform> wayPointList;
@@ -33,6 +35,10 @@ public class StateController : MonoBehaviour
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
 
         aoeAbilityTarget = new Vector3();
+
+        // for now the default state is the one that a unit has on Awake(),
+        // later defaultState can be made a separate public variable to be set in the Inspector
+        defaultState = currentState;
     }
 
     private void Start()
@@ -59,6 +65,11 @@ public class StateController : MonoBehaviour
         {
             navMeshAgent.enabled = false;
         }
+    }
+
+    public State GetDefaultState()
+    {
+        return defaultState;
     }
 
     protected virtual void Update()
