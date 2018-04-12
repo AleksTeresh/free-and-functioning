@@ -17,7 +17,6 @@ public class LookDecision : Decision {
     {
         Unit unit = controller.unit;
         Vector3 currentPosition = unit.transform.position;
-        List<WorldObject> nearbyObjects = WorkManager.FindNearbyObjects(currentPosition, unit.detectionRange);
 
         if (unit.CanAttack())
         {
@@ -29,12 +28,7 @@ public class LookDecision : Decision {
             }
 
             // if there is no common target, look for nearby enemies
-            List<WorldObject> enemyObjects = new List<WorldObject>();
-            foreach (WorldObject nearbyObject in nearbyObjects)
-            {
-                if (nearbyObject.GetPlayer() && nearbyObject.GetPlayer() != unit.GetPlayer()) enemyObjects.Add(nearbyObject);
-            }
-            WorldObject closestObject = WorkManager.FindNearestWorldObjectInListToPosition(enemyObjects, currentPosition);
+            WorldObject closestObject = WorkManager.FindNearestWorldObjectInListToPosition(controller.nearbyEnemies, currentPosition);
             if (closestObject)
             {
                 // if there is enemy nearby, and no common target, make the enemy the common target

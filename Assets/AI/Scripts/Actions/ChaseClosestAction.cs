@@ -18,6 +18,7 @@ public class ChaseClosestAction : Action
     {
         Unit unit = controller.unit;
         Vector3 currentPosition = unit.transform.position;
+
         WorldObject closestEnemy = WorkManager.FindNearestWorldObjectInListToPosition(controller.nearbyEnemies, currentPosition);
 
         if (closestEnemy && !WorkManager.ObjectCanReachTarget(unit, closestEnemy.GetFogOfWarAgent()))

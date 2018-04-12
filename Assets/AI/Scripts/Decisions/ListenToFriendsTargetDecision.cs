@@ -23,18 +23,15 @@ public class ListenToFriendsTargetDecision : Decision
     {
         Unit unit = controller.unit;
         Vector3 currentPosition = unit.transform.position;
-        List<WorldObject> nearbyObjects = WorkManager.FindNearbyObjects(currentPosition, unit.detectionRange);
 
         if (unit.CanAttack())
         {
             // if there is no common target, look for nearby enemies
-            // List<WorldObject> friendlyObjects = new List<WorldObject>();
-            foreach (WorldObject nearbyObject in nearbyObjects)
+            foreach (WorldObject nearbyObject in controller.nearbyAllies)
             {
                 if (
+                    nearbyObject &&
                     unit.ObjectId != nearbyObject.ObjectId &&
-                    nearbyObject && nearbyObject.GetPlayer() &&
-                    nearbyObject.GetPlayer().username == unit.GetPlayer().username &&
                     nearbyObject.GetStateController() &&
                     nearbyObject.GetStateController().chaseTarget
                 )

@@ -66,8 +66,7 @@ namespace RTS
                     WorldObject parentObject = parent.GetComponent<WorldObject>();
 
                     if (
-                        parentObject && !nearbyObjectIds.Contains(parentObject.ObjectId) &&
-                        parentObject.GetFogOfWarAgent() && parentObject.GetFogOfWarAgent().IsObserved()
+                        parentObject && !nearbyObjectIds.Contains(parentObject.ObjectId)
                     )
                     {
                         nearbyObjectIds.Add(parentObject.ObjectId);
@@ -172,7 +171,26 @@ namespace RTS
             return nearestObject == null
                 ? null
                 : (MeleeUnit) nearestObject;
-        } 
+        }
+
+        public static List<WorldObject> GetEnemyObjects (List<WorldObject> objects, Player ownPlayer)
+        {
+            return objects
+                .Where(p =>
+                    p.GetPlayer() != null &&
+                    p.GetPlayer() != ownPlayer &&
+                    p.GetFogOfWarAgent() &&
+                    p.GetFogOfWarAgent().IsObserved()
+                ) // do not attack friendly units or neutral objects
+                .ToList();
+        }
+
+        public static List<WorldObject> GetAllyObjects(List<WorldObject> objects, Player ownPlayer)
+        {
+            return objects
+                .Where(p => p.GetPlayer() != null && p.GetPlayer() == ownPlayer)
+                .ToList();
+        }
 
         public static Vector3 GetPerpendicularDestinationPoint (NavMeshAgent agent, Vector3 currentDestination, float walkRadius)
         {

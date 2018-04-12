@@ -12,8 +12,8 @@ public class GoTowardsDecision : Decision
         WorldObject target = controller.chaseTarget;
 
         bool chaseTargetIsActive = target != null && // target exists
-            target.gameObject.activeSelf;// target is alive
-        // TODO: add fog of war condition
+            target.gameObject.activeSelf; // target is alive
+        // TODO: add fog of war condition (perhaps)
 
         return chaseTargetIsActive;
     }

@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7e55755687f68499fc6423018d2f1a, type: 3}
   m_Name: Idle CCEnemy
   m_EditorClassIdentifier: 
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: da9999fc3863847448753250548ad76f, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: 00928010721af8e4fba394ddaa9b9036, type: 2}
     trueState: {fileID: 11400000, guid: fc0ecd3f4f60bff429685f4ed26af225, type: 2}
