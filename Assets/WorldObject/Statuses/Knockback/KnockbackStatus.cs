@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Statuses
@@ -16,10 +17,10 @@ namespace Statuses
         {
             maxDuration = distance / speed;
 
-            if (target && projectileInflicter)
+            if (target && (projectileInflicter || (aoeInflicter && inflicter)))
             {
                 // Copy projectile's direction, because projectile will be destroyed further in this frame
-                knockbackDirection = new Vector3(projectileInflicter.transform.forward.x, 0.0f, projectileInflicter.transform.forward.z);
+                knockbackDirection = CalculateKnockbackDirection();
 
                 navMeshAgent = target.GetComponent<NavMeshAgent>();
                 originalSpeed = navMeshAgent.speed;
@@ -43,6 +44,37 @@ namespace Statuses
             {
                 navMeshAgent.speed = originalSpeed;
             }
+        }
+
+        private Vector3 CalculateKnockbackDirection()
+        {
+            if (projectileInflicter)
+            {
+                return new Vector3(projectileInflicter.transform.forward.x, 0.0f, projectileInflicter.transform.forward.z);
+            }
+            else if (aoeInflicter && inflicter)
+            {
+                Vector3 direction;
+
+                // Check if AoE and target have different positions
+                // Sometimes Y coordinates of AoE and target don't match exactly, thus perform check only on X and Z
+                if (target.transform.position.x == aoeInflicter.transform.position.x && target.transform.position.z == aoeInflicter.transform.position.z)
+                {
+                    direction = (target.transform.position - inflicter.transform.position);
+                }
+                // If AoE and target positions are the same, push target away from the inflicter
+                else
+                {
+                     direction = (target.transform.position - aoeInflicter.transform.position);
+                }
+
+                direction.y = 0.0f;
+                direction.Normalize();
+
+                return direction;
+            }
+
+            throw new Exception("Either inflicter and aoeInflicter or projectileInflicter must be set");
         }
     }
 }

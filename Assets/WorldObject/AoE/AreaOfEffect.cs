@@ -75,7 +75,7 @@ namespace Abilities
 
                     for (int i = 0; i < statuses.Length; i++)
                     {
-                        StatusManager.InflictStatus(creator, statuses[i], target);
+                        StatusManager.InflictStatus(creator, this, statuses[i], target);
                     }
                 }
             });

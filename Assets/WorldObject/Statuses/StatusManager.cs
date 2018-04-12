@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using RTS;
+using Abilities;
 
 namespace Statuses
 {
@@ -17,6 +18,11 @@ namespace Statuses
         public static void InflictStatus(Projectile inflicter, Status status, WorldObject target)
         {
             InflictStatus(inflicter, status, target, target.transform.position, new Quaternion());
+        }
+
+        public static void InflictStatus(WorldObject inflicter, AreaOfEffect aoeInflicter, Status status, WorldObject target)
+        {
+            InflictStatus(inflicter, aoeInflicter, status, target, target.transform.position, new Quaternion());
         }
 
         public static void InflictStatus(WorldObject inflicter, Status status, WorldObject target, Vector3 spawnPoint)
@@ -37,6 +43,22 @@ namespace Statuses
             if (newStatusInstance)
             {
                 newStatusInstance.InflictStatus(target, inflicter);
+            }
+        }
+
+        public static void InflictStatus(WorldObject inflicter, AreaOfEffect aoeInflicter, Status status, WorldObject target, Vector3 spawnPoint, Quaternion rotation)
+        {
+            // if it is not possible to add the status on the target, skip the rest
+            if (!target.CanAddStatus())
+            {
+                return;
+            }
+
+            Status newStatusInstance = InstantiateStatus(status, spawnPoint, rotation);
+
+            if (newStatusInstance)
+            {
+                newStatusInstance.InflictStatus(target, inflicter, aoeInflicter);
             }
         }
 
