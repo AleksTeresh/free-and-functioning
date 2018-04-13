@@ -53,9 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Too Hot Multi
   range: 300
-  cooldown: 10
+  cooldown: 60
   delayTime: 0
-  damage: 35
+  damage: 30
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -64,6 +65,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: TooHotAbilityEffect
