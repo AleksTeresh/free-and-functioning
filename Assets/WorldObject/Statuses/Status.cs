@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Abilities;
+using UnityEngine;
 
 namespace Statuses
 {
@@ -14,6 +15,7 @@ namespace Statuses
 
         protected WorldObject inflicter;
         protected Projectile projectileInflicter;
+        protected AreaOfEffect aoeInflicter;
 
         public void Update()
         {
@@ -40,6 +42,14 @@ namespace Statuses
         public void InflictStatus(WorldObject target, Projectile projectileInflicter)
         {
             this.projectileInflicter = projectileInflicter;
+            InflictStatus(target);
+        }
+
+        public void InflictStatus(WorldObject target, WorldObject inflicter, AreaOfEffect aoeInflicter)
+        {
+            this.inflicter = inflicter;
+            this.aoeInflicter = aoeInflicter;
+
             InflictStatus(target);
         }
 
