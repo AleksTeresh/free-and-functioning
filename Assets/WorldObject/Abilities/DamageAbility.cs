@@ -6,10 +6,11 @@ namespace Abilities
     {
         protected override void FireAbility()
         {
+            int dividedDamage = Mathf.Max(multiDamageMinValue, damage / targets.Count);
             Debug.Log("Damage ability was used");
             targets.ForEach(target =>
             {
-                target.TakeDamage(damage, RTS.AttackType.Ability);
+                target.TakeDamage(dividedDamage, RTS.AttackType.Ability);
                 InflictStatuses(target);
                 PlayAbilityVFX(target);
             });

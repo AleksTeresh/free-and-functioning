@@ -17,6 +17,7 @@ namespace Abilities
         public float delayTime;
 
         public int damage;
+        public int multiDamageMinValue = 1;
 		public AttackType attackType = AttackType.Ability;
 
         public bool isAllyTargetingAbility = false;
@@ -111,12 +112,13 @@ namespace Abilities
 		}
 
         protected virtual void OnHit() {
+            int dividedDamage = Mathf.Max(multiDamageMinValue, damage / targets.Count);
             targets.ForEach(target =>
             {
                 if (!target) return;
 
                 InflictStatuses(target);
-                target.TakeDamage(damage, AttackType.Ability);
+                target.TakeDamage(dividedDamage, AttackType.Ability);
             });
 
 			// Default behaviour needs to be overidden by children

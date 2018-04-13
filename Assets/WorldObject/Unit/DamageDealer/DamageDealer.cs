@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 
 public class DamageDealer : Unit
 {
+    int multiDamageMinValue = 1;
+
     protected override void Start()
     {
         base.Start();
@@ -45,10 +47,11 @@ public class DamageDealer : Unit
         base.UseWeaponMulti(targets);
         Vector3 spawnPoint = GetProjectileSpawnPoint();
 
+        int dividedDamage = Mathf.Max(multiDamageMinValue, damageMulti / targets.Count);
         targets.ForEach(p =>
         {
             var rotation = Quaternion.LookRotation(p.transform.position - transform.position);
-            FireProjectile(p, "DamageDealerLightProjectile", spawnPoint, rotation, damageMulti);
+            FireProjectile(p, "DamageDealerLightProjectile", spawnPoint, rotation, dividedDamage);
         });
     }
 
