@@ -583,14 +583,7 @@ public class WorldObject : MonoBehaviour {
 
     private bool TargetInFrontOfWeapon(WorldObject target)
     {
-        Vector3 targetLocation = target.transform.position;
-        Vector3 direction = targetLocation - transform.position;
-
-        // ignore height when considering 
-        var a = new Vector3(direction.normalized.x, 0, direction.normalized.z);
-        var b = new Vector3(transform.forward.normalized.x, 0, transform.forward.normalized.z);
-
-        if (WorkManager.V3Equal(a, b)) return true;
+        if (WorkManager.IsObjectFacingTarget(this, target)) return true;
         else return false;
     }
 
@@ -607,7 +600,13 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint, int damage)
     {
-        FireProjectile(target, projectileName, spawnPoint, transform.rotation, damage);
+        FireProjectile(
+            target,
+            projectileName,
+            spawnPoint,
+            Quaternion.LookRotation(target.transform.position - transform.position),
+            damage
+        );
     }
 
     protected virtual void FireProjectile(WorldObject target, string projectileName, Vector3 spawnPoint, Quaternion rotation, int damage)

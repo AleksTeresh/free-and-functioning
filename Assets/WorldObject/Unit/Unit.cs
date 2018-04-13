@@ -18,7 +18,9 @@ public class Unit : WorldObject {
     [HideInInspector] public Ability[] abilitiesMulti;
 
     protected Quaternion aimRotation;
-	private ParticleSystem takeDamageEffect;
+    protected WorldObject aimTarget;
+
+    private ParticleSystem takeDamageEffect;
 
 	// public float moveSpeed, rotateSpeed;
 	protected NavMeshAgent agent;
@@ -225,6 +227,7 @@ public class Unit : WorldObject {
 	{
 		base.AimAtTarget(target);
         aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+        aimTarget = target;
     }
 
     private void HandleMove()
@@ -246,13 +249,21 @@ public class Unit : WorldObject {
 
     private void HandleRotation()
     {
-        if (!isBusy && aiming && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
+        if (!isBusy && aiming && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && aimTarget)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, aimRotation, weaponAimSpeed);
+            aimRotation.x = 0;
+            aimRotation.z = 0;
+            var nextAimRotation = Quaternion.Slerp(transform.rotation, aimRotation, weaponAimSpeed * Time.deltaTime);
+            nextAimRotation.x = 0;
+            nextAimRotation.z = 0;
+            transform.rotation = nextAimRotation;
+            // transform.rotation = Quaternion.RotateTowards(transform.rotation, aimRotation, weaponAimSpeed);
             CalculateBounds();
+
             //sometimes it gets stuck exactly 180 degrees out in the calculation and does nothing, this check fixes that
-            Quaternion inverseAimRotation = new Quaternion(-aimRotation.x, -aimRotation.y, -aimRotation.z, -aimRotation.w);
-            if (transform.rotation == aimRotation || transform.rotation == inverseAimRotation)
+            // Quaternion inverseAimRotation = new Quaternion(-aimRotation.x, -aimRotation.y, -aimRotation.z, -aimRotation.w);
+
+            if (WorkManager.IsObjectFacingTarget(this, aimTarget))
             {
                 aiming = false;
             }
