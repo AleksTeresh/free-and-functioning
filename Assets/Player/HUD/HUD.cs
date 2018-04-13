@@ -11,6 +11,9 @@ public class HUD : MonoBehaviour {
     public GUISkin mouseCursorSkin;
     public GUISkin playerDetailsSkin;
 
+    public GUIStyle singleModeStyle;
+    public GUIStyle multiModeStyle;
+
     public Texture2D activeCursor;
     public Texture2D selectCursor, leftCursor, rightCursor, upCursor, downCursor;
     public Texture2D[] moveCursors, attackCursors, harvestCursors;
@@ -85,7 +88,7 @@ public class HUD : MonoBehaviour {
             DrawUnitsBar(enemyUnitBar, observedEmenies, "EnemyIndicator");
             DrawSelectionIndicator();
             DrawAbilityBar();
-            DrawResourceBar(observedEmenies.Count);
+            DrawUpperBar(observedEmenies.Count);
             DrawMouseCursor();
         }
     }
@@ -281,7 +284,7 @@ public class HUD : MonoBehaviour {
         GUI.EndGroup();
     }
 
-    private void DrawResourceBar(int enemyCount)
+    private void DrawUpperBar(int enemyCount)
     {
         GUI.skin = resourceSkin;
         GUI.BeginGroup(new Rect(0, 0, Screen.width, RESOURCE_BAR_HEIGHT));
@@ -304,7 +307,17 @@ public class HUD : MonoBehaviour {
             if (userInput) userInput.enabled = false;
         }
 
-        Rect enemyCounterPos = new Rect(20, 10, buttonWidth, buttonHeight);
+        Rect attackModeIndicatorPos = new Rect(20, 10, buttonWidth, buttonHeight);
+        if (targetManager.InMultiMode)
+        {
+            GUI.TextArea(attackModeIndicatorPos, "Mutli Attack", multiModeStyle);
+        }
+        else
+        {
+            GUI.TextArea(attackModeIndicatorPos, "Single Attack", singleModeStyle);
+        }
+        
+        Rect enemyCounterPos = new Rect(150, 10, buttonWidth, buttonHeight);
         GUI.TextArea(enemyCounterPos, "Enemy count: " + enemyCount.ToString());
 
         GUI.EndGroup();
