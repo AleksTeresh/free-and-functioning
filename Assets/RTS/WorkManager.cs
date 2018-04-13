@@ -247,9 +247,21 @@ namespace RTS
 			return direction.magnitude <= (0.8f * ability.range) && target.IsObserved();
 		}
 
+        public static bool IsObjectFacingTarget (WorldObject obj, WorldObject target)
+        {
+            Vector3 targetLocation = target.transform.position;
+            Vector3 direction = targetLocation - obj.transform.position;
+
+            // ignore height when considering 
+            var a = new Vector3(direction.normalized.x, 0, direction.normalized.z);
+            var b = new Vector3(obj.transform.forward.normalized.x, 0, obj.transform.forward.normalized.z);
+
+            return V3Equal(a, b);
+        }
+
         public static bool V3Equal(Vector3 a, Vector3 b)
         {
-            return Vector3.SqrMagnitude(a - b) < 0.001;
+            return Vector3.SqrMagnitude(a - b) < 0.1;
         }
     }
 }

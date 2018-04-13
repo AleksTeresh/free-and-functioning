@@ -7,26 +7,36 @@ namespace Statuses
 {
     public class SilenceStatus : AiStateStatus
     {
-        protected override void AffectTarget()
+        protected override void OnStatusStart()
         {
             if (target && target is Unit)
             {
                 var targetUnit = (Unit)target;
 
-                ResetAbilitiesTimers(targetUnit);
+                SetAbilitiesBlock(targetUnit, true);
             }
         }
 
-        private void ResetAbilitiesTimers(Unit targetUnit)
+        protected override void OnStatusEnd()
+        {
+            if (target && target is Unit)
+            {
+                var targetUnit = (Unit)target;
+
+                SetAbilitiesBlock(targetUnit, false);
+            }
+        }
+
+        private void SetAbilitiesBlock(Unit targetUnit, bool blocked)
         {
             foreach (var ability in targetUnit.abilities)
             {
-                ability.cooldownTimer = 0.0f;
+                ability.blocked = blocked;
             }
 
             foreach (var ability in targetUnit.abilitiesMulti)
             {
-                ability.cooldownTimer = 0.0f;
+                ability.blocked = blocked;
             }
         }
     }

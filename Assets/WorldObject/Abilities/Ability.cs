@@ -28,6 +28,7 @@ namespace Abilities
         [HideInInspector]  public List<WorldObject> targets;
 
         [HideInInspector] public bool isPending = false;
+        [HideInInspector] public bool blocked = false;
 
         [HideInInspector]  public float cooldownTimer = 0.0f;
         [HideInInspector] public float delayTimer = 0.0f;
@@ -78,7 +79,7 @@ namespace Abilities
 
         public bool IsReady()
         {
-            return cooldownTimer >= cooldown;
+            return cooldownTimer >= cooldown && !blocked;
         }
 
         protected void HandleAbilityUseStart()

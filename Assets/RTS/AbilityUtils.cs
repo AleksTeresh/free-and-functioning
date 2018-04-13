@@ -34,6 +34,11 @@ namespace RTS
 
             if (abilityInCooldown)
             {
+                if (abilityInCooldown.blocked)
+                {
+                    return 0;
+                }
+
                 return abilityInCooldown.cooldownTimer / abilityInCooldown.cooldown;
             }
 
