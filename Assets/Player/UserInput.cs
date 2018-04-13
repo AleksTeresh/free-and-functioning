@@ -52,8 +52,8 @@ public class UserInput : MonoBehaviour {
 
     private void MoveCamera()
     {
-        float xpos = Input.mousePosition.x;
-        float ypos = Input.mousePosition.y;
+        float xpos = hud.cursorPosition.x;
+        float ypos = hud.cursorPosition.y;
         Vector3 movement = new Vector3(0, 0, 0);
 
         bool mouseScroll = false;
@@ -154,7 +154,7 @@ public class UserInput : MonoBehaviour {
 
     private void MouseActivity()
     {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetButtonDown("Action 1")) {
             LeftMouseClick();
         }
         else if (Input.GetMouseButtonDown(1))
@@ -324,7 +324,7 @@ public class UserInput : MonoBehaviour {
 
     private GameObject FindHitObject()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(hud.cursorPosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
@@ -343,7 +343,7 @@ public class UserInput : MonoBehaviour {
 
     private Vector3 FindHitPoint()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(hud.cursorPosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) return hit.point;
         return ResourceManager.InvalidPosition;

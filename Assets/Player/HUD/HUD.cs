@@ -54,6 +54,9 @@ public class HUD : MonoBehaviour {
     private SelectionIndicator selectionIndicator;
     private AbilityBar abilityBar;
 
+    public Vector3 cursorPosition = Vector3.zero;
+    private float joystickCursorSpeed = 1000.0f;
+
     // Use this for initialization
     void Start () {
         player = transform.root.GetComponent<Player>();
@@ -80,6 +83,7 @@ public class HUD : MonoBehaviour {
 	void OnGUI() {
         if (player && player.human)
         {
+            HandleCursorPositionUpdate();
             DrawPlayerDetails();
             // DrawOrdersBar();
             DrawUnitsBar(playerUnitBar, player.GetUnits(), "PlayerIndicator");
@@ -155,6 +159,23 @@ public class HUD : MonoBehaviour {
                 activeCursor = rallyPointCursor;
                 break;
             default: break;
+        }
+    }
+
+    private void HandleCursorPositionUpdate()
+    {
+        if (Input.GetAxis("Mouse X") != 0.0f || Input.GetAxis("Mouse Y") != 0.0f)
+        {
+            cursorPosition = Input.mousePosition;
+        }
+
+        float joystickDeltaX = Input.GetAxis("Joystick Cursor X");
+        float joystickDeltaY = Input.GetAxis("Joystick Cursor Y");
+
+        if (joystickDeltaY != 0.0f || joystickDeltaX != 0.0f)
+        {
+            cursorPosition = cursorPosition +
+                            joystickCursorSpeed * new Vector3(joystickDeltaX, joystickDeltaY) * Time.deltaTime;
         }
     }
 
@@ -367,8 +388,8 @@ public class HUD : MonoBehaviour {
     private Rect GetCursorDrawPosition()
     {
         //set base position for custom cursor image
-        float leftPos = Input.mousePosition.x;
-        float topPos = Screen.height - Input.mousePosition.y; //screen draw coordinates are inverted
+        float leftPos = cursorPosition.x;
+        float topPos = Screen.height - cursorPosition.y; //screen draw coordinates are inverted
                                                               //adjust position base on the type of cursor being shown
         if (activeCursorState == CursorState.PanRight) leftPos = Screen.width - activeCursor.width;
         else if (activeCursorState == CursorState.PanDown) topPos = Screen.height - activeCursor.height;
