@@ -89,8 +89,11 @@ namespace RTS
 
         public static void ToBusyState(TargetManager targetManager, StateController stateController, Vector3 destination)
         {
-            // remove current target if present
-            // stateController.chaseTarget = null;
+            if (!stateController || !stateController.navMeshAgent || !stateController.navMeshAgent.isActiveAndEnabled)
+            {
+                return;
+            }    
+
             // add new destination for nav mesh agent
             stateController.navMeshAgent.SetDestination(destination);
             // transition to Chase Manual State
