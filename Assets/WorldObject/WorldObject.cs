@@ -548,9 +548,12 @@ public class WorldObject : MonoBehaviour {
             }
         }
 
-        underAttackFrameCounter = 2;
-        hitPoints -= (int) damage;
-        if (hitPoints <= 0) Destroy(gameObject);
+        if (this && gameObject)
+        {
+            underAttackFrameCounter = 2;
+            hitPoints -= (int)damage;
+            if (hitPoints <= 0) Destroy(gameObject);
+        }
     }
 
 	public virtual void TakeHeal(int power)

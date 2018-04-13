@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 public class DamageDealer : Unit
 {
-    int multiDamageMinValue = 1;
+    public int multiDamageMinValue = 1;
 
     protected override void Start()
     {
