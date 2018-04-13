@@ -11,22 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1912619609057764}
   m_IsPrefabParent: 1
---- !u!1 &1035556831899072
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4839705084856242}
-  - component: {fileID: 114261186362629926}
-  m_Layer: 0
-  m_Name: FeelThePunchAbilty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1119343048331218
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,22 +76,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1244668814133272
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4302713988593280}
-  - component: {fileID: 114504842640602550}
-  m_Layer: 0
-  m_Name: CircuitFryAbilty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1311732402857388
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,15 +112,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1529320475247166
+--- !u!1 &1534789053235566
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4360417494603020}
-  - component: {fileID: 114614231414928616}
+  - component: {fileID: 4835627306057360}
+  - component: {fileID: 114693837212593020}
   m_Layer: 0
   m_Name: BrainFreezeAbilty
   m_TagString: Untagged
@@ -171,54 +139,6 @@ GameObject:
   - component: {fileID: 108398704795163668}
   m_Layer: 0
   m_Name: Area Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1613060427975548
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4710085337470294}
-  - component: {fileID: 114046300240376502}
-  m_Layer: 0
-  m_Name: FeelThePunchAbiltyMulti
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1686239488158896
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4204720648038436}
-  - component: {fileID: 114759171891928808}
-  m_Layer: 0
-  m_Name: CircuitFryAbiltyMulti
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1793384879036718
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4688396074519136}
-  - component: {fileID: 114068910751268864}
-  m_Layer: 0
-  m_Name: TooHotAbilty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,22 +258,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1996708303090276
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4827703205846938}
-  - component: {fileID: 114466773286242026}
-  m_Layer: 0
-  m_Name: TooHotAbiltyMulti
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &4086306971843828
 Transform:
   m_ObjectHideFlags: 1
@@ -391,32 +295,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4204720648038436
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1686239488158896}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 156.84732, y: 8.002197, z: 247.5474}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4458573021361328}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4302713988593280
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1244668814133272}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 156.84732, y: 8.002197, z: 247.5474}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4537579296765082}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4314128083584926
 Transform:
   m_ObjectHideFlags: 1
@@ -430,19 +308,6 @@ Transform:
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!4 &4360417494603020
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529320475247166}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000076293945, y: 0, z: 0.0000076293945}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4537579296765082}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4388979558749846
 Transform:
   m_ObjectHideFlags: 1
@@ -493,9 +358,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4979319355360414}
-  - {fileID: 4827703205846938}
-  - {fileID: 4204720648038436}
-  - {fileID: 4710085337470294}
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -522,25 +384,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4360417494603020}
-  - {fileID: 4688396074519136}
-  - {fileID: 4302713988593280}
-  - {fileID: 4839705084856242}
+  - {fileID: 4835627306057360}
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4688396074519136
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1793384879036718}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 156.40253, y: 8.002197, z: 247.31532}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4537579296765082}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4695767959509684
 Transform:
@@ -554,19 +400,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4710085337470294
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613060427975548}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 177.9224, y: 0, z: 185.92578}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4458573021361328}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4732141386623018
 Transform:
@@ -594,31 +427,18 @@ Transform:
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4827703205846938
+--- !u!4 &4835627306057360
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996708303090276}
+  m_GameObject: {fileID: 1534789053235566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 192.80252, y: 10.002197, z: 301.21533}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4458573021361328}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4839705084856242
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1035556831899072}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 177.92236, y: 0, z: 185.9258}
+  m_LocalPosition: {x: -0.0000076293945, y: 0, z: 0.0000076293945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4537579296765082}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4979319355360414
 Transform:
@@ -1014,60 +834,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114046300240376502
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613060427975548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d5fbebdcd7ddb42b8142298a05e5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Feel The Punch Multi
-  range: 1000
-  cooldown: 55
-  delayTime: 0
-  damage: 20
-  attackType: 2
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114607499724579530, guid: 9db60096cddd7c441ad5f712353a0a3f, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  projectileName: FeelThePunchProjectile
---- !u!114 &114068910751268864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1793384879036718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efdacec8476f1849950aa5081d29748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Too Hot
-  range: 300
-  cooldown: 55
-  delayTime: 0
-  damage: 30
-  attackType: 2
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114916234241743166, guid: c549c46c75cf94c4d97510e1706e0cf5, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: TooHotAbilityEffect
 --- !u!114 &114123566393014124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1081,9 +847,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Brain Freeze Multi
   range: 500
-  cooldown: 80
+  cooldown: 15
   delayTime: 0
-  damage: 5
+  damage: 100
+  multiDamageMinValue: 10
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -1092,6 +859,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   projectileName: BrainFreezeProjectile
@@ -1106,33 +874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114261186362629926
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1035556831899072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d5fbebdcd7ddb42b8142298a05e5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Feel The Punch
-  range: 1000
-  cooldown: 55
-  delayTime: 0
-  damage: 100
-  attackType: 2
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114510994800895556, guid: e26f01d61156ca14d876bb6cb0d7e9f8, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  projectileName: FeelThePunchProjectile
 --- !u!114 &114319365972637234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1159,18 +900,18 @@ MonoBehaviour:
   buildImage: {fileID: 2800000, guid: 4b94e65a983d3b644a0c36bdb04f482d, type: 3}
   cost: 0
   sellValue: 0
-  hitPoints: 400
-  maxHitPoints: 400
-  damage: 10
-  damageMulti: 2
+  hitPoints: 150
+  maxHitPoints: 150
+  damage: 30
+  damageMulti: 20
   weaponRange: 30
   aiming: 0
   weaponAimSpeed: 8
   weaponRechargeTime: 1
   weaponMultiRechargeTime: 1
-  meleeDefence: 0
-  rangeDefence: 0
-  abilityDefence: 0
+  meleeDefence: 1
+  rangeDefence: 1
+  abilityDefence: 1
   isInvincible: 0
   attackSound: {fileID: 8300000, guid: 33678abad51fdac45873effd3f676779, type: 3}
   selectSound: {fileID: 8300000, guid: 34bf03edab4eca74f93c5e301f60f475, type: 3}
@@ -1187,60 +928,7 @@ MonoBehaviour:
   - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
   - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
   abilitiesMulti: []
---- !u!114 &114466773286242026
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996708303090276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efdacec8476f1849950aa5081d29748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Too Hot Multi
-  range: 300
-  cooldown: 90
-  delayTime: 0
-  damage: 35
-  attackType: 2
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114771467544062228, guid: f793a5da2c6fb0c4d90b5def68be46a2, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: TooHotAbilityEffect
---- !u!114 &114504842640602550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1244668814133272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efdacec8476f1849950aa5081d29748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Circuit Fry
-  range: 300
-  cooldown: 55
-  delayTime: 0
-  damage: 100
-  attackType: 2
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114106531623158688, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: CircuitFryAbilityEffect
+  multiDamageMinValue: 3
 --- !u!114 &114521558008401788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1252,33 +940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114614231414928616
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529320475247166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d5fbebdcd7ddb42b8142298a05e5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Brain Freeze
-  range: 1000
-  cooldown: 55
-  delayTime: 0
-  damage: 100
-  attackType: 2
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114101316880018166, guid: d6071164388261b498fc5d12991241c8, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  projectileName: BrainFreezeProjectile
 --- !u!114 &114637507197087530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1301,33 +962,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ff1247dfe214d75b28da0c5b6d1754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114759171891928808
+--- !u!114 &114693837212593020
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1686239488158896}
+  m_GameObject: {fileID: 1534789053235566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efdacec8476f1849950aa5081d29748, type: 3}
+  m_Script: {fileID: 11500000, guid: 74d5fbebdcd7ddb42b8142298a05e5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Circuit Fry Multi
-  range: 300
-  cooldown: 55
+  abilityName: Brain Freeze
+  range: 1000
+  cooldown: 10
   delayTime: 0
-  damage: 50
+  damage: 100
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses:
-  - {fileID: 114106531623158688, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
+  - {fileID: 114101316880018166, guid: d6071164388261b498fc5d12991241c8, type: 2}
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
-  vfxName: CircuitFryAbilityEffect
+  projectileName: BrainFreezeProjectile
 --- !u!114 &114792290707941432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1424,7 +1087,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 12
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

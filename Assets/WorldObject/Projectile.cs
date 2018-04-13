@@ -5,7 +5,6 @@ using RTS;
 
 public class Projectile : MonoBehaviour
 {
-
     public float velocity = 1;
     public Status[] statuses;
 
@@ -13,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     private int damage = 1;
     private float range = 1;
-    private WorldObject target;
+    public WorldObject target;
 
     void Update()
     {
@@ -22,6 +21,13 @@ public class Projectile : MonoBehaviour
         {
             
         } */
+
+        if (target)
+        {
+            Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + 1.0f, target.transform.position.z);
+            transform.rotation = Quaternion.LookRotation(targetPosition - transform.position);
+        }
+
         if (range > 0)
         {
             float positionChange = Time.deltaTime * velocity;
@@ -35,7 +41,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void HandleCollision (WorldObject collidedObject)
+    public void HandleCollision(WorldObject collidedObject)
     {
         InflictDamage(collidedObject);
         InflictStatuses(collidedObject);
@@ -61,7 +67,7 @@ public class Projectile : MonoBehaviour
         this.target = target;
     }
 
-    public void SetDamage (int damage)
+    public void SetDamage(int damage)
     {
         this.damage = damage;
     }
@@ -81,7 +87,7 @@ public class Projectile : MonoBehaviour
             }
         }
     }
-    
+
     /*
     private bool HitSomething()
     {

@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 30
-  damage: 5
+  statuses: []
+  target: {fileID: 0}
 --- !u!114 &114675751792509920
 MonoBehaviour:
   m_ObjectHideFlags: 1
