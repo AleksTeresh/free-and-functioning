@@ -5339,6 +5339,7 @@ MonoBehaviour:
   cooldown: 15
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5347,6 +5348,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: BrainFreezeAoeAbilityEffect
@@ -5437,6 +5439,7 @@ MonoBehaviour:
   cooldown: 35
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -5445,6 +5448,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: AttackUpAbilityEffect
@@ -5475,6 +5479,7 @@ MonoBehaviour:
   cooldown: 5
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 1
@@ -5483,6 +5488,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: ShieldAbilityEffect
@@ -5502,6 +5508,7 @@ MonoBehaviour:
   cooldown: 50
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5510,6 +5517,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: SleepAbilityEffect
@@ -5551,6 +5559,7 @@ MonoBehaviour:
   cooldown: 10
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5559,6 +5568,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: BrainFreezeAoeAbilityEffect
@@ -5583,6 +5593,7 @@ MonoBehaviour:
   cooldown: 55
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5591,6 +5602,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: ConfuseAbilityEffect
@@ -5648,6 +5660,7 @@ MonoBehaviour:
   cooldown: 20
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -5656,6 +5669,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: ShieldAbilityEffect
@@ -5722,6 +5736,7 @@ MonoBehaviour:
   cooldown: 60
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -5730,6 +5745,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: InvincibilityAbilityEffect
@@ -5809,6 +5825,7 @@ MonoBehaviour:
   cooldown: 55
   delayTime: 0
   damage: 100
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5817,6 +5834,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: CircuitFryAbilityEffect
@@ -5858,6 +5876,7 @@ MonoBehaviour:
   cooldown: 40
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5866,6 +5885,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: BindAbilityEffect
@@ -5885,6 +5905,7 @@ MonoBehaviour:
   cooldown: 5
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 1
@@ -5893,6 +5914,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: ShieldAbilityEffect
@@ -5983,6 +6005,7 @@ MonoBehaviour:
   cooldown: 80
   delayTime: 0
   damage: 5
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -5991,6 +6014,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   projectileName: BrainFreezeProjectile
@@ -6109,6 +6133,7 @@ MonoBehaviour:
   cooldown: 55
   delayTime: 0
   damage: 20
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6117,6 +6142,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   projectileName: FeelThePunchProjectile
@@ -6158,6 +6184,7 @@ MonoBehaviour:
   cooldown: 60
   delayTime: 0
   damage: 50
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -6165,6 +6192,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: HealingAbilityEffect
@@ -6248,6 +6276,7 @@ MonoBehaviour:
   cooldown: 60
   delayTime: 0
   damage: 150
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -6255,6 +6284,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: HealingAbilityEffect
@@ -6318,6 +6348,7 @@ MonoBehaviour:
   cooldown: 20
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -6326,6 +6357,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: AttackUpAbilityEffect
@@ -6345,6 +6377,7 @@ MonoBehaviour:
   cooldown: 20
   delayTime: 7
   damage: 120
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6352,6 +6385,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
 --- !u!114 &114339887786637808
@@ -6381,6 +6415,7 @@ MonoBehaviour:
   cooldown: 20
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6389,6 +6424,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: SleepAbilityEffect
@@ -6646,6 +6682,7 @@ MonoBehaviour:
   cooldown: 10
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6654,6 +6691,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: BrainFreezeAoeAbilityEffect
@@ -6745,6 +6783,7 @@ MonoBehaviour:
   cooldown: 12
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6753,6 +6792,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
 --- !u!114 &114469189223410330
@@ -6830,6 +6870,7 @@ MonoBehaviour:
   cooldown: 30
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6838,6 +6879,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: DisarmamentAbilityEffect
@@ -6906,6 +6948,7 @@ MonoBehaviour:
   cooldown: 55
   delayTime: 0
   damage: 100
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6914,6 +6957,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   projectileName: BrainFreezeProjectile
@@ -6933,6 +6977,7 @@ MonoBehaviour:
   cooldown: 20
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -6941,6 +6986,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: ConfuseAbilityEffect
@@ -7009,6 +7055,140 @@ MonoBehaviour:
   selectBoxSkin: {fileID: 11400000, guid: 3aede3239721ada4baf46f35ffbbbb9c, type: 2}
   mouseCursorSkin: {fileID: 11400000, guid: bb7243bedbed0bc4d99a8d7aadc13984, type: 2}
   playerDetailsSkin: {fileID: 11400000, guid: fa94c00915799ad4991aa7d5e9d0c2cc, type: 2}
+  singleModeStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 78565bd80915c154e8a8fa8e290252b7, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  multiModeStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: d346f4a6f4dde294e9c79bc33682f1a1, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
   activeCursor: {fileID: 0}
   selectCursor: {fileID: 2800000, guid: 6444638393eb46a4a84b429745baa2f9, type: 3}
   leftCursor: {fileID: 2800000, guid: f05dc775144b8ec4a9ff384e4f976016, type: 3}
@@ -7050,6 +7230,7 @@ MonoBehaviour:
   cooldown: 55
   delayTime: 0
   damage: 30
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -7058,6 +7239,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: TooHotAbilityEffect
@@ -7154,6 +7336,7 @@ MonoBehaviour:
   cooldown: 40
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -7162,6 +7345,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: DisarmamentAbilityEffect
@@ -7508,6 +7692,7 @@ MonoBehaviour:
   cooldown: 90
   delayTime: 0
   damage: 35
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -7516,6 +7701,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: TooHotAbilityEffect
@@ -7666,6 +7852,7 @@ MonoBehaviour:
   - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
   - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
   abilitiesMulti: []
+  multiDamageMinValue: 1
 --- !u!114 &114750979184684868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7841,6 +8028,7 @@ MonoBehaviour:
   cooldown: 55
   delayTime: 0
   damage: 50
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -7849,6 +8037,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: CircuitFryAbilityEffect
@@ -7917,6 +8106,7 @@ MonoBehaviour:
   cooldown: 55
   delayTime: 0
   damage: 100
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -7925,6 +8115,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   projectileName: FeelThePunchProjectile
@@ -7944,6 +8135,7 @@ MonoBehaviour:
   cooldown: 120
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -7952,6 +8144,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: InvincibilityAbilityEffect
@@ -8093,6 +8286,7 @@ MonoBehaviour:
   cooldown: 35
   delayTime: 10
   damage: 40
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -8100,6 +8294,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: BrainFreezeAoeAbilityEffect
@@ -8151,6 +8346,7 @@ MonoBehaviour:
   cooldown: 20
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -8159,6 +8355,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: BindAbilityEffect
@@ -8205,6 +8402,7 @@ MonoBehaviour:
   cooldown: 30
   delayTime: 0
   damage: 0
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -8213,6 +8411,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: ShieldAbilityEffect
