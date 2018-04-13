@@ -98,22 +98,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1217134126960492
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4851899165028606}
-  - component: {fileID: 114405224900032336}
-  m_Layer: 0
-  m_Name: InvincibilityAbility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1233705683630362
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,38 +142,6 @@ GameObject:
   - component: {fileID: 199059720577272516}
   m_Layer: 0
   m_Name: TakeDamage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1344154980279366
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4657217612932930}
-  - component: {fileID: 114996191400666252}
-  m_Layer: 0
-  m_Name: AttackUpAbilityMulti
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1403826127128358
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4520940539437394}
-  - component: {fileID: 114392782124693128}
-  m_Layer: 0
-  m_Name: InvincibilityAbilityMulti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,54 +216,6 @@ GameObject:
   - component: {fileID: 114417129894123642}
   m_Layer: 0
   m_Name: RightEye
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1731105413607422
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4967531067003382}
-  - component: {fileID: 114653595106181392}
-  m_Layer: 0
-  m_Name: AttackUpAbility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1747171465572092
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4626041265264884}
-  - component: {fileID: 114378608504630768}
-  m_Layer: 0
-  m_Name: ShieldAbility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1810220178516714
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4105221358536302}
-  - component: {fileID: 114790429091312980}
-  m_Layer: 0
-  m_Name: ShieldAbilityMulti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,19 +304,6 @@ Transform:
   m_Father: {fileID: 4025130256371038}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!4 &4105221358536302
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1810220178516714}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 227.48706, y: 0, z: 186.37831}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4997736991105274}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4123421511207986
 Transform:
   m_ObjectHideFlags: 1
@@ -478,19 +369,6 @@ Transform:
   m_Father: {fileID: 4984866250530508}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4520940539437394
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1403826127128358}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.457373, y: 0.0000009536743, z: 324.65268}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4997736991105274}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4524811923755038
 Transform:
   m_ObjectHideFlags: 1
@@ -506,32 +384,6 @@ Transform:
   m_Father: {fileID: 4025130256371038}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4626041265264884
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1747171465572092}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 227.48706, y: 0.0000009536743, z: 186.37831}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4984866250530508}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4657217612932930
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344154980279366}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 227.48706, y: 0, z: 186.37831}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4997736991105274}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4845702176639446
 Transform:
   m_ObjectHideFlags: 1
@@ -544,19 +396,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4997736991105274}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4851899165028606
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1217134126960492}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.457373, y: 0.0000009536743, z: 324.65268}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4984866250530508}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4915826476704084
 Transform:
@@ -571,19 +410,6 @@ Transform:
   m_Father: {fileID: 4025130256371038}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4967531067003382
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1731105413607422}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 227.48706, y: 0.0000009536743, z: 186.37831}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4984866250530508}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4984866250530508
 Transform:
   m_ObjectHideFlags: 1
@@ -595,9 +421,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4329388971132364}
-  - {fileID: 4967531067003382}
-  - {fileID: 4626041265264884}
-  - {fileID: 4851899165028606}
   m_Father: {fileID: 4025130256371038}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -612,9 +435,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4845702176639446}
-  - {fileID: 4657217612932930}
-  - {fileID: 4105221358536302}
-  - {fileID: 4520940539437394}
   m_Father: {fileID: 4025130256371038}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1006,9 +826,9 @@ MonoBehaviour:
   weaponAimSpeed: 6
   weaponRechargeTime: 1
   weaponMultiRechargeTime: 1
-  meleeDefence: 0
-  rangeDefence: 0
-  abilityDefence: 0
+  meleeDefence: 1
+  rangeDefence: 1
+  abilityDefence: 1
   isInvincible: 0
   attackSound: {fileID: 0}
   selectSound: {fileID: 0}
@@ -1036,9 +856,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Healing Ability Base
   range: 300
-  cooldown: 60
+  cooldown: 10
   delayTime: 0
   damage: 50
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -1046,6 +867,7 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: HealingAbilityEffect
@@ -1119,33 +941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72eab4895466fda438de93d248cba36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114378608504630768
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1747171465572092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: ShieldAbility
-  range: 100
-  cooldown: 20
-  delayTime: 0
-  damage: 0
-  attackType: 2
-  isAllyTargetingAbility: 1
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: ShieldAbilityEffect
 --- !u!114 &114381320837728032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1157,60 +952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114392782124693128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1403826127128358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: InvincibilityAbilityMulti
-  range: 100
-  cooldown: 120
-  delayTime: 0
-  damage: 0
-  attackType: 2
-  isAllyTargetingAbility: 1
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114232471910180786, guid: 15ddf618db779904e8e4f310b513bd74, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: InvincibilityAbilityEffect
---- !u!114 &114405224900032336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1217134126960492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: InvincibilityAbility
-  range: 100
-  cooldown: 60
-  delayTime: 0
-  damage: 0
-  attackType: 2
-  isAllyTargetingAbility: 1
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114777014935931824, guid: f1fb4591802d198458d948b680a58080, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: InvincibilityAbilityEffect
 --- !u!114 &114417129894123642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1222,33 +963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114653595106181392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1731105413607422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: AttackUpAbility
-  range: 100
-  cooldown: 20
-  delayTime: 0
-  damage: 0
-  attackType: 2
-  isAllyTargetingAbility: 1
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114088077251806944, guid: 8a795494eb9240345bfc9bf291a909c4, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: AttackUpAbilityEffect
 --- !u!114 &114722759010356314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1284,9 +998,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Healing Ability Base
   range: 200
-  cooldown: 60
+  cooldown: 3
   delayTime: 0
   damage: 150
+  multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 1
   isSelfOnly: 0
@@ -1294,36 +1009,10 @@ MonoBehaviour:
   user: {fileID: 0}
   targets: []
   isPending: 0
+  blocked: 0
   cooldownTimer: 0
   delayTimer: 0
   vfxName: HealingAbilityEffect
---- !u!114 &114790429091312980
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1810220178516714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: ShieldAbility
-  range: 100
-  cooldown: 30
-  delayTime: 0
-  damage: 0
-  attackType: 2
-  isAllyTargetingAbility: 1
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114764832596419926, guid: 6029dafd8376c054c9d16c6ddbe00a79, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: ShieldAbilityEffect
 --- !u!114 &114924846169628792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1335,33 +1024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114996191400666252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344154980279366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: AttackUpAbility
-  range: 100
-  cooldown: 35
-  delayTime: 0
-  damage: 0
-  attackType: 2
-  isAllyTargetingAbility: 1
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114901872984256716, guid: 69790dbba81d4104c94af05c5ff379e8, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: AttackUpAbilityEffect
 --- !u!135 &135017010687972162
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1383,7 +1045,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 12
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

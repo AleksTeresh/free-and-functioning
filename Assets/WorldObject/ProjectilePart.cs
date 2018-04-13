@@ -21,7 +21,8 @@ public class ProjectilePart : MonoBehaviour {
             bool projectileHasPlayer = this.parent.Player != null;
 
             // if the player of the projectile is not the same as the player of the collided object
-            if (!collidedObjectHasPlayer || !projectileHasPlayer || worldObject.GetPlayer().username != this.parent.Player.username)
+//            if (!collidedObjectHasPlayer || !projectileHasPlayer || worldObject.GetPlayer().username != this.parent.Player.username)
+            if (worldObject == parent.target)
             {
                 parent.HandleCollision(worldObject);
             }
