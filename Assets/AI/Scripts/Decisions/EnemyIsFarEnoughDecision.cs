@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using RTS;
+using AI;
 
 [CreateAssetMenu(menuName = "AI/Decisions/EnemyIsFarEnough")]
 public class EnemyIsFarEnoughDecision : Decision
 {
-    private static readonly float STOP_RUNNING_COEF = 0.8f;
-
     public override bool Decide(StateController controller)
     {
         Unit self = controller.unit;
@@ -33,7 +32,7 @@ public class EnemyIsFarEnoughDecision : Decision
         bool targetIsFarEnough = closestChaser != null && // target exists
             closestChaser.gameObject.activeSelf && // target is alive
             closestChaser is MeleeUnit && // target is a MeleeUnit,so it makes sense to kite it
-            direction.sqrMagnitude > self.weaponRange * self.weaponRange * STOP_RUNNING_COEF * STOP_RUNNING_COEF; // target is far enough to stop running away
+            direction.sqrMagnitude > self.weaponRange * self.weaponRange * Constants.STOP_RUNNING_COEF * Constants.STOP_RUNNING_COEF; // target is far enough to stop running away
 
         return targetIsFarEnough;
     }

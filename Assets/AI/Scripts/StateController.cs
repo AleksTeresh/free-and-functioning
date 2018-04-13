@@ -20,8 +20,8 @@ public class StateController : MonoBehaviour
     [HideInInspector] public WorldObject enemyAbilityTarget;
     [HideInInspector] public Vector3 aoeAbilityTarget;
     [HideInInspector] public TargetManager targetManager;
-    public List<WorldObject> nearbyEnemies;
-    public List<WorldObject> nearbyAllies; // including self
+    [HideInInspector] public List<WorldObject> nearbyEnemies;
+    [HideInInspector] public List<WorldObject> nearbyAllies; // including self
     // [HideInInspector] public float stateTimeElapsed;
     [HideInInspector] public bool attacking;
 	[HideInInspector] public Ability abilityToUse;
