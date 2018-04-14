@@ -319,6 +319,7 @@ Transform:
   - {fileID: 1804438893}
   - {fileID: 152859119}
   - {fileID: 379821090}
+  - {fileID: 1718791203}
   m_Father: {fileID: 308150221}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -352,7 +353,7 @@ Transform:
   m_Children:
   - {fileID: 1798932097}
   m_Father: {fileID: 1759396655}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &120528893
 TerrainCollider:
@@ -448,6 +449,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
@@ -633,6 +644,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
   m_IsPrefabParent: 0
@@ -674,6 +695,16 @@ Prefab:
     - target: {fileID: 4759725055580884, guid: 68e1ba245e63ab84fb06eb4bc20a8506, type: 2}
       propertyPath: m_RootOrder
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 224267330288273166, guid: 68e1ba245e63ab84fb06eb4bc20a8506,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224267330288273166, guid: 68e1ba245e63ab84fb06eb4bc20a8506,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68e1ba245e63ab84fb06eb4bc20a8506, type: 2}
@@ -721,6 +752,16 @@ Prefab:
     - target: {fileID: 4449487864465310, guid: e5d882bfdca0b5142849af498640efd6, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224808313401113722, guid: e5d882bfdca0b5142849af498640efd6,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224808313401113722, guid: e5d882bfdca0b5142849af498640efd6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5d882bfdca0b5142849af498640efd6, type: 2}
@@ -923,6 +964,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_RangeSwarmling (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
   m_IsPrefabParent: 0
@@ -1089,6 +1140,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
@@ -1436,6 +1497,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_Assassin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 224665291498046874, guid: b14663f64558e724bbb66f5b61c2ae02,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224665291498046874, guid: b14663f64558e724bbb66f5b61c2ae02,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b14663f64558e724bbb66f5b61c2ae02, type: 2}
   m_IsPrefabParent: 0
@@ -1534,6 +1605,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
@@ -1671,6 +1752,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
   m_IsPrefabParent: 0
@@ -1721,6 +1812,16 @@ Prefab:
     - target: {fileID: 1009286894417422, guid: 68e1ba245e63ab84fb06eb4bc20a8506, type: 2}
       propertyPath: m_Name
       value: Battle2_DebufferEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224267330288273166, guid: 68e1ba245e63ab84fb06eb4bc20a8506,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224267330288273166, guid: 68e1ba245e63ab84fb06eb4bc20a8506,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68e1ba245e63ab84fb06eb4bc20a8506, type: 2}
@@ -1834,6 +1935,16 @@ Prefab:
     - target: {fileID: 1280020641303100, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
       propertyPath: m_Name
       value: Battle2_RangeSwarmling (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
@@ -4433,6 +4544,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
   m_IsPrefabParent: 0
@@ -4483,6 +4604,16 @@ Prefab:
     - target: {fileID: 1280020641303100, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
       propertyPath: m_Name
       value: Battle2_RangeSwarmling (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
@@ -4614,6 +4745,16 @@ Prefab:
     - target: {fileID: 1280020641303100, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
       propertyPath: m_Name
       value: Battle2_RangeSwarmling (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
@@ -4748,86 +4889,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1176350241}
---- !u!1 &1258703245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1258703247}
-  - component: {fileID: 1258703248}
-  - component: {fileID: 1258703246}
-  m_Layer: 9
-  m_Name: CubeWithNoName
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1258703246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1258703245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf51a478a8bf0f24ab2995bb8fcaaaf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: 
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
-  hitPoints: 1000
-  maxHitPoints: 1000
-  damage: 10
-  damageMulti: 3
-  weaponRange: 10
-  aiming: 0
-  weaponAimSpeed: 1
-  weaponRechargeTime: 1
-  weaponMultiRechargeTime: 1
-  meleeDefence: 0
-  rangeDefence: 0
-  abilityDefence: 0
-  isInvincible: 0
-  attackSound: {fileID: 0}
-  selectSound: {fileID: 0}
-  useWeaponSound: {fileID: 0}
-  attackVolume: 1
-  selectVolume: 1
-  useWeaponVolume: 1
-  detectionRange: 20
-  rallyPointImage: {fileID: 0}
-  maxBuildProgress: 0
-  finishedJobSound: {fileID: 0}
-  finishedJobVolume: 1
---- !u!4 &1258703247
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1258703245}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 209.2, y: 8.5, z: 205.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1759396655}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1258703248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1258703245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1261972685
 Prefab:
   m_ObjectHideFlags: 0
@@ -4870,6 +4931,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
@@ -5252,6 +5323,16 @@ Prefab:
     - target: {fileID: 4120435208426912, guid: cdb67df0292d9e44cb20db1aa52904b8, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224247330377309090, guid: cdb67df0292d9e44cb20db1aa52904b8,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224247330377309090, guid: cdb67df0292d9e44cb20db1aa52904b8,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cdb67df0292d9e44cb20db1aa52904b8, type: 2}
@@ -5753,6 +5834,26 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399972348856678, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223236488437040188, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
   m_IsPrefabParent: 0
@@ -6008,6 +6109,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
   m_IsPrefabParent: 0
@@ -6132,6 +6243,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
   m_IsPrefabParent: 0
@@ -6177,6 +6298,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4091055569016128, guid: ccba5c16aeba9cd4e8eb8c6e19474a63, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224979287370649980, guid: ccba5c16aeba9cd4e8eb8c6e19474a63,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224979287370649980, guid: ccba5c16aeba9cd4e8eb8c6e19474a63,
+        type: 2}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6346,6 +6477,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_RangeSwarmling (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
   m_IsPrefabParent: 0
@@ -6406,6 +6547,63 @@ Transform:
   m_PrefabParentObject: {fileID: 4521383021030896, guid: 761b4bba81968a143a2198cc0cb5a908,
     type: 2}
   m_PrefabInternal: {fileID: 1785691943}
+--- !u!1001 &1718791202
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 53050995}
+    m_Modifications:
+    - target: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 61.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 65.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 224997671480962548, guid: 427314cd19226b348b46799a9d5cd8c3,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224997671480962548, guid: 427314cd19226b348b46799a9d5cd8c3,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 427314cd19226b348b46799a9d5cd8c3, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1718791203 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4545486150367650, guid: 427314cd19226b348b46799a9d5cd8c3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718791202}
 --- !u!1 &1721874741
 GameObject:
   m_ObjectHideFlags: 0
@@ -6488,7 +6686,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1258703247}
   - {fileID: 120528892}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -6739,6 +6936,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_RangeSwarmling (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
   m_IsPrefabParent: 0
@@ -6904,10 +7111,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 114809429574245842, guid: 77b2de34b6b58034ba2d65dc442301aa,
+    - target: {fileID: 224423300525787776, guid: 77b2de34b6b58034ba2d65dc442301aa,
         type: 2}
-      propertyPath: hitPoints
-      value: 800
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224423300525787776, guid: 77b2de34b6b58034ba2d65dc442301aa,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77b2de34b6b58034ba2d65dc442301aa, type: 2}
@@ -6960,6 +7172,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_RangeSwarmling (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
   m_IsPrefabParent: 0
@@ -7001,6 +7223,16 @@ Prefab:
     - target: {fileID: 4260645303794994, guid: b14663f64558e724bbb66f5b61c2ae02, type: 2}
       propertyPath: m_RootOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 224665291498046874, guid: b14663f64558e724bbb66f5b61c2ae02,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224665291498046874, guid: b14663f64558e724bbb66f5b61c2ae02,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b14663f64558e724bbb66f5b61c2ae02, type: 2}
@@ -7203,6 +7435,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle2_MeleeSwarmling (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933856520767846, guid: b4b854633c0a5eb46a77e3f5be56f0c2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4b854633c0a5eb46a77e3f5be56f0c2, type: 2}
   m_IsPrefabParent: 0
@@ -7361,6 +7603,16 @@ Prefab:
         type: 2}
       propertyPath: rangeDefence
       value: 6.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
@@ -7751,6 +8003,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 224784811560983562, guid: 95966351afe07854db08ed1954497984,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224784811560983562, guid: 95966351afe07854db08ed1954497984,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95966351afe07854db08ed1954497984, type: 2}
   m_IsPrefabParent: 0
@@ -7801,6 +8063,16 @@ Prefab:
     - target: {fileID: 1280020641303100, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}
       propertyPath: m_Name
       value: Battle2_RangeSwarmling (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224957837399140028, guid: 761b4bba81968a143a2198cc0cb5a908,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 761b4bba81968a143a2198cc0cb5a908, type: 2}

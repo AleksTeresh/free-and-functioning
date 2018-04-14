@@ -20,6 +20,7 @@ public class WorldObject : MonoBehaviour {
 
     protected Player player;
     protected HUD hud;
+    protected LocalUI localUI;
     protected TargetManager targetManager;
     protected string[] actions = { };
     protected bool currentlySelected = false;
@@ -312,6 +313,9 @@ public class WorldObject : MonoBehaviour {
         {
             stateController.SetupAI(true);
         }
+
+        var localUIObject = Instantiate(ResourceManager.GetUIElement("LocalUI"), transform);
+        localUI = localUIObject.GetComponent<LocalUI>();
     }
 
     protected virtual void Update()
@@ -327,17 +331,6 @@ public class WorldObject : MonoBehaviour {
         RemoveInactiveStatuses();
 
         HandleSelectionLight();
-    }
-
-    protected virtual void OnGUI()
-    {
-        if (!ResourceManager.MenuOpen)
-        {
-            if (fogOfWarAgent.IsObserved())
-            {
-                DrawLocalHealthBar();
-            }
-        }
     }
 
     protected virtual void InitialiseAudio()
@@ -474,34 +467,6 @@ public class WorldObject : MonoBehaviour {
             default: break;
         }
     }
-    /*
-    protected virtual void DrawSelectionBox(Rect selectBox)
-    {
-        GUI.Box(selectBox, "");
-    }
-    */
-    protected virtual void DrawLocalHealthBar()
-    {
-        GUI.depth = 2;
-        GUI.skin = ResourceManager.SelectBoxSkin;
-
-        CalculateBounds();
-        Rect selectBox = WorkManager.CalculateSelectionBox(selectionBounds, playingArea);
-
-        CalculateCurrentHealth();
-        GUI.Label(new Rect(selectBox.x, selectBox.y + 30, 80 * healthPercentage, 5), "", healthStyle);
-    }
-    /*
-    private void DrawSelection()
-    {
-        GUI.skin = ResourceManager.SelectBoxSkin;
-        Rect selectBox = WorkManager.CalculateSelectionBox(selectionBounds, playingArea);
-        DrawLocalHealthBar(selectBox);
-        //Draw the selection box around the currently selected object, within the bounds of the playing area
-        GUI.BeginGroup(playingArea);
-        DrawSelectionBox(selectBox);
-        GUI.EndGroup();
-    }  */
 
     public bool IsOwnedBy(Player owner)
     {
@@ -568,14 +533,6 @@ public class WorldObject : MonoBehaviour {
     public Bounds GetSelectionBounds()
     {
         return selectionBounds;
-    }
-
-    protected virtual void CalculateCurrentHealth()
-    {
-        healthPercentage = (float)hitPoints / (float)maxHitPoints;
-        if (healthPercentage > 0.65f) healthStyle.normal.background = ResourceManager.HealthyTexture;
-        else if (healthPercentage > 0.35f) healthStyle.normal.background = ResourceManager.DamagedTexture;
-        else healthStyle.normal.background = ResourceManager.CriticalTexture;
     }
 
     public void SetTeamColor()

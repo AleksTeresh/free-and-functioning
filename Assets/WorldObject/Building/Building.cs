@@ -68,11 +68,6 @@ public class Building : WorldObject {
         ProcessBuildQueue();
     }
 
-    protected override void OnGUI()
-    {
-        base.OnGUI();
-    }
-
     protected override void InitialiseAudio()
     {
         base.InitialiseAudio();
