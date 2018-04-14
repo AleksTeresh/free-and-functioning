@@ -41,6 +41,7 @@ public class HUD : MonoBehaviour {
     private float sliderValue;
 
     private Player player;
+    // private Camera uiCamera;
     private TargetManager targetManager;
 
     // audio
@@ -59,6 +60,9 @@ public class HUD : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        // uiCamera = FindObjectOfType<UICamera>().GetComponent<Camera>();
+        // uiCamera.enabled = false;
+
         player = transform.root.GetComponent<Player>();
         targetManager = player.GetComponentInChildren<TargetManager>();
         playerUnitBar = GetComponentInChildren<PlayerUnitBar>();
@@ -80,18 +84,29 @@ public class HUD : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void OnGUI() {
+	void Update() {
         if (player && player.human)
         {
-            HandleCursorPositionUpdate();
-            DrawPlayerDetails();
             // DrawOrdersBar();
             DrawUnitsBar(playerUnitBar, player.GetUnits(), "PlayerIndicator");
 
-            var observedEmenies = GetNearbyEnemies();
+            var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
             DrawUnitsBar(enemyUnitBar, observedEmenies, "EnemyIndicator");
             DrawSelectionIndicator();
             DrawAbilityBar();
+        }
+    }
+
+    private void OnGUI()
+    {
+        if (player && player.human)
+        {
+            GUI.depth = 1;
+
+            HandleCursorPositionUpdate();
+            DrawPlayerDetails();
+
+            var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
             DrawUpperBar(observedEmenies.Count);
             DrawMouseCursor();
         }
@@ -512,14 +527,5 @@ public class HUD : MonoBehaviour {
     private void PlayClick()
     {
         if (audioElement != null) audioElement.Play(clickSound);
-    }
-
-    private List<Unit> GetNearbyEnemies()
-    {
-        return player.GetUnits()
-            .SelectMany(p => p.GetStateController().nearbyEnemies.Where(s => s is Unit))
-            .Select(p => (Unit)p)
-            .Distinct()
-            .ToList();
     }
 }

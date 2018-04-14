@@ -11,6 +11,8 @@ public class Indicator : MonoBehaviour {
     protected Text nameLabel;
     protected Image avatar;
     protected StatusIndicators statusesWrapper;
+    protected Image upperSelectIndicator;
+    protected Image lowerSelectIndicator;
 
     protected Unit unit;
 
@@ -24,19 +26,17 @@ public class Indicator : MonoBehaviour {
         return unit;
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
         healthSlider = GetComponentInChildren<Slider>();
         nameLabel = GetComponentInChildren<Text>();
         avatar = GetComponentInChildren<Image>();
         statusesWrapper = GetComponentInChildren<StatusIndicators>();
-    }
 
+        var selectIndicators = new List<SelectHighlight>(GetComponentsInChildren<SelectHighlight>());
 
-    // Use this for initialization
-    void Start()
-    {
-
+        upperSelectIndicator = selectIndicators[0].GetComponent<Image>();
+        lowerSelectIndicator = selectIndicators[1].GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -52,7 +52,14 @@ public class Indicator : MonoBehaviour {
             // TODO: uncomment this line once we have actual avatar
             // avatar.sprite = unit.avatar;
             HandleStatusUpdate();
+
+            HandleSelection();
         }
+    }
+
+    protected virtual void HandleSelection()
+    {
+        // to be overriden
     }
 
     private void HandleStatusUpdate()

@@ -89,8 +89,11 @@ namespace RTS
 
         public static void ToBusyState(TargetManager targetManager, StateController stateController, Vector3 destination)
         {
-            // remove current target if present
-            // stateController.chaseTarget = null;
+            if (!stateController || !stateController.navMeshAgent || !stateController.navMeshAgent.isActiveAndEnabled)
+            {
+                return;
+            }    
+
             // add new destination for nav mesh agent
             stateController.navMeshAgent.SetDestination(destination);
             // transition to Chase Manual State
@@ -114,6 +117,20 @@ namespace RTS
             targetManager.InMultiMode = !targetManager.InMultiMode;
 
             stateControllers.ForEach(SwitchAttackModeForOne);
+        }
+
+        public static void SwitchEnemy(TargetManager targetManager, List<Unit> majorEnemies, int currentIdx)
+        {
+            if (majorEnemies.Count == 0) return;
+
+            if (currentIdx == majorEnemies.Count - 1 || currentIdx < 0)
+            {
+                targetManager.SingleTarget = majorEnemies[0];
+            }
+            else
+            {
+                targetManager.SingleTarget = majorEnemies[currentIdx + 1];
+            }
         }
 
         private static void SwitchAttackModeForOne(StateController stateController)

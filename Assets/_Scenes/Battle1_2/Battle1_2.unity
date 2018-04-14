@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657958, g: 0.49641377, b: 0.5748177, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657928, g: 0.4964131, b: 0.5748174, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -835,20 +835,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114417529153538066, guid: b1ad19a590df44d18ac1fe899547c619,
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
         type: 2}
-      propertyPath: meleeDefence
-      value: 1
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114417529153538066, guid: b1ad19a590df44d18ac1fe899547c619,
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
         type: 2}
-      propertyPath: rangeDefence
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114417529153538066, guid: b1ad19a590df44d18ac1fe899547c619,
-        type: 2}
-      propertyPath: abilityDefence
-      value: 1
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
@@ -1707,6 +1702,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
   m_IsPrefabParent: 0
@@ -2103,6 +2108,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224652284762881668, guid: e7aa23776c63829408e04aa2c1aa34bc,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224652284762881668, guid: e7aa23776c63829408e04aa2c1aa34bc,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7aa23776c63829408e04aa2c1aa34bc, type: 2}
   m_IsPrefabParent: 0
@@ -2466,6 +2481,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
   m_IsPrefabParent: 0
@@ -2613,6 +2638,16 @@ Prefab:
     - target: {fileID: 4120435208426912, guid: 55587b6cc8e8148439fcfef4553f7bb7, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224499334394969048, guid: 55587b6cc8e8148439fcfef4553f7bb7,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224499334394969048, guid: 55587b6cc8e8148439fcfef4553f7bb7,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55587b6cc8e8148439fcfef4553f7bb7, type: 2}
@@ -3492,7 +3527,7 @@ MonoBehaviour:
   critical: {fileID: 2800000, guid: d346f4a6f4dde294e9c79bc33682f1a1, type: 3}
   clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
   clickVolume: 1
-  cursorPostion: {x: 0, y: 0}
+  cursorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1028349764
 GameObject:
   m_ObjectHideFlags: 0
@@ -4471,6 +4506,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
   m_IsPrefabParent: 0
@@ -4763,6 +4808,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
@@ -5291,6 +5346,16 @@ Prefab:
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
   m_IsPrefabParent: 0
@@ -5691,6 +5756,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 224527917271105828, guid: 92200400acf9b15428410e6813f74dff,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224527917271105828, guid: 92200400acf9b15428410e6813f74dff,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92200400acf9b15428410e6813f74dff, type: 2}
   m_IsPrefabParent: 0
@@ -5911,6 +5986,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
@@ -6190,7 +6275,7 @@ MonoBehaviour:
   critical: {fileID: 2800000, guid: d346f4a6f4dde294e9c79bc33682f1a1, type: 3}
   clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
   clickVolume: 1
-  cursorPostion: {x: 0, y: 0}
+  cursorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1869743757
 GameObject:
   m_ObjectHideFlags: 0
@@ -6341,6 +6426,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
@@ -6675,6 +6770,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
@@ -7146,6 +7251,16 @@ Prefab:
     - target: {fileID: 1402535420289814, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}
       propertyPath: m_Name
       value: Battle1_2_MeleeSwarmling (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224959551312606156, guid: b1ad19a590df44d18ac1fe899547c619,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ad19a590df44d18ac1fe899547c619, type: 2}

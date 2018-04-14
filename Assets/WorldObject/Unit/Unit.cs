@@ -87,7 +87,10 @@ public class Unit : WorldObject {
 	{
 		base.TakeDamage (damage, attackType);
 
-		takeDamageEffect.Play();
+        if (takeDamageEffect)
+        {
+            takeDamageEffect.Play();
+        }
 	}
 
 	public Ability FindAbilityByIndex(int abilityIndex) {

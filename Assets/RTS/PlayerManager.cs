@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
@@ -198,6 +199,19 @@ namespace RTS
         public static string GetPlayerName()
         {
             return currentPlayer.Name == "" ? "Unknown" : currentPlayer.Name;
+        }
+
+        public static Player GetHumanPlayer (Player[] players)
+        {
+            foreach (Player player in players)
+            {
+                if (player.human)
+                {
+                    return player;
+                }
+            }
+
+            return null;
         }
     }
 }
