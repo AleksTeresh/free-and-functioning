@@ -20,6 +20,7 @@ public class WorldObject : MonoBehaviour {
 
     protected Player player;
     protected HUD hud;
+    protected TargetManager targetManager;
     protected string[] actions = { };
     protected bool currentlySelected = false;
     private Light selectionLight;
@@ -76,14 +77,8 @@ public class WorldObject : MonoBehaviour {
         {
             if (audioElement != null) audioElement.Play(selectSound);
 
-            if (selectionLight) selectionLight.enabled = true;
-
             this.playingArea = playingArea;
 
-        }
-        else if (selectionLight)
-        {
-            selectionLight.enabled = false;
         }
     }
 
@@ -282,6 +277,12 @@ public class WorldObject : MonoBehaviour {
 
         ActiveStatuses = new List<Status>(GetComponentsInChildren<Status>());
         statusesWrapper = GetComponentInChildren<Statuses.Statuses>();
+
+        var humanPlayer = PlayerManager.GetHumanPlayer(FindObjectsOfType<Player>());
+        if (humanPlayer)
+        {
+            targetManager = humanPlayer.GetComponentInChildren<TargetManager>();
+        }
     }
 
 
@@ -324,6 +325,8 @@ public class WorldObject : MonoBehaviour {
         }
 
         RemoveInactiveStatuses();
+
+        HandleSelectionLight();
     }
 
     protected virtual void OnGUI()
@@ -682,5 +685,22 @@ public class WorldObject : MonoBehaviour {
         });
 
         ActiveStatuses = stillActiveStatuses;
+    }
+
+    private void HandleSelectionLight()
+    {
+        if (selectionLight)
+        {
+            selectionLight.enabled = player &&
+                (
+                    (player.human && currentlySelected) ||
+                    (
+                        !player.human &&
+                        targetManager &&
+                        targetManager.SingleTarget &&
+                        targetManager.SingleTarget.ObjectId == ObjectId
+                    )
+                );
+        }
     }
 }

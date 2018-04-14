@@ -119,6 +119,20 @@ namespace RTS
             stateControllers.ForEach(SwitchAttackModeForOne);
         }
 
+        public static void SwitchEnemy(TargetManager targetManager, List<Unit> majorEnemies, int currentIdx)
+        {
+            if (majorEnemies.Count == 0) return;
+
+            if (currentIdx == majorEnemies.Count - 1 || currentIdx < 0)
+            {
+                targetManager.SingleTarget = majorEnemies[0];
+            }
+            else
+            {
+                targetManager.SingleTarget = majorEnemies[currentIdx + 1];
+            }
+        }
+
         private static void SwitchAttackModeForOne(StateController stateController)
         {
             if (stateController.unit.CanAttackMulti())

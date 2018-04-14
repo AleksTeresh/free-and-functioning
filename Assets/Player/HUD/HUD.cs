@@ -88,7 +88,7 @@ public class HUD : MonoBehaviour {
             // DrawOrdersBar();
             DrawUnitsBar(playerUnitBar, player.GetUnits(), "PlayerIndicator");
 
-            var observedEmenies = GetNearbyEnemies();
+            var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
             DrawUnitsBar(enemyUnitBar, observedEmenies, "EnemyIndicator");
             DrawSelectionIndicator();
             DrawAbilityBar();
@@ -512,14 +512,5 @@ public class HUD : MonoBehaviour {
     private void PlayClick()
     {
         if (audioElement != null) audioElement.Play(clickSound);
-    }
-
-    private List<Unit> GetNearbyEnemies()
-    {
-        return player.GetUnits()
-            .SelectMany(p => p.GetStateController().nearbyEnemies.Where(s => s is Unit))
-            .Select(p => (Unit)p)
-            .Distinct()
-            .ToList();
     }
 }

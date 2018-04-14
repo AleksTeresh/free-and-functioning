@@ -74,6 +74,8 @@ namespace RTS
                     }
                 }
             }
+
+            nearbyObjects.Sort((a, b) => a.ObjectId - b.ObjectId);
             return nearbyObjects;
         }
 
@@ -262,6 +264,24 @@ namespace RTS
         public static bool V3Equal(Vector3 a, Vector3 b)
         {
             return Vector3.SqrMagnitude(a - b) < 0.1;
+        }
+
+        public static int GetTargetSelectionIndex (WorldObject currentTarget, List<Unit> majorEnemies)
+        {
+            if (!currentTarget || majorEnemies.Count == 0)
+            {
+                return -1;
+            }
+
+            for (int i = 0; i < majorEnemies.Count; i++)
+            {
+                if (currentTarget.ObjectId == majorEnemies[i].ObjectId)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 }
