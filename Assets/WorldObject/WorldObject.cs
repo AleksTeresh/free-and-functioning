@@ -333,16 +333,10 @@ public class WorldObject : MonoBehaviour {
     {
         if (!ResourceManager.MenuOpen)
         {
-            if (currentlySelected)
+            if (fogOfWarAgent.IsObserved())
             {
-
+                DrawLocalHealthBar();
             }
-            else
-            {
-
-            }
-
-            DrawLocalHealthBar();
         }
     }
 
@@ -488,7 +482,10 @@ public class WorldObject : MonoBehaviour {
     */
     protected virtual void DrawLocalHealthBar()
     {
+        GUI.depth = 2;
         GUI.skin = ResourceManager.SelectBoxSkin;
+
+        CalculateBounds();
         Rect selectBox = WorkManager.CalculateSelectionBox(selectionBounds, playingArea);
 
         CalculateCurrentHealth();
