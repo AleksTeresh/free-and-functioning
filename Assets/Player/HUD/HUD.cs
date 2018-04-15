@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEngine;
 using RTS;
 
-public class HUD : MonoBehaviour {
+public class HUD : MonoBehaviour
+{
 
     public GUISkin resourceSkin, orderSkin, selectBoxSkin;
     public GUISkin mouseCursorSkin;
@@ -55,11 +56,16 @@ public class HUD : MonoBehaviour {
     private SelectionIndicator selectionIndicator;
     private AbilityBar abilityBar;
 
-    public Vector3 cursorPosition = Vector3.zero;
-    private float joystickCursorSpeed = 1000.0f;
+    // cursor input
+    public Vector3 cursorPosition;
+    private float joystickCursorSpeed = 50.0f;
+    private float mouseCursorSpeed = 7.0f;
+    private Vector3 previousMousePosition = Vector3.zero;
+    private Vector3 lastCursorPosition;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         // uiCamera = FindObjectOfType<UICamera>().GetComponent<Camera>();
         // uiCamera.enabled = false;
 
@@ -81,10 +87,15 @@ public class HUD : MonoBehaviour {
         sounds.Add(clickSound);
         volumes.Add(clickVolume);
         audioElement = new AudioElement(sounds, volumes, "HUD", null);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        cursorPosition = new Vector3(Screen.width / 2, Screen.height / 2);
+        lastCursorPosition = new Vector3(Screen.width / 2, Screen.height / 2);
     }
-	
-	// Update is called once per frame
-	void Update() {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (player && player.human)
         {
             // DrawOrdersBar();
@@ -112,13 +123,13 @@ public class HUD : MonoBehaviour {
         }
     }
 
-    public bool MouseInBounds()
+    public bool CursorInBounds()
     {
         //Screen coordinates start in the lower-left corner of the screen
         //not the top-left of the screen like the drawing coordinates do
-        Vector3 mousePos = Input.mousePosition;
-        bool insideWidth = mousePos.x >= 0 && mousePos.x <= Screen.width - ORDERS_BAR_WIDTH;
-        bool insideHeight = mousePos.y >= 0 && mousePos.y <= Screen.height - RESOURCE_BAR_HEIGHT;
+        Vector3 mousePos = cursorPosition;
+        bool insideWidth = mousePos.x >= 0 && mousePos.x <= Screen.width;
+        bool insideHeight = mousePos.y >= 0 && mousePos.y <= Screen.height;
         return insideWidth && insideHeight;
     }
 
@@ -179,18 +190,31 @@ public class HUD : MonoBehaviour {
 
     private void HandleCursorPositionUpdate()
     {
-        if (Input.GetAxis("Mouse X") != 0.0f || Input.GetAxis("Mouse Y") != 0.0f)
+        cursorPosition += mouseCursorSpeed * new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+        float joystickDeltaX = Gamepad.GetAxis("Joystick Cursor X");
+        float joystickDeltaY = Gamepad.GetAxis("Joystick Cursor Y");
+
+        cursorPosition = cursorPosition + joystickCursorSpeed * new Vector3(joystickDeltaX, joystickDeltaY);
+
+        if (cursorPosition.x < 0.0f)
         {
-            cursorPosition = Input.mousePosition;
+            cursorPosition.x = 0.0f;
         }
 
-        float joystickDeltaX = Input.GetAxis("Joystick Cursor X");
-        float joystickDeltaY = Input.GetAxis("Joystick Cursor Y");
-
-        if (joystickDeltaY != 0.0f || joystickDeltaX != 0.0f)
+        if (cursorPosition.x > Screen.width)
         {
-            cursorPosition = cursorPosition +
-                            joystickCursorSpeed * new Vector3(joystickDeltaX, joystickDeltaY) * Time.deltaTime;
+            cursorPosition.x = Screen.width;
+        }
+
+        if (cursorPosition.y < 0)
+        {
+            cursorPosition.y = 0;
+        }
+
+        if (cursorPosition.y > Screen.height)
+        {
+            cursorPosition.y = Screen.height;
         }
     }
 
@@ -201,7 +225,8 @@ public class HUD : MonoBehaviour {
 
         abilityBar.ClearSlots();
 
-        if (selection && selection is Unit) {
+        if (selection && selection is Unit)
+        {
             var selectedUnit = (Unit)selection;
             var abilities = selectedUnit.abilities;
             var multiAbilities = selectedUnit.abilitiesMulti;
@@ -222,7 +247,8 @@ public class HUD : MonoBehaviour {
             selectionIndicator.HealthSlider.value = selection.hitPoints;
 
             // TODO: add avatar manipulation here
-        } else
+        }
+        else
         {
             selectionIndicator.NameField.text = "Select Somebody";
 
@@ -352,7 +378,7 @@ public class HUD : MonoBehaviour {
         {
             GUI.TextArea(attackModeIndicatorPos, "Single Attack", singleModeStyle);
         }
-        
+
         Rect enemyCounterPos = new Rect(150, 10, buttonWidth, buttonHeight);
         GUI.TextArea(enemyCounterPos, "Enemy count: " + enemyCount.ToString());
 
@@ -361,22 +387,22 @@ public class HUD : MonoBehaviour {
 
     private void DrawMouseCursor()
     {
-        bool mouseOverHud = !MouseInBounds() && activeCursorState != CursorState.PanRight && activeCursorState != CursorState.PanUp;
+        //bool mouseOverHud = !MouseInBounds() && activeCursorState != CursorState.PanRight && activeCursorState != CursorState.PanUp;
 
-        if (mouseOverHud)
-        {
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.visible = false;
-            GUI.skin = mouseCursorSkin;
-            GUI.BeginGroup(new Rect(0, 0, Screen.width, Screen.height));
-            UpdateCursorAnimation();
-            Rect cursorPosition = GetCursorDrawPosition();
-            GUI.Label(cursorPosition, activeCursor);
-            GUI.EndGroup();
-        }
+        //if (mouseOverHud)
+        //{
+        //    Cursor.visible = true;
+        //}
+        //else
+        //{
+        Cursor.visible = false;
+        GUI.skin = mouseCursorSkin;
+        GUI.BeginGroup(new Rect(0, 0, Screen.width, Screen.height));
+        UpdateCursorAnimation();
+        Rect cursorPosition = GetCursorDrawPosition();
+        GUI.Label(cursorPosition, activeCursor);
+        GUI.EndGroup();
+        //}
     }
 
     private void UpdateCursorAnimation()
@@ -405,7 +431,7 @@ public class HUD : MonoBehaviour {
         //set base position for custom cursor image
         float leftPos = cursorPosition.x;
         float topPos = Screen.height - cursorPosition.y; //screen draw coordinates are inverted
-                                                              //adjust position base on the type of cursor being shown
+                                                         //adjust position base on the type of cursor being shown
         if (activeCursorState == CursorState.PanRight) leftPos = Screen.width - activeCursor.width;
         else if (activeCursorState == CursorState.PanDown) topPos = Screen.height - activeCursor.height;
         else if (activeCursorState == CursorState.Move || activeCursorState == CursorState.Select || activeCursorState == CursorState.Harvest)
@@ -511,7 +537,8 @@ public class HUD : MonoBehaviour {
             if (GUI.Button(new Rect(leftPos, topPos, width, height), building.rallyPointImage))
             {
                 PlayClick();
-                if (activeCursorState != CursorState.RallyPoint && previousCursorState != CursorState.RallyPoint) {
+                if (activeCursorState != CursorState.RallyPoint && previousCursorState != CursorState.RallyPoint)
+                {
                     SetCursorState(CursorState.RallyPoint);
                 }
                 else

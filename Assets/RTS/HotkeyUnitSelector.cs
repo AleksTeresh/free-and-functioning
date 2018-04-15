@@ -17,8 +17,7 @@ namespace RTS
 		{
 			if (player.selectedAllyTargettingAbility == null) {
 				for (int i = 0; i < hotkeys.Length; i++) {
-					if (Input.GetButtonDown (hotkeys [i])) {
-
+					if (Input.GetButtonDown (hotkeys [i]) || Gamepad.GetButtonDown(hotkeys[i])) {
 						if (Input.GetButton ("SelectionModifier"))
 						{
 							HandleUnitHotkeyWithModifierPress (player, hud, i);
@@ -32,7 +31,7 @@ namespace RTS
 					}
 				}
 
-				if (Input.GetButtonDown("SelectAll") )
+				if (Input.GetButtonDown("SelectAll") || Gamepad.GetButtonDown("SelectAll") )
 				{
 					SelectAllUnits (player, hud);
 				}

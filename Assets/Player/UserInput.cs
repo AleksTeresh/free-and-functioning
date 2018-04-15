@@ -23,10 +23,11 @@ public class UserInput : MonoBehaviour {
 	void Update () {
         if (player.human)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !ResourceManager.MenuOpen)
-            {
-                OpenPauseMenu();
-            }
+            // Temporary disabled cause of new cursor mechanics
+            //if (Input.GetKeyDown(KeyCode.Escape) && !ResourceManager.MenuOpen)
+            //{
+            //    OpenPauseMenu();
+            //}
             
             MoveCamera();
             RotateCamera();
@@ -146,7 +147,7 @@ public class UserInput : MonoBehaviour {
 
     private void AttackModeSelection()
     {
-		if (Input.GetButtonDown("Attack Mode") && player.selectedAllyTargettingAbility == null)
+		if (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode"))
         {
             // get all the objects controlled through AI
             var stateControlles = player.GetComponentsInChildren<StateController>();
@@ -166,7 +167,10 @@ public class UserInput : MonoBehaviour {
 
     private void MouseActivity()
     {
-        if (Input.GetButtonDown("Action 1")) {
+        if (Input.GetButtonDown("Action 1") || Gamepad.GetButtonDown("Action 1")) {
+            // lock cursor back if it was unlocked from editor
+            Cursor.lockState = CursorLockMode.Locked;
+
             LeftMouseClick();
         }
         else if (Input.GetMouseButtonDown(1))
@@ -179,7 +183,7 @@ public class UserInput : MonoBehaviour {
 
     private void LeftMouseClick()
     {
-        if (hud.MouseInBounds())
+        if (hud.CursorInBounds())
         {
             GameObject hitObject = FindHitObject();
             Vector3 hitPoint = FindHitPoint();
@@ -202,7 +206,7 @@ public class UserInput : MonoBehaviour {
 
     private void RightMouseClick()
     {
-        if (hud.MouseInBounds() && !Input.GetKey(KeyCode.LeftAlt) && player.SelectedObject)
+        if (hud.CursorInBounds() && !Input.GetKey(KeyCode.LeftAlt) && player.SelectedObject)
         {
             player.SelectedObject.SetSelection(false, hud.GetPlayingArea());
             player.SelectedObject = null;
@@ -363,7 +367,7 @@ public class UserInput : MonoBehaviour {
 
     private void MouseHover()
     {
-        if (hud.MouseInBounds())
+        if (hud.CursorInBounds())
         {
             GameObject hoverObject = FindHitObject();
             if (hoverObject)
