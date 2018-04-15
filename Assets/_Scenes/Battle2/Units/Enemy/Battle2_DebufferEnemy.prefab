@@ -114,6 +114,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1361237273822622
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4212754113459526}
+  - component: {fileID: 114533093796872200}
+  m_Layer: 0
+  m_Name: DBEnemyMiniDebuffAoeAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1371266180048132
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,22 +268,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1790518468595144
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4626885686983654}
-  - component: {fileID: 114371087854179834}
-  m_Layer: 0
-  m_Name: DBEnemyMiniDebuffAbilityMulti
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1831701608069292
 GameObject:
   m_ObjectHideFlags: 1
@@ -312,6 +312,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4383320366963690}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4212754113459526
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361237273822622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4383320366963690}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4238968203630496
 Transform:
@@ -365,7 +378,7 @@ Transform:
   - {fileID: 4740699144533668}
   - {fileID: 4520222079614014}
   - {fileID: 4064464649804884}
-  - {fileID: 4626885686983654}
+  - {fileID: 4212754113459526}
   m_Father: {fileID: 4759725055580884}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -434,19 +447,6 @@ Transform:
   m_Father: {fileID: 4759725055580884}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4626885686983654
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790518468595144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205.914, y: 5.969446, z: 162.60406}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4383320366963690}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4705841321088438
 Transform:
   m_ObjectHideFlags: 1
@@ -493,7 +493,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1009286894417422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.6, y: -0.44, z: 75.4}
+  m_LocalPosition: {x: 1.2, y: -0.44, z: 68.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4828279172207062}
@@ -956,41 +956,6 @@ MonoBehaviour:
   nearbyAllies: []
   attacking: 0
   abilityToUse: {fileID: 0}
---- !u!114 &114371087854179834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790518468595144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a60d6186b6f331b43a5fe3561703bb76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Mini Debuff Aoe
-  range: 100
-  cooldown: 15
-  delayTime: 0
-  damage: 0
-  multiDamageMinValue: 1
-  attackType: 2
-  isAllyTargetingAbility: 0
-  isSelfOnly: 0
-  statuses:
-  - {fileID: 114323609195286076, guid: da10425fcc7e4c54889f8ac9a7e62618, type: 2}
-  - {fileID: 114607016667500198, guid: 89d7970eb2c76bf4caf5fbca7f341f13, type: 2}
-  user: {fileID: 0}
-  targets: []
-  isPending: 0
-  blocked: 0
-  cooldownTimer: 0
-  delayTimer: 0
-  vfxName: MiniDebuffAbilityEffect
-  aoe: {fileID: 114395267541199148, guid: 84eeaf64d226c484eade3dace93413c6, type: 2}
-  radius: 11
-  aoeDelay: 3
-  affectsFriends: 0
-  affectsSelf: 0
 --- !u!114 &114407291173946642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1049,6 +1014,41 @@ MonoBehaviour:
   cooldownTimer: 0
   delayTimer: 0
   vfxName: AttackDownAbilityEffect
+--- !u!114 &114533093796872200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361237273822622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60d6186b6f331b43a5fe3561703bb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Mini Debuff Aoe
+  range: 100
+  cooldown: 15
+  delayTime: 0
+  damage: 0
+  multiDamageMinValue: 1
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114323609195286076, guid: da10425fcc7e4c54889f8ac9a7e62618, type: 2}
+  - {fileID: 114607016667500198, guid: 89d7970eb2c76bf4caf5fbca7f341f13, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  blocked: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: MiniDebuffAbilityEffect
+  aoe: {fileID: 114395267541199148, guid: 84eeaf64d226c484eade3dace93413c6, type: 2}
+  radius: 11
+  aoeDelay: 4
+  affectsFriends: 0
+  affectsSelf: 0
 --- !u!114 &114552047881032484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1101,10 +1101,10 @@ MonoBehaviour:
   maxHitPoints: 300
   damage: 10
   damageMulti: 3
-  weaponRange: 20
+  weaponRange: 30
   aiming: 0
   weaponAimSpeed: 5
-  weaponRechargeTime: 1
+  weaponRechargeTime: 3
   weaponMultiRechargeTime: 1
   meleeDefence: 5
   rangeDefence: 5
@@ -1116,7 +1116,7 @@ MonoBehaviour:
   attackVolume: 1
   selectVolume: 1
   useWeaponVolume: 1
-  detectionRange: 20
+  detectionRange: 30
   driveSound: {fileID: 0}
   moveSound: {fileID: 0}
   driveVolume: 0.5
@@ -1179,11 +1179,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 6
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

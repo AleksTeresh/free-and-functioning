@@ -4,7 +4,7 @@ namespace AI
 {
     public class EnemyStateController : StateController
     {
-        public float abilityToUseDecisionInterval = 0.0f;
+        public float abilityToUseDecisionInterval = 4.0f;
 
         private float abilityToUseDecisionTimer = 0.0f;
 
