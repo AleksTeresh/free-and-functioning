@@ -29,7 +29,8 @@ public class UserInput : MonoBehaviour {
             //    OpenPauseMenu();
             //}
             
-            MoveCamera();
+            MoveCameraWithMouseScroll();
+            MoveCameraWithGamepad();
             RotateCamera();
 
             MouseActivity();
@@ -53,7 +54,30 @@ public class UserInput : MonoBehaviour {
         ResourceManager.MenuOpen = true;
     }
 
-    private void MoveCamera()
+    private void MoveCameraWithGamepad()
+    {
+        Vector3 movement = new Vector3(0, 0, 0);
+        float xAxis = 0.0f;
+        float yAxis = 0.0f;
+        float zAxis = 0.0f;
+
+        if (Gamepad.GetButton("SelectionModifier"))
+        {
+            yAxis = -1f * Gamepad.GetAxis("Camera Move Z");
+        } else
+        {
+            xAxis = Gamepad.GetAxis("Camera Move X");
+            zAxis = Gamepad.GetAxis("Camera Move Z");
+        }
+
+        movement.x = xAxis;
+        movement.y = yAxis;
+        movement.z = zAxis;
+
+        MoveCamera(movement);
+    }
+
+    private void MoveCameraWithMouseScroll()
     {
         float xpos = hud.cursorPosition.x;
         float ypos = hud.cursorPosition.y;
@@ -97,6 +121,16 @@ public class UserInput : MonoBehaviour {
         // away from ground movement
         movement.y -= ResourceManager.ScrollSpeed * Input.GetAxis("Mouse ScrollWheel");
 
+        MoveCamera(movement);
+
+        if (!mouseScroll)
+        {
+            hud.SetCursorState(CursorState.Select);
+        }
+    }
+
+    private void MoveCamera(Vector3 movement)
+    {
         // calculate desired camera position based on received input
         Vector3 origin = Camera.main.transform.position;
         Vector3 destination = origin;
@@ -119,12 +153,8 @@ public class UserInput : MonoBehaviour {
         {
             Camera.main.transform.position = Vector3.MoveTowards(origin, destination, Time.deltaTime * ResourceManager.ScrollSpeed);
         }
-
-        if (!mouseScroll)
-        {
-            hud.SetCursorState(CursorState.Select);
-        }
     }
+
 
     private void RotateCamera()
     {
@@ -157,7 +187,7 @@ public class UserInput : MonoBehaviour {
 
     private void SwitchEnemy()
     {
-        if (Input.GetButtonDown("NextEnemy"))
+        if (Input.GetButtonDown("NextEnemy") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability3") ))
         {
             var majorVisibleEnemies = UnitManager.GetPlayerVisibleMajorEnemies(player);
             int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, majorVisibleEnemies);

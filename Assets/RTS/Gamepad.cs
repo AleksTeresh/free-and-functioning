@@ -10,10 +10,12 @@ namespace RTS
         private static bool wasWinSelect13AxisSwitchedToActive = false;
         private static bool wasWinSelect24AxisSwitchedToActive = false;
         private static bool wasWinAttackModeAxisSwitchedToActive = false;
+        private static bool wasWinSelectionModifierAxisSwitchedToActive = false;
 
         private static bool isWinSelect13AxixInUse = false;
         private static bool isWinSelect24AxisInUse = false;
         private static bool isWinAttackModeAxisInUse = false;
+        private static bool isWinSelectionModifierAxisInUse = false;
 
         private Gamepad() { }
 
@@ -31,6 +33,107 @@ namespace RTS
                     HandleWinAxisInteraction();
                     break;
             }
+        }
+
+        public static bool GetButtonDown(string button)
+        {
+            CheckInstance();
+
+            switch (Application.platform)
+            {
+                case RuntimePlatform.OSXEditor:
+                case RuntimePlatform.OSXPlayer:
+                    return GetOSXButtonDown(button);
+                case RuntimePlatform.WindowsEditor:
+                case RuntimePlatform.WindowsPlayer:
+                    return GetWindowsButtonDown(button);
+                default:
+                    return false;
+            }
+        }
+
+
+        public static float GetAxis(string axis)
+        {
+            CheckInstance();
+
+            switch (Application.platform)
+            {
+                case RuntimePlatform.OSXEditor:
+                case RuntimePlatform.OSXPlayer:
+                    return GetOSXAxis(axis);
+                case RuntimePlatform.WindowsEditor:
+                case RuntimePlatform.WindowsPlayer:
+                    return GetWindowsAxis(axis);
+                default:
+                    return 0.0f;
+            }
+        }
+
+        public static bool GetButton(string button)
+        {
+            CheckInstance();
+
+            switch (Application.platform)
+            {
+                case RuntimePlatform.OSXEditor:
+                case RuntimePlatform.OSXPlayer:
+                    return GetOSXButton(button);
+                case RuntimePlatform.WindowsEditor:
+                case RuntimePlatform.WindowsPlayer:
+                    return GetWindowsButton(button);
+                default:
+                    return false;
+            }
+        }
+
+        private static bool GetWindowsButtonDown(string button)
+        {
+            switch (button)
+            {
+                // Handle cases where axis should be treated as a button (DPad, RT, LT)
+                case "Select1":
+                case "Select2":
+                case "Select3":
+                case "Select4":
+                case "Attack Mode":
+                case "SelectionMidifier":
+                    return GetWindowsSelectAxisButtonDown(button);
+                // Temporary fix till mapping if any necessary will be decided
+                case "Select5":
+                case "Ability5":
+                    return false;
+                default:
+                    return Input.GetButtonDown("Win " + button);
+            }
+        }
+
+        private static bool GetWindowsButton(string button)
+        {
+            switch (button)
+            {
+                // Handle cases where axis should be treated as a button (DPad, RT, LT)
+                case "Select1":
+                case "Select2":
+                case "Select3":
+                case "Select4":
+                case "Attack Mode":
+                case "SelectionModifier":
+                    return GetWindowsSelectAxisButton(button);
+                // Temporary fix till mapping if any necessary will be decided
+                case "Select5":
+                case "Ability5":
+                    return false;
+                default:
+                    return Input.GetButton("Win " + button);
+            }
+        }
+
+
+
+        private static bool GetOSXButton(string button)
+        {
+            throw new NotImplementedException();
         }
 
         private void HandleWinAxisInteraction()
@@ -79,40 +182,20 @@ namespace RTS
                 isWinAttackModeAxisInUse = false;
                 wasWinAttackModeAxisSwitchedToActive = false;
             }
-        }
 
-        public static bool GetButtonDown(string button)
-        {
-            CheckInstance();
-
-            switch (Application.platform)
+            if (Input.GetAxisRaw("Win SelectionModifier") != 0f)
             {
-                case RuntimePlatform.OSXEditor:
-                case RuntimePlatform.OSXPlayer:
-                    return GetOSXButtonDown(button);
-                case RuntimePlatform.WindowsEditor:
-                case RuntimePlatform.WindowsPlayer:
-                    return GetWindowsButtonDown(button);
-                default:
-                    return false;
+
+                if (isWinSelectionModifierAxisInUse == false)
+                {
+                    isWinSelectionModifierAxisInUse = true;
+                    wasWinSelectionModifierAxisSwitchedToActive = true;
+                }
             }
-        }
-
-
-        public static float GetAxis(string axis)
-        {
-            CheckInstance();
-
-            switch (Application.platform)
+            if (Input.GetAxisRaw("Win SelectionModifier") == 0f)
             {
-                case RuntimePlatform.OSXEditor:
-                case RuntimePlatform.OSXPlayer:
-                    return GetOSXAxis(axis);
-                case RuntimePlatform.WindowsEditor:
-                case RuntimePlatform.WindowsPlayer:
-                    return GetWindowsAxis(axis);
-                default:
-                    return 0.0f;
+                isWinSelectionModifierAxisInUse = false;
+                wasWinSelectionModifierAxisSwitchedToActive = false;
             }
         }
 
@@ -134,26 +217,6 @@ namespace RTS
         private static float GetOSXAxis(string axis)
         {
             return Input.GetAxis("OSX " + axis);
-        }
-
-        private static bool GetWindowsButtonDown(string button)
-        {
-            switch (button)
-            {
-                // Handle cases where axis should be treated as a button (DPad, RT, LT)
-                case "Select1":
-                case "Select2":
-                case "Select3":
-                case "Select4":
-                case "Attack Mode":
-                    return GetWindowsSelectAxisButtonDown(button);
-                // Temporary fix till mapping if any necessary will be decided
-                case "Select5":
-                case "Ability5":
-                    return false;
-                default:
-                    return Input.GetButtonDown("Win " + button);
-            }
         }
 
         private static bool GetWindowsSelectAxisButtonDown(string button)
@@ -203,6 +266,58 @@ namespace RTS
             if (button == "Attack Mode" && wasWinAttackModeAxisSwitchedToActive)
             {
                 wasWinAttackModeAxisSwitchedToActive = false;
+                return true;
+            }
+
+            if (button == "SelectionModifier" && wasWinSelectionModifierAxisSwitchedToActive)
+            {
+                wasWinSelectionModifierAxisSwitchedToActive = false;
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool GetWindowsSelectAxisButton(string button)
+        {
+            if (button == "Select1")
+            {
+                if (Input.GetAxis("Win Select 1 3") < 0)
+                {
+                    return true;
+                }
+            }
+
+            if (button == "Select3")
+            {
+                if (Input.GetAxis("Win Select 1 3") > 0)
+                {
+                    return true;
+                }
+            }
+            if (button == "Select2")
+            {
+                if (Input.GetAxis("Win Select 2 4") > 0)
+                {
+                    return true;
+                }
+            }
+
+            if (button == "Select4")
+            {
+                if (Input.GetAxis("Win Select 2 4") < 0)
+                {
+                    return true;
+                }
+            }
+
+            if (button == "Attack Mode" && isWinAttackModeAxisInUse)
+            {
+                return true;
+            }
+
+            if (button == "SelectionModifier" && isWinSelectionModifierAxisInUse)
+            {
                 return true;
             }
 
