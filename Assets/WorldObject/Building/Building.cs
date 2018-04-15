@@ -113,6 +113,11 @@ public class Building : WorldObject {
         }
     }
 
+    public override bool CanAddStatus()
+    {
+        return true;
+    }
+
     public string[] getBuildQueueValues()
     {
         string[] values = new string[buildQueue.Count];
