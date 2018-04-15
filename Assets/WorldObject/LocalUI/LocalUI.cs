@@ -25,6 +25,7 @@ public class LocalUI : MonoBehaviour {
             localCanvas.enabled = true;
 
             transform.rotation = Camera.main.transform.rotation;
+            transform.position = new Vector3(transform.position.x, relatedObj.GetSelectionBounds().max.y, transform.position.z);
 
             HandleHealthBar();
         }
