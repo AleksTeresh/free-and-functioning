@@ -1951,7 +1951,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4669833996938984, guid: e5ed5f454b2bca44195646a7abbac446, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 208797717876701320, guid: e5ed5f454b2bca44195646a7abbac446,
         type: 2}
@@ -1967,6 +1967,10 @@ Prefab:
         type: 2}
       propertyPath: m_Extents.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285344676032290, guid: e5ed5f454b2bca44195646a7abbac446, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5ed5f454b2bca44195646a7abbac446, type: 2}

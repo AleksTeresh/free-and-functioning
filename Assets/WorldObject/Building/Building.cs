@@ -136,6 +136,11 @@ public class Building : WorldObject {
         return spawnPoint != ResourceManager.InvalidPosition && rallyPoint != ResourceManager.InvalidPosition;
     }
 
+    public virtual void SetSpawnPoint(Vector3 spawnPoint)
+    {
+        this.spawnPoint = spawnPoint;
+    }
+
     public override void SetSelection(bool selected, Rect playingArea)
     {
         base.SetSelection(selected, playingArea);

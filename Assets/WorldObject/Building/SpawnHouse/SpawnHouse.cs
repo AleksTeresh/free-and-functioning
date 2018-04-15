@@ -41,6 +41,13 @@ public class SpawnHouse : Building {
         };
     }
 
+    public override void SetSpawnPoint(Vector3 spawnPoint)
+    {
+        base.SetSpawnPoint(spawnPoint);
+
+        this.rallyPoint = spawnPoint;
+    }
+
     public override void PerformAction(string actionToPerform)
     {
         base.PerformAction(actionToPerform);

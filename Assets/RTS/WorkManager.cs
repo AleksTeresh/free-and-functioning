@@ -201,19 +201,19 @@ namespace RTS
             return agent.transform.position + perpendicularDirection.normalized * walkRadius;
         }
 
-        public static Vector3 GetRandomDestinationPoint(NavMeshAgent subject, float walkRadius)
+        public static Vector3 GetRandomDestinationPoint(Vector3 center, float walkRadius)
         {
-            Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
-            randomDirection += subject.transform.position;
+            Vector2 randomPointOnCircle = Random.insideUnitCircle * walkRadius;
+            Vector3 randomPoint = new Vector3(randomPointOnCircle.x, 0, randomPointOnCircle.y) + center;
 
-            return GetClosestPointOnNavMesh(randomDirection, "Walkable");
+            return GetClosestPointOnNavMesh(randomPoint, "Walkable", walkRadius);
         }
 
-        public static Vector3 GetClosestPointOnNavMesh(Vector3 initialPoint, string areaName)
+        public static Vector3 GetClosestPointOnNavMesh(Vector3 initialPoint, string areaName, float walkRadius)
         {
             NavMeshHit hit;
             
-            bool result = NavMesh.SamplePosition(initialPoint, out hit, 10, GetNavMeshAreaFromName(areaName));
+            bool result = NavMesh.SamplePosition(initialPoint, out hit, walkRadius, GetNavMeshAreaFromName(areaName));
             Vector3 finalPosition = hit.position;
 
             return finalPosition;
