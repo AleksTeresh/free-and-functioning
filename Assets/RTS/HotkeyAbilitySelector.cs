@@ -21,7 +21,7 @@ namespace RTS
 
                 for (int i = 0; i < hotkeys.Length; i++)
                 {
-                    if (Input.GetButtonDown(hotkeys[i]))
+                    if (Input.GetButtonDown(hotkeys[i]) ||  (Gamepad.GetButtonDown(hotkeys[i]) && !Gamepad.GetButton("SelectionModifier")))
                     {
 						InputToCommandManager.AbilityHotkeyToState(targetManager, selectedUnit.GetStateController(), i);
 

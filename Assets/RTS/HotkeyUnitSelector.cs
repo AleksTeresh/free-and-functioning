@@ -16,10 +16,9 @@ namespace RTS
 		public static void HandleInput (Player player, HUD hud, Camera camera)
 		{
 			if (player.selectedAllyTargettingAbility == null) {
-				for (int i = 0; i < hotkeys.Length; i++) {
-					if (Input.GetButtonDown (hotkeys [i])) {
-
-						if (Input.GetButton ("SelectionModifier"))
+                for (int i = 0; i < hotkeys.Length; i++) {
+					if (Input.GetButtonDown (hotkeys [i]) || Gamepad.GetButtonDown(hotkeys[i])) {
+						if (Input.GetButton ("SelectionModifier") || Gamepad.GetButton("SelectionModifier"))
 						{
 							HandleUnitHotkeyWithModifierPress (player, hud, i);
 						}
@@ -32,7 +31,7 @@ namespace RTS
 					}
 				}
 
-				if (Input.GetButtonDown("SelectAll") )
+				if (Input.GetButtonDown("SelectAll") || Gamepad.GetButtonDown("SelectAll") )
 				{
 					SelectAllUnits (player, hud);
 				}
@@ -71,8 +70,6 @@ namespace RTS
                 camera.transform.TransformDirection(Vector3.back * 20) +  // pull camera "away" from the unit, in the direction...
                 camera.transform.TransformDirection(Vector3.down * 20);   // ...opposite to the one camera is facing atm
         }
-
-
 
 		private static void HandleUnitHotkeyWithModifierPress (Player player, HUD hud, int hotkey)
 		{

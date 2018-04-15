@@ -23,12 +23,14 @@ public class UserInput : MonoBehaviour {
 	void Update () {
         if (player.human)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !ResourceManager.MenuOpen)
-            {
-                OpenPauseMenu();
-            }
+            // Temporary disabled cause of new cursor mechanics
+            //if (Input.GetKeyDown(KeyCode.Escape) && !ResourceManager.MenuOpen)
+            //{
+            //    OpenPauseMenu();
+            //}
             
-            MoveCamera();
+            MoveCameraWithMouseScroll();
+            MoveCameraWithGamepad();
             RotateCamera();
 
             MouseActivity();
@@ -52,7 +54,30 @@ public class UserInput : MonoBehaviour {
         ResourceManager.MenuOpen = true;
     }
 
-    private void MoveCamera()
+    private void MoveCameraWithGamepad()
+    {
+        Vector3 movement = new Vector3(0, 0, 0);
+        float xAxis = 0.0f;
+        float yAxis = 0.0f;
+        float zAxis = 0.0f;
+
+        if (Gamepad.GetButton("SelectionModifier"))
+        {
+            yAxis = -1f * Gamepad.GetAxis("Camera Move Z");
+        } else
+        {
+            xAxis = Gamepad.GetAxis("Camera Move X");
+            zAxis = Gamepad.GetAxis("Camera Move Z");
+        }
+
+        movement.x = xAxis;
+        movement.y = yAxis;
+        movement.z = zAxis;
+
+        MoveCamera(movement);
+    }
+
+    private void MoveCameraWithMouseScroll()
     {
         float xpos = hud.cursorPosition.x;
         float ypos = hud.cursorPosition.y;
@@ -96,6 +121,16 @@ public class UserInput : MonoBehaviour {
         // away from ground movement
         movement.y -= ResourceManager.ScrollSpeed * Input.GetAxis("Mouse ScrollWheel");
 
+        MoveCamera(movement);
+
+        if (!mouseScroll)
+        {
+            hud.SetCursorState(CursorState.Select);
+        }
+    }
+
+    private void MoveCamera(Vector3 movement)
+    {
         // calculate desired camera position based on received input
         Vector3 origin = Camera.main.transform.position;
         Vector3 destination = origin;
@@ -118,12 +153,8 @@ public class UserInput : MonoBehaviour {
         {
             Camera.main.transform.position = Vector3.MoveTowards(origin, destination, Time.deltaTime * ResourceManager.ScrollSpeed);
         }
-
-        if (!mouseScroll)
-        {
-            hud.SetCursorState(CursorState.Select);
-        }
     }
+
 
     private void RotateCamera()
     {
@@ -146,7 +177,7 @@ public class UserInput : MonoBehaviour {
 
     private void AttackModeSelection()
     {
-		if (Input.GetButtonDown("Attack Mode") && player.selectedAllyTargettingAbility == null)
+		if (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode"))
         {
             // get all the objects controlled through AI
             var stateControlles = player.GetComponentsInChildren<StateController>();
@@ -156,7 +187,7 @@ public class UserInput : MonoBehaviour {
 
     private void SwitchEnemy()
     {
-        if (Input.GetButtonDown("NextEnemy"))
+        if (Input.GetButtonDown("NextEnemy") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability3") ))
         {
             var majorVisibleEnemies = UnitManager.GetPlayerVisibleMajorEnemies(player);
             int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, majorVisibleEnemies);
@@ -166,7 +197,10 @@ public class UserInput : MonoBehaviour {
 
     private void MouseActivity()
     {
-        if (Input.GetButtonDown("Action 1")) {
+        if (Input.GetButtonDown("Action 1") || Gamepad.GetButtonDown("Action 1")) {
+            // lock cursor back if it was unlocked from editor
+            Cursor.lockState = CursorLockMode.Locked;
+
             LeftMouseClick();
         }
         else if (Input.GetMouseButtonDown(1))
@@ -179,7 +213,7 @@ public class UserInput : MonoBehaviour {
 
     private void LeftMouseClick()
     {
-        if (hud.MouseInBounds())
+        if (hud.CursorInBounds())
         {
             GameObject hitObject = FindHitObject();
             Vector3 hitPoint = FindHitPoint();
@@ -202,7 +236,7 @@ public class UserInput : MonoBehaviour {
 
     private void RightMouseClick()
     {
-        if (hud.MouseInBounds() && !Input.GetKey(KeyCode.LeftAlt) && player.SelectedObject)
+        if (hud.CursorInBounds() && !Input.GetKey(KeyCode.LeftAlt) && player.SelectedObject)
         {
             player.SelectedObject.SetSelection(false, hud.GetPlayingArea());
             player.SelectedObject = null;
@@ -363,7 +397,7 @@ public class UserInput : MonoBehaviour {
 
     private void MouseHover()
     {
-        if (hud.MouseInBounds())
+        if (hud.CursorInBounds())
         {
             GameObject hoverObject = FindHitObject();
             if (hoverObject)

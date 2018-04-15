@@ -11,7 +11,7 @@ namespace RTS
             "Select3",
             "Select4",
             "Select5",
-            "Attack Mode"
+            "SelectAll"
         };
 
         public static void HandleInput(Player player, HUD hud)
@@ -20,12 +20,12 @@ namespace RTS
             {
                 for (int i = 0; i < hotkeys.Length; i++)
                 {
-                    if (Input.GetButtonDown(hotkeys[i]))
+                    if (Input.GetButtonDown(hotkeys[i]) || Gamepad.GetButtonDown(hotkeys[i]))
                     {
                         string hotkey = hotkeys[i];
 
                         // If player hits space use on all allies
-                        if (hotkey == "Attack Mode")
+                        if (hotkey == "SelectAll")
                         {
                             UseAbilityOnAllies(player);
                         }
