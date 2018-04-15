@@ -270,7 +270,7 @@ public class WorldObject : MonoBehaviour {
 
         UpdateChildRenderers();
 
-        // CalculateBounds();
+        CalculateBounds();
 
         stateController = GetComponent<StateController>();
 

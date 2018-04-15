@@ -7,7 +7,7 @@ public class ActiveStateDecision : Decision {
 
 	public override bool Decide (StateController controller)
     {
-        Unit self = controller.unit;
+        WorldObject self = controller.controlledObject;
         WorldObject target = controller.chaseTarget;
 
         if (!target)

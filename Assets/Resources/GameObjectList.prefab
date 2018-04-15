@@ -65,6 +65,8 @@ MonoBehaviour:
   - {fileID: 1435528466281784, guid: 84abc10782ef03340adee95928163e63, type: 2}
   - {fileID: 1989607964018376, guid: f6d47e53007daa54ba70abedb1a9d74c, type: 2}
   - {fileID: 1058559940681134, guid: 6eefdf9da6d1f7c42871713ed3edad55, type: 2}
+  - {fileID: 1161091255974490, guid: 7990473289a934c6cae220eabedc9c5e, type: 2}
+  - {fileID: 1418297144476706, guid: 77142326ff00414419f59736eaf070ad, type: 2}
   worldObjects:
   - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}
   - {fileID: 1867937343684546, guid: 47811af423559934191ec0a5a241e8df, type: 2}

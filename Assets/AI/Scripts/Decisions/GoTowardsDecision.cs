@@ -8,7 +8,7 @@ public class GoTowardsDecision : Decision
 
     public override bool Decide(StateController controller)
     {
-        Unit self = controller.unit;
+        var self = controller.controlledObject;
         WorldObject target = controller.chaseTarget;
 
         bool chaseTargetIsActive = target != null && // target exists

@@ -11,7 +11,7 @@ namespace AI.DBEnemy
     [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/DBEnemy/ChooseDefDownAbility")]
     public class ChooseDefDownAbilityAction : ChooseAbilityAction
     {
-        protected override void ChooseAbilityToUse(StateController controller)
+        protected override void ChooseAbilityToUse(UnitStateController controller)
         {
             Unit unit = controller.unit;
 

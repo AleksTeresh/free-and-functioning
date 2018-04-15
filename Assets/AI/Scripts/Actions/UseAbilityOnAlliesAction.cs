@@ -5,16 +5,12 @@ using System.Text;
 using UnityEngine;
 using RTS;
 using Abilities;
+using AI;
 
 [CreateAssetMenu(menuName = "AI/Actions/UseAbilityOnAllies")]
-public class UseAbilityOnAlliesAction : Action
+public class UseAbilityOnAlliesAction : UnitAction
 {
-    public override void Act(StateController controller)
-    {
-        UseAbility(controller);
-    }
-
-    private void UseAbility(StateController controller)
+    protected override void DoAction(UnitStateController controller)
     {
         Unit unit = controller.unit;
         Ability abilityToUse = controller.abilityToUse;

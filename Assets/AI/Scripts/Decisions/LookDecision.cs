@@ -15,7 +15,7 @@ public class LookDecision : Decision {
 
     private bool Look (StateController controller)
     {
-        Unit unit = controller.unit;
+        WorldObject unit = controller.controlledObject;
         Vector3 currentPosition = unit.transform.position;
 
         if (unit.CanAttack())

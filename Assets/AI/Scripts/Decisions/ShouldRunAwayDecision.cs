@@ -7,9 +7,9 @@ using RTS;
 using AI;
 
 [CreateAssetMenu(menuName = "AI/Decisions/ShouldRunAway")]
-public class ShouldRunAwayDecision : Decision
+public class ShouldRunAwayDecision : UnitDecision
 {
-    public override bool Decide(StateController controller)
+    protected override bool DoDecide(UnitStateController controller)
     {
         Unit self = controller.unit;
 

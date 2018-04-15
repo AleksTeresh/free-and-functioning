@@ -4,17 +4,13 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using RTS;
+using AI;
 
 [CreateAssetMenu(menuName = "AI/Actions/ChaseClosest")]
-public class ChaseClosestAction : Action
+public class ChaseClosestAction : UnitAction
 {
 
-    public override void Act(StateController controller)
-    {
-        ChaseClosest(controller);
-    }
-
-    private void ChaseClosest(StateController controller)
+    protected override void DoAction(UnitStateController controller)
     {
         Unit unit = controller.unit;
         Vector3 currentPosition = unit.transform.position;

@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using Abilities;
+using AI;
 
 [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseMultiAbilityToUse")]
-public class ChooseMultiAbilityToUseAction : Action
+public class ChooseMultiAbilityToUseAction : UnitAction
 {
-    public override void Act(StateController controller)
-    {
-        ChooseMultiAbilityToUse(controller);
-    }
-
-    private void ChooseMultiAbilityToUse(StateController controller)
+    protected override void DoAction(UnitStateController controller)
     {
         Unit unit = controller.unit;
 

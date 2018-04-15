@@ -180,8 +180,8 @@ public class UserInput : MonoBehaviour {
 		if (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode"))
         {
             // get all the objects controlled through AI
-            var stateControlles = player.GetComponentsInChildren<StateController>();
-            InputToCommandManager.SwitchAttackMode(targetManager, new List<StateController>(stateControlles));
+            var stateControlles = player.GetComponentsInChildren<UnitStateController>();
+            InputToCommandManager.SwitchAttackMode(targetManager, new List<UnitStateController>(stateControlles));
         }
     }
 
@@ -273,7 +273,7 @@ public class UserInput : MonoBehaviour {
                     Player objectHandlerOwner = objectHandler.GetComponentInParent<Player>();
                     if (objectHandlerOwner && player && objectHandlerOwner.username == player.username && player.human)
                     { //this object is controlled by a human player
-                        StateController handlerStateController = objectHandler.GetStateController();
+                        var handlerStateController = objectHandler.GetStateController();
                         //start attack if object is not owned by the same player and this object can attack, else select
                         if (handlerStateController && player.username != owner.username && objectHandler.CanAttack())
                         {
@@ -290,7 +290,7 @@ public class UserInput : MonoBehaviour {
                 {
                     Unit unit = hitObject.transform.parent.GetComponent<Unit>();
                     Building building = hitObject.transform.parent.GetComponent<Building>();
-                    StateController handlerStateController = objectHandler.GetStateController();
+                    var handlerStateController = objectHandler.GetStateController();
 
                     if ((unit || building) && handlerStateController) InputToCommandManager.ToChaseState(targetManager, handlerStateController, worldObject);
                 }
@@ -319,7 +319,7 @@ public class UserInput : MonoBehaviour {
 
 	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, float formationOffset = 0) 
 	{
-		StateController handlerStateController = objectHandler.GetStateController();
+        var handlerStateController = objectHandler.GetStateController();
 		if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
 		{
 			float x = hitPoint.x + formationOffset;

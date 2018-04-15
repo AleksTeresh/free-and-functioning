@@ -10,7 +10,13 @@ namespace RTS
         public static List<Unit> GetPlayerVisibleEnemies(Player player)
         {
             return player.GetUnits()
-                .SelectMany(p => p.GetStateController().nearbyEnemies.Where(s => s is Unit))
+                .SelectMany(p =>
+                {
+                    var stateController = p.GetStateController();
+                    var allNearbyEnemies = stateController.nearbyEnemies;
+
+                    return allNearbyEnemies.Where(s => s is Unit);
+                })
                 .Select(p => (Unit)p)
                 .Distinct()
                 .ToList();

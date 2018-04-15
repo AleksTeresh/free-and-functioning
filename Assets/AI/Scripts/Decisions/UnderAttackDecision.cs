@@ -5,12 +5,11 @@ using System.Text;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Decisions/UnderAttack")]
-public class UnderAttackDecision : Decision
+public class UnderAttackDecision: Decision
 {
-
     public override bool Decide(StateController controller)
     {
-        Unit self = controller.unit;
+        WorldObject self = controller.controlledObject;
 
         bool isUnderAttack = self.IsUnderAttack();
 

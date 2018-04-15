@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
 using Abilities;
 using RTS;
+using AI;
 
 namespace AI.DDEnemy
 {
     [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/DDEnemy/ChooseAbilityToUse")]
-    public class ChooseAbilityToUseAction : Action
+    public class ChooseAbilityToUseAction : UnitAction
     {
-        public override void Act(StateController controller)
-        {
-            ChooseAbilityToUse(controller);
-        }
-
-        private void ChooseAbilityToUse(StateController controller)
+        protected override void DoAction(UnitStateController controller)
         {
             Unit unit = controller.unit;
 

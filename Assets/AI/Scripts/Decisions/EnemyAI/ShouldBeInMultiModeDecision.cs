@@ -9,7 +9,7 @@ public class ShouldBeInMultiModeDecision : Decision
 {
     public override bool Decide(StateController controller)
     {
-        var unit = controller.unit;
+        var unit = controller.controlledObject;
 
         if (controller.nearbyEnemies.Count <= 3) return false;
 

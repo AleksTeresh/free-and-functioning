@@ -16,27 +16,27 @@ public class AttackMultiAction : Action
 
     private void AttackMulti(StateController controller)
     {
-        Unit unit = controller.unit;
+        var controlledObject = controller.controlledObject;
 
         // if cannot attack multi, fallback to single attack
-        if (!unit.CanAttackMulti())
+        if (!controlledObject.CanAttackMulti())
         {
             AttackUtil.HandleSingleModeAttack(controller);
             return;
         }
 
-        Vector3 currentPosition = unit.transform.position;
+        Vector3 currentPosition = controlledObject.transform.position;
         List<WorldObject> reachableEnemies = controller.nearbyEnemies
             .Where(p =>
             {
                 Vector3 currentEnemyPosition = p.transform.position;
                 Vector3 direction = currentEnemyPosition - currentPosition;
 
-                return direction.sqrMagnitude < unit.weaponRange * unit.weaponRange;
+                return direction.sqrMagnitude < controlledObject.weaponRange * controlledObject.weaponRange;
             })
             .ToList();
 
         controller.attacking = reachableEnemies.Count > 0;
-        controller.unit.PerformAttackToMulti(reachableEnemies);
+        controlledObject.PerformAttackToMulti(reachableEnemies);
     }
 }

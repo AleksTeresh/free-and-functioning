@@ -3,17 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Abilities;
+using AI;
 
 [CreateAssetMenu (menuName = "AI/Actions/AllyAbilityChase")]
-public class AllyAbilityChaseAction : Action {
+public class AllyAbilityChaseAction : UnitAction {
 
-	public override void Act (StateController controller)
-	{
-		AbilityChase(controller);
-	}
-
-	private void AbilityChase(StateController controller)
-	{
+    protected override void DoAction(UnitStateController controller)
+    {
 		Unit unit = controller.unit;
 		WorldObject allyChaseTarget = controller.allyAbilityTarget;
 		Ability ability = controller.abilityToUse;

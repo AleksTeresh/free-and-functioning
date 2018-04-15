@@ -1,19 +1,12 @@
-﻿using RTS;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Abilities;
+using AI;
 
 [CreateAssetMenu (menuName = "AI/Actions/Ability")]
-public class AbilityAction : Action {
+public class AbilityAction : UnitAction {
 
-	public override void Act (StateController controller)
-	{
-		AbilityChase(controller);
-	}
-
-	private void AbilityChase(StateController controller)
-	{
+    protected override void DoAction(UnitStateController controller)
+    {
 		Unit unit = controller.unit;
 		WorldObject chaseTarget = controller.enemyAbilityTarget
             ? controller.enemyAbilityTarget

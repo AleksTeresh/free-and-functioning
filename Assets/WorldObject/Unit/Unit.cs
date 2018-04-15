@@ -9,6 +9,8 @@ using Statuses;
 using Abilities;
 
 public class Unit : WorldObject {
+    protected new UnitStateController stateController;
+
     // audio 
     public AudioClip driveSound, moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
@@ -169,6 +171,11 @@ public class Unit : WorldObject {
         return false;
     }
 
+    public new UnitStateController GetStateController()
+    {
+        return stateController;
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -188,6 +195,8 @@ public class Unit : WorldObject {
         {
             abilitiesMulti = abilitiesMultiWrapper.GetComponentsInChildren<Ability>();
         }
+
+        stateController = GetComponent<UnitStateController>();
     }
 
     protected override void Start()
@@ -209,7 +218,7 @@ public class Unit : WorldObject {
         HandleMove();
         HandleRotation();
     }
-  
+
     protected override void InitialiseAudio()
     {
         base.InitialiseAudio();

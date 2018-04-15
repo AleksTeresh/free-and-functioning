@@ -19,7 +19,7 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState(stateName));
         }
 
-        public static void AbilityHotkeyToState(TargetManager targetManager, StateController stateController, int abilityIndex)
+        public static void AbilityHotkeyToState(TargetManager targetManager, UnitStateController stateController, int abilityIndex)
         {
             Unit unit = stateController.unit;
 
@@ -68,7 +68,7 @@ namespace RTS
             }
         }
 
-        public static void AllyAbilityTargetSelectionToState(StateController stateController, Ability ability, WorldObject allyTarget)
+        public static void AllyAbilityTargetSelectionToState(UnitStateController stateController, Ability ability, WorldObject allyTarget)
         {
             //			string stateName = targetManager.InMultiMode
             //						? "Ally Ability Chase Manual Multi"
@@ -79,7 +79,7 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState("Ally Ability Chase Manual"));
         }
 
-        public static void AlliesAbilityTargetSelectionToState(StateController stateController, Ability ability)
+        public static void AlliesAbilityTargetSelectionToState(UnitStateController stateController, Ability ability)
         {
             stateController.abilityToUse = ability;
 
@@ -87,7 +87,7 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState("Allies Ability Use Manual"));
         }
 
-        public static void ToBusyState(TargetManager targetManager, StateController stateController, Vector3 destination)
+        public static void ToBusyState(TargetManager targetManager, UnitStateController stateController, Vector3 destination)
         {
             if (!stateController || !stateController.navMeshAgent || !stateController.navMeshAgent.isActiveAndEnabled)
             {
@@ -103,7 +103,7 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState(stateName));
         }
 
-        public static void SwitchAttackMode(TargetManager targetManager, List<StateController> stateControllers)
+        public static void SwitchAttackMode(TargetManager targetManager, List<UnitStateController> stateControllers)
         {
             if (targetManager.InMultiMode)
             {
@@ -133,7 +133,7 @@ namespace RTS
             }
         }
 
-        private static void SwitchAttackModeForOne(StateController stateController)
+        private static void SwitchAttackModeForOne(UnitStateController stateController)
         {
             if (stateController.unit.CanAttackMulti())
             {

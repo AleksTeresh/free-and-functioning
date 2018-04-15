@@ -1,16 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AI;
 
 [CreateAssetMenu (menuName = "AI/Actions/Patrol")]
-public class PatrolAction : Action {
+public class PatrolAction : UnitAction {
 
-	public override void Act (StateController controller)
-    {
-        Patrol(controller);
-    }
-
-    private void Patrol(StateController controller)
+    protected override void DoAction(UnitStateController controller)
     {
         var self = controller.navMeshAgent;
         controller.unit.StartMove(controller.wayPointList[controller.nextWayPoint].position);
