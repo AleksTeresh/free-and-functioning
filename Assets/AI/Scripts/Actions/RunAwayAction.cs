@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
 using RTS;
 using UnityEngine.AI;
+using AI;
 
 [CreateAssetMenu(menuName = "AI/Actions/RunAway")]
-public class RunAwayAction : Action
+public class RunAwayAction : UnitAction
 {
     private static readonly float WALK_RADIUS = 10;
 
-    public override void Act(StateController controller)
-    {
-        RunAway(controller);
-    }
-
-    private void RunAway(StateController controller)
+    protected override void DoAction(UnitStateController controller)
     {
         var self = controller.navMeshAgent;
         var unit = controller.unit;

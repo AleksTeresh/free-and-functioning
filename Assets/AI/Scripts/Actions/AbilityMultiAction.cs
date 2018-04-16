@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using RTS;
+using AI;
 using Abilities;
 
 [CreateAssetMenu(menuName = "AI/Actions/AbilityMulti")]
-public class AbilityMultiAction : Action
+public class AbilityMultiAction : UnitAction
 {
 
-    public override void Act(StateController controller)
-    {
-        UseAbility(controller);
-    }
-
-    private void UseAbility(StateController controller)
+    protected override void DoAction(UnitStateController controller)
     {
         Unit unit = controller.unit;
         Ability abilityToUse = controller.abilityToUse;

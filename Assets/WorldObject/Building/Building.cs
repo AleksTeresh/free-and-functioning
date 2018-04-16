@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 public class Building : WorldObject {
     public Texture2D rallyPointImage;
 
+    public new BuildingStateController stateController;
+
     public float maxBuildProgress;
 
     protected Queue<string> buildQueue;
@@ -18,6 +20,11 @@ public class Building : WorldObject {
     // audio
     public AudioClip finishedJobSound;
     public float finishedJobVolume = 1.0f;
+
+    public new BuildingStateController GetStateController()
+    {
+        return stateController;
+    }
 
     public override void SaveDetails(JsonWriter writer)
     {
@@ -54,6 +61,8 @@ public class Building : WorldObject {
         spawnPoint = new Vector3(spawnX, 0.0f, spawnZ);
 
         rallyPoint = spawnPoint;
+
+        stateController = GetComponent<BuildingStateController>();
     }
 
     protected override void Start()
@@ -104,6 +113,11 @@ public class Building : WorldObject {
         }
     }
 
+    public override bool CanAddStatus()
+    {
+        return true;
+    }
+
     public string[] getBuildQueueValues()
     {
         string[] values = new string[buildQueue.Count];
@@ -120,6 +134,11 @@ public class Building : WorldObject {
     public bool hasSpawnPoint()
     {
         return spawnPoint != ResourceManager.InvalidPosition && rallyPoint != ResourceManager.InvalidPosition;
+    }
+
+    public virtual void SetSpawnPoint(Vector3 spawnPoint)
+    {
+        this.spawnPoint = spawnPoint;
     }
 
     public override void SetSelection(bool selected, Rect playingArea)

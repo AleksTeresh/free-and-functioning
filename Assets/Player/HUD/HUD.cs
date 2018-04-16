@@ -241,12 +241,19 @@ public class HUD : MonoBehaviour
 
         if (selection)
         {
+            // TODO: add more avatar manipulation here
+            selectionIndicator.Avatar.color = Color.yellow;
+
             selectionIndicator.NameField.text = selection.objectName;
+            if (selection is Unit && ((Unit) selection).holdingPosition)
+            {
+                selectionIndicator.NameField.text += " (holding position)";
+
+                selectionIndicator.Avatar.color = Color.blue;
+            }
 
             selectionIndicator.HealthSlider.maxValue = selection.maxHitPoints;
-            selectionIndicator.HealthSlider.value = selection.hitPoints;
-
-            // TODO: add avatar manipulation here
+            selectionIndicator.HealthSlider.value = selection.hitPoints; 
         }
         else
         {

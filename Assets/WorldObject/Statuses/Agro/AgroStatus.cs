@@ -7,6 +7,7 @@ namespace Statuses
 {
     public class AgroStatus : AiStateStatus
     {
+/*
         protected override void OnStatusStart()
         {
             base.OnStatusStart();
@@ -16,7 +17,7 @@ namespace Statuses
                 target.GetStateController().unit.StopMove();
             }
         }
-
+*/
         protected override void AffectTarget()
         {
             if (target && target.GetStateController())

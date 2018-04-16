@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using AI;
 
 [CreateAssetMenu(menuName = "AI/Actions/ChangeTargetToClosest")]
-public class ChangeTargetToClosestAction : Action
+public class ChangeTargetToClosestAction : UnitAction
 {
-    public override void Act(StateController controller)
-    {
-        ChangeTargetToClosest(controller);
-    }
-
-    private void ChangeTargetToClosest(StateController controller)
+    protected override void DoAction(UnitStateController controller)
     {
         Unit unit = controller.unit;
         Vector3 currentPosition = unit.transform.position;

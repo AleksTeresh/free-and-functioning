@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Decisions/Busy")]
-public class BusyDecision : Decision
+public class BusyDecision : UnitDecision
 {
 
-    public override bool Decide(StateController controller)
+    protected override bool DoDecide(UnitStateController controller)
     {
         var self = controller.navMeshAgent;
 

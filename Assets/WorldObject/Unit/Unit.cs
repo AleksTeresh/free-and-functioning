@@ -9,26 +9,29 @@ using Statuses;
 using Abilities;
 
 public class Unit : WorldObject {
-    // audio 
-    public AudioClip driveSound, moveSound;
+    protected new UnitStateController stateController;
+
+    [HideInInspector] public bool holdingPosition = false;
+    // public float moveSpeed, rotateSpeed;
+    protected NavMeshAgent agent;
+
+    // protected bool moving, rotating;
+
+    private GameObject destinationTarget;
+    private int loadedDestinationTargetId = -1;
+
+    [Header("Audio")]
+    public AudioClip driveSound;
+    public AudioClip moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
 
-    // abilities
-	[HideInInspector] public Ability[] abilities;
+    [HideInInspector] public Ability[] abilities;
     [HideInInspector] public Ability[] abilitiesMulti;
 
+    [Header("Attack")]
     protected Quaternion aimRotation;
     protected WorldObject aimTarget;
-
     private ParticleSystem takeDamageEffect;
-
-	// public float moveSpeed, rotateSpeed;
-	protected NavMeshAgent agent;
-
-	// protected bool moving, rotating;
-
-	private GameObject destinationTarget;
-	private int loadedDestinationTargetId = -1;
 
     public override void SetHoverState(GameObject hoverObject)
     {
@@ -169,6 +172,11 @@ public class Unit : WorldObject {
         return false;
     }
 
+    public new UnitStateController GetStateController()
+    {
+        return stateController;
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -188,6 +196,8 @@ public class Unit : WorldObject {
         {
             abilitiesMulti = abilitiesMultiWrapper.GetComponentsInChildren<Ability>();
         }
+
+        stateController = GetComponent<UnitStateController>();
     }
 
     protected override void Start()
@@ -209,7 +219,7 @@ public class Unit : WorldObject {
         HandleMove();
         HandleRotation();
     }
-  
+
     protected override void InitialiseAudio()
     {
         base.InitialiseAudio();

@@ -9,7 +9,7 @@ namespace AI.CCEnemy
     [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/CCEnemy/ChooseSleepAbility")]
     public class ChooseSleepAbilityAction : ChooseAbilityAction
     {
-        protected override void ChooseAbilityToUse(StateController controller)
+        protected override void ChooseAbilityToUse(UnitStateController controller)
         {
             Unit unit = controller.unit;
 

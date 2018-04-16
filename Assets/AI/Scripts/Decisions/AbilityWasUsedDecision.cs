@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu (menuName = "AI/Decisions/AbilityWasUsedDecision")]
-public class AbilityWasUsedDecision : Decision {
+public class AbilityWasUsedDecision : UnitDecision {
 
-	public override bool Decide (StateController controller)
-	{
+    protected override bool DoDecide(UnitStateController controller)
+    {
         bool isAiming = controller.unit.aiming;
 
 		return controller.abilityToUse == null

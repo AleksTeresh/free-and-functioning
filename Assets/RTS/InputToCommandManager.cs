@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Abilities;
@@ -19,7 +20,7 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState(stateName));
         }
 
-        public static void AbilityHotkeyToState(TargetManager targetManager, StateController stateController, int abilityIndex)
+        public static void AbilityHotkeyToState(TargetManager targetManager, UnitStateController stateController, int abilityIndex)
         {
             Unit unit = stateController.unit;
 
@@ -68,7 +69,7 @@ namespace RTS
             }
         }
 
-        public static void AllyAbilityTargetSelectionToState(StateController stateController, Ability ability, WorldObject allyTarget)
+        public static void AllyAbilityTargetSelectionToState(UnitStateController stateController, Ability ability, WorldObject allyTarget)
         {
             //			string stateName = targetManager.InMultiMode
             //						? "Ally Ability Chase Manual Multi"
@@ -79,7 +80,7 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState("Ally Ability Chase Manual"));
         }
 
-        public static void AlliesAbilityTargetSelectionToState(StateController stateController, Ability ability)
+        public static void AlliesAbilityTargetSelectionToState(UnitStateController stateController, Ability ability)
         {
             stateController.abilityToUse = ability;
 
@@ -87,7 +88,7 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState("Allies Ability Use Manual"));
         }
 
-        public static void ToBusyState(TargetManager targetManager, StateController stateController, Vector3 destination)
+        public static void ToBusyState(TargetManager targetManager, UnitStateController stateController, Vector3 destination)
         {
             if (!stateController || !stateController.navMeshAgent || !stateController.navMeshAgent.isActiveAndEnabled)
             {
@@ -103,7 +104,7 @@ namespace RTS
             stateController.TransitionToState(ResourceManager.GetAiState(stateName));
         }
 
-        public static void SwitchAttackMode(TargetManager targetManager, List<StateController> stateControllers)
+        public static void SwitchAttackMode(TargetManager targetManager, List<UnitStateController> stateControllers)
         {
             if (targetManager.InMultiMode)
             {
@@ -133,7 +134,36 @@ namespace RTS
             }
         }
 
-        private static void SwitchAttackModeForOne(StateController stateController)
+        public static void StopUnits (Player player, TargetManager targetManager)
+        {
+            string stateName = targetManager.InMultiMode
+                ? "Stop Manual Multi"
+                : "Stop Manual";
+
+            player.selectedObjects
+                .Where(p => p is Unit)
+                .ToList()
+                .ForEach(p => p.GetStateController().TransitionToState(ResourceManager.GetAiState(stateName)));
+        }
+
+        public static void SwitchHoldPosition (Player player)
+        {
+            if (!player.SelectedObject || !(player.SelectedObject is Unit))
+            {
+                return;
+            }
+
+            player.selectedObjects
+                .Where(p => p is Unit)
+                .Select(p => (Unit)p)
+                .ToList()
+                .ForEach(p =>
+                {
+                    p.holdingPosition = !((Unit)player.SelectedObject).holdingPosition;
+                });
+        }
+
+        private static void SwitchAttackModeForOne(UnitStateController stateController)
         {
             if (stateController.unit.CanAttackMulti())
             {

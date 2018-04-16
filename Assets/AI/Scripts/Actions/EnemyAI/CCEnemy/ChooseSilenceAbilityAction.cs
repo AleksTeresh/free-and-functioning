@@ -9,7 +9,7 @@ namespace AI.CCEnemy
     [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/CCEnemy/ChooseSilenceAbility")]
     public class ChooseSilenceAbilityAction : ChooseAbilityAction
     {
-        protected override void ChooseAbilityToUse(StateController controller)
+        protected override void ChooseAbilityToUse(UnitStateController controller)
         {
             Unit unit = controller.unit;
 

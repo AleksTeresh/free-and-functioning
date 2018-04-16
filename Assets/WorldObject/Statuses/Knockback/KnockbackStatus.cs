@@ -23,8 +23,12 @@ namespace Statuses
                 knockbackDirection = CalculateKnockbackDirection();
 
                 navMeshAgent = target.GetComponent<NavMeshAgent>();
-                originalSpeed = navMeshAgent.speed;
-                navMeshAgent.speed = 0;
+
+                if (navMeshAgent)
+                {
+                    originalSpeed = navMeshAgent.speed;
+                    navMeshAgent.speed = 0;
+                }
             }
         }
 

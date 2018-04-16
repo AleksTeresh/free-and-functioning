@@ -10,25 +10,25 @@ namespace AI
     {
         public static void HandleSingleModeAttack(StateController controller)
         {
-            Unit unit = controller.unit;
+            WorldObject controlledObject = controller.controlledObject;
             WorldObject chaseTarget = controller.chaseTarget;
 
             // if no target or canot attack, return
-            if (chaseTarget == null || !unit.CanAttack())
+            if (chaseTarget == null || !controlledObject.CanAttack())
             {
                 return;
             }
 
-            Vector3 currentPosition = unit.transform.position;
+            Vector3 currentPosition = controlledObject.transform.position;
             Vector3 currentEnemyPosition = chaseTarget.transform.position;
             Vector3 direction = currentEnemyPosition - currentPosition;
 
             if (
-                direction.sqrMagnitude < unit.weaponRange * unit.weaponRange
+                direction.sqrMagnitude < controlledObject.weaponRange * controlledObject.weaponRange
             )
             {
                 controller.attacking = true;
-                controller.unit.PerformAttack(chaseTarget);
+                controlledObject.PerformAttack(chaseTarget);
             }
             else
             {

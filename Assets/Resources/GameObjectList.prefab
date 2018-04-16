@@ -65,6 +65,8 @@ MonoBehaviour:
   - {fileID: 1435528466281784, guid: 84abc10782ef03340adee95928163e63, type: 2}
   - {fileID: 1989607964018376, guid: f6d47e53007daa54ba70abedb1a9d74c, type: 2}
   - {fileID: 1058559940681134, guid: 6eefdf9da6d1f7c42871713ed3edad55, type: 2}
+  - {fileID: 1161091255974490, guid: 7990473289a934c6cae220eabedc9c5e, type: 2}
+  - {fileID: 1418297144476706, guid: 77142326ff00414419f59736eaf070ad, type: 2}
   worldObjects:
   - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}
   - {fileID: 1867937343684546, guid: 47811af423559934191ec0a5a241e8df, type: 2}
@@ -139,6 +141,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3d2169e67d554f728e62e241cc8cca1, type: 2}
   - {fileID: 11400000, guid: f862a0e4570a14901961c074e3688337, type: 2}
   - {fileID: 11400000, guid: 18415dc4b024e4ae2a3bd3f0ba0c1cbf, type: 2}
+  - {fileID: 11400000, guid: 326900489390e714787d82fa1f6bc37c, type: 2}
+  - {fileID: 11400000, guid: 8146e0c3dea774b46825bc29bdf1aa14, type: 2}
+  - {fileID: 11400000, guid: 68b341229fc00ca42b4735c3b383d3f1, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}

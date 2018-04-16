@@ -44,7 +44,12 @@ namespace RTS
 			Unit unitToSelect = player.unitMapping.FindUnitByHotkey (units, hotkey);
 
 			if (unitToSelect) {
-                if (player.SelectedObject && player.SelectedObject.ObjectId == unitToSelect.ObjectId)
+                if (
+                    (player.selectedObjects.Count == 0 ||
+                    (player.selectedObjects.Count == 1 && player.selectedObjects.Contains(unitToSelect))) &&
+                    player.SelectedObject &&
+                    player.SelectedObject.ObjectId == unitToSelect.ObjectId
+                )
                 {
                     MoveCameraToUnit(unitToSelect, camera);
                 }
@@ -60,7 +65,13 @@ namespace RTS
 			ResetPlayerUnitsSelection(player, hud);
 
 			player.SelectedObject = unitToSelect;
-			unitToSelect.SetSelection(true, hud.GetPlayingArea());
+
+            if (!player.selectedObjects.Contains(unitToSelect))
+            {
+                player.selectedObjects.Add(unitToSelect);
+            }
+            
+            unitToSelect.SetSelection(true, hud.GetPlayingArea());
 		}
 
         private static void MoveCameraToUnit (Unit unit, Camera camera)
@@ -77,14 +88,18 @@ namespace RTS
 
 			if (unitToAdd) 
 			{
-				if (player.SelectedObject == null) 
+				if (player.SelectedObject == null && player.selectedObjects.Count == 0) 
 				{
 					SelectUnit (player, hud, unitToAdd);
 				}
-				else 
+				else if (!player.selectedObjects.Contains(unitToAdd))
 				{
 					AddUnitToSubSelection (player, hud, unitToAdd);
 				}
+                else
+                {
+                    RemoveUnitFromSubSelection(player, hud, unitToAdd);
+                }
 			}
 
 
@@ -102,7 +117,23 @@ namespace RTS
 			}
 		}
 
-		private static void SelectAllUnits(Player player, HUD hud)
+        private static void RemoveUnitFromSubSelection (Player player, HUD hud, Unit unitToRemove)
+        {
+            List<WorldObject> selectedObjects = player.selectedObjects;
+
+            if (unitToRemove && selectedObjects.Contains(unitToRemove))
+            {
+                unitToRemove.SetSelection(false, hud.GetPlayingArea());
+                if (player.SelectedObject && player.SelectedObject.ObjectId == unitToRemove.ObjectId)
+                {
+                    player.SelectedObject = null;
+                }
+
+                selectedObjects.Remove(unitToRemove);
+            }
+        }
+
+        private static void SelectAllUnits(Player player, HUD hud)
 		{
 			List<Unit> units = player.GetUnits ();
 

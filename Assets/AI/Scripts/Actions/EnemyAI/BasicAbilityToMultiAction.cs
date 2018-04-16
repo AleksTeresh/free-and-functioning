@@ -9,7 +9,7 @@ using RTS;
 [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/BasicAbilityToMulti")]
 public class BasicAbilityToMultiAction : ChooseAbilityAction
 {
-    protected override void ChooseAbilityToUse(StateController controller)
+    protected override void ChooseAbilityToUse(UnitStateController controller)
     {
         Unit unit = controller.unit;
 

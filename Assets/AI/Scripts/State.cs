@@ -43,11 +43,11 @@ public class State : ScriptableObject {
 
     private void FindNearbyObjects(StateController controller)
     {
-        Unit unit = controller.unit;
-        Vector3 currentPosition = unit.transform.position;
-        List<WorldObject> nearbyObjects = WorkManager.FindNearbyObjects(currentPosition, unit.detectionRange);
+        WorldObject controlledObject = controller.controlledObject;
+        Vector3 currentPosition = controlledObject.transform.position;
+        List<WorldObject> nearbyObjects = WorkManager.FindNearbyObjects(currentPosition, controlledObject.detectionRange);
 
-        controller.nearbyAllies = WorkManager.GetAllyObjects(nearbyObjects, unit.GetPlayer());
-        controller.nearbyEnemies = WorkManager.GetEnemyObjects(nearbyObjects, unit.GetPlayer());
+        controller.nearbyAllies = WorkManager.GetAllyObjects(nearbyObjects, controlledObject.GetPlayer());
+        controller.nearbyEnemies = WorkManager.GetEnemyObjects(nearbyObjects, controlledObject.GetPlayer());
     }
 }

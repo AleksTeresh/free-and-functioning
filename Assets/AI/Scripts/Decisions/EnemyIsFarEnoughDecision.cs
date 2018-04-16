@@ -11,7 +11,7 @@ public class EnemyIsFarEnoughDecision : Decision
 {
     public override bool Decide(StateController controller)
     {
-        Unit self = controller.unit;
+        var self = controller.controlledObject;
         WorldObject closestChaser = WorkManager.FindNearestMeleeObject(
             controller.nearbyEnemies
                 .Where(p => p && p.GetStateController() && p.GetStateController().chaseTarget &&

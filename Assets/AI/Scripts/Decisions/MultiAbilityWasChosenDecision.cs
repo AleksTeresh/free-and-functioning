@@ -3,9 +3,9 @@ using UnityEngine;
 using Abilities;
 
 [CreateAssetMenu(menuName = "AI/Decisions/MultiAbilityWasChosenDecision")]
-public class MultiAbilityWasChosenDecision : Decision
+public class MultiAbilityWasChosenDecision : UnitDecision
 {
-    public override bool Decide(StateController controller)
+    protected override bool DoDecide(UnitStateController controller)
     {
         return controller.abilityToUse != null &&
             !(controller.abilityToUse is AoeAbility) &&

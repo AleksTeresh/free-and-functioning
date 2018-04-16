@@ -11,32 +11,23 @@ public class StateController : MonoBehaviour
 
     [HideInInspector] private State defaultState;
 
-    [HideInInspector] public NavMeshAgent navMeshAgent;
-    [HideInInspector] public Unit unit;
-    [HideInInspector] public List<Transform> wayPointList;
-    [HideInInspector] public int nextWayPoint;
-	[HideInInspector] public WorldObject chaseTarget;
-    [HideInInspector] public WorldObject allyAbilityTarget;
-    [HideInInspector] public WorldObject enemyAbilityTarget;
-    [HideInInspector] public Vector3 aoeAbilityTarget;
+    [HideInInspector] public WorldObject chaseTarget;
+
+    [HideInInspector] public WorldObject controlledObject;
     [HideInInspector] public TargetManager targetManager;
     [HideInInspector] public List<WorldObject> nearbyEnemies;
     [HideInInspector] public List<WorldObject> nearbyAllies; // including self
     // [HideInInspector] public float stateTimeElapsed;
     [HideInInspector] public bool attacking;
-	[HideInInspector] public Ability abilityToUse;
 
-    private bool aiActive;
-    
-    void Awake()
+    protected bool aiActive;
+
+    protected virtual void Awake()
     {
-        unit = GetComponent<Unit>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        controlledObject = GetComponent<WorldObject>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
 
-        aoeAbilityTarget = new Vector3();
-
-        // for now the default state is the one that a unit has on Awake(),
+        // for now the default state is the one that a unit/building has on Awake(),
         // later defaultState can be made a separate public variable to be set in the Inspector
         defaultState = currentState;
     }
@@ -50,21 +41,7 @@ public class StateController : MonoBehaviour
 
     public void SetupAI(bool aiActivation)
     {
-        SetupAI(aiActivation, new List<Transform>());
-    }
-
-    public void SetupAI(bool aiActivation, List<Transform> wayPoints)
-    {
-        wayPointList = wayPoints;
         aiActive = aiActivation;
-        if (aiActive)
-        {
-            navMeshAgent.enabled = true;
-        }
-        else
-        {
-            navMeshAgent.enabled = false;
-        }
     }
 
     public State GetDefaultState()
@@ -87,16 +64,4 @@ public class StateController : MonoBehaviour
             // OnExitState();
         }
     }
-    /*
-    public bool CheckIfCountDownElapsed(float duration)
-    {
-        stateTimeElapsed += Time.deltaTime;
-        return (stateTimeElapsed >= duration);
-    }
-
-    private void OnExitState()
-    {
-        stateTimeElapsed = 0;
-    }
-        */
 }

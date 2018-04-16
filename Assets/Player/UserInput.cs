@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
@@ -38,6 +39,10 @@ public class UserInput : MonoBehaviour {
             AttackModeSelection();
 
             SwitchEnemy();
+
+            StopUnits();
+
+            SwitchHoldPosition();
 
 			RTS.HotkeyUnitSelector.HandleInput (player, hud, mainCamera);
 			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
@@ -180,8 +185,8 @@ public class UserInput : MonoBehaviour {
 		if (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode"))
         {
             // get all the objects controlled through AI
-            var stateControlles = player.GetComponentsInChildren<StateController>();
-            InputToCommandManager.SwitchAttackMode(targetManager, new List<StateController>(stateControlles));
+            var stateControlles = player.GetComponentsInChildren<UnitStateController>();
+            InputToCommandManager.SwitchAttackMode(targetManager, new List<UnitStateController>(stateControlles));
         }
     }
 
@@ -192,6 +197,22 @@ public class UserInput : MonoBehaviour {
             var majorVisibleEnemies = UnitManager.GetPlayerVisibleMajorEnemies(player);
             int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, majorVisibleEnemies);
             InputToCommandManager.SwitchEnemy(targetManager, majorVisibleEnemies, selectionIdx);
+        }
+    }
+
+    private void StopUnits ()
+    {
+        if (Input.GetButtonDown("StopUnits") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability4")))
+        {
+            InputToCommandManager.StopUnits(player, targetManager);
+        }
+    }
+
+    private void SwitchHoldPosition()
+    {
+        if (Input.GetButtonDown("HoldPosition") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability2")))
+        {
+            InputToCommandManager.SwitchHoldPosition(player);
         }
     }
 
@@ -240,6 +261,11 @@ public class UserInput : MonoBehaviour {
         {
             player.SelectedObject.SetSelection(false, hud.GetPlayingArea());
             player.SelectedObject = null;
+            player.selectedObjects
+                .Where(p => p != null)
+                .ToList()
+                .ForEach(p => p.SetSelection(false, hud.GetPlayingArea()));
+            player.selectedObjects = new List<WorldObject>();
         }
     }
 
@@ -273,7 +299,7 @@ public class UserInput : MonoBehaviour {
                     Player objectHandlerOwner = objectHandler.GetComponentInParent<Player>();
                     if (objectHandlerOwner && player && objectHandlerOwner.username == player.username && player.human)
                     { //this object is controlled by a human player
-                        StateController handlerStateController = objectHandler.GetStateController();
+                        var handlerStateController = objectHandler.GetStateController();
                         //start attack if object is not owned by the same player and this object can attack, else select
                         if (handlerStateController && player.username != owner.username && objectHandler.CanAttack())
                         {
@@ -290,7 +316,7 @@ public class UserInput : MonoBehaviour {
                 {
                     Unit unit = hitObject.transform.parent.GetComponent<Unit>();
                     Building building = hitObject.transform.parent.GetComponent<Building>();
-                    StateController handlerStateController = objectHandler.GetStateController();
+                    var handlerStateController = objectHandler.GetStateController();
 
                     if ((unit || building) && handlerStateController) InputToCommandManager.ToChaseState(targetManager, handlerStateController, worldObject);
                 }
@@ -308,7 +334,7 @@ public class UserInput : MonoBehaviour {
 
         if (owner.username == player.username && player && player.human && objectHandler.IsSelected())
         {
-			IssueMoveOrderToUnit (objectHandler, hitObject, hitPoint);
+			IssueMoveOrderToUnit (objectHandler, hitObject, hitPoint, Vector3.zero);
 
 			if (player.selectedObjects.Count > 0)
 			{
@@ -317,15 +343,12 @@ public class UserInput : MonoBehaviour {
         }
     }
 
-	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, float formationOffset = 0) 
+	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Vector3 formationOffset) 
 	{
-		StateController handlerStateController = objectHandler.GetStateController();
+        var handlerStateController = objectHandler.GetStateController();
 		if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
 		{
-			float x = hitPoint.x + formationOffset;
-			float y = hitPoint.y;
-			float z = hitPoint.z;
-			Vector3 destination = new Vector3(x, y, z);
+			Vector3 destination = hitPoint + formationOffset;
 
 			InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
 		}
@@ -333,13 +356,12 @@ public class UserInput : MonoBehaviour {
 
 	private void IssueMoveOrderToSelectedUnits(GameObject hitObject, Vector3 hitPoint)
 	{
-		float formationOffset = 5.0f;
-
 		for (int i = 0; i < player.selectedObjects.Count; i++) 
 		{
 			Unit unit = (Unit) player.selectedObjects [i];
 
-			IssueMoveOrderToUnit (unit, hitObject, hitPoint, (i + 1) * formationOffset);
+            var formationOffset = UnitManager.CalculateFormationOffset(player, unit);
+			IssueMoveOrderToUnit(unit, hitObject, hitPoint, formationOffset);
 		}
 	}
 

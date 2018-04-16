@@ -96,7 +96,10 @@ public class Player : MonoBehaviour {
         }
 
         // update fog of war revealers
-        fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+        if (fogOfWar)
+        {
+            fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+        }
     }
 
     public virtual void SaveDetails(JsonWriter writer)
