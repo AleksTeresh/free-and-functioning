@@ -40,6 +40,8 @@ public class UserInput : MonoBehaviour {
 
             SwitchEnemy();
 
+            StopUnits();
+
 			RTS.HotkeyUnitSelector.HandleInput (player, hud, mainCamera);
 			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
 			RTS.HotkeyAllyAbilityTargetSelector.HandleInput (player, hud);
@@ -193,6 +195,14 @@ public class UserInput : MonoBehaviour {
             var majorVisibleEnemies = UnitManager.GetPlayerVisibleMajorEnemies(player);
             int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, majorVisibleEnemies);
             InputToCommandManager.SwitchEnemy(targetManager, majorVisibleEnemies, selectionIdx);
+        }
+    }
+
+    private void StopUnits ()
+    {
+        if (Input.GetButtonDown("StopUnits") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability4")))
+        {
+            InputToCommandManager.StopUnits(player, targetManager);
         }
     }
 

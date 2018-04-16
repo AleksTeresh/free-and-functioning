@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Abilities;
@@ -131,6 +132,18 @@ namespace RTS
             {
                 targetManager.SingleTarget = majorEnemies[currentIdx + 1];
             }
+        }
+
+        public static void StopUnits (Player player, TargetManager targetManager)
+        {
+            string stateName = targetManager.InMultiMode
+                ? "Stop Manual Multi"
+                : "Stop Manual";
+
+            player.selectedObjects
+                .Where(p => p is Unit)
+                .ToList()
+                .ForEach(p => p.GetStateController().TransitionToState(ResourceManager.GetAiState(stateName)));
         }
 
         private static void SwitchAttackModeForOne(UnitStateController stateController)
