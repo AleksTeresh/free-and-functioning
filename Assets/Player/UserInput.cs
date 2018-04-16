@@ -42,6 +42,8 @@ public class UserInput : MonoBehaviour {
 
             StopUnits();
 
+            SwitchHoldPosition();
+
 			RTS.HotkeyUnitSelector.HandleInput (player, hud, mainCamera);
 			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
 			RTS.HotkeyAllyAbilityTargetSelector.HandleInput (player, hud);
@@ -203,6 +205,14 @@ public class UserInput : MonoBehaviour {
         if (Input.GetButtonDown("StopUnits") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability4")))
         {
             InputToCommandManager.StopUnits(player, targetManager);
+        }
+    }
+
+    private void SwitchHoldPosition()
+    {
+        if (Input.GetButtonDown("HoldPosition") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability2")))
+        {
+            InputToCommandManager.SwitchHoldPosition(player);
         }
     }
 

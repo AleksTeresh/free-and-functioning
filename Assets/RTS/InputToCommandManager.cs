@@ -146,6 +146,23 @@ namespace RTS
                 .ForEach(p => p.GetStateController().TransitionToState(ResourceManager.GetAiState(stateName)));
         }
 
+        public static void SwitchHoldPosition (Player player)
+        {
+            if (!player.SelectedObject || !(player.SelectedObject is Unit))
+            {
+                return;
+            }
+
+            player.selectedObjects
+                .Where(p => p is Unit)
+                .Select(p => (Unit)p)
+                .ToList()
+                .ForEach(p =>
+                {
+                    p.holdingPosition = !((Unit)player.SelectedObject).holdingPosition;
+                });
+        }
+
         private static void SwitchAttackModeForOne(UnitStateController stateController)
         {
             if (stateController.unit.CanAttackMulti())

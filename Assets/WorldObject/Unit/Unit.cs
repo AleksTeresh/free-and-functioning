@@ -11,6 +11,7 @@ using Abilities;
 public class Unit : WorldObject {
     protected new UnitStateController stateController;
 
+    [HideInInspector] public bool holdingPosition = false;
     // public float moveSpeed, rotateSpeed;
     protected NavMeshAgent agent;
 
@@ -24,7 +25,6 @@ public class Unit : WorldObject {
     public AudioClip moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
 
-    [Header("Abilities")]
     [HideInInspector] public Ability[] abilities;
     [HideInInspector] public Ability[] abilitiesMulti;
 
