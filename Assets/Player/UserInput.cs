@@ -314,7 +314,7 @@ public class UserInput : MonoBehaviour {
 
         if (owner.username == player.username && player && player.human && objectHandler.IsSelected())
         {
-			IssueMoveOrderToUnit (objectHandler, hitObject, hitPoint);
+			IssueMoveOrderToUnit (objectHandler, hitObject, hitPoint, Vector3.zero);
 
 			if (player.selectedObjects.Count > 0)
 			{
@@ -323,15 +323,12 @@ public class UserInput : MonoBehaviour {
         }
     }
 
-	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, float formationOffset = 0) 
+	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Vector3 formationOffset) 
 	{
         var handlerStateController = objectHandler.GetStateController();
 		if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
 		{
-			float x = hitPoint.x + formationOffset;
-			float y = hitPoint.y;
-			float z = hitPoint.z;
-			Vector3 destination = new Vector3(x, y, z);
+			Vector3 destination = hitPoint + formationOffset;
 
 			InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
 		}
@@ -339,13 +336,12 @@ public class UserInput : MonoBehaviour {
 
 	private void IssueMoveOrderToSelectedUnits(GameObject hitObject, Vector3 hitPoint)
 	{
-		float formationOffset = 5.0f;
-
 		for (int i = 0; i < player.selectedObjects.Count; i++) 
 		{
 			Unit unit = (Unit) player.selectedObjects [i];
 
-			IssueMoveOrderToUnit (unit, hitObject, hitPoint, (i + 1) * formationOffset);
+            var formationOffset = UnitManager.CalculateFormationOffset(player, unit);
+			IssueMoveOrderToUnit(unit, hitObject, hitPoint, formationOffset);
 		}
 	}
 
