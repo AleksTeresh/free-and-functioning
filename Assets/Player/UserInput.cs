@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
@@ -240,6 +241,11 @@ public class UserInput : MonoBehaviour {
         {
             player.SelectedObject.SetSelection(false, hud.GetPlayingArea());
             player.SelectedObject = null;
+            player.selectedObjects
+                .Where(p => p != null)
+                .ToList()
+                .ForEach(p => p.SetSelection(false, hud.GetPlayingArea()));
+            player.selectedObjects = new List<WorldObject>();
         }
     }
 
