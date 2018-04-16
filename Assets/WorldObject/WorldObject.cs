@@ -14,7 +14,13 @@ public class WorldObject : MonoBehaviour {
     public Texture2D buildImage;
     public int cost, sellValue, hitPoints, maxHitPoints;
 
-    // statuses
+    // an object is busy and does not react to any commands
+    protected bool isBusy;
+
+    // child renderers without Particle system
+    private List<Renderer> childRenderersWithoutParticles;
+
+    [Header("Status -related")]
     private Statuses.Statuses statusesWrapper;
     public List<Status> ActiveStatuses { get; private set; }
 
@@ -30,7 +36,7 @@ public class WorldObject : MonoBehaviour {
     protected GUIStyle healthStyle = new GUIStyle();
     protected float healthPercentage = 1.0f;
 
-    // weapon and attack
+    [Header("Weapon and attack")]
     public int damage = 10;
     public int damageMulti = 3;
     public float weaponRange = 10.0f;
@@ -42,34 +48,28 @@ public class WorldObject : MonoBehaviour {
     private float currentWeaponChargeTime;
     private float currentWeaponMultiChargeTime;
 
-    // defence
+    [Header("Defence and Invincibility")]
     public float meleeDefence = 0;
     public float rangeDefence = 0;
     public float abilityDefence = 0;
     public bool isInvincible = false;
 
-    // loading related
+    [Header("Game Loading")]
     protected bool loadedSavedValues = false;
     private int loadedTargetId = -1;
 
-    // audio related
+    [Header("Audio")]
     public AudioClip attackSound, selectSound, useWeaponSound;
     public float attackVolume = 1.0f, selectVolume = 1.0f, useWeaponVolume = 1.0f;
     protected AudioElement audioElement;
 
-    // AI related
+    [Header("AI related")]
     public float detectionRange = 20.0f;
     protected StateController stateController;
     private int underAttackFrameCounter;
 
-    // child renderers without Particle system
-    private List<Renderer> childRenderersWithoutParticles;
-
-    // Fog Of War
+    [Header("Fog of War")]
     private FogOfWarAgent fogOfWarAgent;
-
-    // an object is busy and does not react to any commands
-    protected bool isBusy;
 
     public virtual void SetSelection(bool selected, Rect playingArea)
     {

@@ -11,26 +11,27 @@ using Abilities;
 public class Unit : WorldObject {
     protected new UnitStateController stateController;
 
-    // audio 
-    public AudioClip driveSound, moveSound;
+    // public float moveSpeed, rotateSpeed;
+    protected NavMeshAgent agent;
+
+    // protected bool moving, rotating;
+
+    private GameObject destinationTarget;
+    private int loadedDestinationTargetId = -1;
+
+    [Header("Audio")]
+    public AudioClip driveSound;
+    public AudioClip moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
 
-    // abilities
-	[HideInInspector] public Ability[] abilities;
+    [Header("Abilities")]
+    [HideInInspector] public Ability[] abilities;
     [HideInInspector] public Ability[] abilitiesMulti;
 
+    [Header("Attack")]
     protected Quaternion aimRotation;
     protected WorldObject aimTarget;
-
     private ParticleSystem takeDamageEffect;
-
-	// public float moveSpeed, rotateSpeed;
-	protected NavMeshAgent agent;
-
-	// protected bool moving, rotating;
-
-	private GameObject destinationTarget;
-	private int loadedDestinationTargetId = -1;
 
     public override void SetHoverState(GameObject hoverObject)
     {

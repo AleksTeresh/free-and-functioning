@@ -260,6 +260,17 @@ MonoBehaviour:
   damageDealerSpawnRate: 0.1
   debufferSpawnRate: 0.1
   crowdControlSpawnRate: 0.1
+  meleeSwarmling: {fileID: 114417529153538066, guid: ed7db39d5a8cd7e4aaad0e076bdfac59,
+    type: 2}
+  rangeSwarmling: {fileID: 114794812556642682, guid: e3efec08879c3d74e8af4aa1cf477829,
+    type: 2}
+  assassin: {fileID: 114690870411337118, guid: 74e2b5e166820c345ad77aa26778677a, type: 2}
+  hulk: {fileID: 114809429574245842, guid: 3d9d642956ac1334bad4f68dcbac33b0, type: 2}
+  damageDealer: {fileID: 114545065302575032, guid: 947d17bbeaaf5ec44a00dc74457074bc,
+    type: 2}
+  debuffer: {fileID: 114767798242460070, guid: 359e5df26209b6a44843adc7e7559330, type: 2}
+  crowdControl: {fileID: 114797331067803572, guid: 2f5cb77cb05f7174cbaac05081b992e5,
+    type: 2}
   spawnInterval: 5
 --- !u!208 &208797717876701320
 NavMeshObstacle:

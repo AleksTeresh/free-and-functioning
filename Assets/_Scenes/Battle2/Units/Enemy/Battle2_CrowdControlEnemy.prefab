@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4971954150517798}
   - component: {fileID: 195787263768992492}
-  - component: {fileID: 114601146733947432}
+  - component: {fileID: 114982395965824988}
   - component: {fileID: 114737963053709564}
   - component: {fileID: 114010408314449296}
   m_Layer: 0
@@ -1146,47 +1146,6 @@ MonoBehaviour:
   cooldownTimer: 0
   delayTimer: 0
   vfxName: SleepAbilityEffect
---- !u!114 &114601146733947432
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1395473603185090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0df31ae817a86d47a7577f15a4563e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Crowd Control
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
-  hitPoints: 150
-  maxHitPoints: 150
-  damage: 10
-  damageMulti: 3
-  weaponRange: 40
-  aiming: 0
-  weaponAimSpeed: 4
-  weaponRechargeTime: 3
-  weaponMultiRechargeTime: 1
-  meleeDefence: 5
-  rangeDefence: 5
-  abilityDefence: 5
-  isInvincible: 0
-  attackSound: {fileID: 0}
-  selectSound: {fileID: 0}
-  useWeaponSound: {fileID: 0}
-  attackVolume: 1
-  selectVolume: 1
-  useWeaponVolume: 1
-  detectionRange: 40
-  driveSound: {fileID: 0}
-  moveSound: {fileID: 0}
-  driveVolume: 0.5
-  moveVolume: 1
-  abilities: []
-  abilitiesMulti: []
 --- !u!114 &114631466973918434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1267,18 +1226,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: 43fb389dbb6ae174eb1cd7adc9f3675a, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
-  navMeshAgent: {fileID: 0}
-  unit: {fileID: 0}
-  wayPointList: []
-  nextWayPoint: 0
   chaseTarget: {fileID: 0}
-  allyAbilityTarget: {fileID: 0}
-  enemyAbilityTarget: {fileID: 0}
-  aoeAbilityTarget: {x: 0, y: 0, z: 0}
+  controlledObject: {fileID: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
   attacking: 0
+  navMeshAgent: {fileID: 0}
+  unit: {fileID: 0}
+  wayPointList: []
+  nextWayPoint: 0
+  allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
 --- !u!114 &114898157051705700
 MonoBehaviour:
@@ -1320,6 +1280,47 @@ MonoBehaviour:
   cooldownTimer: 0
   delayTimer: 0
   vfxName: SilenceAbilityEffect
+--- !u!114 &114982395965824988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1395473603185090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ae75afbdf3d50459cd2d520d2e6d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Crowd Control
+  buildImage: {fileID: 0}
+  cost: 0
+  sellValue: 0
+  hitPoints: 150
+  maxHitPoints: 150
+  damage: 10
+  damageMulti: 3
+  weaponRange: 20
+  aiming: 0
+  weaponAimSpeed: 4
+  weaponRechargeTime: 1
+  weaponMultiRechargeTime: 1
+  meleeDefence: 2
+  rangeDefence: 2
+  abilityDefence: 2
+  isInvincible: 0
+  attackSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  useWeaponSound: {fileID: 0}
+  attackVolume: 1
+  selectVolume: 1
+  useWeaponVolume: 1
+  detectionRange: 20
+  driveSound: {fileID: 0}
+  moveSound: {fileID: 0}
+  driveVolume: 0.5
+  moveVolume: 1
+  abilities: []
+  abilitiesMulti: []
 --- !u!135 &135800737975033290
 SphereCollider:
   m_ObjectHideFlags: 1

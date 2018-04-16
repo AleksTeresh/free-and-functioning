@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnHouse : Building {
+    [Header("Spawning")]
     public float meleeSwarmlingSpawnRate = 0.3f;
     public float rangeSwarmlingSpawnRate = 0.2f;
     public float assassinSpawnRate = 0.1f;
@@ -10,6 +11,14 @@ public class SpawnHouse : Building {
     public float damageDealerSpawnRate = 0.1f;
     public float debufferSpawnRate = 0.1f;
     public float crowdControlSpawnRate = 0.1f;
+
+    public MeleeSwarmling meleeSwarmling;
+    public RangeSwarmling rangeSwarmling;
+    public Assassin assassin;
+    public Hulk hulk;
+    public DamageDealer damageDealer;
+    public DebufferEnemy debuffer;
+    public CrowdControlEnemy crowdControl;
 
     public float spawnInterval = 5.0f;
 
@@ -20,13 +29,13 @@ public class SpawnHouse : Building {
         base.Start();
 
         actions = new string[] {
-            "MeleeSwarmling",
-            "RangeSwarmling",
-            "Assassin",
-            "Hulk",
-            "EnemyDamageDealer",
-            "DebufferEnemy",
-            "CrowdControlEnemy"
+            meleeSwarmling.name,
+            rangeSwarmling.name,
+            assassin.name,
+            hulk.name,
+            damageDealer.name,
+            debuffer.name,
+            crowdControl.name
         };
 
         probabilityArray = new float[]
