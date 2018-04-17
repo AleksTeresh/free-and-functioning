@@ -421,18 +421,61 @@ public class UserInput : MonoBehaviour {
     {
         Ray ray = Camera.main.ScreenPointToRay(hud.cursorPosition);
         RaycastHit hit;
+
+        bool groundWasHit = false;
+        GameObject ground = null;
+
+        // first try without hitSphere enabled
         if (Physics.Raycast(ray, out hit))
         {
             var relatedMesh = hit.collider.gameObject.GetComponent<MeshRenderer>();
 
-            if (WorkManager.ObjectIsGround(hit.collider.gameObject) || (relatedMesh && relatedMesh.enabled))
+            if (relatedMesh && relatedMesh.enabled)
             {
                 return hit.collider.gameObject;
             }
 
-            return null;
+            if (WorkManager.ObjectIsGround(hit.collider.gameObject))
+            {
+                groundWasHit = true;
+                ground = hit.collider.gameObject;
+            }
+            // return null;
         }
- 
+
+        var nearbyObjects = WorkManager.FindNearbyObjects(hit.point, 7);
+        nearbyObjects.ForEach(p =>
+        {
+            p.GetHitSphere().enabled = true;
+        });
+
+        // try with hit sphere enabled
+        if (Physics.Raycast(ray, out hit))
+        {
+            var relatedMesh = hit.collider.gameObject;
+
+            if (relatedMesh.GetComponent<HitSphere>())
+            {
+                nearbyObjects.ForEach(p =>
+                {
+                    p.GetHitSphere().enabled = false;
+                });
+
+                return hit.collider.gameObject;
+            }
+        }
+
+        nearbyObjects.ForEach(p =>
+        {
+            p.GetHitSphere().enabled = false;
+        });
+
+        // finally check if at least ground was hit
+        if (groundWasHit)
+        {
+            return ground;
+        }
+
         return null;
     }
 
