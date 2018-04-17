@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657928, g: 0.4964131, b: 0.5748174, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657958, g: 0.49641377, b: 0.5748177, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1171,6 +1171,18 @@ Prefab:
     - target: {fileID: 1252974897935272, guid: b14663f64558e724bbb66f5b61c2ae02, type: 2}
       propertyPath: m_Name
       value: Battle2_Assassin (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676762214152992, guid: b14663f64558e724bbb66f5b61c2ae02, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676762214152992, guid: b14663f64558e724bbb66f5b61c2ae02, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676762214152992, guid: b14663f64558e724bbb66f5b61c2ae02, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b14663f64558e724bbb66f5b61c2ae02, type: 2}

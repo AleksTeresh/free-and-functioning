@@ -18,7 +18,7 @@ public class Conquest : VictoryCondition
         {
             if (!PlayerMeetsConditions(player)) playersLeft--;
         }
-        return playersLeft == 1;
+        return false;
     }
 
     public override bool PlayerMeetsConditions(Player player)
