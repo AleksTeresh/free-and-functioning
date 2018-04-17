@@ -10,13 +10,13 @@ public class ChaseAction : UnitAction {
     {
         Unit unit = controller.unit;
         WorldObject chaseTarget = controller.chaseTarget;
-        if (chaseTarget && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, chaseTarget.GetFogOfWarAgent()))
+        if (chaseTarget && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, chaseTarget))
         {
-            controller.unit.StartMove(chaseTarget.transform.position);
+            unit.StartMove(WorkManager.GetTargetClosestPoint(unit, chaseTarget));
         }
         else
         {
-            controller.unit.StopMove();
+            unit.StopMove();
         }
     } 
 }

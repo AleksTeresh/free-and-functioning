@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Abilities;
 using AI;
+using RTS;
 
 [CreateAssetMenu (menuName = "AI/Actions/Ability")]
 public class AbilityAction : UnitAction {
@@ -35,7 +36,7 @@ public class AbilityAction : UnitAction {
 		}
 
 		Vector3 currentPosition = unit.transform.position;
-		Vector3 currentEnemyPosition = chaseTarget.transform.position;
+		Vector3 currentEnemyPosition = WorkManager.GetTargetClosestPoint(unit, chaseTarget);
 		Vector3 direction = currentEnemyPosition - currentPosition;
 
 		if (direction.sqrMagnitude < ability.range * ability.range)

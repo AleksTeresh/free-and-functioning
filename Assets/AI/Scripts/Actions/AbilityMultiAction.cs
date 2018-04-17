@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using AI;
 using Abilities;
+using RTS;
 
 [CreateAssetMenu(menuName = "AI/Actions/AbilityMulti")]
 public class AbilityMultiAction : UnitAction
@@ -34,7 +35,7 @@ public class AbilityMultiAction : UnitAction
         List<WorldObject> reachableEnemies = controller.nearbyEnemies
             .Where(p =>
             {
-                Vector3 currentEnemyPosition = p.transform.position;
+                Vector3 currentEnemyPosition = WorkManager.GetTargetClosestPoint(unit, p);
                 Vector3 direction = currentEnemyPosition - currentPosition;
 
                 return direction.sqrMagnitude < abilityToUse.range * abilityToUse.range;

@@ -21,9 +21,9 @@ public class ChangeTargetToMostVulnerableAction : UnitAction
         {
             controller.chaseTarget = mostVulnerableEnemy;
 
-            if (!WorkManager.ObjectCanReachTarget(unit, mostVulnerableEnemy.GetFogOfWarAgent()))
+            if (!WorkManager.ObjectCanReachTarget(unit, mostVulnerableEnemy))
             {
-                controller.unit.StartMove(mostVulnerableEnemy.transform.position);
+                controller.unit.StartMove(WorkManager.GetTargetClosestPoint(unit, mostVulnerableEnemy));
             }
             else
             {

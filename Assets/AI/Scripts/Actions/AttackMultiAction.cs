@@ -29,7 +29,7 @@ public class AttackMultiAction : Action
         List<WorldObject> reachableEnemies = controller.nearbyEnemies
             .Where(p =>
             {
-                Vector3 currentEnemyPosition = p.transform.position;
+                Vector3 currentEnemyPosition = WorkManager.GetTargetClosestPoint(controlledObject, p);
                 Vector3 direction = currentEnemyPosition - currentPosition;
 
                 return direction.sqrMagnitude < controlledObject.weaponRange * controlledObject.weaponRange;
