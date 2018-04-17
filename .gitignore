@@ -45,4 +45,6 @@ sysinfo.txt
 **/.idea/**/*.iml
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
-**/JetBrains
+**/JetBrains*
+Assets/Plugins
+Assets/Plugins.meta
