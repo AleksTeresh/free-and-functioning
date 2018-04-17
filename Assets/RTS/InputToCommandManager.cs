@@ -154,13 +154,15 @@ namespace RTS
                 return;
             }
 
+            var currentMode = ((Unit)player.SelectedObject).holdingPosition;
+
             player.selectedObjects
                 .Where(p => p is Unit)
                 .Select(p => (Unit)p)
                 .ToList()
                 .ForEach(p =>
                 {
-                    p.holdingPosition = !((Unit)player.SelectedObject).holdingPosition;
+                    p.holdingPosition = !currentMode;
                 });
         }
 
