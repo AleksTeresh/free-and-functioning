@@ -30,7 +30,7 @@ namespace AI.Spawner
             if (nameOfNextSpawn != null && nameOfNextSpawn != "")
             {
                 // TODO: change hardcoded center shift to the one derived from a variable
-                var newSpawnPoint = WorkManager.GetRandomDestinationPoint(building.transform.position + Vector3.back * 30, 30);
+                var newSpawnPoint = WorkManager.GetRandomDestinationPoint(building.transform.position, 30);
                 building.SetSpawnPoint(newSpawnPoint);
                 building.PerformAction(nameOfNextSpawn);
             }
