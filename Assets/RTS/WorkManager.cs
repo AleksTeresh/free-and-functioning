@@ -226,27 +226,27 @@ namespace RTS
             return areaMaskFromName;
         }
 
-        public static bool ObjectCanReachTarget(WorldObject self, FogOfWarAgent target)
+        public static bool ObjectCanReachTarget(WorldObject self, WorldObject target)
         {
-            Vector3 targetLocation = target.transform.position;
+            Vector3 targetLocation = WorkManager.GetTargetClosestPoint(self, target);
             Vector3 direction = targetLocation - self.transform.position;
             float targetDistance = direction.magnitude;
 
-            return direction.magnitude <= (0.8f * self.weaponRange) && target.IsObserved();
+            return direction.magnitude <= (0.8f * self.weaponRange) && target.GetFogOfWarAgent().IsObserved();
         }
 
-		public static bool ObjectCanReachTargetWithAbility(WorldObject self, Ability ability, FogOfWarAgent target)
+		public static bool ObjectCanReachTargetWithAbility(WorldObject self, Ability ability, WorldObject target)
 		{
 			if (!ability) 
 			{
 				return false;
 			}
 
-			Vector3 targetLocation = target.transform.position;
+			Vector3 targetLocation = WorkManager.GetTargetClosestPoint(self, target);
 			Vector3 direction = targetLocation - self.transform.position;
 			float targetDistance = direction.magnitude;
 
-			return direction.magnitude <= (0.8f * ability.range) && target.IsObserved();
+			return direction.magnitude <= (0.8f * ability.range) && target.GetFogOfWarAgent().IsObserved();
 		}
 
         public static bool IsObjectFacingTarget (WorldObject obj, WorldObject target)
@@ -282,6 +282,11 @@ namespace RTS
             }
 
             return -1;
+        }
+
+        public static Vector3 GetTargetClosestPoint(WorldObject attacker, WorldObject target)
+        {
+            return target.GetSelectionBounds().ClosestPoint(attacker.transform.position);
         }
     }
 }

@@ -17,7 +17,7 @@ public class AllyAbilityChaseAction : UnitAction {
 		if (allyChaseTarget != null)
 		{
 			Vector3 currentPosition = unit.transform.position;
-			Vector3 currentAllyPosition = allyChaseTarget.transform.position;
+			Vector3 currentAllyPosition = WorkManager.GetTargetClosestPoint(unit, allyChaseTarget);
 			Vector3 direction = currentAllyPosition - currentPosition;
 
 			if (direction.sqrMagnitude < ability.range * ability.range)

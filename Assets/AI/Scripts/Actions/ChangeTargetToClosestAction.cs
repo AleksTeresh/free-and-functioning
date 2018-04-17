@@ -19,9 +19,9 @@ public class ChangeTargetToClosestAction : UnitAction
         {
             controller.chaseTarget = closestEnemy;
 
-            if (!WorkManager.ObjectCanReachTarget(unit, closestEnemy.GetFogOfWarAgent()))
+            if (!WorkManager.ObjectCanReachTarget(unit, closestEnemy))
             {
-                controller.unit.StartMove(closestEnemy.transform.position);
+                controller.unit.StartMove(WorkManager.GetTargetClosestPoint(unit, closestEnemy));
             }
             else
             {

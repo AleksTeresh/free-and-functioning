@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using RTS;
 
 namespace AI
 {
@@ -20,7 +21,7 @@ namespace AI
             }
 
             Vector3 currentPosition = controlledObject.transform.position;
-            Vector3 currentEnemyPosition = chaseTarget.transform.position;
+            Vector3 currentEnemyPosition = WorkManager.GetTargetClosestPoint(controlledObject, chaseTarget);
             Vector3 direction = currentEnemyPosition - currentPosition;
 
             if (
