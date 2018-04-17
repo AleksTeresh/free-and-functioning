@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Abilities;
+using Formation;
 
 namespace RTS
 {
@@ -161,6 +162,20 @@ namespace RTS
                 {
                     p.holdingPosition = !((Unit)player.SelectedObject).holdingPosition;
                 });
+        }
+
+        public static void SwitchFormationType (FormationManager formationManager)
+        {
+            if (!formationManager) return;
+
+            if (formationManager.CurrentFormationType == FormationType.Auto)
+            {
+                formationManager.CurrentFormationType = FormationType.Manual;
+            }
+            else if (formationManager.CurrentFormationType == FormationType.Manual)
+            {
+                formationManager.CurrentFormationType = FormationType.Auto;
+            }
         }
 
         private static void SwitchAttackModeForOne(UnitStateController stateController)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using RTS;
+using Formation;
 
 public class HUD : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class HUD : MonoBehaviour
     private Player player;
     // private Camera uiCamera;
     private TargetManager targetManager;
+    private FormationManager formationManager;
 
     // audio
     public AudioClip clickSound;
@@ -71,6 +73,7 @@ public class HUD : MonoBehaviour
 
         player = transform.root.GetComponent<Player>();
         targetManager = player.GetComponentInChildren<TargetManager>();
+        formationManager = player.GetComponentInChildren<FormationManager>();
         playerUnitBar = GetComponentInChildren<PlayerUnitBar>();
         enemyUnitBar = GetComponentInChildren<EnemyUnitBar>();
         selectionIndicator = GetComponentInChildren<SelectionIndicator>();
@@ -388,6 +391,17 @@ public class HUD : MonoBehaviour
 
         Rect enemyCounterPos = new Rect(150, 10, buttonWidth, buttonHeight);
         GUI.TextArea(enemyCounterPos, "Enemy count: " + enemyCount.ToString());
+
+        Rect formationModeIndicatorPos = new Rect(300, 10, buttonWidth, buttonHeight);
+        if (formationManager.CurrentFormationType == FormationType.Auto)
+        {
+            GUI.TextArea(formationModeIndicatorPos, "Auto Formation");
+        }
+        else
+        {
+            GUI.TextArea(formationModeIndicatorPos, "Manual Formation");
+        }
+
 
         GUI.EndGroup();
     }

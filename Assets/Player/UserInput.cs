@@ -3,11 +3,13 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using Formation;
 
 public class UserInput : MonoBehaviour {
 
     private Player player;
     private TargetManager targetManager;
+    private FormationManager formationManager;
     private HUD hud;
     private Camera mainCamera;
 
@@ -15,6 +17,7 @@ public class UserInput : MonoBehaviour {
     void Start () {
         player = transform.root.GetComponent<Player>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
+        formationManager = transform.root.GetComponentInChildren<FormationManager>();
         hud = transform.root.GetComponentInChildren<HUD>();
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -43,6 +46,8 @@ public class UserInput : MonoBehaviour {
             StopUnits();
 
             SwitchHoldPosition();
+
+            SwitchFormationType();
 
 			RTS.HotkeyUnitSelector.HandleInput (player, hud, mainCamera);
 			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
@@ -216,6 +221,14 @@ public class UserInput : MonoBehaviour {
         }
     }
 
+    private void SwitchFormationType()
+    {
+        if (Input.GetButtonDown("SwitchFormation") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability1")))
+        {
+            InputToCommandManager.SwitchFormationType(formationManager);
+        }
+    }
+
     private void MouseActivity()
     {
         if (Input.GetButtonDown("Action 1") || Gamepad.GetButtonDown("Action 1")) {
@@ -360,7 +373,21 @@ public class UserInput : MonoBehaviour {
 		{
 			Unit unit = (Unit) player.selectedObjects [i];
 
-            var formationOffset = UnitManager.CalculateFormationOffset(player, unit);
+            var formationOffset = Vector3.zero;
+            switch (formationManager.CurrentFormationType)
+            {
+                case FormationType.Auto:
+                    formationOffset = FormationUtils.CalculateAutoFormationOffset(player, unit, hitPoint);
+                    break;
+
+                case FormationType.Manual:
+                    formationOffset = FormationUtils.CalculateManualFormationOffset(player, unit);
+                    break;
+
+                default:
+                    break;
+            }
+
 			IssueMoveOrderToUnit(unit, hitObject, hitPoint, formationOffset);
 		}
 	}

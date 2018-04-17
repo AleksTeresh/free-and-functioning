@@ -271,7 +271,7 @@ MonoBehaviour:
   debuffer: {fileID: 114767798242460070, guid: 359e5df26209b6a44843adc7e7559330, type: 2}
   crowdControl: {fileID: 114797331067803572, guid: 2f5cb77cb05f7174cbaac05081b992e5,
     type: 2}
-  spawnInterval: 5
+  spawnInterval: 10
 --- !u!208 &208797717876701320
 NavMeshObstacle:
   m_ObjectHideFlags: 1

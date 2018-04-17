@@ -15,9 +15,13 @@ namespace Statuses
             {
                 navMeshAgent = target.GetComponent<NavMeshAgent>();
                 // originalSpeed = navMeshAgent.speed;
-                absoluteSpeedDebuff = navMeshAgent.speed * movementSpeedDebuff;
 
-                navMeshAgent.speed -= absoluteSpeedDebuff;
+                if (navMeshAgent)
+                {
+                    absoluteSpeedDebuff = navMeshAgent.speed * movementSpeedDebuff;
+
+                    navMeshAgent.speed -= absoluteSpeedDebuff;
+                }
             }
         }
 

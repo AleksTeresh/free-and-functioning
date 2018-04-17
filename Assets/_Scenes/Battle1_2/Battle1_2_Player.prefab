@@ -2435,6 +2435,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1999595506654536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4556163572048500}
+  - component: {fileID: 114904854290835060}
+  m_Layer: 0
+  m_Name: FormationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4005734683050122
 Transform:
   m_ObjectHideFlags: 1
@@ -2680,6 +2696,7 @@ Transform:
   m_LocalPosition: {x: 229.3, y: 2, z: 223.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4556163572048500}
   - {fileID: 4821039834892850}
   - {fileID: 4374430458780650}
   - {fileID: 4166369045980556}
@@ -2716,7 +2733,7 @@ Transform:
   - {fileID: 4195122546588124}
   - {fileID: 4005734683050122}
   m_Father: {fileID: 4151126619086528}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4171385959117112
 Transform:
@@ -2950,7 +2967,7 @@ Transform:
   m_Children:
   - {fileID: 224058166725461338}
   m_Father: {fileID: 4151126619086528}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4378499523812600
 Transform:
@@ -3151,7 +3168,7 @@ Transform:
   - {fileID: 4597995865957910}
   - {fileID: 4421592738402306}
   m_Father: {fileID: 4151126619086528}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4524196627523468
 Transform:
@@ -3209,7 +3226,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4151126619086528}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4532041563517264
 Transform:
@@ -3240,6 +3257,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4738496723340450}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4556163572048500
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1999595506654536}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 229.82455, y: 18.66172, z: 235.60829}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4151126619086528}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4561240750758226
 Transform:
@@ -3520,7 +3550,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4151126619086528}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4826355005788724
 Transform:
@@ -5299,18 +5329,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: e91a3bcc49b861244a4dca95e63e45a2, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
-  navMeshAgent: {fileID: 0}
-  unit: {fileID: 0}
-  wayPointList: []
-  nextWayPoint: 0
   chaseTarget: {fileID: 0}
-  allyAbilityTarget: {fileID: 0}
-  enemyAbilityTarget: {fileID: 0}
-  aoeAbilityTarget: {x: 0, y: 0, z: 0}
+  controlledObject: {fileID: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
   attacking: 0
+  navMeshAgent: {fileID: 0}
+  unit: {fileID: 0}
+  wayPointList: []
+  nextWayPoint: 0
+  allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
 --- !u!114 &114009802871142204
 MonoBehaviour:
@@ -6209,18 +6240,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: e91a3bcc49b861244a4dca95e63e45a2, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
-  navMeshAgent: {fileID: 0}
-  unit: {fileID: 0}
-  wayPointList: []
-  nextWayPoint: 0
   chaseTarget: {fileID: 0}
-  allyAbilityTarget: {fileID: 0}
-  enemyAbilityTarget: {fileID: 0}
-  aoeAbilityTarget: {x: 0, y: 0, z: 0}
+  controlledObject: {fileID: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
   attacking: 0
+  navMeshAgent: {fileID: 0}
+  unit: {fileID: 0}
+  wayPointList: []
+  nextWayPoint: 0
+  allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
 --- !u!114 &114274049740007306
 MonoBehaviour:
@@ -6573,6 +6605,7 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 20
+  holdingPosition: 0
   driveSound: {fileID: 0}
   moveSound: {fileID: 0}
   driveVolume: 0.5
@@ -6713,18 +6746,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: e91a3bcc49b861244a4dca95e63e45a2, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
-  navMeshAgent: {fileID: 0}
-  unit: {fileID: 0}
-  wayPointList: []
-  nextWayPoint: 0
   chaseTarget: {fileID: 0}
-  allyAbilityTarget: {fileID: 0}
-  enemyAbilityTarget: {fileID: 0}
-  aoeAbilityTarget: {x: 0, y: 0, z: 0}
+  controlledObject: {fileID: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
   attacking: 0
+  navMeshAgent: {fileID: 0}
+  unit: {fileID: 0}
+  wayPointList: []
+  nextWayPoint: 0
+  allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
 --- !u!114 &114466366976977972
 MonoBehaviour:
@@ -6761,6 +6795,7 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 20
+  holdingPosition: 0
   driveSound: {fileID: 0}
   moveSound: {fileID: 0}
   driveVolume: 0.5
@@ -7214,6 +7249,7 @@ MonoBehaviour:
   critical: {fileID: 2800000, guid: d346f4a6f4dde294e9c79bc33682f1a1, type: 3}
   clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
   clickVolume: 1
+  cursorPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114559608059740214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7395,6 +7431,7 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 50
+  holdingPosition: 0
   driveSound: {fileID: 0}
   moveSound: {fileID: 0}
   driveVolume: 0.5
@@ -7844,6 +7881,7 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 50
+  holdingPosition: 0
   driveSound: {fileID: 8300000, guid: 98c83b94b835ba54191f3292e8d44a5b, type: 3}
   moveSound: {fileID: 8300000, guid: 568155acc84ab834eabc52a5a512dad3, type: 3}
   driveVolume: 0.5
@@ -8172,18 +8210,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: e91a3bcc49b861244a4dca95e63e45a2, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
-  navMeshAgent: {fileID: 0}
-  unit: {fileID: 0}
-  wayPointList: []
-  nextWayPoint: 0
   chaseTarget: {fileID: 0}
-  allyAbilityTarget: {fileID: 0}
-  enemyAbilityTarget: {fileID: 0}
-  aoeAbilityTarget: {x: 0, y: 0, z: 0}
+  controlledObject: {fileID: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
   attacking: 0
+  navMeshAgent: {fileID: 0}
+  unit: {fileID: 0}
+  wayPointList: []
+  nextWayPoint: 0
+  allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
 --- !u!114 &114881258911489464
 MonoBehaviour:
@@ -8233,6 +8272,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: r
+--- !u!114 &114904854290835060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1999595506654536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d284a6c0cb90d2f468273e91cb8253df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114909616707410344
 MonoBehaviour:
   m_ObjectHideFlags: 1

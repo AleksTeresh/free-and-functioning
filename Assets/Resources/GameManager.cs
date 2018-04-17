@@ -74,8 +74,12 @@ public class GameManager : MonoBehaviour
     {
         if (victoryConditions != null)
         {
+            Player[] players = GameObject.FindObjectsOfType(typeof(Player)) as Player[];
+
             foreach (VictoryCondition victoryCondition in victoryConditions)
             {
+                victoryCondition.SetPlayers(players);
+
                 if (victoryCondition.GameFinished())
                 {
                     ResultsScreen resultsScreen = hud.GetComponent<ResultsScreen>();
