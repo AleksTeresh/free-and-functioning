@@ -387,7 +387,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1912619609057764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.4, y: -2, z: -53.9}
+  m_LocalPosition: {x: -36.40001, y: -2, z: -53.899994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388979558749846}
@@ -1167,8 +1167,8 @@ MonoBehaviour:
   buildImage: {fileID: 2800000, guid: 4b94e65a983d3b644a0c36bdb04f482d, type: 3}
   cost: 0
   sellValue: 0
-  hitPoints: 200
-  maxHitPoints: 200
+  hitPoints: 250
+  maxHitPoints: 250
   damage: 35
   damageMulti: 40
   weaponRange: 30
@@ -1187,6 +1187,7 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 50
+  holdingPosition: 0
   driveSound: {fileID: 8300000, guid: 98c83b94b835ba54191f3292e8d44a5b, type: 3}
   moveSound: {fileID: 8300000, guid: 568155acc84ab834eabc52a5a512dad3, type: 3}
   driveVolume: 0.5
@@ -1340,18 +1341,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: e91a3bcc49b861244a4dca95e63e45a2, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
-  navMeshAgent: {fileID: 0}
-  unit: {fileID: 0}
-  wayPointList: []
-  nextWayPoint: 0
   chaseTarget: {fileID: 0}
-  allyAbilityTarget: {fileID: 0}
-  enemyAbilityTarget: {fileID: 0}
-  aoeAbilityTarget: {x: 0, y: 0, z: 0}
+  controlledObject: {fileID: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
   attacking: 0
+  navMeshAgent: {fileID: 0}
+  unit: {fileID: 0}
+  wayPointList: []
+  nextWayPoint: 0
+  allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
 --- !u!114 &114979115656422290
 MonoBehaviour:
@@ -1441,7 +1443,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

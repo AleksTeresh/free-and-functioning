@@ -436,7 +436,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962886149009818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 197.82782, y: -0.0000009536743, z: 219.38283}
+  m_LocalPosition: {x: 160.7518, y: 0.0000009536743, z: 223.24272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4964019756741568}
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   range: 300
   cooldown: 55
   delayTime: 0
-  damage: 50
+  damage: 30
   multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
@@ -1266,10 +1266,10 @@ MonoBehaviour:
   buildImage: {fileID: 2800000, guid: 4b94e65a983d3b644a0c36bdb04f482d, type: 3}
   cost: 0
   sellValue: 0
-  hitPoints: 200
-  maxHitPoints: 200
-  damage: 35
-  damageMulti: 40
+  hitPoints: 400
+  maxHitPoints: 400
+  damage: 20
+  damageMulti: 20
   weaponRange: 30
   aiming: 0
   weaponAimSpeed: 8
@@ -1374,7 +1374,7 @@ MonoBehaviour:
   enemyAbilityTarget: {fileID: 0}
   aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
-  abilityToUseDecisionInterval: 10
+  abilityToUseDecisionInterval: 5
 --- !u!136 &136185449660152106
 CapsuleCollider:
   m_ObjectHideFlags: 1
