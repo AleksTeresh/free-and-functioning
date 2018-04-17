@@ -34,7 +34,7 @@ namespace Statuses
 
         protected override void AffectTarget()
         {
-            if (target)
+            if (target && navMeshAgent) // move the target only if has a nav mesh agent
             {
                 // Move target in the initial projectile direction
                 float positionChange = Time.deltaTime * speed;

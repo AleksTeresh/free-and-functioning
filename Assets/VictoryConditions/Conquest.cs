@@ -18,12 +18,12 @@ public class Conquest : VictoryCondition
         {
             if (!PlayerMeetsConditions(player)) playersLeft--;
         }
-        return false;
+
+        return playersLeft == 1 && false;
     }
 
     public override bool PlayerMeetsConditions(Player player)
     {
         return player && !player.IsDead();
     }
-
 }
