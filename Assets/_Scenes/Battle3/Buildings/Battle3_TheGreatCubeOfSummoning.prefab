@@ -28,7 +28,7 @@ GameObject:
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1296883343808736
@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1296883343808736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.71, y: -2, z: 79.12}
+  m_LocalPosition: {x: -1.2, y: -2, z: 20.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4056203638853586}
@@ -253,13 +253,22 @@ MonoBehaviour:
   maxBuildProgress: 0
   finishedJobSound: {fileID: 0}
   finishedJobVolume: 1
-  meleeSwarmlingSpawnRate: 0.3
-  rangeSwarmlingSpawnRate: 0.2
+  spawnRateUpperLimit: 100
+  spawnRateLowerLimit: 0
+  meleeSwarmlingSpawnRate: 4
+  meleeSwarmlingSpawnAccel: 0.1
+  rangeSwarmlingSpawnRate: 1
+  rangeSwarmlingSpawnAccel: 0.1
   assassinSpawnRate: 0.1
+  assassinSpawnAccel: 0.1
   hulkSpawnRate: 0.1
+  hulkSpawnAccel: 0.1
   damageDealerSpawnRate: 0.1
-  debufferSpawnRate: 0.1
+  damageDealerSpawnAccel: 0.1
+  debufferSpawnRate: 0
+  debufferSpawnAccel: 0
   crowdControlSpawnRate: 0.1
+  crowdControlSpawnAccel: 0
   meleeSwarmling: {fileID: 114417529153538066, guid: ed7db39d5a8cd7e4aaad0e076bdfac59,
     type: 2}
   rangeSwarmling: {fileID: 114794812556642682, guid: e3efec08879c3d74e8af4aa1cf477829,
@@ -272,6 +281,9 @@ MonoBehaviour:
   crowdControl: {fileID: 114797331067803572, guid: 2f5cb77cb05f7174cbaac05081b992e5,
     type: 2}
   spawnInterval: 10
+  spawnIntervalAccel: -0.1
+  spawnIntervalLowerLimit: 2
+  spawnIntervalUpperLimit: 600
 --- !u!208 &208797717876701320
 NavMeshObstacle:
   m_ObjectHideFlags: 1
@@ -281,7 +293,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 5, y: 5, z: 5}
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 10
   m_Carve: 1
   m_CarveOnlyStationary: 1

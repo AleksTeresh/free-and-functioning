@@ -56,4 +56,4 @@ MonoBehaviour:
   isActive: 0
   target: {fileID: 0}
   duration: 0
-  damageBuff: 20
+  damageBuff: 40
