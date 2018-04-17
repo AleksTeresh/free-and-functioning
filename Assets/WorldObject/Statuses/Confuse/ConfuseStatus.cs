@@ -28,7 +28,7 @@ namespace Statuses
                 if (targetStateController)
                 {
                     targetStateController.chaseTarget = null;
-                    targetStateController.TransitionToState(ResourceManager.GetAiState("Idle Idler"));
+                    targetStateController.TransitionToState(ResourceManager.GetAiState(targetStateController.GetDefaultState().name));
                 }
 
                 target.SetPlayer();

@@ -1735,6 +1735,16 @@ Prefab:
       propertyPath: debufferSpawnRate
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114862350624748096, guid: e5ed5f454b2bca44195646a7abbac446,
+        type: 2}
+      propertyPath: spawnIntervalAccel
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114862350624748096, guid: e5ed5f454b2bca44195646a7abbac446,
+        type: 2}
+      propertyPath: spawnIntervalUpperLimit
+      value: 600
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5ed5f454b2bca44195646a7abbac446, type: 2}
   m_IsPrefabParent: 0
