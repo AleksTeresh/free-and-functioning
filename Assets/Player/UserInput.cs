@@ -199,9 +199,14 @@ public class UserInput : MonoBehaviour {
     {
         if (Input.GetButtonDown("NextEnemy") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability3") ))
         {
-            var majorVisibleEnemies = UnitManager.GetPlayerVisibleMajorEnemies(player);
-            int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, majorVisibleEnemies);
-            InputToCommandManager.SwitchEnemy(targetManager, majorVisibleEnemies, selectionIdx);
+            var majorVisibleEnemies = UnitManager.GetPlayerVisibleMajorEnemies(player).Cast<WorldObject>();
+            var visibleBuildings = UnitManager.GetVisibleEnemyBuildings(player);
+            var visibleBossParts = UnitManager.GetVisibleEnemyBossParts(player);
+
+            var enemiesToDisplay = majorVisibleEnemies.Concat(visibleBuildings).Concat(visibleBossParts).ToList();
+
+            int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, enemiesToDisplay);
+            InputToCommandManager.SwitchEnemy(targetManager, enemiesToDisplay, selectionIdx);
         }
     }
 
@@ -329,9 +334,11 @@ public class UserInput : MonoBehaviour {
                 {
                     Unit unit = hitObject.transform.parent.GetComponent<Unit>();
                     Building building = hitObject.transform.parent.GetComponent<Building>();
+                    BossPart bossPart = hitObject.transform.parent.GetComponent<BossPart>();
+
                     var handlerStateController = objectHandler.GetStateController();
 
-                    if ((unit || building) && handlerStateController) InputToCommandManager.ToChaseState(targetManager, handlerStateController, worldObject);
+                    if ((unit || building || bossPart) && handlerStateController) InputToCommandManager.ToChaseState(targetManager, handlerStateController, worldObject);
                 }
                 else ChangeSelection(objectHandler, worldObject);
             }
@@ -446,8 +453,11 @@ public class UserInput : MonoBehaviour {
         var nearbyObjects = WorkManager.FindNearbyObjects(hit.point, 7);
         nearbyObjects.ForEach(p =>
         {
-            p.GetHitSphere().enabled = true;
-        });
+            if (p.GetHitSphere())
+            {
+                p.GetHitSphere().enabled = true;
+            }
+        }); 
 
         // try with hit sphere enabled
         if (Physics.Raycast(ray, out hit))
@@ -458,7 +468,10 @@ public class UserInput : MonoBehaviour {
             {
                 nearbyObjects.ForEach(p =>
                 {
-                    p.GetHitSphere().enabled = false;
+                    if (p.GetHitSphere())
+                    {
+                        p.GetHitSphere().enabled = false;
+                    }
                 });
 
                 return hit.collider.gameObject;
@@ -467,7 +480,10 @@ public class UserInput : MonoBehaviour {
 
         nearbyObjects.ForEach(p =>
         {
-            p.GetHitSphere().enabled = false;
+            if (p.GetHitSphere())
+            {
+                p.GetHitSphere().enabled = false;
+            }
         });
 
         // finally check if at least ground was hit
@@ -502,7 +518,9 @@ public class UserInput : MonoBehaviour {
                     {
                         Unit unit = hoverObject.transform.parent.GetComponent<Unit>();
                         Building building = hoverObject.transform.parent.GetComponent<Building>();
-                        if (owner.username == player.username && (unit || building)) hud.SetCursorState(CursorState.Select);
+                        BossPart bossPart = hoverObject.transform.parent.GetComponent<BossPart>();
+
+                        if (owner.username == player.username && (unit || building || bossPart)) hud.SetCursorState(CursorState.Select);
                     }
                 }
             }

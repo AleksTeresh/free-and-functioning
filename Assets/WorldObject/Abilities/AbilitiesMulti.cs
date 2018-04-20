@@ -6,7 +6,7 @@ namespace Abilities
 {
     public class AbilitiesMulti : MonoBehaviour
     {
-        // wrapper object around unit's multi-target abilities
+        // wrapper object around indicatedObject's multi-target abilities
     }
 }
 

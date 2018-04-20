@@ -266,16 +266,16 @@ namespace RTS
             return Vector3.SqrMagnitude(a - b) < 0.1;
         }
 
-        public static int GetTargetSelectionIndex (WorldObject currentTarget, List<Unit> majorEnemies)
+        public static int GetTargetSelectionIndex (WorldObject currentTarget, List<WorldObject> enemies)
         {
-            if (!currentTarget || majorEnemies.Count == 0)
+            if (!currentTarget || enemies.Count == 0)
             {
                 return -1;
             }
 
-            for (int i = 0; i < majorEnemies.Count; i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
-                if (currentTarget.ObjectId == majorEnemies[i].ObjectId)
+                if (currentTarget.ObjectId == enemies[i].ObjectId)
                 {
                     return i;
                 }

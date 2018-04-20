@@ -292,7 +292,7 @@ TerrainCollider:
   m_GameObject: {fileID: 120528891}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: 422383a5e744dab4a85cceabc8148154, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: f42cb0f8c2d008d40912296a0c416165, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &120528894
 Terrain:
@@ -1616,7 +1616,7 @@ Prefab:
         type: 2}
       propertyPath: heightMap
       value: 
-      objectReference: {fileID: 4900000, guid: 7b87628b4c0218340a08dbcc5c66d442, type: 3}
+      objectReference: {fileID: 4900000, guid: dc5df0a09a198594d8c66d268f93bcbe, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3, type: 2}
   m_IsPrefabParent: 0

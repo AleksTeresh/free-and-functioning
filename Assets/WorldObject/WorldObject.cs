@@ -26,7 +26,6 @@ public class WorldObject : MonoBehaviour {
 
     protected Player player;
     protected HUD hud;
-    protected LocalUI localUI;
     protected Collider hitSphereCollider;
     protected TargetManager targetManager;
     protected string[] actions = { };
@@ -67,7 +66,7 @@ public class WorldObject : MonoBehaviour {
     [Header("AI related")]
     public float detectionRange = 20.0f;
     protected StateController stateController;
-    private int underAttackFrameCounter;
+    protected int underAttackFrameCounter;
 
     [Header("Fog of War")]
     private FogOfWarAgent fogOfWarAgent;
@@ -165,13 +164,15 @@ public class WorldObject : MonoBehaviour {
                 Player owner = hoverObject.transform.root.GetComponent<Player>();
                 Unit unit = hoverObject.transform.parent.GetComponent<Unit>();
                 Building building = hoverObject.transform.parent.GetComponent<Building>();
+                BossPart bossPart = hoverObject.transform.parent.GetComponent<BossPart>();
+
                 if (owner)
                 { //the object is owned by a player
                     if (owner.username == player.username) hud.SetCursorState(CursorState.Select);
                     else if (CanAttack()) hud.SetCursorState(CursorState.Attack);
                     else hud.SetCursorState(CursorState.Select);
                 }
-                else if (unit || building && CanAttack()) hud.SetCursorState(CursorState.Attack);
+                else if (unit || building || bossPart && CanAttack()) hud.SetCursorState(CursorState.Attack);
                 else hud.SetCursorState(CursorState.Select);
             }
         }
@@ -320,11 +321,6 @@ public class WorldObject : MonoBehaviour {
             stateController.SetupAI(true);
         }
 
-
-        // instantiate localUI
-        var localUIObject = Instantiate(ResourceManager.GetUIElement("LocalUI"), transform);
-        localUI = localUIObject.GetComponent<LocalUI>();
-
         // instantiate a hit sphere based on selection bounds
         var hitSphereObject = Instantiate(ResourceManager.GetWorldObject("HitSphere"), transform);
         hitSphereObject.transform.localScale = selectionBounds.size;
@@ -443,7 +439,7 @@ public class WorldObject : MonoBehaviour {
 
 	public virtual bool IsHealer() 
 	{
-		// Necessary for HotkeyUnitSelector, to check if the unit is healer
+		// Necessary for HotkeyUnitSelector, to check if the indicatedObject is healer
 		return false;
 	}
 		

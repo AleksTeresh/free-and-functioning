@@ -12,14 +12,14 @@ public class PlayerIndicator : Indicator {
     {
         base.Update();
 
-        if (unit)
+        if (indicatedObject)
         {
             if (!player)
             {
-                player = unit.GetPlayer();
+                player = indicatedObject.GetPlayer();
             }
 
-            nameLabel.text = unit.objectName;
+            nameLabel.text = indicatedObject.objectName;
         }
     }
 
@@ -28,11 +28,11 @@ public class PlayerIndicator : Indicator {
         bool unitIsSelected = player != null &&
             ((
                 player.selectedObjects != null &&
-                player.selectedObjects.Contains(unit)
+                player.selectedObjects.Contains(indicatedObject)
             ) ||
             (
-                player.SelectedObject && unit &&
-                player.SelectedObject.ObjectId == unit.ObjectId
+                player.SelectedObject && indicatedObject &&
+                player.SelectedObject.ObjectId == indicatedObject.ObjectId
             ));
 
         upperSelectIndicator.enabled = unitIsSelected;

@@ -8,7 +8,7 @@ namespace RTS
 {
     public static class UnitManager
     {
-        public static List<Unit> GetPlayerVisibleEnemies(Player player)
+        public static List<WorldObject> GetPlayerVisibleEnemies(Player player)
         {
             var unsortedEnemies = player.GetUnits()
                 .SelectMany(p =>
@@ -16,9 +16,9 @@ namespace RTS
                     var stateController = p.GetStateController();
                     var allNearbyEnemies = stateController.nearbyEnemies;
 
-                    return allNearbyEnemies.Where(s => s is Unit);
+                    return allNearbyEnemies; //.Where(s => s is Unit);
                 })
-                .Select(p => (Unit)p)
+                // .Select(p => (Unit)p)
                 .Distinct()
                 .ToList();
 
@@ -30,6 +30,8 @@ namespace RTS
         public static List<Unit> GetPlayerVisibleMajorEnemies(Player player)
         {
             return GetPlayerVisibleEnemies(player)
+                .Where(s => s is Unit)
+                .Select(p => (Unit)p)
                 .Where(p => p.IsMajor())
                 .ToList();
         }
@@ -37,7 +39,25 @@ namespace RTS
         public static List<Unit> GetPlayerVisibleMinorEnemies(Player player)
         {
             return GetPlayerVisibleEnemies(player)
+                .Where(s => s is Unit)
+                .Select(p => (Unit)p)
                 .Where(p => !p.IsMajor())
+                .ToList();
+        }
+
+        public static List<WorldObject> GetVisibleEnemyBossParts(Player player)
+        {
+            return GetPlayerVisibleEnemies(player)
+                .Where(s => s is BossPart)
+                // .Select(p => (BossPart)p)
+                .ToList();
+        }
+
+        public static List<WorldObject> GetVisibleEnemyBuildings(Player player)
+        {
+            return GetPlayerVisibleEnemies(player)
+                .Where(s => s is Building)
+                // .Select(p => (Building)p)
                 .ToList();
         }
     }

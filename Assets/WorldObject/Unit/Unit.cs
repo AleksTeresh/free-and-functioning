@@ -16,6 +16,7 @@ public class Unit : WorldObject {
     protected NavMeshAgent agent;
 
     // protected bool moving, rotating;
+    protected LocalUI localUI;
 
     private GameObject destinationTarget;
     private int loadedDestinationTargetId = -1;
@@ -45,7 +46,7 @@ public class Unit : WorldObject {
 
     public virtual void Init(Building creator)
     {
-        //specific initialization for a unit can be specified here
+        //specific initialization for a indicatedObject can be specified here
     }
 
     public void StartMove(Vector3 destination)
@@ -208,8 +209,11 @@ public class Unit : WorldObject {
         {
             destinationTarget = player.GetObjectForId(loadedDestinationTargetId).gameObject;
         }
-    }
 
+        // instantiate localUI
+        var localUIObject = Instantiate(ResourceManager.GetUIElement("LocalUI"), transform);
+        localUI = localUIObject.GetComponent<LocalUI>();
+    }
     protected override void Update()
     {
         base.Update();

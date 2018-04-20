@@ -26,7 +26,7 @@ public class BasicAbilityToMultiAction : ChooseAbilityAction
                 var reachableEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, currentPosition, ability.range);
 
                 // use the ability if there are at least 2 enemies it is going to affect,
-                // or if the unit is close enough to a single enemy to start ordninary attack
+                // or if the indicatedObject is close enough to a single enemy to start ordninary attack
                 if (
                     reachableEnemies.Count > 1 ||
                     (

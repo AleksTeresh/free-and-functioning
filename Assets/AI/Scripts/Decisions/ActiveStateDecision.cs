@@ -23,7 +23,7 @@ public class ActiveStateDecision : Decision {
             (
                 direction.sqrMagnitude < self.detectionRange * self.detectionRange || 
                 FriendsHaveActiveTarget(target, self, controller.nearbyAllies)
-            ); // target is visible to a unit or its friends
+            ); // target is visible to a indicatedObject or its friends
 
         return chaseTargetIsActive;
     }

@@ -6,6 +6,6 @@ namespace Statuses
 {
     public class Statuses : MonoBehaviour
     {
-        // wrapper object around unit's abilities
+        // wrapper object around indicatedObject's abilities
     }
 }

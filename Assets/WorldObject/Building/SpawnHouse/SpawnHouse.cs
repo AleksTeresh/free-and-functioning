@@ -66,7 +66,7 @@ public class SpawnHouse : Building {
             Mathf.Max(spawnIntervalLowerLimit, spawnInterval + spawnIntervalAccel * Time.deltaTime)
         );
 
-        // adjust spawn rate of unit types
+        // adjust spawn rate of indicatedObject types
         meleeSwarmlingSpawnRate = Mathf.Min(
             spawnRateUpperLimit,
             Mathf.Max(spawnRateLowerLimit, meleeSwarmlingSpawnRate + meleeSwarmlingSpawnAccel * Time.deltaTime)

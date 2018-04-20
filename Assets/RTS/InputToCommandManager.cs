@@ -121,17 +121,17 @@ namespace RTS
             stateControllers.ForEach(SwitchAttackModeForOne);
         }
 
-        public static void SwitchEnemy(TargetManager targetManager, List<Unit> majorEnemies, int currentIdx)
+        public static void SwitchEnemy(TargetManager targetManager, List<WorldObject> enemies, int currentIdx)
         {
-            if (majorEnemies.Count == 0) return;
+            if (enemies.Count == 0) return;
 
-            if (currentIdx == majorEnemies.Count - 1 || currentIdx < 0)
+            if (currentIdx == enemies.Count - 1 || currentIdx < 0)
             {
-                targetManager.SingleTarget = majorEnemies[0];
+                targetManager.SingleTarget = enemies[0];
             }
             else
             {
-                targetManager.SingleTarget = majorEnemies[currentIdx + 1];
+                targetManager.SingleTarget = enemies[currentIdx + 1];
             }
         }
 

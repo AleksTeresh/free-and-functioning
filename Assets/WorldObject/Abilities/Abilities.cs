@@ -5,7 +5,7 @@ namespace Abilities
 {
 	public class Abilities  : MonoBehaviour
 	{
-		// wrapper object around unit's abilities
+		// wrapper object around indicatedObject's abilities
 	}
 }
 

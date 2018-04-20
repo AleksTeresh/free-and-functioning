@@ -76,9 +76,9 @@ namespace RTS
 
         private static void MoveCameraToUnit (Unit unit, Camera camera)
         {
-            camera.transform.position = unit.transform.position + // get camera to unit's position
+            camera.transform.position = unit.transform.position + // get camera to indicatedObject's position
                 Vector3.up * camera.transform.position.y + // lift camera up
-                camera.transform.TransformDirection(Vector3.back * 20) +  // pull camera "away" from the unit, in the direction...
+                camera.transform.TransformDirection(Vector3.back * 20) +  // pull camera "away" from the indicatedObject, in the direction...
                 camera.transform.TransformDirection(Vector3.down * 20);   // ...opposite to the one camera is facing atm
         }
 
