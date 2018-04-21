@@ -17,6 +17,7 @@ public class Unit : WorldObject {
 
     // protected bool moving, rotating;
     protected LocalUI localUI;
+    protected Collider hitSphereCollider;
 
     private GameObject destinationTarget;
     private int loadedDestinationTargetId = -1;
@@ -156,6 +157,11 @@ public class Unit : WorldObject {
         return agent;
     }
 
+    public Collider GetHitSphere()
+    {
+        return hitSphereCollider;
+    }
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
@@ -213,6 +219,11 @@ public class Unit : WorldObject {
         // instantiate localUI
         var localUIObject = Instantiate(ResourceManager.GetUIElement("LocalUI"), transform);
         localUI = localUIObject.GetComponent<LocalUI>();
+
+        // instantiate a hit sphere based on selection bounds
+        var hitSphereObject = Instantiate(ResourceManager.GetWorldObject("HitSphere"), transform);
+        hitSphereObject.transform.localScale = selectionBounds.size;
+        this.hitSphereCollider = hitSphereObject.GetComponent<Collider>();
     }
     protected override void Update()
     {

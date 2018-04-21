@@ -450,12 +450,12 @@ public class UserInput : MonoBehaviour {
             // return null;
         }
 
-        var nearbyObjects = WorkManager.FindNearbyObjects(hit.point, 7);
-        nearbyObjects.ForEach(p =>
+        var nearbyUnits = WorkManager.FindNearbyUnits(hit.point, 7);
+        nearbyUnits.ForEach(p =>
         {
             if (p.GetHitSphere())
             {
-                p.GetHitSphere().enabled = true;
+                ((Unit)p).GetHitSphere().enabled = true;
             }
         }); 
 
@@ -466,7 +466,7 @@ public class UserInput : MonoBehaviour {
 
             if (relatedMesh.GetComponent<HitSphere>())
             {
-                nearbyObjects.ForEach(p =>
+                nearbyUnits.ForEach(p =>
                 {
                     if (p.GetHitSphere())
                     {
@@ -478,7 +478,7 @@ public class UserInput : MonoBehaviour {
             }
         }
 
-        nearbyObjects.ForEach(p =>
+        nearbyUnits.ForEach(p =>
         {
             if (p.GetHitSphere())
             {

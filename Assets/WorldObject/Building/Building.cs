@@ -17,7 +17,7 @@ public class Building : WorldObject {
     protected Vector3 rallyPoint;
 
     private float currentBuildProgress = 0.0f;
-    private Vector3 spawnPoint;
+    protected Vector3 spawnPoint;
 
     // audio
     public AudioClip finishedJobSound;

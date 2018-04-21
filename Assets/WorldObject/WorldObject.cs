@@ -26,7 +26,6 @@ public class WorldObject : MonoBehaviour {
 
     protected Player player;
     protected HUD hud;
-    protected Collider hitSphereCollider;
     protected TargetManager targetManager;
     protected string[] actions = { };
     protected bool currentlySelected = false;
@@ -239,11 +238,6 @@ public class WorldObject : MonoBehaviour {
         return underAttackFrameCounter > 0;
     }
 
-    public Collider GetHitSphere ()
-    {
-        return hitSphereCollider;
-    }
-
     public void UpdateChildRenderers()
     {
         // retrieve child renderers
@@ -320,11 +314,6 @@ public class WorldObject : MonoBehaviour {
         {
             stateController.SetupAI(true);
         }
-
-        // instantiate a hit sphere based on selection bounds
-        var hitSphereObject = Instantiate(ResourceManager.GetWorldObject("HitSphere"), transform);
-        hitSphereObject.transform.localScale = selectionBounds.size;
-        this.hitSphereCollider = hitSphereObject.GetComponent<Collider>();
     }
 
     protected virtual void Update()

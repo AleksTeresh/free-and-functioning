@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PersesPlatform : Unit {
     private SpawnHouse head;
@@ -26,44 +27,51 @@ public class PersesPlatform : Unit {
         {
             head.transform.position = new Vector3(ownPosition.x, head.transform.position.y, ownPosition.z);
             head.transform.rotation = ownRotation;
+
+            head.CalculateBounds();
         }
 
         if (bodyParts != null)
         {
             foreach (var bodyPart in bodyParts)
             {
+                if (!bodyPart) continue;
+
                 bodyPart.transform.position = new Vector3(ownPosition.x, bodyPart.transform.position.y, ownPosition.z);
                 bodyPart.transform.rotation = ownRotation;
+
+                bodyPart.CalculateBounds();
             }
         }
     }
-/*
+
     void OnDestroy()
     {
         var ownPosition = transform.position;
+        /*
+                if (head)
+                {
+                    head.transform.position = new Vector3(
+                        head.transform.position.x,
+                        head.transform.position.y - ownPosition.y,
+                        head.transform.position.z
+                    );
+                }  */
+        var bodyPartList = new List<BossPart>(bodyParts);
 
-        if (head)
+        if (bodyParts != null && bodyPartList.Exists(p => p is PersesBody))
         {
-            head.transform.position = new Vector3(
-                head.transform.position.x,
-                head.transform.position.y - ownPosition.y,
-                head.transform.position.z
-            );
-        }
+            var body = bodyPartList.Find(p => p is PersesBody);
+            float initialBodyY = body.transform.position.y;
 
-        if (bodyParts != null)
-        {
-            foreach (var bodyPart in bodyParts)
-            {
-                bodyPart.transform.position = new Vector3(
-                    bodyPart.transform.position.x,
-                    bodyPart.transform.position.y - ownPosition.y,
-                    bodyPart.transform.position.z
-                );
-            }
+            var bodyNavMesh = body.gameObject.AddComponent<NavMeshAgent>() as NavMeshAgent;
+            bodyNavMesh.speed = 0;
+            bodyNavMesh.baseOffset = initialBodyY;
+
+            body.CalculateBounds();
         }
     }
-    */
+
     public override bool IsMajor()
     {
         return true;
