@@ -9,6 +9,8 @@ public class ChaseAction : UnitAction {
     protected override void DoAction(UnitStateController controller)
     {
         Unit unit = controller.unit;
+        if (!unit) return;
+
         WorldObject chaseTarget = controller.chaseTarget;
         if (chaseTarget && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, chaseTarget))
         {

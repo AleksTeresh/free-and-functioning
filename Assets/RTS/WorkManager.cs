@@ -79,6 +79,14 @@ namespace RTS
             return nearbyObjects;
         }
 
+        public static List<Unit> FindNearbyUnits (Vector3 position, float range)
+        {
+            return FindNearbyObjects(position, range)
+                .Where(p => p is Unit)
+                .Select(p => (Unit)p)
+                .ToList();
+        }
+
         public static WorldObject FindNearestWorldObjectInListToPosition(List<WorldObject> objects, Vector3 position)
         {
             if (objects == null || objects.Count == 0) return null;
@@ -249,7 +257,7 @@ namespace RTS
 			return direction.magnitude <= (0.8f * ability.range) && target.GetFogOfWarAgent().IsObserved();
 		}
 
-        public static bool IsObjectFacingTarget (WorldObject obj, WorldObject target)
+        public static bool IsObjectFacingTarget (WorldObject obj, WorldObject target, bool isExact = false)
         {
             Vector3 targetLocation = target.transform.position;
             Vector3 direction = targetLocation - obj.transform.position;
@@ -263,19 +271,19 @@ namespace RTS
 
         public static bool V3Equal(Vector3 a, Vector3 b)
         {
-            return Vector3.SqrMagnitude(a - b) < 0.1;
+            return Vector3.SqrMagnitude(a - b) < 0.2;
         }
 
-        public static int GetTargetSelectionIndex (WorldObject currentTarget, List<Unit> majorEnemies)
+        public static int GetTargetSelectionIndex (WorldObject currentTarget, List<WorldObject> enemies)
         {
-            if (!currentTarget || majorEnemies.Count == 0)
+            if (!currentTarget || enemies.Count == 0)
             {
                 return -1;
             }
 
-            for (int i = 0; i < majorEnemies.Count; i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
-                if (currentTarget.ObjectId == majorEnemies[i].ObjectId)
+                if (currentTarget.ObjectId == enemies[i].ObjectId)
                 {
                     return i;
                 }

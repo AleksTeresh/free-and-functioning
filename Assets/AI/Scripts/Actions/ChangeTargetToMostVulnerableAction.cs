@@ -7,12 +7,12 @@ using RTS;
 using AI;
 
 [CreateAssetMenu(menuName = "AI/Actions/ChangeTargetToMostVulnerable")]
-public class ChangeTargetToMostVulnerableAction : UnitAction
+public class ChangeTargetToMostVulnerableAction : Action
 {
-    protected override void DoAction(UnitStateController controller)
+    public override void Act(StateController controller)
     {
-        Unit unit = controller.unit;
-        Vector3 currentPosition = unit.transform.position;
+        WorldObject controlledObject = controller.controlledObject;
+        Vector3 currentPosition = controlledObject.transform.position;
         WorldObject chaseTarget = controller.chaseTarget;
 
         WorldObject mostVulnerableEnemy = WorkManager.FindMostVulnerableObjectInList(controller.nearbyEnemies);
@@ -21,13 +21,16 @@ public class ChangeTargetToMostVulnerableAction : UnitAction
         {
             controller.chaseTarget = mostVulnerableEnemy;
 
+            if (!(controlledObject is Unit)) return;
+            Unit unit = (Unit) controlledObject;
+
             if (!WorkManager.ObjectCanReachTarget(unit, mostVulnerableEnemy))
             {
-                controller.unit.StartMove(WorkManager.GetTargetClosestPoint(unit, mostVulnerableEnemy));
+                unit.StartMove(WorkManager.GetTargetClosestPoint(unit, mostVulnerableEnemy));
             }
             else
             {
-                controller.unit.StopMove();
+                unit.StopMove();
             }
         }
     }

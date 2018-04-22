@@ -5,12 +5,12 @@ using RTS;
 using AI;
 
 [CreateAssetMenu(menuName = "AI/Actions/ChangeTargetToClosest")]
-public class ChangeTargetToClosestAction : UnitAction
+public class ChangeTargetToClosestAction : Action
 {
-    protected override void DoAction(UnitStateController controller)
+    public override void Act(StateController controller)
     {
-        Unit unit = controller.unit;
-        Vector3 currentPosition = unit.transform.position;
+        WorldObject controlledObject = controller.controlledObject;
+        Vector3 currentPosition = controlledObject.transform.position;
         WorldObject chaseTarget = controller.chaseTarget;
 
         WorldObject closestEnemy = WorkManager.FindNearestWorldObjectInListToPosition(controller.nearbyEnemies, currentPosition);
@@ -19,13 +19,20 @@ public class ChangeTargetToClosestAction : UnitAction
         {
             controller.chaseTarget = closestEnemy;
 
-            if (!WorkManager.ObjectCanReachTarget(unit, closestEnemy))
+            if (!(controlledObject is Unit))
             {
-                controller.unit.StartMove(WorkManager.GetTargetClosestPoint(unit, closestEnemy));
+                return;
+            }
+
+            Unit unit = (Unit)controlledObject;
+            if (!WorkManager.ObjectCanReachTarget(controlledObject, closestEnemy))
+            {
+                
+                unit.StartMove(WorkManager.GetTargetClosestPoint(unit, closestEnemy));
             }
             else
             {
-                controller.unit.StopMove();
+                unit.StopMove();
             }
         }
     }

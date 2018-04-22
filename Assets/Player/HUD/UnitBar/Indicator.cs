@@ -14,16 +14,16 @@ public class Indicator : MonoBehaviour {
     protected Image upperSelectIndicator;
     protected Image lowerSelectIndicator;
 
-    protected Unit unit;
+    protected WorldObject indicatedObject;
 
-    public void Init(Unit unit)
+    public void Init(WorldObject unit)
     {
-        this.unit = unit;
+        this.indicatedObject = unit;
     }
 
-    public Unit GetUnit()
+    public WorldObject GetIndicatedObject()
     {
-        return unit;
+        return indicatedObject;
     }
 
     protected virtual void Awake()
@@ -42,15 +42,15 @@ public class Indicator : MonoBehaviour {
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (unit)
+        if (indicatedObject)
         {
-            healthSlider.maxValue = unit.maxHitPoints;
-            healthSlider.value = unit.hitPoints;
+            healthSlider.maxValue = indicatedObject.maxHitPoints;
+            healthSlider.value = indicatedObject.hitPoints;
 
-            nameLabel.text = unit.name;
+            nameLabel.text = indicatedObject.name;
 
             // TODO: uncomment this line once we have actual avatar
-            // avatar.sprite = unit.avatar;
+            // avatar.sprite = indicatedObject.avatar;
             HandleStatusUpdate();
 
             HandleSelection();
@@ -71,7 +71,7 @@ public class Indicator : MonoBehaviour {
 
         for (int i = 0; i < indicatedStatuses.Count; i++)
         {
-            if (!indicatedStatuses[i] || !unit.ActiveStatuses.Contains(indicatedStatuses[i]))
+            if (!indicatedStatuses[i] || !indicatedObject.ActiveStatuses.Contains(indicatedStatuses[i]))
             {
                 indicatedStatuses = new List<Status>();
                 new List<StatusIndicator>(
@@ -83,7 +83,7 @@ public class Indicator : MonoBehaviour {
             }
         }
 
-        unit.ActiveStatuses.ForEach(p =>
+        indicatedObject.ActiveStatuses.ForEach(p =>
         {
             if (!indicatedStatuses.Contains(p))
             {

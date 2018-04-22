@@ -102,10 +102,16 @@ public class HUD : MonoBehaviour
         if (player && player.human)
         {
             // DrawOrdersBar();
-            DrawUnitsBar(playerUnitBar, player.GetUnits(), "PlayerIndicator");
+            DrawUnitsBar(playerUnitBar, player.GetUnits().Cast<WorldObject>().ToList(), "PlayerIndicator");
 
             var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
-            DrawUnitsBar(enemyUnitBar, observedEmenies, "EnemyIndicator");
+            // var observedBossParts = UnitManager.GetVisibleEnemyBossPart(player);
+
+            DrawUnitsBar(
+                enemyUnitBar,
+                observedEmenies,
+                "EnemyIndicator"
+            );
             DrawSelectionIndicator();
             DrawAbilityBar();
         }
@@ -270,18 +276,18 @@ public class HUD : MonoBehaviour
 
     }
 
-    private void DrawUnitsBar(UnitBar unitBar, List<Unit> units, string indicatorName)
+    private void DrawUnitsBar(UnitBar unitBar, List<WorldObject> indicatedObjects, string indicatorName)
     {
         var indicators = unitBar.GetIndicators();
-        var indicatedUnits = indicators.Select(p => p.GetUnit()).ToList();
+        var indicatedUnits = indicators.Select(p => p.GetIndicatedObject()).ToList();
 
         int newIndicatorsCounter = 0;
 
         for (int i = 0; i < indicatedUnits.Count; i++)
         {
-            if (!units.Contains(indicatedUnits[i]))
+            if (!indicatedObjects.Contains(indicatedUnits[i]))
             {
-                indicatedUnits = new List<Unit>();
+                indicatedUnits = new List<WorldObject>();
                 var indicatorsWrapper = unitBar.GetIndicatorsWrapper();
                 new List<Indicator>(
                     indicatorsWrapper.transform
@@ -292,7 +298,9 @@ public class HUD : MonoBehaviour
             }
         }
 
-        units.Where(p => p.IsMajor()).ToList().ForEach(p =>
+        indicatedObjects
+            .Where(p => ((p is Unit) && ((Unit) p).IsMajor()) || (p is BossPart) || (p is Building))
+            .ToList().ForEach(p =>
         {
             if (!indicatedUnits.Contains(p))
             {

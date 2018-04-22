@@ -27,7 +27,7 @@ public class StateController : MonoBehaviour
         controlledObject = GetComponent<WorldObject>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
 
-        // for now the default state is the one that a unit/building has on Awake(),
+        // for now the default state is the one that a indicatedObject/building has on Awake(),
         // later defaultState can be made a separate public variable to be set in the Inspector
         defaultState = currentState;
     }

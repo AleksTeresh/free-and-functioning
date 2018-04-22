@@ -18,8 +18,8 @@ public class LookDecision : Decision {
         WorldObject unit = controller.controlledObject;
         Vector3 currentPosition = unit.transform.position;
 
-        if (unit.CanAttack())
-        {
+        // if (indicatedObject.CanAttack())
+       //  {
             // if there is a common target, chase it
             if (controller.targetManager && controller.targetManager.SingleTarget)
             {
@@ -41,7 +41,7 @@ public class LookDecision : Decision {
 
                 return true;
             }
-        }
+     //    }
 
         return false;
     }

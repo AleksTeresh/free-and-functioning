@@ -21,7 +21,7 @@ public class EnemyIndicator : Indicator {
     {
         bool unitIsSelected = targetManager &&
             targetManager.SingleTarget &&
-            targetManager.SingleTarget.ObjectId == unit.ObjectId;
+            targetManager.SingleTarget.ObjectId == indicatedObject.ObjectId;
 
         upperSelectIndicator.enabled = unitIsSelected;
         lowerSelectIndicator.enabled = unitIsSelected;

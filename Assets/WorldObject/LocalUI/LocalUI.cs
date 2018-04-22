@@ -20,7 +20,7 @@ public class LocalUI : MonoBehaviour {
 
     private void Update()
     {
-        if (relatedObj.GetFogOfWarAgent().IsObserved())
+        if (relatedObj && relatedObj.GetFogOfWarAgent() && relatedObj.GetFogOfWarAgent().IsObserved())
         {
             localCanvas.enabled = true;
 

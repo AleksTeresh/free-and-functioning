@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 public class Building : WorldObject {
     public Texture2D rallyPointImage;
 
+    protected LocalUI localUI;
+
     public new BuildingStateController stateController;
 
     public float maxBuildProgress;
@@ -15,7 +17,7 @@ public class Building : WorldObject {
     protected Vector3 rallyPoint;
 
     private float currentBuildProgress = 0.0f;
-    private Vector3 spawnPoint;
+    protected Vector3 spawnPoint;
 
     // audio
     public AudioClip finishedJobSound;
@@ -68,6 +70,10 @@ public class Building : WorldObject {
     protected override void Start()
     {
         base.Start();
+
+        // instantiate localUI
+        var localUIObject = Instantiate(ResourceManager.GetUIElement("LocalUI"), transform);
+        localUI = localUIObject.GetComponent<LocalUI>();
     }
 
     protected override void Update()

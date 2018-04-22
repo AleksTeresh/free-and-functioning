@@ -16,6 +16,8 @@ public class Unit : WorldObject {
     protected NavMeshAgent agent;
 
     // protected bool moving, rotating;
+    protected LocalUI localUI;
+    protected Collider hitSphereCollider;
 
     private GameObject destinationTarget;
     private int loadedDestinationTargetId = -1;
@@ -45,7 +47,7 @@ public class Unit : WorldObject {
 
     public virtual void Init(Building creator)
     {
-        //specific initialization for a unit can be specified here
+        //specific initialization for a indicatedObject can be specified here
     }
 
     public void StartMove(Vector3 destination)
@@ -155,6 +157,11 @@ public class Unit : WorldObject {
         return agent;
     }
 
+    public Collider GetHitSphere()
+    {
+        return hitSphereCollider;
+    }
+
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
@@ -208,8 +215,16 @@ public class Unit : WorldObject {
         {
             destinationTarget = player.GetObjectForId(loadedDestinationTargetId).gameObject;
         }
-    }
 
+        // instantiate localUI
+        var localUIObject = Instantiate(ResourceManager.GetUIElement("LocalUI"), transform);
+        localUI = localUIObject.GetComponent<LocalUI>();
+
+        // instantiate a hit sphere based on selection bounds
+        var hitSphereObject = Instantiate(ResourceManager.GetWorldObject("HitSphere"), transform);
+        hitSphereObject.transform.localScale = selectionBounds.size;
+        this.hitSphereCollider = hitSphereObject.GetComponent<Collider>();
+    }
     protected override void Update()
     {
         base.Update();
