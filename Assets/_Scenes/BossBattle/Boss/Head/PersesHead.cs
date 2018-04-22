@@ -1,13 +1,18 @@
-﻿using System;
+﻿using RTS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 public class PersesHead : SpawnHouse {
 
-    private void OnDestroy()
+    public override void TakeDamage(int attackPoints, AttackType attackType)
     {
-        if (player)
+        var hitPoints = this.hitPoints;
+
+        base.TakeDamage(attackPoints, attackType);
+
+        if (player || hitPoints <= 0)
         {
             player.AddUnit(rangeSwarmling.name, transform.position, transform.position, transform.rotation, this);
         }

@@ -452,7 +452,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4958127813175432}
-  - component: {fileID: 114032576242154548}
+  - component: {fileID: 114095086495520194}
   - component: {fileID: 114798014202615138}
   - component: {fileID: 114007489347662952}
   m_Layer: 0
@@ -502,7 +502,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4672127638072102}
-  - component: {fileID: 114948244603558550}
+  - component: {fileID: 114548188303272194}
   - component: {fileID: 114063383261431856}
   - component: {fileID: 114947561127098570}
   m_Layer: 0
@@ -705,7 +705,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012219143908556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.95, y: 2.2199993, z: 4.06}
+  m_LocalPosition: {x: -1.95, y: 2.22, z: 4.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4672127638072102}
@@ -731,7 +731,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270411115585402}
   m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
-  m_LocalPosition: {x: -3.53, y: 5.1099987, z: 0}
+  m_LocalPosition: {x: -3.53, y: 5.11, z: 0}
   m_LocalScale: {x: 1, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 4672127638072102}
@@ -1058,7 +1058,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658009009033770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 16.93, z: 0.54}
+  m_LocalPosition: {x: 0.2, y: 17, z: 0.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4197125704664860}
@@ -1931,7 +1931,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72eab4895466fda438de93d248cba36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114032576242154548
+--- !u!114 &114063383261431856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658009009033770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb177780e5593c499bc6b4952c7a4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 11400000, guid: 326900489390e714787d82fa1f6bc37c, type: 2}
+  remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
+  chaseTarget: {fileID: 0}
+  controlledObject: {fileID: 0}
+  targetManager: {fileID: 0}
+  nearbyEnemies: []
+  nearbyAllies: []
+  attacking: 0
+  building: {fileID: 0}
+  spawnTimer: 0
+--- !u!114 &114095086495520194
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1939,15 +1960,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1622391486773982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ccaaa8e84a55ae4792a0f0baf8d0dfb, type: 3}
+  m_Script: {fileID: 11500000, guid: e97819eebd1de174db47b110ea24144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Stem
+  objectName: Body
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 1000
-  maxHitPoints: 1000
+  hitPoints: 2000
+  maxHitPoints: 2000
   damage: 10
   damageMulti: 3
   weaponRange: 10
@@ -1970,27 +1991,6 @@ MonoBehaviour:
   moveVolume: 1
   abilities: []
   abilitiesMulti: []
---- !u!114 &114063383261431856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1658009009033770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb177780e5593c499bc6b4952c7a4b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 326900489390e714787d82fa1f6bc37c, type: 2}
-  remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
-  chaseTarget: {fileID: 0}
-  controlledObject: {fileID: 0}
-  targetManager: {fileID: 0}
-  nearbyEnemies: []
-  nearbyAllies: []
-  attacking: 0
-  building: {fileID: 0}
-  spawnTimer: 0
 --- !u!114 &114176323224946168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2110,18 +2110,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1301569183176964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7432e3d766289f146ac3e16a507c3f0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e679aec94e166f4f9634b15595d0c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Attacker Weapon
+  objectName: Attacker
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 0
-  maxHitPoints: 0
-  damage: 10
+  hitPoints: 100
+  maxHitPoints: 100
+  damage: 1
   damageMulti: 3
-  weaponRange: 10
+  weaponRange: 35
   aiming: 0
   weaponAimSpeed: 1
   weaponRechargeTime: 1
@@ -2136,11 +2136,83 @@ MonoBehaviour:
   attackVolume: 1
   selectVolume: 1
   useWeaponVolume: 1
-  detectionRange: 500
+  detectionRange: 35
   moveSound: {fileID: 0}
   moveVolume: 1
   abilities: []
   abilitiesMulti: []
+  multiDamageMinValue: 1
+--- !u!114 &114548188303272194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658009009033770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5835e5388ec58445910c8ef50ab7eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Perses' Head
+  buildImage: {fileID: 0}
+  cost: 0
+  sellValue: 0
+  hitPoints: 20
+  maxHitPoints: 20
+  damage: 10
+  damageMulti: 3
+  weaponRange: 10
+  aiming: 0
+  weaponAimSpeed: 1
+  weaponRechargeTime: 1
+  weaponMultiRechargeTime: 1
+  meleeDefence: 0
+  rangeDefence: 100000
+  abilityDefence: 100000
+  isInvincible: 0
+  attackSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  useWeaponSound: {fileID: 0}
+  attackVolume: 1
+  selectVolume: 1
+  useWeaponVolume: 1
+  detectionRange: 20
+  rallyPointImage: {fileID: 0}
+  stateController: {fileID: 0}
+  maxBuildProgress: 0
+  finishedJobSound: {fileID: 0}
+  finishedJobVolume: 1
+  spawnRateUpperLimit: 100
+  spawnRateLowerLimit: 0
+  meleeSwarmlingSpawnRate: 0.7
+  meleeSwarmlingSpawnAccel: 0
+  rangeSwarmlingSpawnRate: 0.3
+  rangeSwarmlingSpawnAccel: 0
+  assassinSpawnRate: 0
+  assassinSpawnAccel: 0
+  hulkSpawnRate: 0
+  hulkSpawnAccel: 0
+  damageDealerSpawnRate: 0
+  damageDealerSpawnAccel: 0
+  debufferSpawnRate: 0
+  debufferSpawnAccel: 0
+  crowdControlSpawnRate: 0
+  crowdControlSpawnAccel: 0
+  meleeSwarmling: {fileID: 114417529153538066, guid: 25a225e1df8d2a042bbe5c5c90860825,
+    type: 2}
+  rangeSwarmling: {fileID: 114794812556642682, guid: e08e1099f032f794cbce6f513743dd07,
+    type: 2}
+  assassin: {fileID: 114690870411337118, guid: 4520fe4c4a9710e40a7b890f43673f58, type: 2}
+  hulk: {fileID: 114809429574245842, guid: 713e63be34548554d9aa428d771ca08f, type: 2}
+  damageDealer: {fileID: 114545065302575032, guid: 625d3be5bf7a0ef49be8c6bc8ac4d32f,
+    type: 2}
+  debuffer: {fileID: 114767798242460070, guid: e234ecc3e6d61854a9d59ae8a898956f, type: 2}
+  crowdControl: {fileID: 114797331067803572, guid: c63761076774bd6479aca31d1b968c6a,
+    type: 2}
+  spawnInterval: 5
+  spawnIntervalAccel: 0
+  spawnIntervalLowerLimit: 0
+  spawnIntervalUpperLimit: 60
 --- !u!114 &114579514643112766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2232,18 +2304,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1110116964039450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e114a263062db42a8f9768cd312a71, type: 3}
+  m_Script: {fileID: 11500000, guid: 66bb112b91d70a148976f6efc72dba31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Debuffer Weapon
+  objectName: Debuffer
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 0
-  maxHitPoints: 0
-  damage: 10
+  hitPoints: 100
+  maxHitPoints: 100
+  damage: 1
   damageMulti: 3
-  weaponRange: 10
+  weaponRange: 35
   aiming: 0
   weaponAimSpeed: 1
   weaponRechargeTime: 1
@@ -2258,12 +2330,11 @@ MonoBehaviour:
   attackVolume: 1
   selectVolume: 1
   useWeaponVolume: 1
-  detectionRange: 500
+  detectionRange: 35
   moveSound: {fileID: 0}
   moveVolume: 1
   abilities: []
   abilitiesMulti: []
-  multiDamageMinValue: 1
 --- !u!114 &114798014202615138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2412,73 +2483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114948244603558550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1658009009033770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef9d90facba8574daf5c51b5938d4e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Perses' Head
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
-  hitPoints: 1000
-  maxHitPoints: 1000
-  damage: 10
-  damageMulti: 3
-  weaponRange: 10
-  aiming: 0
-  weaponAimSpeed: 1
-  weaponRechargeTime: 1
-  weaponMultiRechargeTime: 1
-  meleeDefence: 0
-  rangeDefence: 10000
-  abilityDefence: 10000
-  isInvincible: 0
-  attackSound: {fileID: 0}
-  selectSound: {fileID: 0}
-  useWeaponSound: {fileID: 0}
-  attackVolume: 1
-  selectVolume: 1
-  useWeaponVolume: 1
-  detectionRange: 500
-  rallyPointImage: {fileID: 0}
-  stateController: {fileID: 0}
-  maxBuildProgress: 0
-  finishedJobSound: {fileID: 0}
-  finishedJobVolume: 1
-  spawnRateUpperLimit: 100
-  spawnRateLowerLimit: 0
-  meleeSwarmlingSpawnRate: 0.7
-  meleeSwarmlingSpawnAccel: 0
-  rangeSwarmlingSpawnRate: 0.3
-  rangeSwarmlingSpawnAccel: 0
-  assassinSpawnRate: 0
-  assassinSpawnAccel: 0
-  hulkSpawnRate: 0
-  hulkSpawnAccel: 0
-  damageDealerSpawnRate: 0
-  damageDealerSpawnAccel: 0
-  debufferSpawnRate: 0
-  debufferSpawnAccel: 0
-  crowdControlSpawnRate: 0
-  crowdControlSpawnAccel: 0
-  meleeSwarmling: {fileID: 0}
-  rangeSwarmling: {fileID: 0}
-  assassin: {fileID: 0}
-  hulk: {fileID: 0}
-  damageDealer: {fileID: 0}
-  debuffer: {fileID: 0}
-  crowdControl: {fileID: 0}
-  spawnInterval: 5
-  spawnIntervalAccel: 0
-  spawnIntervalLowerLimit: 0
-  spawnIntervalUpperLimit: 60
 --- !u!114 &114958708209365002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2520,18 +2524,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1802214908774020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e114a263062db42a8f9768cd312a71, type: 3}
+  m_Script: {fileID: 11500000, guid: 66bb112b91d70a148976f6efc72dba31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Healer Weapon
+  objectName: Healer
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 0
-  maxHitPoints: 0
-  damage: 10
+  hitPoints: 100
+  maxHitPoints: 100
+  damage: 1
   damageMulti: 3
-  weaponRange: 10
+  weaponRange: 35
   aiming: 0
   weaponAimSpeed: 1
   weaponRechargeTime: 1
@@ -2546,12 +2550,11 @@ MonoBehaviour:
   attackVolume: 1
   selectVolume: 1
   useWeaponVolume: 1
-  detectionRange: 500
+  detectionRange: 35
   moveSound: {fileID: 0}
   moveVolume: 1
   abilities: []
   abilitiesMulti: []
-  multiDamageMinValue: 1
 --- !u!135 &135076641850782876
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -41,6 +41,7 @@ public class WorldObject : MonoBehaviour {
     public float weaponRange = 10.0f;
     protected bool movingIntoPosition = false;
     public bool aiming = false;
+    protected Quaternion aimRotation;
     public float weaponAimSpeed = 1.0f;
     public float weaponRechargeTime = 1.0f;
     public float weaponMultiRechargeTime = 1.0f;
@@ -68,6 +69,7 @@ public class WorldObject : MonoBehaviour {
     protected int underAttackFrameCounter;
 
     [Header("Fog of War")]
+    public bool belongsToBoss;
     private FogOfWarAgent fogOfWarAgent;
 
     public virtual void SetSelection(bool selected, Rect playingArea)
@@ -395,6 +397,11 @@ public class WorldObject : MonoBehaviour {
         {
             ability.Use(position);
         }
+    }
+
+    public void SetAimRotation(Quaternion rotation)
+    {
+        this.aimRotation = rotation;
     }
 
     public virtual void PerformAttackToMulti(List<WorldObject> targets)

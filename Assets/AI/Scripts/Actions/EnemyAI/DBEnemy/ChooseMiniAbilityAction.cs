@@ -15,7 +15,7 @@ namespace AI.DBEnemy
         {
             Unit unit = controller.unit;
 
-            Ability ability = AbilityUtils.FindAbilityByName("DBEnemyMiniDebuffAoeAbility", unit.abilitiesMulti);
+            Ability ability = AbilityUtils.FindAbilityByName("DBEnemyMiniDebuffAoeAbility", unit.GetAbilityAgent().abilitiesMulti);
             var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, unit.transform.position, ability.range);
 
             if (ability != null && ability.IsReady() && reachabeEnemies.Count > 0)

@@ -34,13 +34,13 @@ public class FogOfWarAgent : MonoBehaviour {
 
             if (meshRenderers.Count > 0)
             {
-                if ((relatedObject is Unit || relatedObject is BossPart) && revealedPixels[index] != meshRenderers[0].enabled)
+                if ((relatedObject is Unit || relatedObject.belongsToBoss) && revealedPixels[index] != meshRenderers[0].enabled)
                 {
                     meshRenderers.ForEach(p => p.enabled = revealedPixels[index]);
                     relatedObject.UpdateChildRenderers();
                     relatedObject.CalculateBounds();
                 }
-                else if (!(relatedObject is Unit) && discoveredPixels[index] != meshRenderers[0].enabled)
+                else if (!(relatedObject is Unit || relatedObject.belongsToBoss) && discoveredPixels[index] != meshRenderers[0].enabled)
                 {
                     meshRenderers.ForEach(p => p.enabled = discoveredPixels[index]);
                     relatedObject.UpdateChildRenderers();

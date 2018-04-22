@@ -16,7 +16,7 @@ namespace AI.DDEnemy
 
             if (!enemyStateController.abilityToUse && enemyStateController.IsReadyToChooseAbility())
             {
-                Ability ability = AbilityUtils.ChooseRandomReadyAbility(unit.abilities);
+                Ability ability = AbilityUtils.ChooseRandomReadyAbility(unit.GetAbilityAgent().abilities);
 
                 if (ability != null)
                 {

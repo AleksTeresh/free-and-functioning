@@ -65,7 +65,7 @@ public class PersesBody : BossPart
             {
                 var bodyPart = bodyParts[i];
 
-                if (bodyPart is PersesBody) continue;
+                if (!bodyPart || bodyPart is PersesBody) continue;
 
                 bodyPart.transform.position = new Vector3(
                     bodyPart.transform.position.x + 10 * i,
@@ -74,8 +74,12 @@ public class PersesBody : BossPart
                 );
 
                 var bodyNavMesh = bodyPart.gameObject.AddComponent<NavMeshAgent>() as NavMeshAgent;
-                bodyNavMesh.speed = 5;
-                bodyNavMesh.baseOffset = bodyNavMesh.height / 2;
+
+                if (bodyNavMesh)
+                {
+                    bodyNavMesh.speed = 5;
+                    bodyNavMesh.baseOffset = bodyNavMesh.height / 2;
+                }
 
                 bodyPart.CalculateBounds();
             }
@@ -86,8 +90,12 @@ public class PersesBody : BossPart
             
 
             var headNavMesh = head.gameObject.AddComponent<NavMeshAgent>() as NavMeshAgent;
-            headNavMesh.speed = 0;
-            headNavMesh.baseOffset = -head.GetSelectionBounds().extents.y;
+
+            if (headNavMesh)
+            {
+                headNavMesh.speed = 0;
+                headNavMesh.baseOffset = -head.GetSelectionBounds().extents.y;
+            }
 
             head.transform.position = new Vector3(
                 head.transform.position.x - 10,

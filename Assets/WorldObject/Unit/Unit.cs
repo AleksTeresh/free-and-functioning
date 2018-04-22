@@ -11,6 +11,8 @@ using Abilities;
 public class Unit : WorldObject {
     protected new UnitStateController stateController;
 
+    private AbilityAgent abilityAgent;
+
     [HideInInspector] public bool holdingPosition = false;
     // public float moveSpeed, rotateSpeed;
     protected NavMeshAgent agent;
@@ -27,11 +29,7 @@ public class Unit : WorldObject {
     public AudioClip moveSound;
     public float driveVolume = 0.5f, moveVolume = 1.0f;
 
-    [HideInInspector] public Ability[] abilities;
-    [HideInInspector] public Ability[] abilitiesMulti;
-
     [Header("Attack")]
-    protected Quaternion aimRotation;
     protected WorldObject aimTarget;
     private ParticleSystem takeDamageEffect;
 
@@ -98,58 +96,9 @@ public class Unit : WorldObject {
         }
 	}
 
-	public Ability FindAbilityByIndex(int abilityIndex) {
-		if (abilityIndex < abilities.Length) {
-			return abilities [abilityIndex];
-		}
-
-		return null;
-	}
-
-    public Ability FindAbilityMultiByIndex(int abilityIndex)
-    {
-        if (abilityIndex < abilitiesMulti.Length)
-        {
-            return abilitiesMulti[abilityIndex];
-        }
-
-        return null;
-    }
-
     public override bool CanAddStatus()
     {
         return true;
-    }
-
-    public bool CanUseAbilitySlot(int slotIdx)
-    {
-        return AbilityUtils.CanUseAbilitySlot(abilities, abilitiesMulti, slotIdx);
-    }
-
-    public Ability GetFirstReadyAbility()
-    {
-        for (int i = 0; i < abilities.Length; i++)
-        {
-            if (CanUseAbilitySlot(i))
-            {
-                return abilities[i];
-            }
-        }
-
-        return null;
-    }
-    
-    public Ability GetFirstReadyMultiAbility()
-    {
-        for (int i = 0; i < abilitiesMulti.Length; i++)
-        {
-            if (CanUseAbilitySlot(i))
-            {
-                return abilitiesMulti[i];
-            }
-        }
-
-        return null;
     }
 
     public NavMeshAgent GetNavMeshAgent ()
@@ -184,25 +133,17 @@ public class Unit : WorldObject {
         return stateController;
     }
 
+    public AbilityAgent GetAbilityAgent()
+    {
+        return abilityAgent;
+    }
+
     protected override void Awake()
     {
         base.Awake();
 
         agent = GetComponent<NavMeshAgent>();
 		takeDamageEffect = GetComponentInChildren<ParticleSystem>();
-
-        var abilitiesWrapper = GetComponentInChildren<Abilities.Abilities>();
-        var abilitiesMultiWrapper = GetComponentInChildren<AbilitiesMulti>();
-
-        if (abilitiesWrapper)
-        {
-            abilities = abilitiesWrapper.GetComponentsInChildren<Ability>();
-        }
-        
-        if (abilitiesMultiWrapper)
-        {
-            abilitiesMulti = abilitiesMultiWrapper.GetComponentsInChildren<Ability>();
-        }
 
         stateController = GetComponent<UnitStateController>();
     }
@@ -224,12 +165,19 @@ public class Unit : WorldObject {
         var hitSphereObject = Instantiate(ResourceManager.GetWorldObject("HitSphere"), transform);
         hitSphereObject.transform.localScale = selectionBounds.size;
         this.hitSphereCollider = hitSphereObject.GetComponent<Collider>();
+
+        // instantiate abilityUser
+        var abilitiesWrapper = GetComponentInChildren<Abilities.Abilities>();
+        var abilitiesMultiWrapper = GetComponentInChildren<AbilitiesMulti>();
+        var abilityAgentObject = Instantiate(ResourceManager.GetAbilityAgent(), transform);
+        abilityAgent = abilityAgentObject.GetComponent<AbilityAgent>();
+        abilityAgent.Init(abilitiesWrapper, abilitiesMultiWrapper);
     }
     protected override void Update()
     {
         base.Update();
 
-        this.isBusy = IsAnyAbilityPending();
+        this.isBusy = abilityAgent != null && abilityAgent.IsAnyAbilityPending();
 
         HandleMove();
         HandleRotation();
@@ -296,26 +244,5 @@ public class Unit : WorldObject {
                 aiming = false;
             }
         }
-    }
-
-    private bool IsAnyAbilityPending ()
-    {
-        foreach(var ability in abilities)
-        {
-            if (ability.isPending)
-            {
-                return true;
-            }
-        }
-
-        foreach (var ability in abilitiesMulti)
-        {
-            if (ability.isPending)
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

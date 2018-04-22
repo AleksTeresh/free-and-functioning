@@ -13,7 +13,7 @@ public class BasicAbilityToMultiAction : ChooseAbilityAction
     {
         Unit unit = controller.unit;
 
-        var abilities = new List<Ability>(unit.abilitiesMulti);
+        var abilities = new List<Ability>(unit.GetAbilityAgent().abilitiesMulti);
 
         if (controller.chaseTarget)
         {

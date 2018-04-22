@@ -19,6 +19,7 @@ public class GameObjectList : MonoBehaviour {
     public GameObject[] statuses;
 	public ParticleSystem[] abilityVFX;
 	public GameObject[] projectiles;
+    public GameObject abilityAgent;
 
     void Awake()
     {
@@ -128,7 +129,6 @@ public class GameObjectList : MonoBehaviour {
         }
         
 		throw new UnregisteredAssetException (GetErrorMessage("UI Element", name));
-
     }
 
 	public ParticleSystem GetAbilityVfx(string name)
@@ -148,6 +148,16 @@ public class GameObjectList : MonoBehaviour {
         }
 
         throw new UnregisteredAssetException(GetErrorMessage("Projectile", name));
+    }
+
+    public GameObject GetAbilityAgent()
+    {
+        if (abilityAgent)
+        {
+            return abilityAgent;
+        }
+
+        throw new UnregisteredAssetException(GetErrorMessage("AbilityAgent", ""));
     }
 
     private string GetErrorMessage(string prefabType, string assetName) 

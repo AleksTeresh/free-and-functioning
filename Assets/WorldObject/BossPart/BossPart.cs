@@ -5,6 +5,8 @@ using RTS;
 using Abilities;
 
 public class BossPart : WorldObject {
+    private AbilityAgent abilityAgent;
+
     private GameObject destinationTarget;
     private int loadedDestinationTargetId = -1;
 
@@ -12,11 +14,7 @@ public class BossPart : WorldObject {
     public AudioClip moveSound;
     public float moveVolume = 1.0f;
 
-    [HideInInspector] public Ability[] abilities;
-    [HideInInspector] public Ability[] abilitiesMulti;
-
     [Header("Attack")]
-    protected Quaternion aimRotation;
     protected WorldObject aimTarget;
     private ParticleSystem takeDamageEffect;
 
@@ -45,60 +43,9 @@ public class BossPart : WorldObject {
         }
     }
 
-    public Ability FindAbilityByIndex(int abilityIndex)
-    {
-        if (abilityIndex < abilities.Length)
-        {
-            return abilities[abilityIndex];
-        }
-
-        return null;
-    }
-
-    public Ability FindAbilityMultiByIndex(int abilityIndex)
-    {
-        if (abilityIndex < abilitiesMulti.Length)
-        {
-            return abilitiesMulti[abilityIndex];
-        }
-
-        return null;
-    }
-
     public override bool CanAddStatus()
     {
         return true;
-    }
-
-    public bool CanUseAbilitySlot(int slotIdx)
-    {
-        return AbilityUtils.CanUseAbilitySlot(abilities, abilitiesMulti, slotIdx);
-    }
-
-    public Ability GetFirstReadyAbility()
-    {
-        for (int i = 0; i < abilities.Length; i++)
-        {
-            if (CanUseAbilitySlot(i))
-            {
-                return abilities[i];
-            }
-        }
-
-        return null;
-    }
-
-    public Ability GetFirstReadyMultiAbility()
-    {
-        for (int i = 0; i < abilitiesMulti.Length; i++)
-        {
-            if (CanUseAbilitySlot(i))
-            {
-                return abilitiesMulti[i];
-            }
-        }
-
-        return null;
     }
 
     public virtual bool IsMajor()
@@ -106,24 +53,16 @@ public class BossPart : WorldObject {
         return true;
     }
 
+    public AbilityAgent GetAbilityAgent ()
+    {
+        return abilityAgent;
+    }
+
     protected override void Awake()
     {
         base.Awake();
 
         takeDamageEffect = GetComponentInChildren<ParticleSystem>();
-
-        var abilitiesWrapper = GetComponentInChildren<Abilities.Abilities>();
-        var abilitiesMultiWrapper = GetComponentInChildren<AbilitiesMulti>();
-
-        if (abilitiesWrapper)
-        {
-            abilities = abilitiesWrapper.GetComponentsInChildren<Ability>();
-        }
-
-        if (abilitiesMultiWrapper)
-        {
-            abilitiesMulti = abilitiesMultiWrapper.GetComponentsInChildren<Ability>();
-        }
 
         stateController = GetComponent<StateController>();
     }
@@ -159,13 +98,20 @@ public class BossPart : WorldObject {
         {
             destinationTarget = player.GetObjectForId(loadedDestinationTargetId).gameObject;
         }
+
+        // instantiate abilityUser
+        var abilitiesWrapper = GetComponentInChildren<Abilities.Abilities>();
+        var abilitiesMultiWrapper = GetComponentInChildren<AbilitiesMulti>();
+        var abilityAgentObject = Instantiate(ResourceManager.GetAbilityAgent(), transform);
+        abilityAgent = abilityAgentObject.GetComponent<AbilityAgent>();
+        abilityAgent.Init(abilitiesWrapper, abilitiesMultiWrapper);
     }
 
     protected override void Update()
     {
         base.Update();
 
-        this.isBusy = IsAnyAbilityPending();
+        this.isBusy = abilityAgent != null && abilityAgent.IsAnyAbilityPending();
 
         HandleRotation();
     }
@@ -211,26 +157,5 @@ public class BossPart : WorldObject {
                 aiming = false;
             }
         }
-    }
-
-    private bool IsAnyAbilityPending()
-    {
-        foreach (var ability in abilities)
-        {
-            if (ability.isPending)
-            {
-                return true;
-            }
-        }
-
-        foreach (var ability in abilitiesMulti)
-        {
-            if (ability.isPending)
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

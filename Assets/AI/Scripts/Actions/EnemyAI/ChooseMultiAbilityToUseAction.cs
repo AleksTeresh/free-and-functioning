@@ -11,7 +11,7 @@ public class ChooseMultiAbilityToUseAction : UnitAction
 
         if (!controller.abilityToUse)
         {
-            Ability ability = unit.GetFirstReadyMultiAbility();
+            Ability ability = unit.GetAbilityAgent().GetFirstReadyMultiAbility();
 
             if (ability != null)
             {
