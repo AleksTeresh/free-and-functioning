@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1296883343808736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2, y: -2, z: 20.1}
+  m_LocalPosition: {x: 6.3, y: -2, z: 38.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4056203638853586}
@@ -228,8 +228,8 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 5000
-  maxHitPoints: 5000
+  hitPoints: 3000
+  maxHitPoints: 3000
   damage: 0
   damageMulti: 0
   weaponRange: 10
@@ -255,10 +255,10 @@ MonoBehaviour:
   finishedJobVolume: 1
   spawnRateUpperLimit: 100
   spawnRateLowerLimit: 0
-  meleeSwarmlingSpawnRate: 4
-  meleeSwarmlingSpawnAccel: 0.1
-  rangeSwarmlingSpawnRate: 1
-  rangeSwarmlingSpawnAccel: 0.1
+  meleeSwarmlingSpawnRate: 16
+  meleeSwarmlingSpawnAccel: 3.2
+  rangeSwarmlingSpawnRate: 8
+  rangeSwarmlingSpawnAccel: 1.6
   assassinSpawnRate: 0.1
   assassinSpawnAccel: 0.1
   hulkSpawnRate: 0.1
@@ -268,7 +268,7 @@ MonoBehaviour:
   debufferSpawnRate: 0
   debufferSpawnAccel: 0
   crowdControlSpawnRate: 0.1
-  crowdControlSpawnAccel: 0
+  crowdControlSpawnAccel: 0.1
   meleeSwarmling: {fileID: 114417529153538066, guid: ed7db39d5a8cd7e4aaad0e076bdfac59,
     type: 2}
   rangeSwarmling: {fileID: 114794812556642682, guid: e3efec08879c3d74e8af4aa1cf477829,
@@ -280,8 +280,8 @@ MonoBehaviour:
   debuffer: {fileID: 114767798242460070, guid: 359e5df26209b6a44843adc7e7559330, type: 2}
   crowdControl: {fileID: 114797331067803572, guid: 2f5cb77cb05f7174cbaac05081b992e5,
     type: 2}
-  spawnInterval: 10
-  spawnIntervalAccel: -0.1
+  spawnInterval: 4
+  spawnIntervalAccel: -0.075
   spawnIntervalLowerLimit: 2
   spawnIntervalUpperLimit: 600
 --- !u!208 &208797717876701320

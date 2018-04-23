@@ -903,7 +903,7 @@ MonoBehaviour:
   hitPoints: 150
   maxHitPoints: 150
   damage: 30
-  damageMulti: 20
+  damageMulti: 30
   weaponRange: 30
   aiming: 0
   weaponAimSpeed: 8
@@ -920,6 +920,7 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 50
+  holdingPosition: 0
   driveSound: {fileID: 8300000, guid: 98c83b94b835ba54191f3292e8d44a5b, type: 3}
   moveSound: {fileID: 8300000, guid: 568155acc84ab834eabc52a5a512dad3, type: 3}
   driveVolume: 0.5
@@ -928,7 +929,7 @@ MonoBehaviour:
   - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
   - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
   abilitiesMulti: []
-  multiDamageMinValue: 3
+  multiDamageMinValue: 10
 --- !u!114 &114521558008401788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1015,18 +1016,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: e91a3bcc49b861244a4dca95e63e45a2, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
-  navMeshAgent: {fileID: 0}
-  unit: {fileID: 0}
-  wayPointList: []
-  nextWayPoint: 0
   chaseTarget: {fileID: 0}
-  allyAbilityTarget: {fileID: 0}
-  enemyAbilityTarget: {fileID: 0}
-  aoeAbilityTarget: {x: 0, y: 0, z: 0}
+  controlledObject: {fileID: 0}
   targetManager: {fileID: 0}
   nearbyEnemies: []
   nearbyAllies: []
   attacking: 0
+  navMeshAgent: {fileID: 0}
+  unit: {fileID: 0}
+  wayPointList: []
+  nextWayPoint: 0
+  allyAbilityTarget: {fileID: 0}
+  enemyAbilityTarget: {fileID: 0}
+  aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
 --- !u!114 &114979115656422290
 MonoBehaviour:

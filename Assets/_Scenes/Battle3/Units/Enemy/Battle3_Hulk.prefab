@@ -1220,8 +1220,8 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 800
-  maxHitPoints: 800
+  hitPoints: 600
+  maxHitPoints: 600
   damage: 40
   damageMulti: 3
   weaponRange: 2

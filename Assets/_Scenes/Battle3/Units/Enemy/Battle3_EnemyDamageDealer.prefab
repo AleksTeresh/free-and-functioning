@@ -1277,7 +1277,7 @@ MonoBehaviour:
   weaponMultiRechargeTime: 1
   meleeDefence: 3
   rangeDefence: 3
-  abilityDefence: 3
+  abilityDefence: 6
   isInvincible: 0
   attackSound: {fileID: 8300000, guid: 33678abad51fdac45873effd3f676779, type: 3}
   selectSound: {fileID: 8300000, guid: 34bf03edab4eca74f93c5e301f60f475, type: 3}
