@@ -1026,11 +1026,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Brain Freeze Multi
-  range: 500
-  cooldown: 15
+  range: 30
+  cooldown: 20
   delayTime: 0
-  damage: 100
-  multiDamageMinValue: 10
+  damage: 40
+  multiDamageMinValue: 20
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -1066,11 +1066,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Circuit Fry Multi
-  range: 300
-  cooldown: 55
+  range: 30
+  cooldown: 20
   delayTime: 0
-  damage: 50
-  multiDamageMinValue: 1
+  damage: 40
+  multiDamageMinValue: 20
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -1095,10 +1095,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Feel The Punch
-  range: 1000
-  cooldown: 55
+  range: 30
+  cooldown: 15
   delayTime: 0
-  damage: 100
+  damage: 50
   multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
@@ -1135,10 +1135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Too Hot
-  range: 300
-  cooldown: 55
+  range: 30
+  cooldown: 15
   delayTime: 0
-  damage: 30
+  damage: 40
   multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
@@ -1209,11 +1209,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Too Hot Multi
-  range: 300
-  cooldown: 60
+  range: 30
+  cooldown: 20
   delayTime: 0
-  damage: 30
-  multiDamageMinValue: 1
+  damage: 35
+  multiDamageMinValue: 20
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -1238,11 +1238,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Feel The Punch Multi
-  range: 1000
-  cooldown: 55
+  range: 30
+  cooldown: 20
   delayTime: 0
-  damage: 20
-  multiDamageMinValue: 1
+  damage: 40
+  multiDamageMinValue: 20
   attackType: 2
   isAllyTargetingAbility: 0
   isSelfOnly: 0
@@ -1300,10 +1300,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Brain Freeze
-  range: 1000
-  cooldown: 10
+  range: 30
+  cooldown: 15
   delayTime: 0
-  damage: 100
+  damage: 50
   multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
@@ -1378,10 +1378,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Circuit Fry
-  range: 300
-  cooldown: 55
+  range: 30
+  cooldown: 15
   delayTime: 0
-  damage: 100
+  damage: 50
   multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0
