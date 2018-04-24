@@ -237,8 +237,8 @@ public class HUD : MonoBehaviour
         if (selection && selection is Unit)
         {
             var selectedUnit = (Unit)selection;
-            var abilities = selectedUnit.abilities;
-            var multiAbilities = selectedUnit.abilitiesMulti;
+            var abilities = selectedUnit.GetAbilityAgent().abilities;
+            var multiAbilities = selectedUnit.GetAbilityAgent().abilitiesMulti;
 
             abilityBar.DrawAbilities(abilities, multiAbilities, targetManager.InMultiMode);
         }

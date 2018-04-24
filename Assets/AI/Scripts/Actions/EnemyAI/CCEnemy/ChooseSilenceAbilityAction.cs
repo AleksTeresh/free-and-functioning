@@ -13,7 +13,7 @@ namespace AI.CCEnemy
         {
             Unit unit = controller.unit;
 
-            Ability ability = AbilityUtils.FindAbilityByName("CCEnemySilenceAbility", unit.abilities);
+            Ability ability = AbilityUtils.FindAbilityByName("CCEnemySilenceAbility", unit.GetAbilityAgent().abilities);
             var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, unit.transform.position, ability.range);
 
             if (ability != null && ability.IsReady() && reachabeEnemies.Count > 0)

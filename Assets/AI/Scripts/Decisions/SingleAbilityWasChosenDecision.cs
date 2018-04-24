@@ -9,6 +9,7 @@ public class SingleAbilityWasChosenDecision : UnitDecision
     {
         return controller.abilityToUse != null &&
             !(controller.abilityToUse is AoeAbility) &&
-            new List<Ability>(controller.unit.abilities).Contains(controller.abilityToUse);
+            new List<Ability>(controller.unit.GetAbilityAgent().abilities)
+                .Contains(controller.abilityToUse);
     }
 }

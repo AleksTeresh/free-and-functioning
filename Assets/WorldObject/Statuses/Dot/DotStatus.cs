@@ -35,7 +35,7 @@ namespace Statuses
         {
             if (target)
             {
-                target.TakeDamage(tickDamage, RTS.AttackType.Ultimate);
+                target.TakeDamage(tickDamage, RTS.AttackType.Ability);
 
                 isTickReady = false;
             }

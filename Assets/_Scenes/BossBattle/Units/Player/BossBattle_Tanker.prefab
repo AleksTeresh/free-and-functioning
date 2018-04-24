@@ -858,8 +858,8 @@ MonoBehaviour:
   weaponAimSpeed: 5
   weaponRechargeTime: 6
   weaponMultiRechargeTime: 1
-  meleeDefence: 8
-  rangeDefence: 8
+  meleeDefence: 6
+  rangeDefence: 6
   abilityDefence: 5
   isInvincible: 0
   attackSound: {fileID: 0}
@@ -869,6 +869,7 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 35
+  belongsToBoss: 0
   holdingPosition: 0
   driveSound: {fileID: 0}
   moveSound: {fileID: 0}

@@ -25,17 +25,21 @@ namespace RTS
         {
             Unit unit = stateController.unit;
 
-            if (unit.CanUseAbilitySlot(abilityIndex))
+            if (unit.GetAbilityAgent().CanUseAbilitySlot(abilityIndex))
             {
                 Ability ability = null;
 
                 if (targetManager.InMultiMode)
                 {
-                    ability = stateController.unit.FindAbilityMultiByIndex(abilityIndex);
+                    ability = stateController.unit
+                        .GetAbilityAgent()
+                        .FindAbilityMultiByIndex(abilityIndex);
                 }
                 else
                 {
-                    ability = stateController.unit.FindAbilityByIndex(abilityIndex);
+                    ability = stateController.unit
+                        .GetAbilityAgent()
+                        .FindAbilityByIndex(abilityIndex);
                 }
 
                 if (ability != null)
@@ -54,8 +58,12 @@ namespace RTS
 
                         // Healing ability targetting doesn't depend on global targetting mode, single / multi target selection
                         // happens later, when player hits space
-                        player.selectedAllyTargettingAbility = stateController.unit.FindAbilityByIndex(abilityIndex);
-                        player.selectedAlliesTargettingAbility = stateController.unit.FindAbilityMultiByIndex(abilityIndex);
+                        player.selectedAllyTargettingAbility = stateController.unit
+                            .GetAbilityAgent()
+                            .FindAbilityByIndex(abilityIndex);
+                        player.selectedAlliesTargettingAbility = stateController.unit
+                            .GetAbilityAgent()
+                            .FindAbilityMultiByIndex(abilityIndex);
 
                     }
                     else

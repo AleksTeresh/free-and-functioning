@@ -29,12 +29,12 @@ namespace Statuses
 
         private void SetAbilitiesBlock(Unit targetUnit, bool blocked)
         {
-            foreach (var ability in targetUnit.abilities)
+            foreach (var ability in targetUnit.GetAbilityAgent().abilities)
             {
                 ability.blocked = blocked;
             }
 
-            foreach (var ability in targetUnit.abilitiesMulti)
+            foreach (var ability in targetUnit.GetAbilityAgent().abilitiesMulti)
             {
                 ability.blocked = blocked;
             }

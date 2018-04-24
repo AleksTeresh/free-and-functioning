@@ -13,7 +13,7 @@ namespace AI.CCEnemy
         {
             Unit unit = controller.unit;
 
-            Ability ability = AbilityUtils.FindAbilityByName("CCEnemyDisarmamentAoeAbility", unit.abilitiesMulti);
+            Ability ability = AbilityUtils.FindAbilityByName("CCEnemyDisarmamentAoeAbility", unit.GetAbilityAgent().abilitiesMulti);
             var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, unit.transform.position, ability.range);
 
             if (ability != null && ability.IsReady() && reachabeEnemies.Count > 0)

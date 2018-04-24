@@ -15,7 +15,7 @@ namespace AI.DBEnemy
         {
             Unit unit = controller.unit;
 
-            Ability ability = AbilityUtils.FindAbilityByName("DBEnemyDotAbilityMulti", unit.abilitiesMulti);
+            Ability ability = AbilityUtils.FindAbilityByName("DBEnemyDotAbilityMulti", unit.GetAbilityAgent().abilitiesMulti);
             var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, unit.transform.position, ability.range);
 
             // wait till at least 2 targets are reachable

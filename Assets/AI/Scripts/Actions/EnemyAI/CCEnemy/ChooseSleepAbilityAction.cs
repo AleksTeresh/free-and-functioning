@@ -13,7 +13,7 @@ namespace AI.CCEnemy
         {
             Unit unit = controller.unit;
 
-            Ability ability = AbilityUtils.FindAbilityByName("CCEnemySleepMultiAbility", unit.abilitiesMulti);
+            Ability ability = AbilityUtils.FindAbilityByName("CCEnemySleepMultiAbility", unit.GetAbilityAgent().abilitiesMulti);
 
             // TODO: add logic on when to use Sleep Multi.
         }

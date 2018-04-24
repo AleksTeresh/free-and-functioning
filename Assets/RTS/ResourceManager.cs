@@ -129,6 +129,11 @@ namespace RTS
             return -1;
         }
 
+        public static GameObject GetAbilityAgent()
+        {
+            return gameObjectList.GetAbilityAgent();
+        }
+
         public static Texture2D[] GetAvatars()
         {
             return gameObjectList.GetAvatars();

@@ -9,6 +9,7 @@ public class MultiAbilityWasChosenDecision : UnitDecision
     {
         return controller.abilityToUse != null &&
             !(controller.abilityToUse is AoeAbility) &&
-            new List<Ability>(controller.unit.abilitiesMulti).Contains(controller.abilityToUse);
+            new List<Ability>(controller.unit.GetAbilityAgent().abilitiesMulti)
+                .Contains(controller.abilityToUse);
     }
 }

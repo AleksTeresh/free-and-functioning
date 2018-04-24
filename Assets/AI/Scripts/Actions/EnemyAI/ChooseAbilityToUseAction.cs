@@ -10,7 +10,7 @@ public class ChooseAbilityToUseAction : ChooseAbilityAction
 
         if (!controller.abilityToUse)
         {
-            Ability ability = unit.GetFirstReadyAbility();
+            Ability ability = unit.GetAbilityAgent().GetFirstReadyAbility();
 
             if (ability != null)
             {

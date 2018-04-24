@@ -38,7 +38,11 @@ public class PersesPlatform : Unit {
                 if (!bodyPart) continue;
 
                 bodyPart.transform.position = new Vector3(ownPosition.x, bodyPart.transform.position.y, ownPosition.z);
-                bodyPart.transform.rotation = ownRotation;
+
+                if (!bodyPart.aiming && !bodyPart.GetStateController().chaseTarget)
+                {
+                    bodyPart.SetAimRotation(ownRotation);
+                }
 
                 bodyPart.CalculateBounds();
             }

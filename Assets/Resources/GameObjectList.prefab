@@ -230,3 +230,5 @@ MonoBehaviour:
   - {fileID: 1658026645045016, guid: 809ceeab6fd3b7c4fb927bcfada367ae, type: 2}
   - {fileID: 1833783488009048, guid: 5cfbbe9bf3716804fb023cbf7794ca23, type: 2}
   - {fileID: 1560441377564334, guid: 3a923750353ba33428376d015d96e1be, type: 2}
+  abilityAgent: {fileID: 1703521213251724, guid: 790fadcd4d40ca64d991086e19e1dc45,
+    type: 2}
