@@ -1,8 +1,4 @@
 ﻿using RTS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 public class PersesHead : SpawnHouse {
 
@@ -12,9 +8,20 @@ public class PersesHead : SpawnHouse {
 
         base.TakeDamage(attackPoints, attackType);
 
-        if (player || hitPoints <= 0)
+        if (player && hitPoints <= 0)
         {
-            player.AddUnit(rangeSwarmling.name, transform.position, transform.position, transform.rotation, this);
+            var spawnPoint = WorkManager.GetClosestPointOnNavMesh(transform.position, "Walkable", 30);
+
+            if (spawnPoint.HasValue)
+            {
+                player.AddUnit(
+                    rangeSwarmling.name,
+                    spawnPoint.Value,
+                    spawnPoint.Value,
+                    transform.rotation,
+                    this
+                );
+            }
         }
     }
 }

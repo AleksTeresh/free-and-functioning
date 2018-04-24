@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4052892650570918}
   - component: {fileID: 33494180261769544}
-  - component: {fileID: 135076641850782876}
   - component: {fileID: 23929197593267670}
   m_Layer: 0
   m_Name: LeftEye
@@ -55,6 +54,7 @@ GameObject:
   - component: {fileID: 4083287641415498}
   - component: {fileID: 33490996253309054}
   - component: {fileID: 136896327887041524}
+  - component: {fileID: 54848414312060578}
   - component: {fileID: 23247253406036202}
   m_Layer: 0
   m_Name: Muzzle
@@ -73,7 +73,9 @@ GameObject:
   - component: {fileID: 4704690235906984}
   - component: {fileID: 33585751574183400}
   - component: {fileID: 136252369798867130}
+  - component: {fileID: 54944686568742590}
   - component: {fileID: 23223868328779188}
+  - component: {fileID: 114247182750457108}
   m_Layer: 0
   m_Name: PlatformPart1
   m_TagString: Untagged
@@ -91,7 +93,9 @@ GameObject:
   - component: {fileID: 4993329300719680}
   - component: {fileID: 33957129328487898}
   - component: {fileID: 136966586377284948}
+  - component: {fileID: 54783666527656040}
   - component: {fileID: 23996373708167184}
+  - component: {fileID: 114023286092255696}
   m_Layer: 0
   m_Name: PlatformPart2
   m_TagString: Untagged
@@ -127,6 +131,7 @@ GameObject:
   - component: {fileID: 4203300189446144}
   - component: {fileID: 33497925541883330}
   - component: {fileID: 136782612156431522}
+  - component: {fileID: 54234902453730814}
   - component: {fileID: 23393571409480216}
   m_Layer: 0
   m_Name: Muzzle
@@ -146,6 +151,22 @@ GameObject:
   - component: {fileID: 114176323224946168}
   m_Layer: 0
   m_Name: Statuses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1188279651485020
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4604754565504912}
+  - component: {fileID: 114093879878702896}
+  m_Layer: 0
+  m_Name: Boss_AttackDownAbilityMulti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,6 +214,7 @@ GameObject:
   - component: {fileID: 4494589277201600}
   - component: {fileID: 33668241025309170}
   - component: {fileID: 136840653442530786}
+  - component: {fileID: 54912726964945198}
   - component: {fileID: 23731517050200610}
   m_Layer: 0
   m_Name: RightHorn
@@ -211,6 +233,7 @@ GameObject:
   - component: {fileID: 4072720793593202}
   - component: {fileID: 33251161255630354}
   - component: {fileID: 136102844844620230}
+  - component: {fileID: 54418536916359850}
   - component: {fileID: 23030587329776544}
   m_Layer: 0
   m_Name: LeftHorn
@@ -244,7 +267,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4054449033411810}
   - component: {fileID: 33990386067127014}
-  - component: {fileID: 136437090361182678}
   - component: {fileID: 23344546782111542}
   m_Layer: 0
   m_Name: Nose
@@ -339,6 +361,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1375677480940270
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4628162927276380}
+  - component: {fileID: 114785549646047582}
+  m_Layer: 0
+  m_Name: Boss_HealingAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1418748647727872
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4114714449673190}
+  - component: {fileID: 114369239360439084}
+  m_Layer: 0
+  m_Name: Boss_MiniDebuffAoeAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1429420807202946
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +403,22 @@ GameObject:
   - component: {fileID: 4206655939103162}
   m_Layer: 0
   m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1433858122649188
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4481378353425880}
+  - component: {fileID: 114599476877371924}
+  m_Layer: 0
+  m_Name: Boss_DotAbilityMulti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,6 +452,7 @@ GameObject:
   - component: {fileID: 33077722275836704}
   - component: {fileID: 136420951206985110}
   - component: {fileID: 23943888209723536}
+  - component: {fileID: 114814748395787914}
   m_Layer: 0
   m_Name: Stem
   m_TagString: Untagged
@@ -436,6 +507,7 @@ GameObject:
   - component: {fileID: 4416530651329556}
   - component: {fileID: 33207015791927936}
   - component: {fileID: 136561646332013838}
+  - component: {fileID: 54920249175911830}
   - component: {fileID: 23447780868255224}
   m_Layer: 0
   m_Name: Muzzle
@@ -521,7 +593,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4023604048973346}
   - component: {fileID: 33075356849430358}
-  - component: {fileID: 135100144597271136}
   - component: {fileID: 23721154292373224}
   m_Layer: 0
   m_Name: RightEye
@@ -540,7 +611,9 @@ GameObject:
   - component: {fileID: 4197125704664860}
   - component: {fileID: 33936664042235528}
   - component: {fileID: 135384622846871390}
+  - component: {fileID: 54899451440021758}
   - component: {fileID: 23153323382660686}
+  - component: {fileID: 114094591989225818}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -666,6 +739,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1921570061221312
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4581416067340956}
+  - component: {fileID: 114889518028650346}
+  m_Layer: 0
+  m_Name: Boss_DefDownAbilityMulti
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4023604048973346
 Transform:
   m_ObjectHideFlags: 1
@@ -744,7 +833,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491834124059068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.989746, y: 2, z: 8.687134}
+  m_LocalPosition: {x: -69.7, y: 2, z: 32.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4585267289805622}
@@ -793,6 +882,19 @@ Transform:
   m_Father: {fileID: 4430182449874606}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4114714449673190
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418748647727872}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 276.81396, y: -4.1005535, z: 198.02403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4149131737372840}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4143129947015188
 Transform:
   m_ObjectHideFlags: 1
@@ -815,7 +917,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4604754565504912}
+  - {fileID: 4581416067340956}
+  - {fileID: 4481378353425880}
+  - {fileID: 4114714449673190}
   m_Father: {fileID: 4048096354528770}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -971,6 +1077,19 @@ Transform:
   m_Father: {fileID: 4206655939103162}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4481378353425880
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433858122649188}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 276.81396, y: -4.1005535, z: 198.02403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4149131737372840}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4494589277201600
 Transform:
   m_ObjectHideFlags: 1
@@ -1010,6 +1129,19 @@ Transform:
   m_Father: {fileID: 4430182449874606}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4581416067340956
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921570061221312}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 276.81396, y: -4.1005535, z: 198.02403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4149131737372840}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4585267289805622
 Transform:
   m_ObjectHideFlags: 1
@@ -1038,6 +1170,19 @@ Transform:
   m_Father: {fileID: 4921234370220758}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4604754565504912
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188279651485020}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 276.81396, y: -4.1005535, z: 198.02403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4149131737372840}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4616089381075244
 Transform:
   m_ObjectHideFlags: 1
@@ -1051,6 +1196,19 @@ Transform:
   m_Father: {fileID: 4848835830962708}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+--- !u!4 &4628162927276380
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375677480940270}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0000038146973, y: 0, z: 0.0000038146973}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4874572055552804}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4672127638072102
 Transform:
   m_ObjectHideFlags: 1
@@ -1147,7 +1305,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4628162927276380}
   m_Father: {fileID: 4430182449874606}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1786,12 +1945,132 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &54234902453730814
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1111117680786964}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!54 &54244287544637550
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1371075112160872}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54418536916359850
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270411115585402}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54783666527656040
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058719546607584}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54848414312060578
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1040764006136902}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54899451440021758
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719354158216352}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54912726964945198
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226563965041218}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54920249175911830
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1599125532481872}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54944686568742590
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055618559513456}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -1931,6 +2210,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72eab4895466fda438de93d248cba36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114023286092255696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058719546607584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114063383261431856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1952,6 +2242,46 @@ MonoBehaviour:
   attacking: 0
   building: {fileID: 0}
   spawnTimer: 0
+--- !u!114 &114093879878702896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188279651485020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Attack Down Multi
+  range: 100
+  cooldown: 10
+  delayTime: 0
+  damage: 0
+  multiDamageMinValue: 1
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114323609195286076, guid: 25f6efd2b12564e4386ccbe1d31fcbdb, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  blocked: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: AttackDownAbilityEffect
+--- !u!114 &114094591989225818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719354158216352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114095086495520194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1963,12 +2293,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97819eebd1de174db47b110ea24144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Body
+  objectName: Perses' Body
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 2000
-  maxHitPoints: 2000
+  hitPoints: 3000
+  maxHitPoints: 3000
   damage: 10
   damageMulti: 3
   weaponRange: 10
@@ -1976,9 +2306,9 @@ MonoBehaviour:
   weaponAimSpeed: 1
   weaponRechargeTime: 1
   weaponMultiRechargeTime: 1
-  meleeDefence: 0
-  rangeDefence: 0
-  abilityDefence: 0
+  meleeDefence: 10
+  rangeDefence: 10
+  abilityDefence: 10
   isInvincible: 0
   attackSound: {fileID: 0}
   selectSound: {fileID: 0}
@@ -1987,10 +2317,9 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 20
+  belongsToBoss: 1
   moveSound: {fileID: 0}
   moveVolume: 1
-  abilities: []
-  abilitiesMulti: []
 --- !u!114 &114176323224946168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2013,6 +2342,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72eab4895466fda438de93d248cba36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114247182750457108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055618559513456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114291287482536578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2024,7 +2364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256c268ef02d469c82984ed43ac797b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: bff99035b6a2246ef93cfc4854844a44, type: 2}
+  currentState: {fileID: 11400000, guid: 61a49cb4238beee439af74cb98e7bb2e, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
   chaseTarget: {fileID: 0}
   controlledObject: {fileID: 0}
@@ -2069,6 +2409,41 @@ MonoBehaviour:
   aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
   abilityToUseDecisionInterval: 4
+--- !u!114 &114369239360439084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418748647727872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60d6186b6f331b43a5fe3561703bb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Mini Debuff Aoe
+  range: 100
+  cooldown: 15
+  delayTime: 0
+  damage: 0
+  multiDamageMinValue: 1
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114323609195286076, guid: da10425fcc7e4c54889f8ac9a7e62618, type: 2}
+  - {fileID: 114607016667500198, guid: 89d7970eb2c76bf4caf5fbca7f341f13, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  blocked: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: MiniDebuffAbilityEffect
+  aoe: {fileID: 114395267541199148, guid: 84eeaf64d226c484eade3dace93413c6, type: 2}
+  radius: 11
+  aoeDelay: 4
+  affectsFriends: 0
+  affectsSelf: 0
 --- !u!114 &114381908956650722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2113,12 +2488,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e679aec94e166f4f9634b15595d0c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Attacker
+  objectName: Perses' Attacker
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 100
-  maxHitPoints: 100
+  hitPoints: 600
+  maxHitPoints: 600
   damage: 1
   damageMulti: 3
   weaponRange: 35
@@ -2137,11 +2512,12 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 35
+  belongsToBoss: 1
   moveSound: {fileID: 0}
   moveVolume: 1
-  abilities: []
-  abilitiesMulti: []
   multiDamageMinValue: 1
+  meleeWeaponRange: 5
+  meleeDamage: 70
 --- !u!114 &114548188303272194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2157,8 +2533,8 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 20
-  maxHitPoints: 20
+  hitPoints: 50
+  maxHitPoints: 50
   damage: 10
   damageMulti: 3
   weaponRange: 10
@@ -2166,7 +2542,7 @@ MonoBehaviour:
   weaponAimSpeed: 1
   weaponRechargeTime: 1
   weaponMultiRechargeTime: 1
-  meleeDefence: 0
+  meleeDefence: 1
   rangeDefence: 100000
   abilityDefence: 100000
   isInvincible: 0
@@ -2177,6 +2553,7 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 20
+  belongsToBoss: 1
   rallyPointImage: {fileID: 0}
   stateController: {fileID: 0}
   maxBuildProgress: 0
@@ -2209,7 +2586,7 @@ MonoBehaviour:
   debuffer: {fileID: 114767798242460070, guid: e234ecc3e6d61854a9d59ae8a898956f, type: 2}
   crowdControl: {fileID: 114797331067803572, guid: c63761076774bd6479aca31d1b968c6a,
     type: 2}
-  spawnInterval: 5
+  spawnInterval: 10
   spawnIntervalAccel: 0
   spawnIntervalLowerLimit: 0
   spawnIntervalUpperLimit: 60
@@ -2224,6 +2601,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114599476877371924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433858122649188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Damage over Time
+  range: 100
+  cooldown: 25
+  delayTime: 0
+  damage: 0
+  multiDamageMinValue: 1
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114771467544062228, guid: 0ffae9b31a2da68438ed86407d662979, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  blocked: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: DotAbilityEffect
 --- !u!114 &114732094918545894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2246,7 +2652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256c268ef02d469c82984ed43ac797b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: bff99035b6a2246ef93cfc4854844a44, type: 2}
+  currentState: {fileID: 11400000, guid: 52806f64a83f311438edcf6244bf12e3, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
   chaseTarget: {fileID: 0}
   controlledObject: {fileID: 0}
@@ -2307,12 +2713,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66bb112b91d70a148976f6efc72dba31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Debuffer
+  objectName: Perses' Debuffer
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 100
-  maxHitPoints: 100
+  hitPoints: 400
+  maxHitPoints: 400
   damage: 1
   damageMulti: 3
   weaponRange: 35
@@ -2331,10 +2737,37 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 35
+  belongsToBoss: 1
   moveSound: {fileID: 0}
   moveVolume: 1
-  abilities: []
-  abilitiesMulti: []
+--- !u!114 &114785549646047582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375677480940270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c90a7ce523e0d14e82309c2046edf79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Healing Ability Base
+  range: 200
+  cooldown: 6
+  delayTime: 0
+  damage: 150
+  multiDamageMinValue: 1
+  attackType: 2
+  isAllyTargetingAbility: 1
+  isSelfOnly: 0
+  statuses: []
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  blocked: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: HealingAbilityEffect
 --- !u!114 &114798014202615138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2363,6 +2796,46 @@ MonoBehaviour:
   aoeAbilityTarget: {x: 0, y: 0, z: 0}
   abilityToUse: {fileID: 0}
   abilityToUseDecisionInterval: 4
+--- !u!114 &114814748395787914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1481964709217570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114889518028650346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921570061221312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001e5197f22df0a48a883196b68f73a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Def Down Multi
+  range: 100
+  cooldown: 10
+  delayTime: 0
+  damage: 0
+  multiDamageMinValue: 1
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114607016667500198, guid: 8bdb855eb0a598e4aa5d0d172d41e260, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  blocked: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  vfxName: DefDownAbilityEffect
 --- !u!114 &114891308469576604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2402,7 +2875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256c268ef02d469c82984ed43ac797b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: bff99035b6a2246ef93cfc4854844a44, type: 2}
+  currentState: {fileID: 11400000, guid: 93d2146223595f24496644d0635ea6cd, type: 2}
   remainState: {fileID: 11400000, guid: 829875994ebf4ab48a6ce80aba553399, type: 2}
   chaseTarget: {fileID: 0}
   controlledObject: {fileID: 0}
@@ -2434,11 +2907,11 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 10
-  maxHitPoints: 10
+  hitPoints: 500
+  maxHitPoints: 500
   damage: 0
   damageMulti: 0
-  weaponRange: 20
+  weaponRange: 4
   aiming: 0
   weaponAimSpeed: 1
   weaponRechargeTime: 1
@@ -2454,13 +2927,12 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 500
+  belongsToBoss: 1
   holdingPosition: 0
   driveSound: {fileID: 0}
   moveSound: {fileID: 0}
   driveVolume: 0.5
   moveVolume: 1
-  abilities: []
-  abilitiesMulti: []
 --- !u!114 &114942511063104878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2527,12 +2999,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66bb112b91d70a148976f6efc72dba31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Healer
+  objectName: Perses' Healer
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 100
-  maxHitPoints: 100
+  hitPoints: 400
+  maxHitPoints: 400
   damage: 1
   damageMulti: 3
   weaponRange: 35
@@ -2551,34 +3023,9 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 35
+  belongsToBoss: 1
   moveSound: {fileID: 0}
   moveVolume: 1
-  abilities: []
-  abilitiesMulti: []
---- !u!135 &135076641850782876
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1012219143908556}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135100144597271136
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1680926466033934}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135384622846871390
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2586,7 +3033,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1719354158216352}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2598,7 +3045,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270411115585402}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -2611,7 +3058,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1055618559513456}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -2630,19 +3077,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136437090361182678
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1287327771513380}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136561646332013838
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2650,7 +3084,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1599125532481872}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -2676,7 +3110,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111117680786964}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -2702,7 +3136,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1226563965041218}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -2715,7 +3149,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040764006136902}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -2728,7 +3162,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058719546607584}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2

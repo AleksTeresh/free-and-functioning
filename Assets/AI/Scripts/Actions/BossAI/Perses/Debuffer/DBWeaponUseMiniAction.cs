@@ -1,25 +1,38 @@
 ﻿using UnityEngine;
-using UnityEditor;
+using System.Collections;
 using Abilities;
 using RTS;
 
-[CreateAssetMenu(menuName = "AI/Actions/BossAI/Perses/DBWeaponUseAttackDown")]
-public class DBWeaponUseAttackDownAction : BossPartAction
+[CreateAssetMenu(menuName = "AI/Actions/BossAI/Perses/Debuffer/DBWeaponUseMini")]
+public class DBWeaponUseMiniAction : BossPartAction
 {
     protected override void DoAction(BossPartStateController controller)
     {
         BossPart bossPart = controller.bossPart;
 
         Ability ability = AbilityUtils.FindAbilityByName(
-            "DBEnemyAttackDownAbilityMulti",
+            "Boss_MiniDebuffAoeAbility",
             bossPart.GetAbilityAgent().abilitiesMulti
         );
+
+        if (!ability || !(ability is AoeAbility))
+        {
+            return;
+        }
+        AoeAbility aoeAbility = (AoeAbility)ability;
+
         var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, bossPart.transform.position, ability.range);
 
         // wait till at least 2 targets are reachable
         if (ability != null && ability.IsReady() && reachabeEnemies.Count > 1)
         {
-            // bossPart.abilityToUse = ability;
+            var abilityTarget = AoeUtils.GetAoeTargetPosition(
+                    ability.range,
+                    reachabeEnemies,
+                    bossPart.GetPlayer()
+            );
+
+            bossPart.UseAbility(abilityTarget, aoeAbility);
         }
     }
 }

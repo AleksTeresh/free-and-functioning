@@ -363,14 +363,14 @@ public class WorldObject : MonoBehaviour {
         else if (ReadyToFire()) UseWeapon(target);
     }
 
-	public virtual void UseAbility(WorldObject target, Ability ability) {
+	public virtual void UseAbility(WorldObject target, Ability ability, bool shouldAim = false) {
 		if (!target || isBusy)
 		{
 			// attacking = false;
 			return;
 		}
 
-		if (!TargetInFrontOfWeapon (target) && !IsTargetSelf(target)) {
+		if (shouldAim && !TargetInFrontOfWeapon (target) && !IsTargetSelf(target)) {
 			AimAtTarget (target);
 		}
 		else if (ability.IsReady()) {
