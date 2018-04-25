@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Intro1
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 21300000, guid: 92bdd01bef4c6b24fbfb2caeaa2cb472, type: 3}
+  speakerName: Storyteller
+  displayedOptionText: 
+  dialogSentences:
+  - The world is almost entirely conquered and ruled by the Evil Organization. The
+    reign have been established many generations ago.
+  - "It is not universally known how much territory remains not under its control.\r\n"
+  - Adolf, Rudolf and Josefine were part of the small community of dissidents and
+    deserters who were hiding from the regime.
+  - 'Due to lack of resource most members of the community have died. '
+  - The 4 decided to do something about the situation and seek a better place
+  - ' It is not known to them if there is any place still safe from the reign of the
+    Evil Organization, but there were stories about Free Lands in the South. '
+  - "Having nothing better to do, the heroes decide to depart for the desperate journey.\r"
+  responses:
+  - {fileID: 0}

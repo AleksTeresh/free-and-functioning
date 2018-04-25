@@ -4,7 +4,7 @@ using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
 using Abilities;
-using System;
+using Dialog;
 
 public class Player : MonoBehaviour {
 
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
     private Buildings buildingsWrapper;
     private HUD hud;
     private FogOfWar fogOfWar;
+    private DialogManager dialogManager;
 
 	void Awake()
 	{
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour {
         buildingsWrapper = GetComponentInChildren<Buildings>();
         units = new List<Unit>(GetComponentsInChildren<Unit>());
         buildings = new List<Building>(GetComponentsInChildren<Building>());
+        dialogManager = GetComponentInChildren<DialogManager>();
 
         // init for of war
         if (human)
@@ -80,6 +82,11 @@ public class Player : MonoBehaviour {
     public List<Building> GetBuildings()
     {
         return buildings;
+    }
+
+    public DialogManager GetDialogManager ()
+    {
+        return dialogManager;
     }
 
     public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation, Building creator)

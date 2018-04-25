@@ -145,6 +145,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 326900489390e714787d82fa1f6bc37c, type: 2}
   - {fileID: 11400000, guid: 8146e0c3dea774b46825bc29bdf1aa14, type: 2}
   - {fileID: 11400000, guid: 68b341229fc00ca42b4735c3b383d3f1, type: 2}
+  - {fileID: 11400000, guid: d259af562435b6a43b7a4138f2fd8fd6, type: 2}
+  - {fileID: 11400000, guid: 61a49cb4238beee439af74cb98e7bb2e, type: 2}
+  - {fileID: 11400000, guid: dc0839b987fdc574ab8cf724daf51b40, type: 2}
+  - {fileID: 11400000, guid: 93d2146223595f24496644d0635ea6cd, type: 2}
+  - {fileID: 11400000, guid: db9311f2be98592448642ac79689ee5c, type: 2}
+  - {fileID: 11400000, guid: 52806f64a83f311438edcf6244bf12e3, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}
