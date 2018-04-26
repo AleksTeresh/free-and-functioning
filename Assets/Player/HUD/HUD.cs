@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using RTS;
 using Formation;
+using Dialog;
 
 [RequireComponent(typeof(Animator))]
 public class HUD : MonoBehaviour
@@ -46,6 +47,7 @@ public class HUD : MonoBehaviour
     // private Camera uiCamera;
     private TargetManager targetManager;
     private FormationManager formationManager;
+    private DialogManager dialogManager;
 
     // audio
     public AudioClip clickSound;
@@ -73,6 +75,7 @@ public class HUD : MonoBehaviour
         player = transform.root.GetComponent<Player>();
         targetManager = player.GetComponentInChildren<TargetManager>();
         formationManager = player.GetComponentInChildren<FormationManager>();
+        dialogManager = player.GetComponentInChildren<DialogManager>();
         playerUnitBar = GetComponentInChildren<PlayerUnitBar>();
         enemyUnitBar = GetComponentInChildren<EnemyUnitBar>();
         selectionIndicator = GetComponentInChildren<SelectionIndicator>();
@@ -120,24 +123,36 @@ public class HUD : MonoBehaviour
         if (player && player.human)
         {
             // DrawOrdersBar();
-            DrawUnitsBar(playerUnitBar, player.GetUnits().Cast<WorldObject>().ToList(), "PlayerIndicator");
+            if (playerUnitBar)
+            {
+                DrawUnitsBar(playerUnitBar, player.GetUnits().Cast<WorldObject>().ToList(), "PlayerIndicator");
+            }
+            
+            if (enemyUnitBar)
+            {
+                var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
+                    DrawUnitsBar(
+                    enemyUnitBar,
+                    observedEmenies,
+                    "EnemyIndicator"
+                );
+            }
+            
+            if (selectionIndicator)
+            {
+                DrawSelectionIndicator();
+            }
 
-            var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
-            // var observedBossParts = UnitManager.GetVisibleEnemyBossPart(player);
-
-            DrawUnitsBar(
-                enemyUnitBar,
-                observedEmenies,
-                "EnemyIndicator"
-            );
-            DrawSelectionIndicator();
-            DrawAbilityBar();
+            if (abilityBar)
+            {
+                DrawAbilityBar();
+            }
         }
     }
 
     private void OnGUI()
     {
-        if (player && player.human)
+        if (player && player.human && !dialogManager.BlockGameplay)
         {
             GUI.depth = 1;
 
@@ -217,19 +232,19 @@ public class HUD : MonoBehaviour
 
     void Hide()
     {
-        if (!animator)
-        {
-            animator = GetComponent<Animator>();
-        }
+        if (!player || !player.human) return;
+
+        if (!animator) animator = GetComponent<Animator>();
+
         animator.SetBool("IsVisible", false);
     }
 
     void Show()
     {
-        if (!animator)
-        {
-            animator = GetComponent<Animator>();
-        }
+        if (!player || !player.human) return;
+
+        if (!animator) animator = GetComponent<Animator>();
+
         animator.SetBool("IsVisible", true);
     }
 
@@ -423,29 +438,35 @@ public class HUD : MonoBehaviour
             if (userInput) userInput.enabled = false;
         }
 
-        Rect attackModeIndicatorPos = new Rect(20, 10, buttonWidth, buttonHeight);
-        if (targetManager.InMultiMode)
+        if (targetManager)
         {
-            GUI.TextArea(attackModeIndicatorPos, "Mutli Attack", multiModeStyle);
-        }
-        else
-        {
-            GUI.TextArea(attackModeIndicatorPos, "Single Attack", singleModeStyle);
+            Rect attackModeIndicatorPos = new Rect(20, 10, buttonWidth, buttonHeight);
+            if (targetManager.InMultiMode)
+            {
+                GUI.TextArea(attackModeIndicatorPos, "Mutli Attack", multiModeStyle);
+            }
+            else
+            {
+                GUI.TextArea(attackModeIndicatorPos, "Single Attack", singleModeStyle);
+            }
         }
 
         Rect enemyCounterPos = new Rect(150, 10, buttonWidth, buttonHeight);
         GUI.TextArea(enemyCounterPos, "Enemy count: " + enemyCount.ToString());
 
-        Rect formationModeIndicatorPos = new Rect(300, 10, buttonWidth, buttonHeight);
-        if (formationManager.CurrentFormationType == FormationType.Auto)
-        {
-            GUI.TextArea(formationModeIndicatorPos, "Auto Formation");
-        }
-        else
-        {
-            GUI.TextArea(formationModeIndicatorPos, "Manual Formation");
-        }
 
+        if (formationManager)
+        {
+            Rect formationModeIndicatorPos = new Rect(300, 10, buttonWidth, buttonHeight);
+            if (formationManager.CurrentFormationType == FormationType.Auto)
+            {
+                GUI.TextArea(formationModeIndicatorPos, "Auto Formation");
+            }
+            else
+            {
+                GUI.TextArea(formationModeIndicatorPos, "Manual Formation");
+            }
+        }
 
         GUI.EndGroup();
     }

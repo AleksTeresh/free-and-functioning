@@ -9,6 +9,7 @@ namespace Dialog
         public Sprite speakerAvatar;
         public string speakerName;
         public string displayedOptionText;
+        public bool blockGameplay;
 
         [TextArea(3, 10)]
         public string[] dialogSentences;

@@ -46,7 +46,11 @@ public class Player : MonoBehaviour {
         {
             // init for of war
             fogOfWar = FindObjectOfType<FogOfWar>();
-            fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+
+            if (fogOfWar)
+            {
+                fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+            }
         }
     }
 	

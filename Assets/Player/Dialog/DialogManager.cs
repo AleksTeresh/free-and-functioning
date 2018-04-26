@@ -7,15 +7,13 @@ namespace Dialog
 {
     public class DialogManager : MonoBehaviour
     {
-        public DialogNode startDialogNode;
-
         private DialogResponsePanel dialogResponsePanel;
         private DialogTextPanel dialogTextPanel;
 
         private Queue<string> sentences = new Queue<string>();
         private DialogNode currentDialogNode;
 
-        public bool BlockGameplay { get; set; }
+        public bool BlockGameplay { get; private set; }
 
         // public bool IsDialogSystemActive { get; private set; }
 
@@ -26,14 +24,11 @@ namespace Dialog
             dialogTextPanel = transform.root.GetComponentInChildren<DialogTextPanel>();
 
             // IsDialogSystemActive = false;
-
-            // TODO: the lines below are for testing only, REMOVE them
-            SetDialogNode(startDialogNode);
-            BlockGameplay = true;
         }
 
         public void SetDialogNode(DialogNode dialogNode)
         {
+            BlockGameplay = dialogNode.blockGameplay;
             dialogTextPanel.SetOpen(true);
             // IsDialogSystemActive = true;
 
