@@ -10,7 +10,7 @@ public class DialogTextPanel : MonoBehaviour {
     private Image speakerAvatar;
     private Text speakerName;
 
-    private void Awake()
+    private void Start()
     {
         dialogText = GetComponentInChildren<DialogText>().GetComponent<Text>();
         speakerName = GetComponentInChildren<SpeakerName>().GetComponent<Text>();
@@ -22,6 +22,11 @@ public class DialogTextPanel : MonoBehaviour {
     public void SetOpen(bool open)
     {
         animator.SetBool("IsOpen", open);
+    }
+
+    public bool IsOpen()
+    {
+        return animator.GetBool("IsOpen");
     }
 
     public void SetText(string text)

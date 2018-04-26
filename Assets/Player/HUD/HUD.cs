@@ -6,9 +6,9 @@ using UnityEngine;
 using RTS;
 using Formation;
 
+[RequireComponent(typeof(Animator))]
 public class HUD : MonoBehaviour
 {
-
     public GUISkin resourceSkin, orderSkin, selectBoxSkin;
     public GUISkin mouseCursorSkin;
     public GUISkin playerDetailsSkin;
@@ -58,6 +58,8 @@ public class HUD : MonoBehaviour
     private SelectionIndicator selectionIndicator;
     private AbilityBar abilityBar;
 
+    private Animator animator;
+
     // cursor input
     public Vector3 cursorPosition;
     private float joystickCursorSpeed = 50.0f;
@@ -66,11 +68,8 @@ public class HUD : MonoBehaviour
     private Vector3 lastCursorPosition;
 
     // Use this for initialization
-    void Start()
+    IEnumerator Start()
     {
-        // uiCamera = FindObjectOfType<UICamera>().GetComponent<Camera>();
-        // uiCamera.enabled = false;
-
         player = transform.root.GetComponent<Player>();
         targetManager = player.GetComponentInChildren<TargetManager>();
         formationManager = player.GetComponentInChildren<FormationManager>();
@@ -78,6 +77,13 @@ public class HUD : MonoBehaviour
         enemyUnitBar = GetComponentInChildren<EnemyUnitBar>();
         selectionIndicator = GetComponentInChildren<SelectionIndicator>();
         abilityBar = GetComponentInChildren<AbilityBar>();
+
+        animator = GetComponent<Animator>();
+
+        while (!animator || !player || !targetManager || !formationManager)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
 
         ResourceManager.StoreSelectBoxItems(selectBoxSkin, healthy, damaged, critical);
 
@@ -94,6 +100,18 @@ public class HUD : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         cursorPosition = new Vector3(Screen.width / 2, Screen.height / 2);
         lastCursorPosition = new Vector3(Screen.width / 2, Screen.height / 2);
+    }
+
+    void OnEnable()
+    {
+        EventManager.StartListening("HideHUD", Hide);
+        EventManager.StartListening("ShowHUD", Show);
+    }
+
+    void OnDisable()
+    {
+        EventManager.StopListening("HideHUD", Hide);
+        EventManager.StopListening("ShowHUD", Show);
     }
 
     // Update is called once per frame
@@ -195,6 +213,24 @@ public class HUD : MonoBehaviour
                 break;
             default: break;
         }
+    }
+
+    void Hide()
+    {
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
+        animator.SetBool("IsVisible", false);
+    }
+
+    void Show()
+    {
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
+        animator.SetBool("IsVisible", true);
     }
 
     private void HandleCursorPositionUpdate()

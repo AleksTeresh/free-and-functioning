@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: 2.JosefineResponse_Angry
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Josefine
+  displayedOptionText: Why are you a leader? By what right?
+  dialogSentences:
+  - "Since when have you become leader of the party? By what right you\u2019re treating
+    us as your own recruits anyway?\r"
+  responses:
+  - {fileID: 11400000, guid: baafad3279219264c86b209599231cc1, type: 2}
+  - {fileID: 11400000, guid: 8871a593d10028e48b584bd08c77c403, type: 2}
