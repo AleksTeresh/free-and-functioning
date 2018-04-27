@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using RTS;
 using Formation;
+using Dialog;
 
 public class UserInput : MonoBehaviour {
 
     private Player player;
+    private DialogManager dialogManager;
     private TargetManager targetManager;
     private FormationManager formationManager;
     private HUD hud;
@@ -18,6 +20,7 @@ public class UserInput : MonoBehaviour {
         player = transform.root.GetComponent<Player>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
         formationManager = transform.root.GetComponentInChildren<FormationManager>();
+        dialogManager = transform.root.GetComponentInChildren<DialogManager>();
         hud = transform.root.GetComponentInChildren<HUD>();
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -32,26 +35,31 @@ public class UserInput : MonoBehaviour {
             //{
             //    OpenPauseMenu();
             //}
-            
-            MoveCameraWithMouseScroll();
-            MoveCameraWithGamepad();
-            RotateCamera();
 
-            MouseActivity();
+            HandleDialogInput();
 
-            AttackModeSelection();
+            if (!dialogManager.BlockGameplay)
+            {
+                MoveCameraWithMouseScroll();
+                MoveCameraWithGamepad();
+                RotateCamera();
 
-            SwitchEnemy();
+                MouseActivity();
 
-            StopUnits();
+                AttackModeSelection();
 
-            SwitchHoldPosition();
+                SwitchEnemy();
 
-            SwitchFormationType();
+                StopUnits();
 
-			RTS.HotkeyUnitSelector.HandleInput (player, hud, mainCamera);
-			RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
-			RTS.HotkeyAllyAbilityTargetSelector.HandleInput (player, hud);
+                SwitchHoldPosition();
+
+                SwitchFormationType();
+
+                RTS.HotkeyUnitSelector.HandleInput(player, hud, mainCamera);
+                RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
+                RTS.HotkeyAllyAbilityTargetSelector.HandleInput(player, hud);
+            }
         }
     }
 
@@ -192,6 +200,19 @@ public class UserInput : MonoBehaviour {
             // get all the objects controlled through AI
             var stateControlles = player.GetComponentsInChildren<UnitStateController>();
             InputToCommandManager.SwitchAttackMode(targetManager, new List<UnitStateController>(stateControlles));
+        }
+    }
+
+    private void HandleDialogInput()
+    {
+        if (!dialogManager || !dialogManager.IsDialogSystemActive())
+        {
+            return;
+        }
+
+        if (!dialogManager.GetDialogResponsePanel().IsOpen() && (Input.GetButtonDown("Submit") || Gamepad.GetButtonDown("Ability4")))
+        {
+            dialogManager.DisplayNextSentence();
         }
     }
 

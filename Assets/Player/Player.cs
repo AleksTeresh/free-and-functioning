@@ -4,7 +4,7 @@ using UnityEngine;
 using RTS;
 using Newtonsoft.Json;
 using Abilities;
-using System;
+using Dialog;
 
 public class Player : MonoBehaviour {
 
@@ -41,12 +41,16 @@ public class Player : MonoBehaviour {
         buildingsWrapper = GetComponentInChildren<Buildings>();
         units = new List<Unit>(GetComponentsInChildren<Unit>());
         buildings = new List<Building>(GetComponentsInChildren<Building>());
-
-        // init for of war
+        
         if (human)
         {
+            // init for of war
             fogOfWar = FindObjectOfType<FogOfWar>();
-            fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+
+            if (fogOfWar)
+            {
+                fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+            }
         }
     }
 	
