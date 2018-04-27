@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Events;
 
 namespace RTS
 {
@@ -34,6 +35,7 @@ namespace RTS
 				if (Input.GetButtonDown("SelectAll") || Gamepad.GetButtonDown("SelectAll") )
 				{
 					SelectAllUnits (player, hud);
+                    EventManager.TriggerEvent("SelectAllUnits");
 				}
 			}
 		}

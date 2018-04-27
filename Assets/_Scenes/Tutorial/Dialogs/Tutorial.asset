@@ -18,22 +18,24 @@ MonoBehaviour:
   dialogSentences:
   - "You select units by clicking at them, or using hot keys. Hot keys are useful,
     since they allow fast selection of units especially when there are a lot of objects
-    on the map. Try to select each of the units and order it to relocate.\r"
-  - You can select multiple units by holding <Shift> while pressing a hotkey. You
-    can also select all units, by pressing <Tilde>. Select all of your units and order
-    them to relocate.
-  - Notice that the units keep formation when ordered to move together.
-  - If you do not like the default formation, you can use custom formation. Press
-    <A> to change formation mode to be custom.
+    on the map. Try to select each of the units and order them to go the red flag.\r"
+  - 'You can select multiple units by holding <Shift> while pressing a hotkey. You
+    can also select all units, by pressing <Tilde>. Now, select all of your units
+    and order them to go to the red flag.
+
+'
+  - Good! Now, order them to go to the red flag.
+  - Notice that the units keep formation when ordered to move together. If you do
+    not like the default formation, you can use custom formation. Press <A> to change
+    formation mode to be custom.
   - "Now you\u2019ll have to reposition each unit manually before moving them together.
-    When moved together, unit will keep the same position relative to each other."
-  - Switch the formation mode to be manual, rearrange your units and send them to
-    a new destination.
+    When moved together, unit will keep the same position relative to each other.
+    Rearrange your units to a formation you like and send them to the red flag."
   - "Change the formation mode to be automatic again. You can see the current formation
-    mode in the upper panel on your screen.\r\n"
-  - If you need to stop selected units, you can use Stop command by pressing <S> button.
-    Try it now. Send your units to a new destination and press <S> while they on their
-    way.
+    mode in the upper panel on your screen.\r"
+  - If you need to stop selected units, you can use "Stop" command by pressing <S>
+    button. Try it now. Send your units to a new destination and press <S> while they
+    on their way.
   - "Now, let\u2019s try to attack an enemy, click on the enemy you want to attack
     for it to become a target for your units."
   - "Notice that there are 2 attack modes in the game: Single and Multi.\r\nThe indication

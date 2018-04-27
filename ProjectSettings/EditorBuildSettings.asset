@@ -9,8 +9,17 @@ EditorBuildSettings:
     path: Assets/_Scenes/MainMenu.unity
     guid: 38374e91d9fde60438121a707c02888b
   - enabled: 1
-    path: Assets/_Scenes/MiniGame.unity
+    path: Assets/_Scenes/Intro/Intro.unity
+    guid: 207fd8f6b68d1fe41ba9f912ad41f291
+  - enabled: 1
+    path: Assets/_Scenes/Tutorial/Tutorial.unity
+    guid: 5bcc1f03b0baea1498a1bbba29990111
+  - enabled: 1
+    path: Assets/_Scenes/MiniGame/MiniGame.unity
     guid: 259afc3703de5c24781cc2084d64ba88
+  - enabled: 1
+    path: Assets/_Scenes/WinScreen/WinScreen.unity
+    guid: 29d275ca450fc254fac3c6375468e11e
   - enabled: 1
     path: Assets/_Scenes/BlankMap1.unity
     guid: 88077554755626d478ebcb3671ac2dc8

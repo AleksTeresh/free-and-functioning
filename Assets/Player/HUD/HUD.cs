@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using RTS;
+using Events;
 using Formation;
 using Dialog;
 
@@ -152,7 +153,7 @@ public class HUD : MonoBehaviour
 
     private void OnGUI()
     {
-        if (player && player.human && !dialogManager.BlockGameplay)
+        if (player && player.human && dialogManager && !dialogManager.BlockGameplay)
         {
             GUI.depth = 1;
 
