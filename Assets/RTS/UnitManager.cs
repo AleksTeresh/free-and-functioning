@@ -8,6 +8,21 @@ namespace RTS
 {
     public static class UnitManager
     {
+        public static bool EnemyUnitsExist(Player playerSelf)
+        {
+            var allPlayers = GameObject.FindObjectsOfType<Player>();
+
+            foreach (var player in allPlayers)
+            {
+                if (player.username != playerSelf.username && player.GetUnits() != null && player.GetUnits().Count > 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public static List<WorldObject> GetPlayerVisibleEnemies(Player player)
         {
             var unsortedEnemies = player.GetUnits()

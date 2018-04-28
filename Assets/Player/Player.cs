@@ -96,7 +96,51 @@ public class Player : MonoBehaviour {
         {
             unitObject.Init(creator);
             unitObject.ObjectId = ResourceManager.GetNewObjectId();
-            if (spawnPoint != rallyPoint) unitObject.StartMove(rallyPoint);
+            if (spawnPoint != rallyPoint)
+            {
+                unitObject.StartMove(rallyPoint);
+
+                string stateName = "";
+                switch (unitObject.GetStateController().currentState.name)
+                {
+                    case "Idle Idler":
+                        stateName = "Busy Idler";
+                        break;
+
+                    case "Idle Vulnerabler":
+                        stateName = "Busy Vulnerabler";
+                        break;
+
+                    case "Idle Kiter":
+                        stateName = "Busy Kiter";
+                        break;
+
+                    case "Idle Assassin":
+                        stateName = "Busy Assassin";
+                        break;
+
+                    case "Idle CCEnemy":
+                        stateName = "Busy CCEnemy";
+                        break;
+
+                    case "Idle DBEnemy":
+                        stateName = "Busy DBEnemy";
+                        break;
+
+                    case "Idle EnemyDamageDealer":
+                        stateName = "Busy EnemyDamageDealer";
+                        break;
+
+                    case "Patrol Chaser":
+                        stateName = "Busy Chaser";
+                        break;
+                }
+
+                if (stateName != "")
+                {
+                    unitObject.GetStateController().TransitionToState(ResourceManager.GetAiState(stateName));
+                }
+            }
         }
 
         // update fog of war revealers

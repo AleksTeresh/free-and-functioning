@@ -9,6 +9,7 @@ public class ChooseIdleStateTypeDecision : Decision {
         bool canAttackMulti = controller.controlledObject.CanAttackMulti();
         bool isInMultiMode = controller.targetManager.InMultiMode;
 
-		return canAttackMulti ? isInMultiMode : false;
-	}
+        return isInMultiMode;
+        // return canAttackMulti ? isInMultiMode : false;
+    }
 }

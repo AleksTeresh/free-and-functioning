@@ -12,8 +12,8 @@ public class GoTowardsDecision : Decision
         WorldObject target = controller.chaseTarget;
 
         bool chaseTargetIsActive = target != null && // target exists
-            target.gameObject.activeSelf; // target is alive
-        // TODO: add fog of war condition (perhaps)
+            target.gameObject.activeSelf &&
+            (!(target is Unit) || (target.GetFogOfWarAgent() && target.GetFogOfWarAgent().IsObserved())); // if unit, it should be visible
 
         return chaseTargetIsActive;
     }

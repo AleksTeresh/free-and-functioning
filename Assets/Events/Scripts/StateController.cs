@@ -16,6 +16,8 @@ namespace Events
         [HideInInspector] public FormationManager formationManager;
         [HideInInspector] public TargetManager targetManager;
 
+        [HideInInspector] public float timeInState = 0f;
+
         private void Awake()
         {
             player = GetComponent<Player>();
@@ -32,6 +34,7 @@ namespace Events
 
         protected virtual void Update()
         {
+            timeInState += Time.deltaTime;
             currentState.UpdateState(this);
         }
 
@@ -39,6 +42,8 @@ namespace Events
         {
             if (currentState != nextState)
             {
+                timeInState = 0;
+
                 currentState.ExitState(this);
                 nextState.EnterState(this);
                 currentState = nextState;

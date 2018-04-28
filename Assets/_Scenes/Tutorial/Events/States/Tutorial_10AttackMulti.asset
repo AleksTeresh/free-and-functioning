@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
+  m_Name: Tutorial_10AttackMulti
+  m_EditorClassIdentifier: 
+  enterActions:
+  - {fileID: 11400000, guid: 51f4c3a2fccdf9345a6cb46a2d80e0bb, type: 2}
+  - {fileID: 11400000, guid: e779f100c34e93840973b3f12ce3ad1b, type: 2}
+  - {fileID: 11400000, guid: cb2284929a38eb64d93a6e50c90cc42e, type: 2}
+  updateActions: []
+  exitActions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: 8064a3cf608a61540908de31eabe6a99, type: 2}
+    trueState: {fileID: 11400000, guid: 8f7887a76852afb45a8eed8c624c3d5e, type: 2}

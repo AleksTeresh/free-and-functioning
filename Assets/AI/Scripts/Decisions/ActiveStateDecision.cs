@@ -36,7 +36,14 @@ public class ActiveStateDecision : Decision {
                 nearbyAlly &&
                 unit.ObjectId != nearbyAlly.ObjectId &&
                 nearbyAlly.GetStateController() &&
-                nearbyAlly.GetStateController().chaseTarget == target
+                nearbyAlly.GetStateController().chaseTarget == target &&
+                (
+                    !(nearbyAlly is Unit) ||
+                    (
+                        nearbyAlly.GetFogOfWarAgent() &&
+                        nearbyAlly.GetFogOfWarAgent().IsObserved()
+                    )
+                )
             )
             {
                 return true;
