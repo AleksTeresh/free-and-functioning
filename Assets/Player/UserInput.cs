@@ -5,6 +5,7 @@ using UnityEngine;
 using RTS;
 using Formation;
 using Dialog;
+using Events;
 
 public class UserInput : MonoBehaviour {
 
@@ -36,10 +37,16 @@ public class UserInput : MonoBehaviour {
             //    OpenPauseMenu();
             //}
 
-            HandleDialogInput();
-
-            if (!dialogManager.BlockGameplay)
+            
+            // allow player to control dialog system only when gameplay is blocked,
+            // if it is not, the flow of text should be controlled from another place,
+            // for example, from SceneDriver
+            if (dialogManager && dialogManager.BlockGameplay)
             {
+                HandleDialogInput();
+            }
+            else
+            { 
                 MoveCameraWithMouseScroll();
                 MoveCameraWithGamepad();
                 RotateCamera();
@@ -199,13 +206,14 @@ public class UserInput : MonoBehaviour {
         {
             // get all the objects controlled through AI
             var stateControlles = player.GetComponentsInChildren<UnitStateController>();
+            EventManager.TriggerEvent("SwitchAttackModeCommand");
             InputToCommandManager.SwitchAttackMode(targetManager, new List<UnitStateController>(stateControlles));
         }
     }
 
     private void HandleDialogInput()
     {
-        if (!dialogManager || !dialogManager.IsDialogSystemActive())
+        if (!dialogManager || !dialogManager.IsActive())
         {
             return;
         }
@@ -235,6 +243,7 @@ public class UserInput : MonoBehaviour {
     {
         if (Input.GetButtonDown("StopUnits") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability4")))
         {
+            EventManager.TriggerEvent("StopCommand");
             InputToCommandManager.StopUnits(player, targetManager);
         }
     }
@@ -243,6 +252,7 @@ public class UserInput : MonoBehaviour {
     {
         if (Input.GetButtonDown("HoldPosition") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability2")))
         {
+            EventManager.TriggerEvent("SwitchHoldPositionCommand");
             InputToCommandManager.SwitchHoldPosition(player);
         }
     }
@@ -251,6 +261,7 @@ public class UserInput : MonoBehaviour {
     {
         if (Input.GetButtonDown("SwitchFormation") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability1")))
         {
+            EventManager.TriggerEvent("SwitchFormationCommand");
             InputToCommandManager.SwitchFormationType(formationManager);
         }
     }
@@ -390,8 +401,8 @@ public class UserInput : MonoBehaviour {
 		if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
 		{
 			Vector3 destination = hitPoint + formationOffset;
-
-			InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
+            EventManager.TriggerEvent("RelocateUnit");
+            InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
 		}
 	}
 

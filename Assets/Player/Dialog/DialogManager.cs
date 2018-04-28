@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using RTS;
+using Events;
 
 namespace Dialog
 {
@@ -100,7 +100,7 @@ namespace Dialog
             return dialogTextPanel;
         }
 
-        public bool IsDialogSystemActive ()
+        public bool IsActive ()
         {
             return dialogResponsePanel.IsOpen() || dialogTextPanel.IsOpen();
         }
