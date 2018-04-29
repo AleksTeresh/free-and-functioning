@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e20bd9e4fb62bf8419732e2cdfe4a0f7, type: 3}
-  m_Name: SetTutorialDialogAction
+  m_Name: Tutorial_SetTutorialDialogAction
   m_EditorClassIdentifier: 
   dialogNode: {fileID: 11400000, guid: 21e7fe6ad18806842a473ad8b1f0d0f8, type: 2}

@@ -235,6 +235,8 @@ public class UserInput : MonoBehaviour {
             var enemiesToDisplay = majorVisibleEnemies.Concat(visibleBuildings).Concat(visibleBossParts).ToList();
 
             int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, enemiesToDisplay);
+
+            EventManager.TriggerEvent("SwitchEnemyCommand");
             InputToCommandManager.SwitchEnemy(targetManager, enemiesToDisplay, selectionIdx);
         }
     }

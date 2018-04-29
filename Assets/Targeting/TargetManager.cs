@@ -12,4 +12,17 @@ public class TargetManager : MonoBehaviour {
         InMultiMode = false;
         SingleTarget = null;
     }
+
+    private void Update()
+    {
+        if (
+            SingleTarget &&
+            SingleTarget is Unit &&
+            SingleTarget.GetFogOfWarAgent() &&
+            !SingleTarget.GetFogOfWarAgent().IsObserved()
+        )
+        {
+            SingleTarget = null;
+        }
+    }
 }

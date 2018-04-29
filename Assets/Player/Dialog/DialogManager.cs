@@ -58,11 +58,13 @@ namespace Dialog
                 if (currentDialogNode.responses.Length == 1)
                 {
                     SetDialogNode(currentDialogNode.responses[0]);
-                } else
+                }
+                else
                 {
                     EndDialog();
-                    return;
                 }
+
+                return;
             }
 
             string sentence = sentences.Dequeue();

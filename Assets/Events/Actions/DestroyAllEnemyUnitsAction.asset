@@ -8,9 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd96fffc02c0be54abaf7918eaba6973, type: 3}
-  m_Name: MoveFlagToXAction
+  m_Script: {fileID: 11500000, guid: cc3b84898c6510545b1d3ee294fba35f, type: 3}
+  m_Name: DestroyAllEnemyUnitsAction
   m_EditorClassIdentifier: 
-  deltaX: 36
-  deltaY: 0
-  deltaZ: 0

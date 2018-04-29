@@ -15,6 +15,11 @@ public class EnemyIndicator : Indicator {
         }
 
         base.Update();
+
+        if (indicatedObject)
+        {
+            nameLabel.text = indicatedObject.objectName;
+        }
     }
 
     protected override void HandleSelection()
