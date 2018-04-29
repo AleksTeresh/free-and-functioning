@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Level1_3.RudolfMoneyAnswerEvade
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Rudolf
+  displayedOptionText: "Of course we\u2019re to share it, but let\u2019s discuss details
+    later"
+  blockGameplay: 1
+  dialogSentences:
+  - "Well, of course we\u2019re to share it, but let\u2019s discuss details later,
+    we have little time to waste right now.\r"
+  responses:
+  - {fileID: 11400000, guid: b01b0e4cfd1ccd54390514d4d67ca4fc, type: 2}

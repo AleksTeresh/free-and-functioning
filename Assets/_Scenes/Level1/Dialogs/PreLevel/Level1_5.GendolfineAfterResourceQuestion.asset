@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Level1_5.GendolfineAfterResourceQuestion
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Gendolfine
+  displayedOptionText: What about resources? How much time do we have before first
+    of us gets non-functional?
+  blockGameplay: 1
+  dialogSentences:
+  - "I have another thing to discuss. What about money we get? I saw you got some
+    from the corpses of the killed units. Aren\u2019t we going to share it?\r"
+  responses:
+  - {fileID: 11400000, guid: 24118b62259a0724784ca7125e6f697e, type: 2}
+  - {fileID: 11400000, guid: ee950adca02b3c947a414903cbf5d861, type: 2}
+  - {fileID: 11400000, guid: 75cfc020fb9e064459f036561b29b779, type: 2}
