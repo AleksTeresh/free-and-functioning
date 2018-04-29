@@ -29,13 +29,19 @@ namespace Events
 
         private void Start()
         {
-            currentState.EnterState(this);
+            if (currentState)
+            {
+                currentState.EnterState(this);
+            }
         }
 
         protected virtual void Update()
         {
-            timeInState += Time.deltaTime;
-            currentState.UpdateState(this);
+            if (currentState)
+            {
+                timeInState += Time.deltaTime;
+                currentState.UpdateState(this);
+            }
         }
 
         public void TransitionToState(State nextState)
