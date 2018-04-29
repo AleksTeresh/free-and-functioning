@@ -84,9 +84,12 @@ public class HUD : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        while (!animator || !player || !targetManager || !formationManager)
+        if (player && player.human)
         {
-            yield return new WaitForSeconds(0.1f);
+            while (!animator || !player || !targetManager || !formationManager)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
         }
 
         ResourceManager.StoreSelectBoxItems(selectBoxSkin, healthy, damaged, critical);
