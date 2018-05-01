@@ -8,7 +8,6 @@ using Abilities;
 using Statuses;
 
 public class WorldObject : MonoBehaviour {
-
     public int ObjectId { get; set; }
     public string objectName;
     public Texture2D buildImage;
@@ -36,17 +35,22 @@ public class WorldObject : MonoBehaviour {
     protected float healthPercentage = 1.0f;
 
     [Header("Weapon and attack")]
+
+    public float attackDelay = 1;
+    public float attackMultiDelay = 1;
     public int damage = 10;
     public int damageMulti = 3;
     public float weaponRange = 10.0f;
     protected bool movingIntoPosition = false;
     public bool aiming = false;
-    protected Quaternion aimRotation;
     public float weaponAimSpeed = 1.0f;
     public float weaponRechargeTime = 1.0f;
     public float weaponMultiRechargeTime = 1.0f;
+    protected Quaternion aimRotation;
+    protected int attackDelayFrameCounter;
     private float currentWeaponChargeTime;
     private float currentWeaponMultiChargeTime;
+    private float currentAttackDelayTime = 0;
 
     [Header("Defence and Invincibility")]
     public float meleeDefence = 0;
@@ -240,6 +244,11 @@ public class WorldObject : MonoBehaviour {
         return underAttackFrameCounter > 0;
     }
 
+    public bool IsAttacking()
+    {
+        return attackDelayFrameCounter > 0;
+    }
+
     public void UpdateChildRenderers()
     {
         // retrieve child renderers
@@ -293,6 +302,7 @@ public class WorldObject : MonoBehaviour {
     protected virtual void Start()
     {
         underAttackFrameCounter = 0;
+        attackDelayFrameCounter = 0;
 
         SetPlayer();
         if (player)
@@ -322,6 +332,16 @@ public class WorldObject : MonoBehaviour {
     {
         currentWeaponChargeTime += Time.deltaTime;
         underAttackFrameCounter = Mathf.Max(0, underAttackFrameCounter - 1);
+
+        attackDelayFrameCounter = Mathf.Max(0, attackDelayFrameCounter - 1);
+        if (IsAttacking())
+        {
+            currentAttackDelayTime += Time.deltaTime;
+        }
+        else
+        {
+            currentAttackDelayTime = 0;
+        }
 
         if (CanAttackMulti())
         {
@@ -359,7 +379,11 @@ public class WorldObject : MonoBehaviour {
             // attacking = false;
             return;
         }
+
+        
+
         if (!TargetInFrontOfWeapon(target)) AimAtTarget(target);
+        else if (!AttackDelayIsOver()) attackDelayFrameCounter = 2;
         else if (ReadyToFire()) UseWeapon(target);
     }
 
@@ -411,7 +435,8 @@ public class WorldObject : MonoBehaviour {
             return;
         }
 
-        if (ReadyToFireMulti()) UseWeaponMulti(targets);
+        if (!MultiAttackDelayIsOver()) attackDelayFrameCounter = 2;
+        else if (ReadyToFireMulti()) UseWeaponMulti(targets);
     }
     /*
     public virtual void BeginAttackToMulti(List<WorldObject> targets)
@@ -616,6 +641,7 @@ public class WorldObject : MonoBehaviour {
         if (audioElement != null && Time.timeScale > 0) audioElement.Play(useWeaponSound);
 
         currentWeaponChargeTime = 0.0f;
+        currentAttackDelayTime = 0.0f;
         //this behaviour needs to be specified by a specific object
     }
 
@@ -624,6 +650,7 @@ public class WorldObject : MonoBehaviour {
         if (audioElement != null && Time.timeScale > 0) audioElement.Play(useWeaponSound);
 
         currentWeaponMultiChargeTime = 0.0f;
+        currentAttackDelayTime = 0.0f;
         //this behaviour needs to be specified by a specific object
     }
    
@@ -661,5 +688,15 @@ public class WorldObject : MonoBehaviour {
                     )
                 );
         }
+    }
+
+    private bool MultiAttackDelayIsOver()
+    {
+        return currentAttackDelayTime > attackMultiDelay;
+    }
+
+    private bool AttackDelayIsOver()
+    {
+        return currentAttackDelayTime > attackDelay;
     }
 }

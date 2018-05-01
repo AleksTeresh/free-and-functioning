@@ -2105,6 +2105,31 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224013577658739902, guid: d2a51980bc5dcf34085f8c512ef3d70d,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162531858552422, guid: d2a51980bc5dcf34085f8c512ef3d70d,
+        type: 2}
+      propertyPath: attackDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162531858552422, guid: d2a51980bc5dcf34085f8c512ef3d70d,
+        type: 2}
+      propertyPath: attackMultiDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114577729542754110, guid: d2a51980bc5dcf34085f8c512ef3d70d,
+        type: 2}
+      propertyPath: attackDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114577729542754110, guid: d2a51980bc5dcf34085f8c512ef3d70d,
+        type: 2}
+      propertyPath: attackMultiDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2a51980bc5dcf34085f8c512ef3d70d, type: 2}
   m_IsPrefabParent: 0
