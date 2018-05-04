@@ -485,6 +485,8 @@ public class UserInput : MonoBehaviour {
         }
 
         var nearbyUnits = WorkManager.FindNearbyUnits(hit.point, 7);
+        nearbyUnits = nearbyUnits.Where(p => p.GetFogOfWarAgent().IsObserved()).ToList();
+
         nearbyUnits.ForEach(p =>
         {
             if (p.GetHitSphere())

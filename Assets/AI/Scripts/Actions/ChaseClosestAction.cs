@@ -20,7 +20,14 @@ public class ChaseClosestAction : UnitAction
         if (closestEnemy && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, closestEnemy))
         {
             controller.chaseTarget = closestEnemy;
-            controller.unit.StartMove(WorkManager.GetTargetClosestPoint(unit, closestEnemy));
+
+            var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, closestEnemy);
+            var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", 15);
+
+            if (actualClosestPoint.HasValue)
+            {
+                unit.StartMove(actualClosestPoint.Value);
+            }
         }
         else
         {

@@ -163,7 +163,7 @@ public class Unit : WorldObject {
 
         // instantiate a hit sphere based on selection bounds
         var hitSphereObject = Instantiate(ResourceManager.GetWorldObject("HitSphere"), transform);
-        hitSphereObject.transform.localScale = selectionBounds.size;
+        hitSphereObject.transform.localScale = new Vector3(4, 4, 2.64f);
         this.hitSphereCollider = hitSphereObject.GetComponent<Collider>();
 
         // instantiate abilityUser

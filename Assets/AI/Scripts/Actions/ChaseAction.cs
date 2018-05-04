@@ -14,7 +14,13 @@ public class ChaseAction : UnitAction {
         WorldObject chaseTarget = controller.chaseTarget;
         if (chaseTarget && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, chaseTarget))
         {
-            unit.StartMove(WorkManager.GetTargetClosestPoint(unit, chaseTarget));
+            var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, chaseTarget);
+            var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", 15);
+
+            if (actualClosestPoint.HasValue)
+            {
+                unit.StartMove(actualClosestPoint.Value);
+            }
         }
         else
         {

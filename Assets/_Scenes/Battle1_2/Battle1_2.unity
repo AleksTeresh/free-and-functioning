@@ -193,7 +193,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &120528892
 Transform:
@@ -248,7 +248,7 @@ Terrain:
   m_LegacyShininess: 0.078125
   m_MaterialTemplate: {fileID: 0}
   m_BakeLightProbesForTrees: 1
-  m_ScaleInLightmap: 0.0512
+  m_ScaleInLightmap: 1
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &120528895
 MonoBehaviour:
@@ -693,6 +693,26 @@ Prefab:
       propertyPath: heightMap
       value: 
       objectReference: {fileID: 4900000, guid: 13c286e0ad45e42589a7aa2a57ff3dd1, type: 3}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: textureWidth
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: textureHeight
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: mapSize.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: mapSize.y
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3, type: 2}
   m_IsPrefabParent: 0

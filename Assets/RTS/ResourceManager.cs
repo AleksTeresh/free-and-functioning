@@ -18,7 +18,7 @@ namespace RTS
 
         // camera
         public static float MinCameraHeight { get { return 20; } }
-        public static float MaxCameraHeight { get { return 60; } }
+        public static float MaxCameraHeight { get { return 75; } }
 
         public static bool MenuOpen { get; set; }
 
