@@ -9,6 +9,8 @@ using Statuses;
 using Abilities;
 
 public class Unit : WorldObject {
+    private static readonly float HIT_SPHERE_SCALE = 4;
+
     protected new UnitStateController stateController;
 
     private AbilityAgent abilityAgent;
@@ -163,7 +165,7 @@ public class Unit : WorldObject {
 
         // instantiate a hit sphere based on selection bounds
         var hitSphereObject = Instantiate(ResourceManager.GetWorldObject("HitSphere"), transform);
-        hitSphereObject.transform.localScale = new Vector3(4, 4, 2.64f);
+        hitSphereObject.transform.localScale = new Vector3(1, 1, 1) * HIT_SPHERE_SCALE;
         this.hitSphereCollider = hitSphereObject.GetComponent<Collider>();
 
         // instantiate abilityUser
