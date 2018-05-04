@@ -150,6 +150,30 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void AddBuilding(string name, Vector3 position, Quaternion rotation)
+    {
+        GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetBuilding(name));
+        Building building = newObject.GetComponent<Building>();
+        building.transform.position = position;
+        building.transform.rotation = rotation;
+        building.transform.parent = buildingsWrapper.transform;
+        building.SetPlayer();
+        building.SetTeamColor();
+
+        Building buildingObject = newObject.GetComponent<Building>();
+
+        if (buildingObject)
+        {
+            buildingObject.ObjectId = ResourceManager.GetNewObjectId();
+        }
+
+        // update fog of war revealers
+        if (fogOfWar)
+        {
+            fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
+        }
+    }
+
     public virtual void SaveDetails(JsonWriter writer)
     {
         SaveManager.WriteString(writer, "Username", username);

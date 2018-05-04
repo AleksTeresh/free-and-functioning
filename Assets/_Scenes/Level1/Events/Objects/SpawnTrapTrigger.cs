@@ -10,6 +10,10 @@ public class SpawnTrapTrigger : MonoBehaviour
     public Player enemyPlayer;
     public Unit unit;
 
+    [Header("Blocking Wall")]
+    public Vector3 wallPosition = new Vector3(483.379f, 10.70251f, 568.8833f);
+    public Quaternion wallRotation = new Quaternion(0, 0, 0, 1);
+
     private bool triggerred = false;
 
     void OnTriggerEnter(Collider other)
@@ -20,6 +24,9 @@ public class SpawnTrapTrigger : MonoBehaviour
 
             var spawnPoints = WorkManager.FindNearbyObjects<SpawnPoint>(transform.position, spawnPointDetectRange)
                 .ToList();
+
+            // TODO: the ardcoded blocking wall, should be definied by parameters instead
+            enemyPlayer.AddBuilding("BlockingWall", wallPosition, wallRotation);
 
             spawnPoints.ForEach(p =>
             {
