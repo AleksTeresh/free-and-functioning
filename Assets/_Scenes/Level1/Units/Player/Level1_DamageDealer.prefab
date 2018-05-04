@@ -60,6 +60,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1292828721676580
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4703035058201556}
+  - component: {fileID: 114127843930085442}
+  m_Layer: 0
+  m_Name: BrainFreezeAbilityMulti
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1311732402857388
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +123,22 @@ GameObject:
   - component: {fileID: 108398704795163668}
   m_Layer: 0
   m_Name: Area Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1872906891980978
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4546618008989262}
+  - component: {fileID: 114860700837044358}
+  m_Layer: 0
+  m_Name: BrainFreezeAbilty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1912619609057764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 102.8, y: 21.039995, z: 387.49997}
+  m_LocalPosition: {x: 224.7, y: 19.920002, z: 873.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388979558749846}
@@ -271,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 1879338327740826}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 14, y: 14, z: 14}
   m_Children: []
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 7
@@ -324,7 +356,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4703035058201556}
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -350,9 +383,23 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4546618008989262}
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4546618008989262
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872906891980978}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0000076293945, y: 0, z: 0.0000076293945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4537579296765082}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4695767959509684
 Transform:
@@ -366,6 +413,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4120435208426912}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4703035058201556
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1292828721676580}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 210.36392, y: 6.479397, z: 195.10669}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4458573021361328}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4732141386623018
 Transform:
@@ -774,6 +834,35 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114127843930085442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1292828721676580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d5fbebdcd7ddb42b8142298a05e5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Brain Freeze Multi
+  range: 500
+  cooldown: 15
+  delayTime: 0
+  damage: 100
+  multiDamageMinValue: 1
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114992022797530444, guid: 41d768e19b900b74984b4e23f285160d, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  blocked: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  projectileName: BrainFreezeProjectile
 --- !u!114 &114167998569362648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -813,6 +902,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 150
   maxHitPoints: 150
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 30
   damageMulti: 30
   weaponRange: 20
@@ -882,6 +973,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55aba35ed5f872745bff3c4ba81d8c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114860700837044358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872906891980978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d5fbebdcd7ddb42b8142298a05e5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Brain Freeze
+  range: 1000
+  cooldown: 10
+  delayTime: 0
+  damage: 100
+  multiDamageMinValue: 1
+  attackType: 2
+  isAllyTargetingAbility: 0
+  isSelfOnly: 0
+  statuses:
+  - {fileID: 114101316880018166, guid: d6071164388261b498fc5d12991241c8, type: 2}
+  user: {fileID: 0}
+  targets: []
+  isPending: 0
+  blocked: 0
+  cooldownTimer: 0
+  delayTimer: 0
+  projectileName: BrainFreezeProjectile
 --- !u!114 &114877671025641058
 MonoBehaviour:
   m_ObjectHideFlags: 1

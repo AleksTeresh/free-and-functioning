@@ -9,6 +9,34 @@ namespace RTS
 {
     public static class WorkManager
     {
+        public static Bounds GetBounds (Transform transform, List<Renderer> childRenderersWithoutParticles)
+        {
+            var selectionBounds = new Bounds(transform.position, Vector3.zero);
+            foreach (Renderer r in childRenderersWithoutParticles)
+            {
+                selectionBounds.Encapsulate(r.bounds);
+            }
+
+            return selectionBounds;
+        }
+
+        public static List<Renderer> GetChildRenderers (Transform transform)
+        {
+            // retrieve child renderers
+            var renderers = transform.GetComponentsInChildren<Renderer>();
+            var objectModelChildRenderers = new List<Renderer>();
+            // filter out particle system and minimap icon renderers
+            foreach (Renderer r in renderers)
+            {
+                if (r.enabled && r.GetComponentInParent<ParticleSystem>() == null && r.name != "MiniMapIcon")
+                {
+                    objectModelChildRenderers.Add(r);
+                }
+            }
+
+            return objectModelChildRenderers;
+        }
+
         public static Rect CalculateSelectionBox(Bounds selectionBounds, Rect playingArea)
         {
             //shorthand for the coordinates of the centre of the selection bounds
@@ -50,33 +78,43 @@ namespace RTS
 
         public static bool ObjectIsGround(GameObject obj)
         {
-            return obj.name == "Ground" || obj.name == "Ground(Clone)";
+            return obj.name == "Ground" ||
+                obj.name == "Ground(Clone)" ||
+                (obj.name.Length >= 8 && obj.name.Substring(0, 8) == "Platform") ||
+                (obj.name.Length >= 10 && obj.name.Substring(0, 10) == "TempBridge");
         }
 
-        public static List<WorldObject> FindNearbyObjects(Vector3 position, float range)
+        public static List<T> FindNearbyObjects<T>(Vector3 position, float range)
         {
             Collider[] hitColliders = Physics.OverlapSphere(position, range);
-            HashSet<int> nearbyObjectIds = new HashSet<int>();
-            List<WorldObject> nearbyObjects = new List<WorldObject>();
+            // HashSet<int> nearbyObjectIds = new HashSet<int>();
+            List<T> nearbyObjects = new List<T>();
             for (int i = 0; i < hitColliders.Length; i++)
             {
                 Transform parent = hitColliders[i].transform.parent;
                 if (parent)
                 {
-                    WorldObject parentObject = parent.GetComponent<WorldObject>();
+                    T parentObject = parent.GetComponent<T>();
 
                     if (
-                        parentObject && !nearbyObjectIds.Contains(parentObject.ObjectId)
+                        parentObject != null && !nearbyObjects.Contains(parentObject)
                     )
                     {
-                        nearbyObjectIds.Add(parentObject.ObjectId);
+                        // nearbyObjectIds.Add(parentObject.ObjectId);
                         nearbyObjects.Add(parentObject);
                     }
                 }
             }
 
-            nearbyObjects.Sort((a, b) => a.ObjectId - b.ObjectId);
             return nearbyObjects;
+        }
+
+        public static List<WorldObject> FindNearbyObjects(Vector3 position, float range)
+        {
+            var nearbyWorldObjects = FindNearbyObjects<WorldObject>(position, range);
+
+            nearbyWorldObjects.Sort((a, b) => a.ObjectId - b.ObjectId);
+            return nearbyWorldObjects;
         }
 
         public static List<Unit> FindNearbyUnits (Vector3 position, float range)

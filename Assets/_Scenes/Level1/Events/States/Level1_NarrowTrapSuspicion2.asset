@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
+  m_Name: Level1_NarrowTrapSuspicion2
+  m_EditorClassIdentifier: 
+  enterActions:
+  - {fileID: 11400000, guid: 51f4c3a2fccdf9345a6cb46a2d80e0bb, type: 2}
+  updateActions: []
+  exitActions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: c63ffe00b18affd45979a6ffc04f85fd, type: 2}
+    trueState: {fileID: 11400000, guid: 30232a9f488d17c44bae66617909ff75, type: 2}
+  - decision: {fileID: 11400000, guid: 1f5f500d61b6ebe4492a76e4715e747d, type: 2}
+    trueState: {fileID: 11400000, guid: 7f7072c7f6b323a4f8fa4078059b56a3, type: 2}

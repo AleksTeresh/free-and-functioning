@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b11181b08d6e244ba80d4ce199e285, type: 3}
+  m_Name: Level1_FranklinDeadDecision
+  m_EditorClassIdentifier: 
+  heroesToStayAlive:
+  - {fileID: 114883188938002522, guid: 976c66835fe690647bfdd3f8369d2013, type: 2}

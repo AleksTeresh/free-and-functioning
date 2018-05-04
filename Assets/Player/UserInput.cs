@@ -46,7 +46,7 @@ public class UserInput : MonoBehaviour {
                 HandleDialogInput();
             }
             else
-            { 
+            {
                 MoveCameraWithMouseScroll();
                 MoveCameraWithGamepad();
                 RotateCamera();
@@ -292,16 +292,30 @@ public class UserInput : MonoBehaviour {
             Vector3 hitPoint = FindHitPoint();
             if (hitObject && hitPoint != ResourceManager.InvalidPosition)
             {
-                if (player.SelectedObject) MouseClick(hitObject, hitPoint);
-                else if (!WorkManager.ObjectIsGround(hitObject))
+                if (!WorkManager.ObjectIsGround(hitObject))
                 {
-                    WorldObject worldObject = hitObject.transform.parent.GetComponent<WorldObject>();
-                    if (worldObject)
+                    Unit unitToSelect = hitObject.transform.parent.GetComponent<Unit>();
+                    if (unitToSelect)
                     {
-                        //we already know the player has no selected object
-                        player.SelectedObject = worldObject;
-                        worldObject.SetSelection(true, hud.GetPlayingArea());
+                        if (Input.GetButton("SelectionModifier") || Gamepad.GetButton("SelectionModifier"))
+                        {
+                            UnitSelectionManager.HandleUnitSelectionWithModifierPress(unitToSelect, player, hud);
+                        }
+                        else
+                        {
+                            UnitSelectionManager.HandleUnitSelection(unitToSelect, player, mainCamera, hud);
+                        }  
                     }
+                }
+                else if (player.SelectedObject)
+                {
+                    player.SelectedObject.SetSelection(false, hud.GetPlayingArea());
+                    player.SelectedObject = null;
+                    player.selectedObjects
+                        .Where(p => p != null)
+                        .ToList()
+                        .ForEach(p => p.SetSelection(false, hud.GetPlayingArea()));
+                    player.selectedObjects = new List<WorldObject>();
                 }
             }
         }
@@ -311,13 +325,12 @@ public class UserInput : MonoBehaviour {
     {
         if (hud.CursorInBounds() && !Input.GetKey(KeyCode.LeftAlt) && player.SelectedObject)
         {
-            player.SelectedObject.SetSelection(false, hud.GetPlayingArea());
-            player.SelectedObject = null;
-            player.selectedObjects
-                .Where(p => p != null)
-                .ToList()
-                .ForEach(p => p.SetSelection(false, hud.GetPlayingArea()));
-            player.selectedObjects = new List<WorldObject>();
+            GameObject hitObject = FindHitObject();
+            Vector3 hitPoint = FindHitPoint();
+            if (hitObject && hitPoint != ResourceManager.InvalidPosition)
+            {
+                if (player.SelectedObject) MouseClick(hitObject, hitPoint);
+            }
         }
     }
 
@@ -359,10 +372,11 @@ public class UserInput : MonoBehaviour {
                         }
                         else
                         {
-                            ChangeSelection(objectHandler, worldObject);
+                            IssueMoveOrderToSelectedUnits(hitObject, hitPoint);
+                            // ChangeSelection(objectHandler, worldObject);
                         }
                     }
-                    else ChangeSelection(objectHandler, worldObject);
+                    // else ChangeSelection(objectHandler, worldObject);
                 }
                 else if (objectHandler.CanAttack())
                 {
@@ -374,7 +388,7 @@ public class UserInput : MonoBehaviour {
 
                     if ((unit || building || bossPart) && handlerStateController) InputToCommandManager.ToChaseState(targetManager, handlerStateController, worldObject);
                 }
-                else ChangeSelection(objectHandler, worldObject);
+                // else ChangeSelection(objectHandler, worldObject);
             }
         }
     }
@@ -382,11 +396,18 @@ public class UserInput : MonoBehaviour {
     private void UnitMouseClick (Unit objectHandler, GameObject hitObject, Vector3 hitPoint)
     {
         Player owner = objectHandler.GetComponentInParent<Player>();
+        // Unit unit = hitObject.transform.parent.GetComponent<Unit>();
+        Player hitObjectOwner = hitObject.GetComponentInParent<Player>();
         //only handle input if owned by a human player and currently selected
 
-		//issue move order to one or more units
-
-        if (owner.username == player.username && player && player.human && objectHandler.IsSelected())
+        //issue move order to one or more units
+        if (
+            owner.username == player.username &&
+            (!hitObjectOwner || hitObjectOwner.name == player.username) &&
+            player &&
+            player.human &&
+            objectHandler.IsSelected()
+        )
         {
 			IssueMoveOrderToUnit (objectHandler, hitObject, hitPoint, Vector3.zero);
 
@@ -400,12 +421,22 @@ public class UserInput : MonoBehaviour {
 	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Vector3 formationOffset) 
 	{
         var handlerStateController = objectHandler.GetStateController();
-		if (handlerStateController && WorkManager.ObjectIsGround(hitObject) && hitPoint != ResourceManager.InvalidPosition)
+		if (handlerStateController && hitPoint != ResourceManager.InvalidPosition)
 		{
-			Vector3 destination = hitPoint + formationOffset;
+            Vector3 destination = hitPoint + formationOffset;
+            if (!WorkManager.ObjectIsGround(hitObject))
+            {
+                Vector3? onNavMeshDest = WorkManager.GetClosestPointOnNavMesh(hitPoint, "Walkable", 7);
+
+                if (onNavMeshDest.HasValue)
+                {
+                    destination = onNavMeshDest.Value;
+                }
+            }
+
             EventManager.TriggerEvent("RelocateUnit");
             InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
-		}
+        }
 	}
 
 	private void IssueMoveOrderToSelectedUnits(GameObject hitObject, Vector3 hitPoint)
@@ -471,20 +502,21 @@ public class UserInput : MonoBehaviour {
         {
             var relatedMesh = hit.collider.gameObject.GetComponent<MeshRenderer>();
 
-            if (relatedMesh && relatedMesh.enabled)
-            {
-                return hit.collider.gameObject;
-            }
-
             if (WorkManager.ObjectIsGround(hit.collider.gameObject))
             {
                 groundWasHit = true;
                 ground = hit.collider.gameObject;
             }
+            else if (relatedMesh && relatedMesh.enabled)
+            {
+                return hit.collider.gameObject;
+            }
             // return null;
         }
 
         var nearbyUnits = WorkManager.FindNearbyUnits(hit.point, 7);
+        nearbyUnits = nearbyUnits.Where(p => p.GetFogOfWarAgent().IsObserved()).ToList();
+
         nearbyUnits.ForEach(p =>
         {
             if (p.GetHitSphere())

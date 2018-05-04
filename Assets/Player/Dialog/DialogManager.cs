@@ -28,6 +28,11 @@ namespace Dialog
 
         public void SetDialogNode(DialogNode dialogNode)
         {
+            if (dialogNode.blockGameplay)
+            {
+                EventManager.TriggerEvent("HideHUD");
+            }
+
             BlockGameplay = dialogNode.blockGameplay;
             dialogTextPanel.SetOpen(true);
             // IsDialogSystemActive = true;

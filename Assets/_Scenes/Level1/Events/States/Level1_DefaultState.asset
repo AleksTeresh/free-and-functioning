@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
+  m_Name: Level1_DefaultState
+  m_EditorClassIdentifier: 
+  enterActions:
+  - {fileID: 11400000, guid: bfb10fb205953fe43a4cfd3eae2ba3fd, type: 2}
+  updateActions: []
+  exitActions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: c63ffe00b18affd45979a6ffc04f85fd, type: 2}
+    trueState: {fileID: 11400000, guid: 30232a9f488d17c44bae66617909ff75, type: 2}
+  - decision: {fileID: 11400000, guid: e052c421ad35fe74aa3f66a1cfaed0db, type: 2}
+    trueState: {fileID: 11400000, guid: 688c8bd2367229e47aacd7ac116244fe, type: 2}
+  - decision: {fileID: 11400000, guid: 2536e9cebc7455f49ad90abfcb63f01b, type: 2}
+    trueState: {fileID: 11400000, guid: e6dcce0c33451004dab5e8cb20560acb, type: 2}
+  - decision: {fileID: 11400000, guid: 95682cb7ba349d541be6bfaa146a9e53, type: 2}
+    trueState: {fileID: 11400000, guid: 2ed6b25528510da43b3974676520b217, type: 2}
+  - decision: {fileID: 11400000, guid: 4b88878e314a7d246a0bd5ca038edf53, type: 2}
+    trueState: {fileID: 11400000, guid: 4236efed406602548af249e5b73ac0ed, type: 2}
+  - decision: {fileID: 11400000, guid: c690a3d2174582c4aa979361202b8b2f, type: 2}
+    trueState: {fileID: 11400000, guid: 6ac0c4ae6dbd4a943bb538d6f9b4e7a7, type: 2}

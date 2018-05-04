@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Level1_8.RudolfWantsToLeaveFranklin
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Rudolf
+  displayedOptionText: 
+  blockGameplay: 1
+  dialogSentences:
+  - "I\u2019m not sure about it, he seems pretty meek to me, besides his guns are
+    not that strong anyway. I understand that you have empathy to him, but at least
+    we saved his life once. "
+  - "Now let\u2019s go.\r"
+  responses:
+  - {fileID: 11400000, guid: 6d3815e373b99514b86ac6d954149894, type: 2}

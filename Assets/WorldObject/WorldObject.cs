@@ -17,7 +17,7 @@ public class WorldObject : MonoBehaviour {
     protected bool isBusy;
 
     // child renderers without Particle system
-    private List<Renderer> childRenderersWithoutParticles;
+    private List<Renderer> objectModelChildRenderers;
 
     [Header("Status -related")]
     private Statuses.Statuses statusesWrapper;
@@ -95,11 +95,7 @@ public class WorldObject : MonoBehaviour {
 
     public void CalculateBounds()
     {
-        selectionBounds = new Bounds(transform.position, Vector3.zero);
-        foreach (Renderer r in childRenderersWithoutParticles)
-        {
-            selectionBounds.Encapsulate(r.bounds);
-        }
+        selectionBounds = WorkManager.GetBounds(this.transform, objectModelChildRenderers);
     }
 
     public void SetPlayer()
@@ -174,7 +170,7 @@ public class WorldObject : MonoBehaviour {
                 if (owner)
                 { //the object is owned by a player
                     if (owner.username == player.username) hud.SetCursorState(CursorState.Select);
-                    else if (CanAttack()) hud.SetCursorState(CursorState.Attack);
+                    else if (unit || building || bossPart && CanAttack()) hud.SetCursorState(CursorState.Attack);
                     else hud.SetCursorState(CursorState.Select);
                 }
                 else if (unit || building || bossPart && CanAttack()) hud.SetCursorState(CursorState.Attack);
@@ -251,17 +247,7 @@ public class WorldObject : MonoBehaviour {
 
     public void UpdateChildRenderers()
     {
-        // retrieve child renderers
-        var renderers = GetComponentsInChildren<Renderer>();
-        childRenderersWithoutParticles = new List<Renderer>();
-        // filter out particle system renderers
-        foreach (Renderer r in renderers)
-        {
-            if (r.enabled && r.GetComponentInParent<ParticleSystem>() == null)
-            {
-                childRenderersWithoutParticles.Add(r);
-            }
-        }
+        objectModelChildRenderers = WorkManager.GetChildRenderers(this.transform);
     }
 
     public void ResetCurrentWeaponChargeTime()
@@ -351,6 +337,17 @@ public class WorldObject : MonoBehaviour {
         RemoveInactiveStatuses();
 
         HandleSelectionLight();
+    }
+
+    protected virtual void OnDrawGizmosSelected ()
+    {
+        // detection range
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+
+        // weapon range
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, weaponRange);
     }
 
     protected virtual void InitialiseAudio()

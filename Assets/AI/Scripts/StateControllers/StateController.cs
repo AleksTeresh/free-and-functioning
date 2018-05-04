@@ -23,6 +23,9 @@ public class StateController : MonoBehaviour
     protected bool aiActive;
 
     protected virtual void Awake()
+    {}
+
+    private void Start()
     {
         controlledObject = GetComponent<WorldObject>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
@@ -30,10 +33,7 @@ public class StateController : MonoBehaviour
         // for now the default state is the one that a indicatedObject/building has on Awake(),
         // later defaultState can be made a separate public variable to be set in the Inspector
         defaultState = currentState;
-    }
 
-    private void Start()
-    {
         // nearbyEnemies = new List<WorldObject>();
         // nearbyAllies = new List<WorldObject>();
         attacking = false;

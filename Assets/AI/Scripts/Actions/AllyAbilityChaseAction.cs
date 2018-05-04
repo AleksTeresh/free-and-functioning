@@ -7,7 +7,6 @@ using AI;
 
 [CreateAssetMenu (menuName = "AI/Actions/AllyAbilityChase")]
 public class AllyAbilityChaseAction : UnitAction {
-
     protected override void DoAction(UnitStateController controller)
     {
 		Unit unit = controller.unit;

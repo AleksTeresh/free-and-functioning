@@ -9,10 +9,10 @@ public class ResetTargetAction : Action
 
     public override void Act(StateController controller)
     {
-        RestTarget(controller);
+        ResetTarget(controller);
     }
 
-    private void RestTarget(StateController controller)
+    private void ResetTarget(StateController controller)
     {
         controller.chaseTarget = null;
     }

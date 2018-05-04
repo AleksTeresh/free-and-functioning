@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Level1_1.StorytellerOverview
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Storyteller
+  displayedOptionText: 
+  blockGameplay: 1
+  dialogSentences:
+  - After the enemy units were killed, the heroes took a more careful look at their
+    recent target. The targeted unit had no identification marks on him, which made
+    it reasonable to assume that he's another dissident from another community. After
+    the battle was over, he remained lying on the ground, barely functioning due to
+    being severely damaged
+  responses:
+  - {fileID: 11400000, guid: 2e5a7b87e72197b45aaf5d784530fa72, type: 2}

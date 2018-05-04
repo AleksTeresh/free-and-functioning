@@ -373,7 +373,7 @@ Transform:
   m_GameObject: {fileID: 1357945151362338}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 14, y: 14, z: 14}
   m_Children: []
   m_Father: {fileID: 4864312690657880}
   m_RootOrder: 1
@@ -1222,6 +1222,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 600
   maxHitPoints: 600
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 40
   damageMulti: 3
   weaponRange: 2
@@ -1239,7 +1241,7 @@ MonoBehaviour:
   attackVolume: 1
   selectVolume: 1
   useWeaponVolume: 1
-  detectionRange: 3
+  detectionRange: 50
   belongsToBoss: 0
   holdingPosition: 0
   driveSound: {fileID: 0}
