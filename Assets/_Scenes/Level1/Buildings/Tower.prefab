@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 33242949080616716}
   - component: {fileID: 65762314180950640}
   - component: {fileID: 23082053763817068}
+  - component: {fileID: 208739290335274056}
   m_Layer: 0
   m_Name: ShootingPlatform
   m_TagString: Untagged
@@ -227,3 +228,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &208739290335274056
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805299797598574}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

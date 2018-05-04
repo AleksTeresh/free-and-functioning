@@ -170,7 +170,7 @@ public class WorldObject : MonoBehaviour {
                 if (owner)
                 { //the object is owned by a player
                     if (owner.username == player.username) hud.SetCursorState(CursorState.Select);
-                    else if (CanAttack()) hud.SetCursorState(CursorState.Attack);
+                    else if (unit || building || bossPart && CanAttack()) hud.SetCursorState(CursorState.Attack);
                     else hud.SetCursorState(CursorState.Select);
                 }
                 else if (unit || building || bossPart && CanAttack()) hud.SetCursorState(CursorState.Attack);
