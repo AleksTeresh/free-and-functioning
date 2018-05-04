@@ -13,7 +13,7 @@ namespace Events
 
             foreach (var shouldBeAliveHero in heroesToStayAlive)
             {
-                if (!aliveHeroes.Exists(unit => unit.name == shouldBeAliveHero.name))
+                if (!aliveHeroes.Exists(unit => unit.name == shouldBeAliveHero.name || unit.name == shouldBeAliveHero.name + "(Clone)"))
                 {
                     return true;
                 }

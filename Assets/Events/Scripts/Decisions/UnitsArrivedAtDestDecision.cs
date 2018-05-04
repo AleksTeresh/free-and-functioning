@@ -12,8 +12,17 @@ namespace Events
         public Unit[] unitPrefabs;
         public float radius = 7;
 
+        private bool triggerred = false;
+
+        private void OnEnable()
+        {
+            triggerred = false;
+        }
+
         public override bool Decide(StateController controller)
         {
+            if (triggerred) return false;
+
             var destination = new List<Flag>(FindObjectsOfType<Flag>()).Find(p => p.name == destinationPrefab.name);
 
             if (!destination) return false;
@@ -24,6 +33,9 @@ namespace Events
             foreach (var unitPrefab in unitPrefabs)
             {
                 var unit = controllerUnits.Find(p => p.name == unitPrefab.name);
+
+                if (!unit) return false;
+
                 var unitPos = unit.transform.position;
 
                 if ((unitPos - destPos).sqrMagnitude > radius * radius)
@@ -32,6 +44,7 @@ namespace Events
                 }
             }
 
+            triggerred = true;
             return true;
         }
     }

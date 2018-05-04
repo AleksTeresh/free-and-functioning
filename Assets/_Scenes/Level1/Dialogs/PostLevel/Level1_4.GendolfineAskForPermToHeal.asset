@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Level1_4.GendolfineAskForPermToHeal
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Gendolfine
+  displayedOptionText: 'Maybe I should fix him first, what do you think? He looks
+    barely alive '
+  blockGameplay: 1
+  dialogSentences:
+  - "Maybe I should fix him first, what do you think? He looks barely alive\r"
+  responses:
+  - {fileID: 11400000, guid: 94c86317413f56c49a7694cb56625cdb, type: 2}

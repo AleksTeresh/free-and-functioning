@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114381320837728032}
   - component: {fileID: 114099301297608130}
   m_Layer: 0
-  m_Name: Tutorial_Healer
+  m_Name: Level1_Healer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +263,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054317212583768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 449.5, y: 8.4, z: 794}
+  m_LocalPosition: {x: 229.40004, y: 21.220005, z: 882.60004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4128799485053590}

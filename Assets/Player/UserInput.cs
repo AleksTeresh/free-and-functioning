@@ -396,11 +396,18 @@ public class UserInput : MonoBehaviour {
     private void UnitMouseClick (Unit objectHandler, GameObject hitObject, Vector3 hitPoint)
     {
         Player owner = objectHandler.GetComponentInParent<Player>();
+        // Unit unit = hitObject.transform.parent.GetComponent<Unit>();
+        Player hitObjectOwner = hitObject.GetComponentInParent<Player>();
         //only handle input if owned by a human player and currently selected
 
-		//issue move order to one or more units
-
-        if (owner.username == player.username && player && player.human && objectHandler.IsSelected())
+        //issue move order to one or more units
+        if (
+            owner.username == player.username &&
+            (!hitObjectOwner || hitObjectOwner.name == player.username) &&
+            player &&
+            player.human &&
+            objectHandler.IsSelected()
+        )
         {
 			IssueMoveOrderToUnit (objectHandler, hitObject, hitPoint, Vector3.zero);
 
