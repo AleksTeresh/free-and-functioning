@@ -15,6 +15,7 @@ public class UserInput : MonoBehaviour {
     private FormationManager formationManager;
     private HUD hud;
     private Camera mainCamera;
+    private Ground ground;
 
     // Use this for initialization
     void Start () {
@@ -25,6 +26,8 @@ public class UserInput : MonoBehaviour {
         hud = transform.root.GetComponentInChildren<HUD>();
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+        ground = FindObjectOfType<Ground>();
     }
 	
 	// Update is called once per frame
@@ -164,13 +167,16 @@ public class UserInput : MonoBehaviour {
         destination.z += movement.z;
 
         //limit away from ground movement to be between a minimum and maximum distance
-        if (destination.y > ResourceManager.MaxCameraHeight)
+        destination.y = Mathf.Min(
+            ResourceManager.MaxCameraHeight,
+            Mathf.Max(ResourceManager.MinCameraHeight, destination.y)
+        );
+
+        // restrict camera movements to be within the terrain
+        if (ground)
         {
-            destination.y = ResourceManager.MaxCameraHeight;
-        }
-        else if (destination.y < ResourceManager.MinCameraHeight)
-        {
-            destination.y = ResourceManager.MinCameraHeight;
+            destination.x = Mathf.Min(ground.Terrain.terrainData.size.x, Mathf.Max(0, destination.x));
+            destination.z = Mathf.Min(ground.Terrain.terrainData.size.z, Mathf.Max(0, destination.z));
         }
 
         //if a change in position is detected perform the necessary update
