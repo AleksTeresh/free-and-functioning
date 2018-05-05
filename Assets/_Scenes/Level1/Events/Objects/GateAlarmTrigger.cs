@@ -9,6 +9,7 @@ public class GateAlarmTrigger : MonoBehaviour {
 
     private bool triggerred = false;
 
+    public Vector3 relativeRallyPoint;
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,7 +21,11 @@ public class GateAlarmTrigger : MonoBehaviour {
                 .Where(p => !p.GetPlayer().human)
                 .ToList();
 
-            var poistionToMoveTo = WorkManager.GetClosestPointOnNavMesh(transform.position, "Walkable", 20);
+            var poistionToMoveTo = WorkManager.GetClosestPointOnNavMesh(
+                transform.position + relativeRallyPoint,
+                "Walkable",
+                20
+            );
 
             if (poistionToMoveTo.HasValue)
             {
@@ -35,5 +40,8 @@ public class GateAlarmTrigger : MonoBehaviour {
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, alarmRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position + relativeRallyPoint, 5);
     }
 }

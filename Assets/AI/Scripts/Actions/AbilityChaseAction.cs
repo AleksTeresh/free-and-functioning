@@ -12,7 +12,11 @@ public class AbilityChaseAction : UnitAction {
 		WorldObject chaseTarget = controller.chaseTarget;
 		if (chaseTarget && !WorkManager.ObjectCanReachTargetWithAbility(unit, controller.abilityToUse, chaseTarget))
 		{
-			controller.unit.StartMove(chaseTarget.transform.position);
+
+            if (unit.GetNavMeshAgent().destination != chaseTarget.transform.position)
+            {
+                controller.unit.StartMove(chaseTarget.transform.position);
+            }
 		}
 		else
 		{

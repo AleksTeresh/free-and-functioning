@@ -150,7 +150,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void AddBuilding(string name, Vector3 position, Quaternion rotation)
+    public void AddBuilding(string name, Vector3 position, Quaternion rotation, string objectName = "")
     {
         GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetBuilding(name));
         Building building = newObject.GetComponent<Building>();
@@ -159,6 +159,11 @@ public class Player : MonoBehaviour {
         building.transform.parent = buildingsWrapper.transform;
         building.SetPlayer();
         building.SetTeamColor();
+
+        if (objectName != "")
+        {
+            building.objectName = objectName;
+        }
 
         Building buildingObject = newObject.GetComponent<Building>();
 
@@ -172,6 +177,9 @@ public class Player : MonoBehaviour {
         {
             fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
         }
+
+        building.UpdateChildRenderers();
+        building.CalculateBounds();
     }
 
     public virtual void SaveDetails(JsonWriter writer)

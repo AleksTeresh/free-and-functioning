@@ -58,6 +58,18 @@ public class Unit : WorldObject {
 
             this.destinationTarget = null;
             agent.SetDestination(destination);
+            /*
+            var newPath = new NavMeshPath();
+            bool result = agent.CalculatePath(destination, newPath);
+
+            if (result)
+            {
+                agent.SetPath(newPath);
+                Debug.Log("Path is successfully computed");
+            } else
+            {
+                agent.SetDestination(destination);
+            } */
         }
     }
 
@@ -210,7 +222,13 @@ public class Unit : WorldObject {
 
     private void HandleMove()
     {
-        if ((agent.velocity.magnitude == 0 && agent.remainingDistance <= agent.stoppingDistance) || isBusy)
+        if (
+            (
+            agent.velocity.magnitude == 0 &&
+            (transform.position - agent.destination).sqrMagnitude <= agent.stoppingDistance * agent.stoppingDistance
+            ) ||
+            isBusy
+        )
         {
             if (audioElement != null) audioElement.Stop(driveSound);
 

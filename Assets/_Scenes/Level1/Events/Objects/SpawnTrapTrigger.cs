@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using RTS;
+using System;
 
 public class SpawnTrapTrigger : MonoBehaviour
 {
@@ -11,8 +12,7 @@ public class SpawnTrapTrigger : MonoBehaviour
     public Unit unit;
 
     [Header("Blocking Wall")]
-    public Vector3 wallPosition = new Vector3(483.379f, 10.70251f, 568.8833f);
-    public Quaternion wallRotation = new Quaternion(0, 0, 0, 1);
+    public BlockingWallParams[] blockingWalls;
 
     private bool triggerred = false;
 
@@ -25,8 +25,15 @@ public class SpawnTrapTrigger : MonoBehaviour
             var spawnPoints = WorkManager.FindNearbyObjects<SpawnPoint>(transform.position, spawnPointDetectRange)
                 .ToList();
 
-            // TODO: the ardcoded blocking wall, should be definied by parameters instead
-            enemyPlayer.AddBuilding("BlockingWall", wallPosition, wallRotation);
+            foreach (var blockingWall in blockingWalls)
+            {
+                enemyPlayer.AddBuilding(
+                    "BlockingWall",
+                    blockingWall.wallPosition,
+                    blockingWall.wallRotation,
+                    blockingWall.name
+                );
+            }
 
             spawnPoints.ForEach(p =>
             {
@@ -39,5 +46,13 @@ public class SpawnTrapTrigger : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, spawnPointDetectRange);
+    }
+
+    [Serializable]
+    public class BlockingWallParams
+    {
+        public Vector3 wallPosition;
+        public Quaternion wallRotation;
+        public string name;
     }
 }
