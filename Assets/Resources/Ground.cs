@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour {
 
+    public Terrain Terrain { get; private set; }
 	// Use this for initialization
 	void Start () {
 		
@@ -17,9 +18,9 @@ public class Ground : MonoBehaviour {
     public Material GetMaterial()
     {
         Material material = new Material(Shader.Find("Custom/FogOfWar"));
-        Terrain terrain = GetComponent<Terrain>();
-        terrain.materialType = Terrain.MaterialType.Custom;
-        terrain.materialTemplate = material;
+        Terrain = GetComponent<Terrain>();
+        Terrain.materialType = Terrain.MaterialType.Custom;
+        Terrain.materialTemplate = material;
 
         return material;
     }
