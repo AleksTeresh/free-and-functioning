@@ -22,12 +22,14 @@ public class AllyAbilityChaseAction : UnitAction {
 			if (direction.sqrMagnitude < ability.range * ability.range)
 			{
 				controller.unit.UseAbility(allyChaseTarget, ability);
-
-				if (!unit.aiming)
-				{
-					controller.abilityToUse = null;
-				}
-			}
-		}
+                controller.abilityToUse = null;
+                /*
+                    if (!unit.aiming)
+                    {
+                        controller.abilityToUse = null;
+                    }
+                */
+            }
+        }
 	}
 }
