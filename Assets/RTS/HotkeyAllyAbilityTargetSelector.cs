@@ -10,7 +10,6 @@ namespace RTS
             "Select2",
             "Select3",
             "Select4",
-            "Select5",
             "SelectAll"
         };
 

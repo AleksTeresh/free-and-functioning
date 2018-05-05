@@ -561,6 +561,36 @@ Prefab:
       propertyPath: heightMap
       value: 
       objectReference: {fileID: 4900000, guid: dc5df0a09a198594d8c66d268f93bcbe, type: 3}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: mapSize.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: mapSize.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: textureWidth
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: textureHeight
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: heightMapWidth
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: heightMapHeight
+      value: 513
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3, type: 2}
   m_IsPrefabParent: 0

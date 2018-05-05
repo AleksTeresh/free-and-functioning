@@ -111,7 +111,7 @@ namespace RTS
                 case "SelectionModifier":
                     return GetOSXAxisButtonDown(button);
                 // Temporary fix till mapping if any necessary will be decided
-                case "Select5":
+                // case "Select5":
                 case "Ability5":
                     return false;
                 default:
@@ -133,7 +133,7 @@ namespace RTS
                 case "SelectionModifier":
                     return GetWindowsAxisButtonDown(button);
                 // Temporary fix till mapping if any necessary will be decided
-                case "Select5":
+                // case "Select5":
                 case "Ability5":
                     return false;
                 default:
@@ -150,7 +150,7 @@ namespace RTS
                 case "SelectionModifier":
                     return GetOSXAxisButton(button);
                 // Temporary fix till mapping if any necessary will be decided
-                case "Select5":
+                // case "Select5":
                 case "Ability5":
                     return false;
                 default:
@@ -171,7 +171,7 @@ namespace RTS
                 case "SelectionModifier":
                     return GetWindowsAxisButton(button);
                 // Temporary fix till mapping if any necessary will be decided
-                case "Select5":
+                // case "Select5":
                 case "Ability5":
                     return false;
                 default:

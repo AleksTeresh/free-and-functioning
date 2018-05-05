@@ -20,7 +20,7 @@ MonoBehaviour:
     since they allow fast selection of units especially when there are a lot of objects
     on the map. Try to select each of the units and order them to go the red flag.
   - 'You can select multiple units by holding <Shift> while pressing a hotkey. You
-    can also select all units, by pressing <Tilde>. Now, select all of your units.
+    can also select all units, by pressing <5>. Now, select all of your units.
 
 '
   - "Good! Now, order them to go to the red flag. You can see location of the red
@@ -68,7 +68,7 @@ MonoBehaviour:
   - ' For example, to heal Rudolf, select Gendolfine, press <Q> to select healing
     ability and then press <1> to apply the ability on Rudolf.  Now use "Heal" ability
     to heal all the members. You can heal your units one by one, or you can use "Multi
-    heal" by pressing <Q> to select the ability first, and then pressing <Tilde> button
+    heal" by pressing <Q> to select the ability first, and then pressing <5> button
     instead of a number, thus targeting all the reachable units.'
   - "There are also \u201CArea of Effect\u201D abilities that affect all the enemies
     within a certain range around a hero. The range is indicated by a circle around

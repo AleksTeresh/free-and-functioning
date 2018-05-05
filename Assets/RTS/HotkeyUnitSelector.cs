@@ -10,8 +10,7 @@ namespace RTS
 			"Select1",
 			"Select2",
 			"Select3",
-			"Select4",
-			"Select5"
+			"Select4"
 		};
 
 		public static void HandleInput (Player player, HUD hud, Camera camera)
