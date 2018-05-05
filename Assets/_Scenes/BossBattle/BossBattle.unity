@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 9931f9597b5b18748a893002b3a338e1,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -339,6 +340,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 400
   maxHitPoints: 400
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 1
   damageMulti: 3
   weaponRange: 35
@@ -8019,6 +8022,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 400
   maxHitPoints: 400
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 1
   damageMulti: 3
   weaponRange: 35
@@ -8283,6 +8288,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 600
   maxHitPoints: 600
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 1
   damageMulti: 3
   weaponRange: 35
@@ -8523,6 +8530,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 3000
   maxHitPoints: 3000
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 10
   damageMulti: 3
   weaponRange: 10
@@ -13211,6 +13220,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 500
   maxHitPoints: 500
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 0
   damageMulti: 0
   weaponRange: 4
@@ -14176,6 +14187,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 50
   maxHitPoints: 50
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 10
   damageMulti: 3
   weaponRange: 10
@@ -15164,6 +15177,11 @@ Prefab:
     - target: {fileID: 224424346760123998, guid: 0abe23c194a66764bbe3814ac3ba5c1c,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224557152139793334, guid: 0abe23c194a66764bbe3814ac3ba5c1c,
+        type: 2}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
