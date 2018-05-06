@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1f00ba3c9dce641bd409be69397814, type: 3}
+  m_Name: BossBattle_PallasPartsDestroyedDecision
+  m_EditorClassIdentifier: 
+  prefabsToStayAlive:
+  - {fileID: 114715721560164566, guid: a4571c76c3e1c6843a400c72c0b2b136, type: 2}
+  - {fileID: 114317139381655000, guid: a4571c76c3e1c6843a400c72c0b2b136, type: 2}
+  - {fileID: 114592659974368208, guid: a4571c76c3e1c6843a400c72c0b2b136, type: 2}
+  - {fileID: 114009479692401268, guid: 71e46349499c1d24088903f3eb8527bd, type: 2}
+  - {fileID: 114684070986869186, guid: 71e46349499c1d24088903f3eb8527bd, type: 2}
+  - {fileID: 114728927783664424, guid: 71e46349499c1d24088903f3eb8527bd, type: 2}
