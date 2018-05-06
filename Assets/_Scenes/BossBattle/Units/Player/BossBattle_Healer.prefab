@@ -997,8 +997,10 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 200
-  maxHitPoints: 200
+  hitPoints: 270
+  maxHitPoints: 270
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 10
   damageMulti: 3
   weaponRange: 50
@@ -1017,13 +1019,12 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 50
+  belongsToBoss: 0
   holdingPosition: 0
   driveSound: {fileID: 0}
   moveSound: {fileID: 0}
   driveVolume: 0.5
   moveVolume: 1
-  abilities: []
-  abilitiesMulti: []
 --- !u!114 &114132990326788086
 MonoBehaviour:
   m_ObjectHideFlags: 1
