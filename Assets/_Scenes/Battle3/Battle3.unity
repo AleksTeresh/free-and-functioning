@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000004, guid: 55318bbc7db764648809b80554fc3cea,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -560,6 +561,36 @@ Prefab:
       propertyPath: heightMap
       value: 
       objectReference: {fileID: 4900000, guid: dc5df0a09a198594d8c66d268f93bcbe, type: 3}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: mapSize.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: mapSize.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: textureWidth
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: textureHeight
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: heightMapWidth
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561944036321666, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3,
+        type: 2}
+      propertyPath: heightMapHeight
+      value: 513
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3, type: 2}
   m_IsPrefabParent: 0
@@ -1427,6 +1458,11 @@ Prefab:
     - target: {fileID: 224792027670620822, guid: c33afbf060a5e6a4ba2b4cc065123777,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224023385172133464, guid: c33afbf060a5e6a4ba2b4cc065123777,
+        type: 2}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

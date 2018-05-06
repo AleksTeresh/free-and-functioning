@@ -6,17 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/MainMenu.unity
-    guid: 38374e91d9fde60438121a707c02888b
+    path: Assets/_Scenes/LevelSelection/LevelSelection.unity
+    guid: 3d9a05b7e60ef2949b5b8efa92ea1505
   - enabled: 1
     path: Assets/_Scenes/Intro/Intro.unity
     guid: 207fd8f6b68d1fe41ba9f912ad41f291
   - enabled: 1
     path: Assets/_Scenes/Tutorial/Tutorial.unity
-    guid: 5bcc1f03b0baea1498a1bbba29990111
+    guid: a57bf9ec89b770540bfdc6d4e3d6d625
   - enabled: 1
-    path: Assets/_Scenes/MiniGame/MiniGame.unity
-    guid: 259afc3703de5c24781cc2084d64ba88
+    path: Assets/_Scenes/Level1/Level1.unity
+    guid: be32eaddbbbc7c64097aeb88e11f2938
+  - enabled: 1
+    path: Assets/_Scenes/Battle3/Battle3.unity
+    guid: eb8a5afaff5a69745891dc43dcb504ce
+  - enabled: 1
+    path: Assets/_Scenes/BossBattle/BossBattle.unity
+    guid: 49ff9f0f9736e1742856eed82f383370
   - enabled: 1
     path: Assets/_Scenes/WinScreen/WinScreen.unity
     guid: 29d275ca450fc254fac3c6375468e11e

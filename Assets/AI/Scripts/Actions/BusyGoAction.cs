@@ -10,6 +10,6 @@ public class BusyGoAction : UnitAction
     {
         var self = controller.navMeshAgent;
 
-        controller.unit.StartMove(self.destination);
+        // controller.unit.StartMove(self.destination);
     }
 }

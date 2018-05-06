@@ -817,8 +817,8 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 150
-  maxHitPoints: 150
+  hitPoints: 200
+  maxHitPoints: 200
   attackDelay: 1
   attackMultiDelay: 1
   damage: 4

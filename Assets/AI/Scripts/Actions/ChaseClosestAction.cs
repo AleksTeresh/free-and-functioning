@@ -22,9 +22,14 @@ public class ChaseClosestAction : UnitAction
             controller.chaseTarget = closestEnemy;
 
             var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, closestEnemy);
+
+            // if the destination is still the same, do not recalculate the path
+            if (idealClosestPoint == unit.GetNavMeshAgent().destination) return;
+
             var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", 15);
 
-            if (actualClosestPoint.HasValue)
+            // if the destination is still the same, do not recalculate the path
+            if (actualClosestPoint.HasValue && actualClosestPoint != unit.GetNavMeshAgent().destination)
             {
                 unit.StartMove(actualClosestPoint.Value);
             }
