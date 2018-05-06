@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObjects: []
-  teamColor: {r: 0.25886676, g: 0.83823526, b: 0.3587579, a: 0}
+  teamColor: {r: 0, g: 0.2283469, b: 0.41911763, a: 0}
   username: Alekster
   human: 1
   selectedAllyTargettingAbility: {fileID: 0}
@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObjects: []
-  teamColor: {r: 0.9044118, g: 0.28595373, b: 0.28595373, a: 0}
+  teamColor: {r: 0.71323526, g: 0, b: 0, a: 0}
   username: WorstEnemy
   human: 0
   selectedAllyTargettingAbility: {fileID: 0}
@@ -17297,7 +17297,7 @@ Prefab:
     - target: {fileID: 108452856680201768, guid: 9f06c76575b285949b810f9b4373dde3,
         type: 2}
       propertyPath: m_Intensity
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 108452856680201768, guid: 9f06c76575b285949b810f9b4373dde3,
         type: 2}

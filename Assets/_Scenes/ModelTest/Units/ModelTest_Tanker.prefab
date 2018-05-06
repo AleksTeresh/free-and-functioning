@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4166294638429228}
   - component: {fileID: 33382441298716386}
   - component: {fileID: 23120496006555300}
+  - component: {fileID: 114823718185504742}
   m_Layer: 0
   m_Name: Cube_002
   m_TagString: Untagged
@@ -879,6 +880,17 @@ MonoBehaviour:
   aoeDelay: 0
   affectsFriends: 0
   affectsSelf: 0
+--- !u!114 &114823718185504742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347185051578622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8478e53d23a4f96e687d91654aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136989449592372900
 CapsuleCollider:
   m_ObjectHideFlags: 1
