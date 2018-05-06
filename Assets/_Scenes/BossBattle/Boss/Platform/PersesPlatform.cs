@@ -66,13 +66,21 @@ public class PersesPlatform : Unit {
         if (bodyParts != null && bodyPartList.Exists(p => p is PersesBody))
         {
             var body = bodyPartList.Find(p => p is PersesBody);
-            float initialBodyY = body.transform.position.y;
 
-            var bodyNavMesh = body.gameObject.AddComponent<NavMeshAgent>() as NavMeshAgent;
-            bodyNavMesh.speed = 0;
-            bodyNavMesh.baseOffset = initialBodyY;
+            if (body)
+            {
+                float initialBodyY = body.transform.position.y;
 
-            body.CalculateBounds();
+                var bodyNavMesh = body.gameObject.AddComponent<NavMeshAgent>() as NavMeshAgent;
+
+                if (bodyNavMesh)
+                {
+                    bodyNavMesh.speed = 0;
+                    bodyNavMesh.baseOffset = initialBodyY;
+                }
+
+                body.CalculateBounds();
+            }       
         }
     }
 
