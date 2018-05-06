@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42fa7b05bfe3b54faf1856457068734, type: 3}
+  m_Name: SummoningCube_TheCubeIsDestroyedDecision
+  m_EditorClassIdentifier: 
+  prefabToStayAlive: {fileID: 114862350624748096, guid: e5ed5f454b2bca44195646a7abbac446,
+    type: 2}

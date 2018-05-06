@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "AI/Decisions/Busy")]
-public class BusyDecision : UnitDecision
+namespace AI
 {
-
-    protected override bool DoDecide(UnitStateController controller)
+    [CreateAssetMenu(menuName = "AI/Decisions/Busy")]
+    public class BusyDecision : UnitDecision
     {
-        var self = controller.navMeshAgent;
 
-        return self.remainingDistance > self.stoppingDistance || self.pathPending;
+        protected override bool DoDecide(UnitStateController controller)
+        {
+            var self = controller.navMeshAgent;
+
+            return self.remainingDistance > self.stoppingDistance || self.pathPending;
+        }
     }
+
 }

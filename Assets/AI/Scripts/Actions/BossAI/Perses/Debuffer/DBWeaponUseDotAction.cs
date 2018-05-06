@@ -3,23 +3,27 @@ using System.Collections;
 using Abilities;
 using RTS;
 
-[CreateAssetMenu(menuName = "AI/Actions/BossAI/Perses/Debuffer/DBWeaponUseDot")]
-public class DBWeaponUseDotAction : BossPartAction
+namespace AI.Perses
 {
-    protected override void DoAction(BossPartStateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/BossAI/Perses/Debuffer/DBWeaponUseDot")]
+    public class DBWeaponUseDotAction : BossPartAction
     {
-        BossPart bossPart = controller.bossPart;
-
-        Ability ability = AbilityUtils.FindAbilityByName(
-            "Boss_DotAbilityMulti",
-            bossPart.GetAbilityAgent().abilitiesMulti
-        );
-        var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, bossPart.transform.position, ability.range);
-
-        // wait till at least 2 targets are reachable
-        if (ability != null && ability.IsReady() && reachabeEnemies.Count > 1)
+        protected override void DoAction(BossPartStateController controller)
         {
-            bossPart.UseAbility(reachabeEnemies, ability);
+            BossPart bossPart = controller.bossPart;
+
+            Ability ability = AbilityUtils.FindAbilityByName(
+                "Boss_DotAbilityMulti",
+                bossPart.GetAbilityAgent().abilitiesMulti
+            );
+            var reachabeEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, bossPart.transform.position, ability.range);
+
+            // wait till at least 2 targets are reachable
+            if (ability != null && ability.IsReady() && reachabeEnemies.Count > 1)
+            {
+                bossPart.UseAbility(reachabeEnemies, ability);
+            }
         }
     }
+
 }

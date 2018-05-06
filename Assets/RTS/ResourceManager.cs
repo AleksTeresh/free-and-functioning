@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Statuses;
+﻿using UnityEngine;
 
 namespace RTS
 {
@@ -97,7 +94,7 @@ namespace RTS
             return gameObjectList.GetBuildImage(name);
         }
 
-        public static State GetAiState(string name)
+        public static AI.State GetAiState(string name)
         {
             return gameObjectList.GetAiState(name);
         }

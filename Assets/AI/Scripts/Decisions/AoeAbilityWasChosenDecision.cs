@@ -2,12 +2,16 @@
 using UnityEngine;
 using Abilities;
 
-[CreateAssetMenu(menuName = "AI/Decisions/AoeAbilityWasChosenDecision")]
-public class AoeAbilityWasChosenDecision : UnitDecision
+namespace AI
 {
-    protected override bool DoDecide(UnitStateController controller)
+    [CreateAssetMenu(menuName = "AI/Decisions/AoeAbilityWasChosenDecision")]
+    public class AoeAbilityWasChosenDecision : UnitDecision
     {
-        return controller.abilityToUse != null &&
-            controller.abilityToUse is AoeAbility;
+        protected override bool DoDecide(UnitStateController controller)
+        {
+            return controller.abilityToUse != null &&
+                controller.abilityToUse is AoeAbility;
+        }
     }
 }
+

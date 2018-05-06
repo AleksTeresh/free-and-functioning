@@ -4,39 +4,41 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using RTS;
-using AI;
 
-[CreateAssetMenu(menuName = "AI/Actions/ChaseClosest")]
-public class ChaseClosestAction : UnitAction
+namespace AI
 {
-
-    protected override void DoAction(UnitStateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/ChaseClosest")]
+    public class ChaseClosestAction : UnitAction
     {
-        Unit unit = controller.unit;
-        Vector3 currentPosition = unit.transform.position;
 
-        WorldObject closestEnemy = WorkManager.FindNearestWorldObjectInListToPosition(controller.nearbyEnemies, currentPosition);
-
-        if (closestEnemy && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, closestEnemy))
+        protected override void DoAction(UnitStateController controller)
         {
-            controller.chaseTarget = closestEnemy;
+            Unit unit = controller.unit;
+            Vector3 currentPosition = unit.transform.position;
 
-            var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, closestEnemy);
+            WorldObject closestEnemy = WorkManager.FindNearestWorldObjectInListToPosition(controller.nearbyEnemies, currentPosition);
 
-            // if the destination is still the same, do not recalculate the path
-            if (idealClosestPoint == unit.GetNavMeshAgent().destination) return;
-
-            var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", 15);
-
-            // if the destination is still the same, do not recalculate the path
-            if (actualClosestPoint.HasValue && actualClosestPoint != unit.GetNavMeshAgent().destination)
+            if (closestEnemy && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, closestEnemy))
             {
-                unit.StartMove(actualClosestPoint.Value);
+                controller.chaseTarget = closestEnemy;
+
+                var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, closestEnemy);
+
+                // if the destination is still the same, do not recalculate the path
+                if (idealClosestPoint == unit.GetNavMeshAgent().destination) return;
+
+                var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", 15);
+
+                // if the destination is still the same, do not recalculate the path
+                if (actualClosestPoint.HasValue && actualClosestPoint != unit.GetNavMeshAgent().destination)
+                {
+                    unit.StartMove(actualClosestPoint.Value);
+                }
             }
-        }
-        else
-        {
-            controller.unit.StopMove();
+            else
+            {
+                controller.unit.StopMove();
+            }
         }
     }
 }

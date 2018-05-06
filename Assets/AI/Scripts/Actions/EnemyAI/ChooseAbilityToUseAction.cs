@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
 using Abilities;
 
-[CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseAbilityToUse")]
-public class ChooseAbilityToUseAction : ChooseAbilityAction
-{ 
-    protected override void ChooseAbilityToUse(UnitStateController controller)
+namespace AI
+{
+    [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseAbilityToUse")]
+    public class ChooseAbilityToUseAction : ChooseAbilityAction
     {
-        Unit unit = controller.unit;
-
-        if (!controller.abilityToUse)
+        protected override void ChooseAbilityToUse(UnitStateController controller)
         {
-            Ability ability = unit.GetAbilityAgent().GetFirstReadyAbility();
+            Unit unit = controller.unit;
 
-            if (ability != null)
+            if (!controller.abilityToUse)
             {
-                controller.abilityToUse = ability;
+                Ability ability = unit.GetAbilityAgent().GetFirstReadyAbility();
+
+                if (ability != null)
+                {
+                    controller.abilityToUse = ability;
+                }
             }
         }
     }
+
 }

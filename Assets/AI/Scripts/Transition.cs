@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Transition {
-    public Decision decision;
-    public State trueState;
-    public State falseState;
+namespace AI
+{
+    [System.Serializable]
+    public class Transition
+    {
+        public Decision decision;
+        public State trueState;
+        public State falseState;
+    }
 }
+

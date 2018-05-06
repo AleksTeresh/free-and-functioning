@@ -2,54 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "AI/Decisions/ActiveState")]
-public class ActiveStateDecision : Decision {
-
-	public override bool Decide (StateController controller)
+namespace AI
+{
+    [CreateAssetMenu(menuName = "AI/Decisions/ActiveState")]
+    public class ActiveStateDecision : Decision
     {
-        WorldObject self = controller.controlledObject;
-        WorldObject target = controller.chaseTarget;
 
-        if (!target)
+        public override bool Decide(StateController controller)
         {
-            return false;
+            WorldObject self = controller.controlledObject;
+            WorldObject target = controller.chaseTarget;
+
+            if (!target)
+            {
+                return false;
+            }
+
+            Vector3 targetLocation = target.transform.position;
+            Vector3 direction = targetLocation - self.transform.position;
+
+            bool chaseTargetIsActive = target != null && // target exists
+                target.gameObject.activeSelf && // target is alive
+                (
+                    direction.sqrMagnitude < self.detectionRange * self.detectionRange ||
+                    FriendsHaveActiveTarget(target, self, controller.nearbyAllies)
+                ); // target is visible to a indicatedObject or its friends
+
+            return chaseTargetIsActive;
         }
 
-        Vector3 targetLocation = target.transform.position;
-        Vector3 direction = targetLocation - self.transform.position;
-
-        bool chaseTargetIsActive = target != null && // target exists
-            target.gameObject.activeSelf && // target is alive
-            (
-                direction.sqrMagnitude < self.detectionRange * self.detectionRange || 
-                FriendsHaveActiveTarget(target, self, controller.nearbyAllies)
-            ); // target is visible to a indicatedObject or its friends
-
-        return chaseTargetIsActive;
-    }
-
-    private bool FriendsHaveActiveTarget(WorldObject target, WorldObject unit, List<WorldObject> nearbyAllies)
-    {
-        foreach (WorldObject nearbyAlly in nearbyAllies)
+        private bool FriendsHaveActiveTarget(WorldObject target, WorldObject unit, List<WorldObject> nearbyAllies)
         {
-            if (
-                nearbyAlly &&
-                unit.ObjectId != nearbyAlly.ObjectId &&
-                nearbyAlly.GetStateController() &&
-                nearbyAlly.GetStateController().chaseTarget == target &&
-                (
-                    !(nearbyAlly is Unit) ||
+            foreach (WorldObject nearbyAlly in nearbyAllies)
+            {
+                if (
+                    nearbyAlly &&
+                    unit.ObjectId != nearbyAlly.ObjectId &&
+                    nearbyAlly.GetStateController() &&
+                    nearbyAlly.GetStateController().chaseTarget == target &&
                     (
-                        nearbyAlly.GetFogOfWarAgent() &&
-                        nearbyAlly.GetFogOfWarAgent().IsObserved()
+                        !(nearbyAlly is Unit) ||
+                        (
+                            nearbyAlly.GetFogOfWarAgent() &&
+                            nearbyAlly.GetFogOfWarAgent().IsObserved()
+                        )
                     )
                 )
-            )
-            {
-                return true;
+                {
+                    return true;
+                }
             }
-        }
 
-        return false;
+            return false;
+        }
     }
 }

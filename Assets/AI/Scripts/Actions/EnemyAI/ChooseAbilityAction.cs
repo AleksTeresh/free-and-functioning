@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 using Abilities;
-using AI;
 
-[CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseAbilityToUse")]
-public class ChooseAbilityAction : UnitAction
+namespace AI
 {
-    public override void Act(StateController baseController)
+    [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseAbilityToUse")]
+    public class ChooseAbilityAction : UnitAction
     {
-        if (!(baseController is UnitStateController)) return;
-
-        var controller = (UnitStateController)baseController;
-
-        if (controller.abilityToUse != null)
+        public override void Act(StateController baseController)
         {
-            return;
+            if (!(baseController is UnitStateController)) return;
+
+            var controller = (UnitStateController)baseController;
+
+            if (controller.abilityToUse != null)
+            {
+                return;
+            }
+
+            ChooseAbilityToUse(controller);
         }
 
-        ChooseAbilityToUse(controller);
+        protected virtual void ChooseAbilityToUse(UnitStateController controller)
+        {
+            // the method is to be overriden
+        }
     }
 
-    protected virtual void ChooseAbilityToUse(UnitStateController controller)
-    {
-        // the method is to be overriden
-    }
 }

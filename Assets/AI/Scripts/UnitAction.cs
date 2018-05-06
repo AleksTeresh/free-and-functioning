@@ -1,17 +1,21 @@
 ﻿
-public class UnitAction : Action
+
+namespace AI
 {
-    public override void Act(StateController baseController)
+    public class UnitAction : Action
     {
-        if (!(baseController is UnitStateController)) return;
+        public override void Act(StateController baseController)
+        {
+            if (!(baseController is UnitStateController)) return;
 
-        var controller = (UnitStateController)baseController;
+            var controller = (UnitStateController)baseController;
 
-        DoAction(controller);
-    }
+            DoAction(controller);
+        }
 
-    protected virtual void DoAction(UnitStateController controller)
-    {
-        // the method is to be overriden
+        protected virtual void DoAction(UnitStateController controller)
+        {
+            // the method is to be overriden
+        }
     }
 }
