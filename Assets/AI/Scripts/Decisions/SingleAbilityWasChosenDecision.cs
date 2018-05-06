@@ -2,14 +2,18 @@
 using UnityEngine;
 using Abilities;
 
-[CreateAssetMenu(menuName = "AI/Decisions/SingleAbilityWasChosenDecision")]
-public class SingleAbilityWasChosenDecision : UnitDecision
+namespace AI
 {
-    protected override bool DoDecide(UnitStateController controller)
+    [CreateAssetMenu(menuName = "AI/Decisions/SingleAbilityWasChosenDecision")]
+    public class SingleAbilityWasChosenDecision : UnitDecision
     {
-        return controller.abilityToUse != null &&
-            !(controller.abilityToUse is AoeAbility) &&
-            new List<Ability>(controller.unit.GetAbilityAgent().abilities)
-                .Contains(controller.abilityToUse);
+        protected override bool DoDecide(UnitStateController controller)
+        {
+            return controller.abilityToUse != null &&
+                !(controller.abilityToUse is AoeAbility) &&
+                new List<Ability>(controller.unit.GetAbilityAgent().abilities)
+                    .Contains(controller.abilityToUse);
+        }
     }
 }
+    

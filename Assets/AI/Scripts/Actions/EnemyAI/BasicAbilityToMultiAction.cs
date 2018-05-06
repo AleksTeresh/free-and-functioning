@@ -6,37 +6,40 @@ using UnityEngine;
 using Abilities;
 using RTS;
 
-[CreateAssetMenu(menuName = "AI/Actions/EnemyAI/BasicAbilityToMulti")]
-public class BasicAbilityToMultiAction : ChooseAbilityAction
+namespace AI
 {
-    protected override void ChooseAbilityToUse(UnitStateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/BasicAbilityToMulti")]
+    public class BasicAbilityToMultiAction : ChooseAbilityAction
     {
-        Unit unit = controller.unit;
-
-        var abilities = new List<Ability>(unit.GetAbilityAgent().abilitiesMulti);
-
-        if (controller.chaseTarget)
+        protected override void ChooseAbilityToUse(UnitStateController controller)
         {
-            var currentPosition = unit.transform.position;
+            Unit unit = controller.unit;
 
-            abilities.ForEach(ability =>
+            var abilities = new List<Ability>(unit.GetAbilityAgent().abilitiesMulti);
+
+            if (controller.chaseTarget)
             {
-                if (!ability.IsReady()) return;
+                var currentPosition = unit.transform.position;
 
-                var reachableEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, currentPosition, ability.range);
-
-                // use the ability if there are at least 2 enemies it is going to affect,
-                // or if the indicatedObject is close enough to a single enemy to start ordninary attack
-                if (
-                    reachableEnemies.Count > 1 ||
-                    (
-                        reachableEnemies.Count == 1 &&
-                        (reachableEnemies[0].transform.position - currentPosition).sqrMagnitude <= unit.weaponRange * unit.weaponRange)
-                    )
+                abilities.ForEach(ability =>
                 {
-                    controller.abilityToUse = ability;
-                }
-            });
+                    if (!ability.IsReady()) return;
+
+                    var reachableEnemies = WorkManager.FindReachableObjects(controller.nearbyEnemies, currentPosition, ability.range);
+
+                    // use the ability if there are at least 2 enemies it is going to affect,
+                    // or if the indicatedObject is close enough to a single enemy to start ordninary attack
+                    if (
+                        reachableEnemies.Count > 1 ||
+                        (
+                            reachableEnemies.Count == 1 &&
+                            (reachableEnemies[0].transform.position - currentPosition).sqrMagnitude <= unit.weaponRange * unit.weaponRange)
+                        )
+                    {
+                        controller.abilityToUse = ability;
+                    }
+                });
+            }
         }
     }
 }

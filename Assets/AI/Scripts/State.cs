@@ -3,51 +3,55 @@ using System.Collections.Generic;
 using RTS;
 using UnityEngine;
 
-[CreateAssetMenu (menuName ="AI/State")]
-public class State : ScriptableObject {
-
-    public Action[] actions;
-    public Transition[] transitions;
-
-    public void UpdateState (StateController controller)
+namespace AI
+{
+    [CreateAssetMenu(menuName = "AI/State")]
+    public class State : ScriptableObject
     {
-        FindNearbyObjects(controller);
-        DoActions(controller);
-        CheckTransitions(controller);
-    }
 
-    private void DoActions(StateController controller)
-    {
-        for (int i = 0; i < actions.Length; i++)
+        public Action[] actions;
+        public Transition[] transitions;
+
+        public void UpdateState(StateController controller)
         {
-            actions[i].Act(controller);
+            FindNearbyObjects(controller);
+            DoActions(controller);
+            CheckTransitions(controller);
         }
-    }
 
-    private void CheckTransitions (StateController controller)
-    {
-        for (int i = 0; i < transitions.Length; i++)
+        private void DoActions(StateController controller)
         {
-            bool decisionSucceeded = transitions[i].decision.Decide(controller);
-
-            if (decisionSucceeded)
+            for (int i = 0; i < actions.Length; i++)
             {
-                controller.TransitionToState(transitions[i].trueState);
-            }
-            else
-            {
-                controller.TransitionToState(transitions[i].falseState);
+                actions[i].Act(controller);
             }
         }
-    }
 
-    private void FindNearbyObjects(StateController controller)
-    {
-        WorldObject controlledObject = controller.controlledObject;
-        Vector3 currentPosition = controlledObject.transform.position;
-        List<WorldObject> nearbyObjects = WorkManager.FindNearbyObjects(currentPosition, controlledObject.detectionRange);
+        private void CheckTransitions(StateController controller)
+        {
+            for (int i = 0; i < transitions.Length; i++)
+            {
+                bool decisionSucceeded = transitions[i].decision.Decide(controller);
 
-        controller.nearbyAllies = WorkManager.GetAllyObjects(nearbyObjects, controlledObject.GetPlayer());
-        controller.nearbyEnemies = WorkManager.GetEnemyObjects(nearbyObjects, controlledObject.GetPlayer());
+                if (decisionSucceeded)
+                {
+                    controller.TransitionToState(transitions[i].trueState);
+                }
+                else
+                {
+                    controller.TransitionToState(transitions[i].falseState);
+                }
+            }
+        }
+
+        private void FindNearbyObjects(StateController controller)
+        {
+            WorldObject controlledObject = controller.controlledObject;
+            Vector3 currentPosition = controlledObject.transform.position;
+            List<WorldObject> nearbyObjects = WorkManager.FindNearbyObjects(currentPosition, controlledObject.detectionRange);
+
+            controller.nearbyAllies = WorkManager.GetAllyObjects(nearbyObjects, controlledObject.GetPlayer());
+            controller.nearbyEnemies = WorkManager.GetEnemyObjects(nearbyObjects, controlledObject.GetPlayer());
+        }
     }
 }

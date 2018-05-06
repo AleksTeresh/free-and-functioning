@@ -3,23 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "AI/Decisions/Look")]
-public class LookDecision : Decision {
-
-    public override bool Decide (StateController controller)
+namespace AI
+{
+    [CreateAssetMenu(menuName = "AI/Decisions/Look")]
+    public class LookDecision : Decision
     {
-        bool targetVisible = Look(controller);
-        return targetVisible;
 
-    }
+        public override bool Decide(StateController controller)
+        {
+            bool targetVisible = Look(controller);
+            return targetVisible;
 
-    private bool Look (StateController controller)
-    {
-        WorldObject unit = controller.controlledObject;
-        Vector3 currentPosition = unit.transform.position;
+        }
 
-        // if (indicatedObject.CanAttack())
-       //  {
+        private bool Look(StateController controller)
+        {
+            WorldObject unit = controller.controlledObject;
+            Vector3 currentPosition = unit.transform.position;
+
+            // if (indicatedObject.CanAttack())
+            //  {
             // if there is a common target, chase it
             if (controller.targetManager && controller.targetManager.SingleTarget)
             {
@@ -41,8 +44,9 @@ public class LookDecision : Decision {
 
                 return true;
             }
-     //    }
+            //    }
 
-        return false;
+            return false;
+        }
     }
 }

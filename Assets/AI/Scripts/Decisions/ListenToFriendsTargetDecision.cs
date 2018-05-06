@@ -1,48 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RTS;
-using UnityEngine;
+﻿using UnityEngine;
 /*
  * 
  * Should be used with computer controlled units
  */
-[CreateAssetMenu(menuName = "AI/Decisions/ListenToFriendsTarget")]
-public class ListenToFriendsTargetDecision : Decision
+
+namespace AI
 {
-
-    public override bool Decide(StateController controller)
+    [CreateAssetMenu(menuName = "AI/Decisions/ListenToFriendsTarget")]
+    public class ListenToFriendsTargetDecision : Decision
     {
-        bool targetAvailable = ListenToFriendsTarget(controller);
-        return targetAvailable;
 
-    }
-
-    private bool ListenToFriendsTarget(StateController controller)
-    {
-        WorldObject unit = controller.controlledObject;
-        Vector3 currentPosition = unit.transform.position;
-
-        if (unit.CanAttack())
+        public override bool Decide(StateController controller)
         {
-            // if there is no common target, look for nearby enemies
-            foreach (WorldObject nearbyObject in controller.nearbyAllies)
-            {
-                if (
-                    nearbyObject &&
-                    unit.ObjectId != nearbyObject.ObjectId &&
-                    nearbyObject.GetStateController() &&
-                    nearbyObject.GetStateController().chaseTarget
-                )
-                {
-                    controller.chaseTarget = nearbyObject.GetStateController().chaseTarget;
+            bool targetAvailable = ListenToFriendsTarget(controller);
+            return targetAvailable;
 
-                    return true;
-                }
-            }
         }
 
-        return false;
+        private bool ListenToFriendsTarget(StateController controller)
+        {
+            WorldObject unit = controller.controlledObject;
+            Vector3 currentPosition = unit.transform.position;
+
+            if (unit.CanAttack())
+            {
+                // if there is no common target, look for nearby enemies
+                foreach (WorldObject nearbyObject in controller.nearbyAllies)
+                {
+                    if (
+                        nearbyObject &&
+                        unit.ObjectId != nearbyObject.ObjectId &&
+                        nearbyObject.GetStateController() &&
+                        nearbyObject.GetStateController().chaseTarget
+                    )
+                    {
+                        controller.chaseTarget = nearbyObject.GetStateController().chaseTarget;
+
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
+
 }

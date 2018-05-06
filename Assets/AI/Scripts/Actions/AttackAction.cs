@@ -2,18 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AI;
 
-[CreateAssetMenu (menuName = "AI/Actions/Attack")]
-public class AttackAction : Action {
-
-	public override void Act (StateController controller)
+namespace AI
+{
+    [CreateAssetMenu(menuName = "AI/Actions/Attack")]
+    public class AttackAction : Action
     {
-        Attack(controller);
-    }
 
-    private void Attack(StateController controller)
-    {
-        AttackUtil.HandleSingleModeAttack(controller);
+        public override void Act(StateController controller)
+        {
+            Attack(controller);
+        }
+
+        private void Attack(StateController controller)
+        {
+            AttackUtil.HandleSingleModeAttack(controller);
+        }
     }
 }

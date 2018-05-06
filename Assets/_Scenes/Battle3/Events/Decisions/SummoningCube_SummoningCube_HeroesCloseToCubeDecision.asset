@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c226c9dfa7c6f0e468a7f043987a3e90, type: 3}
+  m_Name: SummoningCube_SummoningCube_HeroesCloseToCubeDecision
+  m_EditorClassIdentifier: 
+  destinationPrefab: {fileID: 114622690365445118, guid: fceb4a64363371f418f2e3d2c2de09d5,
+    type: 2}
+  unitPrefabs:
+  - {fileID: 114259192475811268, guid: b0567526320326742b123d68a68bd461, type: 2}
+  - {fileID: 114099301297608130, guid: 51e8d76a44295e340b53b19e9b62a5fa, type: 2}
+  - {fileID: 114330230998116454, guid: f2d4d89e59d354d45b5fb9e57e947b22, type: 2}
+  - {fileID: 114883188938002522, guid: 6dc731d5b36402946b97fc40a2053631, type: 2}
+  radius: 100

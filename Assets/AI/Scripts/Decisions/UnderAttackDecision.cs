@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "AI/Decisions/UnderAttack")]
-public class UnderAttackDecision: Decision
+namespace AI
 {
-    public override bool Decide(StateController controller)
+    [CreateAssetMenu(menuName = "AI/Decisions/UnderAttack")]
+    public class UnderAttackDecision : Decision
     {
-        WorldObject self = controller.controlledObject;
+        public override bool Decide(StateController controller)
+        {
+            WorldObject self = controller.controlledObject;
 
-        bool isUnderAttack = self.IsUnderAttack();
+            bool isUnderAttack = self.IsUnderAttack();
 
-        return isUnderAttack;
+            return isUnderAttack;
+        }
     }
 }

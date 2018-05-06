@@ -1,17 +1,21 @@
 ﻿
-public class BuildingAction : Action
+
+namespace AI
 {
-    public override void Act(StateController baseController)
+    public class BuildingAction : Action
     {
-        if (!(baseController is BuildingStateController)) return;
+        public override void Act(StateController baseController)
+        {
+            if (!(baseController is BuildingStateController)) return;
 
-        var controller = (BuildingStateController)baseController;
+            var controller = (BuildingStateController)baseController;
 
-        DoAction(controller);
-    }
+            DoAction(controller);
+        }
 
-    protected virtual void DoAction(BuildingStateController controller)
-    {
-        // the method is to be overriden
+        protected virtual void DoAction(BuildingStateController controller)
+        {
+            // the method is to be overriden
+        }
     }
 }

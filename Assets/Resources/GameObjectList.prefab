@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 78cf7cc5248b35d4f8801e18a1df88fa, type: 2}
   - {fileID: 11400000, guid: 31ef184aa350cad48bc40337045450d4, type: 2}
   - {fileID: 11400000, guid: 4cd22a95dc995a24bb305eb21a48ac86, type: 2}
+  - {fileID: 11400000, guid: 743f8b846433cc84c8834a77ffafbe7c, type: 2}
   uiElements:
   - {fileID: 1670662770750584, guid: 8a368dc04bb28f14e89d1fb6aabeb110, type: 2}
   - {fileID: 1912462192110786, guid: 5790ef4eccca4c544a2aa467ecacc197, type: 2}

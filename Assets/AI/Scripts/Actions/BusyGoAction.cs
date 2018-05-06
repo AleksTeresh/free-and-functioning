@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AI;
 
-[CreateAssetMenu(menuName = "AI/Actions/BusyGo")]
-public class BusyGoAction : UnitAction
+namespace AI
 {
-    protected override void DoAction(UnitStateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/BusyGo")]
+    public class BusyGoAction : UnitAction
     {
-        var self = controller.navMeshAgent;
+        protected override void DoAction(UnitStateController controller)
+        {
+            var self = controller.navMeshAgent;
 
-        // controller.unit.StartMove(self.destination);
+            // controller.unit.StartMove(self.destination);
+        }
     }
 }

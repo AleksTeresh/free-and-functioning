@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "AI/Actions/ListenToCommonTarget")]
-public class ListenToCommonTargetAction : Action
+namespace AI
 {
-    public override void Act(StateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/ListenToCommonTarget")]
+    public class ListenToCommonTargetAction : Action
     {
-        if (controller.targetManager && controller.targetManager.SingleTarget)
+        public override void Act(StateController controller)
         {
-            controller.chaseTarget = controller.targetManager.SingleTarget;
+            if (controller.targetManager && controller.targetManager.SingleTarget)
+            {
+                controller.chaseTarget = controller.targetManager.SingleTarget;
+            }
         }
     }
 }
+

@@ -4,34 +4,37 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using RTS;
-using AI;
 
-[CreateAssetMenu(menuName = "AI/Actions/ChangeTargetToMostVulnerable")]
-public class ChangeTargetToMostVulnerableAction : Action
+namespace AI
 {
-    public override void Act(StateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/ChangeTargetToMostVulnerable")]
+    public class ChangeTargetToMostVulnerableAction : Action
     {
-        WorldObject controlledObject = controller.controlledObject;
-        Vector3 currentPosition = controlledObject.transform.position;
-        WorldObject chaseTarget = controller.chaseTarget;
-
-        WorldObject mostVulnerableEnemy = WorkManager.FindMostVulnerableObjectInList(controller.nearbyEnemies);
-
-        if (mostVulnerableEnemy)
+        public override void Act(StateController controller)
         {
-            controller.chaseTarget = mostVulnerableEnemy;
+            WorldObject controlledObject = controller.controlledObject;
+            Vector3 currentPosition = controlledObject.transform.position;
+            WorldObject chaseTarget = controller.chaseTarget;
 
-            if (!(controlledObject is Unit)) return;
-            Unit unit = (Unit) controlledObject;
+            WorldObject mostVulnerableEnemy = WorkManager.FindMostVulnerableObjectInList(controller.nearbyEnemies);
 
-            if (!WorkManager.ObjectCanReachTarget(unit, mostVulnerableEnemy))
+            if (mostVulnerableEnemy)
             {
-                unit.StartMove(WorkManager.GetTargetClosestPoint(unit, mostVulnerableEnemy));
-            }
-            else
-            {
-                unit.StopMove();
+                controller.chaseTarget = mostVulnerableEnemy;
+
+                if (!(controlledObject is Unit)) return;
+                Unit unit = (Unit)controlledObject;
+
+                if (!WorkManager.ObjectCanReachTarget(unit, mostVulnerableEnemy))
+                {
+                    unit.StartMove(WorkManager.GetTargetClosestPoint(unit, mostVulnerableEnemy));
+                }
+                else
+                {
+                    unit.StopMove();
+                }
             }
         }
     }
+
 }

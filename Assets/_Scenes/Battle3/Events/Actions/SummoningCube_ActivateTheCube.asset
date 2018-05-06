@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d561e2655326ad94281b93384f4315b6, type: 3}
+  m_Name: SummoningCube_ActivateTheCube
+  m_EditorClassIdentifier: 
+  center: {fileID: 114622690365445118, guid: fceb4a64363371f418f2e3d2c2de09d5, type: 2}
+  prefabByName: {fileID: 114862350624748096, guid: e5ed5f454b2bca44195646a7abbac446,
+    type: 2}
+  radius: 55
+  state: {fileID: 11400000, guid: 326900489390e714787d82fa1f6bc37c, type: 2}

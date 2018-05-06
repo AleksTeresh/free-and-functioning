@@ -1,26 +1,28 @@
 ﻿using UnityEngine;
 using Abilities;
-using AI;
 
-[CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseMultiAbilityToUse")]
-public class ChooseMultiAbilityToUseAction : UnitAction
+namespace AI
 {
-    protected override void DoAction(UnitStateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/EnemyAI/ChooseMultiAbilityToUse")]
+    public class ChooseMultiAbilityToUseAction : UnitAction
     {
-        Unit unit = controller.unit;
-
-        if (!controller.abilityToUse)
+        protected override void DoAction(UnitStateController controller)
         {
-            Ability ability = unit.GetAbilityAgent().GetFirstReadyMultiAbility();
+            Unit unit = controller.unit;
 
-            if (ability != null)
+            if (!controller.abilityToUse)
             {
-                if (ability is AoeAbility && controller.chaseTarget)
+                Ability ability = unit.GetAbilityAgent().GetFirstReadyMultiAbility();
+
+                if (ability != null)
                 {
-                    controller.aoeAbilityTarget = controller.chaseTarget.transform.position;
+                    if (ability is AoeAbility && controller.chaseTarget)
+                    {
+                        controller.aoeAbilityTarget = controller.chaseTarget.transform.position;
+                    }
+
+                    controller.abilityToUse = ability;
                 }
-                
-                controller.abilityToUse = ability;
             }
         }
     }

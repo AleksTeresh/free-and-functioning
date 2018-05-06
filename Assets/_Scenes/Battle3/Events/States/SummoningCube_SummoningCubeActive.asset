@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
+  m_Name: SummoningCube_SummoningCubeActive
+  m_EditorClassIdentifier: 
+  enterActions:
+  - {fileID: 11400000, guid: d1aaaf69a1c32a34f8b904e483101f68, type: 2}
+  - {fileID: 11400000, guid: bb704079192600e4c8aab65c42367a7e, type: 2}
+  updateActions:
+  - {fileID: 11400000, guid: bb704079192600e4c8aab65c42367a7e, type: 2}
+  exitActions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: 1f5f500d61b6ebe4492a76e4715e747d, type: 2}
+    trueState: {fileID: 11400000, guid: ed2cce573e71da941abd4348d33f2eb3, type: 2}
+  - decision: {fileID: 11400000, guid: d555415de22f45a41b294f5be9b4701b, type: 2}
+    trueState: {fileID: 11400000, guid: 30232a9f488d17c44bae66617909ff75, type: 2}

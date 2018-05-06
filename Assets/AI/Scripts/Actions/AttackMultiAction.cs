@@ -4,39 +4,41 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using RTS;
-using AI;
 
-[CreateAssetMenu(menuName = "AI/Actions/AttackMulti")]
-public class AttackMultiAction : Action
+namespace AI
 {
-    public override void Act(StateController controller)
+    [CreateAssetMenu(menuName = "AI/Actions/AttackMulti")]
+    public class AttackMultiAction : Action
     {
-        AttackMulti(controller);
-    }
-
-    private void AttackMulti(StateController controller)
-    {
-        var controlledObject = controller.controlledObject;
-
-        // if cannot attack multi, fallback to single attack
-        if (!controlledObject.CanAttackMulti())
+        public override void Act(StateController controller)
         {
-            AttackUtil.HandleSingleModeAttack(controller);
-            return;
+            AttackMulti(controller);
         }
 
-        Vector3 currentPosition = controlledObject.transform.position;
-        List<WorldObject> reachableEnemies = controller.nearbyEnemies
-            .Where(p =>
+        private void AttackMulti(StateController controller)
+        {
+            var controlledObject = controller.controlledObject;
+
+            // if cannot attack multi, fallback to single attack
+            if (!controlledObject.CanAttackMulti())
             {
-                Vector3 currentEnemyPosition = WorkManager.GetTargetClosestPoint(controlledObject, p);
-                Vector3 direction = currentEnemyPosition - currentPosition;
+                AttackUtil.HandleSingleModeAttack(controller);
+                return;
+            }
 
-                return direction.sqrMagnitude < controlledObject.weaponRange * controlledObject.weaponRange;
-            })
-            .ToList();
+            Vector3 currentPosition = controlledObject.transform.position;
+            List<WorldObject> reachableEnemies = controller.nearbyEnemies
+                .Where(p =>
+                {
+                    Vector3 currentEnemyPosition = WorkManager.GetTargetClosestPoint(controlledObject, p);
+                    Vector3 direction = currentEnemyPosition - currentPosition;
 
-        controller.attacking = reachableEnemies.Count > 0;
-        controlledObject.PerformAttackToMulti(reachableEnemies);
+                    return direction.sqrMagnitude < controlledObject.weaponRange * controlledObject.weaponRange;
+                })
+                .ToList();
+
+            controller.attacking = reachableEnemies.Count > 0;
+            controlledObject.PerformAttackToMulti(reachableEnemies);
+        }
     }
 }
