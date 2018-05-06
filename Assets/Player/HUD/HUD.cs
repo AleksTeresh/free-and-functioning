@@ -522,6 +522,12 @@ public class HUD : MonoBehaviour
         float leftPos = cursorPosition.x;
         float topPos = Screen.height - cursorPosition.y; //screen draw coordinates are inverted
                                                          //adjust position base on the type of cursor being shown
+
+        if (!activeCursor)
+        {
+            return new Rect();
+        }
+
         if (activeCursorState == CursorState.PanRight) leftPos = Screen.width - activeCursor.width;
         else if (activeCursorState == CursorState.PanDown) topPos = Screen.height - activeCursor.height;
         else if (activeCursorState == CursorState.Move || activeCursorState == CursorState.Select || activeCursorState == CursorState.Harvest)
