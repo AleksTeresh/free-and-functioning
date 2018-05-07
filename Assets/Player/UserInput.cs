@@ -240,7 +240,12 @@ public class UserInput : MonoBehaviour {
             var visibleBuildings = UnitManager.GetVisibleEnemyBuildings(player);
             var visibleBossParts = UnitManager.GetVisibleEnemyBossParts(player);
 
-            var enemiesToDisplay = majorVisibleEnemies.Concat(visibleBuildings).Concat(visibleBossParts).ToList();
+            var enemiesToDisplay = majorVisibleEnemies
+                .Concat(visibleBuildings)
+                .Concat(visibleBossParts)
+                .ToList();
+
+            enemiesToDisplay.Sort((a, b) => a.ObjectId - b.ObjectId);
 
             int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, enemiesToDisplay);
 
@@ -523,7 +528,7 @@ public class UserInput : MonoBehaviour {
         }
 
         var nearbyUnits = WorkManager.FindNearbyUnits(hit.point, 7);
-        nearbyUnits = nearbyUnits.Where(p => p.GetFogOfWarAgent().IsObserved()).ToList();
+        nearbyUnits = nearbyUnits.Where(p => p && p.GetFogOfWarAgent() && p.GetFogOfWarAgent().IsObserved()).ToList();
 
         nearbyUnits.ForEach(p =>
         {
