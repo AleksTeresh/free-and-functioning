@@ -22,7 +22,12 @@ namespace AI
                 // if the destination is still the same, do not recalculate the path
                 if (idealClosestPoint == unit.GetNavMeshAgent().destination) return;
 
-                var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", heightDiff + 3);
+                var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", heightDiff + 5);
+
+                if (!actualClosestPoint.HasValue)
+                {
+                    actualClosestPoint = idealClosestPoint;
+                }
 
                 // if the destination is still the same, do not recalculate the path
                 if (actualClosestPoint.HasValue && actualClosestPoint != unit.GetNavMeshAgent().destination)

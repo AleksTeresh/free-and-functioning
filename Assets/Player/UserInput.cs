@@ -247,10 +247,13 @@ public class UserInput : MonoBehaviour {
 
             enemiesToDisplay.Sort((a, b) => a.ObjectId - b.ObjectId);
 
-            int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, enemiesToDisplay);
+            if (targetManager)
+            {
+                int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, enemiesToDisplay);
 
-            EventManager.TriggerEvent("SwitchEnemyCommand");
-            InputToCommandManager.SwitchEnemy(targetManager, enemiesToDisplay, selectionIdx);
+                EventManager.TriggerEvent("SwitchEnemyCommand");
+                InputToCommandManager.SwitchEnemy(targetManager, enemiesToDisplay, selectionIdx);
+            }
         }
     }
 
