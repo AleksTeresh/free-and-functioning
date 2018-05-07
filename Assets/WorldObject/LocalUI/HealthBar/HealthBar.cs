@@ -7,7 +7,7 @@ public class HealthBar : MonoBehaviour {
 
     private Slider slider;
 
-    private void Awake()
+    private void Start()
     {
         slider = GetComponent<Slider>();
     }

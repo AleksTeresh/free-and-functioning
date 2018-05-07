@@ -11,7 +11,7 @@ public class FogOfWarAgent : MonoBehaviour {
     private bool isObserved;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
         meshRenderers = new List<MeshRenderer>(GetComponentsInChildren<MeshRenderer>());
         fogOfWar = FindObjectOfType<FogOfWar>();
         relatedObject = GetComponent<WorldObject>();
@@ -21,7 +21,7 @@ public class FogOfWarAgent : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (fogOfWar.IsFogUpToDate())
+		if (fogOfWar && fogOfWar.IsFogUpToDate())
         {
             bool[] revealedPixels = fogOfWar.GetRevealedPixels();
             bool[] discoveredPixels = fogOfWar.GetDiscoveredPixels();

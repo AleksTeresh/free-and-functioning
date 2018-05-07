@@ -6,7 +6,7 @@ public class ProjectilePart : MonoBehaviour {
 
     private Projectile parent;
 
-    void Awake()
+    void Start()
     {
         parent = GetComponentInParent<Projectile>();
     }

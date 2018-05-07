@@ -10,7 +10,7 @@ public class LocalUI : MonoBehaviour {
 
     private WorldObject relatedObj;
 
-    private void Awake()
+    private void Start()
     {
         healthBar = GetComponentInChildren<HealthBar>();
         localCanvas = GetComponent<Canvas>();

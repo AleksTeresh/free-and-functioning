@@ -21,11 +21,15 @@ public class StateController : MonoBehaviour
 
     protected bool aiActive;
 
-    protected virtual void Awake()
-    {}
+    protected virtual void AwakeObj()
+    {
+        // to be overriden
+    }
 
     private void Start()
     {
+        AwakeObj();
+
         controlledObject = GetComponent<WorldObject>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
 

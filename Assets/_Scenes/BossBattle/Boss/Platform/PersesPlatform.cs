@@ -7,9 +7,9 @@ public class PersesPlatform : Unit {
     private SpawnHouse head;
     private BossPart[] bodyParts;
 
-    protected override void Awake()
+    protected override void AwakeObj()
     {
-        base.Awake();
+        base.AwakeObj();
 
         var bossWrapper = GetComponentInParent<Boss>();
         head = bossWrapper.GetComponentInChildren<SpawnHouse>();

@@ -40,6 +40,8 @@ public class AudioElement
 
     public void Play(AudioClip sound)
     {
+        if (!sound) return;
+
         GameObject temp;
         if (soundObjects.TryGetValue(sound, out temp))
         {
@@ -49,6 +51,8 @@ public class AudioElement
 
     public void Pause(AudioClip sound)
     {
+        if (!sound) return;
+
         GameObject temp;
         if (soundObjects.TryGetValue(sound, out temp))
         {
@@ -58,6 +62,8 @@ public class AudioElement
 
     public void Stop(AudioClip sound)
     {
+        if (!sound) return;
+
         GameObject temp;
         if (soundObjects.TryGetValue(sound, out temp))
         {
@@ -67,6 +73,8 @@ public class AudioElement
 
     public bool IsPlaying(AudioClip sound)
     {
+        if (!sound) return false;
+
         GameObject temp;
         if (soundObjects.TryGetValue(sound, out temp))
         {

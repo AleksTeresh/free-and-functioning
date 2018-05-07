@@ -152,9 +152,9 @@ public class Unit : WorldObject {
         return abilityAgent;
     }
 
-    protected override void Awake()
+    protected override void AwakeObj()
     {
-        base.Awake();
+        base.AwakeObj();
 
         agent = GetComponent<NavMeshAgent>();
 		takeDamageEffect = GetComponentInChildren<ParticleSystem>();

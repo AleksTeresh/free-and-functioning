@@ -18,7 +18,7 @@ namespace Events
 
         [HideInInspector] public float timeInState = 0f;
 
-        private void Awake()
+        protected virtual void AwakeObj()
         {
             player = GetComponent<Player>();
             hud = player.GetComponentInChildren<HUD>();
@@ -29,6 +29,8 @@ namespace Events
 
         private void Start()
         {
+            AwakeObj();
+
             if (currentState)
             {
                 currentState.EnterState(this);
