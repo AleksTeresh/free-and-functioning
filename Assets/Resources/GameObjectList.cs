@@ -24,19 +24,26 @@ public class GameObjectList : MonoBehaviour {
 
     void Awake()
     {
+        PlayerManager.Load();
+        PlayerManager.SetAvatarTextures(avatars);
+
+        // DontDestroyOnLoad(transform.gameObject);
+        ResourceManager.SetGameObjectList(this);
+        created = true;
+        /*
         if (!created)
         {
             PlayerManager.Load();
             PlayerManager.SetAvatarTextures(avatars);
 
-            DontDestroyOnLoad(transform.gameObject);
+            // DontDestroyOnLoad(transform.gameObject);
             ResourceManager.SetGameObjectList(this);
             created = true;
         }
         else
         {
             Destroy(this.gameObject);
-        }
+        }  */
     }
 
     public Texture2D[] GetAvatars()

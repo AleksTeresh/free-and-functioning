@@ -340,7 +340,12 @@ public class HUD : MonoBehaviour
 
         for (int i = 0; i < indicatedUnits.Count; i++)
         {
-            if (!indicatedObjects[i] || indicatedObjects[i].ObjectId != indicatedUnits[i].ObjectId)
+            if (
+                indicatedObjects.Count <= i ||
+                !indicatedObjects[i] ||
+                !indicatedUnits[i] ||
+                indicatedObjects[i].ObjectId != indicatedUnits[i].ObjectId
+            )
             {
                 indicatedUnits = new List<WorldObject>();
                 var indicatorsWrapper = unitBar.GetIndicatorsWrapper();

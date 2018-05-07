@@ -10,9 +10,9 @@ public class PersesBody : BossPart
     private SpawnHouse head;
     private BossPart[] bodyParts;
 
-    protected override void AwakeObj()
+    protected override void Awake()
     {
-        base.AwakeObj();
+        base.Awake();
 
         var bossWrapper = GetComponentInParent<Boss>();
         head = bossWrapper.GetComponentInChildren<SpawnHouse>();

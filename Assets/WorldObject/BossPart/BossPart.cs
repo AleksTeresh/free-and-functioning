@@ -58,9 +58,9 @@ public class BossPart : WorldObject {
         return abilityAgent;
     }
 
-    protected override void AwakeObj()
+    protected override void Awake()
     {
-        base.AwakeObj();
+        base.Awake();
 
         takeDamageEffect = GetComponentInChildren<ParticleSystem>();
 
@@ -69,7 +69,7 @@ public class BossPart : WorldObject {
 
     protected override void Start()
     {
-        AwakeObj();
+        // AwakeObj();
 
         underAttackFrameCounter = 0;
 
