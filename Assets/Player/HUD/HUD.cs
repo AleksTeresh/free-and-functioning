@@ -333,6 +333,10 @@ public class HUD : MonoBehaviour
 
     private void DrawUnitsBar(UnitBar unitBar, List<WorldObject> indicatedObjects, string indicatorName)
     {
+        indicatedObjects = indicatedObjects
+            .Where(p => ((p is Unit) && ((Unit)p).IsMajor()) || (p is BossPart) || (p is Building))
+            .ToList();
+
         var indicators = unitBar.GetIndicators();
         var indicatedUnits = indicators.Select(p => p.GetIndicatedObject()).ToList();
 
@@ -359,7 +363,7 @@ public class HUD : MonoBehaviour
         }
 
         indicatedObjects
-            .Where(p => ((p is Unit) && ((Unit) p).IsMajor()) || (p is BossPart) || (p is Building))
+            // .Where(p => ((p is Unit) && ((Unit) p).IsMajor()) || (p is BossPart) || (p is Building))
             .ToList().ForEach(p =>
         {
             if (!indicatedUnits.Contains(p))
