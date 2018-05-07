@@ -262,7 +262,7 @@ public class WorldObject : MonoBehaviour {
         this.currentWeaponMultiChargeTime = 0;
     }
 
-    protected virtual void AwakeObj()
+    protected virtual void Awake()
     {
         fogOfWarAgent = GetComponent<FogOfWarAgent>();
 
@@ -288,7 +288,7 @@ public class WorldObject : MonoBehaviour {
 
     protected virtual void Start()
     {
-        AwakeObj();
+        // AwakeObj();
 
         underAttackFrameCounter = 0;
         attackDelayFrameCounter = 0;

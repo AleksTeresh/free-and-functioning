@@ -13300,6 +13300,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224105268334070570, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb21d81a35ea0674fba60b562de0a28b, type: 2}
   m_IsPrefabParent: 0
@@ -19069,6 +19074,18 @@ Prefab:
     - target: {fileID: 4688471185172562, guid: a4571c76c3e1c6843a400c72c0b2b136, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696993647026352, guid: a4571c76c3e1c6843a400c72c0b2b136, type: 2}
+      propertyPath: m_Name
+      value: Pallas Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268605041930654, guid: a4571c76c3e1c6843a400c72c0b2b136, type: 2}
+      propertyPath: m_Name
+      value: Pallas PlatformPart1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1543292986764254, guid: a4571c76c3e1c6843a400c72c0b2b136, type: 2}
+      propertyPath: m_Name
+      value: Pallas PlatformPart2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4571c76c3e1c6843a400c72c0b2b136, type: 2}

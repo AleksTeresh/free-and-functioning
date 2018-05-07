@@ -57,7 +57,12 @@ public class Unit : WorldObject {
             if (audioElement != null) audioElement.Play(driveSound);
 
             this.destinationTarget = null;
-            agent.SetDestination(destination);
+
+            if (agent)
+            {
+                agent.SetDestination(destination);
+            }
+            
             /*
             var newPath = new NavMeshPath();
             bool result = agent.CalculatePath(destination, newPath);
@@ -152,9 +157,9 @@ public class Unit : WorldObject {
         return abilityAgent;
     }
 
-    protected override void AwakeObj()
+    protected override void Awake()
     {
-        base.AwakeObj();
+        base.Awake();
 
         agent = GetComponent<NavMeshAgent>();
 		takeDamageEffect = GetComponentInChildren<ParticleSystem>();
