@@ -5,9 +5,9 @@ public class BossPartStateController : StateController
 {
     [HideInInspector] public BossPart bossPart;
 
-    protected override void Awake()
+    protected override void AwakeObj()
     {
-        base.Awake();
+        base.AwakeObj();
 
         bossPart = GetComponent<BossPart>();
     }

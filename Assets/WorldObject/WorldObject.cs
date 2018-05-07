@@ -156,6 +156,8 @@ public class WorldObject : MonoBehaviour {
 
     public virtual void SetHoverState(GameObject hoverObject)
     {
+        if (!hoverObject) return;
+
         //only handle input if owned by a human player and currently selected
         if (player && player.human && currentlySelected)
         {
@@ -260,7 +262,7 @@ public class WorldObject : MonoBehaviour {
         this.currentWeaponMultiChargeTime = 0;
     }
 
-    protected virtual void Awake()
+    protected virtual void AwakeObj()
     {
         fogOfWarAgent = GetComponent<FogOfWarAgent>();
 
@@ -284,9 +286,10 @@ public class WorldObject : MonoBehaviour {
         }
     }
 
-
     protected virtual void Start()
     {
+        AwakeObj();
+
         underAttackFrameCounter = 0;
         attackDelayFrameCounter = 0;
 

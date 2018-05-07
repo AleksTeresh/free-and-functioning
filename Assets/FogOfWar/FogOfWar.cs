@@ -66,7 +66,7 @@ public class FogOfWar : MonoBehaviour {
 
     public int GetTextureHeight() { return textureHeight; }
 
-    private void Awake()
+    private void Start()
     {
         var ground = GetComponentInParent<Ground>();
         fogMaterial = ground.GetMaterial();
@@ -101,10 +101,7 @@ public class FogOfWar : MonoBehaviour {
         {
             heightMapData[j] = (heightBytes[i + 1] << 0x08) | heightBytes[i];
         }
-    }
 
-    private void Start()
-    {
         UpdateShadowMap();
     }
 
@@ -112,8 +109,11 @@ public class FogOfWar : MonoBehaviour {
     {
         if (IsFogUpToDate())
         {
-            lastShadowMap.SetPixels32(pixels);
-            lastShadowMap.Apply();
+            if (lastShadowMap)
+            {
+                lastShadowMap.SetPixels32(pixels);
+                lastShadowMap.Apply();
+            }
 
             for (var i = 0; i < pixels.Length; ++i)
             {
@@ -124,13 +124,19 @@ public class FogOfWar : MonoBehaviour {
 
             interpolateStartFrame = Time.frameCount;
 
-            shadowMap.SetPixels32(pixels);
-            shadowMap.Apply();
+            if (shadowMap)
+            {
+                shadowMap.SetPixels32(pixels);
+                shadowMap.Apply();
+            }
 
             UpdateRevealedAndDiscoveredPixels();
         }
 
-        fogMaterial.SetFloat("_interpolationValue", (Time.frameCount - interpolateStartFrame) / (float)interpolationFrames);
+        if (fogMaterial)
+        {
+            fogMaterial.SetFloat("_interpolationValue", (Time.frameCount - interpolateStartFrame) / (float)interpolationFrames);
+        }
     }
 
     private void OnDestroy()
@@ -144,7 +150,7 @@ public class FogOfWar : MonoBehaviour {
         foreach (var revealer in revealers)
         {
             // if the revealer is dead, ignore it
-            if (revealer.WorldObject)
+            if (revealer != null && revealer.WorldObject)
             {
                 DrawFilledMidpointCircleSinglePixelVisit(
                     revealer.WorldObject.transform.position,

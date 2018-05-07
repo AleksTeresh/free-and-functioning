@@ -10,9 +10,9 @@ public class BuildingStateController : StateController
 
     [HideInInspector] public float spawnTimer;
 
-    protected override void Awake()
+    protected override void AwakeObj()
     {
-        base.Awake();
+        base.AwakeObj();
 
         building = GetComponent<Building>();
     }

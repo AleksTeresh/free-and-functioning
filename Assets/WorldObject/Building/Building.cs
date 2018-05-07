@@ -53,9 +53,9 @@ public class Building : WorldObject {
         }
     }
 
-    protected override void Awake()
+    protected override void AwakeObj()
     {
-        base.Awake();
+        base.AwakeObj();
 
         buildQueue = new Queue<string>();
         float spawnX = selectionBounds.center.x + transform.forward.x * selectionBounds.extents.x + transform.forward.x * 20;

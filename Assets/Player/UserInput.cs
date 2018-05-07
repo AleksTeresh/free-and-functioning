@@ -159,6 +159,8 @@ public class UserInput : MonoBehaviour {
 
     private void MoveCamera(Vector3 movement)
     {
+        if (!Camera.main) return;
+
         // calculate desired camera position based on received input
         Vector3 origin = Camera.main.transform.position;
         Vector3 destination = origin;
@@ -173,7 +175,7 @@ public class UserInput : MonoBehaviour {
         );
 
         // restrict camera movements to be within the terrain
-        if (ground)
+        if (ground && ground.Terrain && ground.Terrain.terrainData)
         {
             destination.x = Mathf.Min(ground.Terrain.terrainData.size.x, Mathf.Max(0, destination.x));
             destination.z = Mathf.Min(ground.Terrain.terrainData.size.z, Mathf.Max(0, destination.z));
@@ -238,7 +240,12 @@ public class UserInput : MonoBehaviour {
             var visibleBuildings = UnitManager.GetVisibleEnemyBuildings(player);
             var visibleBossParts = UnitManager.GetVisibleEnemyBossParts(player);
 
-            var enemiesToDisplay = majorVisibleEnemies.Concat(visibleBuildings).Concat(visibleBossParts).ToList();
+            var enemiesToDisplay = majorVisibleEnemies
+                .Concat(visibleBuildings)
+                .Concat(visibleBossParts)
+                .ToList();
+
+            enemiesToDisplay.Sort((a, b) => a.ObjectId - b.ObjectId);
 
             int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, enemiesToDisplay);
 
@@ -521,7 +528,7 @@ public class UserInput : MonoBehaviour {
         }
 
         var nearbyUnits = WorkManager.FindNearbyUnits(hit.point, 7);
-        nearbyUnits = nearbyUnits.Where(p => p.GetFogOfWarAgent().IsObserved()).ToList();
+        nearbyUnits = nearbyUnits.Where(p => p && p.GetFogOfWarAgent() && p.GetFogOfWarAgent().IsObserved()).ToList();
 
         nearbyUnits.ForEach(p =>
         {

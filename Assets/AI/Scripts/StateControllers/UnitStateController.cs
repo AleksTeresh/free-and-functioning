@@ -15,9 +15,9 @@ public class UnitStateController : StateController
     [HideInInspector] public Vector3 aoeAbilityTarget;
 	[HideInInspector] public Ability abilityToUse;
     
-    protected override void Awake()
+    protected override void AwakeObj()
     {
-        base.Awake();
+        base.AwakeObj();
 
         unit = GetComponent<Unit>();
         navMeshAgent = GetComponent<NavMeshAgent>();

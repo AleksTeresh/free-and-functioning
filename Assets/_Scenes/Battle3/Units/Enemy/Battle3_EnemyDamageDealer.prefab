@@ -1262,12 +1262,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5219927c103cf479e793a987ef1c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Adolf
+  objectName: Damage Dealer
   buildImage: {fileID: 2800000, guid: 4b94e65a983d3b644a0c36bdb04f482d, type: 3}
   cost: 0
   sellValue: 0
   hitPoints: 400
   maxHitPoints: 400
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 20
   damageMulti: 20
   weaponRange: 30
@@ -1286,15 +1288,12 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 40
+  belongsToBoss: 0
   holdingPosition: 0
   driveSound: {fileID: 8300000, guid: 98c83b94b835ba54191f3292e8d44a5b, type: 3}
   moveSound: {fileID: 8300000, guid: 568155acc84ab834eabc52a5a512dad3, type: 3}
   driveVolume: 0.5
   moveVolume: 1
-  abilities:
-  - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
-  - {fileID: 114928421243577156, guid: 4b7f486b9a9dc406f803b765bac5ff46, type: 2}
-  abilitiesMulti: []
   multiDamageMinValue: 1
 --- !u!114 &114830601082813842
 MonoBehaviour:
