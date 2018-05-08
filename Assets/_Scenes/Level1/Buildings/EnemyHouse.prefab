@@ -23,12 +23,12 @@ GameObject:
   - component: {fileID: 65246945479212126}
   - component: {fileID: 23579487662785030}
   - component: {fileID: 208229977794883818}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1343312762338856
 GameObject:
@@ -41,12 +41,12 @@ GameObject:
   - component: {fileID: 33341992257679498}
   - component: {fileID: 136020793805281864}
   - component: {fileID: 23920842907484008}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1965734145172744
 GameObject:
@@ -57,12 +57,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4253615789520886}
   - component: {fileID: 114828185165539710}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4253615789520886
 Transform:
@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1965734145172744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 343.28, y: 23.34, z: 838.65}
+  m_LocalPosition: {x: 4.8656006, y: 18.253403, z: 3.89917}
   m_LocalScale: {x: 13.031209, y: 8.374011, z: 12.93998}
   m_Children:
   - {fileID: 4530470610846754}
@@ -153,7 +153,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ccbbf0868ab4c05419624d85297b6f04, type: 2}
+  - {fileID: 2100000, guid: 9c89bc74cece940479c363930532f76d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
