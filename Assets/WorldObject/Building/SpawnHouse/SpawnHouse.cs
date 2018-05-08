@@ -55,48 +55,12 @@ public class SpawnHouse : Building {
             crowdControl.name
         };
     }
-
+    /*
     protected override void Update()
     {
         base.Update();
-
-        // adjust spawn interval
-        spawnInterval = Mathf.Min(
-            spawnIntervalUpperLimit,
-            Mathf.Max(spawnIntervalLowerLimit, spawnInterval + spawnIntervalAccel * Time.deltaTime)
-        );
-
-        // adjust spawn rate of indicatedObject types
-        meleeSwarmlingSpawnRate = Mathf.Min(
-            spawnRateUpperLimit,
-            Mathf.Max(spawnRateLowerLimit, meleeSwarmlingSpawnRate + meleeSwarmlingSpawnAccel * Time.deltaTime)
-        );
-        rangeSwarmlingSpawnRate = Mathf.Min(
-            spawnRateUpperLimit,
-            Mathf.Max(spawnRateLowerLimit, rangeSwarmlingSpawnRate + rangeSwarmlingSpawnAccel * Time.deltaTime)
-        );
-        assassinSpawnRate = Mathf.Min(
-            spawnRateUpperLimit,
-            Mathf.Max(spawnRateLowerLimit, assassinSpawnRate + assassinSpawnAccel * Time.deltaTime)
-        );
-        hulkSpawnRate = Mathf.Min(
-            spawnRateUpperLimit,
-            Mathf.Max(spawnRateLowerLimit, hulkSpawnRate + hulkSpawnAccel * Time.deltaTime)
-        );
-        damageDealerSpawnRate = Mathf.Min(
-            spawnRateUpperLimit,
-            Mathf.Max(spawnRateLowerLimit, damageDealerSpawnRate + damageDealerSpawnAccel * Time.deltaTime)
-        );
-        debufferSpawnRate = Mathf.Min(
-            spawnRateUpperLimit,
-            Mathf.Max(spawnRateLowerLimit, debufferSpawnRate + debufferSpawnAccel * Time.deltaTime)
-        );
-        crowdControlSpawnRate = Mathf.Min(
-            spawnRateUpperLimit,
-            Mathf.Max(spawnRateLowerLimit, crowdControlSpawnRate + crowdControlSpawnAccel * Time.deltaTime)
-        );
     }
-
+    */
     public override void SetSpawnPoint(Vector3 spawnPoint)
     {
         base.SetSpawnPoint(spawnPoint);
