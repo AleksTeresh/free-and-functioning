@@ -288,7 +288,15 @@ public class UserInput : MonoBehaviour {
     {
         if (Input.GetButtonDown("Action 1") || Gamepad.GetButtonDown("Action 1")) {
             // lock cursor back if it was unlocked from editor
-            Cursor.lockState = CursorLockMode.Locked;
+            if (player.lockCursor)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
 
             LeftMouseClick();
         }

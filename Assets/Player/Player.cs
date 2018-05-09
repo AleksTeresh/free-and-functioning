@@ -21,6 +21,8 @@ public class Player : MonoBehaviour {
 	public string[] hotkeyToUnitNameMapping;
 	public UnitMapping unitMapping;
 
+    public bool lockCursor = true;
+
     private List<Unit> units;
     private List<Building> buildings;
 
