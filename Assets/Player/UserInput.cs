@@ -447,19 +447,33 @@ public class UserInput : MonoBehaviour {
         var handlerStateController = objectHandler.GetStateController();
 		if (handlerStateController && hitPoint != ResourceManager.InvalidPosition)
 		{
-            Vector3 destination = hitPoint + formationOffset;
+            Vector3 idealDestination = hitPoint + formationOffset;
             if (!WorkManager.ObjectIsGround(hitObject))
             {
                 Vector3? onNavMeshDest = WorkManager.GetClosestPointOnNavMesh(hitPoint, "Walkable", 7);
 
                 if (onNavMeshDest.HasValue)
                 {
-                    destination = onNavMeshDest.Value;
+                    idealDestination = onNavMeshDest.Value;
+                }
+            }
+
+            Vector3 actualDestination = hitPoint;
+            Vector3 destDifference = hitPoint - idealDestination;
+
+            for (int i = 0; i < 5; i++)
+            {
+                var potentialDest = WorkManager.GetClosestPointOnNavMesh(idealDestination + (destDifference / 4 * i), "Walkable", 2);
+
+                if (potentialDest.HasValue)
+                {
+                    actualDestination = potentialDest.Value;
+                    break;
                 }
             }
 
             EventManager.TriggerEvent("RelocateUnit");
-            InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
+            InputToCommandManager.ToBusyState(targetManager, handlerStateController, actualDestination);
         }
 	}
 

@@ -132,6 +132,8 @@ namespace RTS
             float distanceToNearestObject = Vector3.Distance(position, nearestObject.transform.position);
             for (int i = 1; i < objects.Count; i++)
             {
+                if (!objects[i]) continue;
+
                 float distanceToObject = Vector3.Distance(position, objects[i].transform.position);
                 if (distanceToObject < distanceToNearestObject)
                 {

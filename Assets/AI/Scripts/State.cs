@@ -13,6 +13,7 @@ namespace AI
 
         public void UpdateStateExpensive(StateController controller)
         {
+            FindNearbyObjects(controller);
             DoActions(controller, true);
         }
 

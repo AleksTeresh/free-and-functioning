@@ -30,6 +30,7 @@ namespace Formation
             }
 
             var goDirection = destination - leader.transform.position;
+            goDirection.y = 0;
             var perpendicularDirection = Vector3.Cross(goDirection, Vector3.up);
 
             if (unit is Tanker || leader.ObjectId == unit.ObjectId)

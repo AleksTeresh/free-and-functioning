@@ -359,7 +359,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054317212583768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.7, y: -1.72, z: -39.7}
+  m_LocalPosition: {x: 53.999996, y: -1.72, z: -158.90001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4128799485053590}
@@ -997,8 +997,8 @@ MonoBehaviour:
   buildImage: {fileID: 0}
   cost: 0
   sellValue: 0
-  hitPoints: 270
-  maxHitPoints: 270
+  hitPoints: 200
+  maxHitPoints: 200
   attackDelay: 1
   attackMultiDelay: 1
   damage: 10
@@ -1403,7 +1403,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 8
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1
