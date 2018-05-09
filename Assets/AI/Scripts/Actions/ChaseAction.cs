@@ -8,6 +8,11 @@ namespace AI
     [CreateAssetMenu(menuName = "AI/Actions/Chase")]
     public class ChaseAction : UnitAction
     {
+        public override bool IsExpensive()
+        {
+            return true;
+        }
+
         protected override void DoAction(UnitStateController controller)
         {
             Unit unit = controller.unit;
@@ -16,23 +21,11 @@ namespace AI
             WorldObject chaseTarget = controller.chaseTarget;
             if (chaseTarget && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, chaseTarget))
             {
-                float heightDiff = Mathf.Abs(unit.transform.position.y - chaseTarget.transform.position.y);
-                var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, chaseTarget);
+                var newDestination = WorkManager.FindDistinationPointByTarget(chaseTarget, unit);
 
-                // if the destination is still the same, do not recalculate the path
-                if (idealClosestPoint == unit.GetNavMeshAgent().destination) return;
-
-                var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", heightDiff + 5);
-
-                if (!actualClosestPoint.HasValue)
+                if (newDestination.HasValue)
                 {
-                    actualClosestPoint = idealClosestPoint;
-                }
-
-                // if the destination is still the same, do not recalculate the path
-                if (actualClosestPoint.HasValue && actualClosestPoint != unit.GetNavMeshAgent().destination)
-                {
-                    unit.StartMove(actualClosestPoint.Value);
+                    unit.StartMove(newDestination.Value);
                 }
             }
             else

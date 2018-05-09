@@ -10,6 +10,10 @@ namespace AI
     [CreateAssetMenu(menuName = "AI/Actions/ChaseClosest")]
     public class ChaseClosestAction : UnitAction
     {
+        public override bool IsExpensive()
+        {
+            return true;
+        }
 
         protected override void DoAction(UnitStateController controller)
         {
@@ -22,17 +26,11 @@ namespace AI
             {
                 controller.chaseTarget = closestEnemy;
 
-                var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, closestEnemy);
+                var newDestination = WorkManager.FindDistinationPointByTarget(controller.chaseTarget, unit);
 
-                // if the destination is still the same, do not recalculate the path
-                if (idealClosestPoint == unit.GetNavMeshAgent().destination) return;
-
-                var actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", 15);
-
-                // if the destination is still the same, do not recalculate the path
-                if (actualClosestPoint.HasValue && actualClosestPoint != unit.GetNavMeshAgent().destination)
+                if (newDestination.HasValue)
                 {
-                    unit.StartMove(actualClosestPoint.Value);
+                    unit.StartMove(newDestination.Value);
                 }
             }
             else

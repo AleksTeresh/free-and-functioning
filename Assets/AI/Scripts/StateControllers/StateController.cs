@@ -40,6 +40,8 @@ public class StateController : MonoBehaviour
         // nearbyEnemies = new List<WorldObject>();
         // nearbyAllies = new List<WorldObject>();
         attacking = false;
+
+        InvokeRepeating("DoExpensiveStateUpdate", 0.5f, 0.2f);
     }
 
     public void SetupAI(bool aiActivation)
@@ -65,6 +67,14 @@ public class StateController : MonoBehaviour
         {
             currentState = nextState;
             // OnExitState();
+        }
+    }
+
+    private void DoExpensiveStateUpdate()
+    {
+        if (aiActive && currentState)
+        {
+            currentState.UpdateStateExpensive(this);
         }
     }
 }

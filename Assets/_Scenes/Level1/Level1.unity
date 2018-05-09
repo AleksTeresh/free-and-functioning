@@ -404,102 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfa916b347d123499d228830a5e0d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &32365030
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 32365031}
-  - component: {fileID: 32365035}
-  - component: {fileID: 32365034}
-  - component: {fileID: 32365033}
-  - component: {fileID: 32365032}
-  m_Layer: 9
-  m_Name: TempBridge (28)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
-  m_IsActive: 1
---- !u!4 &32365031
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32365030}
-  m_LocalRotation: {x: 0.18301274, y: -0.6830127, z: 0.18301274, w: -0.6830127}
-  m_LocalPosition: {x: 418.65933, y: -77.3, z: -451.8}
-  m_LocalScale: {x: 43.7577, y: 1, z: 49.52326}
-  m_Children: []
-  m_Father: {fileID: 688497980}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 180, y: -90, z: 150}
---- !u!114 &32365032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32365030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!23 &32365033
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32365030}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: a64192467ca2f5f42afa32c7ff3ee136, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &32365034
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32365030}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &32365035
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32365030}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &33333334
 Prefab:
   m_ObjectHideFlags: 0
@@ -632,7 +536,7 @@ Transform:
   m_LocalScale: {x: 4, y: 40, z: 4}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &37836641
 MeshRenderer:
@@ -3788,6 +3692,7 @@ MonoBehaviour:
   selectedAllyTargettingAbility: {fileID: 0}
   selectedAlliesTargettingAbility: {fileID: 0}
   hotkeyToUnitNameMapping: []
+  lockCursor: 1
 --- !u!4 &308150221
 Transform:
   m_ObjectHideFlags: 0
@@ -4893,7 +4798,7 @@ GameObject:
   m_Name: TempBridge (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &401730079
@@ -4907,7 +4812,7 @@ Transform:
   m_LocalScale: {x: 34.048416, y: 1, z: 49.523758}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 27
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &401730080
 MonoBehaviour:
@@ -5108,15 +5013,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 862.1447
+      value: 892.5
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.0062103
+      value: 18.26
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 517.4
+      value: 496.48
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6020,102 +5925,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &502491620
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 502491624}
-  - component: {fileID: 502491623}
-  - component: {fileID: 502491622}
-  - component: {fileID: 502491621}
-  - component: {fileID: 502491625}
-  m_Layer: 9
-  m_Name: TempBridge (15)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
-  m_IsActive: 1
---- !u!23 &502491621
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 502491620}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: a64192467ca2f5f42afa32c7ff3ee136, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &502491622
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 502491620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &502491623
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 502491620}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &502491624
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 502491620}
-  m_LocalRotation: {x: -0, y: 0.17364816, z: -0, w: 0.9848078}
-  m_LocalPosition: {x: 449.0593, y: -73.401405, z: -165.8606}
-  m_LocalScale: {x: 54.36837, y: 1, z: 11.94683}
-  m_Children: []
-  m_Father: {fileID: 688497980}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
---- !u!114 &502491625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 502491620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165c71d1abf459641856b03ea50d0848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &508587913
 Prefab:
   m_ObjectHideFlags: 0
@@ -6415,7 +6224,7 @@ Transform:
   m_LocalScale: {x: 34.048134, y: 1, z: 49.52321}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &541091164
 MonoBehaviour:
@@ -6497,7 +6306,7 @@ GameObject:
   m_Name: TempBridge (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &541548913
@@ -6507,11 +6316,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 541548912}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 420.35934, y: -66.2, z: -220.1}
+  m_LocalPosition: {x: 420.35934, y: -66.2, z: -210.9}
   m_LocalScale: {x: 34.048256, y: 1, z: 49.52346}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 21
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &541548914
 MonoBehaviour:
@@ -7176,7 +6985,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1931630706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 204.8, y: 21.97, z: 880.03}
+  m_LocalPosition: {x: 336.19998, y: 17.970013, z: 235.52998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1375951256}
@@ -7855,6 +7664,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1724023298685926, guid: 716a190c59fa6f7498e266f0ee665d53, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 716a190c59fa6f7498e266f0ee665d53, type: 2}
   m_IsPrefabParent: 0
@@ -8263,7 +8076,6 @@ Transform:
   - {fileID: 747700160}
   - {fileID: 935563924}
   - {fileID: 1546564949}
-  - {fileID: 502491624}
   - {fileID: 1037503286}
   - {fileID: 899963250}
   - {fileID: 957055128}
@@ -8271,7 +8083,6 @@ Transform:
   - {fileID: 37836640}
   - {fileID: 1506458923}
   - {fileID: 1344304753}
-  - {fileID: 32365031}
   - {fileID: 1004300044}
   - {fileID: 541091163}
   - {fileID: 1700703969}
@@ -8770,7 +8581,7 @@ GameObject:
   m_Name: TempBridge (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &747700157
@@ -10493,7 +10304,7 @@ Transform:
   m_LocalScale: {x: 4, y: 40, z: 4}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &899963251
 MeshRenderer:
@@ -10973,7 +10784,7 @@ GameObject:
   m_Name: TempBridge (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &935563921
@@ -11069,7 +10880,7 @@ GameObject:
   m_Name: TempBridge (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &944070568
@@ -11083,7 +10894,7 @@ Transform:
   m_LocalScale: {x: 34.048386, y: 1, z: 49.52371}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 26
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &944070569
 MonoBehaviour:
@@ -11266,7 +11077,7 @@ Transform:
   m_LocalScale: {x: 4, y: 40, z: 4}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &957055129
 MeshRenderer:
@@ -11400,7 +11211,7 @@ GameObject:
   m_Name: TempBridge (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &968633573
@@ -11414,7 +11225,7 @@ Transform:
   m_LocalScale: {x: 34.048466, y: 1, z: 49.52386}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 28
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &968633574
 MonoBehaviour:
@@ -11640,7 +11451,7 @@ GameObject:
   m_Name: TempBridge (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &989852814
@@ -11650,11 +11461,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 989852813}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 420.35934, y: -66.2, z: -191.2}
+  m_LocalPosition: {x: 420.35934, y: -66.2, z: -179.1}
   m_LocalScale: {x: 34.048225, y: 1, z: 49.52341}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 20
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &989852815
 MonoBehaviour:
@@ -11772,15 +11583,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4091055569016128, guid: a789ac6dde7558e4e9c3323541eecdcd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 200.28677
+      value: 331.68674
       objectReference: {fileID: 0}
     - target: {fileID: 4091055569016128, guid: a789ac6dde7558e4e9c3323541eecdcd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 21.966688
+      value: 17.966702
       objectReference: {fileID: 0}
     - target: {fileID: 4091055569016128, guid: a789ac6dde7558e4e9c3323541eecdcd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 866.33
+      value: 221.83003
       objectReference: {fileID: 0}
     - target: {fileID: 4091055569016128, guid: a789ac6dde7558e4e9c3323541eecdcd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12126,7 +11937,7 @@ Transform:
   m_LocalScale: {x: 34.048115, y: 1, z: 49.52316}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1004300045
 MonoBehaviour:
@@ -12338,7 +12149,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 258557311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 221.79538, y: 22.090601, z: 881.4757}
+  m_LocalPosition: {x: 353.1954, y: 18.09061, z: 236.97566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1014100903}
@@ -12501,7 +12312,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1697970070
+  randomSeed: 1680846145
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -16315,7 +16126,7 @@ Transform:
   m_LocalScale: {x: 4, y: 40, z: 4}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1037503287
 MeshRenderer:
@@ -17330,15 +17141,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 846.74475
+      value: 872.8
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.0062103
+      value: 18.32
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 517.4
+      value: 496.27
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -19516,15 +19327,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 847.82
+      value: 886.4
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.0062103
+      value: 19.25
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 476.9
+      value: 498.11
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -20275,7 +20086,7 @@ Transform:
   m_LocalScale: {x: 4, y: 40, z: 4}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1344304754
 MeshRenderer:
@@ -22958,7 +22769,7 @@ Transform:
   m_LocalScale: {x: 4, y: 40, z: 4}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1506458924
 MeshRenderer:
@@ -23580,7 +23391,7 @@ GameObject:
   m_Name: TempBridge (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1546564946
@@ -24312,6 +24123,7 @@ MonoBehaviour:
   - Franklin
   - Gendolfine
   - Josefine
+  lockCursor: 1
 --- !u!4 &1607031216
 Transform:
   m_ObjectHideFlags: 0
@@ -24451,7 +24263,7 @@ GameObject:
   m_Name: TempBridge (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1615236936
@@ -24461,11 +24273,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1615236935}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 420.35934, y: -66.2, z: -340}
+  m_LocalPosition: {x: 420.35934, y: -66.2, z: -335.9}
   m_LocalScale: {x: 34.048363, y: 1, z: 49.52366}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 25
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1615236937
 MonoBehaviour:
@@ -25146,7 +24958,7 @@ Transform:
   m_LocalScale: {x: 34.048153, y: 1, z: 49.52326}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1700703970
 MonoBehaviour:
@@ -25233,7 +25045,7 @@ GameObject:
   m_Name: TempBridge (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1711617814
@@ -25243,11 +25055,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1711617813}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 420.35934, y: -66.2, z: -284}
+  m_LocalPosition: {x: 420.35934, y: -66.2, z: -274.3}
   m_LocalScale: {x: 34.048306, y: 1, z: 49.52356}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 23
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1711617815
 MonoBehaviour:
@@ -25322,15 +25134,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 834.8447
+      value: 878.4
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.0062103
+      value: 18.449999
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 470.5
+      value: 496
       objectReference: {fileID: 0}
     - target: {fileID: 4521383021030896, guid: 93fc63d85812a1142acba510e651d84d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -26426,7 +26238,7 @@ Transform:
   m_LocalScale: {x: 4, y: 40, z: 4}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1791752266
 MeshRenderer:
@@ -28253,7 +28065,7 @@ GameObject:
   m_Name: TempBridge (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1957684246
@@ -28263,11 +28075,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1957684245}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 420.35934, y: -66.2, z: -250.9}
+  m_LocalPosition: {x: 420.35934, y: -66.2, z: -241.3}
   m_LocalScale: {x: 34.048283, y: 1, z: 49.52351}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 22
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1957684247
 MonoBehaviour:
@@ -28349,7 +28161,7 @@ GameObject:
   m_Name: TempBridge (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1963835737
@@ -28359,11 +28171,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1963835736}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 420.35934, y: -66.2, z: -159.3}
+  m_LocalPosition: {x: 420.35934, y: -66.2, z: -145.44}
   m_LocalScale: {x: 34.048203, y: 1, z: 49.523357}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 19
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1963835738
 MonoBehaviour:
@@ -28803,7 +28615,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2016002728}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 218.2, y: 67.4, z: 818.9}
+  m_LocalPosition: {x: 347.4, y: 63.4, z: 153.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -29650,7 +29462,7 @@ GameObject:
   m_Name: TempBridge (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2117899223
@@ -29660,11 +29472,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2117899222}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 420.35934, y: -66.2, z: -314.6}
+  m_LocalPosition: {x: 420.35934, y: -66.2, z: -305}
   m_LocalScale: {x: 34.048336, y: 1, z: 49.52361}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 24
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &2117899224
 MonoBehaviour:
@@ -29868,7 +29680,7 @@ Transform:
   m_LocalScale: {x: 34.048176, y: 1, z: 49.523308}
   m_Children: []
   m_Father: {fileID: 688497980}
-  m_RootOrder: 18
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &2122914978
 MonoBehaviour:
@@ -30082,7 +29894,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 724003110
+  randomSeed: 1971176204
   InitialModule:
     serializedVersion: 3
     enabled: 1

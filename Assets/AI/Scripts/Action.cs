@@ -6,7 +6,11 @@ namespace AI
 {
     public abstract class Action : ScriptableObject
     {
-
         public abstract void Act(StateController controller);
+
+        public virtual bool IsExpensive ()
+        {
+            return false;
+        }
     }
 }

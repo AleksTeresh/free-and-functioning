@@ -202,6 +202,18 @@ public class Unit : WorldObject {
         HandleRotation();
     }
 
+    protected override void OnDrawGizmosSelected()
+    {
+        base.OnDrawGizmosSelected();
+
+        if (GetNavMeshAgent())
+        {
+            var navMeshAgent = GetNavMeshAgent();
+            Gizmos.color = navMeshAgent.pathPending ? Color.yellow : Color.green;
+            Gizmos.DrawSphere(this.GetNavMeshAgent().destination, 3);
+        }
+    }
+
     protected override void InitialiseAudio()
     {
         base.InitialiseAudio();

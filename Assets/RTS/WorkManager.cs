@@ -342,5 +342,36 @@ namespace RTS
         {
             return target.GetSelectionBounds().ClosestPoint(attacker.transform.position);
         }
+
+        public static Vector3? FindDistinationPointByTarget (WorldObject target, Unit unit)
+        {
+            var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, target);
+
+            // if the destination is still the same, do not recalculate the path
+            if (idealClosestPoint == unit.GetNavMeshAgent().destination) return null;
+
+            Vector3? actualClosestPoint = null;
+
+            for (int i = 0; i < 10; i++)
+            {
+                actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", i * 5 + 5);
+
+                if (actualClosestPoint.HasValue) continue;
+            }
+            
+
+            if (!actualClosestPoint.HasValue)
+            {
+                actualClosestPoint = idealClosestPoint;
+            }
+
+            // if the destination is still the same, do not recalculate the path
+            if (actualClosestPoint.HasValue && actualClosestPoint != unit.GetNavMeshAgent().destination)
+            {
+                return actualClosestPoint.Value;
+            }
+
+            return null;
+        }
     }
 }
