@@ -33,14 +33,7 @@ public class UserInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (player.human)
-        {
-            // Temporary disabled cause of new cursor mechanics
-            //if (Input.GetKeyDown(KeyCode.Escape) && !ResourceManager.MenuOpen)
-            //{
-            //    OpenPauseMenu();
-            //}
-
-            
+        {   
             // allow player to control dialog system only when gameplay is blocked,
             // if it is not, the flow of text should be controlled from another place,
             // for example, from SceneDriver
@@ -66,20 +59,13 @@ public class UserInput : MonoBehaviour {
 
                 SwitchFormationType();
 
+                HandlePauseMenu();
+
                 RTS.HotkeyUnitSelector.HandleInput(player, hud, mainCamera);
                 RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
                 RTS.HotkeyAllyAbilityTargetSelector.HandleInput(player, hud);
             }
         }
-    }
-
-    private void OpenPauseMenu()
-    {
-        Time.timeScale = 0.0f;
-        GetComponentInChildren<PauseMenu>().enabled = true;
-        GetComponent<UserInput>().enabled = false;
-        Cursor.visible = true;
-        ResourceManager.MenuOpen = true;
     }
 
     private void MoveCameraWithGamepad()
@@ -442,6 +428,7 @@ public class UserInput : MonoBehaviour {
         }
     }
 
+
 	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Vector3 formationOffset) 
 	{
         var handlerStateController = objectHandler.GetStateController();
@@ -605,6 +592,14 @@ public class UserInput : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) return hit.point;
         return ResourceManager.InvalidPosition;
+    }
+
+    private void HandlePauseMenu()
+    {
+        if (Input.GetButtonDown("Cancel") && !ResourceManager.MenuOpen)
+        {
+            hud.TogglePauseMenu();
+        }
     }
 
     private void MouseHover()

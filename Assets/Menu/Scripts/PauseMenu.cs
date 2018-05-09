@@ -1,75 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RTS;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class PauseMenu : Menu
+namespace Menu
 {
+    public class PauseMenu : MonoBehaviour {
 
-    private Player player;
+        private List<Button> buttons;
 
-    protected override void Start()
-    {
-        base.Start();
-        player = transform.root.GetComponent<Player>();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) Resume();
-    }
-
-    protected override void SetButtons()
-    {
-        buttons = new string[] { "Resume", "Save Game", "Load Game", "Exit Game" };
-    }
-
-    protected override void HandleButton(string text)
-    {
-        base.HandleButton(text);
-
-        switch (text)
+        private void Start()
         {
-            case "Resume": Resume(); break;
-            case "Save Game": SaveGame(); break;
-            case "Load Game": LoadGame(); break;
-            case "Exit Game": ReturnToMainMenu(); break;
-            default: break;
+            buttons = new List<Button>(GetComponentsInChildren<Button>());
+
+            if (buttons.Count > 0)
+            {
+                buttons[0].onClick.AddListener(DestroySelf);
+                buttons[0].Select();
+            }
+        }
+
+        public void DestroySelf()
+        {
+
+            Time.timeScale = 1f;
+            Destroy(this.gameObject);
         }
     }
-
-    protected override void HideCurrentMenu()
-    {
-        GetComponent<PauseMenu>().enabled = false;
-    }
-
-    private void Resume()
-    {
-        Time.timeScale = 1.0f;
-        GetComponent<PauseMenu>().enabled = false;
-        if (player) player.GetComponent<UserInput>().enabled = true;
-        Cursor.visible = false;
-        ResourceManager.MenuOpen = false;
-    }
-
-    private void SaveGame()
-    {
-        GetComponent<PauseMenu>().enabled = false;
-        SaveMenu saveMenu = GetComponent<SaveMenu>();
-        if (saveMenu)
-        {
-            saveMenu.enabled = true;
-            saveMenu.Activate();
-        }
-    }
-
-    private void ReturnToMainMenu()
-    {
-        ResourceManager.LevelName = "";
-
-        SceneManager.LoadScene("MainMenu");
-        Cursor.visible = true;
-    }
-
 }

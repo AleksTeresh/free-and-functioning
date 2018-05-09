@@ -41,8 +41,8 @@ public class LevelLoader : MonoBehaviour
 
         if (initialised)
         {
-            SelectPlayerMenu menu = GameObject.FindObjectOfType(typeof(SelectPlayerMenu)) as SelectPlayerMenu;
-            if (!menu)
+            // SelectPlayerMenu menu = GameObject.FindObjectOfType(typeof(SelectPlayerMenu)) as SelectPlayerMenu;
+            if (false)
             {
                 //we have started from inside a map, rather than the main menu
                 //this happens if we launch Unity from inside a map file for testing
