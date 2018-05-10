@@ -576,10 +576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d570f1d22c5614397d671459da5474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainSkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  selectionSkin: {fileID: 11400000, guid: 1fee1f6e6bce02647a6e6c24c6d5e868, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &114169061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,10 +588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c26305777368e44b83d75a17f1d9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  selectionSkin: {fileID: 11400000, guid: 1fee1f6e6bce02647a6e6c24c6d5e868, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &114169062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,10 +600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7055d82d2edd5c44a8c54eda564a4a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  header: {fileID: 2800000, guid: f6f6fd6f84e6e544bb1890b72f39e1c4, type: 3}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &114169063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4700,10 +4688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d570f1d22c5614397d671459da5474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainSkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  selectionSkin: {fileID: 11400000, guid: 1fee1f6e6bce02647a6e6c24c6d5e868, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &1021958636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4716,10 +4700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c26305777368e44b83d75a17f1d9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  selectionSkin: {fileID: 11400000, guid: 1fee1f6e6bce02647a6e6c24c6d5e868, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &1021958637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4732,10 +4712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7055d82d2edd5c44a8c54eda564a4a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  header: {fileID: 2800000, guid: f6f6fd6f84e6e544bb1890b72f39e1c4, type: 3}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &1021958638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7163,6 +7139,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 64161189064819658, guid: 716a190c59fa6f7498e266f0ee665d53,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 716a190c59fa6f7498e266f0ee665d53, type: 2}
   m_IsPrefabParent: 0
@@ -8051,6 +8032,7 @@ GameObject:
   - component: {fileID: 1653006491}
   - component: {fileID: 1653006490}
   - component: {fileID: 1653006489}
+  - component: {fileID: 1653006492}
   m_Layer: 5
   m_Name: MinimapMask
   m_TagString: Untagged
@@ -8126,6 +8108,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653006487}
+--- !u!114 &1653006492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1653006487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d9ae5bdc23cb14cb718157edded862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 24e8791f84ab5f14792cf8e049cc3f6d, type: 2}
 --- !u!1001 &1673770507
 Prefab:
   m_ObjectHideFlags: 0
@@ -8742,6 +8736,11 @@ Prefab:
       propertyPath: m_Name
       value: Generator (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 23279470112119004, guid: 6560b2c19f16f474087dc06f3a5f0a6b,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c89bc74cece940479c363930532f76d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6560b2c19f16f474087dc06f3a5f0a6b, type: 2}
   m_IsPrefabParent: 0
@@ -9436,6 +9435,7 @@ GameObject:
   - component: {fileID: 1923142183}
   - component: {fileID: 1923142182}
   - component: {fileID: 1923142181}
+  - component: {fileID: 1923142180}
   m_Layer: 0
   m_Name: MinimapCamera
   m_TagString: Untagged
@@ -9443,6 +9443,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1923142180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1923142179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15167b618dc40344ead6f5f08c8e54ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &1923142181
 Behaviour:
   m_ObjectHideFlags: 0
@@ -9470,7 +9481,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 180
+  orthographic size: 230
   m_Depth: 10
   m_CullingMask:
     serializedVersion: 2
@@ -9493,7 +9504,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1923142179}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 250, y: 194, z: 200}
+  m_LocalPosition: {x: 250, y: 194, z: 239.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9984,7 +9995,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2016002728}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 99.1, y: 48.8, z: 384.5}
+  m_LocalPosition: {x: 425.5, y: 40.1, z: 247.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
     private Buildings buildingsWrapper;
     private HUD hud;
     private FogOfWar fogOfWar;
+    private Camera mainCamera;
 
 	void Awake()
 	{
@@ -43,7 +44,10 @@ public class Player : MonoBehaviour {
         buildingsWrapper = GetComponentInChildren<Buildings>();
         units = new List<Unit>(GetComponentsInChildren<Unit>());
         buildings = new List<Building>(GetComponentsInChildren<Building>());
-        
+
+        mainCamera = Camera.main;
+
+
         if (human)
         {
             // init for of war
@@ -60,6 +64,8 @@ public class Player : MonoBehaviour {
 	void Update () {
         units = new List<Unit>(GetComponentsInChildren<Unit>());
         buildings = new List<Building>(GetComponentsInChildren<Building>());
+
+        // mainCamera.GetComponent<MeshFilter>().mesh = mainCamera.GenerateFrustumMesh();
     }
 
     public bool IsDead()

@@ -164,7 +164,7 @@ public class WorldObject : MonoBehaviour {
         if (player && player.human && currentlySelected)
         {
             //something other than the ground is being hovered over
-            if (!WorkManager.ObjectIsGround(hoverObject))
+            if (!WorkManager.ObjectIsGround(hoverObject) && hoverObject.transform.parent)
             {
                 Player owner = hoverObject.transform.root.GetComponent<Player>();
                 Unit unit = hoverObject.transform.parent.GetComponent<Unit>();
