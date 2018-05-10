@@ -132,6 +132,8 @@ namespace RTS
             float distanceToNearestObject = Vector3.Distance(position, nearestObject.transform.position);
             for (int i = 1; i < objects.Count; i++)
             {
+                if (!objects[i]) continue;
+
                 float distanceToObject = Vector3.Distance(position, objects[i].transform.position);
                 if (distanceToObject < distanceToNearestObject)
                 {
@@ -341,6 +343,37 @@ namespace RTS
         public static Vector3 GetTargetClosestPoint(WorldObject attacker, WorldObject target)
         {
             return target.GetSelectionBounds().ClosestPoint(attacker.transform.position);
+        }
+
+        public static Vector3? FindDistinationPointByTarget (WorldObject target, Unit unit)
+        {
+            var idealClosestPoint = WorkManager.GetTargetClosestPoint(unit, target);
+
+            // if the destination is still the same, do not recalculate the path
+            if (idealClosestPoint == unit.GetNavMeshAgent().destination) return null;
+
+            Vector3? actualClosestPoint = null;
+
+            for (int i = 0; i < 10; i++)
+            {
+                actualClosestPoint = WorkManager.GetClosestPointOnNavMesh(idealClosestPoint, "Walkable", i * 5 + 5);
+
+                if (actualClosestPoint.HasValue) continue;
+            }
+            
+
+            if (!actualClosestPoint.HasValue)
+            {
+                actualClosestPoint = idealClosestPoint;
+            }
+
+            // if the destination is still the same, do not recalculate the path
+            if (actualClosestPoint.HasValue && actualClosestPoint != unit.GetNavMeshAgent().destination)
+            {
+                return actualClosestPoint.Value;
+            }
+
+            return null;
         }
     }
 }

@@ -8,22 +8,30 @@ namespace AI
     [CreateAssetMenu(menuName = "AI/State")]
     public class State : ScriptableObject
     {
-
         public Action[] actions;
         public Transition[] transitions;
+
+        public void UpdateStateExpensive(StateController controller)
+        {
+            FindNearbyObjects(controller);
+            DoActions(controller, true);
+        }
 
         public void UpdateState(StateController controller)
         {
             FindNearbyObjects(controller);
-            DoActions(controller);
+            DoActions(controller, false);
             CheckTransitions(controller);
         }
 
-        private void DoActions(StateController controller)
+        private void DoActions(StateController controller, bool expensive)
         {
             for (int i = 0; i < actions.Length; i++)
             {
-                actions[i].Act(controller);
+                if (actions[i].IsExpensive() == expensive)
+                {
+                    actions[i].Act(controller);
+                }
             }
         }
 

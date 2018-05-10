@@ -33,14 +33,7 @@ public class UserInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (player.human)
-        {
-            // Temporary disabled cause of new cursor mechanics
-            //if (Input.GetKeyDown(KeyCode.Escape) && !ResourceManager.MenuOpen)
-            //{
-            //    OpenPauseMenu();
-            //}
-
-            
+        {   
             // allow player to control dialog system only when gameplay is blocked,
             // if it is not, the flow of text should be controlled from another place,
             // for example, from SceneDriver
@@ -66,20 +59,13 @@ public class UserInput : MonoBehaviour {
 
                 SwitchFormationType();
 
+                HandlePauseMenu();
+
                 RTS.HotkeyUnitSelector.HandleInput(player, hud, mainCamera);
                 RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
                 RTS.HotkeyAllyAbilityTargetSelector.HandleInput(player, hud);
             }
         }
-    }
-
-    private void OpenPauseMenu()
-    {
-        Time.timeScale = 0.0f;
-        GetComponentInChildren<PauseMenu>().enabled = true;
-        GetComponent<UserInput>().enabled = false;
-        Cursor.visible = true;
-        ResourceManager.MenuOpen = true;
     }
 
     private void MoveCameraWithGamepad()
@@ -442,24 +428,39 @@ public class UserInput : MonoBehaviour {
         }
     }
 
+
 	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Vector3 formationOffset) 
 	{
         var handlerStateController = objectHandler.GetStateController();
 		if (handlerStateController && hitPoint != ResourceManager.InvalidPosition)
 		{
-            Vector3 destination = hitPoint + formationOffset;
+            Vector3 idealDestination = hitPoint + formationOffset;
             if (!WorkManager.ObjectIsGround(hitObject))
             {
                 Vector3? onNavMeshDest = WorkManager.GetClosestPointOnNavMesh(hitPoint, "Walkable", 7);
 
                 if (onNavMeshDest.HasValue)
                 {
-                    destination = onNavMeshDest.Value;
+                    idealDestination = onNavMeshDest.Value;
+                }
+            }
+
+            Vector3 actualDestination = hitPoint;
+            Vector3 destDifference = hitPoint - idealDestination;
+
+            for (int i = 0; i < 5; i++)
+            {
+                var potentialDest = WorkManager.GetClosestPointOnNavMesh(idealDestination + (destDifference / 4 * i), "Walkable", 2);
+
+                if (potentialDest.HasValue)
+                {
+                    actualDestination = potentialDest.Value;
+                    break;
                 }
             }
 
             EventManager.TriggerEvent("RelocateUnit");
-            InputToCommandManager.ToBusyState(targetManager, handlerStateController, destination);
+            InputToCommandManager.ToBusyState(targetManager, handlerStateController, actualDestination);
         }
 	}
 
@@ -591,6 +592,14 @@ public class UserInput : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) return hit.point;
         return ResourceManager.InvalidPosition;
+    }
+
+    private void HandlePauseMenu()
+    {
+        if (Input.GetButtonDown("Cancel") && !ResourceManager.MenuOpen)
+        {
+            hud.TogglePauseMenu();
+        }
     }
 
     private void MouseHover()

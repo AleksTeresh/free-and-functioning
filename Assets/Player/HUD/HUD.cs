@@ -7,6 +7,7 @@ using RTS;
 using Events;
 using Formation;
 using Dialog;
+using Menu;
 
 [RequireComponent(typeof(Animator))]
 public class HUD : MonoBehaviour
@@ -56,10 +57,12 @@ public class HUD : MonoBehaviour
 
     private AudioElement audioElement;
 
+    private Canvas canvas;
     private PlayerUnitBar playerUnitBar;
     private EnemyUnitBar enemyUnitBar;
     private SelectionIndicator selectionIndicator;
     private AbilityBar abilityBar;
+    private Menu.PauseMenu pauseMenu;
 
     private Animator animator;
 
@@ -73,6 +76,7 @@ public class HUD : MonoBehaviour
     // Use this for initialization
     IEnumerator Start()
     {
+        canvas = GetComponentInChildren<Canvas>();
         player = transform.root.GetComponent<Player>();
         targetManager = player.GetComponentInChildren<TargetManager>();
         formationManager = player.GetComponentInChildren<FormationManager>();
@@ -161,7 +165,7 @@ public class HUD : MonoBehaviour
             GUI.depth = 1;
 
             HandleCursorPositionUpdate();
-            DrawPlayerDetails();
+            // DrawPlayerDetails();
 
             var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
             DrawUpperBar(observedEmenies.Count);
@@ -192,6 +196,22 @@ public class HUD : MonoBehaviour
     public CursorState GetCursorState()
     {
         return activeCursorState;
+    }
+
+    public void TogglePauseMenu()
+    {
+        if (pauseMenu)
+        {
+            pauseMenu.DestroySelf();
+        }
+        else if (canvas)
+        {
+            Time.timeScale = 0.0f;
+            var pauseMenuObject = GameObject.Instantiate(ResourceManager.GetUIElement("PauseMenu"));
+            pauseMenu = pauseMenuObject.GetComponent<PauseMenu>();
+
+            pauseMenu.transform.SetParent(canvas.transform, false);
+        }
     }
 
     public void SetCursorState(CursorState newState)
@@ -439,7 +459,7 @@ public class HUD : MonoBehaviour
         int buttonHeight = RESOURCE_BAR_HEIGHT - 2 * padding;
         int leftPos = Screen.width - ORDERS_BAR_WIDTH / 2 - buttonWidth / 2 + SCROLL_BAR_WIDTH / 2;
         Rect menuButtonPosition = new Rect(leftPos, padding, buttonWidth, buttonHeight);
-
+/*
         if (GUI.Button(menuButtonPosition, "Menu"))
         {
             PlayClick();
@@ -450,7 +470,7 @@ public class HUD : MonoBehaviour
             UserInput userInput = player.GetComponent<UserInput>();
             if (userInput) userInput.enabled = false;
         }
-
+*/
         if (targetManager)
         {
             Rect attackModeIndicatorPos = new Rect(20, 10, buttonWidth, buttonHeight);
@@ -605,7 +625,7 @@ public class HUD : MonoBehaviour
     {
         return new Rect(BUTTON_SPACING, BUTTON_SPACING, SCROLL_BAR_WIDTH, groupHeight - 2 * BUTTON_SPACING);
     }
-
+    /*
     private void DrawPlayerDetails()
     {
         GUI.skin = playerDetailsSkin;
@@ -626,7 +646,7 @@ public class HUD : MonoBehaviour
         GUI.Label(new Rect(leftPos, topPos, maxWidth, height), playerName);
         GUI.EndGroup();
     }
-
+    */
     private void DrawStandardBuildingOptions(Building building)
     {
         GUIStyle buttons = new GUIStyle();

@@ -847,6 +847,8 @@ MonoBehaviour:
   sellValue: 0
   hitPoints: 200
   maxHitPoints: 200
+  attackDelay: 1
+  attackMultiDelay: 1
   damage: 40
   damageMulti: 3
   weaponRange: 2
@@ -865,13 +867,12 @@ MonoBehaviour:
   selectVolume: 1
   useWeaponVolume: 1
   detectionRange: 20
+  belongsToBoss: 0
   holdingPosition: 0
   driveSound: {fileID: 0}
   moveSound: {fileID: 0}
   driveVolume: 0.5
   moveVolume: 1
-  abilities: []
-  abilitiesMulti: []
 --- !u!114 &114972265368143456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -893,7 +894,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 7
-  m_Acceleration: 30
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 300
   m_StoppingDistance: 1

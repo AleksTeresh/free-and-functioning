@@ -8,16 +8,22 @@ namespace AI
     [CreateAssetMenu(menuName = "AI/Actions/AbilityChase")]
     public class AbilityChaseAction : UnitAction
     {
+        public override bool IsExpensive()
+        {
+            return true;
+        }
+
         protected override void DoAction(UnitStateController controller)
         {
             Unit unit = controller.unit;
             WorldObject chaseTarget = controller.chaseTarget;
             if (chaseTarget && !WorkManager.ObjectCanReachTargetWithAbility(unit, controller.abilityToUse, chaseTarget))
             {
+                var newDestination = WorkManager.FindDistinationPointByTarget(chaseTarget, unit);
 
-                if (unit.GetNavMeshAgent().destination != chaseTarget.transform.position)
+                if (newDestination.HasValue)
                 {
-                    controller.unit.StartMove(chaseTarget.transform.position);
+                    unit.StartMove(newDestination.Value);
                 }
             }
             else
