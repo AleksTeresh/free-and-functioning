@@ -76,6 +76,8 @@ public class WorldObject : MonoBehaviour {
     public bool belongsToBoss;
     private FogOfWarAgent fogOfWarAgent;
 
+    private Animator animator;
+
     public virtual void SetSelection(bool selected, Rect playingArea)
     {
         currentlySelected = selected;
@@ -315,6 +317,8 @@ public class WorldObject : MonoBehaviour {
         {
             stateController.SetupAI(true);
         }
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     protected virtual void Update()
@@ -340,6 +344,8 @@ public class WorldObject : MonoBehaviour {
         RemoveInactiveStatuses();
 
         HandleSelectionLight();
+
+        HandleAnimation();
     }
 
     protected virtual void OnDrawGizmosSelected ()
@@ -380,11 +386,16 @@ public class WorldObject : MonoBehaviour {
             return;
         }
 
-        
-
         if (!TargetInFrontOfWeapon(target)) AimAtTarget(target);
-        else if (!AttackDelayIsOver()) attackDelayFrameCounter = 2;
-        else if (ReadyToFire()) UseWeapon(target);
+        else if (!ReadyToFire()) return;
+        else if (!AttackDelayIsOver())
+        {
+            attackDelayFrameCounter = 2;
+        }
+        else
+        {
+            UseWeapon(target);
+        }
     }
 
 	public virtual void UseAbility(WorldObject target, Ability ability, bool shouldAim = false) {
@@ -698,5 +709,13 @@ public class WorldObject : MonoBehaviour {
     private bool AttackDelayIsOver()
     {
         return currentAttackDelayTime > attackDelay;
+    }
+
+    private void HandleAnimation ()
+    {
+        if (!animator) return;
+
+        animator.SetBool("attacking", IsAttacking());
+        animator.SetBool("inBattle", !ReadyToFire());
     }
 }
