@@ -7,7 +7,6 @@ namespace AI
     [CreateAssetMenu(menuName = "AI/Decisions/ActiveState")]
     public class ActiveStateDecision : Decision
     {
-
         public override bool Decide(StateController controller)
         {
             WorldObject self = controller.controlledObject;
@@ -25,7 +24,8 @@ namespace AI
                 target.gameObject.activeSelf && // target is alive
                 (
                     direction.sqrMagnitude < self.detectionRange * self.detectionRange ||
-                    FriendsHaveActiveTarget(target, self, controller.nearbyAllies)
+                    FriendsHaveActiveTarget(target, self, controller.nearbyAllies) ||
+                    (controller.controlledObject.GetPlayer().human && controller.targetManager.SingleTarget.ObjectId == target.ObjectId)
                 ); // target is visible to a indicatedObject or its friends
 
             return chaseTargetIsActive;

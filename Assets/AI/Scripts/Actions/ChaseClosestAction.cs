@@ -18,14 +18,11 @@ namespace AI
         protected override void DoAction(UnitStateController controller)
         {
             Unit unit = controller.unit;
-            Vector3 currentPosition = unit.transform.position;
 
-            WorldObject closestEnemy = WorkManager.FindNearestWorldObjectInListToPosition(controller.nearbyEnemies, currentPosition);
+            var chaseTarget = AttackUtil.SetClosestEnemyAsTarget(controller);
 
-            if (closestEnemy && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, closestEnemy))
+            if (chaseTarget && !unit.holdingPosition && !WorkManager.ObjectCanReachTarget(unit, chaseTarget))
             {
-                controller.chaseTarget = closestEnemy;
-
                 var newDestination = WorkManager.FindDistinationPointByTarget(controller.chaseTarget, unit);
 
                 if (newDestination.HasValue)

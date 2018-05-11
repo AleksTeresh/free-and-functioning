@@ -15,6 +15,17 @@ namespace AI
         private void ResetTarget(StateController controller)
         {
             controller.chaseTarget = null;
+
+            if (
+                controller &&
+                controller.targetManager &&
+                controller.targetManager.SingleTarget  &&
+                controller.targetManager.SingleTarget.GetFogOfWarAgent()  &&
+                !controller.targetManager.SingleTarget.GetFogOfWarAgent().IsObserved()
+            )
+            {
+                controller.targetManager.SingleTarget = null;
+            }
         }
     }
 }

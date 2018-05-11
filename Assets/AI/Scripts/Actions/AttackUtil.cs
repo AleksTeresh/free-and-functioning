@@ -36,5 +36,24 @@ namespace AI
                 controller.attacking = false;
             }
         }
+
+        public static WorldObject SetClosestEnemyAsTarget (StateController controller)
+        {
+            Vector3 currentPosition = controller.controlledObject.transform.position;
+
+            WorldObject closestEnemy = WorkManager.FindNearestWorldObjectInListToPosition(controller.nearbyEnemies, currentPosition);
+
+            if (!closestEnemy && controller.targetManager && controller.targetManager.SingleTarget)
+            {
+                closestEnemy = controller.targetManager.SingleTarget;
+            }
+
+            if (closestEnemy)
+            {
+                controller.chaseTarget = closestEnemy;
+            }
+
+            return closestEnemy;
+        }
     }
 }

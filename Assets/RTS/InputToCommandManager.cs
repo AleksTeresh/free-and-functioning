@@ -190,8 +190,8 @@ namespace RTS
 
         private static void SwitchAttackModeForOne(UnitStateController stateController)
         {
-            if (stateController.unit.CanAttackMulti())
-            {
+            // if (stateController.unit.CanAttackMulti())
+            // {
                 switch (stateController.currentState.name)
                 {
                     case "Idle Manual":
@@ -206,6 +206,14 @@ namespace RTS
                         stateController.TransitionToState(ResourceManager.GetAiState("Busy Manual Multi"));
                         break;
 
+                    case "Stop Manual":
+                        stateController.TransitionToState(ResourceManager.GetAiState("Stop Manual Multi"));
+                        break;
+
+                    case "Ability Chase Manual":
+                        stateController.TransitionToState(ResourceManager.GetAiState("Ability Chase Manual Multi"));
+                        break;
+
                     case "Idle Manual Multi":
                         stateController.TransitionToState(ResourceManager.GetAiState("Idle Manual"));
                         break;
@@ -218,10 +226,18 @@ namespace RTS
                         stateController.TransitionToState(ResourceManager.GetAiState("Busy Manual"));
                         break;
 
-                    default:
+                    case "Stop Manual Multi":
+                        stateController.TransitionToState(ResourceManager.GetAiState("Stop Manual"));
+                        break;
+
+                    case "Ability Chase Manual Multi":
+                        stateController.TransitionToState(ResourceManager.GetAiState("Ability Chase Manual"));
+                        break;
+
+                default:
                         break;
                 }
-            }
+            // }
 
         }
     }
