@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Feel The Punch
   range: 1000
-  cooldown: 55
+  cooldown: 10
   delayTime: 0
   damage: 100
   multiDamageMinValue: 1
@@ -1238,9 +1238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Feel The Punch Multi
   range: 1000
-  cooldown: 55
+  cooldown: 50
   delayTime: 0
-  damage: 20
+  damage: 100
   multiDamageMinValue: 1
   attackType: 2
   isAllyTargetingAbility: 0

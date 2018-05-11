@@ -319,7 +319,7 @@ namespace RTS
 
         public static bool V3Equal(Vector3 a, Vector3 b)
         {
-            return Vector3.SqrMagnitude(a - b) < 0.5;
+            return Vector3.SqrMagnitude(a - b) < 0.25;
         }
 
         public static int GetTargetSelectionIndex (WorldObject currentTarget, List<WorldObject> enemies)

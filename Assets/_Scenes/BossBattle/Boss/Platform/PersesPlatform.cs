@@ -7,6 +7,8 @@ public class PersesPlatform : Unit {
     private SpawnHouse head;
     private BossPart[] bodyParts;
 
+    private float prevY = 0.0f;
+
     protected override void Awake()
     {
         base.Awake();
@@ -16,6 +18,11 @@ public class PersesPlatform : Unit {
         bodyParts = bossWrapper.GetComponentsInChildren<BossPart>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -23,9 +30,18 @@ public class PersesPlatform : Unit {
         var ownPosition = transform.position;
         var ownRotation = transform.rotation;
 
+        if (prevY == 0.0f)
+        {
+            prevY = ownRotation.y;
+        }
+
         if (head)
         {
-            head.transform.position = new Vector3(ownPosition.x, head.transform.position.y, ownPosition.z);
+            head.transform.position = new Vector3(
+                ownPosition.x,
+                head.transform.position.y + ownPosition.y - prevY,
+                ownPosition.z
+            );
             head.transform.rotation = ownRotation;
 
             head.CalculateBounds();
@@ -37,7 +53,11 @@ public class PersesPlatform : Unit {
             {
                 if (!bodyPart) continue;
 
-                bodyPart.transform.position = new Vector3(ownPosition.x, bodyPart.transform.position.y, ownPosition.z);
+                bodyPart.transform.position = new Vector3(
+                    ownPosition.x,
+                    bodyPart.transform.position.y + ownPosition.y - prevY,
+                    ownPosition.z
+                );
 
                 if (!bodyPart.aiming && !bodyPart.GetStateController().chaseTarget)
                 {
@@ -47,6 +67,8 @@ public class PersesPlatform : Unit {
                 bodyPart.CalculateBounds();
             }
         }
+
+        prevY = ownPosition.y;
     }
 
     void OnDestroy()

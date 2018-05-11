@@ -87,8 +87,6 @@ public class PersesBody : BossPart
 
         if (head)
         {
-            
-
             var headNavMesh = head.gameObject.AddComponent<NavMeshAgent>() as NavMeshAgent;
 
             if (headNavMesh)
@@ -102,6 +100,9 @@ public class PersesBody : BossPart
                 0,
                 head.transform.position.z
             );
+
+            // make sure the head is destroyable even if Tanker is dead by the time Head falls
+            head.rangeDefence = 5;
 
             head.CalculateBounds();
         }
