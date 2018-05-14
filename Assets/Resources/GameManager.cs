@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    /*
     void Update()
     {
         if (victoryConditions != null)
@@ -93,5 +93,5 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    */
 }

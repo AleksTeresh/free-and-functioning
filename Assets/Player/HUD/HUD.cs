@@ -411,7 +411,7 @@ public class HUD : MonoBehaviour
             unitBar.Update();
         }
     }
-
+    /*
     private void DrawOrdersBar()
     {
         GUI.skin = orderSkin;
@@ -446,7 +446,7 @@ public class HUD : MonoBehaviour
         }
 
         GUI.EndGroup();
-    }
+    }  */
 
     private void DrawUpperBar(int enemyCount)
     {
@@ -568,7 +568,7 @@ public class HUD : MonoBehaviour
 
         return new Rect(leftPos, topPos, activeCursor.width, activeCursor.height);
     }
-
+    /*
     private void DrawActions(string[] actions)
     {
         GUIStyle buttons = new GUIStyle();
@@ -601,7 +601,7 @@ public class HUD : MonoBehaviour
             }
         }
         GUI.EndGroup();
-    }
+    }  */
 
     private int MaxNumRows(int areaHeight)
     {

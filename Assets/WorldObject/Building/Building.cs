@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
-using Newtonsoft.Json;
+using Persistence;
 
 public class Building : WorldObject {
     public Texture2D rallyPointImage;
@@ -27,7 +27,7 @@ public class Building : WorldObject {
     {
         return stateController;
     }
-
+    /*
     public override void SaveDetails(JsonWriter writer)
     {
         base.SaveDetails(writer);
@@ -52,7 +52,7 @@ public class Building : WorldObject {
             default: break;
         }
     }
-
+    */
     protected override void Awake()
     {
         base.Awake();
@@ -190,5 +190,32 @@ public class Building : WorldObject {
             RallyPoint flag = player.GetComponentInChildren<RallyPoint>();
             if (flag) flag.transform.localPosition = rallyPoint;
         }
+    }
+
+    public new BuildingData GetData()
+    {
+        var baseData = base.GetData();
+
+        return new BuildingData(
+            baseData,
+            stateController.GetData(),
+            buildQueue,
+            rallyPoint,
+            currentBuildProgress,
+            spawnPoint
+        );
+    }
+
+    public void SetData(BuildingData data)
+    {
+        base.SetData(data);
+        Start();
+
+        spawnPoint = data.spawnPoint;
+        currentBuildProgress = data.currentBuildProgress;
+        rallyPoint = data.rallyPoint;
+        buildQueue = data.buildQueue;
+        stateController.SetData(data.buildingStateController);
+        stateController.building = this;
     }
 }

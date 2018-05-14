@@ -12,16 +12,16 @@ namespace Events
         public Unit[] unitPrefabs;
         public float radius = 7;
 
-        private bool triggerred = false;
+        // private bool triggerred = false;
 
         private void OnEnable()
         {
-            triggerred = false;
+            destinationPrefab.triggerred = false;
         }
 
         public override bool Decide(StateController controller)
         {
-            if (triggerred) return false;
+            if (destinationPrefab.triggerred) return false;
 
             var destination = new List<Flag>(FindObjectsOfType<Flag>()).Find(p => p.name == destinationPrefab.name);
 
@@ -44,7 +44,7 @@ namespace Events
                 }
             }
 
-            triggerred = true;
+            destinationPrefab.triggerred = true;
             return true;
         }
     }

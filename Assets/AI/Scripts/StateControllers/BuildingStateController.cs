@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,22 @@ public class BuildingStateController : StateController
         base.Update();
 
         spawnTimer += Time.deltaTime;
+    }
+
+    public new BuildingStateControllerData GetData()
+    {
+        var baseData = base.GetData();
+
+        return new BuildingStateControllerData(
+            baseData,
+            spawnTimer
+        );
+    }
+
+    public void SetData(BuildingStateControllerData data)
+    {
+        base.SetData(data);
+
+        spawnTimer = data.spawnTimer;
     }
 }

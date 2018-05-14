@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using RTS;
+using Events;
+using Persistence;
 
-public class PressTrigger : MonoBehaviour {
+public class PressTrigger : EventObject
+{
     public float radius = 10;
     public int requiredNumberOfUnits = 3;
-
 
     public bool IsPressed ()
     {
@@ -14,4 +14,5 @@ public class PressTrigger : MonoBehaviour {
 
         return pressingUnits.Count >= requiredNumberOfUnits;
     }
+
 }

@@ -1,4 +1,5 @@
 ﻿using Abilities;
+using Persistence;
 using UnityEngine;
 
 namespace Statuses
@@ -13,7 +14,7 @@ namespace Statuses
         [HideInInspector] public float duration;
         //public vfx
 
-        protected WorldObject inflicter;
+        protected WorldObject inflictor;
         protected Projectile projectileInflicter;
         protected AreaOfEffect aoeInflicter;
 
@@ -35,7 +36,7 @@ namespace Statuses
 
         public void InflictStatus(WorldObject target, WorldObject inflicter)
         {
-            this.inflicter = inflicter;
+            this.inflictor = inflicter;
             InflictStatus(target);
         }
 
@@ -47,7 +48,7 @@ namespace Statuses
 
         public void InflictStatus(WorldObject target, WorldObject inflicter, AreaOfEffect aoeInflicter)
         {
-            this.inflicter = inflicter;
+            this.inflictor = inflicter;
             this.aoeInflicter = aoeInflicter;
 
             InflictStatus(target);
@@ -92,6 +93,32 @@ namespace Statuses
 
             OnStatusEnd();
             Destroy(this.gameObject);
+        }
+
+        public StatusData GetData ()
+        {
+            var data = new StatusData();
+
+            data.type = name.Contains("(") ? name.Substring(0, name.IndexOf("(")).Trim() : name;
+            data.statusName = statusName;
+            data.isActive = isActive;
+            data.targetId = target ? target.ObjectId : -1;
+            data.duration = duration;
+
+            return data;
+        }
+
+        public void SetData (StatusData data)
+        {
+            statusName = data.statusName;
+            isActive = data.isActive;
+            target = data.targetId != -1
+                ? Player.GetObjectById(data.targetId)
+                : null;
+            duration = data.duration;
+            inflictor = data.inflictorId != -1
+                ? Player.GetObjectById(data.inflictorId)
+                : null;
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using Persistence;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FogOfWarAgent : MonoBehaviour {
-
     private WorldObject relatedObject;
     private List<MeshRenderer> meshRenderers;
     private FogOfWar fogOfWar;
@@ -59,5 +59,19 @@ public class FogOfWarAgent : MonoBehaviour {
     public bool IsObserved()
     {
         return isObserved;
+    }
+
+    public FogOfWarAgentData GetData()
+    {
+        var data = new FogOfWarAgentData();
+
+        data.isObserved = isObserved;
+
+        return data;
+    }
+
+    public void SetData (FogOfWarAgentData data)
+    {
+        isObserved = data.isObserved;
     }
 }

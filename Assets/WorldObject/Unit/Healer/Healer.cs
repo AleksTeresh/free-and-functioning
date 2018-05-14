@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json;
-using RTS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Healer : Unit
 {
@@ -41,7 +35,7 @@ public class Healer : Unit
 
         FireProjectile(target, "HealerProjectile", spawnPoint, damage);
     }
-
+    /*
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
@@ -50,7 +44,7 @@ public class Healer : Unit
             case "AimRotation": aimRotation = LoadManager.LoadQuaternion(reader); break;
             default: break;
         }
-    }
+    } */
 
     public override Vector3 GetProjectileSpawnPoint()
     {

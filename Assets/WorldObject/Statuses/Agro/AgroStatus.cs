@@ -28,7 +28,7 @@ namespace Statuses
                 {
                     // targetStateController.indicatedObject.StopMove();
 
-                    targetStateController.chaseTarget = inflicter;
+                    targetStateController.chaseTarget = inflictor;
                     targetStateController.TransitionToState(ResourceManager.GetAiState("Under Agro"));
                 }
             }
