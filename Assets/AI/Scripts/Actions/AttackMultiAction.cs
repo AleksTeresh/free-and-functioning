@@ -22,6 +22,8 @@ namespace AI
             // if cannot attack multi, fallback to single attack
             if (!controlledObject.CanAttackMulti())
             {
+                AttackUtil.SetClosestEnemyAsTarget(controller);
+
                 AttackUtil.HandleSingleModeAttack(controller);
                 return;
             }

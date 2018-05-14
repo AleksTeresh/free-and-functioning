@@ -304,6 +304,8 @@ public class UserInput : MonoBehaviour {
             {
                 if (!WorkManager.ObjectIsGround(hitObject))
                 {
+                    if (!hitObject.transform.parent) return;
+
                     Unit unitToSelect = hitObject.transform.parent.GetComponent<Unit>();
                     if (unitToSelect)
                     {
@@ -362,6 +364,8 @@ public class UserInput : MonoBehaviour {
         //only handle input if currently selected
         if (objectHandler.IsSelected() && !WorkManager.ObjectIsGround(hitObject))
         {
+            if (!hitObject.transform.parent) return;
+
             WorldObject worldObject = hitObject.transform.parent.GetComponent<WorldObject>();
             //clicked on another selectable object
             if (worldObject)
@@ -390,6 +394,8 @@ public class UserInput : MonoBehaviour {
                 }
                 else if (objectHandler.CanAttack())
                 {
+                    if (!hitObject.transform.parent) return;
+
                     Unit unit = hitObject.transform.parent.GetComponent<Unit>();
                     Building building = hitObject.transform.parent.GetComponent<Building>();
                     BossPart bossPart = hitObject.transform.parent.GetComponent<BossPart>();

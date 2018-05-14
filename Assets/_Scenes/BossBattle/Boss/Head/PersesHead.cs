@@ -1,7 +1,6 @@
 ﻿using RTS;
 
 public class PersesHead : SpawnHouse {
-
     public override void TakeDamage(int attackPoints, AttackType attackType)
     {
         var hitPoints = this.hitPoints;
