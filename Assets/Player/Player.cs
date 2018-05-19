@@ -95,10 +95,11 @@ public class Player : MonoBehaviour {
         return buildings;
     }
 
-    public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation, Building creator)
+    public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation, Building creator, int siblingIdx = -1)
     {
         GameObject newUnit = (GameObject)Instantiate(ResourceManager.GetUnit(unitName), spawnPoint, rotation);
         newUnit.transform.parent = unitsWrapper.transform;
+        newUnit.transform.SetSiblingIndex(siblingIdx >= 0 ? siblingIdx : units.Count);
         Unit unitObject = newUnit.GetComponent<Unit>();
 
         if (unitObject)

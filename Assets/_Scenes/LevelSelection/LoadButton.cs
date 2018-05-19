@@ -19,7 +19,7 @@ public class LoadButton : MonoBehaviour {
 
     private void Update()
     {
-        button.enabled = relatedSceneName != null &&
+        button.interactable = relatedSceneName != null &&
             relatedSceneName != "" &&
             LoadManager.SaveExists(relatedSceneName + Constants.SAVE_FILENAME_POSTFIX);
     }

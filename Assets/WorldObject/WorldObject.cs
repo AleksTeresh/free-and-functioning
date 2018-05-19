@@ -35,6 +35,7 @@ public class WorldObject : MonoBehaviour {
     protected string[] actions = { };
     protected bool currentlySelected = false;
     private Light selectionLight;
+    private Light targetLight;
     [NonSerialized]
     protected Bounds selectionBounds;
     [NonSerialized]

@@ -33,6 +33,8 @@ public class Unit : WorldObject
     protected WorldObject aimTarget;
     private ParticleSystem takeDamageEffect;
 
+    private GameObject destinationIndicator;
+
     public override void SetHoverState(GameObject hoverObject)
     {
         base.SetHoverState(hoverObject);
@@ -178,6 +180,7 @@ public class Unit : WorldObject
 
         HandleMove();
         HandleRotation();
+        HandleVisualEffects();
     }
 
     protected override void OnDrawGizmosSelected()
@@ -258,6 +261,25 @@ public class Unit : WorldObject
             {
                 aiming = false;
             }
+        }
+    }
+
+    private void HandleVisualEffects()
+    {
+        if (player && player.human && IsSelected() && (agent.remainingDistance > agent.stoppingDistance || agent.pathPending))
+        {
+            if (!destinationIndicator)
+            {
+                destinationIndicator = Instantiate(ResourceManager.GetVfx("DestinationIndicator"), agent.destination, transform.rotation);
+            }
+            else
+            {
+                destinationIndicator.transform.position = agent.destination;
+            }
+        }
+        else if (destinationIndicator)
+        {
+            Destroy(destinationIndicator);
         }
     }
 

@@ -11,6 +11,8 @@ namespace RTS
     {
         public static void ToChaseState(TargetManager targetManager, StateController stateController, WorldObject chaseTarget)
         {
+            if (!targetManager) return;
+
             // set clicked object as a target
             // stateController.chaseTarget = chaseTarget;
             targetManager.SingleTarget = chaseTarget;
@@ -23,6 +25,8 @@ namespace RTS
 
         public static void AbilityHotkeyToState(TargetManager targetManager, UnitStateController stateController, int abilityIndex)
         {
+            if (!targetManager) return;
+
             Unit unit = stateController.unit;
 
             if (unit.GetAbilityAgent().CanUseAbilitySlot(abilityIndex))
@@ -99,7 +103,7 @@ namespace RTS
 
         public static void ToBusyState(TargetManager targetManager, UnitStateController stateController, Vector3 destination)
         {
-            if (!stateController || !stateController.navMeshAgent || !stateController.navMeshAgent.isActiveAndEnabled)
+            if (!targetManager || !stateController || !stateController.navMeshAgent || !stateController.navMeshAgent.isActiveAndEnabled)
             {
                 return;
             }    
@@ -115,6 +119,8 @@ namespace RTS
 
         public static void SwitchAttackMode(TargetManager targetManager, List<UnitStateController> stateControllers)
         {
+            if (!targetManager) return;
+
             if (targetManager.InMultiMode)
             {
                 Debug.Log("Switched to single mode");
@@ -131,7 +137,7 @@ namespace RTS
 
         public static void SwitchEnemy(TargetManager targetManager, List<WorldObject> enemies, int currentIdx)
         {
-            if (enemies.Count == 0) return;
+            if (enemies.Count == 0 || !targetManager) return;
 
             if (currentIdx == enemies.Count - 1 || currentIdx < 0)
             {
@@ -145,6 +151,8 @@ namespace RTS
 
         public static void StopUnits (Player player, TargetManager targetManager)
         {
+            if (!targetManager) return;
+
             string stateName = targetManager.InMultiMode
                 ? "Stop Manual Multi"
                 : "Stop Manual";

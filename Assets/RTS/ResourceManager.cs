@@ -125,6 +125,11 @@ namespace RTS
 			return gameObjectList.GetAbilityVfx (name);
 		}
 
+        public static GameObject GetVfx (string name)
+        {
+            return gameObjectList.GetVfx(name);
+        }
+
         public static GameObject GetProjectile(string name)
         {
             return gameObjectList.GetProjectile(name);
