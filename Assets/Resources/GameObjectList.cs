@@ -23,6 +23,7 @@ public class GameObjectList : MonoBehaviour {
 	public ParticleSystem[] abilityVFX;
 	public GameObject[] projectiles;
     public GameObject abilityAgent;
+    public AudioClip[] bgm;
 
     void Awake()
     {
@@ -188,6 +189,16 @@ public class GameObjectList : MonoBehaviour {
         }
 
         throw new UnregisteredAssetException(GetErrorMessage("AbilityAgent", ""));
+    }
+
+    public AudioClip GetBgm(string name)
+    {
+        foreach (AudioClip audioClip in bgm)
+        {
+            if (audioClip.name == name) return audioClip;
+        }
+
+        throw new UnregisteredAssetException(GetErrorMessage("BGM AudioClip", name));
     }
 
     private string GetErrorMessage(string prefabType, string assetName) 

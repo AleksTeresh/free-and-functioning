@@ -256,3 +256,9 @@ MonoBehaviour:
   - {fileID: 1560441377564334, guid: 3a923750353ba33428376d015d96e1be, type: 2}
   abilityAgent: {fileID: 1703521213251724, guid: 790fadcd4d40ca64d991086e19e1dc45,
     type: 2}
+  bgm:
+  - {fileID: 8300000, guid: 5888c097a0ffd724d84319cfdb0b7c25, type: 3}
+  - {fileID: 8300000, guid: b8685a158a7d4944ea23eec12763839a, type: 3}
+  - {fileID: 8300000, guid: b1efcaaa065942b4b8079fded8f73f2a, type: 3}
+  - {fileID: 8300000, guid: f5c8f7e132becec42bffc22d3a2cf585, type: 3}
+  - {fileID: 8300000, guid: a213d814587b6d84caa476ec626b1bd1, type: 3}

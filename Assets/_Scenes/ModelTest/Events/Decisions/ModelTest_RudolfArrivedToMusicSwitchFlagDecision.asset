@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18e9162b8b936547b15f5b56c77cb96, type: 3}
+  m_Name: ModelTest_RudolfArrivedToMusicSwitchFlagDecision
+  m_EditorClassIdentifier: 
+  destinationPrefab: {fileID: 114463238222308326, guid: 8689177e60036e44a9d5d70ee0517209,
+    type: 2}
+  unitPrefabs:
+  - {fileID: 114350619375362560, guid: fb3f0aa11e9f83347858a9cc213befb9, type: 2}
+  radius: 10
