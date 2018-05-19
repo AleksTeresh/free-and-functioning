@@ -11,6 +11,7 @@ namespace Persistence
         public string currentState;
         public string defaultState;
         public int chaseTargetId;
+        public int controlledObjectId;
         public bool attacking;
         public bool aiActive;
 
@@ -18,6 +19,7 @@ namespace Persistence
             string currentState,
             string defaultState,
             int chaseTargetId,
+            int controlledObjectId,
             bool attacking,
             bool aiActive
         )
@@ -25,6 +27,7 @@ namespace Persistence
             this.currentState = currentState;
             this.defaultState = defaultState;
             this.chaseTargetId = chaseTargetId;
+            this.controlledObjectId = controlledObjectId;
             this.attacking = attacking;
             this.aiActive = aiActive;
         }
@@ -36,6 +39,7 @@ namespace Persistence
             this.currentState = baseData.currentState;
             this.defaultState = baseData.defaultState;
             this.chaseTargetId = baseData.chaseTargetId;
+            this.controlledObjectId = baseData.controlledObjectId;
             this.attacking = baseData.attacking;
             this.aiActive = baseData.aiActive;
         }

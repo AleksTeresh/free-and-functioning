@@ -25,7 +25,11 @@ namespace AI
                 (
                     direction.sqrMagnitude < self.detectionRange * self.detectionRange ||
                     FriendsHaveActiveTarget(target, self, controller.nearbyAllies) ||
-                    (controller.controlledObject.GetPlayer().human && controller.targetManager.SingleTarget.ObjectId == target.ObjectId)
+                    (
+                        controller.controlledObject.GetPlayer().human &&
+                        controller.targetManager.SingleTarget &&
+                        controller.targetManager.SingleTarget.ObjectId == target.ObjectId
+                    )
                 ); // target is visible to a indicatedObject or its friends
 
             return chaseTargetIsActive;

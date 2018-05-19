@@ -52,6 +52,7 @@ public class UnitStateController : StateController
             nextWayPoint,
             allyAbilityTarget ? allyAbilityTarget.ObjectId : -1,
             enemyAbilityTarget ? enemyAbilityTarget.ObjectId : -1,
+            unit ? unit.ObjectId : -1,
             aoeAbilityTarget,
             abilityToUse ? abilityToUse.GetData() : null
         );
@@ -73,5 +74,13 @@ public class UnitStateController : StateController
         abilityToUse = data.abilityToUse != null
             ? unit.GetAbilityAgent().FindAbilityByName(data.abilityToUse.type)
             : null;
+
+        var unitObj = data.controlledUnitId != -1
+            ? Player.GetObjectById(data.controlledUnitId)
+            : null;
+        if (unitObj)
+        {
+            unit = unitObj.GetComponent<Unit>();
+        }
     }
 }

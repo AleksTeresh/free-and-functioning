@@ -12,6 +12,7 @@ namespace Persistence
         public int nextWayPoint;
         public int allyAbilityTargetId;
         public int enemyAbilityTargetId;
+        public int controlledUnitId;
         public Vector3 aoeAbilityTarget;
         public AbilityData abilityToUse;
 
@@ -21,6 +22,7 @@ namespace Persistence
             int nextWayPoint,
             int allyAbilityTargetId,
             int enemyAbilityTargetId,
+            int controlledUnitId,
             Vector3 aoeAbilityTarget,
             AbilityData abilityToUse
         ) : base(baseStateController)
@@ -29,6 +31,7 @@ namespace Persistence
             this.nextWayPoint = nextWayPoint;
             this.allyAbilityTargetId = allyAbilityTargetId;
             this.enemyAbilityTargetId = enemyAbilityTargetId;
+            this.controlledUnitId = controlledUnitId;
             this.aoeAbilityTarget = aoeAbilityTarget;
             this.abilityToUse = abilityToUse;
         }

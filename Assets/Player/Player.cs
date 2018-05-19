@@ -345,7 +345,7 @@ public class Player : MonoBehaviour {
             GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetBuilding(building.type), building.position, building.rotation);
             Building createdBuilding = newObject.GetComponent<Building>();
             createdBuilding.SetData(building);
-            createdBuilding.transform.parent = unitsWrapper.transform;
+            createdBuilding.transform.parent = buildingsWrapper.transform;
             createdBuilding.SetPlayer();
             createdBuilding.SetTeamColor();
 

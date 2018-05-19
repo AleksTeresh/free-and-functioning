@@ -34,8 +34,6 @@ public class GateAlarmTrigger : EventObject {
                     unit.StartMove(poistionToMoveTo.Value);
                 });
             }
-
-            SaveManager.SaveGame(Constants.LAST_SAVE_FILENAME);
         } 
     }
 

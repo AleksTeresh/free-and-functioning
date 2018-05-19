@@ -20,6 +20,8 @@ namespace Events
 
         [HideInInspector] public float timeInState = 0f;
 
+        private bool sceneWasLoaded = false;
+
         protected virtual void AwakeObj()
         {
             player = GetComponent<Player>();
@@ -33,7 +35,7 @@ namespace Events
         {
             AwakeObj();
 
-            if (currentState)
+            if (currentState && !sceneWasLoaded)
             {
                 currentState.EnterState(this);
             }
@@ -68,6 +70,7 @@ namespace Events
             data.currentState = currentState.name.Contains("(")
                 ? currentState.name.Substring(0, currentState.name.IndexOf("(")).Trim()
                 : currentState.name;
+            data.dialogManagerData = dialogManager.GetData();
 
             return data;
         }
@@ -83,6 +86,12 @@ namespace Events
                 ? currentState.name.Substring(0, currentState.name.IndexOf("(")).Trim()
                 : currentState.name;
             }
+
+            AwakeObj();
+
+            dialogManager.SetData(data.dialogManagerData);
+
+            sceneWasLoaded = true;
         }
     }
 }

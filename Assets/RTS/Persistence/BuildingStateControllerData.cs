@@ -10,12 +10,16 @@ namespace Persistence
     {
         public float spawnTimer;
 
+        public int controlledBuildingId;
+
         public BuildingStateControllerData (
             StateControllerData baseStateController,
-            float spawnTimer
+            float spawnTimer,
+            int controlledBuildingId
         ) : base(baseStateController)
         {
             this.spawnTimer = spawnTimer;
+            this.controlledBuildingId = controlledBuildingId;
         }
     }
 }

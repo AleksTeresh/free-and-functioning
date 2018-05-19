@@ -32,7 +32,8 @@ public class BuildingStateController : StateController
 
         return new BuildingStateControllerData(
             baseData,
-            spawnTimer
+            spawnTimer,
+            building ? building.ObjectId : -1
         );
     }
 
@@ -41,5 +42,13 @@ public class BuildingStateController : StateController
         base.SetData(data);
 
         spawnTimer = data.spawnTimer;
+        var buildingObj = data.controlledBuildingId != -1
+            ? Player.GetObjectById(data.controlledBuildingId)
+            : null;
+
+        if (buildingObj)
+        {
+            building = buildingObj.GetComponent<Building>();
+        }
     }
 }

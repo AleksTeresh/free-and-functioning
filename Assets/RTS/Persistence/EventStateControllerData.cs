@@ -10,5 +10,6 @@ namespace Persistence
     {
         public float timeInState;
         public string currentState;
+        public DialogManagerData dialogManagerData;
     }
 }

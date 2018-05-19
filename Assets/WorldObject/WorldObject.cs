@@ -745,9 +745,9 @@ public class WorldObject : MonoBehaviour {
             currentWeaponMultiChargeTime,
             currentAttackDelayTime,
             isInvincible,
-            stateController.GetData(),
+            stateController ? stateController.GetData() : null,
             underAttackFrameCounter,
-            fogOfWarAgent.GetData(),
+            fogOfWarAgent ? fogOfWarAgent.GetData() : null,
             transform.position,
             transform.rotation
         );
@@ -781,10 +781,17 @@ public class WorldObject : MonoBehaviour {
         currentWeaponMultiChargeTime = data.currentWeaponMultiChargeTime;
         currentAttackDelayTime = data.currentAttackDelayTime;
         isInvincible = data.isInvincible;
-        stateController.SetData(data.stateController);
-        stateController.controlledObject = this;
+        if (data.stateController != null)
+        {
+            stateController.SetData(data.stateController);
+            stateController.controlledObject = this;
+        }
         underAttackFrameCounter = data.underAttackFrameCounter;
-        fogOfWarAgent.SetData(data.fogOfWarAgent);
+
+        if (data.fogOfWarAgent != null)
+        {
+            fogOfWarAgent.SetData(data.fogOfWarAgent);
+        }
 
         UpdateChildRenderers();
         CalculateBounds();

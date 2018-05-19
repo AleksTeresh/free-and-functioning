@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
-using Statuses;
+using Dialog;
 using AI;
 
 public class GameObjectList : MonoBehaviour {
@@ -17,6 +17,7 @@ public class GameObjectList : MonoBehaviour {
     public Texture2D[] avatars;
     public State[] aiStates;
     public Events.State[] eventStates;
+    public DialogNode[] dialogNodes;
     public GameObject[] uiElements;
     public GameObject[] statuses;
 	public ParticleSystem[] abilityVFX;
@@ -137,7 +138,17 @@ public class GameObjectList : MonoBehaviour {
             if (state.name == name) return state;
         }
 
-        throw new UnregisteredAssetException(GetErrorMessage("AI State", name));
+        throw new UnregisteredAssetException(GetErrorMessage("Event State", name));
+    }
+
+    public DialogNode GetDialogNode (string name)
+    {
+        foreach (DialogNode node in dialogNodes)
+        {
+            if (node.name == name) return node;
+        }
+
+        throw new UnregisteredAssetException(GetErrorMessage("Dialog Node", name));
     }
 
     public GameObject GetUIElement(string name)

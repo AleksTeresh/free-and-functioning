@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dialog;
+using UnityEngine;
 
 namespace RTS
 {
@@ -102,6 +103,11 @@ namespace RTS
         public static Events.State GetEventState(string name)
         {
             return gameObjectList.GetEventState(name);
+        }
+
+        public static DialogNode GetDialogNode(string name)
+        {
+            return gameObjectList.GetDialogNode(name);
         }
 
         public static GameObject GetUIElement(string name)

@@ -89,6 +89,7 @@ public class StateController : MonoBehaviour
             currentStateName.Contains("(") ? currentStateName.Substring(0, currentStateName.IndexOf("(")).Trim() : currentStateName,
             defaultStateName.Contains("(") ? defaultStateName.Substring(0, defaultStateName.IndexOf("(")).Trim() : defaultStateName,
             chaseTarget ? chaseTarget.ObjectId : -1,
+            controlledObject ? controlledObject.ObjectId : -1,
             attacking,
             aiActive
         );
@@ -112,6 +113,9 @@ public class StateController : MonoBehaviour
         chaseTarget = data.chaseTargetId != -1
             ? Player.GetObjectById(data.chaseTargetId)
             : null;
+        controlledObject = data.controlledObjectId != -1
+           ? Player.GetObjectById(data.controlledObjectId)
+           : null;
         attacking = data.attacking;
         aiActive = data.aiActive;
     }

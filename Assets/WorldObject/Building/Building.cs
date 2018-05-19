@@ -198,7 +198,7 @@ public class Building : WorldObject {
 
         return new BuildingData(
             baseData,
-            stateController.GetData(),
+            stateController ? stateController.GetData() : null,
             buildQueue,
             rallyPoint,
             currentBuildProgress,
@@ -215,7 +215,10 @@ public class Building : WorldObject {
         currentBuildProgress = data.currentBuildProgress;
         rallyPoint = data.rallyPoint;
         buildQueue = data.buildQueue;
-        stateController.SetData(data.buildingStateController);
-        stateController.building = this;
+        if (data.buildingStateController != null)
+        {
+            stateController.SetData(data.buildingStateController);
+            stateController.building = this;
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace Persistence
         public int objectId;
         public Vector3 position;
         public Quaternion rotation;
+        public Vector3 scale;
         public bool triggerred;
     }
 }

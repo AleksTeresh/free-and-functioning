@@ -10,7 +10,7 @@ public class DialogTextPanel : MonoBehaviour {
     private Image speakerAvatar;
     private Text speakerName;
 
-    private void Start()
+    public void Start()
     {
         dialogText = GetComponentInChildren<DialogText>().GetComponent<Text>();
         speakerName = GetComponentInChildren<SpeakerName>().GetComponent<Text>();
@@ -33,6 +33,11 @@ public class DialogTextPanel : MonoBehaviour {
     {
         StopAllCoroutines();
         StartCoroutine(TypeSentence(text));
+    }
+
+    public string GetText ()
+    {
+        return dialogText.text;
     }
 
     public void SetSpeakerName (string name)

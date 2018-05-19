@@ -425,7 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerred: 0
-  pressTrigger: {fileID: 0}
+  pressTrigger: {fileID: 114046332407166708, guid: 7d427e724a4f03b4eb20c7c3dda9a127,
+    type: 2}
 --- !u!114 &114921254563203802
 MonoBehaviour:
   m_ObjectHideFlags: 1
