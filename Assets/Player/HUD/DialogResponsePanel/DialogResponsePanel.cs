@@ -17,7 +17,7 @@ public class DialogResponsePanel : MonoBehaviour {
     private List<Button> responseButtons = new List<Button>();
     private int selectedOption = -1;
 
-    private void Start()
+    public void Start()
     {
         responseOptionWrapper = GetComponentInChildren<VerticalLayoutGroup>();
         speakerName = GetComponentInChildren<SpeakerName>().GetComponent<Text>();

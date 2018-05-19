@@ -12,20 +12,23 @@ namespace Events
         public Unit[] unitPrefabs;
         public float radius = 7;
 
-        private bool triggerred = false;
+        // private bool triggerred = false;
 
         private void OnEnable()
         {
-            triggerred = false;
+            var destination = new List<Flag>(FindObjectsOfType<Flag>()).Find(p => p.name == destinationPrefab.name);
+
+            if (destination)
+                destination.triggerred = false;
         }
 
         public override bool Decide(StateController controller)
         {
-            if (triggerred) return false;
-
             var destination = new List<Flag>(FindObjectsOfType<Flag>()).Find(p => p.name == destinationPrefab.name);
 
             if (!destination) return false;
+
+            if (destination.triggerred) return false;
 
             var destPos = destination.transform.position;
             var controllerUnits = controller.player.GetUnits();
@@ -44,7 +47,7 @@ namespace Events
                 }
             }
 
-            triggerred = true;
+            destination.triggerred = true;
             return true;
         }
     }

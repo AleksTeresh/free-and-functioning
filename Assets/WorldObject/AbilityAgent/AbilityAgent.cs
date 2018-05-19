@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 using Abilities;
 using RTS;
+using Persistence;
 
 public class AbilityAgent : MonoBehaviour
 {
@@ -26,6 +28,18 @@ public class AbilityAgent : MonoBehaviour
         }
 
         return null;
+    }
+
+    public Ability FindAbilityByName (string name)
+    {
+        var foundAbility = abilities.First(ability => ability.name == name);
+
+        if (foundAbility == null)
+        {
+            foundAbility = abilitiesMulti.First(ability => ability.name == name);
+        }
+
+        return foundAbility;
     }
 
     public bool CanUseAbilitySlot(int slotIdx)
@@ -91,5 +105,19 @@ public class AbilityAgent : MonoBehaviour
         {
             abilitiesMulti = abilitiesMultiWrapper.GetComponentsInChildren<Ability>();
         }
+    }
+
+    public AbilityAgentData GetData ()
+    {
+        var data = new AbilityAgentData();
+
+        data.abilities = new List<Ability>(abilities)
+            .Select(ability => ability.GetData())
+            .ToArray();
+        data.abilitiesMulti = new List<Ability>(abilitiesMulti)
+            .Select(ability => ability.GetData())
+            .ToArray();
+
+        return data;
     }
 }

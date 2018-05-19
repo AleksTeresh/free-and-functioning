@@ -18,6 +18,8 @@ namespace Events
             {
                 var oldPosition = flag.transform.position;
                 flag.transform.position = new Vector3(oldPosition.x + deltaX, oldPosition.y + deltaY, oldPosition.z + deltaZ);
+
+                flag.triggerred = false;
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,31 @@ public class BuildingStateController : StateController
         base.Update();
 
         spawnTimer += Time.deltaTime;
+    }
+
+    public new BuildingStateControllerData GetData()
+    {
+        var baseData = base.GetData();
+
+        return new BuildingStateControllerData(
+            baseData,
+            spawnTimer,
+            building ? building.ObjectId : -1
+        );
+    }
+
+    public void SetData(BuildingStateControllerData data)
+    {
+        base.SetData(data);
+
+        spawnTimer = data.spawnTimer;
+        var buildingObj = data.controlledBuildingId != -1
+            ? Player.GetObjectById(data.controlledBuildingId)
+            : null;
+
+        if (buildingObj)
+        {
+            building = buildingObj.GetComponent<Building>();
+        }
     }
 }

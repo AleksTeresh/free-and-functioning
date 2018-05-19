@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
-using Newtonsoft.Json;
 
 public class DamageDealer : Unit
 {
@@ -55,7 +54,7 @@ public class DamageDealer : Unit
             FireProjectile(p, "DamageDealerLightProjectile", spawnPoint, rotation, dividedDamage);
         });
     }
-
+    /*
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
@@ -64,7 +63,7 @@ public class DamageDealer : Unit
             case "AimRotation": aimRotation = LoadManager.LoadQuaternion(reader); break;
             default: break;
         }
-    }
+    } */
 
     public override Vector3 GetProjectileSpawnPoint()
     {

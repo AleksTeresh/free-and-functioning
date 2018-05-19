@@ -4,12 +4,12 @@ using System.Linq;
 using UnityEngine;
 using RTS;
 using UnityEngine.AI;
+using Events;
+using Persistence;
 
-public class ElevatableBridge : MonoBehaviour {
-
+public class ElevatableBridge : EventObject
+{
     public float enemyCleanTriggerRadius = 200;
-
-    private bool triggerred = false;
     private NavMeshSurface navMeshSurface;
 
     private void Start()

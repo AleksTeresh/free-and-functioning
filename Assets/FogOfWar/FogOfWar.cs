@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using Assets.FogOfWar;
+using Persistence;
 
 public class FogOfWar : MonoBehaviour {
 
@@ -247,5 +248,23 @@ public class FogOfWar : MonoBehaviour {
             revealedPixels[i] = pixels[i].r == 255;
             discoveredPixels[i] = pixels[i].g == 255;
         }
+    }
+
+    public FogOfWarData GetData()
+    {
+        var data = new FogOfWarData();
+
+        // data.shadowMap = shadowMap;
+        data.pixels = pixels;
+        data.interpolateStartFrame = interpolateStartFrame;
+        // data.lastShadowMap = lastShadowMap;
+
+        return data;
+    }
+
+    public void SetData (FogOfWarData data)
+    {
+        pixels = data.pixels;
+        interpolateStartFrame = data.interpolateStartFrame;
     }
 }

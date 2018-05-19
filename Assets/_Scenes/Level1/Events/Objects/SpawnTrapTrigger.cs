@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using RTS;
 using System;
+using Events;
+using Persistence;
 
-public class SpawnTrapTrigger : MonoBehaviour
+public class SpawnTrapTrigger : EventObject
 {
     public float spawnPointDetectRange = 100;
     public Player enemyPlayer;
@@ -13,8 +13,6 @@ public class SpawnTrapTrigger : MonoBehaviour
 
     [Header("Blocking Wall")]
     public BlockingWallParams[] blockingWalls;
-
-    private bool triggerred = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -46,6 +44,22 @@ public class SpawnTrapTrigger : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, spawnPointDetectRange);
+    }
+
+    public override void SetData(EventObjectData data)
+    {
+        base.SetData(data);
+
+        var enemyPlayers = FindObjectsOfType<Player>();
+
+        foreach (var enemyPlayer in enemyPlayers)
+        {
+            if (!enemyPlayer.human)
+            {
+                this.enemyPlayer = enemyPlayer;
+                return;
+            }
+        }
     }
 
     [Serializable]

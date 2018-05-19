@@ -36,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4587317809377956}
   - component: {fileID: 108112936809325210}
-  - component: {fileID: 114485418474788610}
   - component: {fileID: 114911387185852832}
   m_Layer: 0
   m_Name: HexAltTileLight2
@@ -54,7 +53,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4443922778063678}
   - component: {fileID: 108582138476259406}
-  - component: {fileID: 114855609576733898}
   - component: {fileID: 95148703983856760}
   - component: {fileID: 114335775439417592}
   m_Layer: 0
@@ -73,7 +71,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4858450012259666}
   - component: {fileID: 108725229411493748}
-  - component: {fileID: 114620972699795982}
   - component: {fileID: 114525714459611984}
   m_Layer: 0
   m_Name: HexGridLight
@@ -293,17 +290,6 @@ MonoBehaviour:
   scrollSpeed: 1
   scrollDistance: 16
   scrollDirection: {x: 0, y: 0, z: 1}
---- !u!114 &114485418474788610
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1497841534458782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 727e6f7c313edb74bb7075e687b5620a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114525714459611984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,28 +304,6 @@ MonoBehaviour:
   scrollSpeed: 1
   scrollDistance: 16
   scrollDirection: {x: 0, y: 0, z: 1}
---- !u!114 &114620972699795982
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1712421019036310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 727e6f7c313edb74bb7075e687b5620a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114855609576733898
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1676471564933356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 727e6f7c313edb74bb7075e687b5620a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114911387185852832
 MonoBehaviour:
   m_ObjectHideFlags: 1

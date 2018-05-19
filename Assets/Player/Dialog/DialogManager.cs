@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Events;
+using Persistence;
+using RTS;
 
 namespace Dialog
 {
@@ -109,6 +111,46 @@ namespace Dialog
         public bool IsActive ()
         {
             return dialogResponsePanel.IsOpen() || dialogTextPanel.IsOpen();
+        }
+
+        public DialogManagerData GetData()
+        {
+            var data = new DialogManagerData();
+
+            data.blockGameplay = BlockGameplay;
+            data.currentDialogNode = currentDialogNode.name;
+
+            var sentencesToSave = new List<string>();
+            if (dialogTextPanel.IsOpen())
+            {
+                sentencesToSave.Add(dialogTextPanel.GetText());
+            }
+            sentencesToSave.AddRange(sentences);
+            data.sentences = new Queue<string>(sentencesToSave);
+
+            return data;
+        }
+
+        public void SetData (DialogManagerData dialogManagerData)
+        {
+            Start();
+
+            dialogResponsePanel.Start();
+            dialogTextPanel.Start();
+
+            BlockGameplay = dialogManagerData.blockGameplay;
+            sentences = dialogManagerData.sentences;
+
+            if (dialogManagerData.currentDialogNode != null && dialogManagerData.currentDialogNode != "")
+            {
+                currentDialogNode = ResourceManager.GetDialogNode(dialogManagerData.currentDialogNode);
+
+                if (sentences.Count != 0)
+                {
+                    dialogTextPanel.SetOpen(true);
+                    DisplayNextSentence();
+                }
+            }
         }
     }
 }

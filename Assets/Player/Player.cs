@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
-using Newtonsoft.Json;
 using Abilities;
 using Dialog;
+using Persistence;
+using System.Linq;
 
 public class Player : MonoBehaviour {
 
@@ -189,7 +190,7 @@ public class Player : MonoBehaviour {
         building.UpdateChildRenderers();
         building.CalculateBounds();
     }
-
+    /*
     public virtual void SaveDetails(JsonWriter writer)
     {
         SaveManager.WriteString(writer, "Username", username);
@@ -237,8 +238,8 @@ public class Player : MonoBehaviour {
             else if (reader.TokenType == JsonToken.EndObject) return;
         }
     }
-
-    public WorldObject GetObjectForId(int id)
+    */
+    public static WorldObject GetObjectById(int id)
     {
         WorldObject[] objects = GameObject.FindObjectsOfType(typeof(WorldObject)) as WorldObject[];
         foreach (WorldObject obj in objects)
@@ -248,6 +249,7 @@ public class Player : MonoBehaviour {
         return null;
     }
 
+    /*
     private void LoadBuildings(JsonTextReader reader)
     {
         if (reader == null) return;
@@ -289,10 +291,82 @@ public class Player : MonoBehaviour {
                     unit.LoadDetails(reader);
                     unit.transform.parent = unitsWrapper.transform;
                     unit.SetPlayer();
-                    unit.SetTeamColor();
+                    unit.SetTeamColor();\
                 }
             }
             else if (reader.TokenType == JsonToken.EndArray) return;
         }
+    }
+    */
+    public PlayerData GetData ()
+    {
+        var data = new PlayerData();
+
+        data.selectedObjectId = SelectedObject ? SelectedObject.ObjectId : -1;
+        data.selectedObjectIds = selectedObjects.Select(obj => obj ? obj.ObjectId : -1).ToList();
+        data.teamColor = teamColor;
+        data.username = username;
+        data.human = human;
+        data.lockCursor = lockCursor;
+        data.units = units.Select(unit => unit.GetData()).ToList();
+        data.buildings = buildings.Select(building => building.GetData()).ToList();
+
+        var stateController = GetComponent<Events.StateController>();
+        if (stateController)
+        {
+            data.eventStateController = stateController.GetData();
+        }
+
+        return data;
+    }
+
+    public void SetData (PlayerData data)
+    {
+        Start();
+
+        units.ForEach(unit => Destroy(unit.gameObject));
+        buildings.ForEach(building => Destroy(building.gameObject));
+        Debug.Log("Player existing units and buildings were succefully destroyed");
+
+        units = data.units.Select(unit =>
+        {
+            GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetUnit(unit.type), unit.position, unit.rotation);
+            Unit createdUnit = newObject.GetComponent<Unit>();
+            createdUnit.SetData(unit);
+            createdUnit.transform.parent = unitsWrapper.transform;
+            createdUnit.SetPlayer();
+            createdUnit.SetTeamColor();
+
+            return createdUnit;
+        }).ToList();
+
+        buildings = data.buildings.Select(building =>
+        {
+            GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetBuilding(building.type), building.position, building.rotation);
+            Building createdBuilding = newObject.GetComponent<Building>();
+            createdBuilding.SetData(building);
+            createdBuilding.transform.parent = buildingsWrapper.transform;
+            createdBuilding.SetPlayer();
+            createdBuilding.SetTeamColor();
+
+            return createdBuilding;
+        }).ToList();
+
+        lockCursor = data.lockCursor;
+        human = data.human;
+        username = data.username;
+        teamColor = data.teamColor;
+        SelectedObject = data.selectedObjectId != -1
+            ? GetObjectById(data.selectedObjectId)
+            : null;
+        selectedObjects = data.selectedObjectIds.Select(id => id != -1 ? GetObjectById(id) : null).ToList();
+
+        if (data.eventStateController != null)
+        {
+            var stateController = GetComponent<Events.StateController>();
+            stateController.SetData(data.eventStateController);
+        }
+
+        Start();
     }
 }

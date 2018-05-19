@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using RTS;
 using UnityEngine.AI;
+using Events;
+using Persistence;
 
-public class SlidableBridge : MonoBehaviour {
-    private bool triggerred = false;
+public class SlidableBridge : EventObject
+{
     private NavMeshSurface navMeshSurface;
 
     public PressTrigger pressTrigger;
@@ -36,6 +36,5 @@ public class SlidableBridge : MonoBehaviour {
 
             yield return 0;
         }
-
     }
 }

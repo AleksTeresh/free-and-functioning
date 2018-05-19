@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using RTS;
-using Newtonsoft.Json;
 using UnityEngine.AI;
 using Statuses;
 using Abilities;
+using Persistence;
 
-public class Unit : WorldObject {
+public class Unit : WorldObject
+{
     private static readonly float HIT_SPHERE_SCALE = 4;
 
     protected new UnitStateController stateController;
@@ -22,9 +23,6 @@ public class Unit : WorldObject {
     // protected bool moving, rotating;
     protected LocalUI localUI;
     protected Collider hitSphereCollider;
-
-    private GameObject destinationTarget;
-    private int loadedDestinationTargetId = -1;
 
     [Header("Audio")]
     public AudioClip driveSound;
@@ -56,13 +54,11 @@ public class Unit : WorldObject {
         {
             if (audioElement != null) audioElement.Play(driveSound);
 
-            this.destinationTarget = null;
-
             if (agent)
             {
                 agent.SetDestination(destination);
             }
-            
+
             /*
             var newPath = new NavMeshPath();
             bool result = agent.CalculatePath(destination, newPath);
@@ -78,49 +74,37 @@ public class Unit : WorldObject {
         }
     }
 
-    public void StartMove(Vector3 destination, GameObject destinationTarget)
-    {
-        StartMove(destination);
-        this.destinationTarget = destinationTarget;
-    }
-
     public void StopMove()
     {
         if (audioElement != null) audioElement.Stop(driveSound);
 
-        this.destinationTarget = null;
         agent.isStopped = true;
         agent.ResetPath();
     }
-
+    /*
     public override void SaveDetails(JsonWriter writer)
     {
         base.SaveDetails(writer);
         SaveManager.WriteVector(writer, "Velocity", agent.velocity);
         SaveManager.WriteVector(writer, "Destination", agent.destination);
-        if (destinationTarget)
-        {
-            WorldObject destinationObject = destinationTarget.GetComponent<WorldObject>();
-            if (destinationObject) SaveManager.WriteInt(writer, "DestinationTargetId", destinationObject.ObjectId);
-        }
-    }
+    }  */
 
-	public override void TakeDamage (int damage, AttackType attackType)
-	{
-		base.TakeDamage (damage, attackType);
+    public override void TakeDamage(int damage, AttackType attackType)
+    {
+        base.TakeDamage(damage, attackType);
 
         if (takeDamageEffect)
         {
             takeDamageEffect.Play();
         }
-	}
+    }
 
     public override bool CanAddStatus()
     {
         return true;
     }
 
-    public NavMeshAgent GetNavMeshAgent ()
+    public NavMeshAgent GetNavMeshAgent()
     {
         return agent;
     }
@@ -129,7 +113,7 @@ public class Unit : WorldObject {
     {
         return hitSphereCollider;
     }
-
+    /*
     protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         base.HandleLoadedProperty(reader, propertyName, readValue);
@@ -137,10 +121,9 @@ public class Unit : WorldObject {
         {
             case "Velocity": agent.velocity = LoadManager.LoadVector(reader); break;
             case "Destination": agent.destination = LoadManager.LoadVector(reader); break;
-            case "DestinationTargetId": loadedDestinationTargetId = (int)(System.Int64)readValue; break;
             default: break;
         }
-    }
+    } */
 
     public virtual bool IsMajor()
     {
@@ -162,7 +145,7 @@ public class Unit : WorldObject {
         base.Awake();
 
         agent = GetComponent<NavMeshAgent>();
-		takeDamageEffect = GetComponentInChildren<ParticleSystem>();
+        takeDamageEffect = GetComponentInChildren<ParticleSystem>();
 
         stateController = GetComponent<UnitStateController>();
     }
@@ -170,11 +153,6 @@ public class Unit : WorldObject {
     protected override void Start()
     {
         base.Start();
-
-        if (player && loadedSavedValues && loadedDestinationTargetId >= 0)
-        {
-            destinationTarget = player.GetObjectForId(loadedDestinationTargetId).gameObject;
-        }
 
         // instantiate localUI
         var localUIObject = Instantiate(ResourceManager.GetUIElement("LocalUI"), transform);
@@ -230,9 +208,9 @@ public class Unit : WorldObject {
         audioElement.Add(sounds, volumes);
     }
 
-	protected override void AimAtTarget(WorldObject target)
-	{
-		base.AimAtTarget(target);
+    protected override void AimAtTarget(WorldObject target)
+    {
+        base.AimAtTarget(target);
         aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
         aimTarget = target;
     }
@@ -281,5 +259,38 @@ public class Unit : WorldObject {
                 aiming = false;
             }
         }
+    }
+
+    public new UnitData GetData()
+    {
+        var baseData = base.GetData();
+
+        return new UnitData(
+            baseData,
+            stateController.GetData(),
+            abilityAgent.GetData(),
+            holdingPosition,
+            aimTarget ? aimTarget.ObjectId : -1,
+            agent.destination
+        );
+    }
+
+    public void SetData (UnitData data)
+    {
+        base.SetData(data);
+        Start();
+
+        if (data.type == "Level1_Tanker" || data.type == "Level1_Healer" || data.type == "Level1_DamageDealer")
+        {
+            Debug.Log("Got it");
+        }
+
+        aimTarget = data.aimTargetId != -1
+            ? Player.GetObjectById(data.aimTargetId)
+            : null;
+        // agent.SetDestination(data.destination);
+        holdingPosition = data.holdingPosition;
+        stateController.SetData(data.unitStateController);
+        stateController.unit = this;
     }
 }

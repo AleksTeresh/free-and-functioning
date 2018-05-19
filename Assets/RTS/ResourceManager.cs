@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dialog;
+using UnityEngine;
 
 namespace RTS
 {
@@ -88,15 +89,25 @@ namespace RTS
         {
             return gameObjectList.GetEnemyObject();
         }
-
+        /*
         public static Texture2D GetBuildImage(string name)
         {
             return gameObjectList.GetBuildImage(name);
-        }
+        } */
 
         public static AI.State GetAiState(string name)
         {
             return gameObjectList.GetAiState(name);
+        }
+
+        public static Events.State GetEventState(string name)
+        {
+            return gameObjectList.GetEventState(name);
+        }
+
+        public static DialogNode GetDialogNode(string name)
+        {
+            return gameObjectList.GetDialogNode(name);
         }
 
         public static GameObject GetUIElement(string name)

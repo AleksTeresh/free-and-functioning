@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using RTS;
+using Persistence;
+using Events;
 
 /**
  * Singleton that handles loading level details. This includes making sure
@@ -66,7 +68,9 @@ public class LevelLoader : MonoBehaviour
         {
             if (ResourceManager.LevelName != null && ResourceManager.LevelName != "")
             {
-                LoadManager.LoadGame(ResourceManager.LevelName);
+                // since now we have only 1 save slot, level name does not matter
+                LoadManager.LoadGame(Constants.LAST_SAVE_FILENAME);
+                ResourceManager.LevelName = "";
             }
             else
             {
@@ -90,6 +94,13 @@ public class LevelLoader : MonoBehaviour
         foreach (WorldObject worldObject in worldObjects)
         {
             worldObject.ObjectId = nextObjectId++;
+            if (nextObjectId >= int.MaxValue) nextObjectId = 0;
+        }
+
+        EventObject[] eventObjects = GameObject.FindObjectsOfType(typeof(EventObject)) as EventObject[];
+        foreach (EventObject eventObject in eventObjects)
+        {
+            eventObject.ObjectId = nextObjectId++;
             if (nextObjectId >= int.MaxValue) nextObjectId = 0;
         }
     }

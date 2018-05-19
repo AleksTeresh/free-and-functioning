@@ -5,6 +5,7 @@ using System.Text;
 using Statuses;
 using UnityEngine;
 using RTS;
+using Persistence;
 
 namespace Abilities
 {
@@ -123,5 +124,41 @@ namespace Abilities
 
 			// Default behaviour needs to be overidden by children
 		}
-	}
+
+        public AbilityData GetData ()
+        {
+            var data = new AbilityData();
+
+            data.type = name.Contains("(") ? name.Substring(0, name.IndexOf("(")).Trim() : name;
+            data.abilityName = abilityName;
+            data.targetIds = targets
+                .Select(target => target ? target.ObjectId : -1)
+                .Where(id => id != -1)
+                .ToList();
+            data.isPending = isPending;
+            data.blocked = blocked;
+            data.cooldownTimer = cooldownTimer;
+            data.delayTimer = delayTimer;
+            data.statuses = new List<Status>(statuses).Select(status => status.GetData()).ToArray();
+
+            return data;
+        }
+
+        public void SetData (AbilityData data)
+        {
+            abilityName = data.abilityName;
+            targets = data.targetIds.Select(id => id != -1 ? Player.GetObjectById(id) : null).ToList();
+            isPending = data.isPending;
+            blocked = data.blocked;
+            cooldownTimer = data.cooldownTimer;
+            delayTimer = data.delayTimer;
+            statuses = data.statuses.Select(status =>
+            {
+                var statusObject = (GameObject)GameObject.Instantiate(ResourceManager.GetStatus(status.type));
+                var createdStatus = statusObject.GetComponent<Status>();
+
+                return createdStatus;
+            }).ToArray();
+        }
+    }
 }

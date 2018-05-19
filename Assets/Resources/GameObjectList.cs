@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
-using Statuses;
+using Dialog;
 using AI;
 
 public class GameObjectList : MonoBehaviour {
@@ -16,6 +16,8 @@ public class GameObjectList : MonoBehaviour {
     public GameObject enemy;
     public Texture2D[] avatars;
     public State[] aiStates;
+    public Events.State[] eventStates;
+    public DialogNode[] dialogNodes;
     public GameObject[] uiElements;
     public GameObject[] statuses;
 	public ParticleSystem[] abilityVFX;
@@ -24,7 +26,7 @@ public class GameObjectList : MonoBehaviour {
 
     void Awake()
     {
-        PlayerManager.Load();
+        // PlayerManager.Load();
         PlayerManager.SetAvatarTextures(avatars);
 
         // DontDestroyOnLoad(transform.gameObject);
@@ -92,7 +94,7 @@ public class GameObjectList : MonoBehaviour {
     {
         return enemy;
     }
-
+    /*
     public Texture2D GetBuildImage(string name)
     {
         for (int i = 0; i < buildings.Length; i++)
@@ -107,7 +109,7 @@ public class GameObjectList : MonoBehaviour {
         }
         
 		throw new UnregisteredAssetException (GetErrorMessage("Build Image", name));
-    }
+    }  */
 
     public GameObject GetStatus(string name)
     {
@@ -127,6 +129,26 @@ public class GameObjectList : MonoBehaviour {
         }
 
 		throw new UnregisteredAssetException (GetErrorMessage("AI State", name));
+    }
+
+    public Events.State GetEventState(string name)
+    {
+        foreach (Events.State state in eventStates)
+        {
+            if (state.name == name) return state;
+        }
+
+        throw new UnregisteredAssetException(GetErrorMessage("Event State", name));
+    }
+
+    public DialogNode GetDialogNode (string name)
+    {
+        foreach (DialogNode node in dialogNodes)
+        {
+            if (node.name == name) return node;
+        }
+
+        throw new UnregisteredAssetException(GetErrorMessage("Dialog Node", name));
     }
 
     public GameObject GetUIElement(string name)
