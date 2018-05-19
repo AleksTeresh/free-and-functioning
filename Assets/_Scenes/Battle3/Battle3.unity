@@ -561,9 +561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552943f3fd9c06e44bdc8edbeedcf3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &114169060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4673,9 +4670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552943f3fd9c06e44bdc8edbeedcf3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &1021958635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8119,7 +8113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d9ae5bdc23cb14cb718157edded862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 24e8791f84ab5f14792cf8e049cc3f6d, type: 2}
 --- !u!1001 &1673770507
 Prefab:
   m_ObjectHideFlags: 0
@@ -9995,7 +9988,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2016002728}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 425.5, y: 40.1, z: 247.2}
+  m_LocalPosition: {x: 98.3, y: 52.4, z: 399.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AI;
+using Persistence;
+using RTS;
 
 public class StateController : MonoBehaviour
 {
     public State currentState;
     public State remainState;
 
-    [HideInInspector] private State defaultState;
+    [HideInInspector] protected State defaultState;
 
     [HideInInspector] public WorldObject chaseTarget;
 
@@ -77,4 +79,41 @@ public class StateController : MonoBehaviour
             currentState.UpdateStateExpensive(this);
         }
     }
+
+    public StateControllerData GetData ()
+    {
+        string currentStateName = currentState.name;
+        string defaultStateName = defaultState.name;
+
+        var data = new StateControllerData(
+            currentStateName.Contains("(") ? currentStateName.Substring(0, currentStateName.IndexOf("(")).Trim() : currentStateName,
+            defaultStateName.Contains("(") ? defaultStateName.Substring(0, defaultStateName.IndexOf("(")).Trim() : defaultStateName,
+            chaseTarget ? chaseTarget.ObjectId : -1,
+            attacking,
+            aiActive
+        );
+
+        return data;
+    }
+
+    public void SetData (StateControllerData data)
+    {
+        if (data == null) return;
+
+        currentState = GameObject.Instantiate(ResourceManager.GetAiState(data.currentState));
+        defaultState = GameObject.Instantiate(ResourceManager.GetAiState(data.defaultState));
+
+        string currentStateName = currentState.name;
+        string defaultStateName = defaultState.name;
+
+        currentState.name = currentStateName.Contains("(") ? currentStateName.Substring(0, currentStateName.IndexOf("(")).Trim() : currentStateName;
+        defaultState.name = defaultStateName.Contains("(") ? defaultStateName.Substring(0, defaultStateName.IndexOf("(")).Trim() : defaultStateName;
+
+        chaseTarget = data.chaseTargetId != -1
+            ? Player.GetObjectById(data.chaseTargetId)
+            : null;
+        attacking = data.attacking;
+        aiActive = data.aiActive;
+    }
 }
+

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Abilities;
+using Persistence;
 
 public class UnitStateController : StateController
 {
@@ -39,5 +40,38 @@ public class UnitStateController : StateController
         {
             navMeshAgent.enabled = false;
         }
+    }
+
+    public new UnitStateControllerData GetData()
+    {
+        var baseData = base.GetData();
+
+        return new UnitStateControllerData(
+            baseData,
+            wayPointList,
+            nextWayPoint,
+            allyAbilityTarget ? allyAbilityTarget.ObjectId : -1,
+            enemyAbilityTarget ? enemyAbilityTarget.ObjectId : -1,
+            aoeAbilityTarget,
+            abilityToUse ? abilityToUse.GetData() : null
+        );
+    }
+
+    public void SetData (UnitStateControllerData data)
+    {
+        base.SetData(data);
+
+        wayPointList = data.wayPointList;
+        nextWayPoint = data.nextWayPoint;
+        allyAbilityTarget = data.allyAbilityTargetId != -1
+            ? Player.GetObjectById(data.allyAbilityTargetId)
+            : null;
+        enemyAbilityTarget = data.enemyAbilityTargetId != -1
+            ? Player.GetObjectById(data.enemyAbilityTargetId)
+            : null;
+        aoeAbilityTarget = data.aoeAbilityTarget;
+        abilityToUse = data.abilityToUse != null
+            ? unit.GetAbilityAgent().FindAbilityByName(data.abilityToUse.type)
+            : null;
     }
 }

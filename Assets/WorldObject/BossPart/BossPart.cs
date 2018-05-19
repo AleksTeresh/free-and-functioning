@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using RTS;
 using Abilities;
+using Persistence;
 
 public class BossPart : WorldObject {
     private AbilityAgent abilityAgent;
-
-    private GameObject destinationTarget;
-    private int loadedDestinationTargetId = -1;
 
     [Header("Audio")]
     public AudioClip moveSound;
@@ -81,7 +79,7 @@ public class BossPart : WorldObject {
 
             if (loadedSavedValues)
             {
-                // if (loadedTargetId >= 0) target = player.GetObjectForId(loadedTargetId);
+                // if (loadedTargetId >= 0) target = player.GetObjectById(loadedTargetId);
             }
             else
             {
@@ -94,11 +92,6 @@ public class BossPart : WorldObject {
         if (stateController)
         {
             stateController.SetupAI(true);
-        }
-
-        if (player && loadedSavedValues && loadedDestinationTargetId >= 0)
-        {
-            destinationTarget = player.GetObjectForId(loadedDestinationTargetId).gameObject;
         }
 
         // instantiate abilityUser
@@ -159,5 +152,27 @@ public class BossPart : WorldObject {
                 aiming = false;
             }
         }
+    }
+
+    public new BossPartData GetData()
+    {
+        var baseData = base.GetData();
+
+        return new BossPartData(
+            baseData,
+            abilityAgent.GetData(),
+            aimTarget ? baseData.objectId : -1
+        );
+    }
+
+    public void SetData (BossPartData data)
+    {
+        base.SetData(data);
+        Start();
+
+        // abilityAgent.SetData(data.abilityAgent);
+        aimTarget = data.aimTargetId != -1
+            ? Player.GetObjectById(data.aimTargetId)
+            : null;
     }
 }

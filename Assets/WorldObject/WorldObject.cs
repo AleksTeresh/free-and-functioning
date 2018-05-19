@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using RTS;
-using Newtonsoft.Json;
 using Abilities;
 using Statuses;
+using System;
+using Persistence;
 
 public class WorldObject : MonoBehaviour {
     public int ObjectId { get; set; }
     public string objectName;
-    public Texture2D buildImage;
-    public int cost, sellValue, hitPoints, maxHitPoints;
+    // public Texture2D buildImage;
+    // public int cost, sellValue,
+    public int hitPoints;
+    public int maxHitPoints;
 
     // an object is busy and does not react to any commands
     protected bool isBusy;
@@ -23,16 +26,21 @@ public class WorldObject : MonoBehaviour {
     private Statuses.Statuses statusesWrapper;
     public List<Status> ActiveStatuses { get; private set; }
 
+    [NonSerialized]
     protected Player player;
+    [NonSerialized]
     protected HUD hud;
+    [NonSerialized]
     protected TargetManager targetManager;
     protected string[] actions = { };
     protected bool currentlySelected = false;
     private Light selectionLight;
+    [NonSerialized]
     protected Bounds selectionBounds;
+    [NonSerialized]
     protected Rect playingArea = new Rect(0.0f, 0.0f, 0.0f, 0.0f);
-    protected GUIStyle healthStyle = new GUIStyle();
-    protected float healthPercentage = 1.0f;
+    // protected GUIStyle healthStyle = new GUIStyle();
+    // protected float healthPercentage = 1.0f;
 
     [Header("Weapon and attack")]
 
@@ -104,7 +112,7 @@ public class WorldObject : MonoBehaviour {
     {
         player = transform.root.GetComponentInChildren<Player>();
     }
-
+    /*
     public virtual void SaveDetails(JsonWriter writer)
     {
         SaveManager.WriteString(writer, "Type", name);
@@ -120,7 +128,7 @@ public class WorldObject : MonoBehaviour {
  
         // if (target != null) SaveManager.WriteInt(writer, "TargetId", target.ObjectId);
     }
-
+    
     public void LoadDetails(JsonTextReader reader)
     {
         while (reader.Read())
@@ -149,7 +157,7 @@ public class WorldObject : MonoBehaviour {
         loadedSavedValues = true;
     }
 
-
+        */
 
     public virtual void PerformAction(string actionToPerform)
     {
@@ -303,7 +311,7 @@ public class WorldObject : MonoBehaviour {
 
             if (loadedSavedValues)
             {
-                // if (loadedTargetId >= 0) target = player.GetObjectForId(loadedTargetId);
+                // if (loadedTargetId >= 0) target = player.GetObjectById(loadedTargetId);
             }
             else
             {
@@ -489,7 +497,7 @@ public class WorldObject : MonoBehaviour {
         return spawnPoint;
     }
 
-
+    /*
     protected virtual void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
     {
         switch (propertyName)
@@ -507,7 +515,7 @@ public class WorldObject : MonoBehaviour {
             case "TargetId": loadedTargetId = (int)(System.Int64)readValue; break;
             default: break;
         }
-    }
+    }  */
 
     public bool IsOwnedBy(Player owner)
     {
@@ -717,5 +725,75 @@ public class WorldObject : MonoBehaviour {
 
         animator.SetBool("attacking", IsAttacking());
         animator.SetBool("inBattle", !ReadyToFire());
+    }
+
+    public WorldObjectData GetData ()
+    {
+        return new WorldObjectData(
+            name.Contains("(") ? name.Substring(0, name.IndexOf("(")).Trim() : name,
+            ObjectId,
+            objectName,
+            hitPoints,
+            isBusy,
+            ActiveStatuses.Select(status => status.GetData()).ToList(),
+            currentlySelected,
+            movingIntoPosition,
+            aiming,
+            aimRotation,
+            attackDelayFrameCounter,
+            currentWeaponChargeTime,
+            currentWeaponMultiChargeTime,
+            currentAttackDelayTime,
+            isInvincible,
+            stateController.GetData(),
+            underAttackFrameCounter,
+            fogOfWarAgent.GetData(),
+            transform.position,
+            transform.rotation
+        );
+    }
+
+    public void SetData (WorldObjectData data)
+    {
+        Start();
+
+        name = data.type;
+        ObjectId = data.objectId;
+        objectName = data.objectName;
+        hitPoints = data.hitPoints;
+        isBusy = data.isBusy;
+        ActiveStatuses = data.activeStatuse.Select(status =>
+        {
+            var statusObject = (GameObject)GameObject.Instantiate(ResourceManager.GetStatus(status.type));
+            var createdStatus = statusObject.GetComponent<Status>();
+            createdStatus.transform.parent = statusesWrapper.transform;
+
+            createdStatus.SetData(status);
+
+            return createdStatus;
+        }).ToList();
+        currentlySelected = data.currentlySelected;
+        movingIntoPosition = data.movingIntoPosition;
+        aiming = data.aiming;
+        aimRotation = data.aimRotation;
+        attackDelayFrameCounter = data.attackDelayFrameCounter;
+        currentWeaponChargeTime = data.currentWeaponChargeTime;
+        currentWeaponMultiChargeTime = data.currentWeaponMultiChargeTime;
+        currentAttackDelayTime = data.currentAttackDelayTime;
+        isInvincible = data.isInvincible;
+        stateController.SetData(data.stateController);
+        stateController.controlledObject = this;
+        underAttackFrameCounter = data.underAttackFrameCounter;
+        fogOfWarAgent.SetData(data.fogOfWarAgent);
+
+        UpdateChildRenderers();
+        CalculateBounds();
+        var humanPlayer = PlayerManager.GetHumanPlayer(FindObjectsOfType<Player>());
+        if (humanPlayer)
+        {
+            targetManager = humanPlayer.GetComponentInChildren<TargetManager>();
+        }
+
+        SetPlayer();
     }
 }

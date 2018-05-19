@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using RTS;
+using Events;
+using Persistence;
+using UnityEngine.SceneManagement;
 
-public class GateAlarmTrigger : MonoBehaviour {
+public class GateAlarmTrigger : EventObject {
     public float alarmRange = 150;
-
-    private bool triggerred = false;
 
     public Vector3 relativeRallyPoint;
 
@@ -33,6 +34,8 @@ public class GateAlarmTrigger : MonoBehaviour {
                     unit.StartMove(poistionToMoveTo.Value);
                 });
             }
+
+            SaveManager.SaveGame(Constants.LAST_SAVE_FILENAME);
         } 
     }
 

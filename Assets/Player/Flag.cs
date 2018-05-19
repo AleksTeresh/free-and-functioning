@@ -1,5 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Events;
 
-public class Flag : MonoBehaviour {}
+public class Flag : EventObject {}

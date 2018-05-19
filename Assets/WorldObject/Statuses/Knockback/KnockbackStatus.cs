@@ -17,7 +17,7 @@ namespace Statuses
         {
             maxDuration = distance / speed;
 
-            if (target && (projectileInflicter || (aoeInflicter && inflicter)))
+            if (target && (projectileInflicter || (aoeInflicter && inflictor)))
             {
                 // Copy projectile's direction, because projectile will be destroyed further in this frame
                 knockbackDirection = CalculateKnockbackDirection();
@@ -56,7 +56,7 @@ namespace Statuses
             {
                 return new Vector3(projectileInflicter.transform.forward.x, 0.0f, projectileInflicter.transform.forward.z);
             }
-            else if (aoeInflicter && inflicter)
+            else if (aoeInflicter && inflictor)
             {
                 Vector3 direction;
 
@@ -64,9 +64,9 @@ namespace Statuses
                 // Sometimes Y coordinates of AoE and target don't match exactly, thus perform check only on X and Z
                 if (target.transform.position.x == aoeInflicter.transform.position.x && target.transform.position.z == aoeInflicter.transform.position.z)
                 {
-                    direction = (target.transform.position - inflicter.transform.position);
+                    direction = (target.transform.position - inflictor.transform.position);
                 }
-                // If AoE and target positions are the same, push target away from the inflicter
+                // If AoE and target positions are the same, push target away from the inflictor
                 else
                 {
                      direction = (target.transform.position - aoeInflicter.transform.position);
@@ -78,7 +78,7 @@ namespace Statuses
                 return direction;
             }
 
-            throw new Exception("Either inflicter and aoeInflicter or projectileInflicter must be set");
+            throw new Exception("Either inflictor and aoeInflicter or projectileInflicter must be set");
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Newtonsoft.Json;
 using System.IO;
 
 namespace RTS
@@ -57,9 +56,9 @@ namespace RTS
                 Directory.CreateDirectory("SavedGames" + Path.DirectorySeparatorChar + name);
             }
 
-            Save();
+            // Save();
         }
-
+        /*
         public static void Load()
         {
             players.Clear();
@@ -112,7 +111,7 @@ namespace RTS
                 }
             }
         }
-
+        */
         public static int GetAvatar(string playerName)
         {
             for (int i = 0; i < players.Count; i++)
@@ -141,7 +140,7 @@ namespace RTS
             for (int i = 0; i < playerNames.Length; i++) playerNames[i] = players[i].Name;
             return playerNames;
         }
-
+        /*
         private static void SavePlayer(JsonWriter writer, PlayerDetails player)
         {
             writer.WriteStartObject();
@@ -153,7 +152,7 @@ namespace RTS
 
             writer.WriteEndObject();
         }
-
+        
         private static void LoadPlayers(JsonTextReader reader)
         {
             while (reader.Read())
@@ -162,7 +161,7 @@ namespace RTS
                 else if (reader.TokenType == JsonToken.EndArray) return;
             }
         }
-
+        
         private static void LoadPlayer(JsonTextReader reader)
         {
             string currValue = "", name = "";
@@ -195,7 +194,7 @@ namespace RTS
                 }
             }
         }
-
+         */
         public static string GetPlayerName()
         {
             return currentPlayer.Name == "" ? "Unknown" : currentPlayer.Name;
