@@ -196,7 +196,7 @@ public class UserInput : MonoBehaviour {
 
     private void AttackModeSelection()
     {
-		if (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode"))
+		if (player.selectedAllyTargettingAbility == null && (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode")))
         {
             // get all the objects controlled through AI
             var stateControlles = player.GetComponentsInChildren<UnitStateController>();

@@ -10,7 +10,7 @@ namespace RTS
             "Select2",
             "Select3",
             "Select4",
-            "SelectAll"
+            "AllyAbilityToAll"
         };
 
         public static void HandleInput(Player player, HUD hud)
@@ -24,7 +24,7 @@ namespace RTS
                         string hotkey = hotkeys[i];
 
                         // If player hits space use on all allies
-                        if (hotkey == "SelectAll")
+                        if (hotkey == "AllyAbilityToAll")
                         {
                             UseAbilityOnAllies(player);
                         }
