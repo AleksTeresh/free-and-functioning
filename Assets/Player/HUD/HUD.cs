@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 using RTS;
 using Events;
@@ -315,7 +314,14 @@ public class HUD : MonoBehaviour
             var abilities = selectedUnit.GetAbilityAgent().abilities;
             var multiAbilities = selectedUnit.GetAbilityAgent().abilitiesMulti;
 
-            abilityBar.DrawAbilities(abilities, multiAbilities, targetManager.InMultiMode);
+            abilityBar.DrawAbilities(
+                abilities,
+                multiAbilities,
+                targetManager.InMultiMode,
+                targetManager.InMultiMode
+                    ? player.selectedAlliesTargettingAbility
+                    : player.selectedAllyTargettingAbility
+            );
         }
     }
 

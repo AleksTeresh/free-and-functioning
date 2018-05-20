@@ -23,7 +23,7 @@ public class AbilityBar : MonoBehaviour {
         });
     }
 
-    public void DrawAbilities(Ability[] abilities, Ability[] multiAbilities, bool isInMultiMode)
+    public void DrawAbilities(Ability[] abilities, Ability[] multiAbilities, bool isInMultiMode, Ability pendingAllyTargetingAbility)
     {
         Ability[] abilitiesToDraw = isInMultiMode ? multiAbilities : abilities;
 
@@ -35,7 +35,18 @@ public class AbilityBar : MonoBehaviour {
                 // TODO uncomment the line below once abilities have their icons
 
                 float cooldownRation = AbilityUtils.GetAbilitySlotCooldownRation(abilities, multiAbilities, i);
+                bool abilityIsWaitingForTargetSelection = abilitiesToDraw[i] &&
+                    pendingAllyTargetingAbility &&
+                    pendingAllyTargetingAbility.name == abilitiesToDraw[i].name;
 
+                AbilitySlots[i].Frame.color = new Color(
+                    AbilitySlots[i].Frame.color.r,
+                    AbilitySlots[i].Frame.color.g,
+                    AbilitySlots[i].Frame.color.b,
+                    abilityIsWaitingForTargetSelection
+                        ? 255
+                        : 0
+                );
                 AbilitySlots[i].Image.color = Color.cyan;
                 AbilitySlots[i].Name.text = abilitiesToDraw[i].abilityName;
                 AbilitySlots[i].Shade.sizeDelta = new Vector2(

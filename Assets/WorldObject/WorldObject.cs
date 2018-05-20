@@ -35,6 +35,7 @@ public class WorldObject : MonoBehaviour {
     protected string[] actions = { };
     protected bool currentlySelected = false;
     private Light selectionLight;
+    private Light targetLight;
     [NonSerialized]
     protected Bounds selectionBounds;
     [NonSerialized]
@@ -59,6 +60,7 @@ public class WorldObject : MonoBehaviour {
     private float currentWeaponChargeTime;
     private float currentWeaponMultiChargeTime;
     private float currentAttackDelayTime = 0;
+    private int chasedFrameCounter;
 
     [Header("Defence and Invincibility")]
     public float meleeDefence = 0;
@@ -272,6 +274,15 @@ public class WorldObject : MonoBehaviour {
         this.currentWeaponMultiChargeTime = 0;
     }
 
+    public virtual void MarkAsChasedTarget()
+    {
+       chasedFrameCounter = 2;
+       if (targetLight != null)
+       {
+            targetLight.enabled = true;
+       }
+    }
+
     protected virtual void Awake()
     {
         fogOfWarAgent = GetComponent<FogOfWarAgent>();
@@ -317,6 +328,13 @@ public class WorldObject : MonoBehaviour {
             {
                 SetTeamColor();
             }
+
+            if (!GetPlayer().human)
+            {
+                var targetLightObj = Instantiate(ResourceManager.GetVfx("TargetIndicator"), transform);
+                targetLightObj.transform.parent = transform;
+                targetLight = targetLightObj.GetComponent<Light>();
+            }
         }
 
         InitialiseAudio();
@@ -333,6 +351,8 @@ public class WorldObject : MonoBehaviour {
     {
         currentWeaponChargeTime += Time.deltaTime;
         underAttackFrameCounter = Mathf.Max(0, underAttackFrameCounter - 1);
+
+        chasedFrameCounter = Mathf.Max(0, chasedFrameCounter - 1);
 
         attackDelayFrameCounter = Mathf.Max(0, attackDelayFrameCounter - 1);
         if (IsAttacking())
@@ -352,6 +372,8 @@ public class WorldObject : MonoBehaviour {
         RemoveInactiveStatuses();
 
         HandleSelectionLight();
+
+        HandleTargetIndicator();
 
         HandleAnimation();
     }
@@ -706,6 +728,14 @@ public class WorldObject : MonoBehaviour {
                         targetManager.SingleTarget.ObjectId == ObjectId
                     )
                 );
+        }
+    }
+
+    private void HandleTargetIndicator ()
+    {
+        if (targetLight && chasedFrameCounter == 0)
+        {
+            targetLight.enabled = false;
         }
     }
 

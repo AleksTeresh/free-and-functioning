@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Events;
 using RTS;
+using UnityEngine.SceneManagement;
 
 namespace Persistence
 {
@@ -11,7 +12,7 @@ namespace Persistence
             if (!triggerred)
             {
                 triggerred = true;
-                SaveManager.SaveGame(Constants.LAST_SAVE_FILENAME);
+                SaveManager.SaveGame(SceneManager.GetActiveScene().name + Constants.SAVE_FILENAME_POSTFIX);
             }
         }
     }

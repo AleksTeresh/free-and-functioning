@@ -69,7 +69,7 @@ public class LevelLoader : MonoBehaviour
             if (ResourceManager.LevelName != null && ResourceManager.LevelName != "")
             {
                 // since now we have only 1 save slot, level name does not matter
-                LoadManager.LoadGame(Constants.LAST_SAVE_FILENAME);
+                LoadManager.LoadGame(ResourceManager.LevelName + Constants.SAVE_FILENAME_POSTFIX);
                 ResourceManager.LevelName = "";
             }
             else

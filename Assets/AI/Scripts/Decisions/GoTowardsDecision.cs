@@ -7,7 +7,6 @@ namespace AI
     [CreateAssetMenu(menuName = "AI/Decisions/GoTowards")]
     public class GoTowardsDecision : Decision
     {
-
         public override bool Decide(StateController controller)
         {
             var self = controller.controlledObject;

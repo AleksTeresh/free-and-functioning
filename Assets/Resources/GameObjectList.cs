@@ -21,6 +21,7 @@ public class GameObjectList : MonoBehaviour {
     public GameObject[] uiElements;
     public GameObject[] statuses;
 	public ParticleSystem[] abilityVFX;
+    public GameObject[] visualEffects;
 	public GameObject[] projectiles;
     public GameObject abilityAgent;
     public AudioClip[] bgm;
@@ -170,6 +171,16 @@ public class GameObjectList : MonoBehaviour {
 
 		throw new UnregisteredAssetException (GetErrorMessage("Ability VFX", name));
 	}
+
+    public GameObject GetVfx(string name)
+    {
+        foreach (GameObject vfx in visualEffects)
+        {
+            if (vfx.name == name) return vfx;
+        }
+
+        throw new UnregisteredAssetException(GetErrorMessage("VFX", name));
+    }
 
     public GameObject GetProjectile(string name)
     {

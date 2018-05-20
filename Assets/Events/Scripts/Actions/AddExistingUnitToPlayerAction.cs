@@ -9,6 +9,7 @@ namespace Events
     public class AddExistingUnitToPlayerAction : Action
     {
         public Unit unitPrefab;
+        public int siblingIndex = -1;
 
         public override void Act(StateController controller)
         {
@@ -22,7 +23,8 @@ namespace Events
                     requiredUnit.transform.position,
                     requiredUnit.transform.position,
                     requiredUnit.transform.rotation,
-                    null
+                    null,
+                    siblingIndex
                 );
 
                 Destroy(requiredUnit.gameObject);
