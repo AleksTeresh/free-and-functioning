@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace Persistence
         public float timeInState;
         public string currentState;
         public DialogManagerData dialogManagerData;
+        public List<int> eventObjectIds;
     }
 }

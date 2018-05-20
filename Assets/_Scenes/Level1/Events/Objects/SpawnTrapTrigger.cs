@@ -124,9 +124,21 @@ public class SpawnTrapTrigger : EventObject
         Gizmos.DrawWireSphere(transform.position, spawnPointDetectRange);
     }
 
+    public override EventObjectData GetData()
+    {
+        EventObjectData baseData = base.GetData();
+
+        SpawnTrapTriggerData data = new SpawnTrapTriggerData(baseData);
+        data.blockingWallDefinitions = blockingWallDefinitions;
+
+        return data;
+    }
+
     public override void SetData(EventObjectData data)
     {
         base.SetData(data);
+
+        blockingWallDefinitions = ((SpawnTrapTriggerData)data).blockingWallDefinitions;
 
         var enemyPlayers = FindObjectsOfType<Player>();
 

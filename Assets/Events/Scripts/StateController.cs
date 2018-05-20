@@ -5,6 +5,7 @@ using Dialog;
 using Formation;
 using Persistence;
 using RTS;
+using System.Linq;
 
 namespace Events
 {
@@ -73,6 +74,7 @@ namespace Events
                 ? currentState.name.Substring(0, currentState.name.IndexOf("(")).Trim()
                 : currentState.name;
             data.dialogManagerData = dialogManager.GetData();
+            data.eventObjectIds = new List<EventObject>(eventObjects).Select(eventObject => eventObject.ObjectId).ToList();
 
             return data;
         }
@@ -88,6 +90,23 @@ namespace Events
                 ? currentState.name.Substring(0, currentState.name.IndexOf("(")).Trim()
                 : currentState.name;
             }
+
+            List<EventObject> loadedEventObjects = new List<EventObject>();
+
+            foreach(int eventObjectId in data.eventObjectIds)
+            {
+                EventObject[] eventObjects = FindObjectsOfType<EventObject>();
+
+                foreach(EventObject eventObject in eventObjects)
+                {
+                    if (eventObject.ObjectId == eventObjectId)
+                    {
+                        loadedEventObjects.Add(eventObject);
+                    }
+                }
+            };
+
+            eventObjects = loadedEventObjects.ToArray();
 
             AwakeObj();
 
