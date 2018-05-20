@@ -115,5 +115,30 @@ namespace RTS
             MonoBehaviour.Destroy(vfxInstance.gameObject,
                 vfxInstance.main.startLifetime.constantMax + vfxInstance.main.duration);
         }
+
+        public static void ApplyAllyAbilityToTarget (WorldObject allyTarget, Player player)
+        {
+            // make sure that a current selection (ability user) belongs to the player and is a Unit
+            if (
+                allyTarget != null &&
+                player.SelectedObject &&
+                player.SelectedObject.GetPlayer().username == player.username &&
+                player.SelectedObject is Unit
+            )
+            {
+                var abilityUser = (Unit)player.SelectedObject;
+
+                InputToCommandManager.AllyAbilityTargetSelectionToState(
+                    abilityUser.GetStateController(), player.selectedAllyTargettingAbility, allyTarget);
+
+                ResetAbilitySelection(player);
+            }
+        }
+
+        public static void ResetAbilitySelection(Player player)
+        {
+            player.selectedAllyTargettingAbility = null;
+            player.selectedAlliesTargettingAbility = null;
+        }
     }
 }

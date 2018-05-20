@@ -16,6 +16,7 @@ public class AbilityBar : MonoBehaviour {
         AbilitySlots.ForEach(p =>
         {
             // p.Image.sprite = null;
+            p.Frame.color = new Color(p.Frame.color.r, p.Frame.color.g, p.Frame.color.b, 0);
             p.Image.color = BACKGROUND_COLOR;
             p.Shade.sizeDelta = new Vector2(-SLOT_WIDTH, p.Shade.sizeDelta.y);
             p.Shade.anchoredPosition = new Vector2(-SLOT_WIDTH / 2, p.Shade.anchoredPosition.y);

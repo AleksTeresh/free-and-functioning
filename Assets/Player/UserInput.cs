@@ -314,7 +314,11 @@ public class UserInput : MonoBehaviour
                     Unit unitToSelect = hitObject.transform.parent.GetComponent<Unit>();
                     if (unitToSelect)
                     {
-                        if (Input.GetButton("SelectionModifier") || Gamepad.GetButton("SelectionModifier"))
+                        if (player.selectedAllyTargettingAbility != null)
+                        {
+                            AbilityUtils.ApplyAllyAbilityToTarget(unitToSelect, player);
+                        }
+                        else if (Input.GetButton("SelectionModifier") || Gamepad.GetButton("SelectionModifier"))
                         {
                             UnitSelectionManager.HandleUnitSelectionWithModifierPress(unitToSelect, player, hud);
                         }
@@ -607,7 +611,12 @@ public class UserInput : MonoBehaviour
 
     private void HandlePauseMenu()
     {
-        if ((Input.GetButtonDown("Cancel") || Gamepad.GetButtonDown("Start")) && !ResourceManager.MenuOpen)
+        if (
+            player.selectedAllyTargettingAbility == null &&
+            player.selectedAlliesTargettingAbility == null &&
+           (Input.GetButtonDown("Cancel") || Gamepad.GetButtonDown("Start")) &&
+            !ResourceManager.MenuOpen
+        )
         {
             hud.TogglePauseMenu();
         }

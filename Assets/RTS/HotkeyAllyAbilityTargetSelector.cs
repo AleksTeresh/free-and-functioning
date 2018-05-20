@@ -36,6 +36,12 @@ namespace RTS
                         return;
                     }
                 }
+
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    player.selectedAllyTargettingAbility = null;
+                    player.selectedAlliesTargettingAbility = null;
+                }
             }
         }
 
@@ -44,21 +50,7 @@ namespace RTS
 //            Unit allyTarget = player.FindUnitByIdx(unitIndex);
 			WorldObject allyTarget = player.unitMapping.FindUnitByHotkey (player.GetUnits(), hotkey);
 
-            // make sure that a current selection (ability user) belongs to the player and is a Unit
-            if (
-                allyTarget != null &&
-                player.SelectedObject && 
-                player.SelectedObject.GetPlayer().username == player.username &&
-                player.SelectedObject is Unit
-            )
-            {
-                var abilityUser = (Unit)player.SelectedObject;
-
-                InputToCommandManager.AllyAbilityTargetSelectionToState(
-                    abilityUser.GetStateController(), player.selectedAllyTargettingAbility, allyTarget);
-
-                ResetAbilitySelection(player);
-            }
+            AbilityUtils.ApplyAllyAbilityToTarget(allyTarget, player);
         }
 
         private static void UseAbilityOnAllies(Player player)
@@ -75,14 +67,8 @@ namespace RTS
                 InputToCommandManager.AlliesAbilityTargetSelectionToState(
                 abilityUser.GetStateController(), player.selectedAlliesTargettingAbility);
 
-                ResetAbilitySelection(player);
+                AbilityUtils.ResetAbilitySelection(player);
             }
-        }
-
-        private static void ResetAbilitySelection(Player player)
-        {
-            player.selectedAllyTargettingAbility = null;
-            player.selectedAlliesTargettingAbility = null;
         }
     }
 }
