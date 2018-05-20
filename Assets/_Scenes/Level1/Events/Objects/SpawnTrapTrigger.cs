@@ -17,6 +17,7 @@ public class SpawnTrapTrigger : EventObject
 
     private List<Unit> eventEnemyUnits;
     private Building frontBlockingDoor;
+    private Building backBlockingDoor;
 
     public SpawnTrapTrigger()
     {
@@ -36,6 +37,16 @@ public class SpawnTrapTrigger : EventObject
     {
         if (inProgress)
         {
+            if (AreEnemyUnitsDead() && frontBlockingDoor)
+            {
+                Destroy(frontBlockingDoor.gameObject);
+            }
+
+            if (IsFrontWallDestroyed())
+            {
+                DestroyAllEventEnemies();
+            }
+
             if (AreEnemyUnitsDead() && IsFrontWallDestroyed())
             {
                 inProgress = false;
@@ -44,11 +55,22 @@ public class SpawnTrapTrigger : EventObject
         }
     }
 
+    private void DestroyAllEventEnemies()
+    {
+        foreach (Unit unit in eventEnemyUnits)
+        {
+            if (unit)
+            {
+                Destroy(unit.gameObject);
+            }
+        }
+    }
+
     private bool AreEnemyUnitsDead()
     {
         foreach (Unit unit in eventEnemyUnits)
         {
-            if (unit && unit.isActiveAndEnabled)
+            if (unit)
             {
                 return false;
             }
@@ -74,6 +96,11 @@ public class SpawnTrapTrigger : EventObject
                 blockingWallParams.wallRotation,
                 blockingWallParams.name
             );
+
+            if (blockingWallParams.name == "Back Wall")
+            {
+                backBlockingDoor = blockingWall;
+            }
 
             if (blockingWallParams.name == "Front Wall")
             {
