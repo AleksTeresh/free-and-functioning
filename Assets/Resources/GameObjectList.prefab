@@ -245,6 +245,7 @@ MonoBehaviour:
   - {fileID: 198977494452440866, guid: b5fac8f4df8d5c844bf843deabf621a9, type: 2}
   visualEffects:
   - {fileID: 1005847627115846, guid: bc31ec570a0f64643801b68022b349bb, type: 2}
+  - {fileID: 1687414239399660, guid: c903281558285b041886649dc82e2dc8, type: 2}
   projectiles:
   - {fileID: 1787216316022852, guid: 8e49fcbca51cbb849be5dc0e55c5c265, type: 2}
   - {fileID: 1384849701523726, guid: 68073d802712ad740b7ab5920ec34856, type: 2}

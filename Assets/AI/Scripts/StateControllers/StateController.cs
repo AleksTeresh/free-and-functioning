@@ -72,6 +72,14 @@ public class StateController : MonoBehaviour
         }
     }
 
+    public void MarkChaseTarget()
+    {
+        if (chaseTarget && controlledObject.GetPlayer() && controlledObject.GetPlayer().human)
+        {
+            chaseTarget.MarkAsChasedTarget();
+        }
+    }
+
     private void DoExpensiveStateUpdate()
     {
         if (aiActive && currentState)
