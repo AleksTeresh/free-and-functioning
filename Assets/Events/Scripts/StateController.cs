@@ -12,6 +12,8 @@ namespace Events
     {
         public State currentState;
 
+        public EventObject[] eventObjects;
+
         [HideInInspector] public HUD hud;
         [HideInInspector] public Player player;
         [HideInInspector] public DialogManager dialogManager;
@@ -92,6 +94,69 @@ namespace Events
             dialogManager.SetData(data.dialogManagerData);
 
             sceneWasLoaded = true;
+        }
+
+        
+
+        public EventObject GetEventObjectByName(string eventObjectName)
+        {
+            foreach (EventObject eventObject in eventObjects)
+            {
+                if (eventObject.name == eventObjectName)
+                {
+                    return eventObject;
+                }
+            }
+
+            throw new EventObjectNotRegisteredException(String.Format("Event object with name \"{0}\" is not registered", eventObjectName));
+        }
+
+        public bool IsEventObjectActivated(string eventObjectName)
+        {
+            try
+            {
+                EventObject eventObject = GetEventObjectByName(eventObjectName);
+
+                return eventObject.IsActivated();
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+
+                return false;
+            }
+        }
+
+        public bool IsEventObjectTriggered(string eventObjectName)
+        {
+            try
+            {
+                return GetEventObjectByName(eventObjectName).triggerred;
+            } catch (Exception e)
+            {
+                Debug.LogWarning(e);
+            
+                return false;
+            }
+        }
+
+        public bool IsEventObjectCompleted(string eventObjectName)
+        {
+            try
+            {
+                return GetEventObjectByName(eventObjectName).completed;
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+
+                return false;
+            }
+        }
+
+        internal class EventObjectNotRegisteredException: Exception
+        {
+            public EventObjectNotRegisteredException(string message): base(message){}
         }
     }
 }

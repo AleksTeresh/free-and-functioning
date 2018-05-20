@@ -95,7 +95,7 @@ public class Player : MonoBehaviour {
         return buildings;
     }
 
-    public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation, Building creator, int siblingIdx = -1)
+    public Unit AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation, Building creator, int siblingIdx = -1)
     {
         GameObject newUnit = (GameObject)Instantiate(ResourceManager.GetUnit(unitName), spawnPoint, rotation);
         newUnit.transform.parent = unitsWrapper.transform;
@@ -158,9 +158,11 @@ public class Player : MonoBehaviour {
         {
             fogOfWar.SetRevealers(new List<WorldObject>(GetComponentsInChildren<WorldObject>()));
         }
+
+        return unitObject;
     }
 
-    public void AddBuilding(string name, Vector3 position, Quaternion rotation, string objectName = "")
+    public Building AddBuilding(string name, Vector3 position, Quaternion rotation, string objectName = "")
     {
         GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetBuilding(name));
         Building building = newObject.GetComponent<Building>();
@@ -190,6 +192,8 @@ public class Player : MonoBehaviour {
 
         building.UpdateChildRenderers();
         building.CalculateBounds();
+
+        return building;
     }
     /*
     public virtual void SaveDetails(JsonWriter writer)

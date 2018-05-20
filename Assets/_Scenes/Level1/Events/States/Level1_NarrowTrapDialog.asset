@@ -9,11 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
-  m_Name: Level1_1PreLevelDialog
+  m_Name: Level1_NarrowTrapDialog
   m_EditorClassIdentifier: 
   enterActions:
-  - {fileID: 11400000, guid: c9fed5ad0e5b3ec44a852988df4d1f88, type: 2}
-  - {fileID: 11400000, guid: 2ebd8edb6a4aeec478119923785972c8, type: 2}
+  - {fileID: 11400000, guid: 70e79de646db3814e8f37d4e27578d05, type: 2}
   updateActions: []
   exitActions: []
   transitions:

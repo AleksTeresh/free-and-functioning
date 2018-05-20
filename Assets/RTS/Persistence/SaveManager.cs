@@ -6,6 +6,7 @@ using System.Linq;
 using Events;
 using System.Runtime.Serialization;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 namespace Persistence
 {
@@ -26,9 +27,6 @@ namespace Persistence
             string path = "Saves" + separator + filename + ".dat";
             FileStream file = File.Create(path);
             SaveGameDetails(bf, file);
-            file.Close();
-
-            Debug.Log("The game was succesfully saved");
         }
 
         private static void SaveGameDetails(BinaryFormatter bf, FileStream file)
@@ -45,7 +43,18 @@ namespace Persistence
             data = SetFogOfWarData(data);
             data = SetTargetManagerData(data);
 
-            bf.Serialize(file, data);
+            new Thread(() =>
+            {
+                Debug.Log("Started saving the game");
+
+                Thread.CurrentThread.IsBackground = true;
+
+                bf.Serialize(file, data);
+
+                file.Close();
+
+                Debug.Log("The game was succesfully saved");
+            }).Start();
         }
 
         private static GameData SetSunData(GameData data)
