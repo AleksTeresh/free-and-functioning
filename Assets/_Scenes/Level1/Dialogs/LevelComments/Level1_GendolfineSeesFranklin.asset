@@ -14,7 +14,7 @@ MonoBehaviour:
   speakerAvatar: {fileID: 0}
   speakerName: Gendolfine
   displayedOptionText: 
-  blockGameplay: 0
+  blockGameplay: 1
   dialogSentences:
   - Look there. Evil organization units are trying to kill somebody. He seems to be
     another dissident from somewhere around. Hurry up, we have to save him!

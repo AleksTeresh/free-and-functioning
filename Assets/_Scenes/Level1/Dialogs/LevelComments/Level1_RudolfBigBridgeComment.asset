@@ -14,7 +14,7 @@ MonoBehaviour:
   speakerAvatar: {fileID: 0}
   speakerName: Rudolf
   displayedOptionText: 
-  blockGameplay: 0
+  blockGameplay: 1
   dialogSentences:
   - Seems like there is no way we're passing through here. We'll need to find another
     way.
