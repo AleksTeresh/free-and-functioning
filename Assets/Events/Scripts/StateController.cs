@@ -74,7 +74,8 @@ namespace Events
                 ? currentState.name.Substring(0, currentState.name.IndexOf("(")).Trim()
                 : currentState.name;
             data.dialogManagerData = dialogManager.GetData();
-            data.eventObjectIds = new List<EventObject>(eventObjects).Select(eventObject => eventObject.ObjectId).ToList();
+            data.eventObjectIds = (eventObjects != null ? new List<EventObject>(eventObjects) : new List<EventObject>())
+                .Select(eventObject => eventObject.ObjectId).ToList();
 
             return data;
         }
@@ -113,9 +114,7 @@ namespace Events
             dialogManager.SetData(data.dialogManagerData);
 
             sceneWasLoaded = true;
-        }
-
-        
+        } 
 
         public EventObject GetEventObjectByName(string eventObjectName)
         {

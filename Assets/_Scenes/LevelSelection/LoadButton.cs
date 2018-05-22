@@ -36,6 +36,7 @@ public class LoadButton : MonoBehaviour {
 
             if (sceneName != null && sceneName != "")
             {
+                Time.timeScale = 1.0f;
                 leveLoader.LoadSavedScene(sceneName);
             }
         }

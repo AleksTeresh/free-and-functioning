@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 120528895}
   - component: {fileID: 120528894}
   - component: {fileID: 120528893}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2547,6 +2547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaeb79043467f7047b559885c3ae8a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadTexts: []
 --- !u!1 &480463398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2757,10 @@ Prefab:
         type: 2}
       propertyPath: heightMapHeight
       value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905099905485072, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3, type: 2}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fc091ae42c19a54ebd5d7fbd936ecb3, type: 2}
@@ -9547,6 +9552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: eec889412eb378d45b754a18a71876eb, type: 2}
+  eventObjects: []
   hud: {fileID: 0}
   player: {fileID: 0}
   dialogManager: {fileID: 0}
@@ -10157,13 +10163,13 @@ Camera:
   m_Depth: 10
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 3840
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: b1f9410faa123064c9cce654cc3f518f, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1

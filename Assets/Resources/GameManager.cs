@@ -69,29 +69,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    /*
-    void Update()
-    {
-        if (victoryConditions != null)
-        {
-            Player[] players = GameObject.FindObjectsOfType(typeof(Player)) as Player[];
-
-            foreach (VictoryCondition victoryCondition in victoryConditions)
-            {
-                victoryCondition.SetPlayers(players);
-
-                if (victoryCondition.GameFinished())
-                {
-                    ResultsScreen resultsScreen = hud.GetComponent<ResultsScreen>();
-                    resultsScreen.SetMetVictoryCondition(victoryCondition);
-                    resultsScreen.enabled = true;
-                    Time.timeScale = 0.0f;
-                    Cursor.visible = true;
-                    ResourceManager.MenuOpen = true;
-                    hud.enabled = false;
-                }
-            }
-        }
-    }
-    */
 }
