@@ -220,6 +220,11 @@ public class UserInput : MonoBehaviour
         {
             dialogManager.DisplayNextSentence();
         }
+        // skips all the text until the whole dialog block is finished, or untill a choice is required from a player
+        else if ((Input.GetButtonDown("Cancel")))
+        {
+            dialogManager.SkipDialogBlock();
+        }
     }
 
     private void SwitchEnemy()
