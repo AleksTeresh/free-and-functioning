@@ -109,30 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d608912da1414c9558c4ca5952bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  hitPoints: 0
-  maxHitPoints: 0
-  attackDelay: 1
-  attackMultiDelay: 1
-  damage: 10
-  damageMulti: 3
-  weaponRange: 10
-  aiming: 0
-  weaponAimSpeed: 1
-  weaponRechargeTime: 1
-  weaponMultiRechargeTime: 1
-  meleeDefence: 0
-  rangeDefence: 0
-  abilityDefence: 0
-  isInvincible: 0
-  attackSound: {fileID: 0}
-  selectSound: {fileID: 0}
-  useWeaponSound: {fileID: 0}
-  attackVolume: 1
-  selectVolume: 1
-  useWeaponVolume: 1
-  detectionRange: 20
-  belongsToBoss: 0
+  triggerred: 0
   spawnPointDetectRange: 70
   enemyPlayer: {fileID: 0}
   unit: {fileID: 114199872011481984, guid: fab6b93ab899b4f4283d7cd003f33ab8, type: 2}

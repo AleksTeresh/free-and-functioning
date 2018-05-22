@@ -9,18 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
-  m_Name: Level1_2FranklinIsFound
+  m_Name: Level1_NarrowBridgeTrapActive
   m_EditorClassIdentifier: 
   enterActions:
-  - {fileID: 11400000, guid: 47ed3731fde0816419277ec15147888b, type: 2}
-  - {fileID: 11400000, guid: 4decb0b8e96499548baedb859fb38929, type: 2}
   - {fileID: 11400000, guid: 4e8653868bf8d7f43be4325ab658db99, type: 2}
+  - {fileID: 11400000, guid: fc281d007bc5e01449f98e64a66a7788, type: 2}
   updateActions: []
-  exitActions: []
+  exitActions:
+  - {fileID: 11400000, guid: 2ebd8edb6a4aeec478119923785972c8, type: 2}
   transitions:
-  - decision: {fileID: 11400000, guid: 4d4f4a489a2cbbd4780bf051025e5208, type: 2}
-    trueState: {fileID: 11400000, guid: 02fc33a373a76834a8b1e35c2c34b145, type: 2}
   - decision: {fileID: 11400000, guid: c63ffe00b18affd45979a6ffc04f85fd, type: 2}
     trueState: {fileID: 11400000, guid: 30232a9f488d17c44bae66617909ff75, type: 2}
-  - decision: {fileID: 11400000, guid: e7b168782ebb1a144bbd374fdc3f9dba, type: 2}
-    trueState: {fileID: 11400000, guid: 3566968acae34084d834719b085671b4, type: 2}
+  - decision: {fileID: 11400000, guid: 232c68f287d9d7a4ebe003f4107ccbf1, type: 2}
+    trueState: {fileID: 11400000, guid: 7f7072c7f6b323a4f8fa4078059b56a3, type: 2}

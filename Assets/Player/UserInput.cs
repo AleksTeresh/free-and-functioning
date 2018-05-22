@@ -7,7 +7,8 @@ using Formation;
 using Dialog;
 using Events;
 
-public class UserInput : MonoBehaviour {
+public class UserInput : MonoBehaviour
+{
 
     private Player player;
     private DialogManager dialogManager;
@@ -18,7 +19,8 @@ public class UserInput : MonoBehaviour {
     private Ground ground;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         player = transform.root.GetComponent<Player>();
         targetManager = transform.root.GetComponentInChildren<TargetManager>();
         formationManager = transform.root.GetComponentInChildren<FormationManager>();
@@ -29,11 +31,12 @@ public class UserInput : MonoBehaviour {
 
         ground = FindObjectOfType<Ground>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (player.human)
-        {   
+        {
             // allow player to control dialog system only when gameplay is blocked,
             // if it is not, the flow of text should be controlled from another place,
             // for example, from SceneDriver
@@ -78,7 +81,8 @@ public class UserInput : MonoBehaviour {
         if (Gamepad.GetButton("SelectionModifier"))
         {
             yAxis = -1f * Gamepad.GetAxis("Camera Move Z");
-        } else
+        }
+        else
         {
             xAxis = Gamepad.GetAxis("Camera Move X");
             zAxis = Gamepad.GetAxis("Camera Move Z");
@@ -196,7 +200,7 @@ public class UserInput : MonoBehaviour {
 
     private void AttackModeSelection()
     {
-		if (player.selectedAllyTargettingAbility == null && (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode")))
+        if (player.selectedAllyTargettingAbility == null && (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode")))
         {
             // get all the objects controlled through AI
             var stateControlles = player.GetComponentsInChildren<UnitStateController>();
@@ -220,7 +224,7 @@ public class UserInput : MonoBehaviour {
 
     private void SwitchEnemy()
     {
-        if (Input.GetButtonDown("NextEnemy") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability3") ))
+        if (Input.GetButtonDown("NextEnemy") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability3")))
         {
             var majorVisibleEnemies = UnitManager.GetPlayerVisibleMajorEnemies(player).Cast<WorldObject>();
             var visibleBuildings = UnitManager.GetVisibleEnemyBuildings(player);
@@ -243,7 +247,7 @@ public class UserInput : MonoBehaviour {
         }
     }
 
-    private void StopUnits ()
+    private void StopUnits()
     {
         if (Input.GetButtonDown("StopUnits") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability4")))
         {
@@ -272,7 +276,8 @@ public class UserInput : MonoBehaviour {
 
     private void MouseActivity()
     {
-        if (Input.GetButtonDown("Action 1") || Gamepad.GetButtonDown("Action 1")) {
+        if (Input.GetButtonDown("Action 1"))
+        {
             // lock cursor back if it was unlocked from editor
             if (player.lockCursor)
             {
@@ -286,7 +291,7 @@ public class UserInput : MonoBehaviour {
 
             LeftMouseClick();
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1) || Gamepad.GetButtonDown("Action 1"))
         {
             RightMouseClick();
         }
@@ -316,7 +321,7 @@ public class UserInput : MonoBehaviour {
                         else
                         {
                             UnitSelectionManager.HandleUnitSelection(unitToSelect, player, mainCamera, hud);
-                        }  
+                        }
                     }
                 }
                 else if (player.SelectedObject)
@@ -358,7 +363,7 @@ public class UserInput : MonoBehaviour {
             UnitMouseClick(unit, hitObject, hitPoint);
         }
     }
-		
+
     private void WorldObjectMouseClick(WorldObject objectHandler, GameObject hitObject, Vector3 hitPoint)
     {
         //only handle input if currently selected
@@ -409,7 +414,7 @@ public class UserInput : MonoBehaviour {
         }
     }
 
-    private void UnitMouseClick (Unit objectHandler, GameObject hitObject, Vector3 hitPoint)
+    private void UnitMouseClick(Unit objectHandler, GameObject hitObject, Vector3 hitPoint)
     {
         Player owner = objectHandler.GetComponentInParent<Player>();
         // Unit unit = hitObject.transform.parent.GetComponent<Unit>();
@@ -425,21 +430,21 @@ public class UserInput : MonoBehaviour {
             objectHandler.IsSelected()
         )
         {
-			IssueMoveOrderToUnit (objectHandler, hitObject, hitPoint, Vector3.zero);
+            IssueMoveOrderToUnit(objectHandler, hitObject, hitPoint, Vector3.zero);
 
-			if (player.selectedObjects.Count > 0)
-			{
-				IssueMoveOrderToSelectedUnits (hitObject, hitPoint);
-			}
+            if (player.selectedObjects.Count > 0)
+            {
+                IssueMoveOrderToSelectedUnits(hitObject, hitPoint);
+            }
         }
     }
 
 
-	private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Vector3 formationOffset) 
-	{
+    private void IssueMoveOrderToUnit(Unit objectHandler, GameObject hitObject, Vector3 hitPoint, Vector3 formationOffset)
+    {
         var handlerStateController = objectHandler.GetStateController();
-		if (handlerStateController && hitPoint != ResourceManager.InvalidPosition)
-		{
+        if (handlerStateController && hitPoint != ResourceManager.InvalidPosition)
+        {
             Vector3 idealDestination = hitPoint + formationOffset;
             if (!WorkManager.ObjectIsGround(hitObject))
             {
@@ -468,13 +473,13 @@ public class UserInput : MonoBehaviour {
             EventManager.TriggerEvent("RelocateUnit");
             InputToCommandManager.ToBusyState(targetManager, handlerStateController, actualDestination);
         }
-	}
+    }
 
-	private void IssueMoveOrderToSelectedUnits(GameObject hitObject, Vector3 hitPoint)
-	{
-		for (int i = 0; i < player.selectedObjects.Count; i++) 
-		{
-			Unit unit = (Unit) player.selectedObjects [i];
+    private void IssueMoveOrderToSelectedUnits(GameObject hitObject, Vector3 hitPoint)
+    {
+        for (int i = 0; i < player.selectedObjects.Count; i++)
+        {
+            Unit unit = (Unit)player.selectedObjects[i];
 
             var formationOffset = Vector3.zero;
             switch (formationManager.CurrentFormationType)
@@ -491,26 +496,26 @@ public class UserInput : MonoBehaviour {
                     break;
             }
 
-			IssueMoveOrderToUnit(unit, hitObject, hitPoint, formationOffset);
-		}
-	}
+            IssueMoveOrderToUnit(unit, hitObject, hitPoint, formationOffset);
+        }
+    }
 
-/*
-    private void BuildingMouseClick (Building objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
-    {
-        //only handle iput if owned by a human player and currently selected
-        if (player && player.human && currentlySelected)
+    /*
+        private void BuildingMouseClick (Building objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
         {
-            if (WorkManager.ObjectIsGround(hitObject))
+            //only handle iput if owned by a human player and currently selected
+            if (player && player.human && currentlySelected)
             {
-                if ((player.hud.GetCursorState() == CursorState.RallyPoint || player.hud.GetPreviousCursorState() == CursorState.RallyPoint) && hitPoint != ResourceManager.InvalidPosition)
+                if (WorkManager.ObjectIsGround(hitObject))
                 {
-                    SetRallyPoint(hitPoint);
+                    if ((player.hud.GetCursorState() == CursorState.RallyPoint || player.hud.GetPreviousCursorState() == CursorState.RallyPoint) && hitPoint != ResourceManager.InvalidPosition)
+                    {
+                        SetRallyPoint(hitPoint);
+                    }
                 }
             }
         }
-    }
-    */
+        */
     private void ChangeSelection(WorldObject unselectedObject, WorldObject selectedObject)
     {
         //this should be called by the following line, but there is an outside chance it will not
@@ -554,7 +559,7 @@ public class UserInput : MonoBehaviour {
             {
                 ((Unit)p).GetHitSphere().enabled = true;
             }
-        }); 
+        });
 
         // try with hit sphere enabled
         if (Physics.Raycast(ray, out hit))
@@ -602,7 +607,7 @@ public class UserInput : MonoBehaviour {
 
     private void HandlePauseMenu()
     {
-        if (Input.GetButtonDown("Cancel") && !ResourceManager.MenuOpen)
+        if ((Input.GetButtonDown("Cancel") || Gamepad.GetButtonDown("Start")) && !ResourceManager.MenuOpen)
         {
             hud.TogglePauseMenu();
         }

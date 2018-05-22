@@ -12,5 +12,21 @@ namespace Persistence
         public Quaternion rotation;
         public Vector3 scale;
         public bool triggerred;
+        public bool inProgress;
+        public bool completed;
+
+        public EventObjectData() { }
+
+        public EventObjectData(EventObjectData baseData)
+        {
+            type = baseData.type;
+            objectId = baseData.objectId;
+            position = baseData.position;
+            rotation = baseData.rotation;
+            scale = baseData.scale;
+            triggerred = baseData.triggerred;
+            inProgress = baseData.inProgress;
+            completed = baseData.completed;
+        }
     }
 }

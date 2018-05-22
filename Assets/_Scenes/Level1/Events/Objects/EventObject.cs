@@ -1,4 +1,5 @@
-﻿using Persistence;
+﻿using System;
+using Persistence;
 using UnityEngine;
 
 namespace Events
@@ -7,6 +8,13 @@ namespace Events
     {
         public int ObjectId { get; set; }
         [HideInInspector] public bool triggerred = false;
+        [HideInInspector] public bool inProgress = false;
+        [HideInInspector] public bool completed = false;
+
+        public virtual void RunEventScript()
+        {
+            // To be overridden by subclass
+        }
 
         public virtual EventObjectData GetData()
         {
@@ -17,6 +25,8 @@ namespace Events
             data.rotation = transform.rotation;
             data.scale = transform.localScale;
             data.triggerred = triggerred;
+            data.inProgress = inProgress;
+            data.completed = completed;
             data.objectId = ObjectId;
 
             return data;
@@ -29,7 +39,14 @@ namespace Events
             transform.rotation = data.rotation;
             transform.localScale = data.scale;
             triggerred = data.triggerred;
+            inProgress = data.inProgress;
+            completed = data.completed;
             ObjectId = data.objectId;
+        }
+
+        internal bool IsActivated()
+        {
+            return triggerred && !completed;
         }
     }
 }
