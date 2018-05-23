@@ -65,7 +65,7 @@ namespace Dialog
                 {
                     SetDialogNode(currentDialogNode.responses[0]);
                 }
-                else
+                else if (currentDialogNode.responses.Length == 0)
                 {
                     EndDialog();
                 }
@@ -96,6 +96,15 @@ namespace Dialog
             BlockGameplay = false;
 
             EventManager.TriggerEvent("ShowHUD");
+        }
+
+        public void SkipDialogBlock ()
+        {
+            // skips all the text until the whole dialog block is finished, or untill a choice is required from a player
+            while (BlockGameplay && !(currentDialogNode.responses.Length > 1 && sentences.Count == 0))
+            {
+                DisplayNextSentence();
+            }
         }
 
         public DialogResponsePanel GetDialogResponsePanel ()

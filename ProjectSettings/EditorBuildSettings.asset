@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/BossBattle/BossBattle.unity
     guid: 49ff9f0f9736e1742856eed82f383370
   - enabled: 1
+    path: Assets/_Scenes/LevelLoading/LevelLoading.unity
+    guid: 1ed76f6bbde7a014d9476a60fffd968a
+  - enabled: 1
     path: Assets/_Scenes/WinScreen/WinScreen.unity
     guid: 29d275ca450fc254fac3c6375468e11e
   - enabled: 1

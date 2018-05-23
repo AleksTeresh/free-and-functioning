@@ -118,10 +118,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4722479153222884}
   - component: {fileID: 114625273113559686}
-  - component: {fileID: 114582158213210334}
-  - component: {fileID: 114787919124036108}
-  - component: {fileID: 114599501668427332}
-  - component: {fileID: 114834959098523832}
   - component: {fileID: 95510884186681718}
   m_Layer: 0
   m_Name: HUD
@@ -2803,21 +2799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ea52861693edb41900cb9224bf02b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114582158213210334
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063401105929818}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7055d82d2edd5c44a8c54eda564a4a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mySkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  header: {fileID: 2800000, guid: f6f6fd6f84e6e544bb1890b72f39e1c4, type: 3}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &114583311087936680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2889,21 +2870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8176fce4dff5f40bbe5d6f23259260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114599501668427332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063401105929818}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89d570f1d22c5614397d671459da5474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainSkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  selectionSkin: {fileID: 11400000, guid: 1fee1f6e6bce02647a6e6c24c6d5e868, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &114605062941373956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3457,21 +3423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ea52861693edb41900cb9224bf02b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114787919124036108
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063401105929818}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c26305777368e44b83d75a17f1d9c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mySkin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  selectionSkin: {fileID: 11400000, guid: 1fee1f6e6bce02647a6e6c24c6d5e868, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &114794164266791512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3581,20 +3532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ea52861693edb41900cb9224bf02b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114834959098523832
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063401105929818}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 552943f3fd9c06e44bdc8edbeedcf3d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skin: {fileID: 11400000, guid: d27e4f2933df23b4fa748ce2dda0a8dd, type: 2}
-  clickSound: {fileID: 8300000, guid: c55eb6efb902ce149ae804e8e4c00849, type: 3}
-  clickVolume: 1
 --- !u!114 &114860021377236626
 MonoBehaviour:
   m_ObjectHideFlags: 1

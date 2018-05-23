@@ -10,11 +10,15 @@ public class LoadButton : MonoBehaviour {
 
     [HideInInspector] public string relatedSceneName = "";
 
+    private LevelLoader leveLoader;
+
     private void Start()
     {
         button = GetComponent<Button>();
 
         button.onClick.AddListener(() => ContinueGame());
+
+        leveLoader = FindObjectOfType<LevelLoader>();
     }
 
     private void Update()
@@ -28,12 +32,12 @@ public class LoadButton : MonoBehaviour {
     {
         if (relatedSceneName != null && relatedSceneName != "" && LoadManager.SaveExists(relatedSceneName + Constants.SAVE_FILENAME_POSTFIX))
         {
-            string sceneName = LoadManager.GetSavedSceneName(relatedSceneName + Constants.SAVE_FILENAME_POSTFIX);
+            string sceneName = relatedSceneName;
 
             if (sceneName != null && sceneName != "")
             {
-                ResourceManager.LevelName = sceneName;
-                SceneManager.LoadScene(sceneName);
+                Time.timeScale = 1.0f;
+                leveLoader.LoadSavedScene(sceneName);
             }
         }
     }

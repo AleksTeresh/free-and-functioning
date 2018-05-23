@@ -14,7 +14,7 @@ MonoBehaviour:
   speakerAvatar: {fileID: 0}
   speakerName: Adolf
   displayedOptionText: 
-  blockGameplay: 0
+  blockGameplay: 1
   dialogSentences:
   - The columns don't look very natural here. And the passage is way to narrow. Looks
     suspicious indeed...

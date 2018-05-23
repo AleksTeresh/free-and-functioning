@@ -38,7 +38,7 @@ namespace Persistence
             return null;
         }
 
-        public static void LoadGame(string filename)
+        public static GameData LoadGameData(string filename)
         {
             char separator = Path.DirectorySeparatorChar;
             string path = "Saves" + separator + filename + ".dat";
@@ -52,17 +52,22 @@ namespace Persistence
                 GameData data = (GameData)bf.Deserialize(file);
                 file.Close();
 
-                LoadEventObjectData(data);
-                var foundPlayers = LoadPlayers(data);
-                var humanPlayer = foundPlayers.Find(player => player.human);
-                LoadCamera(data);
-                LoadSun(data);
-                // data = SetExtraLightData(data);
-                LoadFogOfWar(data);
-                LoadTargetManager(data, humanPlayer);
-
-                Debug.Log("The game was succesfully loaded");
+                return data;
             }
+
+            return null;
+        }
+
+        public static void LoadAssetsToScene (GameData data)
+        {
+            LoadEventObjectData(data);
+            var foundPlayers = LoadPlayers(data);
+            var humanPlayer = foundPlayers.Find(player => player.human);
+            LoadCamera(data);
+            LoadSun(data);
+            // data = SetExtraLightData(data);
+            LoadFogOfWar(data);
+            LoadTargetManager(data, humanPlayer);
         }
 
         private static void LoadCamera (GameData data)

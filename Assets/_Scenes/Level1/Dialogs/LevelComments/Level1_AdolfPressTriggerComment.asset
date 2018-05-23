@@ -14,7 +14,7 @@ MonoBehaviour:
   speakerAvatar: {fileID: 0}
   speakerName: Adolf
   displayedOptionText: 
-  blockGameplay: 0
+  blockGameplay: 1
   dialogSentences:
   - That thing over there looks like some kind of a switch. We should try to stand
     on it, all of us. Perhapse it will trigger something

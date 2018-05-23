@@ -14,7 +14,7 @@ MonoBehaviour:
   speakerAvatar: {fileID: 0}
   speakerName: Adolf
   displayedOptionText: 
-  blockGameplay: 0
+  blockGameplay: 1
   dialogSentences:
   - Those columns look like some sort of gate. They look very suspicious to me...
   responses: []

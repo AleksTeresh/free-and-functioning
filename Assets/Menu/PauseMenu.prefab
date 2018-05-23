@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114303940558476716}
   - component: {fileID: 114749944598137102}
   m_Layer: 5
-  m_Name: LevelButton (3)
+  m_Name: ToLevelSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,9 +41,8 @@ GameObject:
   - component: {fileID: 222895337899939140}
   - component: {fileID: 114399564447775902}
   - component: {fileID: 114372224948400016}
-  - component: {fileID: 114935172234536870}
   m_Layer: 5
-  m_Name: LevelButton
+  m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +196,7 @@ GameObject:
   - component: {fileID: 222053463856331164}
   - component: {fileID: 114041550272946920}
   - component: {fileID: 114606454615640246}
-  - component: {fileID: 114063859763302276}
+  - component: {fileID: 114168889251413392}
   m_Layer: 5
   m_Name: LevelButton (2)
   m_TagString: Untagged
@@ -250,18 +249,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114063859763302276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881406075488068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d784804011ab8294b988ca1f50fb3836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Tutorial
 --- !u!114 &114064088898264508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,6 +315,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Resume
+--- !u!114 &114168889251413392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1881406075488068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f629987791ce6242b26c6139beb2893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relatedSceneName: 
 --- !u!114 &114182803316765910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d784804011ab8294b988ca1f50fb3836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Tutorial
+  relatedSceneName: 
 --- !u!114 &114287395001029964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -518,7 +517,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114399564447775902}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114625273113559686, guid: cb21d81a35ea0674fba60b562de0a28b,
+          type: 2}
+        m_MethodName: TogglePauseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114386818781946026
@@ -648,12 +659,12 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 114041550272946920}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114063859763302276}
+      - m_Target: {fileID: 0}
         m_MethodName: OnSelect
         m_Mode: 1
         m_Arguments:
@@ -735,7 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d784804011ab8294b988ca1f50fb3836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: LevelSelection
+  relatedSceneName: LevelSelection
 --- !u!114 &114856186146091748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -774,18 +785,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114935172234536870
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1177083026404322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d784804011ab8294b988ca1f50fb3836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Tutorial
 --- !u!114 &114957631251595942
 MonoBehaviour:
   m_ObjectHideFlags: 1

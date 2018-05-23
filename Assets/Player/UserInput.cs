@@ -6,6 +6,7 @@ using RTS;
 using Formation;
 using Dialog;
 using Events;
+using UnityEngine.SceneManagement;
 
 public class UserInput : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class UserInput : MonoBehaviour
     {
         if (player.human)
         {
+            if (SceneManager.GetActiveScene().name == "LevelSelection" || SceneManager.GetActiveScene().name == "LevelLoading")
+                return;
+
             // allow player to control dialog system only when gameplay is blocked,
             // if it is not, the flow of text should be controlled from another place,
             // for example, from SceneDriver
@@ -46,6 +50,11 @@ public class UserInput : MonoBehaviour
             }
             else
             {
+                HandlePauseMenu();
+
+                // if pause menu is open, ignore all the commands except toggling pause menu
+                if (hud && hud.IsPauseMenuOpen()) return;
+
                 MoveCameraWithMouseScroll();
                 MoveCameraWithGamepad();
                 RotateCamera();
@@ -61,8 +70,6 @@ public class UserInput : MonoBehaviour
                 SwitchHoldPosition();
 
                 SwitchFormationType();
-
-                HandlePauseMenu();
 
                 RTS.HotkeyUnitSelector.HandleInput(player, hud, mainCamera);
                 RTS.HotkeyAbilitySelector.HandleInput(player, targetManager);
@@ -220,6 +227,11 @@ public class UserInput : MonoBehaviour
         {
             dialogManager.DisplayNextSentence();
         }
+        // skips all the text until the whole dialog block is finished, or untill a choice is required from a player
+        else if ((Input.GetButtonDown("Cancel")))
+        {
+            dialogManager.SkipDialogBlock();
+        }
     }
 
     private void SwitchEnemy()
@@ -314,7 +326,11 @@ public class UserInput : MonoBehaviour
                     Unit unitToSelect = hitObject.transform.parent.GetComponent<Unit>();
                     if (unitToSelect)
                     {
-                        if (Input.GetButton("SelectionModifier") || Gamepad.GetButton("SelectionModifier"))
+                        if (player.selectedAllyTargettingAbility != null)
+                        {
+                            AbilityUtils.ApplyAllyAbilityToTarget(unitToSelect, player);
+                        }
+                        else if (Input.GetButton("SelectionModifier") || Gamepad.GetButton("SelectionModifier"))
                         {
                             UnitSelectionManager.HandleUnitSelectionWithModifierPress(unitToSelect, player, hud);
                         }
@@ -607,7 +623,12 @@ public class UserInput : MonoBehaviour
 
     private void HandlePauseMenu()
     {
-        if ((Input.GetButtonDown("Cancel") || Gamepad.GetButtonDown("Start")) && !ResourceManager.MenuOpen)
+        if (
+            player.selectedAllyTargettingAbility == null &&
+            player.selectedAlliesTargettingAbility == null &&
+           (Input.GetButtonDown("Cancel") || Gamepad.GetButtonDown("Start")) &&
+            !ResourceManager.MenuOpen
+        )
         {
             hud.TogglePauseMenu();
         }

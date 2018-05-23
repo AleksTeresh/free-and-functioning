@@ -7,6 +7,7 @@ using Events;
 using Formation;
 using Dialog;
 using Menu;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 public class HUD : MonoBehaviour
@@ -210,7 +211,15 @@ public class HUD : MonoBehaviour
             pauseMenu = pauseMenuObject.GetComponent<PauseMenu>();
 
             pauseMenu.transform.SetParent(canvas.transform, false);
+
+            var loadButton = pauseMenu.GetComponentInChildren<LoadButton>();
+            loadButton.relatedSceneName = SceneManager.GetActiveScene().name;
         }
+    }
+
+    public bool IsPauseMenuOpen ()
+    {
+        return pauseMenu;
     }
 
     public void SetCursorState(CursorState newState)
@@ -465,18 +474,7 @@ public class HUD : MonoBehaviour
         int buttonHeight = RESOURCE_BAR_HEIGHT - 2 * padding;
         int leftPos = Screen.width - ORDERS_BAR_WIDTH / 2 - buttonWidth / 2 + SCROLL_BAR_WIDTH / 2;
         Rect menuButtonPosition = new Rect(leftPos, padding, buttonWidth, buttonHeight);
-/*
-        if (GUI.Button(menuButtonPosition, "Menu"))
-        {
-            PlayClick();
 
-            Time.timeScale = 0.0f;
-            PauseMenu pauseMenu = GetComponent<PauseMenu>();
-            if (pauseMenu) pauseMenu.enabled = true;
-            UserInput userInput = player.GetComponent<UserInput>();
-            if (userInput) userInput.enabled = false;
-        }
-*/
         if (targetManager)
         {
             Rect attackModeIndicatorPos = new Rect(20, 10, buttonWidth, buttonHeight);

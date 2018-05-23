@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using RTS;
 using Persistence;
 using Events;
+using UnityEngine.UI;
+using System.Threading;
 
 /**
  * Singleton that handles loading level details. This includes making sure
@@ -13,10 +15,15 @@ using Events;
 
 public class LevelLoader : MonoBehaviour
 {
-
     private static int nextObjectId = 0;
     private static bool created = false;
     private bool initialised = false;
+
+    private volatile GameData gameData = null;
+
+    public Text[] loadTexts;
+
+    private string sceneToLoad = "";
 
     void OnEnable()
     {
@@ -40,36 +47,20 @@ public class LevelLoader : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        if (initialised)
-        {
-            // SelectPlayerMenu menu = GameObject.FindObjectOfType(typeof(SelectPlayerMenu)) as SelectPlayerMenu;
-            if (false)
-            {
-                //we have started from inside a map, rather than the main menu
-                //this happens if we launch Unity from inside a map file for testing
-                Player[] players = GameObject.FindObjectsOfType(typeof(Player)) as Player[];
-                foreach (Player player in players)
-                {
-                    if (player.human)
-                    {
-                        PlayerManager.SelectPlayer(player.username, 0);
-                    }
-                }
-
-                SetObjectIds();
-            }
-        }
     }
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         if (initialised)
         {
-            if (ResourceManager.LevelName != null && ResourceManager.LevelName != "")
+            if (SceneManager.GetActiveScene().name == "LevelLoading")
             {
-                // since now we have only 1 save slot, level name does not matter
-                LoadManager.LoadGame(ResourceManager.LevelName + Constants.SAVE_FILENAME_POSTFIX);
+                gameData = null;
+                StartCoroutine(LoadNewSceneAsync(sceneToLoad));
+            }
+            else if (gameData != null && ResourceManager.LevelName != null && ResourceManager.LevelName != "")
+            {
+                LoadManager.LoadAssetsToScene(gameData);
                 ResourceManager.LevelName = "";
             }
             else
@@ -103,5 +94,47 @@ public class LevelLoader : MonoBehaviour
             eventObject.ObjectId = nextObjectId++;
             if (nextObjectId >= int.MaxValue) nextObjectId = 0;
         }
+    }
+
+    public void LoadNewScene(string sceneName)
+    {
+        sceneToLoad = sceneName;
+        SceneManager.LoadScene("LevelLoading");
+    }
+
+    public void LoadSavedScene(string sceneName)
+    {
+        ResourceManager.LevelName = sceneName;
+        sceneToLoad = sceneName;
+        SceneManager.LoadScene("LevelLoading");
+    }
+
+    IEnumerator LoadNewSceneAsync(string sceneName)
+    {
+        if (ResourceManager.LevelName != null && ResourceManager.LevelName != "")
+        {
+            new Thread(() =>
+            {
+                LoadSavedAssetsAsync();
+            }).Start();
+
+            while (gameData == null)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!async.isDone)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    void LoadSavedAssetsAsync ()
+    {
+        // since now we have only 1 save slot, level name does not matter
+        gameData = LoadManager.LoadGameData(ResourceManager.LevelName + Constants.SAVE_FILENAME_POSTFIX);
     }
 }

@@ -66,6 +66,11 @@ public class Player : MonoBehaviour {
         units = new List<Unit>(GetComponentsInChildren<Unit>());
         buildings = new List<Building>(GetComponentsInChildren<Building>());
 
+        if (!SelectedObject)
+        {
+            selectedAllyTargettingAbility = null;
+            selectedAlliesTargettingAbility = null;
+        }
         // mainCamera.GetComponent<MeshFilter>().mesh = mainCamera.GenerateFrustumMesh();
     }
 

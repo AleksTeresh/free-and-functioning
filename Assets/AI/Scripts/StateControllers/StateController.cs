@@ -4,13 +4,14 @@ using UnityEngine;
 using AI;
 using Persistence;
 using RTS;
+using Events;
 
 public class StateController : MonoBehaviour
 {
-    public State currentState;
-    public State remainState;
+    public AI.State currentState;
+    public AI.State remainState;
 
-    [HideInInspector] protected State defaultState;
+    [HideInInspector] protected AI.State defaultState;
 
     [HideInInspector] public WorldObject chaseTarget;
 
@@ -22,6 +23,18 @@ public class StateController : MonoBehaviour
     [HideInInspector] public bool attacking;
 
     protected bool aiActive;
+
+    void OnEnable()
+    {
+        EventManager.StartListening("HideHUD", DeactivateAI);
+        EventManager.StartListening("ShowHUD", ActivateAI);
+    }
+
+    void OnDisable()
+    {
+        EventManager.StopListening("HideHUD", DeactivateAI);
+        EventManager.StopListening("ShowHUD", ActivateAI);
+    }
 
     protected virtual void AwakeObj()
     {
@@ -51,7 +64,7 @@ public class StateController : MonoBehaviour
         aiActive = aiActivation;
     }
 
-    public State GetDefaultState()
+    public AI.State GetDefaultState()
     {
         return defaultState;
     }
@@ -63,7 +76,7 @@ public class StateController : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void TransitionToState(State nextState)
+    public void TransitionToState(AI.State nextState)
     {
         if (nextState != remainState)
         {
@@ -126,6 +139,16 @@ public class StateController : MonoBehaviour
            : null;
         attacking = data.attacking;
         aiActive = data.aiActive;
+    }
+
+    private void DeactivateAI ()
+    {
+        aiActive = false;
+    }
+
+    private void ActivateAI ()
+    {
+        aiActive = true;
     }
 }
 
