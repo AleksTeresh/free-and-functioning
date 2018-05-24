@@ -46,6 +46,7 @@ public class UserInput : MonoBehaviour
             // for example, from SceneDriver
             if (dialogManager && dialogManager.BlockGameplay)
             {
+                hud.SetCursorLock(false);
                 HandleDialogInput();
             }
             else
@@ -53,7 +54,11 @@ public class UserInput : MonoBehaviour
                 HandlePauseMenu();
 
                 // if pause menu is open, ignore all the commands except toggling pause menu
-                if (hud && hud.IsPauseMenuOpen()) return;
+                if (hud && hud.IsPauseMenuOpen())
+                {
+                    hud.SetCursorLock(false);
+                    return;
+                };
 
                 MoveCameraWithMouseScroll();
                 MoveCameraWithGamepad();
@@ -288,19 +293,18 @@ public class UserInput : MonoBehaviour
 
     private void MouseActivity()
     {
+        // lock cursor back if it was unlocked from editor
+        if (player.lockCursor)
+        {
+            hud.SetCursorLock(true);
+        }
+        else
+        {
+            hud.SetCursorLock(false);
+        }
+
         if (Input.GetButtonDown("Action 1"))
         {
-            // lock cursor back if it was unlocked from editor
-            if (player.lockCursor)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-
             LeftMouseClick();
         }
         else if (Input.GetMouseButtonDown(1) || Gamepad.GetButtonDown("Action 1"))

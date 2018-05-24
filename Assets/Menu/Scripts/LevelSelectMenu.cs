@@ -8,13 +8,15 @@ namespace Menu
 {
     public class LevelSelectMenu : MonoBehaviour
     {
+        // private List<Button> buttons;
+
         private void Start()
         {
-            var relatedButtons = GetComponentsInChildren<Button>();
+            var buttons = new List<Button>(GetComponentsInChildren<Button>());
 
-            if (relatedButtons.Length > 0)
+            if (buttons.Count > 0)
             {
-                relatedButtons.First().Select();
+                buttons.First().Select();
             }
         }
 
