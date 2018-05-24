@@ -32,6 +32,7 @@ namespace Dialog
             if (dialogNode.blockGameplay)
             {
                 EventManager.TriggerEvent("HideHUD");
+                Time.timeScale = 0f;
             }
 
             BlockGameplay = dialogNode.blockGameplay;
@@ -51,6 +52,7 @@ namespace Dialog
             if (dialogNode.responses.Length > 1)
             {
                 EventManager.TriggerEvent("HideHUD");
+                Time.timeScale = 0f;
             }
 
             currentDialogNode = dialogNode;
@@ -95,6 +97,7 @@ namespace Dialog
             dialogTextPanel.SetOpen(false);
             BlockGameplay = false;
 
+            Time.timeScale = 1f;
             EventManager.TriggerEvent("ShowHUD");
         }
 
