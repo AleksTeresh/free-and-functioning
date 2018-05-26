@@ -162,14 +162,16 @@ public class HUD : MonoBehaviour
     {
         if (player && player.human && dialogManager && !dialogManager.BlockGameplay)
         {
-            GUI.depth = 1;
-
-            HandleCursorPositionUpdate();
-            // DrawPlayerDetails();
-
             var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
             DrawUpperBar(observedEmenies.Count);
-            DrawMouseCursor();
+
+            if (!pauseMenu)
+            {
+                GUI.depth = 1;
+
+                HandleCursorPositionUpdate();
+                DrawMouseCursor();
+            }
         }
     }
 
@@ -259,6 +261,19 @@ public class HUD : MonoBehaviour
                 activeCursor = rallyPointCursor;
                 break;
             default: break;
+        }
+    }
+
+    public void SetCursorLock(bool locked)
+    {
+        if (locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 

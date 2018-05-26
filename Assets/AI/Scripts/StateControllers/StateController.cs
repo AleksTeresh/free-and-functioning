@@ -24,18 +24,6 @@ public class StateController : MonoBehaviour
 
     protected bool aiActive;
 
-    void OnEnable()
-    {
-        EventManager.StartListening("HideHUD", DeactivateAI);
-        EventManager.StartListening("ShowHUD", ActivateAI);
-    }
-
-    void OnDisable()
-    {
-        EventManager.StopListening("HideHUD", DeactivateAI);
-        EventManager.StopListening("ShowHUD", ActivateAI);
-    }
-
     protected virtual void AwakeObj()
     {
         // to be overriden

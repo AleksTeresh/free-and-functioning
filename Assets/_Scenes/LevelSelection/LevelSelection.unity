@@ -588,7 +588,7 @@ MonoBehaviour:
   - Josefine
   - Gendolfine
   - Franklin
-  lockCursor: 0
+  lockCursor: 1
 --- !u!4 &392030398
 Transform:
   m_ObjectHideFlags: 0
