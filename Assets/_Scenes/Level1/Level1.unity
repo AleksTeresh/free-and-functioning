@@ -16154,6 +16154,7 @@ MonoBehaviour:
   formationManager: {fileID: 0}
   targetManager: {fileID: 0}
   timeInState: 0
+  currentAudioClip: {fileID: 0}
 --- !u!114 &1607031214
 MonoBehaviour:
   m_ObjectHideFlags: 0
