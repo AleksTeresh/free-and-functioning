@@ -11,9 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
   m_Name: LoseScreen_DefaultState
   m_EditorClassIdentifier: 
-  enterActions: []
+  enterActions:
+  - {fileID: 11400000, guid: 1e6bbcfe283556e42b4a471c2fc767d4, type: 2}
   updateActions: []
   exitActions: []
   transitions:
-  - decision: {fileID: 11400000, guid: 6eb8602a741be834fbce9faa262e5dd8, type: 2}
+  - decision: {fileID: 11400000, guid: ed232fe2b9aea874795702c33b17c73a, type: 2}
+    trueState: {fileID: 11400000, guid: e7a36ba8f7252ac48b3beba7c8c0b6c3, type: 2}
+  - decision: {fileID: 11400000, guid: 262ca1112dc10004790d268e1a7807fd, type: 2}
     trueState: {fileID: 11400000, guid: e7a36ba8f7252ac48b3beba7c8c0b6c3, type: 2}

@@ -23,6 +23,8 @@ namespace Events
 
         [HideInInspector] public float timeInState = 0f;
 
+        [HideInInspector] public AudioClip currentAudioClip;
+
         private bool sceneWasLoaded = false;
 
         protected virtual void AwakeObj()
@@ -90,6 +92,12 @@ namespace Events
                 currentState.name = currentState.name.Contains("(")
                 ? currentState.name.Substring(0, currentState.name.IndexOf("(")).Trim()
                 : currentState.name;
+
+                var bgmAction = currentState.enterActions.Last<Action>(action => action is PlayBgmAction);
+                if (bgmAction)
+                {
+                    bgmAction.Act(this);
+                }
             }
 
             List<EventObject> loadedEventObjects = new List<EventObject>();
