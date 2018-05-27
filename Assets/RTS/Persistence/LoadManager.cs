@@ -117,23 +117,26 @@ namespace Persistence
             new List<EventObject>(GameObject.FindObjectsOfType<EventObject>())
                .ForEach(obj => GameObject.DestroyImmediate(obj.gameObject));
 
-            new List<EventObjectData>(data.eventObjects).ForEach(objData =>
-            {
-                GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetWorldObject(objData.type), objData.position, objData.rotation);
-
-                if (!newObject) return;
-
-                // if there is Unit or Building component on the object, destroy it, because it will be created later as such
-                if (newObject.GetComponent<Unit>() || newObject.GetComponent<Building>())
+            new List<EventObjectData>(data.eventObjects)
+                .Where(objData => !Player.GetObjectById(objData.objectId))
+                .ToList()
+                .ForEach(objData =>
                 {
-                    GameObject.DestroyImmediate(newObject);
-                }
-                else
-                {
-                    EventObject relatedEventObj = newObject.GetComponent<EventObject>();
-                    relatedEventObj.SetData(objData);
-                }
-            });
+                    GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetWorldObject(objData.type), objData.position, objData.rotation);
+
+                    if (!newObject) return;
+
+                    // if there is Unit or Building component on the object, destroy it, because it will be created later as such
+                    if (newObject.GetComponent<Unit>() || newObject.GetComponent<Building>())
+                    {
+                        GameObject.DestroyImmediate(newObject);
+                    }
+                    else
+                    {
+                        EventObject relatedEventObj = newObject.GetComponent<EventObject>();
+                        relatedEventObj.SetData(objData);
+                    }
+                });
         }
     }
 }

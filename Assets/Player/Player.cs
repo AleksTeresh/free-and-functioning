@@ -39,7 +39,7 @@ public class Player : MonoBehaviour {
 	}
 		
     // Use this for initialization
-    void Start () {
+    public void Start () {
         hud = GetComponentInChildren<HUD>();
         unitsWrapper = GetComponentInChildren<Units>();
         buildingsWrapper = GetComponentInChildren<Buildings>();
@@ -334,33 +334,37 @@ public class Player : MonoBehaviour {
     {
         Start();
 
-        units.ForEach(unit => Destroy(unit.gameObject));
-        buildings.ForEach(building => Destroy(building.gameObject));
+        units.Where(unit => unit.ObjectId <= 0).ToList().ForEach(unit => Destroy(unit.gameObject));
+        buildings.Where(building => building.ObjectId <= 0).ToList().ForEach(building => Destroy(building.gameObject));
         Debug.Log("Player existing units and buildings were succefully destroyed");
 
-        units = data.units.Select(unit =>
-        {
-            GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetUnit(unit.type), unit.position, unit.rotation);
-            Unit createdUnit = newObject.GetComponent<Unit>();
-            createdUnit.SetData(unit);
-            createdUnit.transform.parent = unitsWrapper.transform;
-            createdUnit.SetPlayer();
-            createdUnit.SetTeamColor();
+        units = data.units
+            .Where(unit => !Player.GetObjectById(unit.objectId))
+            .Select(unit =>
+            {
+                GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetUnit(unit.type), unit.position, unit.rotation);
+                Unit createdUnit = newObject.GetComponent<Unit>();
+                createdUnit.SetData(unit);
+                createdUnit.transform.parent = unitsWrapper.transform;
+                createdUnit.SetPlayer();
+                createdUnit.SetTeamColor();
 
-            return createdUnit;
-        }).ToList();
+                return createdUnit;
+            }).ToList();
 
-        buildings = data.buildings.Select(building =>
-        {
-            GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetBuilding(building.type), building.position, building.rotation);
-            Building createdBuilding = newObject.GetComponent<Building>();
-            createdBuilding.SetData(building);
-            createdBuilding.transform.parent = buildingsWrapper.transform;
-            createdBuilding.SetPlayer();
-            createdBuilding.SetTeamColor();
+        buildings = data.buildings
+            .Where(building => !Player.GetObjectById(building.objectId))
+            .Select(building =>
+            {
+                GameObject newObject = (GameObject)GameObject.Instantiate(ResourceManager.GetBuilding(building.type), building.position, building.rotation);
+                Building createdBuilding = newObject.GetComponent<Building>();
+                createdBuilding.SetData(building);
+                createdBuilding.transform.parent = buildingsWrapper.transform;
+                createdBuilding.SetPlayer();
+                createdBuilding.SetTeamColor();
 
-            return createdBuilding;
-        }).ToList();
+                return createdBuilding;
+            }).ToList();
 
         lockCursor = data.lockCursor;
         human = data.human;

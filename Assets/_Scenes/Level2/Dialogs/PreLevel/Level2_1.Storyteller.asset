@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Level2_1.Storyteller
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Storyteller
+  displayedOptionText: 
+  blockGameplay: 1
+  dialogSentences:
+  - After travelling through mostly vacant lands towards the South for a couple of
+    days, the heroes learned little about their new companion.
+  - Though being fully healed, Franklin was still unable to speak for some reason.
+    This made communication with him limited to yes/no type of questions.
+  - "Besides, the amount of resources left continued to decrease. The need became
+    evident when by the end of the second day of travelling, Gandolfine ran out of
+    her resources\u2026\r"
+  responses:
+  - {fileID: 11400000, guid: 8ae49ee716fbdb347821a8c1a73a2cbe, type: 2}
+  - {fileID: 11400000, guid: 96c8dd42a94d7ba4cad6c3beba395343, type: 2}

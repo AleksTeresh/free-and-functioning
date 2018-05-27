@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
+  m_Name: Level2_PostLevelDialog
+  m_EditorClassIdentifier: 
+  enterActions:
+  - {fileID: 11400000, guid: 2ebd8edb6a4aeec478119923785972c8, type: 2}
+  - {fileID: 11400000, guid: e924b2d7bc7e6a44a902cf19547891bf, type: 2}
+  updateActions: []
+  exitActions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: a18bc2e870da5064fb140c1173fc16c3, type: 2}
+    trueState: {fileID: 11400000, guid: 12eba7b596e02fa4a96cc34fe832693f, type: 2}

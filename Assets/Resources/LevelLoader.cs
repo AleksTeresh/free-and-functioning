@@ -15,7 +15,7 @@ using System.Threading;
 
 public class LevelLoader : MonoBehaviour
 {
-    private static int nextObjectId = 0;
+    private static int nextObjectId = 1;
     private static bool created = false;
     private bool initialised = false;
 

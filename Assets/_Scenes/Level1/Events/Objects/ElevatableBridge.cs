@@ -22,9 +22,9 @@ public class ElevatableBridge : EventObject
         if (!triggerred)
         {
             var nearbyEnemyUnits = WorkManager.FindNearbyUnits(transform.position, enemyCleanTriggerRadius)
-                .Where(p => !p.GetPlayer().human)
+                .Where(p => p && p.GetPlayer() && !p.GetPlayer().human)
                 .ToList();
-
+            
             if (nearbyEnemyUnits.Count == 0)
             {
                 triggerred = true;

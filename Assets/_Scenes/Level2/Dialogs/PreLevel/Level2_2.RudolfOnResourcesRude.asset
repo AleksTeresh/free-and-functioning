@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Level2_2.RudolfOnResourcesRude
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Rudolf
+  displayedOptionText: "You ran out of resources. I told you exactly so. What\u2019s
+    now?"
+  blockGameplay: 1
+  dialogSentences:
+  - "I can see you ran out of resources. Well, I told you exactly so. What\u2019s
+    now? "
+  responses:
+  - {fileID: 11400000, guid: b81217c58e05b91448a10187bf43ec15, type: 2}
+  - {fileID: 11400000, guid: f36a780502cd77048b6ce8ecce004df4, type: 2}
