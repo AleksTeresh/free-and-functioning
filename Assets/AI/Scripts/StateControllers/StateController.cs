@@ -62,6 +62,7 @@ public class StateController : MonoBehaviour
         if (!aiActive)
             return;
         currentState.UpdateState(this);
+        MarkChaseTarget();
     }
 
     public void TransitionToState(AI.State nextState)
@@ -73,7 +74,7 @@ public class StateController : MonoBehaviour
         }
     }
 
-    public void MarkChaseTarget()
+    private void MarkChaseTarget()
     {
         if (chaseTarget && controlledObject.GetPlayer() && controlledObject.GetPlayer().human)
         {

@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
   m_Name: Tutorial_15AreaOfEffectAgro2
   m_EditorClassIdentifier: 
-  enterActions: []
+  enterActions:
+  - {fileID: 11400000, guid: 4e8653868bf8d7f43be4325ab658db99, type: 2}
   updateActions: []
   exitActions: []
   transitions:

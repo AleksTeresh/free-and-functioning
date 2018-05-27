@@ -62,6 +62,7 @@ public class HUD : MonoBehaviour
     private EnemyUnitBar enemyUnitBar;
     private SelectionIndicator selectionIndicator;
     private AbilityBar abilityBar;
+    private UpperBar upperBar;
     private Menu.PauseMenu pauseMenu;
 
     private Animator animator;
@@ -85,6 +86,7 @@ public class HUD : MonoBehaviour
         enemyUnitBar = GetComponentInChildren<EnemyUnitBar>();
         selectionIndicator = GetComponentInChildren<SelectionIndicator>();
         abilityBar = GetComponentInChildren<AbilityBar>();
+        upperBar = GetComponentInChildren<UpperBar>();
 
         animator = GetComponent<Animator>();
 
@@ -155,6 +157,11 @@ public class HUD : MonoBehaviour
             {
                 DrawAbilityBar();
             }
+
+            if (upperBar)
+            {
+                DrawUpperBar();
+            }
         }
     }
 
@@ -162,9 +169,6 @@ public class HUD : MonoBehaviour
     {
         if (player && player.human && dialogManager && !dialogManager.BlockGameplay)
         {
-            var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
-            DrawUpperBar(observedEmenies.Count);
-
             if (!pauseMenu)
             {
                 GUI.depth = 1;
@@ -441,86 +445,21 @@ public class HUD : MonoBehaviour
             unitBar.Update();
         }
     }
-    /*
-    private void DrawOrdersBar()
+
+    private void DrawUpperBar()
     {
-        GUI.skin = orderSkin;
-        GUI.BeginGroup(new Rect(Screen.width - ORDERS_BAR_WIDTH, RESOURCE_BAR_HEIGHT, ORDERS_BAR_WIDTH, Screen.height - RESOURCE_BAR_HEIGHT));
-        GUI.Box(new Rect(0, 0, ORDERS_BAR_WIDTH, Screen.height - RESOURCE_BAR_HEIGHT), "");
-
-        string selectionName = "";
-        if (player.SelectedObject)
-        {
-            selectionName = player.SelectedObject.objectName;
-
-            if (player.SelectedObject.IsOwnedBy(player))
-            {
-                //reset slider value if the selected object has changed
-                if (lastSelection && lastSelection != player.SelectedObject) sliderValue = 0.0f;
-                DrawActions(player.SelectedObject.GetActions());
-                //store the current selection
-                lastSelection = player.SelectedObject;
-
-                Building selectedBuilding = lastSelection.GetComponent<Building>();
-                if (selectedBuilding)
-                {
-                    // DrawBuildQueue(selectedBuilding.getBuildQueueValues(), selectedBuilding.getBuildPercentage());
-                    DrawStandardBuildingOptions(selectedBuilding);
-                }
-            }
-        }
-        if (!selectionName.Equals(""))
-        {
-            int topPos = buildAreaHeight + BUTTON_SPACING;
-            GUI.Label(new Rect(0, topPos, ORDERS_BAR_WIDTH, SELECTION_NAME_HEIGHT), selectionName);
-        }
-
-        GUI.EndGroup();
-    }  */
-
-    private void DrawUpperBar(int enemyCount)
-    {
-        GUI.skin = resourceSkin;
-        GUI.BeginGroup(new Rect(0, 0, Screen.width, RESOURCE_BAR_HEIGHT));
-        GUI.Box(new Rect(0, 0, Screen.width, RESOURCE_BAR_HEIGHT), "");
-
-        int padding = 7;
-        int buttonWidth = ORDERS_BAR_WIDTH - 2 * padding - SCROLL_BAR_WIDTH;
-        int buttonHeight = RESOURCE_BAR_HEIGHT - 2 * padding;
-        int leftPos = Screen.width - ORDERS_BAR_WIDTH / 2 - buttonWidth / 2 + SCROLL_BAR_WIDTH / 2;
-        Rect menuButtonPosition = new Rect(leftPos, padding, buttonWidth, buttonHeight);
-
         if (targetManager)
         {
-            Rect attackModeIndicatorPos = new Rect(20, 10, buttonWidth, buttonHeight);
-            if (targetManager.InMultiMode)
-            {
-                GUI.TextArea(attackModeIndicatorPos, "Mutli Attack", multiModeStyle);
-            }
-            else
-            {
-                GUI.TextArea(attackModeIndicatorPos, "Single Attack", singleModeStyle);
-            }
+            upperBar.SetAttackMode(targetManager.InMultiMode);
         }
-
-        Rect enemyCounterPos = new Rect(150, 10, buttonWidth, buttonHeight);
-        GUI.TextArea(enemyCounterPos, "Enemy count: " + enemyCount.ToString());
-
 
         if (formationManager)
         {
-            Rect formationModeIndicatorPos = new Rect(300, 10, buttonWidth, buttonHeight);
-            if (formationManager.CurrentFormationType == FormationType.Auto)
-            {
-                GUI.TextArea(formationModeIndicatorPos, "Auto Formation");
-            }
-            else
-            {
-                GUI.TextArea(formationModeIndicatorPos, "Manual Formation");
-            }
+            upperBar.SetFormationMode(formationManager.CurrentFormationType);
         }
 
-        GUI.EndGroup();
+        var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
+        upperBar.SetEnemyCount(observedEmenies.Count);
     }
 
     private void DrawMouseCursor()
@@ -587,40 +526,6 @@ public class HUD : MonoBehaviour
 
         return new Rect(leftPos, topPos, activeCursor.width, activeCursor.height);
     }
-    /*
-    private void DrawActions(string[] actions)
-    {
-        GUIStyle buttons = new GUIStyle();
-        buttons.hover.background = buttonHover;
-        buttons.active.background = buttonClick;
-        GUI.skin.button = buttons;
-        int numActions = actions.Length;
-        //define the area to draw the actions inside
-        GUI.BeginGroup(new Rect(0, 0, ORDERS_BAR_WIDTH, buildAreaHeight));
-        //draw scroll bar for the list of actions if need be
-        if (numActions >= MaxNumRows(buildAreaHeight)) DrawSlider(buildAreaHeight, numActions / 2.0f);
-        //display possible actions as buttons and handle the button click for each
-        for (int i = 0; i < numActions; i++)
-        {
-            int column = i % 2;
-            int row = i / 2;
-            Rect pos = GetButtonPos(row, column);
-            Texture2D action = ResourceManager.GetBuildImage(actions[i]);
-            if (action)
-            {
-                //create the button and handle the click of that button
-                if (GUI.Button(pos, action))
-                {
-                    if (player.SelectedObject)
-                    {
-                        PlayClick();
-                        player.SelectedObject.PerformAction(actions[i]);
-                    }
-                }
-            }
-        }
-        GUI.EndGroup();
-    }  */
 
     private int MaxNumRows(int areaHeight)
     {
@@ -644,28 +549,7 @@ public class HUD : MonoBehaviour
     {
         return new Rect(BUTTON_SPACING, BUTTON_SPACING, SCROLL_BAR_WIDTH, groupHeight - 2 * BUTTON_SPACING);
     }
-    /*
-    private void DrawPlayerDetails()
-    {
-        GUI.skin = playerDetailsSkin;
-        GUI.BeginGroup(new Rect(0, 0, Screen.width, Screen.height));
-        float height = ResourceManager.TextHeight;
-        float leftPos = ResourceManager.Padding;
-        float topPos = Screen.height - height - ResourceManager.Padding;
-        Texture2D avatar = PlayerManager.GetPlayerAvatar();
-        if (avatar)
-        {
-            //we want the texture to be drawn square at all times
-            GUI.DrawTexture(new Rect(leftPos, topPos, height, height), avatar);
-            leftPos += height + ResourceManager.Padding;
-        }
-        float minWidth = 0, maxWidth = 0;
-        string playerName = PlayerManager.GetPlayerName();
-        playerDetailsSkin.GetStyle("label").CalcMinMaxWidth(new GUIContent(playerName), out minWidth, out maxWidth);
-        GUI.Label(new Rect(leftPos, topPos, maxWidth, height), playerName);
-        GUI.EndGroup();
-    }
-    */
+
     private void DrawStandardBuildingOptions(Building building)
     {
         GUIStyle buttons = new GUIStyle();

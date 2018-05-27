@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24c83f24266066438ca74f3bb8fe2c2, type: 3}
   m_Name: BossBattle_DefaultState
   m_EditorClassIdentifier: 
-  enterActions: []
+  enterActions:
+  - {fileID: 11400000, guid: 14f1bbc2ca9e3054fa39c5d265ae2ed8, type: 2}
   updateActions: []
   exitActions: []
   transitions:

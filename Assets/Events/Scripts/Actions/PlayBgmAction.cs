@@ -10,9 +10,10 @@ namespace Events
 
         public override void Act(StateController controller)
         {
-            if(bgm)
+            if(bgm && (!controller.currentAudioClip || controller.currentAudioClip.name != bgm.name))
             {
                 SoundManager.PlayMusic(bgm, .8f, true, false);
+                controller.currentAudioClip = bgm;
             }
         }
     }

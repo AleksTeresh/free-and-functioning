@@ -36,7 +36,7 @@ namespace AI
                 controller.attacking = false;
             }
 
-            controller.MarkChaseTarget();
+            // controller.MarkChaseTarget();
         }
 
         public static WorldObject SetClosestEnemyAsTarget (StateController controller)
