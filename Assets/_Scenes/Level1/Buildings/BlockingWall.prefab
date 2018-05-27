@@ -150,9 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Blocking Wall
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
   hitPoints: 1500
   maxHitPoints: 1500
   attackDelay: 1

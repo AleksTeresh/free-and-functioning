@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
+  m_Name: Level2_3.GendolfineSorry
+  m_EditorClassIdentifier: 
+  speakerAvatar: {fileID: 0}
+  speakerName: Gendolfine
+  displayedOptionText: "I\u2019m not sure really. Sorry for that."
+  blockGameplay: 1
+  dialogSentences:
+  - "Well, I\u2019m not sure really. Sorry for that. Me and Franklin can last another
+    day without resources. But then, I don't know..."
+  responses:
+  - {fileID: 11400000, guid: b36dcd794eaf45a4ab9176135ba595ca, type: 2}

@@ -151,12 +151,4 @@ public class SpawnTrapTrigger : EventObject
             }
         }
     }
-
-    [Serializable]
-    public class BlockingWallParams
-    {
-        public Vector3 wallPosition;
-        public Quaternion wallRotation;
-        public string name;
-    }
 }
