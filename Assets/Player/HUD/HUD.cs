@@ -64,6 +64,8 @@ public class HUD : MonoBehaviour
     private AbilityBar abilityBar;
     private UpperBar upperBar;
     private Menu.PauseMenu pauseMenu;
+    private UnitPanelWrapper unitPanelWrapper;
+    private List<PlayerUnitPanel> playerUnitPanels;
 
     private Animator animator;
 
@@ -77,6 +79,8 @@ public class HUD : MonoBehaviour
     // Use this for initialization
     IEnumerator Start()
     {
+        playerUnitPanels = new List<PlayerUnitPanel>();
+
         canvas = GetComponentInChildren<Canvas>();
         player = transform.root.GetComponent<Player>();
         targetManager = player.GetComponentInChildren<TargetManager>();
@@ -87,6 +91,7 @@ public class HUD : MonoBehaviour
         selectionIndicator = GetComponentInChildren<SelectionIndicator>();
         abilityBar = GetComponentInChildren<AbilityBar>();
         upperBar = GetComponentInChildren<UpperBar>();
+        unitPanelWrapper = GetComponentInChildren<UnitPanelWrapper>();
 
         animator = GetComponent<Animator>();
 
@@ -133,11 +138,12 @@ public class HUD : MonoBehaviour
         if (player && player.human)
         {
             // DrawOrdersBar();
+            /*
             if (playerUnitBar)
             {
                 DrawUnitsBar(playerUnitBar, player.GetUnits().Cast<WorldObject>().ToList(), "PlayerIndicator");
             }
-            
+            */
             if (enemyUnitBar)
             {
                 var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
@@ -147,7 +153,9 @@ public class HUD : MonoBehaviour
                     "EnemyIndicator"
                 );
             }
-            
+
+            DrawPlayerUnitPanels();
+            /*       
             if (selectionIndicator)
             {
                 DrawSelectionIndicator();
@@ -157,7 +165,7 @@ public class HUD : MonoBehaviour
             {
                 DrawAbilityBar();
             }
-
+            */
             if (upperBar)
             {
                 DrawUpperBar();
@@ -329,27 +337,60 @@ public class HUD : MonoBehaviour
         }
     }
 
-    private void DrawAbilityBar()
+    private void DrawAbilityBar(AbilityBar abilityBar, Unit unit)
     {
         var abilitySlots = abilityBar.AbilitySlots;
         var selection = player.SelectedObject;
 
-        abilityBar.ClearSlots();
+        // var selectedUnit = (Unit)selection;
+        var abilities = unit.GetAbilityAgent().abilities;
+        var multiAbilities = unit.GetAbilityAgent().abilitiesMulti;
 
-        if (selection && selection is Unit)
+        abilityBar.DrawAbilities(
+            abilities,
+            multiAbilities,
+            targetManager.InMultiMode,
+            targetManager.InMultiMode
+                ? player.selectedAlliesTargettingAbility
+                : player.selectedAllyTargettingAbility
+        );
+    }
+
+    private void DrawPlayerUnitPanels ()
+    {
+        var units = player.GetUnits().Where(unit => unit && unit.hitPoints > 0).ToList();
+
+        if (units.Count != playerUnitPanels.Count)
         {
-            var selectedUnit = (Unit)selection;
-            var abilities = selectedUnit.GetAbilityAgent().abilities;
-            var multiAbilities = selectedUnit.GetAbilityAgent().abilitiesMulti;
+            playerUnitPanels.ForEach(panel => DestroyImmediate(panel.gameObject));
+            playerUnitPanels = new List<PlayerUnitPanel>();
 
-            abilityBar.DrawAbilities(
-                abilities,
-                multiAbilities,
-                targetManager.InMultiMode,
-                targetManager.InMultiMode
-                    ? player.selectedAlliesTargettingAbility
-                    : player.selectedAllyTargettingAbility
-            );
+            units.ForEach(unit =>
+            {
+                var panelObj = Instantiate(ResourceManager.GetUIElement("PlayerUnitPanel"));
+                var panel = panelObj.GetComponent<PlayerUnitPanel>();
+                panel.Start();
+                var unitIndicator = panel.GetIndicator();
+                unitIndicator.Init(unit);
+
+                var rectTransform = panelObj.GetComponent<RectTransform>();
+                rectTransform.SetParent(unitPanelWrapper.transform, false);
+                rectTransform.anchoredPosition = new Vector2(
+                    rectTransform.anchoredPosition.x + 350 * units.IndexOf(unit),
+                    rectTransform.anchoredPosition.y
+                );
+
+                playerUnitPanels.Add(panel);
+            });
+        }
+
+        for (int i = 0; i < playerUnitPanels.Count; i++)
+        {
+            if (!playerUnitPanels[i] || !units[i]) return;
+
+            var abilityBar = playerUnitPanels[i].GetAblityBar();
+
+            DrawAbilityBar(abilityBar, units[i]);
         }
     }
 
