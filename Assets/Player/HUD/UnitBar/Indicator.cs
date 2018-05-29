@@ -9,7 +9,8 @@ using RTS;
 public class Indicator : MonoBehaviour {
     protected Slider healthSlider;
     protected Text nameLabel;
-    protected Image avatar;
+    // protected Image avatar
+    protected Image holdPositionIndicator;
     protected StatusIndicators statusesWrapper;
     protected Image upperSelectIndicator;
     protected Image lowerSelectIndicator;
@@ -30,13 +31,19 @@ public class Indicator : MonoBehaviour {
     {
         healthSlider = GetComponentInChildren<Slider>();
         nameLabel = GetComponentInChildren<Text>();
-        avatar = GetComponentInChildren<Image>();
+        // avatar = GetComponentInChildren<Image>();
         statusesWrapper = GetComponentInChildren<StatusIndicators>();
 
         var selectIndicators = new List<SelectHighlight>(GetComponentsInChildren<SelectHighlight>());
 
         upperSelectIndicator = selectIndicators[0].GetComponent<Image>();
         lowerSelectIndicator = selectIndicators[1].GetComponent<Image>();
+
+        var holdPositionIndicatorSelf = GetComponentInChildren<HoldPositionIndicator>();
+        if (holdPositionIndicatorSelf)
+        {
+            holdPositionIndicator = holdPositionIndicatorSelf.GetComponent<Image>();
+        }
     }
 
     // Update is called once per frame
@@ -54,6 +61,11 @@ public class Indicator : MonoBehaviour {
             HandleStatusUpdate();
 
             HandleSelection();
+
+            if (holdPositionIndicator && indicatedObject is Unit)
+            {
+                holdPositionIndicator.enabled = ((Unit)indicatedObject).holdingPosition;
+            }
         }
     }
 
