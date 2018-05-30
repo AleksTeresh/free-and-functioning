@@ -1181,6 +1181,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114047696966252068, guid: a465ec2b81536d24b9fc895770b1a8ac, type: 2}
+  icon: {fileID: 21300006, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1259,6 +1260,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114992022797530444, guid: 961582889c559a045bbb745f843b2a19, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1310,6 +1312,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114939054064557548, guid: b7ca08c70cafca14baa3dc563206cebb, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1339,6 +1342,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114404459750338384, guid: 879d9aa5296e3fe4a93521ffe4fba1a1, type: 2}
+  icon: {fileID: 21300000, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1390,6 +1394,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114630899022190572, guid: 6bef75ec6bc0e3e46b57b78e6af799e4, type: 2}
+  icon: {fileID: 21300004, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1430,6 +1435,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: 6145f740b8fb08641a4acc83bbfca541, type: 2}
+  icon: {fileID: 21300002, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1449,9 +1455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Franklin
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
   hitPoints: 250
   maxHitPoints: 250
   attackDelay: 1
@@ -1502,6 +1505,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114637300746163854, guid: 8bbc0de20fe979748823fc1bf90a1a94, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1542,6 +1546,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114047696966252068, guid: 70ca113068d270448abf5bc258f1eaf7, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0

@@ -36,6 +36,6 @@ public class PlayerIndicator : Indicator {
             ));
 
         upperSelectIndicator.enabled = unitIsSelected;
-        lowerSelectIndicator.enabled = unitIsSelected;
+//        lowerSelectIndicator.enabled = unitIsSelected;
     }
 }

@@ -1084,6 +1084,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114934206967156496, guid: e9a133093de4a0e48b251c74b732e42b, type: 2}
+  icon: {fileID: 21300008, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1845,6 +1846,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1911,6 +1913,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114404459750338384, guid: 879d9aa5296e3fe4a93521ffe4fba1a1, type: 2}
+  icon: {fileID: 21300000, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -2066,6 +2069,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: d6071164388261b498fc5d12991241c8, type: 2}
+  icon: {fileID: 21300024, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -2408,6 +2412,7 @@ MonoBehaviour:
   isSelfOnly: 1
   statuses:
   - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
+  icon: {fileID: 21300010, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -2575,6 +2580,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114992022797530444, guid: 41d768e19b900b74984b4e23f285160d, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -2723,6 +2729,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 21300014, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -2956,6 +2963,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114764832596419926, guid: 6029dafd8376c054c9d16c6ddbe00a79, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -3068,6 +3076,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114106531623158688, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -3245,6 +3254,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114510994800895556, guid: e26f01d61156ca14d876bb6cb0d7e9f8, type: 2}
+  icon: {fileID: 21300030, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -3305,6 +3315,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -3871,6 +3882,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: 6145f740b8fb08641a4acc83bbfca541, type: 2}
+  icon: {fileID: 21300002, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -5626,6 +5638,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114934206967156496, guid: e9a133093de4a0e48b251c74b732e42b, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -9804,6 +9817,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114047696966252068, guid: 70ca113068d270448abf5bc258f1eaf7, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -9865,6 +9879,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114916234241743166, guid: c549c46c75cf94c4d97510e1706e0cf5, type: 2}
+  icon: {fileID: 21300026, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -17382,6 +17397,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
+  icon: {fileID: 21300020, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -17443,6 +17459,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114106531623158688, guid: fb6b543a37885884ba48e2007b403d7a, type: 2}
+  icon: {fileID: 21300028, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -21242,6 +21259,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -21465,6 +21483,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114630899022190572, guid: 6bef75ec6bc0e3e46b57b78e6af799e4, type: 2}
+  icon: {fileID: 21300004, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -21526,6 +21545,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
+  icon: {fileID: 21300012, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -21844,7 +21864,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1576806694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -98, y: 6.529999, z: 224.3}
+  m_LocalPosition: {x: -98, y: 6.529999, z: 221.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1276746837}
@@ -22443,6 +22463,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114088077251806944, guid: 8a795494eb9240345bfc9bf291a909c4, type: 2}
+  icon: {fileID: 21300018, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -22623,6 +22644,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114901872984256716, guid: 69790dbba81d4104c94af05c5ff379e8, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -22839,6 +22861,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114232471910180786, guid: 15ddf618db779904e8e4f310b513bd74, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -22998,6 +23021,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114637300746163854, guid: 8bbc0de20fe979748823fc1bf90a1a94, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -23548,6 +23572,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114047696966252068, guid: a465ec2b81536d24b9fc895770b1a8ac, type: 2}
+  icon: {fileID: 21300006, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -23745,6 +23770,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114607499724579530, guid: 9db60096cddd7c441ad5f712353a0a3f, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -23810,6 +23836,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 21300016, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -23871,6 +23898,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114771467544062228, guid: f793a5da2c6fb0c4d90b5def68be46a2, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -24068,6 +24096,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114939054064557548, guid: b7ca08c70cafca14baa3dc563206cebb, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -24410,6 +24439,7 @@ MonoBehaviour:
   isSelfOnly: 1
   statuses:
   - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -24471,6 +24501,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114992022797530444, guid: 961582889c559a045bbb745f843b2a19, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -24795,6 +24826,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114777014935931824, guid: f1fb4591802d198458d948b680a58080, type: 2}
+  icon: {fileID: 21300022, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0

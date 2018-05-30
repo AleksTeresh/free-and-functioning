@@ -3074,6 +3074,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114939054064557548, guid: b7ca08c70cafca14baa3dc563206cebb, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -7592,6 +7593,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114404459750338384, guid: 879d9aa5296e3fe4a93521ffe4fba1a1, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -9243,11 +9245,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 195535463507022848, guid: a789ac6dde7558e4e9c3323541eecdcd,
-        type: 2}
-      propertyPath: m_Acceleration
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a789ac6dde7558e4e9c3323541eecdcd, type: 2}
   m_IsPrefabParent: 0
@@ -10261,6 +10258,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114992022797530444, guid: 961582889c559a045bbb745f843b2a19, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -10835,6 +10833,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: 6145f740b8fb08641a4acc83bbfca541, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0

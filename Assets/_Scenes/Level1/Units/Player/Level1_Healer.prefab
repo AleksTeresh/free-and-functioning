@@ -263,7 +263,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054317212583768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 228.79541, y: 21.890606, z: 884.0756}
+  m_LocalPosition: {x: 242.39542, y: 20.24391, z: 889.6456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4128799485053590}
@@ -814,9 +814,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Gendolfine
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
   hitPoints: 200
   maxHitPoints: 200
   attackDelay: 1
@@ -866,6 +863,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1009,6 +1007,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 21300016, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0

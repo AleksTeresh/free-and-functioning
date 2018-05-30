@@ -109,7 +109,7 @@ public class Indicator : MonoBehaviour {
 
                     var rectTransform = newIndicatorObject.GetComponent<RectTransform>();
                     rectTransform.anchoredPosition = new Vector2(
-                        rectTransform.anchoredPosition.x - 32 * (indicatedStatuses.Count() + newIndicatorsCounter),
+                        23 * (indicatedStatuses.Count() + newIndicatorsCounter),
                         rectTransform.anchoredPosition.y
                     );
                     // rectTransform.sizeDelta = new Vector2(0, 100);

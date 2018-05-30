@@ -1,6 +1,8 @@
-﻿using Abilities;
+﻿using System.Net.Mime;
+using Abilities;
 using Persistence;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Statuses
 {
@@ -8,6 +10,7 @@ namespace Statuses
     {
         public string statusName;
         public float maxDuration;
+        public Sprite icon;
 
         [HideInInspector] public bool isActive;
         [HideInInspector] public WorldObject target;

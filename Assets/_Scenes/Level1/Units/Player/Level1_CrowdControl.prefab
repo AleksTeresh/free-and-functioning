@@ -492,7 +492,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558231609769374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 469.02, y: -220.66203, z: -492.60315}
+  m_LocalPosition: {x: 1693.0592, y: 1115.6865, z: 835.1101}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4027247465011668}
@@ -1241,6 +1241,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114992022797530444, guid: 961582889c559a045bbb745f843b2a19, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1292,6 +1293,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114939054064557548, guid: b7ca08c70cafca14baa3dc563206cebb, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1310,6 +1312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b907f1bfdba9d4487506593b25e028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerred: 0
+  inProgress: 0
+  completed: 0
 --- !u!114 &114636150104625992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1322,9 +1327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Target Mark
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
   hitPoints: 0
   maxHitPoints: 0
   attackDelay: 1
@@ -1370,6 +1372,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114404459750338384, guid: 879d9aa5296e3fe4a93521ffe4fba1a1, type: 2}
+  icon: {fileID: 21300000, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1432,6 +1435,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: 6145f740b8fb08641a4acc83bbfca541, type: 2}
+  icon: {fileID: 21300002, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1451,9 +1455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Franklin
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
   hitPoints: 350
   maxHitPoints: 350
   attackDelay: 1

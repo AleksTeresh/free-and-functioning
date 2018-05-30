@@ -906,9 +906,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Rudolf
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
   hitPoints: 600
   maxHitPoints: 600
   attackDelay: 1
@@ -970,6 +967,7 @@ MonoBehaviour:
   isSelfOnly: 1
   statuses:
   - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
+  icon: {fileID: 21300010, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1032,6 +1030,7 @@ MonoBehaviour:
   isSelfOnly: 1
   statuses:
   - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1060,6 +1059,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 21300014, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1099,6 +1099,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1144,6 +1145,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114487192428846346, guid: 47fc1fcaa9188334da606b5b0e7d09ab, type: 2}
+  icon: {fileID: 21300012, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1172,6 +1174,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1206,6 +1209,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114934206967156496, guid: e9a133093de4a0e48b251c74b732e42b, type: 2}
+  icon: {fileID: 21300008, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1240,6 +1244,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114934206967156496, guid: e9a133093de4a0e48b251c74b732e42b, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0

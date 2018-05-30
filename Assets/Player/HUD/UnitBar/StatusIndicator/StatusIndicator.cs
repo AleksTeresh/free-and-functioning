@@ -15,8 +15,8 @@ public class StatusIndicator : MonoBehaviour {
         this.status = status;
 
         // set status' icon as the current icon
-        // icon.sprite = status.sprite
-        nameLabel.text = status.statusName;
+        icon.sprite = status.icon;
+//        nameLabel.text = status.statusName;
     }
 
     public Status GetStatus()
@@ -26,7 +26,7 @@ public class StatusIndicator : MonoBehaviour {
 
     void Awake()
     {
-        nameLabel = GetComponentInChildren<Text>();
+//        nameLabel = GetComponentInChildren<Text>();
         icon = GetComponentInChildren<Image>();
     }
 }
