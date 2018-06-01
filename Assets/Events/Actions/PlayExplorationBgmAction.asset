@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bc4436eb9179245a118bec95141bad, type: 3}
   m_Name: PlayExplorationBgmAction
   m_EditorClassIdentifier: 
-  bgm: {fileID: 8300000, guid: a456fc434dfe7204d86515bf937000f4, type: 3}
+  bgm: {fileID: 8300000, guid: b1efcaaa065942b4b8079fded8f73f2a, type: 3}
