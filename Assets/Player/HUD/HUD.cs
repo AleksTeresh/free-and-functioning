@@ -46,6 +46,7 @@ public class HUD : MonoBehaviour
     private float sliderValue;
 
     private Player player;
+
     // private Camera uiCamera;
     private TargetManager targetManager;
     private FormationManager formationManager;
@@ -61,8 +62,12 @@ public class HUD : MonoBehaviour
     private PlayerUnitBar playerUnitBar;
     private EnemyUnitBar enemyUnitBar;
     private SelectionIndicator selectionIndicator;
+
     private AbilityBar abilityBar;
-    private UpperBar upperBar;
+
+//    private UpperBar upperBar;
+    private GeneralIndicatorBar generalIndicatorBar;
+    private EnemyCountBar enemyCountBar;
     private Menu.PauseMenu pauseMenu;
     private UnitPanelWrapper unitPanelWrapper;
     private List<PlayerUnitPanel> playerUnitPanels;
@@ -90,7 +95,9 @@ public class HUD : MonoBehaviour
         enemyUnitBar = GetComponentInChildren<EnemyUnitBar>();
         selectionIndicator = GetComponentInChildren<SelectionIndicator>();
         abilityBar = GetComponentInChildren<AbilityBar>();
-        upperBar = GetComponentInChildren<UpperBar>();
+//        upperBar = GetComponentInChildren<UpperBar>();
+        generalIndicatorBar = GetComponentInChildren<GeneralIndicatorBar>();
+        enemyCountBar = GetComponentInChildren<EnemyCountBar>();
         unitPanelWrapper = GetComponentInChildren<UnitPanelWrapper>();
 
         animator = GetComponent<Animator>();
@@ -147,7 +154,7 @@ public class HUD : MonoBehaviour
             if (enemyUnitBar)
             {
                 var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
-                    DrawUnitsBar(
+                DrawUnitsBar(
                     enemyUnitBar,
                     observedEmenies,
                     "EnemyIndicator"
@@ -166,9 +173,19 @@ public class HUD : MonoBehaviour
                 DrawAbilityBar();
             }
             */
-            if (upperBar)
+//            if (upperBar)
+//            {
+//                DrawUpperBar();
+//            }
+
+            if (enemyCountBar)
             {
-                DrawUpperBar();
+                DrawEnemyCountBar();
+            }
+
+            if (generalIndicatorBar)
+            {
+                DrawGeneralIndicatorBar();
             }
         }
     }
@@ -231,7 +248,7 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public bool IsPauseMenuOpen ()
+    public bool IsPauseMenuOpen()
     {
         return pauseMenu;
     }
@@ -246,15 +263,15 @@ public class HUD : MonoBehaviour
                 activeCursor = selectCursor;
                 break;
             case CursorState.Attack:
-                currentFrame = (int)Time.time % attackCursors.Length;
+                currentFrame = (int) Time.time % attackCursors.Length;
                 activeCursor = attackCursors[currentFrame];
                 break;
             case CursorState.Harvest:
-                currentFrame = (int)Time.time % harvestCursors.Length;
+                currentFrame = (int) Time.time % harvestCursors.Length;
                 activeCursor = harvestCursors[currentFrame];
                 break;
             case CursorState.Move:
-                currentFrame = (int)Time.time % moveCursors.Length;
+                currentFrame = (int) Time.time % moveCursors.Length;
                 activeCursor = moveCursors[currentFrame];
                 break;
             case CursorState.PanLeft:
@@ -356,7 +373,7 @@ public class HUD : MonoBehaviour
         );
     }
 
-    private void DrawPlayerUnitPanels ()
+    private void DrawPlayerUnitPanels()
     {
         var units = player.GetUnits().Where(unit => unit && unit.hitPoints > 0).ToList();
 
@@ -412,7 +429,7 @@ public class HUD : MonoBehaviour
             }
 
             selectionIndicator.HealthSlider.maxValue = selection.maxHitPoints;
-            selectionIndicator.HealthSlider.value = selection.hitPoints; 
+            selectionIndicator.HealthSlider.value = selection.hitPoints;
         }
         else
         {
@@ -423,13 +440,12 @@ public class HUD : MonoBehaviour
 
             // TODO: add avatar manipulation here
         }
-
     }
 
     private void DrawUnitsBar(UnitBar unitBar, List<WorldObject> indicatedObjects, string indicatorName)
     {
         indicatedObjects = indicatedObjects
-            .Where(p => ((p is Unit) && ((Unit)p).IsMajor()) || (p is BossPart) || (p is Building))
+            .Where(p => ((p is Unit) && ((Unit) p).IsMajor()) || (p is BossPart) || (p is Building))
             .ToList();
 
         var indicators = unitBar.GetIndicators();
@@ -449,10 +465,10 @@ public class HUD : MonoBehaviour
                 indicatedUnits = new List<WorldObject>();
                 var indicatorsWrapper = unitBar.GetIndicatorsWrapper();
                 new List<Indicator>(
-                    indicatorsWrapper.transform
-                        .GetComponentsInChildren<Indicator>()
-                )
-                .ForEach(s => Destroy(s.gameObject));
+                        indicatorsWrapper.transform
+                            .GetComponentsInChildren<Indicator>()
+                    )
+                    .ForEach(s => Destroy(s.gameObject));
                 break;
             }
         }
@@ -460,26 +476,27 @@ public class HUD : MonoBehaviour
         indicatedObjects
             // .Where(p => ((p is Unit) && ((Unit) p).IsMajor()) || (p is BossPart) || (p is Building))
             .ToList().ForEach(p =>
-        {
-            if (!indicatedUnits.Contains(p))
             {
-                var indicatorsWrapper = unitBar.GetIndicatorsWrapper();
-                var newIndicatorObject = GameObject.Instantiate(ResourceManager.GetUIElement(indicatorName));
-                var newIndicator = newIndicatorObject.GetComponent<Indicator>();
-
-                if (newIndicator)
+                if (!indicatedUnits.Contains(p))
                 {
-                    newIndicator.Init(p);
-                    newIndicator.transform.parent = indicatorsWrapper.transform;
+                    var indicatorsWrapper = unitBar.GetIndicatorsWrapper();
+                    var newIndicatorObject = GameObject.Instantiate(ResourceManager.GetUIElement(indicatorName));
+                    var newIndicator = newIndicatorObject.GetComponent<Indicator>();
 
-                    var rectTransform = newIndicatorObject.GetComponent<RectTransform>();
-                    rectTransform.anchoredPosition = new Vector2(0, -100 - 100 * (indicatedUnits.Count() + newIndicatorsCounter));
-                    rectTransform.sizeDelta = new Vector2(0, 100);
+                    if (newIndicator)
+                    {
+                        newIndicator.Init(p);
+                        newIndicator.transform.parent = indicatorsWrapper.transform;
 
-                    newIndicatorsCounter++;
+                        var rectTransform = newIndicatorObject.GetComponent<RectTransform>();
+                        rectTransform.anchoredPosition = new Vector2(0,
+                            -30 - 69 * (indicatedUnits.Count() + newIndicatorsCounter));
+                        rectTransform.sizeDelta = new Vector2(0, 60);
+
+                        newIndicatorsCounter++;
+                    }
                 }
-            }
-        });
+            });
 
         if (newIndicatorsCounter > 0)
         {
@@ -487,20 +504,39 @@ public class HUD : MonoBehaviour
         }
     }
 
-    private void DrawUpperBar()
+//    private void DrawUpperBar()
+//    {
+//        if (targetManager)
+//        {
+//            upperBar.SetAttackMode(targetManager.InMultiMode);
+//        }
+//
+//        if (formationManager)
+//        {
+//            upperBar.SetFormationMode(formationManager.CurrentFormationType);
+//        }
+//
+//        var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
+//        upperBar.SetEnemyCount(observedEmenies.Count);
+//    }
+//    
+    private void DrawGeneralIndicatorBar()
     {
         if (targetManager)
         {
-            upperBar.SetAttackMode(targetManager.InMultiMode);
+            generalIndicatorBar.SetAttackMode(targetManager.InMultiMode);
         }
 
         if (formationManager)
         {
-            upperBar.SetFormationMode(formationManager.CurrentFormationType);
+            generalIndicatorBar.SetFormationMode(formationManager.CurrentFormationType);
         }
+    }
 
+    private void DrawEnemyCountBar()
+    {
         var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
-        upperBar.SetEnemyCount(observedEmenies.Count);
+        enemyCountBar.SetEnemyCount(observedEmenies.Count);
     }
 
     private void DrawMouseCursor()
@@ -529,17 +565,17 @@ public class HUD : MonoBehaviour
         //change once per second, loops through array of images
         if (activeCursorState == CursorState.Move)
         {
-            currentFrame = (int)Time.time % moveCursors.Length;
+            currentFrame = (int) Time.time % moveCursors.Length;
             activeCursor = moveCursors[currentFrame];
         }
         else if (activeCursorState == CursorState.Attack)
         {
-            currentFrame = (int)Time.time % attackCursors.Length;
+            currentFrame = (int) Time.time % attackCursors.Length;
             activeCursor = attackCursors[currentFrame];
         }
         else if (activeCursorState == CursorState.Harvest)
         {
-            currentFrame = (int)Time.time % harvestCursors.Length;
+            currentFrame = (int) Time.time % harvestCursors.Length;
             activeCursor = harvestCursors[currentFrame];
         }
     }
@@ -549,7 +585,7 @@ public class HUD : MonoBehaviour
         //set base position for custom cursor image
         float leftPos = cursorPosition.x;
         float topPos = Screen.height - cursorPosition.y; //screen draw coordinates are inverted
-                                                         //adjust position base on the type of cursor being shown
+        //adjust position base on the type of cursor being shown
 
         if (!activeCursor)
         {
@@ -558,7 +594,8 @@ public class HUD : MonoBehaviour
 
         if (activeCursorState == CursorState.PanRight) leftPos = Screen.width - activeCursor.width;
         else if (activeCursorState == CursorState.PanDown) topPos = Screen.height - activeCursor.height;
-        else if (activeCursorState == CursorState.Move || activeCursorState == CursorState.Select || activeCursorState == CursorState.Harvest)
+        else if (activeCursorState == CursorState.Move || activeCursorState == CursorState.Select ||
+                 activeCursorState == CursorState.Harvest)
         {
             topPos -= activeCursor.height / 2;
             leftPos -= activeCursor.width / 2;
@@ -583,7 +620,8 @@ public class HUD : MonoBehaviour
     private void DrawSlider(int groupHeight, float numRows)
     {
         //slider goes from 0 to the number of rows that do not fit on screen
-        sliderValue = GUI.VerticalSlider(GetScrollPos(groupHeight), sliderValue, 0.0f, numRows - MaxNumRows(groupHeight));
+        sliderValue =
+            GUI.VerticalSlider(GetScrollPos(groupHeight), sliderValue, 0.0f, numRows - MaxNumRows(groupHeight));
     }
 
     private Rect GetScrollPos(int groupHeight)

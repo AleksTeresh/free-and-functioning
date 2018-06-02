@@ -996,6 +996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb70168d6fba9e4d8f59d08232c8d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusIndicatorOffset: 3
+  statusIndicatorPrefab: {fileID: 114424239673658920, guid: 0c1046b2accd17a44b23528b6fbdf77d,
+    type: 2}
 --- !u!114 &114142787018598432
 MonoBehaviour:
   m_ObjectHideFlags: 1
