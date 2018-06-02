@@ -489,6 +489,7 @@ MonoBehaviour:
   - Josefine
   - Gendolfine
   - Franklin
+  lockCursor: 1
 --- !u!4 &392030398
 Transform:
   m_ObjectHideFlags: 0
@@ -517,12 +518,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: c478ecc8fa7c73147b6974333beeb767, type: 2}
+  eventObjects: []
   hud: {fileID: 0}
   player: {fileID: 0}
   dialogManager: {fileID: 0}
   formationManager: {fileID: 0}
   targetManager: {fileID: 0}
   timeInState: 0
+  currentAudioClip: {fileID: 0}
 --- !u!1 &512596299
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +748,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e17cb5997dbeb5f4997de5a1940a2f35, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1219,7 +1222,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 977e6ad96409ad741b354b45faea100e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1602,7 +1605,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: bece1948e2470d747b2ef1a7b3bae034, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
