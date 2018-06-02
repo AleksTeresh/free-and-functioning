@@ -47,7 +47,8 @@ public class DialogTextPanel : MonoBehaviour {
 
     public void SetSpeakerAvatar (Sprite avatar)
     {
-        speakerAvatar.sprite = avatar;
+        // TODO uncomment when avatars are set for the dialog nodes
+//        speakerAvatar.sprite = avatar;
     }
 
     IEnumerator<int> TypeSentence(string sentence)
