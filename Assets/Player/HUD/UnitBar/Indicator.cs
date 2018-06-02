@@ -5,8 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Statuses;
 using RTS;
+using UnityEditor.PackageManager;
 
-public class Indicator : MonoBehaviour {
+public class Indicator : MonoBehaviour
+{
+
+    public float statusIndicatorOffset = 0.0f;
+    public StatusIndicator statusIndicatorPrefab;
+    
     protected Slider healthSlider;
     protected Text nameLabel;
     // protected Image avatar
@@ -99,17 +105,18 @@ public class Indicator : MonoBehaviour {
         {
             if (!indicatedStatuses.Contains(p))
             {
-                var newIndicatorObject = GameObject.Instantiate(ResourceManager.GetUIElement("StatusIndicator"));
-                var newIndicator = newIndicatorObject.GetComponent<StatusIndicator>();
+//                var newIndicatorObject = GameObject.Instantiate(ResourceManager.GetUIElement("StatusIndicator"));
+                //                var newIndicator = newIndicatorObject.GetComponent<StatusIndicator>();
+                var newIndicator = Instantiate(statusIndicatorPrefab);
 
                 if (newIndicator)
                 {
                     newIndicator.Init(p);
                     newIndicator.transform.SetParent(statusesWrapper.transform, false);
 
-                    var rectTransform = newIndicatorObject.GetComponent<RectTransform>();
+                    var rectTransform = newIndicator.GetComponent<RectTransform>();
                     rectTransform.anchoredPosition = new Vector2(
-                        23 * (indicatedStatuses.Count() + newIndicatorsCounter),
+                        (rectTransform.sizeDelta.x + statusIndicatorOffset) * (indicatedStatuses.Count() + newIndicatorsCounter),
                         rectTransform.anchoredPosition.y
                     );
                     // rectTransform.sizeDelta = new Vector2(0, 100);
