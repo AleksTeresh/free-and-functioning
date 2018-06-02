@@ -181,6 +181,8 @@ public class Unit : WorldObject
         HandleMove();
         HandleRotation();
         HandleVisualEffects();
+
+        CalculateBounds();
     }
 
     protected override void OnDrawGizmosSelected()
@@ -237,7 +239,6 @@ public class Unit : WorldObject
         else
         {
             agent.isStopped = false;
-            CalculateBounds();
         }
     }
 
@@ -251,8 +252,6 @@ public class Unit : WorldObject
             nextAimRotation.x = 0;
             nextAimRotation.z = 0;
             transform.rotation = nextAimRotation;
-            // transform.rotation = Quaternion.RotateTowards(transform.rotation, aimRotation, weaponAimSpeed);
-            CalculateBounds();
 
             //sometimes it gets stuck exactly 180 degrees out in the calculation and does nothing, this check fixes that
             // Quaternion inverseAimRotation = new Quaternion(-aimRotation.x, -aimRotation.y, -aimRotation.z, -aimRotation.w);
