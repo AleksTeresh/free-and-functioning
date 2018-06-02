@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusName: Disarmed Multi
   maxDuration: 5
+  icon: {fileID: 21300006, guid: f5e695a0751224a679f7e587c0d6bb9a, type: 3}
   isActive: 0
   target: {fileID: 0}
   duration: 0

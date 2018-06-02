@@ -994,9 +994,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Gendolfine
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
   hitPoints: 200
   maxHitPoints: 200
   attackDelay: 1
@@ -1046,6 +1043,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1113,6 +1111,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114777014935931824, guid: f1fb4591802d198458d948b680a58080, type: 2}
+  icon: {fileID: 21300022, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1153,6 +1152,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114232471910180786, guid: 15ddf618db779904e8e4f310b513bd74, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1226,6 +1226,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114901872984256716, guid: 69790dbba81d4104c94af05c5ff379e8, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1266,6 +1267,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114088077251806944, guid: 8a795494eb9240345bfc9bf291a909c4, type: 2}
+  icon: {fileID: 21300018, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1305,6 +1307,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 21300016, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1334,6 +1337,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114718445126458528, guid: 4d1ef3f59afec7c438916e3f4b58fd3f, type: 2}
+  icon: {fileID: 21300020, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1363,6 +1367,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114764832596419926, guid: 6029dafd8376c054c9d16c6ddbe00a79, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0

@@ -3074,6 +3074,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114939054064557548, guid: b7ca08c70cafca14baa3dc563206cebb, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -3778,6 +3779,66 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224776117723621236, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 224776117723621236, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -43
+      objectReference: {fileID: 0}
+    - target: {fileID: 114063672909922360, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114063672909922360, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9843137
+      objectReference: {fileID: 0}
+    - target: {fileID: 114063672909922360, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.972549
+      objectReference: {fileID: 0}
+    - target: {fileID: 114063672909922360, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.94509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 114063672909922360, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 114087223636523488, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224738342186226504, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -115
+      objectReference: {fileID: 0}
+    - target: {fileID: 224738342186226504, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 224738342186226504, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 224738342186226504, guid: cb21d81a35ea0674fba60b562de0a28b,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 240
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb21d81a35ea0674fba60b562de0a28b, type: 2}
@@ -7592,6 +7653,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114404459750338384, guid: 879d9aa5296e3fe4a93521ffe4fba1a1, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -9243,11 +9305,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 195535463507022848, guid: a789ac6dde7558e4e9c3323541eecdcd,
-        type: 2}
-      propertyPath: m_Acceleration
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a789ac6dde7558e4e9c3323541eecdcd, type: 2}
   m_IsPrefabParent: 0
@@ -10261,6 +10318,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114992022797530444, guid: 961582889c559a045bbb745f843b2a19, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -10835,6 +10893,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: 6145f740b8fb08641a4acc83bbfca541, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0

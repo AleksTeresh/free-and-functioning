@@ -278,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1912619609057764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 211.79999, y: 21.770008, z: 882.62994}
+  m_LocalPosition: {x: 225.4, y: 19.92, z: 870.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388979558749846}
@@ -856,6 +856,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114992022797530444, guid: 41d768e19b900b74984b4e23f285160d, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -897,9 +898,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Adolf
-  buildImage: {fileID: 2800000, guid: 4b94e65a983d3b644a0c36bdb04f482d, type: 3}
-  cost: 0
-  sellValue: 0
   hitPoints: 200
   maxHitPoints: 200
   attackDelay: 1
@@ -995,6 +993,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114101316880018166, guid: d6071164388261b498fc5d12991241c8, type: 2}
+  icon: {fileID: 21300024, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0

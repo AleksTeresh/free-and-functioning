@@ -457,10 +457,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4356987887694126, guid: ed4aa6a0979b0a64fafef6762fc9b013, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 6.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed4aa6a0979b0a64fafef6762fc9b013, type: 2}
   m_IsPrefabParent: 0
@@ -1189,6 +1185,7 @@ MonoBehaviour:
   formationManager: {fileID: 0}
   targetManager: {fileID: 0}
   timeInState: 0
+  currentAudioClip: {fileID: 0}
 --- !u!114 &909371751
 MonoBehaviour:
   m_ObjectHideFlags: 0

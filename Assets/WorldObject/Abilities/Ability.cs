@@ -26,6 +26,8 @@ namespace Abilities
 
 		public Status[] statuses;
 
+	    public Sprite icon;
+
 		[HideInInspector] public WorldObject user;
         [HideInInspector]  public List<WorldObject> targets;
 

@@ -7,7 +7,7 @@ using RTS;
 public class AbilityBar : MonoBehaviour {
 
     private readonly static Color BACKGROUND_COLOR = new Color(62 / (float)255, 21 / (float)255, 61 / (float)255, 255 / (float)255);
-    private readonly static float SLOT_WIDTH = 70;
+    private readonly static float SLOT_WIDTH = 50;
 
     public List<AbilitySlot> AbilitySlots { get; private set; }
 
@@ -32,7 +32,7 @@ public class AbilityBar : MonoBehaviour {
         {
             if (AbilitySlots.Count > i)
             {
-                // abilitySlots[i].Image.sprite = abilities[i].sprite;
+                AbilitySlots[i].Image.sprite = abilities[i].icon;
                 // TODO uncomment the line below once abilities have their icons
 
                 float cooldownRation = AbilityUtils.GetAbilitySlotCooldownRation(abilities, multiAbilities, i);
@@ -45,11 +45,12 @@ public class AbilityBar : MonoBehaviour {
                     AbilitySlots[i].Frame.color.g,
                     AbilitySlots[i].Frame.color.b,
                     abilityIsWaitingForTargetSelection
-                        ? 255
+                        ? 0.5f
                         : 0
                 );
-                AbilitySlots[i].Image.color = Color.cyan;
+//                AbilitySlots[i].Image.color = Color.cyan;
                 AbilitySlots[i].Name.text = abilitiesToDraw[i].abilityName;
+                AbilitySlots[i].Name.enabled = false;
                 AbilitySlots[i].Shade.sizeDelta = new Vector2(
                     -(cooldownRation) * SLOT_WIDTH,
                     AbilitySlots[i].Shade.sizeDelta.y
@@ -59,6 +60,16 @@ public class AbilityBar : MonoBehaviour {
                     AbilitySlots[i].Shade.anchoredPosition.y
                 );
             }
+        }
+        
+        HideEmptySlots(abilitiesToDraw);
+    }
+
+    private void HideEmptySlots(Ability[] abilitiesToDraw)
+    {
+        for (int i = abilitiesToDraw.Length; i < AbilitySlots.Count; i++)
+        {
+            AbilitySlots[i].Image.enabled = false;
         }
     }
 
