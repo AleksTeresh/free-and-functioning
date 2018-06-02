@@ -718,6 +718,8 @@ public class WorldObject : MonoBehaviour {
     {
         if (selectionLight)
         {
+            selectionLight.enabled = player && player.human && currentlySelected;
+            /*
             selectionLight.enabled = player &&
                 (
                     (player.human && currentlySelected) ||
@@ -727,7 +729,7 @@ public class WorldObject : MonoBehaviour {
                         targetManager.SingleTarget &&
                         targetManager.SingleTarget.ObjectId == ObjectId
                     )
-                );
+                ); */
         }
     }
 
