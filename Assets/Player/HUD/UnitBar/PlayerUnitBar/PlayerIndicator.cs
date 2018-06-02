@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerIndicator : Indicator {
-
+public class PlayerIndicator : Indicator
+{
     private Player player;
 
     // Update is called once per frame
@@ -25,17 +25,22 @@ public class PlayerIndicator : Indicator {
 
     protected override void HandleSelection()
     {
-        bool unitIsSelected = player != null &&
-            ((
-                player.selectedObjects != null &&
-                player.selectedObjects.Contains(indicatedObject)
-            ) ||
-            (
-                player.SelectedObject && indicatedObject &&
-                player.SelectedObject.ObjectId == indicatedObject.ObjectId
-            ));
+        if (!player) return;
 
-        upperSelectIndicator.enabled = unitIsSelected;
-//        lowerSelectIndicator.enabled = unitIsSelected;
+        if (player.SelectedObject && indicatedObject && player.SelectedObject.ObjectId == indicatedObject.ObjectId)
+        {
+            mainSelectIndicator.enabled = true;
+            subSelectIndicator.enabled = false;
+        }
+        else if (player.selectedObjects != null && player.selectedObjects.Contains(indicatedObject))
+        {
+            subSelectIndicator.enabled = true;
+            mainSelectIndicator.enabled = false;
+        }
+        else
+        {
+            mainSelectIndicator.enabled = false;
+            subSelectIndicator.enabled = false;
+        }
     }
 }

@@ -21,7 +21,7 @@ public class EnemyIndicator : Indicator
 
         backgroundRectTransform = transform.Find("Background").GetComponent<RectTransform>();
         healthBarRectTransform = healthSlider.GetComponent<RectTransform>();
-        selectIndicatorRectTransform = upperSelectIndicator.GetComponent<RectTransform>();
+        selectIndicatorRectTransform = mainSelectIndicator.GetComponent<RectTransform>();
         rectTransform = GetComponent<RectTransform>();
     }
 
@@ -46,7 +46,7 @@ public class EnemyIndicator : Indicator
                               targetManager.SingleTarget &&
                               targetManager.SingleTarget.ObjectId == indicatedObject.ObjectId;
 
-        upperSelectIndicator.enabled = unitIsSelected;
+        mainSelectIndicator.enabled = unitIsSelected;
 
         DrawBackground(unitIsSelected);
         DrawHealthBar(unitIsSelected);
