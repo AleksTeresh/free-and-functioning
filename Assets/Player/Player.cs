@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using RTS;
 using Abilities;
-using Dialog;
 using Persistence;
 using System.Linq;
 

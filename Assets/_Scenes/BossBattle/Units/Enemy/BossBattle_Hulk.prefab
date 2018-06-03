@@ -1077,6 +1077,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1198,6 +1199,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 0
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1217,11 +1219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Hulk
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
-  hitPoints: 800
-  maxHitPoints: 800
+  hitPoints: 600
+  maxHitPoints: 600
   attackDelay: 1
   attackMultiDelay: 1
   damage: 40
