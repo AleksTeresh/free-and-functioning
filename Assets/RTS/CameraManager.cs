@@ -26,7 +26,7 @@ namespace RTS
             if (potentialBottomLeftPos.HasValue)
             {
                 bottomLeftPos = minimapCamera.WorldToViewportPoint(potentialBottomLeftPos.Value);
-                bottomLeftPos = new Vector3(bottomLeftPos.Value.x, bottomLeftPos.Value.y, 1f);
+                bottomLeftPos = new Vector3(bottomLeftPos.Value.x * minimapCamera.orthographicSize * 2, bottomLeftPos.Value.y * minimapCamera.orthographicSize * 2, 1f);
             }
             else
             {
@@ -38,7 +38,7 @@ namespace RTS
             if (potentialBottomRightPos.HasValue)
             {
                 bottomRightPos = minimapCamera.WorldToViewportPoint(potentialBottomRightPos.Value);
-                bottomRightPos = new Vector3(bottomRightPos.Value.x, bottomRightPos.Value.y, 1f);
+                bottomRightPos = new Vector3(bottomRightPos.Value.x * minimapCamera.orthographicSize * 2, bottomRightPos.Value.y * minimapCamera.orthographicSize * 2, 1f);
             }
             else
             {
@@ -50,7 +50,7 @@ namespace RTS
             if (potentialTopLeftPos.HasValue)
             {
                 topLeftPos = minimapCamera.WorldToViewportPoint(potentialTopLeftPos.Value);
-                topLeftPos = new Vector3(topLeftPos.Value.x, topLeftPos.Value.y, 1f);
+                topLeftPos = new Vector3(topLeftPos.Value.x * minimapCamera.orthographicSize * 2, topLeftPos.Value.y * minimapCamera.orthographicSize * 2, 1f);
             }
             else
             {
@@ -62,7 +62,7 @@ namespace RTS
             if (potentialTopRightPoss.HasValue)
             {
                 topRightPos = minimapCamera.WorldToViewportPoint(potentialTopRightPoss.Value);
-                topRightPos = new Vector3(topRightPos.Value.x, topRightPos.Value.y, 1f);
+                topRightPos = new Vector3(topRightPos.Value.x * minimapCamera.orthographicSize * 2, topRightPos.Value.y * minimapCamera.orthographicSize * 2, 1f);
             }
             else
             {
