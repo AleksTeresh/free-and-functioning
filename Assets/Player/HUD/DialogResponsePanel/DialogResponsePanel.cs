@@ -71,7 +71,8 @@ public class DialogResponsePanel : MonoBehaviour {
 
     public void SetSpeakerAvatar(Sprite avatar)
     {
-        speakerAvatar.sprite = avatar;
+        // TODO uncomment when avatars are set for the dialog nodes
+//        speakerAvatar.sprite = avatar;
     }
 
     public void NextOption()

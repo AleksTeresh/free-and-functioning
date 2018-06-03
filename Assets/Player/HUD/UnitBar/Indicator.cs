@@ -18,8 +18,8 @@ public class Indicator : MonoBehaviour
     // protected Image avatar
     protected Image holdPositionIndicator;
     protected StatusIndicators statusesWrapper;
-    protected Image upperSelectIndicator;
-    protected Image lowerSelectIndicator;
+    protected Image mainSelectIndicator;
+    protected Image subSelectIndicator;
 
     protected WorldObject indicatedObject;
 
@@ -42,8 +42,8 @@ public class Indicator : MonoBehaviour
 
         var selectIndicators = new List<SelectHighlight>(GetComponentsInChildren<SelectHighlight>());
 
-        upperSelectIndicator = selectIndicators[0].GetComponent<Image>();
-        lowerSelectIndicator = selectIndicators[1].GetComponent<Image>();
+        mainSelectIndicator = selectIndicators[0].GetComponent<Image>();
+        subSelectIndicator = selectIndicators[1].GetComponent<Image>();
 
         var holdPositionIndicatorSelf = GetComponentInChildren<HoldPositionIndicator>();
         if (holdPositionIndicatorSelf)
