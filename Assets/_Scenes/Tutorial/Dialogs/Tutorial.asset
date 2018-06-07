@@ -79,8 +79,8 @@ MonoBehaviour:
   - "Finally, all the enemy units can be divided into Minor and Major. Major enemy
     units are usually very dangerous.\r While it is reasonable to use multi mode attack
     against minor units, you should use single target mode attack against major ones."
-  - Keep you eyes on the unit panels positioned on the left and right of the screen.  On
-    the right, you can see overview of your own units -  their health, as well as
+  - Keep you eyes on the unit panels positioned on the left and bottom of the screen.  On
+    the bottom, you can see overview of your own units -  their health, as well as
     statuses that are currently affecting them. On the left, you can see a similar
     panel indicating current state of major enemies.
   - " If you need to change a target to another major unit, you can do so quickly
