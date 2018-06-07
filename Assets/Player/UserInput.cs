@@ -38,8 +38,16 @@ public class UserInput : MonoBehaviour
     {
         if (player.human)
         {
-            if (SceneManager.GetActiveScene().name == "LevelSelection" || SceneManager.GetActiveScene().name == "LevelLoading")
+            if (SceneManager.GetActiveScene().name == "LevelSelection")
+            {
+                hud.SetCursorLock(false);
                 return;
+            }
+            if (SceneManager.GetActiveScene().name == "LevelLoading")
+            {
+                hud.SetCursorLock(true);
+                return;
+            }
 
             // allow player to control dialog system only when gameplay is blocked,
             // if it is not, the flow of text should be controlled from another place,
