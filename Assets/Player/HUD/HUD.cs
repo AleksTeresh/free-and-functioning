@@ -356,6 +356,8 @@ public class HUD : MonoBehaviour
 
     private void DrawAbilityBar(AbilityBar abilityBar, Unit unit)
     {
+        if (!unit || !unit.GetAbilityAgent()) return;
+
         var abilitySlots = abilityBar.AbilitySlots;
         var selection = player.SelectedObject;
 
