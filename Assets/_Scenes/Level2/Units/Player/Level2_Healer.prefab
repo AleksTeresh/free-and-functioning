@@ -295,7 +295,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054317212583768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -137.79018, y: 16.000366, z: -199.53548}
+  m_LocalPosition: {x: -158.6, y: 18.7, z: -166.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4128799485053590}
@@ -923,6 +923,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1045,6 +1046,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114901872984256716, guid: 69790dbba81d4104c94af05c5ff379e8, type: 2}
+  icon: {fileID: 0}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1085,6 +1087,7 @@ MonoBehaviour:
   isSelfOnly: 0
   statuses:
   - {fileID: 114088077251806944, guid: 8a795494eb9240345bfc9bf291a909c4, type: 2}
+  icon: {fileID: 21300018, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
@@ -1124,6 +1127,7 @@ MonoBehaviour:
   isAllyTargetingAbility: 1
   isSelfOnly: 0
   statuses: []
+  icon: {fileID: 21300016, guid: dd84a286a48f94073acc8edf36c1c90c, type: 3}
   user: {fileID: 0}
   targets: []
   isPending: 0
