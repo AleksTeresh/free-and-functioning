@@ -97,7 +97,7 @@ public class PersesBody : BossPart
 
             head.transform.position = new Vector3(
                 head.transform.position.x - 10,
-                0,
+                3,
                 head.transform.position.z
             );
 
