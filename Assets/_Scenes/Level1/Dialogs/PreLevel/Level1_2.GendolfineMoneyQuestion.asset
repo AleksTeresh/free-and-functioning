@@ -13,12 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerAvatar: {fileID: 0}
   speakerName: Gendolfine
-  displayedOptionText: " I saw you got some from the corpses of the killed units.
+  displayedOptionText: " I saw you got some money from the corpses of the killed units.
     Aren\u2019t we going to share it?"
   blockGameplay: 1
   dialogSentences:
-  - "I have another thing to discuss. What about money we get? I saw you got some
-    from the corpses of the killed units. Aren\u2019t we going to share it?\r"
+  - "I have another thing to discuss. What about the money we got? I saw you took
+    some from the corpses of the killed units. Aren\u2019t we going to share it?"
   responses:
   - {fileID: 11400000, guid: 76cf73472eae88148bea204f23385965, type: 2}
   - {fileID: 11400000, guid: c97afee7d2a2ba646a1c6747098e62a0, type: 2}

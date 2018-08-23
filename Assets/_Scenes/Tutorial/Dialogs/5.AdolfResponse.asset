@@ -16,8 +16,8 @@ MonoBehaviour:
   displayedOptionText: I can shoot frtom the distanec
   blockGameplay: 1
   dialogSentences:
-  - "I can shoot at the enemies from distance, that\u2019s pretty much it. I\u2019m
-    not that good at melee battles, but I bet I have a great potential to develop
-    as a range fighter.\r\n"
+  - "I can shoot at enemies from distance, that\u2019s pretty much it. I\u2019m not
+    that good at melee battles, but I bet I have great potential to develop as a range
+    fighter."
   responses:
   - {fileID: 11400000, guid: 980f7aacf6ebdec4ea79ce1aa9e8b768, type: 2}

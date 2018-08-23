@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Events;
 using Persistence;
 using RTS;
+using RTS.Constants;
 
 namespace Dialog
 {
@@ -16,28 +17,23 @@ namespace Dialog
 
         public bool BlockGameplay { get; private set; }
 
-        // public bool IsDialogSystemActive { get; private set; }
-
         // Use this for initialization
         void Start()
         {
             dialogResponsePanel = transform.root.GetComponentInChildren<DialogResponsePanel>();
             dialogTextPanel = transform.root.GetComponentInChildren<DialogTextPanel>();
-
-            // IsDialogSystemActive = false;
         }
 
         public void SetDialogNode(DialogNode dialogNode)
         {
             if (dialogNode.blockGameplay)
             {
-                EventManager.TriggerEvent("HideHUD");
+                EventManager.TriggerEvent(EventNames.HIDE_HUD);
                 Time.timeScale = 0f;
             }
 
             BlockGameplay = dialogNode.blockGameplay;
             dialogTextPanel.SetOpen(true);
-            // IsDialogSystemActive = true;
 
             sentences.Clear();
 
@@ -51,7 +47,7 @@ namespace Dialog
 
             if (dialogNode.responses.Length > 1)
             {
-                EventManager.TriggerEvent("HideHUD");
+                EventManager.TriggerEvent(EventNames.HIDE_HUD);
                 Time.timeScale = 0f;
             }
 
@@ -98,7 +94,7 @@ namespace Dialog
             BlockGameplay = false;
 
             Time.timeScale = 1f;
-            EventManager.TriggerEvent("ShowHUD");
+            EventManager.TriggerEvent(EventNames.SHOW_HUD);
         }
 
         public void SkipDialogBlock ()

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnHouse : Building {
     [Header("Spawning")]
@@ -55,12 +53,7 @@ public class SpawnHouse : Building {
             crowdControl.name
         };
     }
-    /*
-    protected override void Update()
-    {
-        base.Update();
-    }
-    */
+
     public override void SetSpawnPoint(Vector3 spawnPoint)
     {
         base.SetSpawnPoint(spawnPoint);

@@ -34,20 +34,6 @@ public class GameObjectList : MonoBehaviour {
         // DontDestroyOnLoad(transform.gameObject);
         ResourceManager.SetGameObjectList(this);
         created = true;
-        /*
-        if (!created)
-        {
-            PlayerManager.Load();
-            PlayerManager.SetAvatarTextures(avatars);
-
-            // DontDestroyOnLoad(transform.gameObject);
-            ResourceManager.SetGameObjectList(this);
-            created = true;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }  */
     }
 
     public Texture2D[] GetAvatars()
@@ -96,22 +82,6 @@ public class GameObjectList : MonoBehaviour {
     {
         return enemy;
     }
-    /*
-    public Texture2D GetBuildImage(string name)
-    {
-        for (int i = 0; i < buildings.Length; i++)
-        {
-            Building building = buildings[i].GetComponent<Building>();
-            if (building && building.name == name) return building.buildImage;
-        }
-        for (int i = 0; i < units.Length; i++)
-        {
-            Unit unit = units[i].GetComponent<Unit>();
-            if (unit && unit.name == name) return unit.buildImage;
-        }
-        
-		throw new UnregisteredAssetException (GetErrorMessage("Build Image", name));
-    }  */
 
     public GameObject GetStatus(string name)
     {

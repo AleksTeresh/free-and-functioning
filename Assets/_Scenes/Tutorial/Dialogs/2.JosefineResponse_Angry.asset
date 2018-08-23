@@ -16,7 +16,7 @@ MonoBehaviour:
   displayedOptionText: Why are you a leader? By what right?
   blockGameplay: 1
   dialogSentences:
-  - "Since when have you become leader of the party? By what right you\u2019re treating
+  - "Since when have you become a leader of the party? By what right you\u2019re treating
     us as your own recruits anyway?\r"
   responses:
   - {fileID: 11400000, guid: baafad3279219264c86b209599231cc1, type: 2}

@@ -16,10 +16,10 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - "Alright, seems like now we\u2019re good to go now. Still a couple of things to
-    discuss.\r First of all, we need to be very careful - we have no idea how many
-    units are there roaming around. Second, we need to stay together whatever happens
-    to us. If any of us dies on the way, the enterprise will get 100 times more difficult.\r"
+  - "Alright, it seems like we\u2019re good to go now. Still a couple of things to
+    discuss. First of all, we need to be very careful - we have no idea how many units
+    there are roaming around. Secondly, we need to stay together whatever happens
+    to us. If any of us dies on the way, the enterprise will get 100 times more difficult.\n"
   responses:
   - {fileID: 11400000, guid: fa489dad4b1b37d4fb12c042f859dd71, type: 2}
   - {fileID: 11400000, guid: 2ecc6ed9419d32b4594f9601127ca34f, type: 2}

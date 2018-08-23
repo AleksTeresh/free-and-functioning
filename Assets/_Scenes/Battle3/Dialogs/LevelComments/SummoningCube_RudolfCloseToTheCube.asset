@@ -16,6 +16,6 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - The Unit Generator must be down here. Be careful, and try to destroy it as fast
-    as possible
+  - The Unit Generator must be down here. Be careful and try to destroy it as fast
+    as possible.
   responses: []

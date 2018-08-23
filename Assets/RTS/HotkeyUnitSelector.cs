@@ -1,24 +1,24 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Events;
+using RTS.Constants;
 
 namespace RTS
 {
 	public static class HotkeyUnitSelector
 	{
 		private static string[] hotkeys = new string[] {
-			"Select1",
-			"Select2",
-			"Select3",
-			"Select4"
-		};
+			InputNames.SELECT1,
+            InputNames.SELECT2,
+            InputNames.SELECT3,
+            InputNames.SELECT4,
+        };
 
 		public static void HandleInput (Player player, HUD hud, Camera camera)
 		{
 			if (player.selectedAllyTargettingAbility == null) {
                 for (int i = 0; i < hotkeys.Length; i++) {
 					if (Input.GetButtonDown (hotkeys [i]) || Gamepad.GetButtonDown(hotkeys[i])) {
-						if (Input.GetButton ("SelectionModifier") || Gamepad.GetButton("SelectionModifier"))
+						if (Input.GetButton (InputNames.SELECTION_MODIFIER) || Gamepad.GetButton(InputNames.SELECTION_MODIFIER))
 						{
 							HandleUnitHotkeyWithModifierPress (player, hud, i);
 						}
@@ -31,10 +31,10 @@ namespace RTS
 					}
 				}
 
-				if (Input.GetButtonDown("SelectAll") || Gamepad.GetButtonDown("SelectAll") )
+				if (Input.GetButtonDown(InputNames.SELECT_ALL) || Gamepad.GetButtonDown(InputNames.SELECT_ALL) )
 				{
 					UnitSelectionManager.SelectAllUnits (player, hud);
-                    EventManager.TriggerEvent("SelectAllUnits");
+                    EventManager.TriggerEvent(InputNames.SELECT_ALL_UNITS);
 				}
 			}
 		}

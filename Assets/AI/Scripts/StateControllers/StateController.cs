@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AI;
 using Persistence;
 using RTS;
-using Events;
 
 public class StateController : MonoBehaviour
 {
@@ -19,7 +17,6 @@ public class StateController : MonoBehaviour
     [HideInInspector] public TargetManager targetManager;
     [HideInInspector] public List<WorldObject> nearbyEnemies;
     [HideInInspector] public List<WorldObject> nearbyAllies; // including self
-    // [HideInInspector] public float stateTimeElapsed;
     [HideInInspector] public bool attacking;
 
     protected bool aiActive;

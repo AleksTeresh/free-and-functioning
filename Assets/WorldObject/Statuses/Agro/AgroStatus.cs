@@ -1,23 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using RTS;
+﻿using RTS;
+using RTS.Constants;
 
 namespace Statuses
 {
     public class AgroStatus : AiStateStatus
     {
-/*
-        protected override void OnStatusStart()
-        {
-            base.OnStatusStart();
-
-            if (target && target.GetStateController())
-            {
-                target.GetStateController().indicatedObject.StopMove();
-            }
-        }
-*/
         protected override void AffectTarget()
         {
             if (target && target.GetStateController())
@@ -26,10 +13,8 @@ namespace Statuses
 
                 if (targetStateController)
                 {
-                    // targetStateController.indicatedObject.StopMove();
-
                     targetStateController.chaseTarget = inflictor;
-                    targetStateController.TransitionToState(ResourceManager.GetAiState("Under Agro"));
+                    targetStateController.TransitionToState(ResourceManager.GetAiState(AIStates.UNDER_AGRO));
                 }
             }
         }

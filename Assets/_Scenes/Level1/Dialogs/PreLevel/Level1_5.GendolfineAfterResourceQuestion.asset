@@ -13,12 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerAvatar: {fileID: 0}
   speakerName: Gendolfine
-  displayedOptionText: What about resources? How much time do we have before first
-    of us gets non-functional?
+  displayedOptionText: "I saw you got some money from the corpses of the killed units.
+    Aren\u2019t we going to share it?"
   blockGameplay: 1
   dialogSentences:
-  - "I have another thing to discuss. What about money we get? I saw you got some
-    from the corpses of the killed units. Aren\u2019t we going to share it?\r"
+  - "I have another thing to discuss. What about the money we got? I saw you took
+    some from the corpses of the killed units. Aren\u2019t we going to share it?"
   responses:
   - {fileID: 11400000, guid: 24118b62259a0724784ca7125e6f697e, type: 2}
   - {fileID: 11400000, guid: ee950adca02b3c947a414903cbf5d861, type: 2}

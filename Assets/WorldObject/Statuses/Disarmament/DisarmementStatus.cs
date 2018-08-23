@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using RTS.Constants;
 
 namespace Statuses
 {
@@ -13,7 +14,7 @@ namespace Statuses
             {
                 var targetStateController = target.GetStateController();
 
-                targetStateController.TransitionToState(ResourceManager.GetAiState("Disarmed"));
+                targetStateController.TransitionToState(ResourceManager.GetAiState(AIStates.DISARMED));
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using Events;
-using RTS;
+using RTS.Constants;
 using UnityEngine.SceneManagement;
 
 namespace Persistence
@@ -15,7 +15,7 @@ namespace Persistence
             if (!triggerred && playerObj && playerObj.GetPlayer() && playerObj.GetPlayer().human)
             {
                 triggerred = true;
-                SaveManager.SaveGame(SceneManager.GetActiveScene().name + Constants.SAVE_FILENAME_POSTFIX);
+                SaveManager.SaveGame(SceneManager.GetActiveScene().name + PersistanceConstants.SAVE_FILENAME_POSTFIX);
             }
         }
     }

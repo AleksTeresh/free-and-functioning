@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using RTS.Constants;
 
 namespace Events
 {
@@ -9,12 +10,12 @@ namespace Events
 
         void OnEnable()
         {
-            EventManager.StartListening("StopCommand", SetStopCommandFired);
+            EventManager.StartListening(EventNames.STOP_COMMAND, SetStopCommandFired);
         }
 
         void OnDisable()
         {
-            EventManager.StopListening("StopCommand", SetStopCommandFired);
+            EventManager.StopListening(EventNames.STOP_COMMAND, SetStopCommandFired);
         }
 
         public override bool Decide(StateController controller)

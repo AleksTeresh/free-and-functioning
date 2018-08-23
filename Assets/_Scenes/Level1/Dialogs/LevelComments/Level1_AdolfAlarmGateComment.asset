@@ -16,5 +16,5 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - Those columns look like some sort of gate. They look very suspicious to me...
+  - Those columns look like some sort of gates. They look very suspicious to me...
   responses: []

@@ -17,7 +17,7 @@ MonoBehaviour:
   blockGameplay: 1
   dialogSentences:
   - "I\u2019m not sure about it, he seems pretty meek to me, besides his guns are
-    not that strong anyway. I understand that you have empathy to him, but at least
+    not that strong anyway. I understand that you have empathy for him, but at least
     we saved his life once. "
   - "Now let\u2019s go.\r"
   responses:

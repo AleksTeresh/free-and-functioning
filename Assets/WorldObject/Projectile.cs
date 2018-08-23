@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Statuses;
 using RTS;
 
@@ -16,12 +15,6 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        /*
-        if (HitSomething())
-        {
-            
-        } */
-
         if (target)
         {
             Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + 1.0f, target.transform.position.z);
@@ -87,11 +80,4 @@ public class Projectile : MonoBehaviour
             }
         }
     }
-
-    /*
-    private bool HitSomething()
-    {
-        if (target && target.GetSelectionBounds().Contains(transform.position)) return true;
-        return false;
-    }   */
 }

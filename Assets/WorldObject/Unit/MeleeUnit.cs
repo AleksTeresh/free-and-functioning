@@ -1,5 +1,4 @@
-﻿using System;
-using RTS;
+﻿using RTS;
 
 public class MeleeUnit : Unit
 {

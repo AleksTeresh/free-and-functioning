@@ -102,8 +102,6 @@ public class Indicator : MonoBehaviour
         {
             if (!indicatedStatuses.Contains(p))
             {
-//                var newIndicatorObject = GameObject.Instantiate(ResourceManager.GetUIElement("StatusIndicator"));
-                //                var newIndicator = newIndicatorObject.GetComponent<StatusIndicator>();
                 var newIndicator = Instantiate(statusIndicatorPrefab);
 
                 if (newIndicator)
@@ -116,7 +114,6 @@ public class Indicator : MonoBehaviour
                         (rectTransform.sizeDelta.x + statusIndicatorOffset) * (indicatedStatuses.Count() + newIndicatorsCounter),
                         rectTransform.anchoredPosition.y
                     );
-                    // rectTransform.sizeDelta = new Vector2(0, 100);
 
                     newIndicatorsCounter++;
                 }

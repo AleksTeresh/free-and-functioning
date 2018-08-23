@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using RTS;
+﻿using RTS;
+using RTS.Constants;
 
 namespace Statuses
 {
@@ -13,7 +11,7 @@ namespace Statuses
             {
                 var targetStateController = target.GetStateController();
 
-                targetStateController.TransitionToState(ResourceManager.GetAiState("Stunned"));
+                targetStateController.TransitionToState(ResourceManager.GetAiState(AIStates.STUNNED));
             }
         }
     }

@@ -17,6 +17,6 @@ MonoBehaviour:
   blockGameplay: 1
   dialogSentences:
   - " Sure, we\u2019re to share it equally. Let\u2019s just get to the division part
-    later on, if its ok?\r"
+    later on, if it's ok?\r"
   responses:
   - {fileID: 11400000, guid: 514636af1c5f6e24492786869074e371, type: 2}

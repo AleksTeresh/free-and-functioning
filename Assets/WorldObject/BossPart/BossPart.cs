@@ -67,8 +67,6 @@ public class BossPart : WorldObject {
 
     protected override void Start()
     {
-        // AwakeObj();
-
         underAttackFrameCounter = 0;
 
         SetPlayer();
@@ -77,11 +75,7 @@ public class BossPart : WorldObject {
             hud = player.GetComponentInChildren<HUD>();
             playingArea = hud.GetPlayingArea();
 
-            if (loadedSavedValues)
-            {
-                // if (loadedTargetId >= 0) target = player.GetObjectById(loadedTargetId);
-            }
-            else
+            if (!loadedSavedValues)
             {
                 SetTeamColor();
             }
@@ -141,11 +135,7 @@ public class BossPart : WorldObject {
             nextAimRotation.x = 0;
             nextAimRotation.z = 0;
             transform.rotation = nextAimRotation;
-            // transform.rotation = Quaternion.RotateTowards(transform.rotation, aimRotation, weaponAimSpeed);
             CalculateBounds();
-
-            //sometimes it gets stuck exactly 180 degrees out in the calculation and does nothing, this check fixes that
-            // Quaternion inverseAimRotation = new Quaternion(-aimRotation.x, -aimRotation.y, -aimRotation.z, -aimRotation.w);
 
             if (WorkManager.IsObjectFacingTarget(this, aimTarget))
             {
@@ -170,7 +160,6 @@ public class BossPart : WorldObject {
         base.SetData(data);
         Start();
 
-        // abilityAgent.SetData(data.abilityAgent);
         aimTarget = data.aimTargetId != -1
             ? Player.GetObjectById(data.aimTargetId)
             : null;

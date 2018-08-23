@@ -1,13 +1,7 @@
 ﻿using UnityEngine;
 
 public class RangeSwarmling : Unit {
-    /*
-    public override void SaveDetails(JsonWriter writer)
-    {
-        base.SaveDetails(writer);
-        SaveManager.WriteQuaternion(writer, "AimRotation", aimRotation);
-    }
-     */
+
     protected override void Start()
     {
         base.Start();
@@ -26,23 +20,11 @@ public class RangeSwarmling : Unit {
 
         FireProjectile(target, "SwarmlingProjectile", spawnPoint, damage);
     }
-    /*
-    protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
-    {
-        base.HandleLoadedProperty(reader, propertyName, readValue);
-        switch (propertyName)
-        {
-            case "AimRotation": aimRotation = LoadManager.LoadQuaternion(reader); break;
-            default: break;
-        }
-    } */
 
     private Vector3 GetSpawnPoint()
     {
         Vector3 spawnPoint = transform.position;
-        // spawnPoint.x += (2.1f * transform.forward.x);
         spawnPoint.y += 1.4f;
-        // spawnPoint.z += (2.1f * transform.forward.z);
 
         return spawnPoint;
     }

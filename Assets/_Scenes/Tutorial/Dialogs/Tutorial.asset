@@ -16,26 +16,26 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 0
   dialogSentences:
-  - You select units by clicking at them, or using hot keys. Hot keys are useful,
-    since they allow fast selection of units especially when there are a lot of objects
-    on the map. Try to select each of the units and order them to go the red flag.
+  - You select units by clicking at them or using hotkeys. Hotkeys are useful since
+    they allow fast selection of units especially when there are a lot of objects
+    on a map. Try to select each of the units and order them to go the red flag.
   - 'You can select multiple units by holding <Shift> while pressing a hotkey. You
     can also select all units, by pressing <5>. Now, select all of your units.
 
 '
-  - "Good! Now, order them to go to the red flag. You can see location of the red
-    flag from the minimap in the lower right corner of your screen\r."
+  - Good! Now, order them to go to the red flag. You can see the location of the red
+    flag from the minimap in the lower right corner of your screen.
   - Notice that the units keep formation when ordered to move together. If you do
     not like the default formation, you can use custom formation. Press <A> to change
     formation mode to be custom.
   - "Now you\u2019ll have to reposition each unit manually before moving them together.
-    When moved together, unit will keep the same position relative to each other.
+    When moved together, units will keep the same position relative to each other.
     Rearrange your units to a formation you like and send them to the red flag."
   - "Change the formation mode to be automatic again. You can see the current formation
     mode in the upper panel on your screen.\r"
-  - If you need to stop selected units, you can use "Stop" command by pressing <S>
-    button. Try it now. Send your units to a new destination and press <S> while they
-    on their way.
+  - If you need to stop the selected units, you can use  "Stop" command by pressing
+    <S> button. Try it now. Send your units to a new destination and press <S> while
+    they on their way.
   - "Now, let\u2019s try to attack an enemy. Notice that there are 2 enemy units now
     near the red flag. You can find the flag from the minimap. Click on the enemy
     you want to attack for it to become a target for your units. Then wait till the
@@ -43,49 +43,49 @@ MonoBehaviour:
   - "Notice that there are 2 attack modes in the game: Single and Multi.\r The indication
     of the current attack mode can be found in the upper left corner of the screen.
     \rPress <Space> to switch attack mode."
-  - In Single attack mode, all the units attack a single selected target. In Multi
-    attack mode, Adolf will use its multi-mode attack shooting projectiles at all
-    the enemies within its attack range. Move your units closer to the new position
+  - In the Single attack mode, all the units attack a single selected target. In the
+    Multi-attack mode, Adolf will use its Multi-mode attack shooting projectiles at
+    all the enemies within its attack range. Move your units closer to the new position
     of the flag, so that the enemies are within their vision range. Notice that your
-    units start attacking enemies on their own.
-  - "To put selected units into \u201CDefence\u201D mode, press <D>. The defence mode
+    units start attacking the enemies on their own.
+  - "To put selected units into \u201CDefense\u201D mode, press <D>. The defense mode
     indicator in the lower left corner turns blue indicating that the selected unit
-    is in defence mode. When in defence mode, units will still attack enemies within
-    their attack range, but will not chase them. Put all of your units into defence
+    is in defense mode. When in defense mode, units will still attack enemies within
+    their attack range, but will not chase them. Put all of your units into defense
     mode and see how they react to passing by enemies"
-  - Now wait till the enemies pass your units and note that your units do not chase
+  - Now, wait till the enemies pass your units and note that your units do not chase
     the enemies.
-  - "To turn off \u201CDefence\u201D mode for selected units, press <D> again. Disable
-    \"Defence\" mode for all of your units."
-  - ' Abilities can be used by pressing one of the corresponding button: <Q>, <W>,
+  - "To turn off \u201CDefense\u201D mode for selected units, press <D> again. Disable
+    \"Defense\" mode for all of your units."
+  - ' Abilities can be used by pressing one of the corresponding buttons: <Q>, <W>,
     <E> or <R>. When in single mode, the ability will affect a current target. When
     in multi mode, the ability will affect all enemies within its reach. '
-  - "For Gendolfine, however, abilities are used differently. Since all the abilities
+  - "For Gendolfine, however, abilities are used differently. Since all of the abilities
     that are \ravailable to Gendolfine are targeted to ally units, simply pressing
     one of the abilities hotkeys (q, w, e, r) is not enough.\r After selecting an
     ability with a corresponding hotkey, you need to press another key (1, 2, 3, 4)
     that stands for a unit to whom the ability should be applied."
   - ' For example, to heal Rudolf, select Gendolfine, press <Q> to select healing
-    ability and then press <1> to apply the ability on Rudolf.  Now use "Heal" ability
-    to heal all the members. You can heal your units one by one, or you can use "Multi
-    heal" by pressing <Q> to select the ability first, and then pressing <5> button
-    instead of a number, thus targeting all the reachable units.'
+    ability and then press <1> to apply the ability on Rudolf.  Now use the "Heal"
+    ability to heal all the members. You can heal your units one by one, or you can
+    use the "Multi heal" by pressing <Q> to select the ability first, and then pressing
+    <5> button instead of a number, thus targeting all the reachable units.'
   - "There are also \u201CArea of Effect\u201D abilities that affect all the enemies
     within a certain range around a hero. The range is indicated by a circle around
     the hero using the ability.\r Go to the red flag and try to use Rudolf's \"Agro\"
     ability to see how \"Area of Effect\" abilities can be distinguished visually.
     Use Single attack mode or just move units close enough so they start attacking
     themselves"
-  - "Finally, all the enemy units can be divided into Minor and Major. Major enemy
-    units are usually very dangerous.\r While it is reasonable to use multi mode attack
-    against minor units, you should use single target mode attack against major ones."
-  - Keep you eyes on the unit panels positioned on the left and bottom of the screen.  On
-    the bottom, you can see overview of your own units -  their health, as well as
-    statuses that are currently affecting them. On the left, you can see a similar
-    panel indicating current state of major enemies.
-  - " If you need to change a target to another major unit, you can do so quickly
-    by pressing <F> key one or multiple times. Try it now, switch the major target
+  - Finally, all the enemy units can be divided into Minor and Major. Major enemy
+    units are usually very dangerous. While it is reasonable to use Multimode attack
+    against minor units, you should use single target mode attack against major ones.
+  - Keep your eyes on the unit panels positioned on the left and bottom of the screen.  On
+    the bottom, you can see an overview of your own units -  their health, as well
+    as statuses that are currently affecting them. On the left, you can see a similar
+    panel indicating a current state of major enemies.
+  - ' If you need to change a target to another major unit, you can do so quickly
+    by pressing <F> key one or multiple times. Try it now. Switch the major target
     by pressing <F>. Notice also that the selection indicator on your left-side enemy
-    panel gets changed as you press <F>.\r"
-  - That's about it for this tutorial. Now its time to start the journey!
+    panel gets changed as you press <F>.'
+  - That's about it for this tutorial. Now it's time to start the journey!
   responses: []

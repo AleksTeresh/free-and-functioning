@@ -19,7 +19,7 @@ MonoBehaviour:
   - 'Yeah, indeed, if I can. '
   - "Thanks, but we\u2019ll not last another couple of days like that, and who knows
     how long we\u2019ll have to go. "
-  - "There was a warehouse block a couple of kms ago. I bet we can find some resources
-    there.\r"
+  - There was a warehouse block a couple of km ago. I bet we can find some resources
+    there.
   responses:
   - {fileID: 11400000, guid: 325fe085860d7bb45978b8b3d90dc72b, type: 2}

@@ -16,6 +16,6 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - "Sure, you have nowhere to run anyway <smile>\r"
+  - Sure, you've got nowhere to run anyway <smile>
   responses:
   - {fileID: 11400000, guid: 7b1d4524f78f7634fafe1cf2d1d549c1, type: 2}

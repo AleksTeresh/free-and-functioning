@@ -17,6 +17,6 @@ MonoBehaviour:
     got to myself "
   blockGameplay: 1
   dialogSentences:
-  - " I don\u2019t know about Adolf, but Im to keep the money I\u2019ve got to myself\r."
+  - " I don\u2019t know about Adolf, but I'm to keep the money I\u2019ve got to myself\n."
   responses:
   - {fileID: 11400000, guid: 997510e25fe513c45868878885a49a51, type: 2}

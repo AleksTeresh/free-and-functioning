@@ -16,12 +16,12 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - "You\u2019re sorry? Well, that won't help us much! "
+  - "You\u2019re sorry! Well, that won't help us much! "
   - 'Alright, there was the warehouse that we passed half an hour ago. So surely there
-    is an option to go there and see if we can find anything useful there. '
-  - "But, first of all, we\u2019ll waste time, second, we never know if there are
+    is an option to go there and see if we can find anything useful. '
+  - "But, first of all, we\u2019ll waste time. Secondly, we never know if there are
     any resources at all. And finally, we have no idea what kind of danger we\u2019re
-    putting ourselves in. "
+    putting ourselves in."
   - Nevertheless, I suppose we don't have much choice now...
   - "Adolf, turn around, we\u2019re going back\u2026\r"
   responses: []

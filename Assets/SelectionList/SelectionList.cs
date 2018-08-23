@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using RTS.Constants;
 
 public static class SelectionList
 {
@@ -107,7 +106,7 @@ public static class SelectionList
             float sliderLeft = selWidth + sliderPadding;
             float sliderMax = selHeight - areaHeight;
             scrollValue = GUI.VerticalSlider(new Rect(sliderLeft, 0, sliderWidth, areaHeight), scrollValue, 0.0f, sliderMax);
-            scrollValue -= Input.GetAxis("Mouse ScrollWheel") * rowHeight;
+            scrollValue -= Input.GetAxis(InputNames.MOUSE_SCROLL_WHEEL) * rowHeight;
             if (scrollValue < 0.0f) scrollValue = 0.0f;
             if (scrollValue > sliderMax) scrollValue = sliderMax;
         }

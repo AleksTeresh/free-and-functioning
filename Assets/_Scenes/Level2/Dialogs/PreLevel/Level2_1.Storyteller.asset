@@ -21,8 +21,8 @@ MonoBehaviour:
   - Though being fully healed, Franklin was still unable to speak for some reason.
     This made communication with him limited to yes/no type of questions.
   - "Besides, the amount of resources left continued to decrease. The need became
-    evident when by the end of the second day of travelling, Gandolfine ran out of
-    her resources\u2026\r"
+    evident when, by the end of the second day of traveling, Gandolfine ran out of
+    her resources\u2026"
   responses:
   - {fileID: 11400000, guid: 8ae49ee716fbdb347821a8c1a73a2cbe, type: 2}
   - {fileID: 11400000, guid: 96c8dd42a94d7ba4cad6c3beba395343, type: 2}

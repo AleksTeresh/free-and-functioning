@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using RTS.Constants;
 
 namespace Events
 {
@@ -9,12 +10,12 @@ namespace Events
 
         void OnEnable()
         {
-            EventManager.StartListening("SwitchHoldPositionCommand", SetDefenceSwitchFired);
+            EventManager.StartListening(EventNames.SWITCH_HOLD_POSIITON_COMMAND, SetDefenceSwitchFired);
         }
 
         void OnDisable()
         {
-            EventManager.StopListening("SwitchHoldPositionCommand", SetDefenceSwitchFired);
+            EventManager.StopListening(EventNames.SWITCH_HOLD_POSIITON_COMMAND, SetDefenceSwitchFired);
         }
 
         public override bool Decide(StateController controller)

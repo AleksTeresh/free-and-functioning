@@ -16,7 +16,7 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - The columns don't look very natural here. And the passage is way to narrow. Looks
+  - The columns don't look very natural here. And the passage is way too narrow. Looks
     suspicious indeed...
   responses:
   - {fileID: 11400000, guid: 756a8d223b2162f4180629d6b6b60678, type: 2}

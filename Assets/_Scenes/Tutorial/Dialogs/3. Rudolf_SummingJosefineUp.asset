@@ -17,6 +17,6 @@ MonoBehaviour:
   blockGameplay: 1
   dialogSentences:
   - "Alright, good. You\u2019ll be our healer then. Remember to stay away from enemies
-    as far as you can, and of course remember to heal us also."
+    as far as you can, and of course, remember to heal us also."
   responses:
   - {fileID: 11400000, guid: 7142f45411293ae4eb38606d32dafac1, type: 2}

@@ -16,7 +16,7 @@ MonoBehaviour:
   displayedOptionText: I know healing. I do have experience in it
   blockGameplay: 1
   dialogSentences:
-  - "I know a little about healing. I\u2019ve been treating damaged members of the
-    community for the last couple of years\r\n"
+  - "I know a little about healing. I\u2019ve been nursing damaged members of the
+    community for the last couple of years"
   responses:
   - {fileID: 11400000, guid: b809c64fcd7258640b5c14c440b9dcf0, type: 2}

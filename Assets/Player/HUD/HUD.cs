@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
+using RTS.Constants;
 using Events;
 using Formation;
 using Dialog;
@@ -129,14 +130,14 @@ public class HUD : MonoBehaviour
 
     void OnEnable()
     {
-        EventManager.StartListening("HideHUD", Hide);
-        EventManager.StartListening("ShowHUD", Show);
+        EventManager.StartListening(EventNames.HIDE_HUD, Hide);
+        EventManager.StartListening(EventNames.SHOW_HUD, Show);
     }
 
     void OnDisable()
     {
-        EventManager.StopListening("HideHUD", Hide);
-        EventManager.StopListening("ShowHUD", Show);
+        EventManager.StopListening(EventNames.HIDE_HUD, Hide);
+        EventManager.StopListening(EventNames.SHOW_HUD, Show);
     }
 
     // Update is called once per frame
@@ -144,13 +145,6 @@ public class HUD : MonoBehaviour
     {
         if (player && player.human)
         {
-            // DrawOrdersBar();
-            /*
-            if (playerUnitBar)
-            {
-                DrawUnitsBar(playerUnitBar, player.GetUnits().Cast<WorldObject>().ToList(), "PlayerIndicator");
-            }
-            */
             if (enemyUnitBar)
             {
                 var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
@@ -162,21 +156,6 @@ public class HUD : MonoBehaviour
             }
 
             DrawPlayerUnitPanels();
-            /*       
-            if (selectionIndicator)
-            {
-                DrawSelectionIndicator();
-            }
-
-            if (abilityBar)
-            {
-                DrawAbilityBar();
-            }
-            */
-//            if (upperBar)
-//            {
-//                DrawUpperBar();
-//            }
 
             if (enemyCountBar)
             {
@@ -326,10 +305,10 @@ public class HUD : MonoBehaviour
 
     private void HandleCursorPositionUpdate()
     {
-        cursorPosition += mouseCursorSpeed * new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        cursorPosition += mouseCursorSpeed * new Vector3(Input.GetAxisRaw(InputNames.MOUSE_X), Input.GetAxisRaw(InputNames.MOUSE_Y));
 
-        float joystickDeltaX = Gamepad.GetAxis("Joystick Cursor X");
-        float joystickDeltaY = Gamepad.GetAxis("Joystick Cursor Y");
+        float joystickDeltaX = Gamepad.GetAxis(InputNames.JOYSTICK_CURSOR_X);
+        float joystickDeltaY = Gamepad.GetAxis(InputNames.JOYSTICK_CURSOR_Y);
 
         cursorPosition = cursorPosition + joystickCursorSpeed * new Vector3(joystickDeltaX, joystickDeltaY);
 
@@ -476,7 +455,6 @@ public class HUD : MonoBehaviour
         }
 
         indicatedObjects
-            // .Where(p => ((p is Unit) && ((Unit) p).IsMajor()) || (p is BossPart) || (p is Building))
             .ToList().ForEach(p =>
             {
                 if (!indicatedUnits.Contains(p))
@@ -505,23 +483,7 @@ public class HUD : MonoBehaviour
             unitBar.Update();
         }
     }
-
-//    private void DrawUpperBar()
-//    {
-//        if (targetManager)
-//        {
-//            upperBar.SetAttackMode(targetManager.InMultiMode);
-//        }
-//
-//        if (formationManager)
-//        {
-//            upperBar.SetFormationMode(formationManager.CurrentFormationType);
-//        }
-//
-//        var observedEmenies = UnitManager.GetPlayerVisibleEnemies(player);
-//        upperBar.SetEnemyCount(observedEmenies.Count);
-//    }
-//    
+    
     private void DrawGeneralIndicatorBar()
     {
         if (targetManager)
@@ -543,14 +505,6 @@ public class HUD : MonoBehaviour
 
     private void DrawMouseCursor()
     {
-        //bool mouseOverHud = !MouseInBounds() && activeCursorState != CursorState.PanRight && activeCursorState != CursorState.PanUp;
-
-        //if (mouseOverHud)
-        //{
-        //    Cursor.visible = true;
-        //}
-        //else
-        //{
         Cursor.visible = false;
         GUI.skin = mouseCursorSkin;
         GUI.BeginGroup(new Rect(0, 0, Screen.width, Screen.height));

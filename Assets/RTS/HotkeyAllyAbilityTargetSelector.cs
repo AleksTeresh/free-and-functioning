@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using RTS.Constants;
 using UnityEngine;
 
 namespace RTS
@@ -6,11 +6,11 @@ namespace RTS
     public static class HotkeyAllyAbilityTargetSelector
     {
         private static string[] hotkeys = new string[] {
-            "Select1",
-            "Select2",
-            "Select3",
-            "Select4",
-            "AllyAbilityToAll"
+            InputNames.SELECT1,
+            InputNames.SELECT2,
+            InputNames.SELECT3,
+            InputNames.SELECT4,
+            InputNames.ALLY_ABILITY_TO_ALL
         };
 
         public static void HandleInput(Player player, HUD hud)
@@ -24,7 +24,7 @@ namespace RTS
                         string hotkey = hotkeys[i];
 
                         // If player hits space use on all allies
-                        if (hotkey == "AllyAbilityToAll")
+                        if (hotkey == InputNames.ALLY_ABILITY_TO_ALL)
                         {
                             UseAbilityOnAllies(player);
                         }
@@ -37,7 +37,7 @@ namespace RTS
                     }
                 }
 
-                if (Input.GetButtonDown("Cancel"))
+                if (Input.GetButtonDown(InputNames.CANCEL))
                 {
                     player.selectedAllyTargettingAbility = null;
                     player.selectedAlliesTargettingAbility = null;
@@ -47,7 +47,6 @@ namespace RTS
 
         private static void UseAbilityOnAlly(Player player, int hotkey)
         {
-//            Unit allyTarget = player.FindUnitByIdx(unitIndex);
 			WorldObject allyTarget = player.unitMapping.FindUnitByHotkey (player.GetUnits(), hotkey);
 
             AbilityUtils.ApplyAllyAbilityToTarget(allyTarget, player);

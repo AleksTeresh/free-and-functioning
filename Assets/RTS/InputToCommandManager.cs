@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Abilities;
 using Formation;
+using RTS.Constants;
 
 namespace RTS
 {
@@ -18,8 +18,8 @@ namespace RTS
             targetManager.SingleTarget = chaseTarget;
             // transition to Chase Manual State
             string stateName = targetManager.InMultiMode
-                ? "Chase Manual Multi"
-                : "Chase Manual";
+                ? AIStates.CHASE_MANUAL_MULTI
+                : AIStates.CHASE_MANUAL;
             stateController.TransitionToState(ResourceManager.GetAiState(stateName));
         }
 
@@ -53,7 +53,7 @@ namespace RTS
                         stateController.abilityToUse = ability;
                         stateController.allyAbilityTarget = unit;
 
-                        stateController.TransitionToState(ResourceManager.GetAiState("Ally Ability Chase Manual"));
+                        stateController.TransitionToState(ResourceManager.GetAiState(AIStates.ALLY_ABILITY_CHASE_MANUAL));
                     }
                     else if (ability.isAllyTargetingAbility)
                     {
@@ -73,8 +73,8 @@ namespace RTS
                     else
                     {
                         string stateName = targetManager.InMultiMode
-                        ? "Ability Chase Manual Multi"
-                        : "Ability Chase Manual";
+                        ? AIStates.ABILITY_CHASE_MANUA_MULTIL
+                        : AIStates.ABILITY_CHASE_MANUAL;
                         stateController.abilityToUse = ability;
                         stateController.TransitionToState(ResourceManager.GetAiState(stateName));
                     }
@@ -84,13 +84,10 @@ namespace RTS
 
         public static void AllyAbilityTargetSelectionToState(UnitStateController stateController, Ability ability, WorldObject allyTarget)
         {
-            //			string stateName = targetManager.InMultiMode
-            //						? "Ally Ability Chase Manual Multi"
-            //						: "Ally Ability Chase Manual";
             stateController.abilityToUse = ability;
             stateController.allyAbilityTarget = allyTarget;
 
-            stateController.TransitionToState(ResourceManager.GetAiState("Ally Ability Chase Manual"));
+            stateController.TransitionToState(ResourceManager.GetAiState(AIStates.ALLY_ABILITY_CHASE_MANUAL));
         }
 
         public static void AlliesAbilityTargetSelectionToState(UnitStateController stateController, Ability ability)
@@ -98,7 +95,7 @@ namespace RTS
             stateController.abilityToUse = ability;
 
             Debug.Log("Changed state to Allies Ability Use Manual");
-            stateController.TransitionToState(ResourceManager.GetAiState("Allies Ability Use Manual"));
+            stateController.TransitionToState(ResourceManager.GetAiState(AIStates.ALLIES_ABILITY_USE_MANUAL));
         }
 
         public static void ToBusyState(TargetManager targetManager, UnitStateController stateController, Vector3 destination)
@@ -112,8 +109,8 @@ namespace RTS
             stateController.navMeshAgent.SetDestination(destination);
             // transition to Chase Manual State
             string stateName = targetManager.InMultiMode
-                ? "Busy Manual Multi"
-                : "Busy Manual";
+                ? AIStates.BUSY_MANUAL_MULTI
+                : AIStates.BUSY_MANUAL;
             stateController.TransitionToState(ResourceManager.GetAiState(stateName));
         }
 
@@ -154,8 +151,8 @@ namespace RTS
             if (!targetManager) return;
 
             string stateName = targetManager.InMultiMode
-                ? "Stop Manual Multi"
-                : "Stop Manual";
+                ? AIStates.STOP_MANUAL_MULTI
+                : AIStates.STOP_MANUAL;
 
             player.selectedObjects
                 .Where(p => p is Unit)
@@ -198,55 +195,51 @@ namespace RTS
 
         private static void SwitchAttackModeForOne(UnitStateController stateController)
         {
-            // if (stateController.unit.CanAttackMulti())
-            // {
-                switch (stateController.currentState.name)
-                {
-                    case "Idle Manual":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Idle Manual Multi"));
-                        break;
+            switch (stateController.currentState.name)
+            {
+                case AIStates.IDLE_MANUAL:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.IDLE_MANUAL_MULTI));
+                    break;
 
-                    case "Chase Manual":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Chase Manual Multi"));
-                        break;
+                case AIStates.CHASE_MANUAL:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.CHASE_MANUAL_MULTI));
+                    break;
 
-                    case "Busy Manual":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Busy Manual Multi"));
-                        break;
+                case AIStates.BUSY_MANUAL:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.BUSY_MANUAL_MULTI));
+                    break;
 
-                    case "Stop Manual":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Stop Manual Multi"));
-                        break;
+                case AIStates.STOP_MANUAL:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.STOP_MANUAL_MULTI));
+                    break;
 
-                    case "Ability Chase Manual":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Ability Chase Manual Multi"));
-                        break;
+                case AIStates.ABILITY_CHASE_MANUAL:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.ABILITY_CHASE_MANUA_MULTIL));
+                    break;
 
-                    case "Idle Manual Multi":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Idle Manual"));
-                        break;
+                case AIStates.IDLE_MANUAL_MULTI:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.IDLE_MANUAL));
+                    break;
 
-                    case "Chase Manual Multi":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Chase Manual"));
-                        break;
+                case AIStates.CHASE_MANUAL_MULTI:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.CHASE_MANUAL));
+                    break;
 
-                    case "Busy Manual Multi":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Busy Manual"));
-                        break;
+                case AIStates.BUSY_MANUAL_MULTI:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.BUSY_MANUAL));
+                    break;
 
-                    case "Stop Manual Multi":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Stop Manual"));
-                        break;
+                case AIStates.STOP_MANUAL_MULTI:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.STOP_MANUAL));
+                    break;
 
-                    case "Ability Chase Manual Multi":
-                        stateController.TransitionToState(ResourceManager.GetAiState("Ability Chase Manual"));
-                        break;
+                case AIStates.ABILITY_CHASE_MANUA_MULTIL:
+                    stateController.TransitionToState(ResourceManager.GetAiState(AIStates.ABILITY_CHASE_MANUAL));
+                    break;
 
-                default:
-                        break;
-                }
-            // }
-
+            default:
+                    break;
+            }
         }
     }
 }

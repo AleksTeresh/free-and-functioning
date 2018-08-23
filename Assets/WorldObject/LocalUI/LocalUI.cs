@@ -39,13 +39,4 @@ public class LocalUI : MonoBehaviour {
     {
         healthBar.SetValue((float)relatedObj.hitPoints / (float)relatedObj.maxHitPoints * 100.0f);
     }
-
-/*
-    private void CalculateCurrentHealth()
-    {
-        healthPercentage = (float)hitPoints / (float)maxHitPoints;
-        if (healthPercentage > 0.65f) healthStyle.normal.background = ResourceManager.HealthyTexture;
-        else if (healthPercentage > 0.35f) healthStyle.normal.background = ResourceManager.DamagedTexture;
-        else healthStyle.normal.background = ResourceManager.CriticalTexture;
-    }  */
 }
