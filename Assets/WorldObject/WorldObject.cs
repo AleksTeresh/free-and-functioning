@@ -325,6 +325,9 @@ public class WorldObject : MonoBehaviour {
         HandleTargetIndicator();
 
         HandleAnimation();
+
+        // make sure hit points do not go beyond the max limit
+        hitPoints = Math.Min(hitPoints, maxHitPoints);
     }
 
     protected virtual void OnDrawGizmosSelected ()

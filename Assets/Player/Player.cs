@@ -70,6 +70,12 @@ public class Player : MonoBehaviour {
             selectedAllyTargettingAbility = null;
             selectedAlliesTargettingAbility = null;
         }
+
+        // if the player is not a human and it is dead, remove it
+        if (!human && IsDead())
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public bool IsDead()
