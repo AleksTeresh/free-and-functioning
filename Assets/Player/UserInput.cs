@@ -38,12 +38,13 @@ public class UserInput : MonoBehaviour
     {
         if (player.human)
         {
-            if (SceneManager.GetActiveScene().name == LevelNames.LEVEL_SELECTION)
+            string activeSceneName = SceneManager.GetActiveScene().name;
+            if (activeSceneName == LevelNames.LEVEL_SELECTION)
             {
                 hud.SetCursorLock(false);
                 return;
             }
-            if (SceneManager.GetActiveScene().name == LevelNames.LEVEL_LOADING)
+            if (activeSceneName == LevelNames.LEVEL_LOADING || activeSceneName == LevelNames.WIN_SCREEN || activeSceneName == LevelNames.LOSE_SCREEN)
             {
                 hud.SetCursorLock(true);
                 return;
