@@ -18,9 +18,8 @@ MonoBehaviour:
   dialogSentences:
   - As the heroes approached the end of the warehouse, they found enough resources
     for 2 more days only.
-  - However, stock records showed that the materials from the warehouse were being
-    shipped 70 km to the west. The selling point could mean another warehouse or a
-    trade house.
+  - However, stock records showed that the materials from the warehouse had been shipped
+    70 km to the west. The selling point could mean another warehouse or a trade house.
   - "In any case, the only option for survival was to go west and see if any more
     resources could be found there.\r"
   responses: []

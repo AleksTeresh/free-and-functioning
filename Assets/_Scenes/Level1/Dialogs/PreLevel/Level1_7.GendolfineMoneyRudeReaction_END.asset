@@ -9,14 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e215948a3001e3c479fdbc9f08a40fdd, type: 3}
-  m_Name: Level1_4.GendolfineAngryHeals
+  m_Name: Level1_7.GendolfineMoneyRudeReaction_END
   m_EditorClassIdentifier: 
   speakerAvatar: {fileID: 0}
   speakerName: Gendolfine
-  displayedOptionText: You question him? He's barely alive (Heal Franklin)
+  displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - "Is that what you do first - question him? Look at him! He\u2019s barely alive.
-    (heals Franklin)"
-  responses:
-  - {fileID: 11400000, guid: 93c3a5be61d66124886297325e43d4c5, type: 2}
+  - "Ok, so that\u2019s the way you show your leadership skills? <starts walking>\r"
+  responses: []

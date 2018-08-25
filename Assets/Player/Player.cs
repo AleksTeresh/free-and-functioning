@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 
     public string username;
     public bool human;
+    public bool plotRelated = false;
 
     public Ability selectedAllyTargettingAbility;
     public Ability selectedAlliesTargettingAbility;
@@ -72,9 +73,9 @@ public class Player : MonoBehaviour {
         }
 
         // if the player is not a human and it is dead, remove it
-        if (!human && IsDead())
+        if (!human && !plotRelated && IsDead())
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -82,6 +83,10 @@ public class Player : MonoBehaviour {
     {
         if (buildings != null && buildings.Count > 0) return false;
         if (units != null && units.Count > 0) return false;
+
+        // still make sure the player has no other WorldObjects, e.g. Boss Parts
+        if (GetComponentsInChildren<WorldObject>().Count() > 0) return false;
+
         return true;
     }
 
@@ -224,6 +229,7 @@ public class Player : MonoBehaviour {
         data.teamColor = teamColor;
         data.username = username;
         data.human = human;
+        data.plotRelated = plotRelated;
         data.lockCursor = lockCursor;
         data.units = units.Select(unit => unit.GetData()).ToList();
         data.buildings = buildings.Select(building => building.GetData()).ToList();
@@ -275,6 +281,7 @@ public class Player : MonoBehaviour {
 
         lockCursor = data.lockCursor;
         human = data.human;
+        plotRelated = data.plotRelated;
         username = data.username;
         teamColor = data.teamColor;
         SelectedObject = data.selectedObjectId != -1

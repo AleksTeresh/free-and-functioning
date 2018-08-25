@@ -824,6 +824,7 @@ MonoBehaviour:
   teamColor: {r: 0.7137255, g: 0, b: 0, a: 0}
   username: WorstEnemy
   human: 0
+  plotRelated: 1
   selectedAllyTargettingAbility: {fileID: 0}
   selectedAlliesTargettingAbility: {fileID: 0}
   hotkeyToUnitNameMapping: []
@@ -1509,12 +1510,22 @@ Prefab:
     - target: {fileID: 114862350624748096, guid: e5ed5f454b2bca44195646a7abbac446,
         type: 2}
       propertyPath: hitPoints
-      value: 2700
+      value: 2600
       objectReference: {fileID: 0}
     - target: {fileID: 114862350624748096, guid: e5ed5f454b2bca44195646a7abbac446,
         type: 2}
       propertyPath: maxHitPoints
-      value: 2700
+      value: 2600
+      objectReference: {fileID: 0}
+    - target: {fileID: 114862350624748096, guid: e5ed5f454b2bca44195646a7abbac446,
+        type: 2}
+      propertyPath: damageDealerSpawnAccel
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114862350624748096, guid: e5ed5f454b2bca44195646a7abbac446,
+        type: 2}
+      propertyPath: damageDealerSpawnRate
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5ed5f454b2bca44195646a7abbac446, type: 2}
@@ -5258,6 +5269,7 @@ MonoBehaviour:
   teamColor: {r: 0, g: 0.22745098, b: 0.41960785, a: 0}
   username: Alekster
   human: 1
+  plotRelated: 0
   selectedAllyTargettingAbility: {fileID: 0}
   selectedAlliesTargettingAbility: {fileID: 0}
   hotkeyToUnitNameMapping:
