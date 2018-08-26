@@ -1,17 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using RTS;
+using RTS.Constants;
 using Persistence;
 using Events;
 using UnityEngine.UI;
 using System.Threading;
-
-/**
- * Singleton that handles loading level details. This includes making sure
- * that all world objects have an objectId set.
- */
 
 public class LevelLoader : MonoBehaviour
 {
@@ -135,6 +130,6 @@ public class LevelLoader : MonoBehaviour
     void LoadSavedAssetsAsync ()
     {
         // since now we have only 1 save slot, level name does not matter
-        gameData = LoadManager.LoadGameData(ResourceManager.LevelName + Constants.SAVE_FILENAME_POSTFIX);
+        gameData = LoadManager.LoadGameData(ResourceManager.LevelName + PersistanceConstants.SAVE_FILENAME_POSTFIX);
     }
 }

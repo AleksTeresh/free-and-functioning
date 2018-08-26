@@ -16,7 +16,7 @@ MonoBehaviour:
   displayedOptionText: You question him? He's barely alive (Heal Franklin)
   blockGameplay: 1
   dialogSentences:
-  - "Is that what you do first - question him? Look at it, he\u2019s barely alive.
-    (heal Franklin)\r"
+  - "Is that what you do first - question him? Look at him! He\u2019s barely alive.
+    (heals Franklin)"
   responses:
   - {fileID: 11400000, guid: 93c3a5be61d66124886297325e43d4c5, type: 2}

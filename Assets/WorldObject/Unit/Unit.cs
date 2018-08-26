@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using RTS;
 using UnityEngine.AI;
-using Statuses;
 using Abilities;
 using Persistence;
 
@@ -60,19 +57,6 @@ public class Unit : WorldObject
             {
                 agent.SetDestination(destination);
             }
-
-            /*
-            var newPath = new NavMeshPath();
-            bool result = agent.CalculatePath(destination, newPath);
-
-            if (result)
-            {
-                agent.SetPath(newPath);
-                Debug.Log("Path is successfully computed");
-            } else
-            {
-                agent.SetDestination(destination);
-            } */
         }
     }
 
@@ -83,13 +67,6 @@ public class Unit : WorldObject
         agent.isStopped = true;
         agent.ResetPath();
     }
-    /*
-    public override void SaveDetails(JsonWriter writer)
-    {
-        base.SaveDetails(writer);
-        SaveManager.WriteVector(writer, "Velocity", agent.velocity);
-        SaveManager.WriteVector(writer, "Destination", agent.destination);
-    }  */
 
     public override void TakeDamage(int damage, AttackType attackType)
     {
@@ -115,17 +92,6 @@ public class Unit : WorldObject
     {
         return hitSphereCollider;
     }
-    /*
-    protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
-    {
-        base.HandleLoadedProperty(reader, propertyName, readValue);
-        switch (propertyName)
-        {
-            case "Velocity": agent.velocity = LoadManager.LoadVector(reader); break;
-            case "Destination": agent.destination = LoadManager.LoadVector(reader); break;
-            default: break;
-        }
-    } */
 
     public virtual bool IsMajor()
     {
@@ -176,7 +142,7 @@ public class Unit : WorldObject
     {
         base.Update();
 
-        this.isBusy = abilityAgent != null && abilityAgent.IsAnyAbilityPending();
+        isBusy = abilityAgent != null && abilityAgent.IsAnyAbilityPending();
 
         HandleMove();
         HandleRotation();
@@ -253,9 +219,6 @@ public class Unit : WorldObject
             nextAimRotation.z = 0;
             transform.rotation = nextAimRotation;
 
-            //sometimes it gets stuck exactly 180 degrees out in the calculation and does nothing, this check fixes that
-            // Quaternion inverseAimRotation = new Quaternion(-aimRotation.x, -aimRotation.y, -aimRotation.z, -aimRotation.w);
-
             if (WorkManager.IsObjectFacingTarget(this, aimTarget))
             {
                 aiming = false;
@@ -300,11 +263,6 @@ public class Unit : WorldObject
     {
         base.SetData(data);
         Start();
-
-        if (data.type == "Level1_Tanker" || data.type == "Level1_Healer" || data.type == "Level1_DamageDealer")
-        {
-            Debug.Log("Got it");
-        }
 
         aimTarget = data.aimTargetId != -1
             ? Player.GetObjectById(data.aimTargetId)

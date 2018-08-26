@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Abilities;
+using RTS.Constants;
 
 namespace RTS
 {
@@ -78,10 +78,10 @@ namespace RTS
 
         public static bool ObjectIsGround(GameObject obj)
         {
-            return obj.name == "Ground" ||
-                obj.name == "Ground(Clone)" ||
-                (obj.name.Length >= 8 && obj.name.Substring(0, 8) == "Platform") ||
-                (obj.name.Length >= 10 && obj.name.Substring(0, 10) == "TempBridge");
+            return obj.name == GroundNames.GROUND ||
+                obj.name == GroundNames.GROUND_CLONE ||
+                (obj.name.Length >= 8 && obj.name.Substring(0, 8) == GroundNames.PLATFORM) ||
+                (obj.name.Length >= 10 && obj.name.Substring(0, 10) == GroundNames.TEMP_BRIDGE);
         }
 
         public static List<T> FindNearbyObjects<T>(Vector3 position, float range)

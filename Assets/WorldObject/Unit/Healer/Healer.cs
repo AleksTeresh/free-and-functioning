@@ -35,23 +35,11 @@ public class Healer : Unit
 
         FireProjectile(target, "HealerProjectile", spawnPoint, damage);
     }
-    /*
-    protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
-    {
-        base.HandleLoadedProperty(reader, propertyName, readValue);
-        switch (propertyName)
-        {
-            case "AimRotation": aimRotation = LoadManager.LoadQuaternion(reader); break;
-            default: break;
-        }
-    } */
 
     public override Vector3 GetProjectileSpawnPoint()
     {
         Vector3 spawnPoint = transform.position;
-        // spawnPoint.x += (2.1f * transform.forward.x);
         spawnPoint.y += 1.4f;
-        // spawnPoint.z += (2.1f * transform.forward.z);
 
         return spawnPoint;
     }

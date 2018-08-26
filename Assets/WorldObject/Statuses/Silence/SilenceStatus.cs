@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using RTS;
-
-namespace Statuses
+﻿namespace Statuses
 {
     public class SilenceStatus : AiStateStatus
     {

@@ -89,11 +89,6 @@ namespace RTS
         {
             return gameObjectList.GetEnemyObject();
         }
-        /*
-        public static Texture2D GetBuildImage(string name)
-        {
-            return gameObjectList.GetBuildImage(name);
-        } */
 
         public static AI.State GetAiState(string name)
         {

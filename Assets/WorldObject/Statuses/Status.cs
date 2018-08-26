@@ -15,7 +15,6 @@ namespace Statuses
         [HideInInspector] public bool isActive;
         [HideInInspector] public WorldObject target;
         [HideInInspector] public float duration;
-        //public vfx
 
         protected WorldObject inflictor;
         protected Projectile projectileInflicter;

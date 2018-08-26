@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using RTS;
+﻿using RTS;
 
 namespace Statuses
 {
@@ -12,14 +9,6 @@ namespace Statuses
         protected override void OnStatusStart()
         {
             // the method is to be overriden
-            /*
-            // if the target just received the status, save its current state
-            if (previousState == null)
-            {
-                var targetStateController = target.GetStateController();
-
-                previousState = targetStateController.currentState.name;
-            }  */
         }
 
         protected override void OnStatusEnd()

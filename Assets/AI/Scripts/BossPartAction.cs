@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace AI
+﻿namespace AI
 {
     public class BossPartAction : Action
     {

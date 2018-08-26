@@ -18,6 +18,6 @@ MonoBehaviour:
   dialogSentences:
   - "By the right of actually knowing what to do. You and Adolf would continue starving
     in this trap till your death if not me. So please get it right from the start,
-    i\u2019m the one to lead here.\r"
+    I\u2019m the one to lead here."
   responses:
   - {fileID: 11400000, guid: 7142f45411293ae4eb38606d32dafac1, type: 2}

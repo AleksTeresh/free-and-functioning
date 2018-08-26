@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using RTS;
 using Abilities;
 
@@ -92,7 +88,7 @@ namespace Statuses
 
         private static Status InstantiateStatus(Status status, Vector3 spawnPoint, Quaternion rotation)
         {
-            var newStatusObject = (GameObject)GameObject.Instantiate(ResourceManager.GetStatus(status.name), spawnPoint, rotation);
+            var newStatusObject = GameObject.Instantiate(ResourceManager.GetStatus(status.name), spawnPoint, rotation);
             return newStatusObject.GetComponent<Status>();
         }
     }

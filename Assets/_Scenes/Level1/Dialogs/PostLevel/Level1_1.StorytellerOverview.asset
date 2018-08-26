@@ -17,9 +17,8 @@ MonoBehaviour:
   blockGameplay: 1
   dialogSentences:
   - After the enemy units were killed, the heroes took a more careful look at their
-    recent target. The targeted unit had no identification marks on him, which made
-    it reasonable to assume that he's another dissident from another community. After
-    the battle was over, he remained lying on the ground, barely functioning due to
-    being severely damaged
+    new encounter. The unit had no identification marks on him, which made it reasonable
+    to assume that he's a dissident from another community. After the battle was over,
+    he continued lying on the ground, barely functioning due to being severely damaged
   responses:
   - {fileID: 11400000, guid: 2e5a7b87e72197b45aaf5d784530fa72, type: 2}

@@ -16,7 +16,7 @@ MonoBehaviour:
   displayedOptionText: "I\u2019m not sure really. Sorry for that."
   blockGameplay: 1
   dialogSentences:
-  - "Well, I\u2019m not sure really. Sorry for that. Me and Franklin can last another
+  - "Well, I\u2019m not sure really. Sorry about that. I and Franklin can last another
     day without resources. But then, I don't know..."
   responses:
   - {fileID: 11400000, guid: b36dcd794eaf45a4ab9176135ba595ca, type: 2}

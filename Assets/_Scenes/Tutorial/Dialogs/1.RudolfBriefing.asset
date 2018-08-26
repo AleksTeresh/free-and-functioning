@@ -18,9 +18,9 @@ MonoBehaviour:
   dialogSentences:
   - Alright, as I understand, you two do not have much experience in battles. While
     I do have some, it is pretty limited anyway.
-  - "We should practice a little before actually departing. There are several basic
-    Evil Organization units roaming around. Those are as weak as it gets so they will
-    be a good target for our training.\r"
+  - We should practice a little before actually departing. There are several basic
+    Evil Organization units roaming around. Those are as weak as it gets, so they
+    will be a good target for our training.
   - "Now tell me what you actually can do. Josefine, let\u2019s start with you.\r\n"
   responses:
   - {fileID: 11400000, guid: 150b6429c812d2d48a4aed1dc0fd536a, type: 2}

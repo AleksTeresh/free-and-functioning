@@ -31,7 +31,6 @@ public class UpperBar : MonoBehaviour {
         if (formationModeIndicator)
         {
             // uncomment the line below if needed
-            // formationModeIndicator.SetColor(isMulti ? Color.red : Color.green);
             formationModeIndicator.SetText(formationType == FormationType.Manual ? "Manual Formation" : "Auto Formation");
         }
     }
@@ -41,7 +40,6 @@ public class UpperBar : MonoBehaviour {
         if (enemyCountIndicator)
         {
             // uncomment the line below if needed
-            // enemyCountIndicator.SetColor(isMulti ? Color.red : Color.green);
             enemyCountIndicator.SetText("Enemy Count: " + count);
         }
     }

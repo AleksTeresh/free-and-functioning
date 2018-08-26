@@ -16,6 +16,6 @@ MonoBehaviour:
   displayedOptionText: What about you, Adolf
   blockGameplay: 1
   dialogSentences:
-  - "Ok, now Adolf, how about you.\r"
+  - Ok, now Adolf, how about you?
   responses:
   - {fileID: 11400000, guid: 16ca4a34310478643abe73f29abd2c8c, type: 2}

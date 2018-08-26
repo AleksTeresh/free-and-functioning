@@ -16,6 +16,6 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - "(scornfully) I\u2019ll share my resources. (makes gesture to Franklin to follow
+  - "(scornfully) I\u2019ll share my resources. (makes a gesture to Franklin to follow
     her and starts walking)\r"
   responses: []

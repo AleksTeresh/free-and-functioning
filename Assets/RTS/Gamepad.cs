@@ -1,4 +1,4 @@
-﻿using System;
+﻿using RTS.Constants;
 using UnityEngine;
 
 namespace RTS
@@ -107,15 +107,15 @@ namespace RTS
             switch (button)
             {
                 // Handle cases where axis should be treated as a button (DPad, RT, LT)
-                case "Attack Mode":
-                case "SelectionModifier":
+                case InputNames.ATTACK_MODE:
+                case InputNames.SELECTION_MODIFIER:
                     return GetOSXAxisButtonDown(button);
                 // Temporary fix till mapping if any necessary will be decided
                 // case "Select5":
-                case "Ability5":
+                case InputNames.ABILITY5:
                     return false;
                 default:
-                    return Input.GetButtonDown("OSX " + button);
+                    return Input.GetButtonDown(InputNames.OSX_PREFIX + button);
             }
         }
 
@@ -125,19 +125,19 @@ namespace RTS
             switch (button)
             {
                 // Handle cases where axis should be treated as a button (DPad, RT, LT)
-                case "Select1":
-                case "Select2":
-                case "Select3":
-                case "Select4":
-                case "Attack Mode":
-                case "SelectionModifier":
+                case InputNames.SELECT1:
+                case InputNames.SELECT2:
+                case InputNames.SELECT3:
+                case InputNames.SELECT4:
+                case InputNames.ATTACK_MODE:
+                case InputNames.SELECTION_MODIFIER:
                     return GetWindowsAxisButtonDown(button);
                 // Temporary fix till mapping if any necessary will be decided
                 // case "Select5":
-                case "Ability5":
+                case InputNames.ABILITY5:
                     return false;
                 default:
-                    return Input.GetButtonDown("Win " + button);
+                    return Input.GetButtonDown(InputNames.WIN_PREFIX + button);
             }
         }
 
@@ -146,15 +146,15 @@ namespace RTS
             switch (button)
             {
                 // Handle cases where axis should be treated as a button (DPad, RT, LT)
-                case "Attack Mode":
-                case "SelectionModifier":
+                case InputNames.ATTACK_MODE:
+                case InputNames.SELECTION_MODIFIER:
                     return GetOSXAxisButton(button);
                 // Temporary fix till mapping if any necessary will be decided
                 // case "Select5":
-                case "Ability5":
+                case InputNames.ABILITY5:
                     return false;
                 default:
-                    return Input.GetButtonDown("OSX " + button);
+                    return Input.GetButtonDown(InputNames.OSX_PREFIX + button);
             }
         }
 
@@ -163,19 +163,19 @@ namespace RTS
             switch (button)
             {
                 // Handle cases where axis should be treated as a button (DPad, RT, LT)
-                case "Select1":
-                case "Select2":
-                case "Select3":
-                case "Select4":
-                case "Attack Mode":
-                case "SelectionModifier":
+                case InputNames.SELECT1:
+                case InputNames.SELECT2:
+                case InputNames.SELECT3:
+                case InputNames.SELECT4:
+                case InputNames.ATTACK_MODE:
+                case InputNames.SELECTION_MODIFIER:
                     return GetWindowsAxisButton(button);
                 // Temporary fix till mapping if any necessary will be decided
                 // case "Select5":
-                case "Ability5":
+                case InputNames.ABILITY5:
                     return false;
                 default:
-                    return Input.GetButton("Win " + button);
+                    return Input.GetButton(InputNames.WIN_PREFIX + button);
             }
         }
 
@@ -183,7 +183,7 @@ namespace RTS
         {
             if (wasOSXAttackModeAxisEverUsed)
             {
-                if (Input.GetAxisRaw("OSX Attack Mode") != -1.0f)
+                if (Input.GetAxisRaw(InputNames.OSX_PREFIX + InputNames.ATTACK_MODE) != -1.0f)
                 {
                     if (isOSXAttackModeAxisInUse == false)
                     {
@@ -192,7 +192,7 @@ namespace RTS
                     }
                 }
 
-                if (Input.GetAxisRaw("OSX Attack Mode") == -1.0f)
+                if (Input.GetAxisRaw(InputNames.OSX_PREFIX + InputNames.ATTACK_MODE) == -1.0f)
                 {
                     isOSXAttackModeAxisInUse = false;
                     wasOSXAttackModeAxisSwitchedToActive = false;
@@ -200,7 +200,7 @@ namespace RTS
             }
             else
             {
-                if (Input.GetAxisRaw("OSX Attack Mode") != 0.0f)
+                if (Input.GetAxisRaw(InputNames.OSX_PREFIX + InputNames.ATTACK_MODE) != 0.0f)
                 {
                     if (isOSXAttackModeAxisInUse == false)
                     {
@@ -213,7 +213,7 @@ namespace RTS
 
             if (wasOSXSelectionModifierAxisEverUsed)
             {
-                if (Input.GetAxisRaw("OSX SelectionModifier") != -1.0f)
+                if (Input.GetAxisRaw(InputNames.OSX_PREFIX + InputNames.SELECTION_MODIFIER) != -1.0f)
                 {
                     if (isOSXSelectionModifierAxisInUse == false)
                     {
@@ -222,7 +222,7 @@ namespace RTS
                     }
                 }
 
-                if (Input.GetAxisRaw("OSX SelectionModifier") == -1.0f)
+                if (Input.GetAxisRaw(InputNames.OSX_PREFIX + InputNames.SELECTION_MODIFIER) == -1.0f)
                 {
                     isOSXSelectionModifierAxisInUse = false;
                     wasOSXSelectionModifierAxisSwitchedToActive = false;
@@ -230,7 +230,7 @@ namespace RTS
             }
             else
             {
-                if (Input.GetAxisRaw("OSX SelectionModifier") != 0.0f)
+                if (Input.GetAxisRaw(InputNames.OSX_PREFIX + InputNames.SELECTION_MODIFIER) != 0.0f)
                 {
                     if (isOSXSelectionModifierAxisInUse == false)
                     {
@@ -244,7 +244,7 @@ namespace RTS
 
         private void HandleWinAxisInteraction()
         {
-            if (Input.GetAxisRaw("Win Select 1 3") != 0f)
+            if (Input.GetAxisRaw(InputNames.WIN_SELECT_1_3) != 0f)
             {
                 if (isWinSelect13AxixInUse == false)
                 {
@@ -253,13 +253,13 @@ namespace RTS
                 }
             }
 
-            if (Input.GetAxisRaw("Win Select 1 3") == 0f)
+            if (Input.GetAxisRaw(InputNames.WIN_SELECT_1_3) == 0f)
             {
                 isWinSelect13AxixInUse = false;
                 wasWinSelect13AxisSwitchedToActive = false;
             }
 
-            if (Input.GetAxisRaw("Win Select 2 4") != 0f)
+            if (Input.GetAxisRaw(InputNames.WIN_SELECT_2_4) != 0f)
             {
                 if (isWinSelect24AxisInUse == false)
                 {
@@ -268,13 +268,13 @@ namespace RTS
                 }
             }
 
-            if (Input.GetAxisRaw("Win Select 2 4") == 0f)
+            if (Input.GetAxisRaw(InputNames.WIN_SELECT_2_4) == 0f)
             {
                 isWinSelect24AxisInUse = false;
                 wasWinSelect24AxisSwitchedToActive = false;
             }
 
-            if (Input.GetAxisRaw("Win Attack Mode") != 0f)
+            if (Input.GetAxisRaw(InputNames.WIN_PREFIX + InputNames.ATTACK_MODE) != 0f)
             {
                 if (isWinAttackModeAxisInUse == false)
                 {
@@ -283,13 +283,13 @@ namespace RTS
                 }
             }
 
-            if (Input.GetAxisRaw("Win Attack Mode") == 0f)
+            if (Input.GetAxisRaw(InputNames.WIN_PREFIX + InputNames.ATTACK_MODE) == 0f)
             {
                 isWinAttackModeAxisInUse = false;
                 wasWinAttackModeAxisSwitchedToActive = false;
             }
 
-            if (Input.GetAxisRaw("Win SelectionModifier") != 0f)
+            if (Input.GetAxisRaw(InputNames.WIN_PREFIX + InputNames.SELECTION_MODIFIER) != 0f)
             {
                 if (isWinSelectionModifierAxisInUse == false)
                 {
@@ -298,7 +298,7 @@ namespace RTS
                 }
             }
 
-            if (Input.GetAxisRaw("Win SelectionModifier") == 0f)
+            if (Input.GetAxisRaw(InputNames.WIN_PREFIX + InputNames.SELECTION_MODIFIER) == 0f)
             {
                 isWinSelectionModifierAxisInUse = false;
                 wasWinSelectionModifierAxisSwitchedToActive = false;
@@ -316,24 +316,23 @@ namespace RTS
 
         private static float GetWindowsAxis(string axis)
         {
-            return Input.GetAxis("Win " + axis);
+            return Input.GetAxis(InputNames.WIN_PREFIX + axis);
         }
 
         private static float GetOSXAxis(string axis)
         {
-            return Input.GetAxis("OSX " + axis);
+            return Input.GetAxis(InputNames.OSX_PREFIX + axis);
         }
-
 
         private static bool GetOSXAxisButtonDown(string button)
         {
-            if (button == "Attack Mode" && wasOSXAttackModeAxisSwitchedToActive)
+            if (button == InputNames.ATTACK_MODE && wasOSXAttackModeAxisSwitchedToActive)
             {
                 wasOSXAttackModeAxisSwitchedToActive = false;
                 return true;
             }
 
-            if (button == "SelectionModifier" && wasOSXSelectionModifierAxisSwitchedToActive)
+            if (button == InputNames.SELECTION_MODIFIER && wasOSXSelectionModifierAxisSwitchedToActive)
             {
                 wasOSXSelectionModifierAxisSwitchedToActive = false;
                 return true;
@@ -346,18 +345,18 @@ namespace RTS
         {
             if (wasWinSelect13AxisSwitchedToActive)
             {
-                if (button == "Select1")
+                if (button == InputNames.SELECT1)
                 {
-                    if (Input.GetAxis("Win Select 1 3") < 0)
+                    if (Input.GetAxis(InputNames.WIN_SELECT_1_3) < 0)
                     {
                         wasWinSelect13AxisSwitchedToActive = false;
                         return true;
                     }
                 }
 
-                if (button == "Select3")
+                if (button == InputNames.SELECT3)
                 {
-                    if (Input.GetAxis("Win Select 1 3") > 0)
+                    if (Input.GetAxis(InputNames.WIN_SELECT_1_3) > 0)
                     {
                         wasWinSelect13AxisSwitchedToActive = false;
                         return true;
@@ -367,18 +366,18 @@ namespace RTS
 
             if (wasWinSelect24AxisSwitchedToActive)
             {
-                if (button == "Select2")
+                if (button == InputNames.SELECT2)
                 {
-                    if (Input.GetAxis("Win Select 2 4") > 0)
+                    if (Input.GetAxis(InputNames.WIN_SELECT_2_4) > 0)
                     {
                         wasWinSelect24AxisSwitchedToActive = false;
                         return true;
                     }
                 }
 
-                if (button == "Select4")
+                if (button == InputNames.SELECT4)
                 {
-                    if (Input.GetAxis("Win Select 2 4") < 0)
+                    if (Input.GetAxis(InputNames.WIN_SELECT_2_4) < 0)
                     {
                         wasWinSelect24AxisSwitchedToActive = false;
                         return true;
@@ -386,13 +385,13 @@ namespace RTS
                 }
             }
 
-            if (button == "Attack Mode" && wasWinAttackModeAxisSwitchedToActive)
+            if (button == InputNames.ATTACK_MODE && wasWinAttackModeAxisSwitchedToActive)
             {
                 wasWinAttackModeAxisSwitchedToActive = false;
                 return true;
             }
 
-            if (button == "SelectionModifier" && wasWinSelectionModifierAxisSwitchedToActive)
+            if (button == InputNames.SELECTION_MODIFIER && wasWinSelectionModifierAxisSwitchedToActive)
             {
                 wasWinSelectionModifierAxisSwitchedToActive = false;
                 return true;
@@ -404,12 +403,12 @@ namespace RTS
         
         private static bool GetOSXAxisButton(string button)
         {
-            if (button == "Attack Mode" && isOSXAttackModeAxisInUse)
+            if (button == InputNames.ATTACK_MODE && isOSXAttackModeAxisInUse)
             {
                 return true;
             }
 
-            if (button == "SelectionModifier" && isOSXSelectionModifierAxisInUse)
+            if (button == InputNames.SELECTION_MODIFIER && isOSXSelectionModifierAxisInUse)
             {
                 return true;
             }
@@ -419,44 +418,44 @@ namespace RTS
         
         private static bool GetWindowsAxisButton(string button)
         {
-            if (button == "Select1")
+            if (button == InputNames.SELECT1)
             {
-                if (Input.GetAxis("Win Select 1 3") < 0)
+                if (Input.GetAxis(InputNames.WIN_SELECT_1_3) < 0)
                 {
                     return true;
                 }
             }
 
-            if (button == "Select3")
+            if (button == InputNames.SELECT3)
             {
-                if (Input.GetAxis("Win Select 1 3") > 0)
+                if (Input.GetAxis(InputNames.WIN_SELECT_1_3) > 0)
                 {
                     return true;
                 }
             }
 
-            if (button == "Select2")
+            if (button == InputNames.SELECT2)
             {
-                if (Input.GetAxis("Win Select 2 4") > 0)
+                if (Input.GetAxis(InputNames.WIN_SELECT_2_4) > 0)
                 {
                     return true;
                 }
             }
 
-            if (button == "Select4")
+            if (button == InputNames.SELECT4)
             {
-                if (Input.GetAxis("Win Select 2 4") < 0)
+                if (Input.GetAxis(InputNames.WIN_SELECT_2_4) < 0)
                 {
                     return true;
                 }
             }
 
-            if (button == "Attack Mode" && isWinAttackModeAxisInUse)
+            if (button == InputNames.ATTACK_MODE && isWinAttackModeAxisInUse)
             {
                 return true;
             }
 
-            if (button == "SelectionModifier" && isWinSelectionModifierAxisInUse)
+            if (button == InputNames.SELECTION_MODIFIER && isWinSelectionModifierAxisInUse)
             {
                 return true;
             }

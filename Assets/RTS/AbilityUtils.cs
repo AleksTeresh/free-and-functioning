@@ -107,12 +107,10 @@ namespace RTS
 
         public static void PlayAbilityVfx(string vfxName, Vector3 target, Vector3 scale, Quaternion rotation)
         {
-//            if (target != null) return;
-
             ParticleSystem vfxPrefab = ResourceManager.GetAbilityVfx(vfxName);
             ParticleSystem vfxInstance = MonoBehaviour.Instantiate(vfxPrefab, target, rotation);
             vfxInstance.transform.localScale = scale;
-            MonoBehaviour.Destroy(vfxInstance.gameObject,
+            Object.Destroy(vfxInstance.gameObject,
                 vfxInstance.main.startLifetime.constantMax + vfxInstance.main.duration);
         }
 

@@ -1,6 +1,4 @@
-﻿
-
-namespace AI
+﻿namespace AI
 {
     public class BuildingAction : Action
     {

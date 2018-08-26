@@ -55,63 +55,8 @@ namespace RTS
 
                 Directory.CreateDirectory("SavedGames" + Path.DirectorySeparatorChar + name);
             }
-
-            // Save();
-        }
-        /*
-        public static void Load()
-        {
-            players.Clear();
-
-            string filename = "SavedGames" + Path.DirectorySeparatorChar + "Players.json";
-            if (File.Exists(filename))
-            {
-                //read contents of file
-                string input;
-                using (StreamReader sr = new StreamReader(filename))
-                {
-                    input = sr.ReadToEnd();
-                }
-                if (input != null)
-                {
-                    //parse contents of file
-                    using (JsonTextReader reader = new JsonTextReader(new StringReader(input)))
-                    {
-                        while (reader.Read())
-                        {
-                            if (reader.Value != null)
-                            {
-                                if (reader.TokenType == JsonToken.PropertyName)
-                                {
-                                    if ((string)reader.Value == "Players") LoadPlayers(reader);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
 
-        public static void Save()
-        {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.NullValueHandling = NullValueHandling.Ignore;
-            using (StreamWriter sw = new StreamWriter("SavedGames" + Path.DirectorySeparatorChar + "Players.json"))
-            {
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    writer.WriteStartObject();
-
-                    writer.WritePropertyName("Players");
-                    writer.WriteStartArray();
-                    foreach (PlayerDetails player in players) SavePlayer(writer, player);
-                    writer.WriteEndArray();
-
-                    writer.WriteEndObject();
-                }
-            }
-        }
-        */
         public static int GetAvatar(string playerName)
         {
             for (int i = 0; i < players.Count; i++)
@@ -140,61 +85,7 @@ namespace RTS
             for (int i = 0; i < playerNames.Length; i++) playerNames[i] = players[i].Name;
             return playerNames;
         }
-        /*
-        private static void SavePlayer(JsonWriter writer, PlayerDetails player)
-        {
-            writer.WriteStartObject();
-
-            writer.WritePropertyName("Name");
-            writer.WriteValue(player.Name);
-            writer.WritePropertyName("Avatar");
-            writer.WriteValue(player.Avatar);
-
-            writer.WriteEndObject();
-        }
         
-        private static void LoadPlayers(JsonTextReader reader)
-        {
-            while (reader.Read())
-            {
-                if (reader.TokenType == JsonToken.StartObject) LoadPlayer(reader);
-                else if (reader.TokenType == JsonToken.EndArray) return;
-            }
-        }
-        
-        private static void LoadPlayer(JsonTextReader reader)
-        {
-            string currValue = "", name = "";
-            int avatar = 0;
-            while (reader.Read())
-            {
-                if (reader.Value != null)
-                {
-                    if (reader.TokenType == JsonToken.PropertyName)
-                    {
-                        currValue = (string)reader.Value;
-                    }
-                    else
-                    {
-                        switch (currValue)
-                        {
-                            case "Name": name = (string)reader.Value; break;
-                            case "Avatar": avatar = (int)(System.Int64)reader.Value; break;
-                            default: break;
-                        }
-                    }
-                }
-                else
-                {
-                    if (reader.TokenType == JsonToken.EndObject)
-                    {
-                        players.Add(new PlayerDetails(name, avatar));
-                        return;
-                    }
-                }
-            }
-        }
-         */
         public static string GetPlayerName()
         {
             return currentPlayer.Name == "" ? "Unknown" : currentPlayer.Name;

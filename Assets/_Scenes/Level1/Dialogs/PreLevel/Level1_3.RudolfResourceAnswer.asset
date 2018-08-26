@@ -18,7 +18,7 @@ MonoBehaviour:
   dialogSentences:
   - "Good question. We have about 5 to 7 days to go. That\u2019s not enough to reach
     Free Lands even assuming they are as close as it gets. So yeah, we\u2019ll have
-    to find some on our way.\r"
+    to find some more on our way.\r"
   responses:
   - {fileID: 11400000, guid: 053495ae0d250ad4baf6ee7e87ed9160, type: 2}
   - {fileID: 11400000, guid: 00a99b21a9da4a444b92c1fd4a126ad6, type: 2}

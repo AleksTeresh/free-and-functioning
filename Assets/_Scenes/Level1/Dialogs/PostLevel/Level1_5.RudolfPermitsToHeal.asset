@@ -16,7 +16,6 @@ MonoBehaviour:
   displayedOptionText: 
   blockGameplay: 1
   dialogSentences:
-  - "Sure, go ahead. Adolf, get your guns ready and point them at him, just to make
-    sure.\r"
+  - Sure, go ahead. Adolf, get your guns ready and point them at him, just in case.
   responses:
   - {fileID: 11400000, guid: a7aade76f39ac4a43b1001015e7a42b4, type: 2}

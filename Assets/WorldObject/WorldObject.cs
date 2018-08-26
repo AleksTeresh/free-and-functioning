@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using RTS;
@@ -11,8 +10,6 @@ using Persistence;
 public class WorldObject : MonoBehaviour {
     public int ObjectId { get; set; }
     public string objectName;
-    // public Texture2D buildImage;
-    // public int cost, sellValue,
     public int hitPoints;
     public int maxHitPoints;
 
@@ -40,8 +37,6 @@ public class WorldObject : MonoBehaviour {
     protected Bounds selectionBounds;
     [NonSerialized]
     protected Rect playingArea = new Rect(0.0f, 0.0f, 0.0f, 0.0f);
-    // protected GUIStyle healthStyle = new GUIStyle();
-    // protected float healthPercentage = 1.0f;
 
     [Header("Weapon and attack")]
 
@@ -114,52 +109,6 @@ public class WorldObject : MonoBehaviour {
     {
         player = transform.root.GetComponentInChildren<Player>();
     }
-    /*
-    public virtual void SaveDetails(JsonWriter writer)
-    {
-        SaveManager.WriteString(writer, "Type", name);
-        SaveManager.WriteString(writer, "Name", objectName);
-        SaveManager.WriteInt(writer, "Id", ObjectId);
-        SaveManager.WriteVector(writer, "Position", transform.position);
-        SaveManager.WriteQuaternion(writer, "Rotation", transform.rotation);
-        SaveManager.WriteVector(writer, "Scale", transform.localScale);
-        SaveManager.WriteInt(writer, "HitPoints", hitPoints);
-        // SaveManager.WriteBoolean(writer, "Attacking", attacking);
-        SaveManager.WriteBoolean(writer, "MovingIntoPosition", movingIntoPosition);
-        SaveManager.WriteBoolean(writer, "Aiming", aiming);
- 
-        // if (target != null) SaveManager.WriteInt(writer, "TargetId", target.ObjectId);
-    }
-    
-    public void LoadDetails(JsonTextReader reader)
-    {
-        while (reader.Read())
-        {
-            if (reader.Value != null)
-            {
-                if (reader.TokenType == JsonToken.PropertyName)
-                {
-                    string propertyName = (string)reader.Value;
-                    reader.Read();
-                    HandleLoadedProperty(reader, propertyName, reader.Value);
-                }
-            }
-            else if (reader.TokenType == JsonToken.EndObject)
-            {
-                //loaded position invalidates the selection bounds so they must be recalculated
-                selectionBounds = ResourceManager.InvalidBounds;
-                CalculateBounds();
-                loadedSavedValues = true;
-                return;
-            }
-        }
-        //loaded position invalidates the selection bounds so they must be recalculated
-        selectionBounds = ResourceManager.InvalidBounds;
-        CalculateBounds();
-        loadedSavedValues = true;
-    }
-
-        */
 
     public virtual void PerformAction(string actionToPerform)
     {
@@ -376,6 +325,9 @@ public class WorldObject : MonoBehaviour {
         HandleTargetIndicator();
 
         HandleAnimation();
+
+        // make sure hit points do not go beyond the max limit
+        hitPoints = Math.Min(hitPoints, maxHitPoints);
     }
 
     protected virtual void OnDrawGizmosSelected ()
@@ -479,20 +431,7 @@ public class WorldObject : MonoBehaviour {
         if (!MultiAttackDelayIsOver()) attackDelayFrameCounter = 2;
         else if (ReadyToFireMulti()) UseWeaponMulti(targets);
     }
-    /*
-    public virtual void BeginAttackToMulti(List<WorldObject> targets)
-    {
-        if (CanAttackMulti())
-        {
-            if (audioElement != null) audioElement.Play(attackSound);
-            // this.target = null;
-        }
-        else
-        {
-            // BeginAttack(target);
-        }
-    }
-    */
+
     public virtual bool CanAttack()
     {
         //default behaviour needs to be overidden by children
@@ -518,26 +457,6 @@ public class WorldObject : MonoBehaviour {
 
         return spawnPoint;
     }
-
-    /*
-    protected virtual void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
-    {
-        switch (propertyName)
-        {
-            case "Name": objectName = (string)readValue; break;
-            case "Id": ObjectId = (int)(System.Int64)readValue; break;
-            case "Position": transform.localPosition = LoadManager.LoadVector(reader); break;
-            case "Rotation": transform.localRotation = LoadManager.LoadQuaternion(reader); break;
-            case "Scale": transform.localScale = LoadManager.LoadVector(reader); break;
-            case "HitPoints": hitPoints = (int)(System.Int64)readValue; break;
-            // case "Attacking": attacking = (bool)readValue; break;
-            case "MovingIntoPosition": movingIntoPosition = (bool)readValue; break;
-            case "Aiming": aiming = (bool)readValue; break;
-            case "CurrentWeaponChargeTime": currentWeaponChargeTime = (float)(double)readValue; break;
-            case "TargetId": loadedTargetId = (int)(System.Int64)readValue; break;
-            default: break;
-        }
-    }  */
 
     public bool IsOwnedBy(Player owner)
     {
@@ -719,17 +638,6 @@ public class WorldObject : MonoBehaviour {
         if (selectionLight)
         {
             selectionLight.enabled = player && player.human && currentlySelected;
-            /*
-            selectionLight.enabled = player &&
-                (
-                    (player.human && currentlySelected) ||
-                    (
-                        !player.human &&
-                        targetManager &&
-                        targetManager.SingleTarget &&
-                        targetManager.SingleTarget.ObjectId == ObjectId
-                    )
-                ); */
         }
     }
 

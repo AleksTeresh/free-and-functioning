@@ -13,6 +13,7 @@ namespace Persistence
 
         public string username;
         public bool human;
+        public bool plotRelated;
 
         public bool lockCursor;
 

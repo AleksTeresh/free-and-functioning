@@ -17,6 +17,6 @@ MonoBehaviour:
     barely alive '
   blockGameplay: 1
   dialogSentences:
-  - "Maybe I should fix him first, what do you think? He looks barely alive\r"
+  - Maybe I should fix him first? What do you think? He looks barely alive.
   responses:
   - {fileID: 11400000, guid: 94c86317413f56c49a7694cb56625cdb, type: 2}

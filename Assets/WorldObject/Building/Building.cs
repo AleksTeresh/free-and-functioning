@@ -27,32 +27,7 @@ public class Building : WorldObject {
     {
         return stateController;
     }
-    /*
-    public override void SaveDetails(JsonWriter writer)
-    {
-        base.SaveDetails(writer);
-        // SaveManager.WriteBoolean(writer, "NeedsBuilding", needsBuilding);
-        SaveManager.WriteVector(writer, "SpawnPoint", spawnPoint);
-        SaveManager.WriteVector(writer, "RallyPoint", rallyPoint);
-        SaveManager.WriteFloat(writer, "BuildProgress", currentBuildProgress);
-        SaveManager.WriteStringArray(writer, "BuildQueue", buildQueue.ToArray());
-    }
 
-    protected override void HandleLoadedProperty(JsonTextReader reader, string propertyName, object readValue)
-    {
-        base.HandleLoadedProperty(reader, propertyName, readValue);
-        switch (propertyName)
-        {
-            // case "NeedsBuilding": needsBuilding = (bool)readValue; break;
-            case "SpawnPoint": spawnPoint = LoadManager.LoadVector(reader); break;
-            case "RallyPoint": rallyPoint = LoadManager.LoadVector(reader); break;
-            case "BuildProgress": currentBuildProgress = (float)(double)readValue; break;
-            case "BuildQueue": buildQueue = new Queue<string>(LoadManager.LoadStringArray(reader)); break;
-            case "PlayingArea": playingArea = LoadManager.LoadRect(reader); break;
-            default: break;
-        }
-    }
-    */
     protected override void Awake()
     {
         base.Awake();

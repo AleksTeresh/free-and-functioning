@@ -19,6 +19,6 @@ MonoBehaviour:
   - "(Aiming at Franklin) It will be fine, we\u2019re ready for any kind of situation.
     It seems to me that he\u2019s unable to speak. I don\u2019t think there is any
     point in questioning him any further. Rudolf, you tell me what to do, but from
-    what I see this guy is quite useless to us.\r"
+    what I see - this guy is quite useless to us."
   responses:
   - {fileID: 11400000, guid: af18d9cfb58693148850b1adfd68f309, type: 2}

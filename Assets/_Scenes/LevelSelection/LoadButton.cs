@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using RTS;
+using RTS.Constants;
 using Persistence;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class LoadButton : MonoBehaviour {
     private Button button;
@@ -25,12 +23,12 @@ public class LoadButton : MonoBehaviour {
     {
         button.interactable = relatedSceneName != null &&
             relatedSceneName != "" &&
-            LoadManager.SaveExists(relatedSceneName + Constants.SAVE_FILENAME_POSTFIX);
+            LoadManager.SaveExists(relatedSceneName + PersistanceConstants.SAVE_FILENAME_POSTFIX);
     }
 
     public void ContinueGame ()
     {
-        if (relatedSceneName != null && relatedSceneName != "" && LoadManager.SaveExists(relatedSceneName + Constants.SAVE_FILENAME_POSTFIX))
+        if (relatedSceneName != null && relatedSceneName != "" && LoadManager.SaveExists(relatedSceneName + PersistanceConstants.SAVE_FILENAME_POSTFIX))
         {
             string sceneName = relatedSceneName;
 

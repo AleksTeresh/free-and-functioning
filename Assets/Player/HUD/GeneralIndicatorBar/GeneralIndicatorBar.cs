@@ -24,8 +24,6 @@ public class GeneralIndicatorBar : MonoBehaviour
     {
         if (attackModeIndicator)
         {
-//            attackModeIndicator.SetColor(isMulti ? Color.red : Color.green);
-//            attackModeIndicator.SetText(isMulti ? "Multi Attack" : "Single Attack");
             attackModeIndicator.SetSprite(isMulti ? multiAttackIcon : singleAttackIcon);
         }
     }
@@ -34,9 +32,6 @@ public class GeneralIndicatorBar : MonoBehaviour
     {
         if (formationModeIndicator)
         {
-            // uncomment the line below if needed
-            // formationModeIndicator.SetColor(isMulti ? Color.red : Color.green);
-//            formationModeIndicator.SetText(formationType == FormationType.Manual ? "Manual Formation" : "Auto Formation");
             formationModeIndicator.SetSprite(formationType == FormationType.Manual ? manualFormationIcon : autoFormationIcon);
         }
     }

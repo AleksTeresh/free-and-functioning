@@ -1,19 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Ground : MonoBehaviour {
 
     public Terrain Terrain { get; private set; }
-	// Use this for initialization
-	void Start () {
-		
-	}
-
-    void Awake()
-    {
-        
-    }
 
     public Material GetMaterial()
     {

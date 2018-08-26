@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using RTS.Constants;
 
 namespace RTS
 {
@@ -6,11 +7,11 @@ namespace RTS
     {
         private static string[] hotkeys = new string[]
         {
-            "Ability1",
-            "Ability2",
-            "Ability3",
-            "Ability4",
-            "Ability5"
+            InputNames.ABILITY1,
+            InputNames.ABILITY2,
+            InputNames.ABILITY3,
+            InputNames.ABILITY4,
+            InputNames.ABILITY5
         };
 
         public static void HandleInput(Player player, TargetManager targetManager)
@@ -21,7 +22,7 @@ namespace RTS
 
                 for (int i = 0; i < hotkeys.Length; i++)
                 {
-                    if (Input.GetButtonDown(hotkeys[i]) ||  (Gamepad.GetButtonDown(hotkeys[i]) && !Gamepad.GetButton("SelectionModifier")))
+                    if (Input.GetButtonDown(hotkeys[i]) ||  (Gamepad.GetButtonDown(hotkeys[i]) && !Gamepad.GetButton(InputNames.SELECTION_MODIFIER)))
                     {
 						InputToCommandManager.AbilityHotkeyToState(targetManager, selectedUnit.GetStateController(), i);
 

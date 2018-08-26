@@ -91,14 +91,12 @@ namespace Abilities
             // TODO: add animation handling
 
             isPending = true;
-            // isReady = false;
             cooldownTimer = 0.0f;
         }
 
         protected void HandleAbilityUseEnd()
         {
             delayTimer = 0.0f;
-            // isReady = false;
             isPending = false;
         }
 

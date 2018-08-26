@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using RTS;
@@ -7,6 +6,7 @@ using Formation;
 using Dialog;
 using Events;
 using UnityEngine.SceneManagement;
+using RTS.Constants;
 
 public class UserInput : MonoBehaviour
 {
@@ -38,12 +38,13 @@ public class UserInput : MonoBehaviour
     {
         if (player.human)
         {
-            if (SceneManager.GetActiveScene().name == "LevelSelection")
+            string activeSceneName = SceneManager.GetActiveScene().name;
+            if (activeSceneName == LevelNames.LEVEL_SELECTION)
             {
                 hud.SetCursorLock(false);
                 return;
             }
-            if (SceneManager.GetActiveScene().name == "LevelLoading")
+            if (activeSceneName == LevelNames.LEVEL_LOADING || activeSceneName == LevelNames.WIN_SCREEN || activeSceneName == LevelNames.LOSE_SCREEN)
             {
                 hud.SetCursorLock(true);
                 return;
@@ -98,14 +99,14 @@ public class UserInput : MonoBehaviour
         float yAxis = 0.0f;
         float zAxis = 0.0f;
 
-        if (Gamepad.GetButton("SelectionModifier"))
+        if (Gamepad.GetButton(InputNames.SELECTION_MODIFIER))
         {
-            yAxis = -1f * Gamepad.GetAxis("Camera Move Z");
+            yAxis = -1f * Gamepad.GetAxis(InputNames.CAMERA_MOVE_Z);
         }
         else
         {
-            xAxis = Gamepad.GetAxis("Camera Move X");
-            zAxis = Gamepad.GetAxis("Camera Move Z");
+            xAxis = Gamepad.GetAxis(InputNames.CAMERA_MOVE_X);
+            zAxis = Gamepad.GetAxis(InputNames.CAMERA_MOVE_Z);
         }
 
         movement.x = xAxis;
@@ -157,7 +158,7 @@ public class UserInput : MonoBehaviour
         movement.y = 0;
 
         // away from ground movement
-        movement.y -= ResourceManager.ScrollSpeed * Input.GetAxis("Mouse ScrollWheel");
+        movement.y -= ResourceManager.ScrollSpeed * Input.GetAxis(InputNames.MOUSE_SCROLL_WHEEL);
 
         MoveCamera(movement);
 
@@ -207,8 +208,8 @@ public class UserInput : MonoBehaviour
         //detect rotation amount if ALT is being held and the Right mouse button is down
         if ((Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)) && Input.GetMouseButton(1))
         {
-            destination.x -= Input.GetAxis("Mouse Y") * ResourceManager.RotateAmount;
-            destination.y += Input.GetAxis("Mouse X") * ResourceManager.RotateAmount;
+            destination.x -= Input.GetAxis(InputNames.MOUSE_Y) * ResourceManager.RotateAmount;
+            destination.y += Input.GetAxis(InputNames.MOUSE_X) * ResourceManager.RotateAmount;
         }
 
         //if a change in position is detected perform the necessary update
@@ -220,11 +221,11 @@ public class UserInput : MonoBehaviour
 
     private void AttackModeSelection()
     {
-        if (player.selectedAllyTargettingAbility == null && (Input.GetButtonDown("Attack Mode") || Gamepad.GetButtonDown("Attack Mode")))
+        if (player.selectedAllyTargettingAbility == null && (Input.GetButtonDown(InputNames.ATTACK_MODE) || Gamepad.GetButtonDown(InputNames.ATTACK_MODE)))
         {
             // get all the objects controlled through AI
             var stateControlles = player.GetComponentsInChildren<UnitStateController>();
-            EventManager.TriggerEvent("SwitchAttackModeCommand");
+            EventManager.TriggerEvent(EventNames.SWITCH_ATTACK_MODE_COMMAND);
             InputToCommandManager.SwitchAttackMode(targetManager, new List<UnitStateController>(stateControlles));
         }
     }
@@ -236,12 +237,12 @@ public class UserInput : MonoBehaviour
             return;
         }
 
-        if (!dialogManager.GetDialogResponsePanel().IsOpen() && (Input.GetButtonDown("Submit") || Gamepad.GetButtonDown("Ability4")))
+        if (!dialogManager.GetDialogResponsePanel().IsOpen() && (Input.GetButtonDown(InputNames.SUBMIT) || Gamepad.GetButtonDown(InputNames.ABILITY4)))
         {
             dialogManager.DisplayNextSentence();
         }
         // skips all the text until the whole dialog block is finished, or untill a choice is required from a player
-        else if (Input.GetButtonDown("Cancel") || Gamepad.GetButtonDown("Start"))
+        else if (Input.GetButtonDown(InputNames.CANCEL) || Gamepad.GetButtonDown(InputNames.START))
         {
             dialogManager.SkipDialogBlock();
         }
@@ -249,7 +250,7 @@ public class UserInput : MonoBehaviour
 
     private void SwitchEnemy()
     {
-        if (Input.GetButtonDown("NextEnemy") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability3")))
+        if (Input.GetButtonDown(InputNames.NEXT_ENEMY) || (Gamepad.GetButton(InputNames.SELECTION_MODIFIER) && Gamepad.GetButtonDown(InputNames.ABILITY3)))
         {
             var majorVisibleEnemies = UnitManager.GetPlayerVisibleMajorEnemies(player).Cast<WorldObject>();
             var visibleBuildings = UnitManager.GetVisibleEnemyBuildings(player);
@@ -266,7 +267,7 @@ public class UserInput : MonoBehaviour
             {
                 int selectionIdx = WorkManager.GetTargetSelectionIndex(targetManager.SingleTarget, enemiesToDisplay);
 
-                EventManager.TriggerEvent("SwitchEnemyCommand");
+                EventManager.TriggerEvent(EventNames.SWITCH_ENEMY_COMMAND);
                 InputToCommandManager.SwitchEnemy(targetManager, enemiesToDisplay, selectionIdx);
             }
         }
@@ -274,27 +275,27 @@ public class UserInput : MonoBehaviour
 
     private void StopUnits()
     {
-        if (Input.GetButtonDown("StopUnits") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability4")))
+        if (Input.GetButtonDown(InputNames.STOP_UNITS) || (Gamepad.GetButton(InputNames.SELECTION_MODIFIER) && Gamepad.GetButtonDown(InputNames.ABILITY4)))
         {
-            EventManager.TriggerEvent("StopCommand");
+            EventManager.TriggerEvent(EventNames.STOP_COMMAND);
             InputToCommandManager.StopUnits(player, targetManager);
         }
     }
 
     private void SwitchHoldPosition()
     {
-        if (Input.GetButtonDown("HoldPosition") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability2")))
+        if (Input.GetButtonDown(InputNames.HOLD_POSITION) || (Gamepad.GetButton(InputNames.SELECTION_MODIFIER) && Gamepad.GetButtonDown(InputNames.ABILITY2)))
         {
-            EventManager.TriggerEvent("SwitchHoldPositionCommand");
+            EventManager.TriggerEvent(EventNames.SWITCH_HOLD_POSIITON_COMMAND);
             InputToCommandManager.SwitchHoldPosition(player);
         }
     }
 
     private void SwitchFormationType()
     {
-        if (Input.GetButtonDown("SwitchFormation") || (Gamepad.GetButton("SelectionModifier") && Gamepad.GetButtonDown("Ability1")))
+        if (Input.GetButtonDown(InputNames.SWITCH_FORMATION) || (Gamepad.GetButton(InputNames.SELECTION_MODIFIER) && Gamepad.GetButtonDown(InputNames.ABILITY1)))
         {
-            EventManager.TriggerEvent("SwitchFormationCommand");
+            EventManager.TriggerEvent(EventNames.SWITCH_FORMATION_COMMAND);
             InputToCommandManager.SwitchFormationType(formationManager);
         }
     }
@@ -311,11 +312,11 @@ public class UserInput : MonoBehaviour
             hud.SetCursorLock(false);
         }
 
-        if (Input.GetButtonDown("Action 1"))
+        if (Input.GetButtonDown(InputNames.ACTION_1))
         {
             LeftMouseClick();
         }
-        else if (Input.GetMouseButtonDown(1) || Gamepad.GetButtonDown("Action 1"))
+        else if (Input.GetMouseButtonDown(1) || Gamepad.GetButtonDown(InputNames.ACTION_1))
         {
             RightMouseClick();
         }
@@ -342,7 +343,7 @@ public class UserInput : MonoBehaviour
                         {
                             AbilityUtils.ApplyAllyAbilityToTarget(unitToSelect, player);
                         }
-                        else if (Input.GetButton("SelectionModifier") || Gamepad.GetButton("SelectionModifier"))
+                        else if (Input.GetButton(InputNames.SELECTION_MODIFIER) || Gamepad.GetButton(InputNames.SELECTION_MODIFIER))
                         {
                             UnitSelectionManager.HandleUnitSelectionWithModifierPress(unitToSelect, player, hud);
                         }
@@ -420,10 +421,8 @@ public class UserInput : MonoBehaviour
                         else
                         {
                             IssueMoveOrderToSelectedUnits(hitObject, hitPoint);
-                            // ChangeSelection(objectHandler, worldObject);
                         }
                     }
-                    // else ChangeSelection(objectHandler, worldObject);
                 }
                 else if (objectHandler.CanAttack())
                 {
@@ -445,7 +444,6 @@ public class UserInput : MonoBehaviour
     private void UnitMouseClick(Unit objectHandler, GameObject hitObject, Vector3 hitPoint)
     {
         Player owner = objectHandler.GetComponentInParent<Player>();
-        // Unit unit = hitObject.transform.parent.GetComponent<Unit>();
         Player hitObjectOwner = hitObject.GetComponentInParent<Player>();
         //only handle input if owned by a human player and currently selected
 
@@ -498,7 +496,7 @@ public class UserInput : MonoBehaviour
                 }
             }
 
-            EventManager.TriggerEvent("RelocateUnit");
+            EventManager.TriggerEvent(EventNames.RELOCATE_UNIT);
             InputToCommandManager.ToBusyState(targetManager, handlerStateController, actualDestination);
         }
     }
@@ -528,22 +526,6 @@ public class UserInput : MonoBehaviour
         }
     }
 
-    /*
-        private void BuildingMouseClick (Building objectHandler, GameObject hitObject, Vector3 hitPoint, Player controller)
-        {
-            //only handle iput if owned by a human player and currently selected
-            if (player && player.human && currentlySelected)
-            {
-                if (WorkManager.ObjectIsGround(hitObject))
-                {
-                    if ((player.hud.GetCursorState() == CursorState.RallyPoint || player.hud.GetPreviousCursorState() == CursorState.RallyPoint) && hitPoint != ResourceManager.InvalidPosition)
-                    {
-                        SetRallyPoint(hitPoint);
-                    }
-                }
-            }
-        }
-        */
     private void ChangeSelection(WorldObject unselectedObject, WorldObject selectedObject)
     {
         //this should be called by the following line, but there is an outside chance it will not
@@ -638,7 +620,7 @@ public class UserInput : MonoBehaviour
         if (
             player.selectedAllyTargettingAbility == null &&
             player.selectedAlliesTargettingAbility == null &&
-           (Input.GetButtonDown("Cancel") || Gamepad.GetButtonDown("Start")) &&
+           (Input.GetButtonDown(InputNames.CANCEL) || Gamepad.GetButtonDown(InputNames.START)) &&
             !ResourceManager.MenuOpen
         )
         {
